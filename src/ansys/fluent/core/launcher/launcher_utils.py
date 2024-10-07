@@ -34,6 +34,9 @@ def _get_subprocess_kwargs_for_fluent(env: Dict[str, Any], argvals) -> Dict[str,
     fluent_env.update({k: str(v) for k, v in env.items()})
     fluent_env["REMOTING_THROW_LAST_TUI_ERROR"] = "1"
 
+    if argvals.get("enable_data_model_api_upgrades") is True:
+        fluent_env["REMOTING_NEW_DM_API"] = "1"
+
     if not is_slurm:
         from ansys.fluent.core import INFER_REMOTING_IP
 
@@ -43,6 +46,7 @@ def _get_subprocess_kwargs_for_fluent(env: Dict[str, Any], argvals) -> Dict[str,
                 fluent_env["REMOTING_SERVER_ADDRESS"] = remoting_ip
 
     kwargs.update(env=fluent_env)
+
     return kwargs
 
 
