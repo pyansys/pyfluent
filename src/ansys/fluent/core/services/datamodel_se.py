@@ -1822,12 +1822,17 @@ class PyCommand:
         return commandid
 
     def _get_static_info(self) -> dict[str, Any]:
+        print(
+            f"In PyCommand._get_static_info(), info is None? {self._static_info is None}"
+        )
         if self._static_info is None:
+            print("Because it's None, get it from the rules map")
             if self.rules not in PyCommand._full_static_info.keys():
                 # Populate the static info with respect to a rules only if the
                 # same info has not been obtained in another context already.
                 # If the information is available, we can use it without additional remote calls.
                 response = self.service.get_static_info(self.rules)
+                print(f"This is the acquired response: {response}")
                 PyCommand._full_static_info[self.rules] = response
             rules_static_info = PyCommand._full_static_info[self.rules]
             static_info_path = []
@@ -1837,14 +1842,19 @@ class PyCommand:
             parent_static_info = _get_value_from_message_dict(
                 rules_static_info, static_info_path
             )
+            print(
+                f"This is the parent_static_info: {parent_static_info}, call _get_value_from_message_dict"
+            )
             self._static_info = _get_value_from_message_dict(
                 parent_static_info, ["commands", self.command, "commandinfo"]
             )
+        print(f"This is the returned info: {self._static_info}")
         return self._static_info
 
     def create_instance(self) -> "PyCommandArguments":
         """Create a command instance."""
         try:
+            print("In PyCommand.create_instance(), calling _get_static_info()...")
             static_info = self._get_static_info()
             id = self._create_command_arguments()
             return PyCommandArguments(

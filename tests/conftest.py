@@ -277,6 +277,15 @@ def mixing_elbow_watertight_pure_meshing_session(
 
 
 @pytest.fixture
+def new_meshing_session_new_api_enabled():
+    meshing = create_session(
+        mode=pyfluent.FluentMode.MESHING, enable_data_model_api_upgrades=True
+    )
+    yield meshing
+    meshing.exit()
+
+
+@pytest.fixture
 def new_solver_session():
     solver = create_session()
     yield solver

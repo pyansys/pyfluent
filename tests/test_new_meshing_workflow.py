@@ -1748,7 +1748,6 @@ def test_scenario_with_common_python_names_from_fdl(new_meshing_session):
 def test_return_state_changes(new_meshing_session):
     meshing = new_meshing_session
     wt = meshing.watertight()
-
     import_file_name = examples.download_file(
         "mixing_elbow.pmdb", "pyfluent/mixing_elbow"
     )
@@ -1799,3 +1798,27 @@ def test_recursive_update_dict(new_meshing_session):
         "PorousRegions": "Yes",
         "ZeroThickness": "Yes",
     }
+
+
+@pytest.mark.skip("Pending fix.")
+@pytest.mark.fluent_version(">=25.2")
+def test_meshing_workflow_api_updates_for_server_events(
+    new_meshing_session,
+):
+    meshing = new_meshing_session
+    wt = meshing.watertight()
+    wt.describe_geometry.multizone.set_state("Yes")
+    wt.describe_geometry()
+
+    add_multizone_controls = None
+    attr_err_count = 0
+
+    while add_multizone_controls is None and attr_err_count <= 10:
+        try:
+            add_multizone_controls = wt.add_multizone_controls
+        except AttributeError:
+            attr_err_count += 1
+            time.sleep(1)
+
+    assert attr_err_count == 0
+    assert add_multizone_controls
