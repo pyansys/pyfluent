@@ -343,7 +343,7 @@ def configure_container_dict(
             container_dict["environment"] = {}
         container_dict["environment"]["FLUENT_LAUNCHED_FROM_PYFLUENT"] = "1"
 
-    fluent_commands = ["-gu", f"-sifile={container_server_info_file}"] + args
+    fluent_commands = [f"-sifile={container_server_info_file}"] + args
 
     container_dict_default = {}
     container_dict_default.update(
