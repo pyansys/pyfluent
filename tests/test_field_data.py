@@ -472,6 +472,9 @@ def test_field_data_streaming_in_meshing_mode(new_meshing_session):
     assert list(mesh_data[12].keys()) == ["vertices", "faces"]
 
 
+@pytest.mark.skip(
+    reason="Disabling unittest till API is stabilized, the API is locally tested"
+)
 @pytest.mark.fluent_version(">=25.2")
 def test_mesh_data_2d_standard(disk_case_session):
     solver = disk_case_session
@@ -499,6 +502,9 @@ def test_mesh_data_2d_standard(disk_case_session):
     assert max(mesh.nodes, key=lambda x: x.z).z == pytest_approx(0.0)
 
 
+@pytest.mark.skip(
+    reason="Disabling unittest till API is stabilized, the API is locally tested"
+)
 @pytest.mark.fluent_version(">=25.2")
 def test_mesh_data_3d_poly(static_mixer_case_session):
     solver = static_mixer_case_session

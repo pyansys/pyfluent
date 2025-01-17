@@ -3,8 +3,8 @@
 from dataclasses import dataclass, field
 from enum import Enum
 from functools import reduce
-import io
 import logging
+import time
 from typing import Callable, Dict, List, Tuple
 import weakref
 
@@ -92,31 +92,23 @@ class FieldDataService(StreamingService):
         self, request: FieldDataProtoModule.GetSolverMeshNodesRequest
     ):
         """GetSolverMeshNodesDouble RPC of FieldData service."""
-        chuncked_responses = self._stub.GetSolverMeshNodesDouble(
+        responses = self._stub.GetSolverMeshNodesDouble(
             request, metadata=self._metadata
         )
-        buffer = io.BytesIO()
-        for chuncked_response in chuncked_responses:
-            buffer.write(chuncked_response.chunk)
-        serialized_response = buffer.getvalue()
-        response = FieldDataProtoModule.GetSolverMeshNodesDoubleResponse()
-        response.ParseFromString(serialized_response)
-        return response
+        nested_nodes = []
+        for response in responses:
+            nested_nodes.append(response.nodes)
+        return nested_nodes
 
     def get_solver_mesh_elements(
         self, request: FieldDataProtoModule.GetSolverMeshElementsRequest
     ):
         """GetSolverMeshElements RPC of FieldData service."""
-        chuncked_responses = self._stub.GetSolverMeshElements(
-            request, metadata=self._metadata
-        )
-        buffer = io.BytesIO()
-        for chuncked_response in chuncked_responses:
-            buffer.write(chuncked_response.chunk)
-        serialized_response = buffer.getvalue()
-        response = FieldDataProtoModule.GetSolverMeshElementsResponse()
-        response.ParseFromString(serialized_response)
-        return response
+        responses = self._stub.GetSolverMeshElements(request, metadata=self._metadata)
+        elementss = []
+        for response in responses:
+            elementss.append(response.elements)
+        return elementss
 
 
 class FieldInfo:
@@ -1483,46 +1475,65 @@ class FieldData:
 
         # Mesh data is retrieved from the root domain in Fluent
         logger.info(f"Getting nodes data for zone {zone_info._id}")
+        start_time = time.time()
         nodes_request = FieldDataProtoModule.GetSolverMeshNodesRequest(
             domain_id=ROOT_DOMAIN_ID, thread_id=zone_info._id
         )
-        nodes_response = self._service.get_solver_mesh_nodes(nodes_request)
-        logger.info("Nodes data received")
+        nested_nodes = self._service.get_solver_mesh_nodes(nodes_request)
+        logger.info(f"Nodes data received in {time.time() - start_time} seconds")
         logger.info(f"Getting elements for zone {zone_info._id}")
+        start_time = time.time()
         elements_request = FieldDataProtoModule.GetSolverMeshElementsRequest(
             domain_id=ROOT_DOMAIN_ID, thread_id=zone_info._id
         )
-        elements_response = self._service.get_solver_mesh_elements(elements_request)
-        logger.info("Elements data received")
+        elementss_pb = self._service.get_solver_mesh_elements(elements_request)
+        logger.info(f"Elements data received in {time.time() - start_time} seconds")
         logger.info("Constructing nodes structure in PyFluent")
-        nodes = nodes_response.nodes
-        nodes = [Node(_id=node.id, x=node.x, y=node.y, z=node.z) for node in nodes]
-        node_index_by_id = {node._id: index for index, node in enumerate(nodes)}
-        logger.info("Nodes structure constructed")
+        start_time = time.time()
+        node_count = sum(len(nodes) for nodes in nested_nodes)
+        nodes = np.empty(node_count, dtype=Node)
+        node_index_by_id = {}
+        i = 0
+        for nodes_pb in nested_nodes:
+            for node_pb in nodes_pb:
+                nodes[i] = Node(_id=node_pb.id, x=node_pb.x, y=node_pb.y, z=node_pb.z)
+                node_index_by_id[node_pb.id] = i
+                i += 1
+        logger.info(
+            f"Nodes structure constructed in {time.time() - start_time} seconds"
+        )
         logger.info("Constructing elements structure in PyFluent")
-        elements_pb = elements_response.elements
-        elements = []
-        for element_pb in elements_pb:
-            element_type = CellElementType(element_pb.element_type)
-            if element_type == CellElementType.POLYHEDRON:
-                facets = []
-                for facet_pb in element_pb.facets:
-                    facet = Facet(
-                        node_indices=[node_index_by_id[id] for id in facet_pb.node]
+        start_time = time.time()
+        element_count = sum(len(elements) for elements in elementss_pb)
+        elements = np.empty(element_count, dtype=Element)
+        i = 0
+        for elements_pb in elementss_pb:
+            for element_pb in elements_pb:
+                element_type = CellElementType(element_pb.element_type)
+                if element_type == CellElementType.POLYHEDRON:
+                    facets = []
+                    for facet_pb in element_pb.facets:
+                        facet = Facet(
+                            node_indices=[node_index_by_id[id] for id in facet_pb.node]
+                        )
+                        facets.append(facet)
+                    element = Element(
+                        _id=element_pb.id,
+                        element_type=element_type,
+                        facets=facets,
                     )
-                    facets.append(facet)
-                element = Element(
-                    _id=element_pb.id,
-                    element_type=element_type,
-                    facets=facets,
-                )
-            else:
-                element = Element(
-                    _id=element_pb.id,
-                    element_type=element_type,
-                    node_indices=[node_index_by_id[id] for id in element_pb.node_ids],
-                )
-            elements.append(element)
-        logger.info("Elements structure constructed")
+                else:
+                    element = Element(
+                        _id=element_pb.id,
+                        element_type=element_type,
+                        node_indices=[
+                            node_index_by_id[id] for id in element_pb.node_ids
+                        ],
+                    )
+                elements[i] = element
+                i += 1
+        logger.info(
+            f"Elements structure constructed in {time.time() - start_time} seconds"
+        )
         logger.info("Returning mesh")
         return Mesh(nodes=nodes, elements=elements)
