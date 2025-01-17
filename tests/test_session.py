@@ -435,12 +435,6 @@ def test_recover_grpc_error_from_launch_error(monkeypatch: pytest.MonkeyPatch):
     assert ex.value.__context__.__context__.code() == grpc.StatusCode.UNAVAILABLE
 
 
-def test_recover_grpc_error_from_connection_error():
-    with pytest.raises(RuntimeError) as ex:
-        pyfluent.connect_to_fluent(ip="127.0.0.1", port=50000, password="abcdefg")
-    assert ex.value.__context__.code() == grpc.StatusCode.UNAVAILABLE
-
-
 def test_solver_methods(new_solver_session):
     solver = new_solver_session
 
