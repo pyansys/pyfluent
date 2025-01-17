@@ -26,18 +26,20 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - image-tag: v22.2.0
-            version: 222
-          - image-tag: v23.1.0
-            version: 231
-          - image-tag: v23.2.0
-            version: 232
+          # - image-tag: v22.2.0
+          #   version: 222
+          # - image-tag: v23.1.0
+          #   version: 231
+          # - image-tag: v23.2.0
+          #   version: 232
           - image-tag: v24.1.0
             version: 241
           - image-tag: v24.2.0
             version: 242
           - image-tag: v25.1.0
             version: 251
+          - image-tag: v25.2.0
+            version: 252
 
     steps:
       - uses: actions/checkout@v4
@@ -45,7 +47,7 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
-          python-version: 3.11
+          python-version: 3.12
 
       - name: Cache pip
         uses: actions/cache@v4
@@ -75,13 +77,13 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Pull Fluent docker image
-        if: matrix.image-tag != 'v25.1.0'
+        if: matrix.image-tag != 'v25.2.0'
         run: make docker-pull
         env:
           FLUENT_IMAGE_TAG: ${{ matrix.image-tag }}
 
       - name: Pull Fluent docker image dev
-        if: matrix.image-tag == 'v25.1.0'
+        if: matrix.image-tag == 'v25.2.0'
         run: make docker-pull
         env:
           FLUENT_IMAGE_TAG: ${{ vars.FLUENT_STABLE_IMAGE_DEV }}
@@ -105,7 +107,7 @@ jobs:
             echo "Running custom unittest"
             sudo rm -rf /home/ansys/Downloads/ansys_fluent_core_examples/*
             make install-test
-            python -m pytest -v --no-cov --capture=no -k test_parametric_workflow --nightly
+            python -m pytest -v --no-cov --capture=no -k test_container_hang
         env:
           FLUENT_IMAGE_TAG: ${{ matrix.image-tag }}
 
