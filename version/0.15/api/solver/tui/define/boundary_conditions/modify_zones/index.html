@@ -1,0 +1,1063 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>modify_zones &#8212; PyFluent</title>
+    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../../../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../../../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../../../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/css/ansys_sphinx_theme.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/sg_gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/sg_gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/sg_gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/sg_gallery-rendered-html.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../../../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    
+        <link href="../../../../../../_static/css/breadcrumbs.css" rel="stylesheet">
+    
+    <script data-url_root="../../../../../../" id="documentation_options" src="../../../../../../_static/documentation_options.js"></script>
+    <script src="../../../../../../_static/jquery.js"></script>
+    <script src="../../../../../../_static/underscore.js"></script>
+    <script src="../../../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../../../../_static/doctools.js"></script>
+    <script src="../../../../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../../../../_static/thebelab-helper.js"></script>
+    <script src="../../../../../../_static/clipboard.min.js"></script>
+    <script src="../../../../../../_static/copybutton.js"></script>
+    <script src="../../../../../../_static/js/table.js"></script>
+    <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/solver/tui/define/boundary_conditions/modify_zones/index';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://fluent.docs.pyansys.com/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.15';
+        </script>
+    <link rel="shortcut icon" href="../../../../../../_static/ansys-favicon.png"/>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+    <link rel="next" title="perforated_walls" href="../perforated_walls/index.html" />
+    <link rel="prev" title="boundary_conditions" href="../index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <link rel="canonical" href="https://fluent.docs.pyansys.com/version/stable/api/solver/tui/define/boundary_conditions/modify_zones/index.html" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container"><!-- Debugging: html_theme_options =  -->
+
+  <!-- If there is no MiliSearch enabled, use the PyData search -->
+<form class="bd-search d-flex align-items-center"
+      action="../../../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  <div class="navbar-header-items__start">
+    
+      <div class="navbar-item">
+  
+
+<a class="navbar-brand logo" href="../../../../../../index.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../../../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../../getting_started/index.html">
+                        Getting started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../../user_guide/index.html">
+                        User guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../../../../../index.html">
+                        API reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../../examples/index.html">
+                        Examples
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../../contributing.html">
+                        Contribute
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+        </div>
+      
+      
+        <div class="navbar-item">
+<script>
+document.write(`
+  <div class="version-switcher__container dropdown">
+    <button type="button" class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle" data-bs-toggle="dropdown">
+      0.15  <!-- this text may get changed later by javascript -->
+      <span class="caret"></span>
+    </button>
+    <div class="version-switcher__menu dropdown-menu list-group-flush py-0">
+    <!-- dropdown will be populated by javascript on page load -->
+    </div>
+  </div>
+`);
+</script></div>
+      
+        <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent/discussions" title="Support" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa fa-comment fa-fw"></i></span>
+            <label class="sr-only">Support</label></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </nav>
+  
+
+    
+    <div id="announcement_msg"></div>
+<script>
+  fetch("announcement.html")
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error: ${response.status}`);
+      }
+      return response.text();
+    })
+    .then(text => document.getElementById("announcement_msg").innerHTML = text)
+    .catch((error) => console.error(`Fetch problem: ${error.message}`));
+</script>
+    
+
+    
+    <div class="container-xl">
+    <div class="row">
+        <div class="col-12 col-md-3" id="breadcrumbs-spacer"></div>
+        <div class="col-12 col-md-11 col-xl-9" id="breadcrumbs">
+          
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+    
+        <li class="nav-item nav-item-additional-breadcrumb"><a href="https://docs.pyansys.com/">PyAnsys</a> » </li>
+    
+    
+        <li class="nav-item nav-item-0"><a href="../../../../../../index.html">PyFluent</a> » </li>
+    
+
+          <li class="nav-item nav-item-1"><a href="../../../../../index.html" >API reference</a> » </li>
+          <li class="nav-item nav-item-2"><a href="../../../../index.html" >Solver</a> » </li>
+          <li class="nav-item nav-item-3"><a href="../../../../tuicommands.html" >Solver TUI commands</a> » </li>
+          <li class="nav-item nav-item-4"><a href="../../../index.html" >solver.tui</a> » </li>
+          <li class="nav-item nav-item-5"><a href="../../index.html" >define</a> » </li>
+          <li class="nav-item nav-item-6"><a href="../index.html" accesskey="U">boundary_conditions</a> » </li>
+        <li class="nav-item nav-item-this"><a href="">modify_zones</a></li> 
+      </ul>
+    </div>
+        </div>
+  </div>
+</div>
+    
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../../getting_started/index.html">
+                        Getting started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../../user_guide/index.html">
+                        User guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../../../../../index.html">
+                        API reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../../examples/index.html">
+                        Examples
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../../contributing.html">
+                        Contribute
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<script>
+document.write(`
+  <div class="version-switcher__container dropdown">
+    <button type="button" class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle" data-bs-toggle="dropdown">
+      0.15  <!-- this text may get changed later by javascript -->
+      <span class="caret"></span>
+    </button>
+    <div class="version-switcher__menu dropdown-menu list-group-flush py-0">
+    <!-- dropdown will be populated by javascript on page load -->
+    </div>
+  </div>
+`);
+</script></div>
+        
+          <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent/discussions" title="Support" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa fa-comment fa-fw"></i></span>
+            <label class="sr-only">Support</label></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item"><nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../../../general/index.html">General</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../meshing/index.html">Meshing</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../../../../index.html">Solver</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../../settings.html">Solver settings objects</a></li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="../../../../tuicommands.html">Solver TUI commands</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l3 current active has-children"><a class="reference internal" href="../../../index.html">solver.tui</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../../../plot/index.html">plot</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../server/index.html">server</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../surface/index.html">surface</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../icing/index.html">icing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../file/index.html">file</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../views/index.html">views</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../display/index.html">display</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../simulation_reports/index.html">simulation_reports</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../turbo_post/index.html">turbo_post</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../parameters__and__customization/index.html">parameters__and__customization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../adjoint/index.html">adjoint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../setup/index.html">setup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../report/index.html">report</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../parallel/index.html">parallel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../turbo_workflow/index.html">turbo_workflow</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../parametric_study/index.html">parametric_study</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../preferences/index.html">preferences</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../mesh/index.html">mesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../solve/index.html">solve</a></li>
+<li class="toctree-l4 current active has-children"><a class="reference internal" href="../../index.html">define</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l5"><a class="reference internal" href="../../parameters/index.html">parameters</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../mesh_interfaces/index.html">mesh_interfaces</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../named_expressions/index.html">named_expressions</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../turbo_model/index.html">turbo_model</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../operating_conditions/index.html">operating_conditions</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../periodic_conditions/index.html">periodic_conditions</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../models/index.html">models</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../custom_field_functions/index.html">custom_field_functions</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../gap_model/index.html">gap_model</a></li>
+<li class="toctree-l5 current active has-children"><a class="reference internal" href="../index.html">boundary_conditions</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l6 current active"><a class="current reference internal" href="#">modify_zones</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../perforated_walls/index.html">perforated_walls</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../rename_zone/index.html">rename_zone</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../non_reflecting_bc/index.html">non_reflecting_bc</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../impedance_data_fitting/index.html">impedance_data_fitting</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../advanced/index.html">advanced</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../bc_settings/index.html">bc_settings</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../set/index.html">set</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../../dynamic_mesh/index.html">dynamic_mesh</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../phases/index.html">phases</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../curvilinear_coordinate_system/index.html">curvilinear_coordinate_system</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../reference_frames/index.html">reference_frames</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../profiles/index.html">profiles</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../overset_interfaces/index.html">overset_interfaces</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../materials/index.html">materials</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../spectral/index.html">spectral</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../solution_strategy/index.html">solution_strategy</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../mixing_planes/index.html">mixing_planes</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../virtual_boundary/index.html">virtual_boundary</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../user_defined/index.html">user_defined</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../../../results/index.html">results</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../solution/index.html">solution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../datamodel/index.html">solver.datamodel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../schemeeval.html">Scheme code evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../fielddata.html">Field data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../fieldinfo.html">Field info</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../events.html">EventsManager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../monitors.html">MonitorsManager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../reduction.html">Reduction</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article"></div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="modify-zones">
+<span id="ref-solver-tui-define-boundary-conditions-modify-zones"></span><h1>modify_zones<a class="headerlink" href="#modify-zones" title="Permalink to this heading">#</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.</span></span><span class="sig-name descname"><span class="pre">modify_zones</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">service</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Enters the modify zones menu.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.activate_cell_zone" title="ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.activate_cell_zone"><code class="xref py py-obj docutils literal notranslate"><span class="pre">activate_cell_zone</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Activates cell thread.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.append_mesh" title="ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.append_mesh"><code class="xref py py-obj docutils literal notranslate"><span class="pre">append_mesh</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Appends new mesh.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.append_mesh_data" title="ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.append_mesh_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">append_mesh_data</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Appends new mesh with data.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.change_zone_phase" title="ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.change_zone_phase"><code class="xref py py-obj docutils literal notranslate"><span class="pre">change_zone_phase</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Change the realgas phase for a zone.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.change_zone_state" title="ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.change_zone_state"><code class="xref py py-obj docutils literal notranslate"><span class="pre">change_zone_state</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Sets the state (liquid or vapor) for a specific fluid zone.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.convert_all_solid_mrf_to_solid_motion" title="ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.convert_all_solid_mrf_to_solid_motion"><code class="xref py py-obj docutils literal notranslate"><span class="pre">convert_all_solid_mrf_to_solid_motion</span></code></a>(*args, ...)</p></td>
+<td><p>Converts all solid zones using frame motion to instead      use solid motion, copying the motion variable values for        origin, axis, and velocities.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.copy_mesh_to_mrf_motion" title="ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.copy_mesh_to_mrf_motion"><code class="xref py py-obj docutils literal notranslate"><span class="pre">copy_mesh_to_mrf_motion</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Copies motion variable values for origin, axis, and velocities from Mesh Motion to  Frame Motion.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.copy_move_cell_zone" title="ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.copy_move_cell_zone"><code class="xref py py-obj docutils literal notranslate"><span class="pre">copy_move_cell_zone</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Creates a copy of a cell zone that is offset from the original either by a translational    distance or a rotational angle.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.copy_mrf_to_mesh_motion" title="ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.copy_mrf_to_mesh_motion"><code class="xref py py-obj docutils literal notranslate"><span class="pre">copy_mrf_to_mesh_motion</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Copies motion variable values for origin, axis, and velocities from Frame Motion to         Mesh Motion.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.create_all_shell_threads" title="ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.create_all_shell_threads"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_all_shell_threads</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Marks all finite thickness walls for shell creation.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.create_periodic_interface" title="ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.create_periodic_interface"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_periodic_interface</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Creates a conformal or non-conformal periodic       interface.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.deactivate_cell_zone" title="ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.deactivate_cell_zone"><code class="xref py py-obj docutils literal notranslate"><span class="pre">deactivate_cell_zone</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Deactivates cell thread.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.delete_all_shells" title="ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.delete_all_shells"><code class="xref py py-obj docutils literal notranslate"><span class="pre">delete_all_shells</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Deletes all shell zones and switches off shell conduction on all the walls.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.delete_cell_zone" title="ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.delete_cell_zone"><code class="xref py py-obj docutils literal notranslate"><span class="pre">delete_cell_zone</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Deletes a cell thread.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.extrude_face_zone_delta" title="ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.extrude_face_zone_delta"><code class="xref py py-obj docutils literal notranslate"><span class="pre">extrude_face_zone_delta</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Extrudes a face thread a specified distance based on a list of deltas.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.extrude_face_zone_para" title="ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.extrude_face_zone_para"><code class="xref py py-obj docutils literal notranslate"><span class="pre">extrude_face_zone_para</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Extrudes a face thread a specified distance based on a distance and a list of       parametric locations between 0 and 1, for example, 0 0.2        0.4 0.8 1.0.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.fuse_face_zones" title="ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.fuse_face_zones"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fuse_face_zones</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Attempts to fuse zones by removing duplicate faces and nodes.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.list_zones" title="ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.list_zones"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list_zones</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Lists zone IDs, types, kinds, and names.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.make_periodic" title="ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.make_periodic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">make_periodic</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Attempts to establish periodic/shadow face zone connectivity.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.matching_tolerance" title="ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.matching_tolerance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">matching_tolerance</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Sets normalized tolerance used for finding coincident nodes.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.merge_zones" title="ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.merge_zones"><code class="xref py py-obj docutils literal notranslate"><span class="pre">merge_zones</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Merges zones of same type and condition into one.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.mrf_to_sliding_mesh" title="ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.mrf_to_sliding_mesh"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mrf_to_sliding_mesh</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Changes the motion specification from MRF to moving mesh.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.orient_face_zone" title="ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.orient_face_zone"><code class="xref py py-obj docutils literal notranslate"><span class="pre">orient_face_zone</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Orients the face zone.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.recreate_all_shells" title="ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.recreate_all_shells"><code class="xref py py-obj docutils literal notranslate"><span class="pre">recreate_all_shells</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Recreates shells on all the walls that were deleted using the command delete-all-shells.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.replace_zone" title="ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.replace_zone"><code class="xref py py-obj docutils literal notranslate"><span class="pre">replace_zone</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Replaces cell zone.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.rotate_zone" title="ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.rotate_zone"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rotate_zone</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Rotates individual cell zones.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.scale_zone" title="ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.scale_zone"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_zone</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Scales individual cell zones.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.sep_cell_zone_mark" title="ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.sep_cell_zone_mark"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sep_cell_zone_mark</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Separates cell zone based on cell marking.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.sep_cell_zone_region" title="ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.sep_cell_zone_region"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sep_cell_zone_region</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Separates cell zone based on contiguous regions.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.sep_face_zone_angle" title="ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.sep_face_zone_angle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sep_face_zone_angle</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Separates face zone based on significant angle.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.sep_face_zone_face" title="ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.sep_face_zone_face"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sep_face_zone_face</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Separates each face in zone into unique zone.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.sep_face_zone_mark" title="ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.sep_face_zone_mark"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sep_face_zone_mark</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Separates face zone based on cell marking.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.sep_face_zone_region" title="ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.sep_face_zone_region"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sep_face_zone_region</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Separates face zone based on contiguous regions.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.slit_face_zone" title="ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.slit_face_zone"><code class="xref py py-obj docutils literal notranslate"><span class="pre">slit_face_zone</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Slits two-sided wall into two connected wall zones.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.slit_interior_between_diff_solids" title="ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.slit_interior_between_diff_solids"><code class="xref py py-obj docutils literal notranslate"><span class="pre">slit_interior_between_diff_solids</span></code></a>(*args, ...)</p></td>
+<td><p>Slits the interior zone between solid zones of differing materials to create a      coupled wall.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.slit_periodic" title="ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.slit_periodic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">slit_periodic</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Slits periodic zone into two symmetry zones.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.translate_zone" title="ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.translate_zone"><code class="xref py py-obj docutils literal notranslate"><span class="pre">translate_zone</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Translates individual cell zones.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.zone_name" title="ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.zone_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">zone_name</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Gives a zone a new name.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.zone_type" title="ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.zone_type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">zone_type</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Sets the type for a zone or multiple zones of the same      category.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.activate_cell_zone">
+<span class="sig-name descname"><span class="pre">activate_cell_zone</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.activate_cell_zone" title="Permalink to this definition">#</a></dt>
+<dd><p>Activates cell thread.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.append_mesh">
+<span class="sig-name descname"><span class="pre">append_mesh</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.append_mesh" title="Permalink to this definition">#</a></dt>
+<dd><p>Appends new mesh.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.append_mesh_data">
+<span class="sig-name descname"><span class="pre">append_mesh_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.append_mesh_data" title="Permalink to this definition">#</a></dt>
+<dd><p>Appends new mesh with data.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.change_zone_phase">
+<span class="sig-name descname"><span class="pre">change_zone_phase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.change_zone_phase" title="Permalink to this definition">#</a></dt>
+<dd><p>Change the realgas phase for a zone.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.change_zone_state">
+<span class="sig-name descname"><span class="pre">change_zone_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.change_zone_state" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the state (liquid or vapor) for a specific fluid zone.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.convert_all_solid_mrf_to_solid_motion">
+<span class="sig-name descname"><span class="pre">convert_all_solid_mrf_to_solid_motion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.convert_all_solid_mrf_to_solid_motion" title="Permalink to this definition">#</a></dt>
+<dd><p>Converts all solid zones using frame motion to instead      use solid motion, copying the motion variable values for        origin, axis, and velocities.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.copy_mesh_to_mrf_motion">
+<span class="sig-name descname"><span class="pre">copy_mesh_to_mrf_motion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.copy_mesh_to_mrf_motion" title="Permalink to this definition">#</a></dt>
+<dd><p>Copies motion variable values for origin, axis, and velocities from Mesh Motion to  Frame Motion.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.copy_move_cell_zone">
+<span class="sig-name descname"><span class="pre">copy_move_cell_zone</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.copy_move_cell_zone" title="Permalink to this definition">#</a></dt>
+<dd><p>Creates a copy of a cell zone that is offset from the original either by a translational    distance or a rotational angle. In the copied zone, the         bounding face zones are all converted to walls, any     existing cell data is initialized to a constant value,  and non-conformal interfaces and dynamic zones are not  copied; otherwise, the model settings are the same as in        the original zone. Note that if you want the copied zone        to be connected to existing zones, you must either fuse         the boundaries (see ) or set up a       non-conformal interface (see ).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.copy_mrf_to_mesh_motion">
+<span class="sig-name descname"><span class="pre">copy_mrf_to_mesh_motion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.copy_mrf_to_mesh_motion" title="Permalink to this definition">#</a></dt>
+<dd><p>Copies motion variable values for origin, axis, and velocities from Frame Motion to         Mesh Motion.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.create_all_shell_threads">
+<span class="sig-name descname"><span class="pre">create_all_shell_threads</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.create_all_shell_threads" title="Permalink to this definition">#</a></dt>
+<dd><p>Marks all finite thickness walls for shell creation. Shell zones will be created at         the start of the iterations.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.create_periodic_interface">
+<span class="sig-name descname"><span class="pre">create_periodic_interface</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.create_periodic_interface" title="Permalink to this definition">#</a></dt>
+<dd><p>Creates a conformal or non-conformal periodic       interface.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.deactivate_cell_zone">
+<span class="sig-name descname"><span class="pre">deactivate_cell_zone</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.deactivate_cell_zone" title="Permalink to this definition">#</a></dt>
+<dd><p>Deactivates cell thread.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.delete_all_shells">
+<span class="sig-name descname"><span class="pre">delete_all_shells</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.delete_all_shells" title="Permalink to this definition">#</a></dt>
+<dd><p>Deletes all shell zones and switches off shell conduction on all the walls. These   zones can be recreated using the command recreate-all-shells.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.delete_cell_zone">
+<span class="sig-name descname"><span class="pre">delete_cell_zone</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.delete_cell_zone" title="Permalink to this definition">#</a></dt>
+<dd><p>Deletes a cell thread.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.extrude_face_zone_delta">
+<span class="sig-name descname"><span class="pre">extrude_face_zone_delta</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.extrude_face_zone_delta" title="Permalink to this definition">#</a></dt>
+<dd><p>Extrudes a face thread a specified distance based on a list of deltas.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.extrude_face_zone_para">
+<span class="sig-name descname"><span class="pre">extrude_face_zone_para</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.extrude_face_zone_para" title="Permalink to this definition">#</a></dt>
+<dd><p>Extrudes a face thread a specified distance based on a distance and a list of       parametric locations between 0 and 1, for example, 0 0.2        0.4 0.8 1.0.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.fuse_face_zones">
+<span class="sig-name descname"><span class="pre">fuse_face_zones</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.fuse_face_zones" title="Permalink to this definition">#</a></dt>
+<dd><p>Attempts to fuse zones by removing duplicate faces and nodes.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.list_zones">
+<span class="sig-name descname"><span class="pre">list_zones</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.list_zones" title="Permalink to this definition">#</a></dt>
+<dd><p>Lists zone IDs, types, kinds, and names.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.make_periodic">
+<span class="sig-name descname"><span class="pre">make_periodic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.make_periodic" title="Permalink to this definition">#</a></dt>
+<dd><p>Attempts to establish periodic/shadow face zone connectivity.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.matching_tolerance">
+<span class="sig-name descname"><span class="pre">matching_tolerance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.matching_tolerance" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets normalized tolerance used for finding coincident nodes.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.merge_zones">
+<span class="sig-name descname"><span class="pre">merge_zones</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.merge_zones" title="Permalink to this definition">#</a></dt>
+<dd><p>Merges zones of same type and condition into one.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.mrf_to_sliding_mesh">
+<span class="sig-name descname"><span class="pre">mrf_to_sliding_mesh</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.mrf_to_sliding_mesh" title="Permalink to this definition">#</a></dt>
+<dd><p>Changes the motion specification from MRF to moving mesh.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.orient_face_zone">
+<span class="sig-name descname"><span class="pre">orient_face_zone</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.orient_face_zone" title="Permalink to this definition">#</a></dt>
+<dd><p>Orients the face zone.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.recreate_all_shells">
+<span class="sig-name descname"><span class="pre">recreate_all_shells</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.recreate_all_shells" title="Permalink to this definition">#</a></dt>
+<dd><p>Recreates shells on all the walls that were deleted using the command delete-all-shells.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.replace_zone">
+<span class="sig-name descname"><span class="pre">replace_zone</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.replace_zone" title="Permalink to this definition">#</a></dt>
+<dd><p>Replaces cell zone.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.rotate_zone">
+<span class="sig-name descname"><span class="pre">rotate_zone</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.rotate_zone" title="Permalink to this definition">#</a></dt>
+<dd><p>Rotates individual cell zones.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.scale_zone">
+<span class="sig-name descname"><span class="pre">scale_zone</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.scale_zone" title="Permalink to this definition">#</a></dt>
+<dd><p>Scales individual cell zones.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.sep_cell_zone_mark">
+<span class="sig-name descname"><span class="pre">sep_cell_zone_mark</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.sep_cell_zone_mark" title="Permalink to this definition">#</a></dt>
+<dd><p>Separates cell zone based on cell marking.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.sep_cell_zone_region">
+<span class="sig-name descname"><span class="pre">sep_cell_zone_region</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.sep_cell_zone_region" title="Permalink to this definition">#</a></dt>
+<dd><p>Separates cell zone based on contiguous regions.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.sep_face_zone_angle">
+<span class="sig-name descname"><span class="pre">sep_face_zone_angle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.sep_face_zone_angle" title="Permalink to this definition">#</a></dt>
+<dd><p>Separates face zone based on significant angle.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.sep_face_zone_face">
+<span class="sig-name descname"><span class="pre">sep_face_zone_face</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.sep_face_zone_face" title="Permalink to this definition">#</a></dt>
+<dd><p>Separates each face in zone into unique zone.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.sep_face_zone_mark">
+<span class="sig-name descname"><span class="pre">sep_face_zone_mark</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.sep_face_zone_mark" title="Permalink to this definition">#</a></dt>
+<dd><p>Separates face zone based on cell marking.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.sep_face_zone_region">
+<span class="sig-name descname"><span class="pre">sep_face_zone_region</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.sep_face_zone_region" title="Permalink to this definition">#</a></dt>
+<dd><p>Separates face zone based on contiguous regions.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.slit_face_zone">
+<span class="sig-name descname"><span class="pre">slit_face_zone</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.slit_face_zone" title="Permalink to this definition">#</a></dt>
+<dd><p>Slits two-sided wall into two connected wall zones.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.slit_interior_between_diff_solids">
+<span class="sig-name descname"><span class="pre">slit_interior_between_diff_solids</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.slit_interior_between_diff_solids" title="Permalink to this definition">#</a></dt>
+<dd><p>Slits the interior zone between solid zones of differing materials to create a      coupled wall. You will generally be prompted by Fluent  if this is necessary.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.slit_periodic">
+<span class="sig-name descname"><span class="pre">slit_periodic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.slit_periodic" title="Permalink to this definition">#</a></dt>
+<dd><p>Slits periodic zone into two symmetry zones.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.translate_zone">
+<span class="sig-name descname"><span class="pre">translate_zone</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.translate_zone" title="Permalink to this definition">#</a></dt>
+<dd><p>Translates individual cell zones.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.zone_name">
+<span class="sig-name descname"><span class="pre">zone_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.zone_name" title="Permalink to this definition">#</a></dt>
+<dd><p>Gives a zone a new name.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.zone_type">
+<span class="sig-name descname"><span class="pre">zone_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.zone_type" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the type for a zone or multiple zones of the same      category. You will be prompted for the name / ID of the         zone to be changed and the new type for that zone. To   change multiple zones, you can enter a list (separated  by spaces and contained within a pair of parentheses) or        use asterisks (*) as wildcards.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+                </article>
+              
+              
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones"><code class="docutils literal notranslate"><span class="pre">modify_zones</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.activate_cell_zone"><code class="docutils literal notranslate"><span class="pre">modify_zones.activate_cell_zone()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.append_mesh"><code class="docutils literal notranslate"><span class="pre">modify_zones.append_mesh()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.append_mesh_data"><code class="docutils literal notranslate"><span class="pre">modify_zones.append_mesh_data()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.change_zone_phase"><code class="docutils literal notranslate"><span class="pre">modify_zones.change_zone_phase()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.change_zone_state"><code class="docutils literal notranslate"><span class="pre">modify_zones.change_zone_state()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.convert_all_solid_mrf_to_solid_motion"><code class="docutils literal notranslate"><span class="pre">modify_zones.convert_all_solid_mrf_to_solid_motion()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.copy_mesh_to_mrf_motion"><code class="docutils literal notranslate"><span class="pre">modify_zones.copy_mesh_to_mrf_motion()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.copy_move_cell_zone"><code class="docutils literal notranslate"><span class="pre">modify_zones.copy_move_cell_zone()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.copy_mrf_to_mesh_motion"><code class="docutils literal notranslate"><span class="pre">modify_zones.copy_mrf_to_mesh_motion()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.create_all_shell_threads"><code class="docutils literal notranslate"><span class="pre">modify_zones.create_all_shell_threads()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.create_periodic_interface"><code class="docutils literal notranslate"><span class="pre">modify_zones.create_periodic_interface()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.deactivate_cell_zone"><code class="docutils literal notranslate"><span class="pre">modify_zones.deactivate_cell_zone()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.delete_all_shells"><code class="docutils literal notranslate"><span class="pre">modify_zones.delete_all_shells()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.delete_cell_zone"><code class="docutils literal notranslate"><span class="pre">modify_zones.delete_cell_zone()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.extrude_face_zone_delta"><code class="docutils literal notranslate"><span class="pre">modify_zones.extrude_face_zone_delta()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.extrude_face_zone_para"><code class="docutils literal notranslate"><span class="pre">modify_zones.extrude_face_zone_para()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.fuse_face_zones"><code class="docutils literal notranslate"><span class="pre">modify_zones.fuse_face_zones()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.list_zones"><code class="docutils literal notranslate"><span class="pre">modify_zones.list_zones()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.make_periodic"><code class="docutils literal notranslate"><span class="pre">modify_zones.make_periodic()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.matching_tolerance"><code class="docutils literal notranslate"><span class="pre">modify_zones.matching_tolerance()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.merge_zones"><code class="docutils literal notranslate"><span class="pre">modify_zones.merge_zones()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.mrf_to_sliding_mesh"><code class="docutils literal notranslate"><span class="pre">modify_zones.mrf_to_sliding_mesh()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.orient_face_zone"><code class="docutils literal notranslate"><span class="pre">modify_zones.orient_face_zone()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.recreate_all_shells"><code class="docutils literal notranslate"><span class="pre">modify_zones.recreate_all_shells()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.replace_zone"><code class="docutils literal notranslate"><span class="pre">modify_zones.replace_zone()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.rotate_zone"><code class="docutils literal notranslate"><span class="pre">modify_zones.rotate_zone()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.scale_zone"><code class="docutils literal notranslate"><span class="pre">modify_zones.scale_zone()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.sep_cell_zone_mark"><code class="docutils literal notranslate"><span class="pre">modify_zones.sep_cell_zone_mark()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.sep_cell_zone_region"><code class="docutils literal notranslate"><span class="pre">modify_zones.sep_cell_zone_region()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.sep_face_zone_angle"><code class="docutils literal notranslate"><span class="pre">modify_zones.sep_face_zone_angle()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.sep_face_zone_face"><code class="docutils literal notranslate"><span class="pre">modify_zones.sep_face_zone_face()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.sep_face_zone_mark"><code class="docutils literal notranslate"><span class="pre">modify_zones.sep_face_zone_mark()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.sep_face_zone_region"><code class="docutils literal notranslate"><span class="pre">modify_zones.sep_face_zone_region()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.slit_face_zone"><code class="docutils literal notranslate"><span class="pre">modify_zones.slit_face_zone()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.slit_interior_between_diff_solids"><code class="docutils literal notranslate"><span class="pre">modify_zones.slit_interior_between_diff_solids()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.slit_periodic"><code class="docutils literal notranslate"><span class="pre">modify_zones.slit_periodic()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.translate_zone"><code class="docutils literal notranslate"><span class="pre">modify_zones.translate_zone()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.zone_name"><code class="docutils literal notranslate"><span class="pre">modify_zones.zone_name()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.boundary_conditions.modify_zones.zone_type"><code class="docutils literal notranslate"><span class="pre">modify_zones.zone_type()</span></code></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  <div class="tocsection sourcelink">
+    <a href="../../../../../../_sources/api/solver/tui/define/boundary_conditions/modify_zones/index.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../../../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+  <p class="copyright">
+    
+      © Copyright (c) 2023 ANSYS, Inc. All rights reserved.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.13.3.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

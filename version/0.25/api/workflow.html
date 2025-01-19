@@ -1,0 +1,2052 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>ansys.fluent.core.workflow &#8212; PyFluent</title>
+
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=d2d258e8" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/ansys_sphinx_theme.css?v=d2ac875c" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://www.nerdfonts.com/assets/css/webfont.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+ 
+<link href="../_static/css/breadcrumbs.css" rel="stylesheet" />
+
+    <script src="../_static/documentation_options.js?v=c0aa8791"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/thebelab-helper.js"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=49e1bf35"></script>
+    <script src="../_static/toggleprompt.js?v=cec9bd37"></script>
+    <script src="../_static/js/table.js?v=b64f5182"></script>
+    <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/workflow';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.15.4';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://fluent.docs.pyansys.com/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.25';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner = false;
+        </script>
+    <link rel="icon" href="../_static/ansys-favicon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Examples" href="../examples/index.html" />
+    <link rel="prev" title="ansys.fluent.core.warnings" href="warnings.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <link rel="canonical" href="https://fluent.docs.pyansys.com/version/stable/api/workflow.html" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container"><!-- Debugging: html_theme_options =  -->
+
+  <!-- If there is no MeiliSearch enabled, use the PyData search -->
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+   
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/pyansys_logo_transparent_black.png" class="logo__image only-light" alt="PyFluent - Home"/>
+    <script>document.write(`<img src="../_static/pyansys_logo_transparent_white.png" class="logo__image only-dark" alt="PyFluent - Home"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../getting_started/index.html">
+    Getting started
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../user_guide/index.html">
+    User guide
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    API reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../contributing.html">
+    Contributing to PyFluent
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+<script>
+document.write(`
+  <div class="version-switcher__container dropdown">
+    <button id="pst-version-switcher-button-2"
+      type="button"
+      class="version-switcher__button btn btn-sm dropdown-toggle"
+      data-bs-toggle="dropdown"
+      aria-haspopup="listbox"
+      aria-controls="pst-version-switcher-list-2"
+      aria-label="Version switcher list"
+    >
+      Choose version  <!-- this text may get changed later by javascript -->
+      <span class="caret"></span>
+    </button>
+    <div id="pst-version-switcher-list-2"
+      class="version-switcher__menu dropdown-menu list-group-flush py-0"
+      role="listbox" aria-labelledby="pst-version-switcher-button-2">
+      <!-- dropdown will be populated by javascript on page load -->
+    </div>
+  </div>
+`);
+</script></div>
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent/discussions" title="Support" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa fa-comment fa-fw fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Support</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+    <div id="announcement_msg"></div>
+<script>
+  fetch("announcement.html")
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error: ${response.status}`);
+      }
+      return response.text();
+    })
+    .then(
+      (text) => (document.getElementById("announcement_msg").innerHTML = text),
+    )
+    .catch((error) => console.error(`Fetch problem: ${error.message}`));
+</script>  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../getting_started/index.html">
+    Getting started
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../user_guide/index.html">
+    User guide
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    API reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../contributing.html">
+    Contributing to PyFluent
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<script>
+document.write(`
+  <div class="version-switcher__container dropdown">
+    <button id="pst-version-switcher-button-3"
+      type="button"
+      class="version-switcher__button btn btn-sm dropdown-toggle"
+      data-bs-toggle="dropdown"
+      aria-haspopup="listbox"
+      aria-controls="pst-version-switcher-list-3"
+      aria-label="Version switcher list"
+    >
+      Choose version  <!-- this text may get changed later by javascript -->
+      <span class="caret"></span>
+    </button>
+    <div id="pst-version-switcher-list-3"
+      class="version-switcher__menu dropdown-menu list-group-flush py-0"
+      role="listbox" aria-labelledby="pst-version-switcher-button-3">
+      <!-- dropdown will be populated by javascript on page load -->
+    </div>
+  </div>
+`);
+</script></div>
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent/discussions" title="Support" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa fa-comment fa-fw fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Support</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="filereader/index.html">ansys.fluent.core.filereader</a></li>
+<li class="toctree-l1"><a class="reference internal" href="launcher/index.html">ansys.fluent.core.launcher</a></li>
+<li class="toctree-l1"><a class="reference internal" href="meshing/index.html">ansys.fluent.core.meshing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="post_objects/index.html">ansys.fluent.core.post_objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scheduler/index.html">ansys.fluent.core.scheduler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="services/index.html">ansys.fluent.core.services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="solver/index.html">ansys.fluent.core.solver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="streaming_services/index.html">ansys.fluent.core.streaming_services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utils/index.html">ansys.fluent.core.utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_model_cache.html">ansys.fluent.core.data_model_cache</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exceptions.html">ansys.fluent.core.exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="file_session.html">ansys.fluent.core.file_session</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fluent_connection.html">ansys.fluent.core.fluent_connection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="journaling.html">ansys.fluent.core.journaling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logging.html">ansys.fluent.core.logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parametric.html">ansys.fluent.core.parametric</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rpvars.html">ansys.fluent.core.rpvars</a></li>
+<li class="toctree-l1"><a class="reference internal" href="search.html">ansys.fluent.core.search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="session_base_meshing.html">ansys.fluent.core.session_base_meshing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="session_meshing.html">ansys.fluent.core.session_meshing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="session_pure_meshing.html">ansys.fluent.core.session_pure_meshing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="session_solver_icing.html">ansys.fluent.core.session_solver_icing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="session_solver_lite.html">ansys.fluent.core.session_solver_lite</a></li>
+<li class="toctree-l1"><a class="reference internal" href="session_solver.html">ansys.fluent.core.session_solver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="session.html">ansys.fluent.core.session</a></li>
+<li class="toctree-l1"><a class="reference internal" href="systemcoupling.html">ansys.fluent.core.systemcoupling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="warnings.html">ansys.fluent.core.warnings</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">ansys.fluent.core.workflow</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+         
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="https://docs.pyansys.com/" class="nav-link">PyAnsys</a>
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a
+        href="../index.html"
+        class="nav-link"
+        aria-label="Home"
+      >
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a href="index.html" class="nav-link">API reference</a>
+    </li>
+      
+    <li class="breadcrumb-item active" aria-current="page">ansys.fluent.core.workflow</li>
+    
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="module-ansys.fluent.core.workflow">
+<span id="ansys-fluent-core-workflow"></span><span id="ref-workflow"></span><h1>ansys.fluent.core.workflow<a class="headerlink" href="#module-ansys.fluent.core.workflow" title="Link to this heading">#</a></h1>
+<p>Workflow module that wraps and extends the core functionality.</p>
+<p><strong>Classes:</strong></p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.workflow.ArgumentWrapper" title="ansys.fluent.core.workflow.ArgumentWrapper"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ArgumentWrapper</span></code></a>(task, arg)</p></td>
+<td><p>Wrapper for a single task argument.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.workflow.ArgumentsWrapper" title="ansys.fluent.core.workflow.ArgumentsWrapper"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ArgumentsWrapper</span></code></a>(task)</p></td>
+<td><p>Wrapper for a dictionary of task arguments.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.workflow.BaseTask" title="ansys.fluent.core.workflow.BaseTask"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BaseTask</span></code></a>(command_source, task)</p></td>
+<td><p>Base class Task representation for wrapping a Workflow TaskObject instance, adding methods to discover more about the relationships between TaskObjects.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.workflow.ClassicWorkflow" title="ansys.fluent.core.workflow.ClassicWorkflow"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ClassicWorkflow</span></code></a>(workflow, command_source, ...)</p></td>
+<td><p>Wraps a meshing workflow object.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.workflow.CommandTask" title="ansys.fluent.core.workflow.CommandTask"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CommandTask</span></code></a>(command_source, task)</p></td>
+<td><p>Intermediate base class task representation for wrapping a Workflow TaskObject instance, adding attributes related to commanding.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.workflow.CompositeTask" title="ansys.fluent.core.workflow.CompositeTask"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CompositeTask</span></code></a>(command_source, task)</p></td>
+<td><p>Composite task representation for wrapping a Workflow TaskObject instance of TaskType Composite.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.workflow.CompoundChild" title="ansys.fluent.core.workflow.CompoundChild"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CompoundChild</span></code></a>(command_source, task)</p></td>
+<td><p>Compound Child representation for wrapping a Workflow TaskObject instance of TaskType Compound Child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.workflow.CompoundTask" title="ansys.fluent.core.workflow.CompoundTask"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CompoundTask</span></code></a>(command_source, task)</p></td>
+<td><p>Compound task representation for wrapping a Workflow TaskObject instance of TaskType Compound.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.workflow.ConditionalTask" title="ansys.fluent.core.workflow.ConditionalTask"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ConditionalTask</span></code></a>(command_source, task)</p></td>
+<td><p>Conditional task representation for wrapping a Workflow TaskObject instance of TaskType Conditional.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.workflow.ReadOnlyObject" title="ansys.fluent.core.workflow.ReadOnlyObject"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ReadOnlyObject</span></code></a>(cmd)</p></td>
+<td><p>Removes <code class="docutils literal notranslate"><span class="pre">set_state()</span></code> to implement read-only behavior.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.workflow.SimpleTask" title="ansys.fluent.core.workflow.SimpleTask"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SimpleTask</span></code></a>(command_source, task)</p></td>
+<td><p>Simple task representation for wrapping a Workflow TaskObject instance of TaskType Simple.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.workflow.TaskContainer" title="ansys.fluent.core.workflow.TaskContainer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TaskContainer</span></code></a>(command_source)</p></td>
+<td><p>Wrap a workflow TaskObject container.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.workflow.Workflow" title="ansys.fluent.core.workflow.Workflow"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Workflow</span></code></a>(workflow, command_source, ...)</p></td>
+<td><p>Wraps a workflow object, adding methods to discover more about the relationships between task objects.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Exceptions:</strong></p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.workflow.CommandInstanceCreationError" title="ansys.fluent.core.workflow.CommandInstanceCreationError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CommandInstanceCreationError</span></code></a>(task_name)</p></td>
+<td><p>Raised when an attempt to create an instance of a task command fails.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Functions:</strong></p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.workflow.camel_to_snake_case" title="ansys.fluent.core.workflow.camel_to_snake_case"><code class="xref py py-obj docutils literal notranslate"><span class="pre">camel_to_snake_case</span></code></a>(camel_case_str)</p></td>
+<td><p>Convert camel case input string to snake case output string.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.workflow.snake_to_camel_case" title="ansys.fluent.core.workflow.snake_to_camel_case"><code class="xref py py-obj docutils literal notranslate"><span class="pre">snake_to_camel_case</span></code></a>(snake_case_str, ...)</p></td>
+<td><p>Populate the snake-case attribute map and return camel case of the passed attribute.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.workflow.ArgumentWrapper">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.workflow.</span></span><span class="sig-name descname"><span class="pre">ArgumentWrapper</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">task</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.workflow.ArgumentWrapper" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="services/datamodel_se.html#ansys.fluent.core.services.datamodel_se.PyCallableStateObject" title="ansys.fluent.core.services.datamodel_se.PyCallableStateObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">PyCallableStateObject</span></code></a></p>
+<p>Wrapper for a single task argument.</p>
+<p><strong>Methods:</strong></p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.workflow.ArgumentWrapper.__init__" title="ansys.fluent.core.workflow.ArgumentWrapper.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(task, arg)</p></td>
+<td><p>Initialize ArgumentWrapper.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.workflow.ArgumentWrapper.get_state" title="ansys.fluent.core.workflow.ArgumentWrapper.get_state"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_state</span></code></a>([explicit_only])</p></td>
+<td><p>Get the state of this argument.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.workflow.ArgumentWrapper.set_state" title="ansys.fluent.core.workflow.ArgumentWrapper.set_state"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_state</span></code></a>(value)</p></td>
+<td><p>Set the state of the argument.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.workflow.ArgumentWrapper.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">task</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.workflow.ArgumentWrapper.__init__" title="Link to this definition">#</a></dt>
+<dd><p>Initialize ArgumentWrapper.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>task</strong><span class="classifier"><a class="reference internal" href="#ansys.fluent.core.workflow.BaseTask" title="ansys.fluent.core.workflow.BaseTask"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BaseTask</span></code></a></span></dt><dd><p>The task holding these arguments.</p>
+</dd>
+<dt><strong>arg: str</strong></dt><dd><p>Argument name.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.workflow.ArgumentWrapper.get_state">
+<span class="sig-name descname"><span class="pre">get_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">explicit_only</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.workflow.ArgumentWrapper.get_state" title="Link to this definition">#</a></dt>
+<dd><p>Get the state of this argument.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>explicit_only</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values" title="(in Python v3.12)"><span class="xref std std-ref">bool</span></a></span></dt><dd><p>Whether to return the explicitly set value or the
+full derived value.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.workflow.ArgumentWrapper.set_state">
+<span class="sig-name descname"><span class="pre">set_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.workflow.ArgumentWrapper.set_state" title="Link to this definition">#</a></dt>
+<dd><p>Set the state of the argument.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>value</strong><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Any</span></code></span></dt><dd><p>Value of the argument.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.workflow.ArgumentsWrapper">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.workflow.</span></span><span class="sig-name descname"><span class="pre">ArgumentsWrapper</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">task</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.workflow.ArgumentsWrapper" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="services/datamodel_se.html#ansys.fluent.core.services.datamodel_se.PyCallableStateObject" title="ansys.fluent.core.services.datamodel_se.PyCallableStateObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">PyCallableStateObject</span></code></a></p>
+<p>Wrapper for a dictionary of task arguments.</p>
+<p><strong>Methods:</strong></p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.workflow.ArgumentsWrapper.__init__" title="ansys.fluent.core.workflow.ArgumentsWrapper.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(task)</p></td>
+<td><p>Initialize ArgumentsWrapper.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.workflow.ArgumentsWrapper.get_state" title="ansys.fluent.core.workflow.ArgumentsWrapper.get_state"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_state</span></code></a>([explicit_only])</p></td>
+<td><p>Get the state of the arguments.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.workflow.ArgumentsWrapper.set_state" title="ansys.fluent.core.workflow.ArgumentsWrapper.set_state"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_state</span></code></a>(args)</p></td>
+<td><p>Overwrite arguments.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.workflow.ArgumentsWrapper.update_dict" title="ansys.fluent.core.workflow.ArgumentsWrapper.update_dict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update_dict</span></code></a>(args)</p></td>
+<td><p>Merge with arguments.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.workflow.ArgumentsWrapper.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">task</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.workflow.ArgumentsWrapper.__init__" title="Link to this definition">#</a></dt>
+<dd><p>Initialize ArgumentsWrapper.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>task</strong><span class="classifier"><a class="reference internal" href="#ansys.fluent.core.workflow.BaseTask" title="ansys.fluent.core.workflow.BaseTask"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BaseTask</span></code></a></span></dt><dd><p>Task holding these arguments.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.workflow.ArgumentsWrapper.get_state">
+<span class="sig-name descname"><span class="pre">get_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">explicit_only</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.workflow.ArgumentsWrapper.get_state" title="Link to this definition">#</a></dt>
+<dd><p>Get the state of the arguments.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>explicit_only</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values" title="(in Python v3.12)"><span class="xref std std-ref">bool</span></a></span></dt><dd><p>Whether to only include explicitly set values.
+Otherwise, all values are included.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.workflow.ArgumentsWrapper.set_state">
+<span class="sig-name descname"><span class="pre">set_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.workflow.ArgumentsWrapper.set_state" title="Link to this definition">#</a></dt>
+<dd><p>Overwrite arguments.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>args</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">dict</span></code></a></span></dt><dd><p>State of the arguments.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ValueError</span></code></a></dt><dd><p>If input is invalid.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.workflow.ArgumentsWrapper.update_dict">
+<span class="sig-name descname"><span class="pre">update_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.workflow.ArgumentsWrapper.update_dict" title="Link to this definition">#</a></dt>
+<dd><p>Merge with arguments.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>args</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">dict</span></code></a></span></dt><dd><p>State of the arguments.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ValueError</span></code></a></dt><dd><p>If input is invalid.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.workflow.BaseTask">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.workflow.</span></span><span class="sig-name descname"><span class="pre">BaseTask</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">command_source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">task</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.workflow.BaseTask" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Base class Task representation for wrapping a Workflow TaskObject instance,
+adding methods to discover more about the relationships between TaskObjects.</p>
+<p class="rubric">Methods</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<tbody>
+<tr class="row-odd"><td><p><strong>get_direct_upstream_tasks()</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>get_direct_downstream_tasks()</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>tasks()</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>inactive_tasks()</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>get_id()</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>get_idx()</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>__getattr__(attr)</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>__setattr__(attr, value)</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>__dir__()</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>__call__()</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Methods:</strong></p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.workflow.BaseTask.__init__" title="ansys.fluent.core.workflow.BaseTask.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(command_source, task)</p></td>
+<td><p>Initialize BaseTask.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.workflow.BaseTask.add_child_to_task" title="ansys.fluent.core.workflow.BaseTask.add_child_to_task"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_child_to_task</span></code></a>()</p></td>
+<td><p>Add a child task.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.workflow.BaseTask.delete" title="ansys.fluent.core.workflow.BaseTask.delete"><code class="xref py py-obj docutils literal notranslate"><span class="pre">delete</span></code></a>()</p></td>
+<td><p>Delete this task from the workflow.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.workflow.BaseTask.display_name" title="ansys.fluent.core.workflow.BaseTask.display_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">display_name</span></code></a>()</p></td>
+<td><p>Display name.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.workflow.BaseTask.get_direct_downstream_tasks" title="ansys.fluent.core.workflow.BaseTask.get_direct_downstream_tasks"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_direct_downstream_tasks</span></code></a>()</p></td>
+<td><p>Get the list of tasks downstream of this one and directly connected by a data dependency.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.workflow.BaseTask.get_direct_upstream_tasks" title="ansys.fluent.core.workflow.BaseTask.get_direct_upstream_tasks"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_direct_upstream_tasks</span></code></a>()</p></td>
+<td><p>Get the list of tasks upstream of this one and directly connected by a data dependency.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.workflow.BaseTask.get_id" title="ansys.fluent.core.workflow.BaseTask.get_id"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_id</span></code></a>()</p></td>
+<td><p>Get the unique string identifier of this task, as it is in the application.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.workflow.BaseTask.get_idx" title="ansys.fluent.core.workflow.BaseTask.get_idx"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_idx</span></code></a>()</p></td>
+<td><p>Get the unique integer index of this task, as it is in the application.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.workflow.BaseTask.inactive_tasks" title="ansys.fluent.core.workflow.BaseTask.inactive_tasks"><code class="xref py py-obj docutils literal notranslate"><span class="pre">inactive_tasks</span></code></a>()</p></td>
+<td><p>Get the inactive ordered child list.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.workflow.BaseTask.mark_as_updated" title="ansys.fluent.core.workflow.BaseTask.mark_as_updated"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mark_as_updated</span></code></a>()</p></td>
+<td><p>Mark tasks in workflow as updated.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.workflow.BaseTask.python_name" title="ansys.fluent.core.workflow.BaseTask.python_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">python_name</span></code></a>()</p></td>
+<td><p>Get the Pythonic name of this task from the underlying application.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.workflow.BaseTask.rename" title="ansys.fluent.core.workflow.BaseTask.rename"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rename</span></code></a>(new_name)</p></td>
+<td><p>Rename the current task to a given name.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.workflow.BaseTask.task_names" title="ansys.fluent.core.workflow.BaseTask.task_names"><code class="xref py py-obj docutils literal notranslate"><span class="pre">task_names</span></code></a>()</p></td>
+<td><p>Get the list of the Python names for the available tasks.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.workflow.BaseTask.tasks" title="ansys.fluent.core.workflow.BaseTask.tasks"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tasks</span></code></a>([recompute])</p></td>
+<td><p>Get the ordered task list held by this task.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.workflow.BaseTask.update_child_tasks" title="ansys.fluent.core.workflow.BaseTask.update_child_tasks"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update_child_tasks</span></code></a>(setup_type_changed)</p></td>
+<td><p>Update child tasks.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Attributes:</strong></p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.workflow.BaseTask.insertable_tasks" title="ansys.fluent.core.workflow.BaseTask.insertable_tasks"><code class="xref py py-obj docutils literal notranslate"><span class="pre">insertable_tasks</span></code></a></p></td>
+<td><p>Tasks that can be inserted after the current task.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.workflow.BaseTask.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">command_source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">task</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.workflow.BaseTask.__init__" title="Link to this definition">#</a></dt>
+<dd><p>Initialize BaseTask.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>command_source</strong><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">WorkflowWrapper</span></code></span></dt><dd><p>Set of workflow commands.</p>
+</dd>
+<dt><strong>task</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a></span></dt><dd><p>Name of this task.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.workflow.BaseTask.add_child_to_task">
+<span class="sig-name descname"><span class="pre">add_child_to_task</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.workflow.BaseTask.add_child_to_task" title="Link to this definition">#</a></dt>
+<dd><p>Add a child task.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.workflow.BaseTask.delete">
+<span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.workflow.BaseTask.delete" title="Link to this definition">#</a></dt>
+<dd><p>Delete this task from the workflow.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.workflow.BaseTask.display_name">
+<span class="sig-name descname"><span class="pre">display_name</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.workflow.BaseTask.display_name" title="Link to this definition">#</a></dt>
+<dd><p>Display name.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.workflow.BaseTask.get_direct_downstream_tasks">
+<span class="sig-name descname"><span class="pre">get_direct_downstream_tasks</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.workflow.BaseTask.get_direct_downstream_tasks" title="Link to this definition">#</a></dt>
+<dd><p>Get the list of tasks downstream of this one and directly connected by a data
+dependency.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">list</span></code></a></dt><dd><p>Downstream task list.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.workflow.BaseTask.get_direct_upstream_tasks">
+<span class="sig-name descname"><span class="pre">get_direct_upstream_tasks</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.workflow.BaseTask.get_direct_upstream_tasks" title="Link to this definition">#</a></dt>
+<dd><p>Get the list of tasks upstream of this one and directly connected by a data
+dependency.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">list</span></code></a></dt><dd><p>Upstream task list.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.workflow.BaseTask.get_id">
+<span class="sig-name descname"><span class="pre">get_id</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.workflow.BaseTask.get_id" title="Link to this definition">#</a></dt>
+<dd><p>Get the unique string identifier of this task, as it is in the application.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a></dt><dd><p>The string identifier.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.workflow.BaseTask.get_idx">
+<span class="sig-name descname"><span class="pre">get_idx</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.workflow.BaseTask.get_idx" title="Link to this definition">#</a></dt>
+<dd><p>Get the unique integer index of this task, as it is in the application.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">int</span></code></a></dt><dd><p>The integer index.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.workflow.BaseTask.inactive_tasks">
+<span class="sig-name descname"><span class="pre">inactive_tasks</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.workflow.BaseTask.inactive_tasks" title="Link to this definition">#</a></dt>
+<dd><p>Get the inactive ordered child list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">list</span></code></a></dt><dd><p>Inactive ordered children.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ansys.fluent.core.workflow.BaseTask.insertable_tasks">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">insertable_tasks</span></span><a class="headerlink" href="#ansys.fluent.core.workflow.BaseTask.insertable_tasks" title="Link to this definition">#</a></dt>
+<dd><p>Tasks that can be inserted after the current task.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.workflow.BaseTask.mark_as_updated">
+<span class="sig-name descname"><span class="pre">mark_as_updated</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.workflow.BaseTask.mark_as_updated" title="Link to this definition">#</a></dt>
+<dd><p>Mark tasks in workflow as updated.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.workflow.BaseTask.python_name">
+<span class="sig-name descname"><span class="pre">python_name</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.workflow.BaseTask.python_name" title="Link to this definition">#</a></dt>
+<dd><p>Get the Pythonic name of this task from the underlying application.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a></dt><dd><p>Pythonic name of the task.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.workflow.BaseTask.rename">
+<span class="sig-name descname"><span class="pre">rename</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.workflow.BaseTask.rename" title="Link to this definition">#</a></dt>
+<dd><p>Rename the current task to a given name.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.workflow.BaseTask.task_names">
+<span class="sig-name descname"><span class="pre">task_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.workflow.BaseTask.task_names" title="Link to this definition">#</a></dt>
+<dd><p>Get the list of the Python names for the available tasks.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.workflow.BaseTask.tasks">
+<span class="sig-name descname"><span class="pre">tasks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">recompute</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.workflow.BaseTask.tasks" title="Link to this definition">#</a></dt>
+<dd><p>Get the ordered task list held by this task.</p>
+<p>This method sort tasks in terms of the workflow order and only includes this task’s top-level tasks.
+You can obtain other tasks by calling the <code class="docutils literal notranslate"><span class="pre">tasks()</span></code> method on a parent task.</p>
+<p>Given the workflow:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Workflow
+├── A
+├── B
+│   ├── C
+│   └── D
+└── E
+</pre></div>
+</div>
+<p>C and D are the ordered children of task B.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">list</span></code></a></dt><dd><p>Ordered children.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.workflow.BaseTask.update_child_tasks">
+<span class="sig-name descname"><span class="pre">update_child_tasks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">setup_type_changed</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.workflow.BaseTask.update_child_tasks" title="Link to this definition">#</a></dt>
+<dd><p>Update child tasks.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.workflow.ClassicWorkflow">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.workflow.</span></span><span class="sig-name descname"><span class="pre">ClassicWorkflow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">workflow</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">command_source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fluent_version</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.workflow.ClassicWorkflow" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Wraps a meshing workflow object.</p>
+<p class="rubric">Methods</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<tbody>
+<tr class="row-odd"><td><p><strong>__getattr__(attr)</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>__dir__()</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>__call__()</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Attributes:</strong></p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.workflow.ClassicWorkflow.TaskObject" title="ansys.fluent.core.workflow.ClassicWorkflow.TaskObject"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TaskObject</span></code></a></p></td>
+<td><p>Get a TaskObject container wrapper that 'holds' the underlying TaskObjects.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Methods:</strong></p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.workflow.ClassicWorkflow.__init__" title="ansys.fluent.core.workflow.ClassicWorkflow.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(workflow, command_source, ...)</p></td>
+<td><p>Initialize ClassicWorkflow.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py property">
+<dt class="sig sig-object py" id="ansys.fluent.core.workflow.ClassicWorkflow.TaskObject">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">TaskObject</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#ansys.fluent.core.workflow.TaskContainer" title="ansys.fluent.core.workflow.TaskContainer"><span class="pre">TaskContainer</span></a></em><a class="headerlink" href="#ansys.fluent.core.workflow.ClassicWorkflow.TaskObject" title="Link to this definition">#</a></dt>
+<dd><p>Get a TaskObject container wrapper that ‘holds’ the underlying TaskObjects.</p>
+<p>The wrapper adds extra functionality.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.workflow.ClassicWorkflow.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">workflow</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">command_source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fluent_version</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.workflow.ClassicWorkflow.__init__" title="Link to this definition">#</a></dt>
+<dd><p>Initialize ClassicWorkflow.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>workflow</strong><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PyMenuGeneric</span></code></span></dt><dd><p>The workflow object.</p>
+</dd>
+<dt><strong>command_source</strong><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PyMenuGeneric</span></code></span></dt><dd><p>The application root for commanding.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="ansys.fluent.core.workflow.CommandInstanceCreationError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.workflow.</span></span><span class="sig-name descname"><span class="pre">CommandInstanceCreationError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">task_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.workflow.CommandInstanceCreationError" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">RuntimeError</span></code></a></p>
+<p>Raised when an attempt to create an instance of a task command fails.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.workflow.CommandInstanceCreationError.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">task_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.workflow.CommandInstanceCreationError.__init__" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.workflow.CommandTask">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.workflow.</span></span><span class="sig-name descname"><span class="pre">CommandTask</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">command_source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">task</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.workflow.CommandTask" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ansys.fluent.core.workflow.BaseTask" title="ansys.fluent.core.workflow.BaseTask"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseTask</span></code></a></p>
+<p>Intermediate base class task representation for wrapping a Workflow TaskObject
+instance, adding attributes related to commanding.</p>
+<p>Classes without these attributes cannot be commanded.</p>
+<p><strong>Methods:</strong></p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.workflow.CommandTask.__init__" title="ansys.fluent.core.workflow.CommandTask.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(command_source, task)</p></td>
+<td><p>Initialize CommandTask.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Attributes:</strong></p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.workflow.CommandTask.arguments" title="ansys.fluent.core.workflow.CommandTask.arguments"><code class="xref py py-obj docutils literal notranslate"><span class="pre">arguments</span></code></a></p></td>
+<td><p>Get the task's arguments.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.workflow.CommandTask.command_arguments" title="ansys.fluent.core.workflow.CommandTask.command_arguments"><code class="xref py py-obj docutils literal notranslate"><span class="pre">command_arguments</span></code></a></p></td>
+<td><p>Get the task's arguments in read-only form (deprecated).</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.workflow.CommandTask.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">command_source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">task</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.workflow.CommandTask.__init__" title="Link to this definition">#</a></dt>
+<dd><p>Initialize CommandTask.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>command_source</strong><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">WorkflowWrapper</span></code></span></dt><dd><p>The set of workflow commands.</p>
+</dd>
+<dt><strong>task</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a></span></dt><dd><p>The name of this task.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ansys.fluent.core.workflow.CommandTask.arguments">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">arguments</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#ansys.fluent.core.workflow.ArgumentsWrapper" title="ansys.fluent.core.workflow.ArgumentsWrapper"><span class="pre">ArgumentsWrapper</span></a></em><a class="headerlink" href="#ansys.fluent.core.workflow.CommandTask.arguments" title="Link to this definition">#</a></dt>
+<dd><p>Get the task’s arguments.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><a class="reference internal" href="#ansys.fluent.core.workflow.ArgumentsWrapper" title="ansys.fluent.core.workflow.ArgumentsWrapper"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ArgumentsWrapper</span></code></a></dt><dd><p>The task’s arguments.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ansys.fluent.core.workflow.CommandTask.command_arguments">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">command_arguments</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#ansys.fluent.core.workflow.ReadOnlyObject" title="ansys.fluent.core.workflow.ReadOnlyObject"><span class="pre">ReadOnlyObject</span></a></em><a class="headerlink" href="#ansys.fluent.core.workflow.CommandTask.command_arguments" title="Link to this definition">#</a></dt>
+<dd><p>Get the task’s arguments in read-only form (deprecated).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><a class="reference internal" href="#ansys.fluent.core.workflow.ReadOnlyObject" title="ansys.fluent.core.workflow.ReadOnlyObject"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ReadOnlyObject</span></code></a></dt><dd><p>The task’s arguments.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.workflow.CompositeTask">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.workflow.</span></span><span class="sig-name descname"><span class="pre">CompositeTask</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">command_source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">task</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.workflow.CompositeTask" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ansys.fluent.core.workflow.BaseTask" title="ansys.fluent.core.workflow.BaseTask"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseTask</span></code></a></p>
+<p>Composite task representation for wrapping a Workflow TaskObject instance of
+TaskType Composite.</p>
+<p><strong>Methods:</strong></p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.workflow.CompositeTask.__init__" title="ansys.fluent.core.workflow.CompositeTask.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(command_source, task)</p></td>
+<td><p>Initialize CompositeTask.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.workflow.CompositeTask.insert_composite_child_task" title="ansys.fluent.core.workflow.CompositeTask.insert_composite_child_task"><code class="xref py py-obj docutils literal notranslate"><span class="pre">insert_composite_child_task</span></code></a>(command_name)</p></td>
+<td><p>Insert a composite child task based on the Python name.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Attributes:</strong></p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.workflow.CompositeTask.arguments" title="ansys.fluent.core.workflow.CompositeTask.arguments"><code class="xref py py-obj docutils literal notranslate"><span class="pre">arguments</span></code></a></p></td>
+<td><p>Get the task's arguments (empty for CompositeTask).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.workflow.CompositeTask.command_arguments" title="ansys.fluent.core.workflow.CompositeTask.command_arguments"><code class="xref py py-obj docutils literal notranslate"><span class="pre">command_arguments</span></code></a></p></td>
+<td><p>Get the task's arguments in read-only form (deprecated).</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.workflow.CompositeTask.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">command_source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">task</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.workflow.CompositeTask.__init__" title="Link to this definition">#</a></dt>
+<dd><p>Initialize CompositeTask.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>command_source</strong><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">WorkflowWrapper</span></code></span></dt><dd><p>The set of workflow commands.</p>
+</dd>
+<dt><strong>task</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a></span></dt><dd><p>The name of this task.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ansys.fluent.core.workflow.CompositeTask.arguments">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">arguments</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)"><span class="pre">dict</span></a></em><a class="headerlink" href="#ansys.fluent.core.workflow.CompositeTask.arguments" title="Link to this definition">#</a></dt>
+<dd><p>Get the task’s arguments (empty for CompositeTask).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">dict</span></code></a></dt><dd><p>The task’s arguments (empty).</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ansys.fluent.core.workflow.CompositeTask.command_arguments">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">command_arguments</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#ansys.fluent.core.workflow.ReadOnlyObject" title="ansys.fluent.core.workflow.ReadOnlyObject"><span class="pre">ReadOnlyObject</span></a></em><a class="headerlink" href="#ansys.fluent.core.workflow.CompositeTask.command_arguments" title="Link to this definition">#</a></dt>
+<dd><p>Get the task’s arguments in read-only form (deprecated).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><a class="reference internal" href="#ansys.fluent.core.workflow.ReadOnlyObject" title="ansys.fluent.core.workflow.ReadOnlyObject"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ReadOnlyObject</span></code></a></dt><dd><p>The task’s arguments.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.workflow.CompositeTask.insert_composite_child_task">
+<span class="sig-name descname"><span class="pre">insert_composite_child_task</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">command_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.workflow.CompositeTask.insert_composite_child_task" title="Link to this definition">#</a></dt>
+<dd><p>Insert a composite child task based on the Python name.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.workflow.CompoundChild">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.workflow.</span></span><span class="sig-name descname"><span class="pre">CompoundChild</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">command_source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">task</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.workflow.CompoundChild" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ansys.fluent.core.workflow.SimpleTask" title="ansys.fluent.core.workflow.SimpleTask"><code class="xref py py-class docutils literal notranslate"><span class="pre">SimpleTask</span></code></a></p>
+<p>Compound Child representation for wrapping a Workflow TaskObject instance of
+TaskType Compound Child.</p>
+<p><strong>Methods:</strong></p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.workflow.CompoundChild.__init__" title="ansys.fluent.core.workflow.CompoundChild.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(command_source, task)</p></td>
+<td><p>Initialize CompoundChild.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.workflow.CompoundChild.python_name" title="ansys.fluent.core.workflow.CompoundChild.python_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">python_name</span></code></a>()</p></td>
+<td><p>Get the Pythonic name of this task.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.workflow.CompoundChild.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">command_source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">task</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.workflow.CompoundChild.__init__" title="Link to this definition">#</a></dt>
+<dd><p>Initialize CompoundChild.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>command_source</strong><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">WorkflowWrapper</span></code></span></dt><dd><p>The set of workflow commands.</p>
+</dd>
+<dt><strong>task</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a></span></dt><dd><p>The name of this task.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.workflow.CompoundChild.python_name">
+<span class="sig-name descname"><span class="pre">python_name</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.workflow.CompoundChild.python_name" title="Link to this definition">#</a></dt>
+<dd><p>Get the Pythonic name of this task.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a></dt><dd><p>Pythonic name of the task.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.workflow.CompoundTask">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.workflow.</span></span><span class="sig-name descname"><span class="pre">CompoundTask</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">command_source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">task</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.workflow.CompoundTask" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ansys.fluent.core.workflow.CommandTask" title="ansys.fluent.core.workflow.CommandTask"><code class="xref py py-class docutils literal notranslate"><span class="pre">CommandTask</span></code></a></p>
+<p>Compound task representation for wrapping a Workflow TaskObject instance of
+TaskType Compound.</p>
+<p><strong>Methods:</strong></p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.workflow.CompoundTask.__init__" title="ansys.fluent.core.workflow.CompoundTask.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(command_source, task)</p></td>
+<td><p>Initialize CompoundTask.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.workflow.CompoundTask.add_child_and_update" title="ansys.fluent.core.workflow.CompoundTask.add_child_and_update"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_child_and_update</span></code></a>([state, defer_update])</p></td>
+<td><p>Add a child to this CompoundTask and update.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.workflow.CompoundTask.compound_child" title="ansys.fluent.core.workflow.CompoundTask.compound_child"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compound_child</span></code></a>(name)</p></td>
+<td><p>Get the compound child task of this CompoundTask by name.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.workflow.CompoundTask.insert_compound_child_task" title="ansys.fluent.core.workflow.CompoundTask.insert_compound_child_task"><code class="xref py py-obj docutils literal notranslate"><span class="pre">insert_compound_child_task</span></code></a>()</p></td>
+<td><p>Insert a compound child task.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.workflow.CompoundTask.last_child" title="ansys.fluent.core.workflow.CompoundTask.last_child"><code class="xref py py-obj docutils literal notranslate"><span class="pre">last_child</span></code></a>()</p></td>
+<td><p>Get the last child of this CompoundTask and set their Python name.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.workflow.CompoundTask.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">command_source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">task</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.workflow.CompoundTask.__init__" title="Link to this definition">#</a></dt>
+<dd><p>Initialize CompoundTask.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>command_source</strong><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">WorkflowWrapper</span></code></span></dt><dd><p>The set of workflow commands.</p>
+</dd>
+<dt><strong>task</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a></span></dt><dd><p>The name of this task.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.workflow.CompoundTask.add_child_and_update">
+<span class="sig-name descname"><span class="pre">add_child_and_update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">defer_update</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.workflow.CompoundTask.add_child_and_update" title="Link to this definition">#</a></dt>
+<dd><p>Add a child to this CompoundTask and update.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>state</strong><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Optional</span></code>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">dict</span></code></a>]</span></dt><dd><p>Optional state.</p>
+</dd>
+<dt><strong>defer_update</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values" title="(in Python v3.12)"><span class="xref std std-ref">bool</span></a>, default: <a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">False</span></code></a></span></dt><dd><p>Whether to defer the update.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.workflow.CompoundTask.compound_child">
+<span class="sig-name descname"><span class="pre">compound_child</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.workflow.CompoundTask.compound_child" title="Link to this definition">#</a></dt>
+<dd><p>Get the compound child task of this CompoundTask by name.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>name</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a></span></dt><dd><p>name</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><a class="reference internal" href="#ansys.fluent.core.workflow.BaseTask" title="ansys.fluent.core.workflow.BaseTask"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BaseTask</span></code></a></dt><dd><p>the named child of this CompoundTask</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.workflow.CompoundTask.insert_compound_child_task">
+<span class="sig-name descname"><span class="pre">insert_compound_child_task</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.workflow.CompoundTask.insert_compound_child_task" title="Link to this definition">#</a></dt>
+<dd><p>Insert a compound child task.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.workflow.CompoundTask.last_child">
+<span class="sig-name descname"><span class="pre">last_child</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.workflow.CompoundTask.last_child" title="Link to this definition">#</a></dt>
+<dd><p>Get the last child of this CompoundTask and set their Python name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><a class="reference internal" href="#ansys.fluent.core.workflow.BaseTask" title="ansys.fluent.core.workflow.BaseTask"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BaseTask</span></code></a></dt><dd><p>the last child of this CompoundTask</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.workflow.ConditionalTask">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.workflow.</span></span><span class="sig-name descname"><span class="pre">ConditionalTask</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">command_source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">task</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.workflow.ConditionalTask" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ansys.fluent.core.workflow.CommandTask" title="ansys.fluent.core.workflow.CommandTask"><code class="xref py py-class docutils literal notranslate"><span class="pre">CommandTask</span></code></a></p>
+<p>Conditional task representation for wrapping a Workflow TaskObject instance of
+TaskType Conditional.</p>
+<p><strong>Methods:</strong></p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.workflow.ConditionalTask.__init__" title="ansys.fluent.core.workflow.ConditionalTask.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(command_source, task)</p></td>
+<td><p>Initialize ConditionalTask.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.workflow.ConditionalTask.inactive_tasks" title="ansys.fluent.core.workflow.ConditionalTask.inactive_tasks"><code class="xref py py-obj docutils literal notranslate"><span class="pre">inactive_tasks</span></code></a>()</p></td>
+<td><p>Get the inactive ordered task list held by this task.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.workflow.ConditionalTask.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">command_source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">task</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.workflow.ConditionalTask.__init__" title="Link to this definition">#</a></dt>
+<dd><p>Initialize ConditionalTask.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>command_source</strong><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">WorkflowWrapper</span></code></span></dt><dd><p>The set of workflow commands.</p>
+</dd>
+<dt><strong>task</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a></span></dt><dd><p>The name of this task.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.workflow.ConditionalTask.inactive_tasks">
+<span class="sig-name descname"><span class="pre">inactive_tasks</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.workflow.ConditionalTask.inactive_tasks" title="Link to this definition">#</a></dt>
+<dd><p>Get the inactive ordered task list held by this task.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">list</span></code></a></dt><dd><p>Inactive ordered children.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.workflow.ReadOnlyObject">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.workflow.</span></span><span class="sig-name descname"><span class="pre">ReadOnlyObject</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cmd</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.workflow.ReadOnlyObject" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Removes <code class="docutils literal notranslate"><span class="pre">set_state()</span></code> to implement read-only behavior.</p>
+<p><strong>Methods:</strong></p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.workflow.ReadOnlyObject.__init__" title="ansys.fluent.core.workflow.ReadOnlyObject.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(cmd)</p></td>
+<td><p>Initialize this object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.workflow.ReadOnlyObject.is_read_only" title="ansys.fluent.core.workflow.ReadOnlyObject.is_read_only"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_read_only</span></code></a>()</p></td>
+<td><p>Get the read-only status of this object.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.workflow.ReadOnlyObject.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cmd</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.workflow.ReadOnlyObject.__init__" title="Link to this definition">#</a></dt>
+<dd><p>Initialize this object.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.workflow.ReadOnlyObject.is_read_only">
+<span class="sig-name descname"><span class="pre">is_read_only</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.workflow.ReadOnlyObject.is_read_only" title="Link to this definition">#</a></dt>
+<dd><p>Get the read-only status of this object.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.workflow.SimpleTask">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.workflow.</span></span><span class="sig-name descname"><span class="pre">SimpleTask</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">command_source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">task</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.workflow.SimpleTask" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ansys.fluent.core.workflow.CommandTask" title="ansys.fluent.core.workflow.CommandTask"><code class="xref py py-class docutils literal notranslate"><span class="pre">CommandTask</span></code></a></p>
+<p>Simple task representation for wrapping a Workflow TaskObject instance of
+TaskType Simple.</p>
+<p><strong>Methods:</strong></p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.workflow.SimpleTask.__init__" title="ansys.fluent.core.workflow.SimpleTask.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(command_source, task)</p></td>
+<td><p>Initialize SimpleTask.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.workflow.SimpleTask.tasks" title="ansys.fluent.core.workflow.SimpleTask.tasks"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tasks</span></code></a>([recompute])</p></td>
+<td><p>Get the ordered task list held by the workflow.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.workflow.SimpleTask.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">command_source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">task</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.workflow.SimpleTask.__init__" title="Link to this definition">#</a></dt>
+<dd><p>Initialize SimpleTask.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>command_source</strong><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">WorkflowWrapper</span></code></span></dt><dd><p>The set of workflow commands.</p>
+</dd>
+<dt><strong>task</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a></span></dt><dd><p>The name of this task.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.workflow.SimpleTask.tasks">
+<span class="sig-name descname"><span class="pre">tasks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">recompute</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.workflow.SimpleTask.tasks" title="Link to this definition">#</a></dt>
+<dd><p>Get the ordered task list held by the workflow.</p>
+<p>SimpleTasks have no TaskList.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.workflow.TaskContainer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.workflow.</span></span><span class="sig-name descname"><span class="pre">TaskContainer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">command_source</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.workflow.TaskContainer" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="services/datamodel_se.html#ansys.fluent.core.services.datamodel_se.PyCallableStateObject" title="ansys.fluent.core.services.datamodel_se.PyCallableStateObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">PyCallableStateObject</span></code></a></p>
+<p>Wrap a workflow TaskObject container.</p>
+<p class="rubric">Methods</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<tbody>
+<tr class="row-odd"><td><p><strong>__iter__()</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>__getitem__(attr)</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>__getattr__(attr)</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>__dir__()</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Methods:</strong></p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.workflow.TaskContainer.__init__" title="ansys.fluent.core.workflow.TaskContainer.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(command_source)</p></td>
+<td><p>Initialize TaskContainer.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.workflow.TaskContainer.get_state" title="ansys.fluent.core.workflow.TaskContainer.get_state"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_state</span></code></a>()</p></td>
+<td><p>Get state.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.workflow.TaskContainer.items" title="ansys.fluent.core.workflow.TaskContainer.items"><code class="xref py py-obj docutils literal notranslate"><span class="pre">items</span></code></a>()</p></td>
+<td><p>Get state items.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.workflow.TaskContainer.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">command_source</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.workflow.TaskContainer.__init__" title="Link to this definition">#</a></dt>
+<dd><p>Initialize TaskContainer.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>command_source</strong><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">WorkflowWrapper</span></code></span></dt><dd><p>The set of workflow commands.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.workflow.TaskContainer.get_state">
+<span class="sig-name descname"><span class="pre">get_state</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.workflow.TaskContainer.get_state" title="Link to this definition">#</a></dt>
+<dd><p>Get state.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.workflow.TaskContainer.items">
+<span class="sig-name descname"><span class="pre">items</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.workflow.TaskContainer.items" title="Link to this definition">#</a></dt>
+<dd><p>Get state items.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.workflow.Workflow">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.workflow.</span></span><span class="sig-name descname"><span class="pre">Workflow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">workflow</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">command_source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fluent_version</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.workflow.Workflow" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Wraps a workflow object, adding methods to discover more about the relationships
+between task objects.</p>
+<p class="rubric">Methods</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<tbody>
+<tr class="row-odd"><td><p><strong>tasks()</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>__getattr__(attr)</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>__dir__()</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>__call__()</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Methods:</strong></p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.workflow.Workflow.__init__" title="ansys.fluent.core.workflow.Workflow.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(workflow, command_source, ...)</p></td>
+<td><p>Initialize WorkflowWrapper.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.workflow.Workflow.delete_tasks" title="ansys.fluent.core.workflow.Workflow.delete_tasks"><code class="xref py py-obj docutils literal notranslate"><span class="pre">delete_tasks</span></code></a>(list_of_tasks)</p></td>
+<td><p>Delete the provided list of tasks.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.workflow.Workflow.inactive_tasks" title="ansys.fluent.core.workflow.Workflow.inactive_tasks"><code class="xref py py-obj docutils literal notranslate"><span class="pre">inactive_tasks</span></code></a>()</p></td>
+<td><p>Get the inactive ordered task list held by this task.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.workflow.Workflow.load_state" title="ansys.fluent.core.workflow.Workflow.load_state"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_state</span></code></a>(list_of_roots)</p></td>
+<td><p>Load the state of the workflow.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.workflow.Workflow.save_workflow" title="ansys.fluent.core.workflow.Workflow.save_workflow"><code class="xref py py-obj docutils literal notranslate"><span class="pre">save_workflow</span></code></a>(file_path)</p></td>
+<td><p>Save the current workflow to the location provided.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.workflow.Workflow.task" title="ansys.fluent.core.workflow.Workflow.task"><code class="xref py py-obj docutils literal notranslate"><span class="pre">task</span></code></a>(name)</p></td>
+<td><p>Get a TaskObject by name, in a <code class="docutils literal notranslate"><span class="pre">BaseTask</span></code> wrapper.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.workflow.Workflow.task_names" title="ansys.fluent.core.workflow.Workflow.task_names"><code class="xref py py-obj docutils literal notranslate"><span class="pre">task_names</span></code></a>()</p></td>
+<td><p>Get the list of the Python names for the available tasks.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.workflow.Workflow.tasks" title="ansys.fluent.core.workflow.Workflow.tasks"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tasks</span></code></a>([recompute])</p></td>
+<td><p>Get the ordered task list held by the workflow.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Attributes:</strong></p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.workflow.Workflow.insertable_tasks" title="ansys.fluent.core.workflow.Workflow.insertable_tasks"><code class="xref py py-obj docutils literal notranslate"><span class="pre">insertable_tasks</span></code></a></p></td>
+<td><p>Tasks that can be inserted on a blank workflow.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.workflow.Workflow.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">workflow</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">command_source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fluent_version</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.workflow.Workflow.__init__" title="Link to this definition">#</a></dt>
+<dd><p>Initialize WorkflowWrapper.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>workflow</strong><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PyMenuGeneric</span></code></span></dt><dd><p>The workflow object.</p>
+</dd>
+<dt><strong>command_source</strong><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PyMenuGeneric</span></code></span></dt><dd><p>The application root for commanding.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.workflow.Workflow.delete_tasks">
+<span class="sig-name descname"><span class="pre">delete_tasks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">list_of_tasks</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.workflow.Workflow.delete_tasks" title="Link to this definition">#</a></dt>
+<dd><p>Delete the provided list of tasks.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>list_of_tasks: list[str]</strong></dt><dd><p>List of task items.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">None</span></code></a></dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ValueError</span></code></a></dt><dd><p>If ‘task’ does not match a task name, no tasks are deleted.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.workflow.Workflow.inactive_tasks">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">inactive_tasks</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.workflow.Workflow.inactive_tasks" title="Link to this definition">#</a></dt>
+<dd><p>Get the inactive ordered task list held by this task.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">list</span></code></a></dt><dd><p>Inactive ordered children.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ansys.fluent.core.workflow.Workflow.insertable_tasks">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">insertable_tasks</span></span><a class="headerlink" href="#ansys.fluent.core.workflow.Workflow.insertable_tasks" title="Link to this definition">#</a></dt>
+<dd><p>Tasks that can be inserted on a blank workflow.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.workflow.Workflow.load_state">
+<span class="sig-name descname"><span class="pre">load_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">list_of_roots</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.workflow.Workflow.load_state" title="Link to this definition">#</a></dt>
+<dd><p>Load the state of the workflow.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.workflow.Workflow.save_workflow">
+<span class="sig-name descname"><span class="pre">save_workflow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.workflow.Workflow.save_workflow" title="Link to this definition">#</a></dt>
+<dd><p>Save the current workflow to the location provided.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.workflow.Workflow.task">
+<span class="sig-name descname"><span class="pre">task</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.workflow.Workflow.task" title="Link to this definition">#</a></dt>
+<dd><p>Get a TaskObject by name, in a <code class="docutils literal notranslate"><span class="pre">BaseTask</span></code> wrapper.</p>
+<p>The wrapper adds extra functionality.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>name</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a></span></dt><dd><p>Task name - the display name, not the internal ID.</p>
+</dd>
+<dt><strong>Returns</strong></dt><dd></dd>
+<dt><strong>——-</strong></dt><dd></dd>
+<dt><strong>BaseTask</strong></dt><dd><p>wrapped task object.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.workflow.Workflow.task_names">
+<span class="sig-name descname"><span class="pre">task_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.workflow.Workflow.task_names" title="Link to this definition">#</a></dt>
+<dd><p>Get the list of the Python names for the available tasks.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.workflow.Workflow.tasks">
+<span class="sig-name descname"><span class="pre">tasks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">recompute</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.workflow.Workflow.tasks" title="Link to this definition">#</a></dt>
+<dd><p>Get the ordered task list held by the workflow.</p>
+<p>This method sort tasks in terms of the workflow order and only includes this task’s top-level tasks.
+You can obtain other tasks by calling the <code class="docutils literal notranslate"><span class="pre">tasks()</span></code> method on a parent task.</p>
+<p>Consider the following workflow.</p>
+<p>Given the workflow:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Workflow
+├── A
+├── B
+│   ├── C
+│   └── D
+└── E
+</pre></div>
+</div>
+<p>The ordered children of the workflow are A, B, E, while B has ordered children C
+and D.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ansys.fluent.core.workflow.camel_to_snake_case">
+<span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.workflow.</span></span><span class="sig-name descname"><span class="pre">camel_to_snake_case</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">camel_case_str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.workflow.camel_to_snake_case" title="Link to this definition">#</a></dt>
+<dd><p>Convert camel case input string to snake case output string.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ansys.fluent.core.workflow.snake_to_camel_case">
+<span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.workflow.</span></span><span class="sig-name descname"><span class="pre">snake_to_camel_case</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">snake_case_str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">camel_case_strs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.workflow.snake_to_camel_case" title="Link to this definition">#</a></dt>
+<dd><p>Populate the snake-case attribute map and return camel case of the passed
+attribute.</p>
+</dd></dl>
+
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.workflow.ArgumentWrapper"><code class="docutils literal notranslate"><span class="pre">ArgumentWrapper</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.workflow.ArgumentWrapper.__init__"><code class="docutils literal notranslate"><span class="pre">ArgumentWrapper.__init__()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.workflow.ArgumentWrapper.get_state"><code class="docutils literal notranslate"><span class="pre">ArgumentWrapper.get_state()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.workflow.ArgumentWrapper.set_state"><code class="docutils literal notranslate"><span class="pre">ArgumentWrapper.set_state()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.workflow.ArgumentsWrapper"><code class="docutils literal notranslate"><span class="pre">ArgumentsWrapper</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.workflow.ArgumentsWrapper.__init__"><code class="docutils literal notranslate"><span class="pre">ArgumentsWrapper.__init__()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.workflow.ArgumentsWrapper.get_state"><code class="docutils literal notranslate"><span class="pre">ArgumentsWrapper.get_state()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.workflow.ArgumentsWrapper.set_state"><code class="docutils literal notranslate"><span class="pre">ArgumentsWrapper.set_state()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.workflow.ArgumentsWrapper.update_dict"><code class="docutils literal notranslate"><span class="pre">ArgumentsWrapper.update_dict()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.workflow.BaseTask"><code class="docutils literal notranslate"><span class="pre">BaseTask</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.workflow.BaseTask.__init__"><code class="docutils literal notranslate"><span class="pre">BaseTask.__init__()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.workflow.BaseTask.add_child_to_task"><code class="docutils literal notranslate"><span class="pre">BaseTask.add_child_to_task()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.workflow.BaseTask.delete"><code class="docutils literal notranslate"><span class="pre">BaseTask.delete()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.workflow.BaseTask.display_name"><code class="docutils literal notranslate"><span class="pre">BaseTask.display_name()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.workflow.BaseTask.get_direct_downstream_tasks"><code class="docutils literal notranslate"><span class="pre">BaseTask.get_direct_downstream_tasks()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.workflow.BaseTask.get_direct_upstream_tasks"><code class="docutils literal notranslate"><span class="pre">BaseTask.get_direct_upstream_tasks()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.workflow.BaseTask.get_id"><code class="docutils literal notranslate"><span class="pre">BaseTask.get_id()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.workflow.BaseTask.get_idx"><code class="docutils literal notranslate"><span class="pre">BaseTask.get_idx()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.workflow.BaseTask.inactive_tasks"><code class="docutils literal notranslate"><span class="pre">BaseTask.inactive_tasks()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.workflow.BaseTask.insertable_tasks"><code class="docutils literal notranslate"><span class="pre">BaseTask.insertable_tasks</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.workflow.BaseTask.mark_as_updated"><code class="docutils literal notranslate"><span class="pre">BaseTask.mark_as_updated()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.workflow.BaseTask.python_name"><code class="docutils literal notranslate"><span class="pre">BaseTask.python_name()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.workflow.BaseTask.rename"><code class="docutils literal notranslate"><span class="pre">BaseTask.rename()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.workflow.BaseTask.task_names"><code class="docutils literal notranslate"><span class="pre">BaseTask.task_names()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.workflow.BaseTask.tasks"><code class="docutils literal notranslate"><span class="pre">BaseTask.tasks()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.workflow.BaseTask.update_child_tasks"><code class="docutils literal notranslate"><span class="pre">BaseTask.update_child_tasks()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.workflow.ClassicWorkflow"><code class="docutils literal notranslate"><span class="pre">ClassicWorkflow</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.workflow.ClassicWorkflow.TaskObject"><code class="docutils literal notranslate"><span class="pre">ClassicWorkflow.TaskObject</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.workflow.ClassicWorkflow.__init__"><code class="docutils literal notranslate"><span class="pre">ClassicWorkflow.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.workflow.CommandInstanceCreationError"><code class="docutils literal notranslate"><span class="pre">CommandInstanceCreationError</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.workflow.CommandInstanceCreationError.__init__"><code class="docutils literal notranslate"><span class="pre">CommandInstanceCreationError.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.workflow.CommandTask"><code class="docutils literal notranslate"><span class="pre">CommandTask</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.workflow.CommandTask.__init__"><code class="docutils literal notranslate"><span class="pre">CommandTask.__init__()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.workflow.CommandTask.arguments"><code class="docutils literal notranslate"><span class="pre">CommandTask.arguments</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.workflow.CommandTask.command_arguments"><code class="docutils literal notranslate"><span class="pre">CommandTask.command_arguments</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.workflow.CompositeTask"><code class="docutils literal notranslate"><span class="pre">CompositeTask</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.workflow.CompositeTask.__init__"><code class="docutils literal notranslate"><span class="pre">CompositeTask.__init__()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.workflow.CompositeTask.arguments"><code class="docutils literal notranslate"><span class="pre">CompositeTask.arguments</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.workflow.CompositeTask.command_arguments"><code class="docutils literal notranslate"><span class="pre">CompositeTask.command_arguments</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.workflow.CompositeTask.insert_composite_child_task"><code class="docutils literal notranslate"><span class="pre">CompositeTask.insert_composite_child_task()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.workflow.CompoundChild"><code class="docutils literal notranslate"><span class="pre">CompoundChild</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.workflow.CompoundChild.__init__"><code class="docutils literal notranslate"><span class="pre">CompoundChild.__init__()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.workflow.CompoundChild.python_name"><code class="docutils literal notranslate"><span class="pre">CompoundChild.python_name()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.workflow.CompoundTask"><code class="docutils literal notranslate"><span class="pre">CompoundTask</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.workflow.CompoundTask.__init__"><code class="docutils literal notranslate"><span class="pre">CompoundTask.__init__()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.workflow.CompoundTask.add_child_and_update"><code class="docutils literal notranslate"><span class="pre">CompoundTask.add_child_and_update()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.workflow.CompoundTask.compound_child"><code class="docutils literal notranslate"><span class="pre">CompoundTask.compound_child()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.workflow.CompoundTask.insert_compound_child_task"><code class="docutils literal notranslate"><span class="pre">CompoundTask.insert_compound_child_task()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.workflow.CompoundTask.last_child"><code class="docutils literal notranslate"><span class="pre">CompoundTask.last_child()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.workflow.ConditionalTask"><code class="docutils literal notranslate"><span class="pre">ConditionalTask</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.workflow.ConditionalTask.__init__"><code class="docutils literal notranslate"><span class="pre">ConditionalTask.__init__()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.workflow.ConditionalTask.inactive_tasks"><code class="docutils literal notranslate"><span class="pre">ConditionalTask.inactive_tasks()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.workflow.ReadOnlyObject"><code class="docutils literal notranslate"><span class="pre">ReadOnlyObject</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.workflow.ReadOnlyObject.__init__"><code class="docutils literal notranslate"><span class="pre">ReadOnlyObject.__init__()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.workflow.ReadOnlyObject.is_read_only"><code class="docutils literal notranslate"><span class="pre">ReadOnlyObject.is_read_only()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.workflow.SimpleTask"><code class="docutils literal notranslate"><span class="pre">SimpleTask</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.workflow.SimpleTask.__init__"><code class="docutils literal notranslate"><span class="pre">SimpleTask.__init__()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.workflow.SimpleTask.tasks"><code class="docutils literal notranslate"><span class="pre">SimpleTask.tasks()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.workflow.TaskContainer"><code class="docutils literal notranslate"><span class="pre">TaskContainer</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.workflow.TaskContainer.__init__"><code class="docutils literal notranslate"><span class="pre">TaskContainer.__init__()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.workflow.TaskContainer.get_state"><code class="docutils literal notranslate"><span class="pre">TaskContainer.get_state()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.workflow.TaskContainer.items"><code class="docutils literal notranslate"><span class="pre">TaskContainer.items()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.workflow.Workflow"><code class="docutils literal notranslate"><span class="pre">Workflow</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.workflow.Workflow.__init__"><code class="docutils literal notranslate"><span class="pre">Workflow.__init__()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.workflow.Workflow.delete_tasks"><code class="docutils literal notranslate"><span class="pre">Workflow.delete_tasks()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.workflow.Workflow.inactive_tasks"><code class="docutils literal notranslate"><span class="pre">Workflow.inactive_tasks()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.workflow.Workflow.insertable_tasks"><code class="docutils literal notranslate"><span class="pre">Workflow.insertable_tasks</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.workflow.Workflow.load_state"><code class="docutils literal notranslate"><span class="pre">Workflow.load_state()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.workflow.Workflow.save_workflow"><code class="docutils literal notranslate"><span class="pre">Workflow.save_workflow()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.workflow.Workflow.task"><code class="docutils literal notranslate"><span class="pre">Workflow.task()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.workflow.Workflow.task_names"><code class="docutils literal notranslate"><span class="pre">Workflow.task_names()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.workflow.Workflow.tasks"><code class="docutils literal notranslate"><span class="pre">Workflow.tasks()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.workflow.camel_to_snake_case"><code class="docutils literal notranslate"><span class="pre">camel_to_snake_case()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.workflow.snake_to_camel_case"><code class="docutils literal notranslate"><span class="pre">snake_to_camel_case()</span></code></a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+<!-- If there is no fix edit button function, use the PyData edit-this-button-->
+</div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../_sources/api/workflow.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright (c) 2024 ANSYS, Inc. All rights reserved.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.7.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="theme-version">
+  Built with the
+  <a href="https://sphinxdocs.ansys.com/version/stable/index.html"
+    >Ansys Sphinx Theme</a
+  >
+  1.0.7. <br />Last updated on
+  <span id="date"></span>
+</p>
+<script>
+  var options = { day: "numeric", month: "long", year: "numeric" };
+  var lastModifiedDate = new Date(document.lastModified);
+  var date = lastModifiedDate.toLocaleDateString("en-US", options);
+  document.getElementById("date").innerHTML = date;
+</script></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

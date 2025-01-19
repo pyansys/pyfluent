@@ -1,0 +1,1440 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>expert &#8212; PyFluent</title>
+    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/css/ansys_sphinx_theme.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sg_gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sg_gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sg_gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sg_gallery-rendered-html.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    
+        <link href="../../../../../_static/css/breadcrumbs.css" rel="stylesheet">
+    
+    <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
+    <script src="../../../../../_static/jquery.js"></script>
+    <script src="../../../../../_static/underscore.js"></script>
+    <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../../../_static/doctools.js"></script>
+    <script src="../../../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../../../_static/thebelab-helper.js"></script>
+    <script src="../../../../../_static/clipboard.min.js"></script>
+    <script src="../../../../../_static/copybutton.js"></script>
+    <script src="../../../../../_static/js/table.js"></script>
+    <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/solver/tui/solution/expert/index';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://fluent.docs.pyansys.com/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.15';
+        </script>
+    <link rel="shortcut icon" href="../../../../../_static/ansys-favicon.png"/>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <link rel="next" title="divergence_prevention" href="divergence_prevention/index.html" />
+    <link rel="prev" title="solution" href="../index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <link rel="canonical" href="https://fluent.docs.pyansys.com/version/stable/api/solver/tui/solution/expert/index.html" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container"><!-- Debugging: html_theme_options =  -->
+
+  <!-- If there is no MiliSearch enabled, use the PyData search -->
+<form class="bd-search d-flex align-items-center"
+      action="../../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  <div class="navbar-header-items__start">
+    
+      <div class="navbar-item">
+  
+
+<a class="navbar-brand logo" href="../../../../../index.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../getting_started/index.html">
+                        Getting started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../user_guide/index.html">
+                        User guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../../../../index.html">
+                        API reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../examples/index.html">
+                        Examples
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../contributing.html">
+                        Contribute
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+        </div>
+      
+      
+        <div class="navbar-item">
+<script>
+document.write(`
+  <div class="version-switcher__container dropdown">
+    <button type="button" class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle" data-bs-toggle="dropdown">
+      0.15  <!-- this text may get changed later by javascript -->
+      <span class="caret"></span>
+    </button>
+    <div class="version-switcher__menu dropdown-menu list-group-flush py-0">
+    <!-- dropdown will be populated by javascript on page load -->
+    </div>
+  </div>
+`);
+</script></div>
+      
+        <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent/discussions" title="Support" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa fa-comment fa-fw"></i></span>
+            <label class="sr-only">Support</label></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </nav>
+  
+
+    
+    <div id="announcement_msg"></div>
+<script>
+  fetch("announcement.html")
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error: ${response.status}`);
+      }
+      return response.text();
+    })
+    .then(text => document.getElementById("announcement_msg").innerHTML = text)
+    .catch((error) => console.error(`Fetch problem: ${error.message}`));
+</script>
+    
+
+    
+    <div class="container-xl">
+    <div class="row">
+        <div class="col-12 col-md-3" id="breadcrumbs-spacer"></div>
+        <div class="col-12 col-md-11 col-xl-9" id="breadcrumbs">
+          
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+    
+        <li class="nav-item nav-item-additional-breadcrumb"><a href="https://docs.pyansys.com/">PyAnsys</a> » </li>
+    
+    
+        <li class="nav-item nav-item-0"><a href="../../../../../index.html">PyFluent</a> » </li>
+    
+
+          <li class="nav-item nav-item-1"><a href="../../../../index.html" >API reference</a> » </li>
+          <li class="nav-item nav-item-2"><a href="../../../index.html" >Solver</a> » </li>
+          <li class="nav-item nav-item-3"><a href="../../../tuicommands.html" >Solver TUI commands</a> » </li>
+          <li class="nav-item nav-item-4"><a href="../../index.html" >solver.tui</a> » </li>
+          <li class="nav-item nav-item-5"><a href="../index.html" accesskey="U">solution</a> » </li>
+        <li class="nav-item nav-item-this"><a href="">expert</a></li> 
+      </ul>
+    </div>
+        </div>
+  </div>
+</div>
+    
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../getting_started/index.html">
+                        Getting started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../user_guide/index.html">
+                        User guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../../../../index.html">
+                        API reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../examples/index.html">
+                        Examples
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../contributing.html">
+                        Contribute
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<script>
+document.write(`
+  <div class="version-switcher__container dropdown">
+    <button type="button" class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle" data-bs-toggle="dropdown">
+      0.15  <!-- this text may get changed later by javascript -->
+      <span class="caret"></span>
+    </button>
+    <div class="version-switcher__menu dropdown-menu list-group-flush py-0">
+    <!-- dropdown will be populated by javascript on page load -->
+    </div>
+  </div>
+`);
+</script></div>
+        
+          <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent/discussions" title="Support" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa fa-comment fa-fw"></i></span>
+            <label class="sr-only">Support</label></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item"><nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../../general/index.html">General</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../meshing/index.html">Meshing</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../../../index.html">Solver</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../settings.html">Solver settings objects</a></li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="../../../tuicommands.html">Solver TUI commands</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l3 current active has-children"><a class="reference internal" href="../../index.html">solver.tui</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../../plot/index.html">plot</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../server/index.html">server</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../surface/index.html">surface</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../icing/index.html">icing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../file/index.html">file</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../views/index.html">views</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../display/index.html">display</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../simulation_reports/index.html">simulation_reports</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../turbo_post/index.html">turbo_post</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../parameters__and__customization/index.html">parameters__and__customization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../adjoint/index.html">adjoint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../setup/index.html">setup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../report/index.html">report</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../parallel/index.html">parallel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../turbo_workflow/index.html">turbo_workflow</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../parametric_study/index.html">parametric_study</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../preferences/index.html">preferences</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../mesh/index.html">mesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../solve/index.html">solve</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../define/index.html">define</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../results/index.html">results</a></li>
+<li class="toctree-l4 current active has-children"><a class="reference internal" href="../index.html">solution</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l5 current active has-children"><a class="current reference internal" href="#">expert</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l6"><a class="reference internal" href="divergence_prevention/index.html">divergence_prevention</a></li>
+<li class="toctree-l6"><a class="reference internal" href="previous_defaults/index.html">previous_defaults</a></li>
+<li class="toctree-l6"><a class="reference internal" href="open_channel_wave_options/index.html">open_channel_wave_options</a></li>
+<li class="toctree-l6"><a class="reference internal" href="secondary_gradient_limiting/index.html">secondary_gradient_limiting</a></li>
+<li class="toctree-l6"><a class="reference internal" href="poor_mesh_numerics/index.html">poor_mesh_numerics</a></li>
+<li class="toctree-l6"><a class="reference internal" href="non_reflecting_boundary_treatment/index.html">non_reflecting_boundary_treatment</a></li>
+<li class="toctree-l6"><a class="reference internal" href="high_speed_numerics/index.html">high_speed_numerics</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../initialize/index.html">initialize</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../run_calculation/index.html">run_calculation</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../controls/index.html">controls</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../calculation_activities/index.html">calculation_activities</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../monitors/index.html">monitors</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../methods/index.html">methods</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../cell_registers/index.html">cell_registers</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../report_definitions/index.html">report_definitions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../datamodel/index.html">solver.datamodel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../schemeeval.html">Scheme code evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../fielddata.html">Field data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../fieldinfo.html">Field info</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../events.html">EventsManager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../monitors.html">MonitorsManager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reduction.html">Reduction</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article"></div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="expert">
+<span id="ref-solver-tui-solution-expert"></span><h1>expert<a class="headerlink" href="#expert" title="Permalink to this heading">#</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.expert">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.solver.tui_231.main_menu.solution.</span></span><span class="sig-name descname"><span class="pre">expert</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">service</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Enter expert options for solution.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.alternate_wall_temp_formulation" title="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.alternate_wall_temp_formulation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">alternate_wall_temp_formulation</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Alternate formulation for wall temperatures?.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.bc_pressure_extrapolations" title="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.bc_pressure_extrapolations"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bc_pressure_extrapolations</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Setting pressure extrapolations schemes on boundaries.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.bcd_boundedness" title="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.bcd_boundedness"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bcd_boundedness</span></code></a>(*args, **kwargs)</p></td>
+<td><p>BCD scheme boundedness strength, constant or expression (0 to 1).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.bcd_weights_freeze" title="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.bcd_weights_freeze"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bcd_weights_freeze</span></code></a>(*args, **kwargs)</p></td>
+<td><p>At each timestep, freeze BCD scheme weights after specified iteration in order to improve timestep convergence.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.correction_form" title="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.correction_form"><code class="xref py py-obj docutils literal notranslate"><span class="pre">correction_form</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Discretize momentum equations in correction form for the pressure-based solver.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.disable_reconstruction" title="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.disable_reconstruction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">disable_reconstruction</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enable/Disable reconstruction.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.energy_numerical_noise_filter" title="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.energy_numerical_noise_filter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">energy_numerical_noise_filter</span></code></a>(*args, **kwargs)</p></td>
+<td><p>The energy equation numerical noise filter can be enabled to eliminate non-physical numerical noise in the energy field.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.equation_ordering" title="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.equation_ordering"><code class="xref py py-obj docutils literal notranslate"><span class="pre">equation_ordering</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Set the equation order.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.explicit_under_relaxation_value" title="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.explicit_under_relaxation_value"><code class="xref py py-obj docutils literal notranslate"><span class="pre">explicit_under_relaxation_value</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Explicit under-relaxation value.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.flow_warnings" title="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.flow_warnings"><code class="xref py py-obj docutils literal notranslate"><span class="pre">flow_warnings</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Control the display of warning diagnostics for boundaries with reversed flow, etc.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.limiter_warnings" title="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.limiter_warnings"><code class="xref py py-obj docutils literal notranslate"><span class="pre">limiter_warnings</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Control the display of limiter warning diagnostics.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.linearized_mass_transfer_udf" title="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.linearized_mass_transfer_udf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">linearized_mass_transfer_udf</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Use linearized mass transfer UDFs?.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.lock_solid_temperature" title="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.lock_solid_temperature"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lock_solid_temperature</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Lock the temperature for all solid and shell cell zones in the domain.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.material_property_warnings" title="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.material_property_warnings"><code class="xref py py-obj docutils literal notranslate"><span class="pre">material_property_warnings</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Control the display of material property warning diagnostics: 0 - off (no messages) 1 - messages per material 2 - messages per material and per property.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.mp_mfluid_aniso_drag" title="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.mp_mfluid_aniso_drag"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mp_mfluid_aniso_drag</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Set anisotropic drag parameters for Eulerian multiphase.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.mp_reference_density" title="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.mp_reference_density"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mp_reference_density</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Set reference density option for Eulerian multiphase.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.numerical_beach_controls" title="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.numerical_beach_controls"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numerical_beach_controls</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Set damping function in flow direction.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.open_channel_controls" title="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.open_channel_controls"><code class="xref py py-obj docutils literal notranslate"><span class="pre">open_channel_controls</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Set additional open channel controls.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.retain_cell_residuals" title="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.retain_cell_residuals"><code class="xref py py-obj docutils literal notranslate"><span class="pre">retain_cell_residuals</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Retain cell residuals for postprocessing?.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.retain_temporary_solver_mem" title="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.retain_temporary_solver_mem"><code class="xref py py-obj docutils literal notranslate"><span class="pre">retain_temporary_solver_mem</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Retain temporary solver memory?.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.set_all_species_together" title="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.set_all_species_together"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_all_species_together</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Set all species discretizations and URFs together.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.show_all_discretization_schemes" title="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.show_all_discretization_schemes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">show_all_discretization_schemes</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Allow selection of all applicable discretization schemes?.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.singhal_et_al_cavitation_model" title="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.singhal_et_al_cavitation_model"><code class="xref py py-obj docutils literal notranslate"><span class="pre">singhal_et_al_cavitation_model</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Use Singhal-et-al cavitation model?.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.surface_tension" title="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.surface_tension"><code class="xref py py-obj docutils literal notranslate"><span class="pre">surface_tension</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Set surface-tension calculation options.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.surface_tension_expert" title="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.surface_tension_expert"><code class="xref py py-obj docutils literal notranslate"><span class="pre">surface_tension_expert</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Set surface-tension expert options.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.vof_explicit_controls" title="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.vof_explicit_controls"><code class="xref py py-obj docutils literal notranslate"><span class="pre">vof_explicit_controls</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Set Explicit VOF controls.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Classes:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.divergence_prevention" title="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.divergence_prevention"><code class="xref py py-obj docutils literal notranslate"><span class="pre">divergence_prevention</span></code></a>(path, service)</p></td>
+<td><p>Enter the divergence prevention menu.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.high_speed_numerics" title="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.high_speed_numerics"><code class="xref py py-obj docutils literal notranslate"><span class="pre">high_speed_numerics</span></code></a>(path, service)</p></td>
+<td><p>Enter high-speed-numerics menu.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.non_reflecting_boundary_treatment" title="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.non_reflecting_boundary_treatment"><code class="xref py py-obj docutils literal notranslate"><span class="pre">non_reflecting_boundary_treatment</span></code></a>(path, service)</p></td>
+<td><p>Enter non reflecting boundary treatment using minimal pressure reflection approach menu.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.open_channel_wave_options" title="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.open_channel_wave_options"><code class="xref py py-obj docutils literal notranslate"><span class="pre">open_channel_wave_options</span></code></a>(path, service)</p></td>
+<td><p>Enter the open-channel-wave-options menu.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.poor_mesh_numerics" title="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.poor_mesh_numerics"><code class="xref py py-obj docutils literal notranslate"><span class="pre">poor_mesh_numerics</span></code></a>(path, service)</p></td>
+<td><p>Enter Poor Mesh Numerics Menu.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.previous_defaults" title="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.previous_defaults"><code class="xref py py-obj docutils literal notranslate"><span class="pre">previous_defaults</span></code></a>(path, service)</p></td>
+<td><p>Enter previous defaults menu.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.secondary_gradient_limiting" title="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.secondary_gradient_limiting"><code class="xref py py-obj docutils literal notranslate"><span class="pre">secondary_gradient_limiting</span></code></a>(path, service)</p></td>
+<td><p>Enter the Secondary Gradient Limiting Menu.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.alternate_wall_temp_formulation">
+<span class="sig-name descname"><span class="pre">alternate_wall_temp_formulation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.alternate_wall_temp_formulation" title="Permalink to this definition">#</a></dt>
+<dd><p>Alternate formulation for wall temperatures?.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.bc_pressure_extrapolations">
+<span class="sig-name descname"><span class="pre">bc_pressure_extrapolations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.bc_pressure_extrapolations" title="Permalink to this definition">#</a></dt>
+<dd><p>Setting pressure extrapolations schemes on boundaries.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.bcd_boundedness">
+<span class="sig-name descname"><span class="pre">bcd_boundedness</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.bcd_boundedness" title="Permalink to this definition">#</a></dt>
+<dd><p>BCD scheme boundedness strength, constant or expression (0 to 1).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.bcd_weights_freeze">
+<span class="sig-name descname"><span class="pre">bcd_weights_freeze</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.bcd_weights_freeze" title="Permalink to this definition">#</a></dt>
+<dd><p>At each timestep, freeze BCD scheme weights after specified iteration
+in order to improve timestep convergence.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.correction_form">
+<span class="sig-name descname"><span class="pre">correction_form</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.correction_form" title="Permalink to this definition">#</a></dt>
+<dd><p>Discretize momentum equations in correction form for the pressure-based solver.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.disable_reconstruction">
+<span class="sig-name descname"><span class="pre">disable_reconstruction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.disable_reconstruction" title="Permalink to this definition">#</a></dt>
+<dd><p>Enable/Disable reconstruction. When disabled, accuracy will be first-order.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.divergence_prevention">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">divergence_prevention</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">service</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.divergence_prevention" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Enter the divergence prevention menu.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.divergence_prevention.enable" title="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.divergence_prevention.enable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">enable</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enable divergence prevention.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.divergence_prevention.enable">
+<span class="sig-name descname"><span class="pre">enable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.divergence_prevention.enable" title="Permalink to this definition">#</a></dt>
+<dd><p>Enable divergence prevention.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.energy_numerical_noise_filter">
+<span class="sig-name descname"><span class="pre">energy_numerical_noise_filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.energy_numerical_noise_filter" title="Permalink to this definition">#</a></dt>
+<dd><p>The energy equation numerical noise filter can be enabled to eliminate non-physical numerical noise in the energy field.
+The numerical noise can appear in solution fields where large variations in specific heat or combustion with phase change are present.
+Using the energy equation numerical noise filter increases robustness, but may make the solution slightly more diffusive.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.equation_ordering">
+<span class="sig-name descname"><span class="pre">equation_ordering</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.equation_ordering" title="Permalink to this definition">#</a></dt>
+<dd><p>Set the equation order.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.explicit_under_relaxation_value">
+<span class="sig-name descname"><span class="pre">explicit_under_relaxation_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.explicit_under_relaxation_value" title="Permalink to this definition">#</a></dt>
+<dd><p>Explicit under-relaxation value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.flow_warnings">
+<span class="sig-name descname"><span class="pre">flow_warnings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.flow_warnings" title="Permalink to this definition">#</a></dt>
+<dd><p>Control the display of warning diagnostics for boundaries with reversed flow, etc.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.high_speed_numerics">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">high_speed_numerics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">service</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.high_speed_numerics" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Enter high-speed-numerics menu.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.high_speed_numerics.enable" title="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.high_speed_numerics.enable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">enable</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enable/disable high-speed-numerics.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.high_speed_numerics.expert" title="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.high_speed_numerics.expert"><code class="xref py py-obj docutils literal notranslate"><span class="pre">expert</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Expert high-speed-numerics.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.high_speed_numerics.visualize_pressure_discontinuity_sensor" title="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.high_speed_numerics.visualize_pressure_discontinuity_sensor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">visualize_pressure_discontinuity_sensor</span></code></a>(...)</p></td>
+<td><p>Enable/disable pressure-discontinuity-sensor visualization.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.high_speed_numerics.enable">
+<span class="sig-name descname"><span class="pre">enable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.high_speed_numerics.enable" title="Permalink to this definition">#</a></dt>
+<dd><p>Enable/disable high-speed-numerics.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.high_speed_numerics.expert">
+<span class="sig-name descname"><span class="pre">expert</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.high_speed_numerics.expert" title="Permalink to this definition">#</a></dt>
+<dd><p>Expert high-speed-numerics.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.high_speed_numerics.visualize_pressure_discontinuity_sensor">
+<span class="sig-name descname"><span class="pre">visualize_pressure_discontinuity_sensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.high_speed_numerics.visualize_pressure_discontinuity_sensor" title="Permalink to this definition">#</a></dt>
+<dd><p>Enable/disable pressure-discontinuity-sensor visualization.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.limiter_warnings">
+<span class="sig-name descname"><span class="pre">limiter_warnings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.limiter_warnings" title="Permalink to this definition">#</a></dt>
+<dd><p>Control the display of limiter warning diagnostics.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.linearized_mass_transfer_udf">
+<span class="sig-name descname"><span class="pre">linearized_mass_transfer_udf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.linearized_mass_transfer_udf" title="Permalink to this definition">#</a></dt>
+<dd><p>Use linearized mass transfer UDFs?.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.lock_solid_temperature">
+<span class="sig-name descname"><span class="pre">lock_solid_temperature</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.lock_solid_temperature" title="Permalink to this definition">#</a></dt>
+<dd><p>Lock the temperature for all solid and shell cell zones in the domain.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.material_property_warnings">
+<span class="sig-name descname"><span class="pre">material_property_warnings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.material_property_warnings" title="Permalink to this definition">#</a></dt>
+<dd><p>Control the display of material property warning diagnostics:
+0 - off (no messages)
+1 - messages per material
+2 - messages per material and per property.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.mp_mfluid_aniso_drag">
+<span class="sig-name descname"><span class="pre">mp_mfluid_aniso_drag</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.mp_mfluid_aniso_drag" title="Permalink to this definition">#</a></dt>
+<dd><p>Set anisotropic drag parameters for Eulerian multiphase.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.mp_reference_density">
+<span class="sig-name descname"><span class="pre">mp_reference_density</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.mp_reference_density" title="Permalink to this definition">#</a></dt>
+<dd><p>Set reference density option for Eulerian multiphase.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.non_reflecting_boundary_treatment">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">non_reflecting_boundary_treatment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">service</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.non_reflecting_boundary_treatment" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Enter non reflecting boundary treatment using minimal pressure reflection approach menu.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.non_reflecting_boundary_treatment.pressure_inlet" title="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.non_reflecting_boundary_treatment.pressure_inlet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pressure_inlet</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enabling the use of minimal pressure reflection treatment.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.non_reflecting_boundary_treatment.pressure_outlet" title="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.non_reflecting_boundary_treatment.pressure_outlet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pressure_outlet</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enabling the use of minimal pressure reflection treatment.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.non_reflecting_boundary_treatment.velocity_inlet" title="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.non_reflecting_boundary_treatment.velocity_inlet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">velocity_inlet</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enabling the use of minimal pressure reflection treatment.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.non_reflecting_boundary_treatment.pressure_inlet">
+<span class="sig-name descname"><span class="pre">pressure_inlet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.non_reflecting_boundary_treatment.pressure_inlet" title="Permalink to this definition">#</a></dt>
+<dd><p>Enabling the use of minimal pressure reflection treatment. This treatment will minimize pressure wave reflections from the boundaries on which this option is active, but not necessarily fully eliminating them. The reflections would be of an acceptable limit in order to not contaminate the solution, the simulation will gain from the robustness of the new algorithm compared to traditional non-reflecting boundary condition treatment.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.non_reflecting_boundary_treatment.pressure_outlet">
+<span class="sig-name descname"><span class="pre">pressure_outlet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.non_reflecting_boundary_treatment.pressure_outlet" title="Permalink to this definition">#</a></dt>
+<dd><p>Enabling the use of minimal pressure reflection treatment. This treatment will minimize pressure wave reflections from the boundaries on which this option is active, but not necessarily fully eliminating them. The reflections would be of an acceptable limit in order to not contaminate the solution, the simulation will gain from the robustness of the new algorithm compared to traditional non-reflecting boundary condition treatment.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.non_reflecting_boundary_treatment.velocity_inlet">
+<span class="sig-name descname"><span class="pre">velocity_inlet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.non_reflecting_boundary_treatment.velocity_inlet" title="Permalink to this definition">#</a></dt>
+<dd><p>Enabling the use of minimal pressure reflection treatment. This treatment will minimize pressure wave reflections from the boundaries on which this option is active, but not necessarily fully eliminating them. The reflections would be of an acceptable limit in order to not contaminate the solution, the simulation will gain from the robustness of the new algorithm compared to traditional non-reflecting boundary condition treatment.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.numerical_beach_controls">
+<span class="sig-name descname"><span class="pre">numerical_beach_controls</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.numerical_beach_controls" title="Permalink to this definition">#</a></dt>
+<dd><p>Set damping function in flow direction.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.open_channel_controls">
+<span class="sig-name descname"><span class="pre">open_channel_controls</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.open_channel_controls" title="Permalink to this definition">#</a></dt>
+<dd><p>Set additional open channel controls.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.open_channel_wave_options">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">open_channel_wave_options</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">service</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.open_channel_wave_options" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Enter the open-channel-wave-options menu.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.open_channel_wave_options.set_buffer_layer_ht" title="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.open_channel_wave_options.set_buffer_layer_ht"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_buffer_layer_ht</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Set bufer layer height between phases for segregated velocity inputs.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.open_channel_wave_options.set_verbosity" title="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.open_channel_wave_options.set_verbosity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_verbosity</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Set open channel wave verbosity.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.open_channel_wave_options.stokes_wave_variants" title="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.open_channel_wave_options.stokes_wave_variants"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stokes_wave_variants</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Set stokes wave theory variants.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.open_channel_wave_options.set_buffer_layer_ht">
+<span class="sig-name descname"><span class="pre">set_buffer_layer_ht</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.open_channel_wave_options.set_buffer_layer_ht" title="Permalink to this definition">#</a></dt>
+<dd><p>Set bufer layer height between phases for segregated velocity inputs.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.open_channel_wave_options.set_verbosity">
+<span class="sig-name descname"><span class="pre">set_verbosity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.open_channel_wave_options.set_verbosity" title="Permalink to this definition">#</a></dt>
+<dd><p>Set open channel wave verbosity.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.open_channel_wave_options.stokes_wave_variants">
+<span class="sig-name descname"><span class="pre">stokes_wave_variants</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.open_channel_wave_options.stokes_wave_variants" title="Permalink to this definition">#</a></dt>
+<dd><p>Set stokes wave theory variants.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.poor_mesh_numerics">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">poor_mesh_numerics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">service</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.poor_mesh_numerics" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Enter Poor Mesh Numerics Menu.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.poor_mesh_numerics.cell_quality_based" title="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.poor_mesh_numerics.cell_quality_based"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cell_quality_based</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enable/disable poor mesh numerics on cells with low quality.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.poor_mesh_numerics.enable" title="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.poor_mesh_numerics.enable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">enable</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Solution correction on meshes of poor quality.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.poor_mesh_numerics.enhanced_pmn" title="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.poor_mesh_numerics.enhanced_pmn"><code class="xref py py-obj docutils literal notranslate"><span class="pre">enhanced_pmn</span></code></a>(*args, **kwargs)</p></td>
+<td><p>This option is available with the density-based solver.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.poor_mesh_numerics.gradient_quality_based" title="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.poor_mesh_numerics.gradient_quality_based"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gradient_quality_based</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enable/disable poor mesh numerics based on cell gradient quality.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.poor_mesh_numerics.orthogonality_enhancing_cell_centroids" title="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.poor_mesh_numerics.orthogonality_enhancing_cell_centroids"><code class="xref py py-obj docutils literal notranslate"><span class="pre">orthogonality_enhancing_cell_centroids</span></code></a>(...)</p></td>
+<td><p>Relocate select cell centroids, to improve orthogonality metrics and solution stability.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.poor_mesh_numerics.print_poor_elements_count" title="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.poor_mesh_numerics.print_poor_elements_count"><code class="xref py py-obj docutils literal notranslate"><span class="pre">print_poor_elements_count</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Print poor cells count.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.poor_mesh_numerics.reset_poor_elements" title="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.poor_mesh_numerics.reset_poor_elements"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset_poor_elements</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Reset marking of poor cell elements.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.poor_mesh_numerics.set_quality_threshold" title="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.poor_mesh_numerics.set_quality_threshold"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_quality_threshold</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Set quality threshold.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.poor_mesh_numerics.solution_and_quality_based" title="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.poor_mesh_numerics.solution_and_quality_based"><code class="xref py py-obj docutils literal notranslate"><span class="pre">solution_and_quality_based</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enable/disable poor mesh numerics based on solution and cell quality.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.poor_mesh_numerics.user_defined_on_register" title="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.poor_mesh_numerics.user_defined_on_register"><code class="xref py py-obj docutils literal notranslate"><span class="pre">user_defined_on_register</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Include cells in register in poor mesh numerics.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.poor_mesh_numerics.user_defined_on_register_auto" title="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.poor_mesh_numerics.user_defined_on_register_auto"><code class="xref py py-obj docutils literal notranslate"><span class="pre">user_defined_on_register_auto</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Set up the application of poor mesh numerics to cells in a register during the calculation at a specified frequency.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Classes:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.poor_mesh_numerics.solution_based_pmn" title="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.poor_mesh_numerics.solution_based_pmn"><code class="xref py py-obj docutils literal notranslate"><span class="pre">solution_based_pmn</span></code></a>(path, service)</p></td>
+<td><p>Solution based poor-mesh numerics menu.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.poor_mesh_numerics.cell_quality_based">
+<span class="sig-name descname"><span class="pre">cell_quality_based</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.poor_mesh_numerics.cell_quality_based" title="Permalink to this definition">#</a></dt>
+<dd><p>Enable/disable poor mesh numerics on cells with low quality.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.poor_mesh_numerics.enable">
+<span class="sig-name descname"><span class="pre">enable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.poor_mesh_numerics.enable" title="Permalink to this definition">#</a></dt>
+<dd><p>Solution correction on meshes of poor quality.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.poor_mesh_numerics.enhanced_pmn">
+<span class="sig-name descname"><span class="pre">enhanced_pmn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.poor_mesh_numerics.enhanced_pmn" title="Permalink to this definition">#</a></dt>
+<dd><p>This option is available with the density-based solver. When enabled, it will apply quality-based poor-mesh-numerics order=1 on any cells with a quality-measure below 0.2. In addition, their CFL number is limited to 1.0.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.poor_mesh_numerics.gradient_quality_based">
+<span class="sig-name descname"><span class="pre">gradient_quality_based</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.poor_mesh_numerics.gradient_quality_based" title="Permalink to this definition">#</a></dt>
+<dd><p>Enable/disable poor mesh numerics based on cell gradient quality.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.poor_mesh_numerics.orthogonality_enhancing_cell_centroids">
+<span class="sig-name descname"><span class="pre">orthogonality_enhancing_cell_centroids</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.poor_mesh_numerics.orthogonality_enhancing_cell_centroids" title="Permalink to this definition">#</a></dt>
+<dd><p>Relocate select cell centroids, to improve orthogonality metrics and solution stability.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.poor_mesh_numerics.print_poor_elements_count">
+<span class="sig-name descname"><span class="pre">print_poor_elements_count</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.poor_mesh_numerics.print_poor_elements_count" title="Permalink to this definition">#</a></dt>
+<dd><p>Print poor cells count.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.poor_mesh_numerics.reset_poor_elements">
+<span class="sig-name descname"><span class="pre">reset_poor_elements</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.poor_mesh_numerics.reset_poor_elements" title="Permalink to this definition">#</a></dt>
+<dd><p>Reset marking of poor cell elements.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.poor_mesh_numerics.set_quality_threshold">
+<span class="sig-name descname"><span class="pre">set_quality_threshold</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.poor_mesh_numerics.set_quality_threshold" title="Permalink to this definition">#</a></dt>
+<dd><p>Set quality threshold.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.poor_mesh_numerics.solution_and_quality_based">
+<span class="sig-name descname"><span class="pre">solution_and_quality_based</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.poor_mesh_numerics.solution_and_quality_based" title="Permalink to this definition">#</a></dt>
+<dd><p>Enable/disable poor mesh numerics based on solution and cell quality.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.poor_mesh_numerics.solution_based_pmn">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">solution_based_pmn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">service</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.poor_mesh_numerics.solution_based_pmn" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Solution based poor-mesh numerics menu.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.poor_mesh_numerics.solution_based_pmn.enable" title="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.poor_mesh_numerics.solution_based_pmn.enable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">enable</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enable solution based treatment.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.poor_mesh_numerics.solution_based_pmn.mark_cfl_jump" title="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.poor_mesh_numerics.solution_based_pmn.mark_cfl_jump"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mark_cfl_jump</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Mark cells exceeding cfl jump in neighborhood.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.poor_mesh_numerics.solution_based_pmn.mark_cfl_limit" title="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.poor_mesh_numerics.solution_based_pmn.mark_cfl_limit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mark_cfl_limit</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Mark cells exceeding cfl limit.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.poor_mesh_numerics.solution_based_pmn.mark_primary_solution_limits" title="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.poor_mesh_numerics.solution_based_pmn.mark_primary_solution_limits"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mark_primary_solution_limits</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Mark cells violating solution limits.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.poor_mesh_numerics.solution_based_pmn.mark_velocity_limit" title="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.poor_mesh_numerics.solution_based_pmn.mark_velocity_limit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mark_velocity_limit</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Mark cells exceeding velocity limit.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.poor_mesh_numerics.solution_based_pmn.enable">
+<span class="sig-name descname"><span class="pre">enable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.poor_mesh_numerics.solution_based_pmn.enable" title="Permalink to this definition">#</a></dt>
+<dd><p>Enable solution based treatment.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.poor_mesh_numerics.solution_based_pmn.mark_cfl_jump">
+<span class="sig-name descname"><span class="pre">mark_cfl_jump</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.poor_mesh_numerics.solution_based_pmn.mark_cfl_jump" title="Permalink to this definition">#</a></dt>
+<dd><p>Mark cells exceeding cfl jump in neighborhood.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.poor_mesh_numerics.solution_based_pmn.mark_cfl_limit">
+<span class="sig-name descname"><span class="pre">mark_cfl_limit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.poor_mesh_numerics.solution_based_pmn.mark_cfl_limit" title="Permalink to this definition">#</a></dt>
+<dd><p>Mark cells exceeding cfl limit.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.poor_mesh_numerics.solution_based_pmn.mark_primary_solution_limits">
+<span class="sig-name descname"><span class="pre">mark_primary_solution_limits</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.poor_mesh_numerics.solution_based_pmn.mark_primary_solution_limits" title="Permalink to this definition">#</a></dt>
+<dd><p>Mark cells violating solution limits.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.poor_mesh_numerics.solution_based_pmn.mark_velocity_limit">
+<span class="sig-name descname"><span class="pre">mark_velocity_limit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.poor_mesh_numerics.solution_based_pmn.mark_velocity_limit" title="Permalink to this definition">#</a></dt>
+<dd><p>Mark cells exceeding velocity limit.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.poor_mesh_numerics.user_defined_on_register">
+<span class="sig-name descname"><span class="pre">user_defined_on_register</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.poor_mesh_numerics.user_defined_on_register" title="Permalink to this definition">#</a></dt>
+<dd><p>Include cells in register in poor mesh numerics.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.poor_mesh_numerics.user_defined_on_register_auto">
+<span class="sig-name descname"><span class="pre">user_defined_on_register_auto</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.poor_mesh_numerics.user_defined_on_register_auto" title="Permalink to this definition">#</a></dt>
+<dd><p>Set up the application of poor mesh numerics to cells in a register during the calculation at a specified frequency.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.previous_defaults">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">previous_defaults</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">service</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.previous_defaults" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Enter previous defaults menu.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.previous_defaults.undo_2019r1_default_changes" title="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.previous_defaults.undo_2019r1_default_changes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">undo_2019r1_default_changes</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Undo default changes introduced in 2019R1.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.previous_defaults.undo_2019r3_default_changes" title="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.previous_defaults.undo_2019r3_default_changes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">undo_2019r3_default_changes</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Undo default changes introduced in 2019R3.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.previous_defaults.undo_2021r1_default_changes" title="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.previous_defaults.undo_2021r1_default_changes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">undo_2021r1_default_changes</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Undo default changes introduced in 2021R1.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.previous_defaults.undo_2021r2_default_changes" title="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.previous_defaults.undo_2021r2_default_changes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">undo_2021r2_default_changes</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Undo default changes introduced in 2021R2.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.previous_defaults.undo_2022r1_default_changes" title="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.previous_defaults.undo_2022r1_default_changes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">undo_2022r1_default_changes</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Undo default changes introduced in 2022R1.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.previous_defaults.undo_2023r1_default_changes" title="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.previous_defaults.undo_2023r1_default_changes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">undo_2023r1_default_changes</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Undo default changes introduced in 2023R1.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.previous_defaults.undo_r19_point_0_default_changes" title="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.previous_defaults.undo_r19_point_0_default_changes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">undo_r19_point_0_default_changes</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Undo default changes introduced in R19.0.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.previous_defaults.undo_2019r1_default_changes">
+<span class="sig-name descname"><span class="pre">undo_2019r1_default_changes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.previous_defaults.undo_2019r1_default_changes" title="Permalink to this definition">#</a></dt>
+<dd><p>Undo default changes introduced in 2019R1.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.previous_defaults.undo_2019r3_default_changes">
+<span class="sig-name descname"><span class="pre">undo_2019r3_default_changes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.previous_defaults.undo_2019r3_default_changes" title="Permalink to this definition">#</a></dt>
+<dd><p>Undo default changes introduced in 2019R3.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.previous_defaults.undo_2021r1_default_changes">
+<span class="sig-name descname"><span class="pre">undo_2021r1_default_changes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.previous_defaults.undo_2021r1_default_changes" title="Permalink to this definition">#</a></dt>
+<dd><p>Undo default changes introduced in 2021R1.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.previous_defaults.undo_2021r2_default_changes">
+<span class="sig-name descname"><span class="pre">undo_2021r2_default_changes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.previous_defaults.undo_2021r2_default_changes" title="Permalink to this definition">#</a></dt>
+<dd><p>Undo default changes introduced in 2021R2.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.previous_defaults.undo_2022r1_default_changes">
+<span class="sig-name descname"><span class="pre">undo_2022r1_default_changes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.previous_defaults.undo_2022r1_default_changes" title="Permalink to this definition">#</a></dt>
+<dd><p>Undo default changes introduced in 2022R1.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.previous_defaults.undo_2023r1_default_changes">
+<span class="sig-name descname"><span class="pre">undo_2023r1_default_changes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.previous_defaults.undo_2023r1_default_changes" title="Permalink to this definition">#</a></dt>
+<dd><p>Undo default changes introduced in 2023R1.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.previous_defaults.undo_r19_point_0_default_changes">
+<span class="sig-name descname"><span class="pre">undo_r19_point_0_default_changes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.previous_defaults.undo_r19_point_0_default_changes" title="Permalink to this definition">#</a></dt>
+<dd><p>Undo default changes introduced in R19.0.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.retain_cell_residuals">
+<span class="sig-name descname"><span class="pre">retain_cell_residuals</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.retain_cell_residuals" title="Permalink to this definition">#</a></dt>
+<dd><p>Retain cell residuals for postprocessing?.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.retain_temporary_solver_mem">
+<span class="sig-name descname"><span class="pre">retain_temporary_solver_mem</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.retain_temporary_solver_mem" title="Permalink to this definition">#</a></dt>
+<dd><p>Retain temporary solver memory?.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.secondary_gradient_limiting">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">secondary_gradient_limiting</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">service</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.secondary_gradient_limiting" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Enter the Secondary Gradient Limiting Menu.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.secondary_gradient_limiting.energy" title="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.secondary_gradient_limiting.energy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">energy</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enable/disable secondary gradient limiting at coupled walls for energy equation.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.secondary_gradient_limiting.mesh_quality_limits" title="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.secondary_gradient_limiting.mesh_quality_limits"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mesh_quality_limits</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Specify minimum and maximum mesh quality limits.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.secondary_gradient_limiting.uds" title="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.secondary_gradient_limiting.uds"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uds</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enable/disable secondary gradient limiting at coupled walls for user-defined scalars.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.secondary_gradient_limiting.energy">
+<span class="sig-name descname"><span class="pre">energy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.secondary_gradient_limiting.energy" title="Permalink to this definition">#</a></dt>
+<dd><p>Enable/disable secondary gradient limiting at coupled walls for energy equation.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.secondary_gradient_limiting.mesh_quality_limits">
+<span class="sig-name descname"><span class="pre">mesh_quality_limits</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.secondary_gradient_limiting.mesh_quality_limits" title="Permalink to this definition">#</a></dt>
+<dd><p>Specify minimum and maximum mesh quality limits.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.secondary_gradient_limiting.uds">
+<span class="sig-name descname"><span class="pre">uds</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.secondary_gradient_limiting.uds" title="Permalink to this definition">#</a></dt>
+<dd><p>Enable/disable secondary gradient limiting at coupled walls for user-defined scalars.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.set_all_species_together">
+<span class="sig-name descname"><span class="pre">set_all_species_together</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.set_all_species_together" title="Permalink to this definition">#</a></dt>
+<dd><p>Set all species discretizations and URFs together.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.show_all_discretization_schemes">
+<span class="sig-name descname"><span class="pre">show_all_discretization_schemes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.show_all_discretization_schemes" title="Permalink to this definition">#</a></dt>
+<dd><p>Allow selection of all applicable discretization schemes?.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.singhal_et_al_cavitation_model">
+<span class="sig-name descname"><span class="pre">singhal_et_al_cavitation_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.singhal_et_al_cavitation_model" title="Permalink to this definition">#</a></dt>
+<dd><p>Use Singhal-et-al cavitation model?.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.surface_tension">
+<span class="sig-name descname"><span class="pre">surface_tension</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.surface_tension" title="Permalink to this definition">#</a></dt>
+<dd><p>Set surface-tension calculation options.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.surface_tension_expert">
+<span class="sig-name descname"><span class="pre">surface_tension_expert</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.surface_tension_expert" title="Permalink to this definition">#</a></dt>
+<dd><p>Set surface-tension expert options.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.expert.vof_explicit_controls">
+<span class="sig-name descname"><span class="pre">vof_explicit_controls</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.vof_explicit_controls" title="Permalink to this definition">#</a></dt>
+<dd><p>Set Explicit VOF controls.</p>
+</dd></dl>
+
+</dd></dl>
+
+<div class="toctree-wrapper compound">
+</div>
+</section>
+
+
+                </article>
+              
+              
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert"><code class="docutils literal notranslate"><span class="pre">expert</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.alternate_wall_temp_formulation"><code class="docutils literal notranslate"><span class="pre">expert.alternate_wall_temp_formulation()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.bc_pressure_extrapolations"><code class="docutils literal notranslate"><span class="pre">expert.bc_pressure_extrapolations()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.bcd_boundedness"><code class="docutils literal notranslate"><span class="pre">expert.bcd_boundedness()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.bcd_weights_freeze"><code class="docutils literal notranslate"><span class="pre">expert.bcd_weights_freeze()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.correction_form"><code class="docutils literal notranslate"><span class="pre">expert.correction_form()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.disable_reconstruction"><code class="docutils literal notranslate"><span class="pre">expert.disable_reconstruction()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.divergence_prevention"><code class="docutils literal notranslate"><span class="pre">expert.divergence_prevention</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.divergence_prevention.enable"><code class="docutils literal notranslate"><span class="pre">expert.divergence_prevention.enable()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.energy_numerical_noise_filter"><code class="docutils literal notranslate"><span class="pre">expert.energy_numerical_noise_filter()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.equation_ordering"><code class="docutils literal notranslate"><span class="pre">expert.equation_ordering()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.explicit_under_relaxation_value"><code class="docutils literal notranslate"><span class="pre">expert.explicit_under_relaxation_value()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.flow_warnings"><code class="docutils literal notranslate"><span class="pre">expert.flow_warnings()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.high_speed_numerics"><code class="docutils literal notranslate"><span class="pre">expert.high_speed_numerics</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.high_speed_numerics.enable"><code class="docutils literal notranslate"><span class="pre">expert.high_speed_numerics.enable()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.high_speed_numerics.expert"><code class="docutils literal notranslate"><span class="pre">expert.high_speed_numerics.expert()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.high_speed_numerics.visualize_pressure_discontinuity_sensor"><code class="docutils literal notranslate"><span class="pre">expert.high_speed_numerics.visualize_pressure_discontinuity_sensor()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.limiter_warnings"><code class="docutils literal notranslate"><span class="pre">expert.limiter_warnings()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.linearized_mass_transfer_udf"><code class="docutils literal notranslate"><span class="pre">expert.linearized_mass_transfer_udf()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.lock_solid_temperature"><code class="docutils literal notranslate"><span class="pre">expert.lock_solid_temperature()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.material_property_warnings"><code class="docutils literal notranslate"><span class="pre">expert.material_property_warnings()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.mp_mfluid_aniso_drag"><code class="docutils literal notranslate"><span class="pre">expert.mp_mfluid_aniso_drag()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.mp_reference_density"><code class="docutils literal notranslate"><span class="pre">expert.mp_reference_density()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.non_reflecting_boundary_treatment"><code class="docutils literal notranslate"><span class="pre">expert.non_reflecting_boundary_treatment</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.non_reflecting_boundary_treatment.pressure_inlet"><code class="docutils literal notranslate"><span class="pre">expert.non_reflecting_boundary_treatment.pressure_inlet()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.non_reflecting_boundary_treatment.pressure_outlet"><code class="docutils literal notranslate"><span class="pre">expert.non_reflecting_boundary_treatment.pressure_outlet()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.non_reflecting_boundary_treatment.velocity_inlet"><code class="docutils literal notranslate"><span class="pre">expert.non_reflecting_boundary_treatment.velocity_inlet()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.numerical_beach_controls"><code class="docutils literal notranslate"><span class="pre">expert.numerical_beach_controls()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.open_channel_controls"><code class="docutils literal notranslate"><span class="pre">expert.open_channel_controls()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.open_channel_wave_options"><code class="docutils literal notranslate"><span class="pre">expert.open_channel_wave_options</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.open_channel_wave_options.set_buffer_layer_ht"><code class="docutils literal notranslate"><span class="pre">expert.open_channel_wave_options.set_buffer_layer_ht()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.open_channel_wave_options.set_verbosity"><code class="docutils literal notranslate"><span class="pre">expert.open_channel_wave_options.set_verbosity()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.open_channel_wave_options.stokes_wave_variants"><code class="docutils literal notranslate"><span class="pre">expert.open_channel_wave_options.stokes_wave_variants()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.poor_mesh_numerics"><code class="docutils literal notranslate"><span class="pre">expert.poor_mesh_numerics</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.poor_mesh_numerics.cell_quality_based"><code class="docutils literal notranslate"><span class="pre">expert.poor_mesh_numerics.cell_quality_based()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.poor_mesh_numerics.enable"><code class="docutils literal notranslate"><span class="pre">expert.poor_mesh_numerics.enable()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.poor_mesh_numerics.enhanced_pmn"><code class="docutils literal notranslate"><span class="pre">expert.poor_mesh_numerics.enhanced_pmn()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.poor_mesh_numerics.gradient_quality_based"><code class="docutils literal notranslate"><span class="pre">expert.poor_mesh_numerics.gradient_quality_based()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.poor_mesh_numerics.orthogonality_enhancing_cell_centroids"><code class="docutils literal notranslate"><span class="pre">expert.poor_mesh_numerics.orthogonality_enhancing_cell_centroids()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.poor_mesh_numerics.print_poor_elements_count"><code class="docutils literal notranslate"><span class="pre">expert.poor_mesh_numerics.print_poor_elements_count()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.poor_mesh_numerics.reset_poor_elements"><code class="docutils literal notranslate"><span class="pre">expert.poor_mesh_numerics.reset_poor_elements()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.poor_mesh_numerics.set_quality_threshold"><code class="docutils literal notranslate"><span class="pre">expert.poor_mesh_numerics.set_quality_threshold()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.poor_mesh_numerics.solution_and_quality_based"><code class="docutils literal notranslate"><span class="pre">expert.poor_mesh_numerics.solution_and_quality_based()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.poor_mesh_numerics.solution_based_pmn"><code class="docutils literal notranslate"><span class="pre">expert.poor_mesh_numerics.solution_based_pmn</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.poor_mesh_numerics.solution_based_pmn.enable"><code class="docutils literal notranslate"><span class="pre">expert.poor_mesh_numerics.solution_based_pmn.enable()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.poor_mesh_numerics.solution_based_pmn.mark_cfl_jump"><code class="docutils literal notranslate"><span class="pre">expert.poor_mesh_numerics.solution_based_pmn.mark_cfl_jump()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.poor_mesh_numerics.solution_based_pmn.mark_cfl_limit"><code class="docutils literal notranslate"><span class="pre">expert.poor_mesh_numerics.solution_based_pmn.mark_cfl_limit()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.poor_mesh_numerics.solution_based_pmn.mark_primary_solution_limits"><code class="docutils literal notranslate"><span class="pre">expert.poor_mesh_numerics.solution_based_pmn.mark_primary_solution_limits()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.poor_mesh_numerics.solution_based_pmn.mark_velocity_limit"><code class="docutils literal notranslate"><span class="pre">expert.poor_mesh_numerics.solution_based_pmn.mark_velocity_limit()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.poor_mesh_numerics.user_defined_on_register"><code class="docutils literal notranslate"><span class="pre">expert.poor_mesh_numerics.user_defined_on_register()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.poor_mesh_numerics.user_defined_on_register_auto"><code class="docutils literal notranslate"><span class="pre">expert.poor_mesh_numerics.user_defined_on_register_auto()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.previous_defaults"><code class="docutils literal notranslate"><span class="pre">expert.previous_defaults</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.previous_defaults.undo_2019r1_default_changes"><code class="docutils literal notranslate"><span class="pre">expert.previous_defaults.undo_2019r1_default_changes()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.previous_defaults.undo_2019r3_default_changes"><code class="docutils literal notranslate"><span class="pre">expert.previous_defaults.undo_2019r3_default_changes()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.previous_defaults.undo_2021r1_default_changes"><code class="docutils literal notranslate"><span class="pre">expert.previous_defaults.undo_2021r1_default_changes()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.previous_defaults.undo_2021r2_default_changes"><code class="docutils literal notranslate"><span class="pre">expert.previous_defaults.undo_2021r2_default_changes()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.previous_defaults.undo_2022r1_default_changes"><code class="docutils literal notranslate"><span class="pre">expert.previous_defaults.undo_2022r1_default_changes()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.previous_defaults.undo_2023r1_default_changes"><code class="docutils literal notranslate"><span class="pre">expert.previous_defaults.undo_2023r1_default_changes()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.previous_defaults.undo_r19_point_0_default_changes"><code class="docutils literal notranslate"><span class="pre">expert.previous_defaults.undo_r19_point_0_default_changes()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.retain_cell_residuals"><code class="docutils literal notranslate"><span class="pre">expert.retain_cell_residuals()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.retain_temporary_solver_mem"><code class="docutils literal notranslate"><span class="pre">expert.retain_temporary_solver_mem()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.secondary_gradient_limiting"><code class="docutils literal notranslate"><span class="pre">expert.secondary_gradient_limiting</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.secondary_gradient_limiting.energy"><code class="docutils literal notranslate"><span class="pre">expert.secondary_gradient_limiting.energy()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.secondary_gradient_limiting.mesh_quality_limits"><code class="docutils literal notranslate"><span class="pre">expert.secondary_gradient_limiting.mesh_quality_limits()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.secondary_gradient_limiting.uds"><code class="docutils literal notranslate"><span class="pre">expert.secondary_gradient_limiting.uds()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.set_all_species_together"><code class="docutils literal notranslate"><span class="pre">expert.set_all_species_together()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.show_all_discretization_schemes"><code class="docutils literal notranslate"><span class="pre">expert.show_all_discretization_schemes()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.singhal_et_al_cavitation_model"><code class="docutils literal notranslate"><span class="pre">expert.singhal_et_al_cavitation_model()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.surface_tension"><code class="docutils literal notranslate"><span class="pre">expert.surface_tension()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.surface_tension_expert"><code class="docutils literal notranslate"><span class="pre">expert.surface_tension_expert()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.expert.vof_explicit_controls"><code class="docutils literal notranslate"><span class="pre">expert.vof_explicit_controls()</span></code></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  <div class="tocsection sourcelink">
+    <a href="../../../../../_sources/api/solver/tui/solution/expert/index.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+  <p class="copyright">
+    
+      © Copyright (c) 2023 ANSYS, Inc. All rights reserved.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.13.3.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

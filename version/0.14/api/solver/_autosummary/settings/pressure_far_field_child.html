@@ -1,0 +1,976 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>pressure_far_field_child &#8212; PyFluent</title>
+    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/css/ansys_sphinx_theme.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-rendered-html.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    
+        <link href="../../../../_static/css/breadcrumbs.css" rel="stylesheet">
+    
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../../_static/thebelab-helper.js"></script>
+    <script src="../../../../_static/clipboard.min.js"></script>
+    <script src="../../../../_static/copybutton.js"></script>
+    <script src="../../../../_static/js/table.js"></script>
+    <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/solver/_autosummary/settings/pressure_far_field_child';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://fluent.docs.pyansys.com/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.14';
+        </script>
+    <link rel="shortcut icon" href="../../../../_static/ansys-favicon.png"/>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <link rel="canonical" href="https://fluent.docs.pyansys.com/version/stable/api/solver/_autosummary/settings/pressure_far_field_child.html" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container"><!-- Debugging: html_theme_options =  -->
+
+  <!-- If there is no MiliSearch enabled, use the PyData search -->
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  <div class="navbar-header-items__start">
+    
+      <div class="navbar-item">
+  
+
+<a class="navbar-brand logo" href="../../../../index.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../getting_started/index.html">
+                        Getting started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../user_guide/index.html">
+                        User guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../index.html">
+                        API reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../examples/index.html">
+                        Examples
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../contributing.html">
+                        Contribute
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+        </div>
+      
+      
+        <div class="navbar-item">
+<script>
+document.write(`
+  <div class="version-switcher__container dropdown">
+    <button type="button" class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle" data-bs-toggle="dropdown">
+      0.14  <!-- this text may get changed later by javascript -->
+      <span class="caret"></span>
+    </button>
+    <div class="version-switcher__menu dropdown-menu list-group-flush py-0">
+    <!-- dropdown will be populated by javascript on page load -->
+    </div>
+  </div>
+`);
+</script></div>
+      
+        <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent/discussions" title="Support" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa fa-comment fa-fw"></i></span>
+            <label class="sr-only">Support</label></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </nav>
+  
+
+    
+    <div id="announcement_msg"></div>
+<script>
+  fetch("announcement.html")
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error: ${response.status}`);
+      }
+      return response.text();
+    })
+    .then(text => document.getElementById("announcement_msg").innerHTML = text)
+    .catch((error) => console.error(`Fetch problem: ${error.message}`));
+</script>
+    
+
+    
+    <div class="container-xl">
+    <div class="row">
+        <div class="col-12 col-md-3" id="breadcrumbs-spacer"></div>
+        <div class="col-12 col-md-11 col-xl-9" id="breadcrumbs">
+          
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+    
+        <li class="nav-item nav-item-additional-breadcrumb"><a href="https://docs.pyansys.com/">PyAnsys</a> » </li>
+    
+    
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">PyFluent</a> » </li>
+    
+
+        <li class="nav-item nav-item-this"><a href="">pressure_far_field_child</a></li> 
+      </ul>
+    </div>
+        </div>
+  </div>
+</div>
+    
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../getting_started/index.html">
+                        Getting started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../user_guide/index.html">
+                        User guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../index.html">
+                        API reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../examples/index.html">
+                        Examples
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../contributing.html">
+                        Contribute
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<script>
+document.write(`
+  <div class="version-switcher__container dropdown">
+    <button type="button" class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle" data-bs-toggle="dropdown">
+      0.14  <!-- this text may get changed later by javascript -->
+      <span class="caret"></span>
+    </button>
+    <div class="version-switcher__menu dropdown-menu list-group-flush py-0">
+    <!-- dropdown will be populated by javascript on page load -->
+    </div>
+  </div>
+`);
+</script></div>
+        
+          <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent/discussions" title="Support" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa fa-comment fa-fw"></i></span>
+            <label class="sr-only">Support</label></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article"></div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="pressure-far-field-child">
+<span id="id1"></span><h1>pressure_far_field_child<a class="headerlink" href="#pressure-far-field-child" title="Permalink to this heading">#</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.settings_231.pressure_far_field_child.pressure_far_field_child">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.solver.settings_231.pressure_far_field_child.</span></span><span class="sig-name descname"><span class="pre">pressure_far_field_child</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.settings_231.pressure_far_field_child.pressure_far_field_child" title="Permalink to this definition">#</a></dt>
+<dd><p>‘child_object_type’ of pressure_far_field.</p>
+</dd></dl>
+
+<p class="rubric">Attributes</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Attribute</p></th>
+<th class="head"><p>Summary</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="phase_16.html#phase-16"><span class="std std-ref">phase</span></a></p></td>
+<td><p>‘phase’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="geom_disable.html#geom-disable"><span class="std std-ref">geom_disable</span></a></p></td>
+<td><p>‘geom_disable’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="geom_dir_spec.html#geom-dir-spec"><span class="std std-ref">geom_dir_spec</span></a></p></td>
+<td><p>‘geom_dir_spec’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="geom_dir_x.html#geom-dir-x"><span class="std std-ref">geom_dir_x</span></a></p></td>
+<td><p>‘geom_dir_x’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="geom_dir_y.html#geom-dir-y"><span class="std std-ref">geom_dir_y</span></a></p></td>
+<td><p>‘geom_dir_y’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="geom_dir_z.html#geom-dir-z"><span class="std std-ref">geom_dir_z</span></a></p></td>
+<td><p>‘geom_dir_z’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="geom_levels.html#geom-levels"><span class="std std-ref">geom_levels</span></a></p></td>
+<td><p>‘geom_levels’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="geom_bgthread.html#geom-bgthread"><span class="std std-ref">geom_bgthread</span></a></p></td>
+<td><p>‘geom_bgthread’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="gauge_pressure.html#gauge-pressure"><span class="std std-ref">gauge_pressure</span></a></p></td>
+<td><p>‘gauge_pressure’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="m.html#m"><span class="std std-ref">m</span></a></p></td>
+<td><p>‘m’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="t.html#t"><span class="std std-ref">t</span></a></p></td>
+<td><p>‘t’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="non_equil_boundary.html#non-equil-boundary"><span class="std std-ref">non_equil_boundary</span></a></p></td>
+<td><p>‘non_equil_boundary’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="tve.html#tve"><span class="std std-ref">tve</span></a></p></td>
+<td><p>‘tve’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="coordinate_system.html#coordinate-system"><span class="std std-ref">coordinate_system</span></a></p></td>
+<td><p>‘coordinate_system’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="ni_1.html#ni-1"><span class="std std-ref">ni</span></a></p></td>
+<td><p>‘ni’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="nj_1.html#nj-1"><span class="std std-ref">nj</span></a></p></td>
+<td><p>‘nj’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="nk_1.html#nk-1"><span class="std std-ref">nk</span></a></p></td>
+<td><p>‘nk’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="flow_direction.html#flow-direction"><span class="std std-ref">flow_direction</span></a></p></td>
+<td><p>‘flow_direction’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="axis_direction_2.html#axis-direction-2"><span class="std std-ref">axis_direction</span></a></p></td>
+<td><p>‘axis_direction’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="axis_origin_2.html#axis-origin-2"><span class="std std-ref">axis_origin</span></a></p></td>
+<td><p>‘axis_origin’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="ke_spec.html#ke-spec"><span class="std std-ref">ke_spec</span></a></p></td>
+<td><p>‘ke_spec’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="nut.html#nut"><span class="std std-ref">nut</span></a></p></td>
+<td><p>‘nut’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="kl.html#kl"><span class="std std-ref">kl</span></a></p></td>
+<td><p>‘kl’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="intermit.html#intermit"><span class="std std-ref">intermit</span></a></p></td>
+<td><p>‘intermit’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="k.html#k"><span class="std std-ref">k</span></a></p></td>
+<td><p>‘k’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="e.html#e"><span class="std std-ref">e</span></a></p></td>
+<td><p>‘e’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="o.html#o"><span class="std std-ref">o</span></a></p></td>
+<td><p>‘o’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="v2.html#v2"><span class="std std-ref">v2</span></a></p></td>
+<td><p>‘v2’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="turb_intensity.html#turb-intensity"><span class="std std-ref">turb_intensity</span></a></p></td>
+<td><p>‘turb_intensity’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="turb_length_scale.html#turb-length-scale"><span class="std std-ref">turb_length_scale</span></a></p></td>
+<td><p>‘turb_length_scale’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="turb_hydraulic_diam.html#turb-hydraulic-diam"><span class="std std-ref">turb_hydraulic_diam</span></a></p></td>
+<td><p>‘turb_hydraulic_diam’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="turb_viscosity_ratio.html#turb-viscosity-ratio"><span class="std std-ref">turb_viscosity_ratio</span></a></p></td>
+<td><p>‘turb_viscosity_ratio’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="turb_viscosity_ratio_profile.html#turb-viscosity-ratio-profile"><span class="std std-ref">turb_viscosity_ratio_profile</span></a></p></td>
+<td><p>‘turb_viscosity_ratio_profile’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="rst_spec.html#rst-spec"><span class="std std-ref">rst_spec</span></a></p></td>
+<td><p>‘rst_spec’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="uu.html#uu"><span class="std std-ref">uu</span></a></p></td>
+<td><p>‘uu’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="vv.html#vv"><span class="std std-ref">vv</span></a></p></td>
+<td><p>‘vv’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="ww.html#ww"><span class="std std-ref">ww</span></a></p></td>
+<td><p>‘ww’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="uv.html#uv"><span class="std std-ref">uv</span></a></p></td>
+<td><p>‘uv’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="vw.html#vw"><span class="std std-ref">vw</span></a></p></td>
+<td><p>‘vw’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="uw.html#uw"><span class="std std-ref">uw</span></a></p></td>
+<td><p>‘uw’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="ksgs_spec.html#ksgs-spec"><span class="std std-ref">ksgs_spec</span></a></p></td>
+<td><p>‘ksgs_spec’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="ksgs.html#ksgs"><span class="std std-ref">ksgs</span></a></p></td>
+<td><p>‘ksgs’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="sgs_turb_intensity.html#sgs-turb-intensity"><span class="std std-ref">sgs_turb_intensity</span></a></p></td>
+<td><p>‘sgs_turb_intensity’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="radiation_bc.html#radiation-bc"><span class="std std-ref">radiation_bc</span></a></p></td>
+<td><p>‘radiation_bc’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="radial_direction.html#radial-direction"><span class="std std-ref">radial_direction</span></a></p></td>
+<td><p>‘radial_direction’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="coll_dtheta.html#coll-dtheta"><span class="std std-ref">coll_dtheta</span></a></p></td>
+<td><p>‘coll_dtheta’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="coll_dphi.html#coll-dphi"><span class="std std-ref">coll_dphi</span></a></p></td>
+<td><p>‘coll_dphi’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="band_q_irrad.html#band-q-irrad"><span class="std std-ref">band_q_irrad</span></a></p></td>
+<td><p>‘band_q_irrad’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="band_q_irrad_diffuse.html#band-q-irrad-diffuse"><span class="std std-ref">band_q_irrad_diffuse</span></a></p></td>
+<td><p>‘band_q_irrad_diffuse’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="parallel_collimated_beam.html#parallel-collimated-beam"><span class="std std-ref">parallel_collimated_beam</span></a></p></td>
+<td><p>‘parallel_collimated_beam’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="solar_direction.html#solar-direction"><span class="std std-ref">solar_direction</span></a></p></td>
+<td><p>‘solar_direction’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="solar_irradiation.html#solar-irradiation"><span class="std std-ref">solar_irradiation</span></a></p></td>
+<td><p>‘solar_irradiation’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="t_b_b_spec.html#t-b-b-spec"><span class="std std-ref">t_b_b_spec</span></a></p></td>
+<td><p>‘t_b_b_spec’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="t_b_b.html#t-b-b"><span class="std std-ref">t_b_b</span></a></p></td>
+<td><p>‘t_b_b’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="in_emiss.html#in-emiss"><span class="std std-ref">in_emiss</span></a></p></td>
+<td><p>‘in_emiss’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fmean.html#fmean"><span class="std std-ref">fmean</span></a></p></td>
+<td><p>‘fmean’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fvar.html#fvar"><span class="std std-ref">fvar</span></a></p></td>
+<td><p>‘fvar’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fmean2.html#fmean2"><span class="std std-ref">fmean2</span></a></p></td>
+<td><p>‘fmean2’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fvar2.html#fvar2"><span class="std std-ref">fvar2</span></a></p></td>
+<td><p>‘fvar2’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="species_in_mole_fractions.html#species-in-mole-fractions"><span class="std std-ref">species_in_mole_fractions</span></a></p></td>
+<td><p>‘species_in_mole_fractions’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="mf.html#mf"><span class="std std-ref">mf</span></a></p></td>
+<td><p>‘mf’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="elec_potential_type.html#elec-potential-type"><span class="std std-ref">elec_potential_type</span></a></p></td>
+<td><p>‘elec_potential_type’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="potential_value.html#potential-value"><span class="std std-ref">potential_value</span></a></p></td>
+<td><p>‘potential_value’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="dual_potential_type.html#dual-potential-type"><span class="std std-ref">dual_potential_type</span></a></p></td>
+<td><p>‘dual_potential_type’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="dual_potential_value.html#dual-potential-value"><span class="std std-ref">dual_potential_value</span></a></p></td>
+<td><p>‘dual_potential_value’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="x_displacement_type.html#x-displacement-type"><span class="std std-ref">x_displacement_type</span></a></p></td>
+<td><p>‘x_displacement_type’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="x_displacement_value.html#x-displacement-value"><span class="std std-ref">x_displacement_value</span></a></p></td>
+<td><p>‘x_displacement_value’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="y_displacement_type.html#y-displacement-type"><span class="std std-ref">y_displacement_type</span></a></p></td>
+<td><p>‘y_displacement_type’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="y_displacement_value.html#y-displacement-value"><span class="std std-ref">y_displacement_value</span></a></p></td>
+<td><p>‘y_displacement_value’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="z_displacement_type.html#z-displacement-type"><span class="std std-ref">z_displacement_type</span></a></p></td>
+<td><p>‘z_displacement_type’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="z_displacement_value.html#z-displacement-value"><span class="std std-ref">z_displacement_value</span></a></p></td>
+<td><p>‘z_displacement_value’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="prob_mode_1.html#prob-mode-1"><span class="std std-ref">prob_mode_1</span></a></p></td>
+<td><p>‘prob_mode_1’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="prob_mode_2.html#prob-mode-2"><span class="std std-ref">prob_mode_2</span></a></p></td>
+<td><p>‘prob_mode_2’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="prob_mode_3.html#prob-mode-3"><span class="std std-ref">prob_mode_3</span></a></p></td>
+<td><p>‘prob_mode_3’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pollut_no.html#pollut-no"><span class="std std-ref">pollut_no</span></a></p></td>
+<td><p>‘pollut_no’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pollut_hcn.html#pollut-hcn"><span class="std std-ref">pollut_hcn</span></a></p></td>
+<td><p>‘pollut_hcn’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pollut_nh3.html#pollut-nh3"><span class="std std-ref">pollut_nh3</span></a></p></td>
+<td><p>‘pollut_nh3’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pollut_n2o.html#pollut-n2o"><span class="std std-ref">pollut_n2o</span></a></p></td>
+<td><p>‘pollut_n2o’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pollut_urea.html#pollut-urea"><span class="std std-ref">pollut_urea</span></a></p></td>
+<td><p>‘pollut_urea’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pollut_hnco.html#pollut-hnco"><span class="std std-ref">pollut_hnco</span></a></p></td>
+<td><p>‘pollut_hnco’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pollut_nco.html#pollut-nco"><span class="std std-ref">pollut_nco</span></a></p></td>
+<td><p>‘pollut_nco’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pollut_so2.html#pollut-so2"><span class="std std-ref">pollut_so2</span></a></p></td>
+<td><p>‘pollut_so2’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pollut_h2s.html#pollut-h2s"><span class="std std-ref">pollut_h2s</span></a></p></td>
+<td><p>‘pollut_h2s’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pollut_so3.html#pollut-so3"><span class="std std-ref">pollut_so3</span></a></p></td>
+<td><p>‘pollut_so3’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pollut_sh.html#pollut-sh"><span class="std std-ref">pollut_sh</span></a></p></td>
+<td><p>‘pollut_sh’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pollut_so.html#pollut-so"><span class="std std-ref">pollut_so</span></a></p></td>
+<td><p>‘pollut_so’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pollut_soot.html#pollut-soot"><span class="std std-ref">pollut_soot</span></a></p></td>
+<td><p>‘pollut_soot’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pollut_nuclei.html#pollut-nuclei"><span class="std std-ref">pollut_nuclei</span></a></p></td>
+<td><p>‘pollut_nuclei’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pollut_ctar.html#pollut-ctar"><span class="std std-ref">pollut_ctar</span></a></p></td>
+<td><p>‘pollut_ctar’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pollut_hg.html#pollut-hg"><span class="std std-ref">pollut_hg</span></a></p></td>
+<td><p>‘pollut_hg’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pollut_hgcl2.html#pollut-hgcl2"><span class="std std-ref">pollut_hgcl2</span></a></p></td>
+<td><p>‘pollut_hgcl2’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pollut_hcl.html#pollut-hcl"><span class="std std-ref">pollut_hcl</span></a></p></td>
+<td><p>‘pollut_hcl’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pollut_hgo.html#pollut-hgo"><span class="std std-ref">pollut_hgo</span></a></p></td>
+<td><p>‘pollut_hgo’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pollut_cl.html#pollut-cl"><span class="std std-ref">pollut_cl</span></a></p></td>
+<td><p>‘pollut_cl’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pollut_cl2.html#pollut-cl2"><span class="std std-ref">pollut_cl2</span></a></p></td>
+<td><p>‘pollut_cl2’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pollut_hgcl.html#pollut-hgcl"><span class="std std-ref">pollut_hgcl</span></a></p></td>
+<td><p>‘pollut_hgcl’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pollut_hocl.html#pollut-hocl"><span class="std std-ref">pollut_hocl</span></a></p></td>
+<td><p>‘pollut_hocl’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fensapice_flow_bc_subtype.html#fensapice-flow-bc-subtype"><span class="std std-ref">fensapice_flow_bc_subtype</span></a></p></td>
+<td><p>‘fensapice_flow_bc_subtype’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fensapice_drop_bccustom.html#fensapice-drop-bccustom"><span class="std std-ref">fensapice_drop_bccustom</span></a></p></td>
+<td><p>‘fensapice_drop_bccustom’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fensapice_drop_lwc.html#fensapice-drop-lwc"><span class="std std-ref">fensapice_drop_lwc</span></a></p></td>
+<td><p>‘fensapice_drop_lwc’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fensapice_drop_dtemp.html#fensapice-drop-dtemp"><span class="std std-ref">fensapice_drop_dtemp</span></a></p></td>
+<td><p>‘fensapice_drop_dtemp’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fensapice_drop_ddiam.html#fensapice-drop-ddiam"><span class="std std-ref">fensapice_drop_ddiam</span></a></p></td>
+<td><p>‘fensapice_drop_ddiam’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fensapice_drop_dv.html#fensapice-drop-dv"><span class="std std-ref">fensapice_drop_dv</span></a></p></td>
+<td><p>‘fensapice_drop_dv’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fensapice_drop_dx.html#fensapice-drop-dx"><span class="std std-ref">fensapice_drop_dx</span></a></p></td>
+<td><p>‘fensapice_drop_dx’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fensapice_drop_dy.html#fensapice-drop-dy"><span class="std std-ref">fensapice_drop_dy</span></a></p></td>
+<td><p>‘fensapice_drop_dy’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fensapice_drop_dz.html#fensapice-drop-dz"><span class="std std-ref">fensapice_drop_dz</span></a></p></td>
+<td><p>‘fensapice_drop_dz’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fensapice_dpm_surface_injection.html#fensapice-dpm-surface-injection"><span class="std std-ref">fensapice_dpm_surface_injection</span></a></p></td>
+<td><p>‘fensapice_dpm_surface_injection’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fensapice_dpm_inj_nstream.html#fensapice-dpm-inj-nstream"><span class="std std-ref">fensapice_dpm_inj_nstream</span></a></p></td>
+<td><p>‘fensapice_dpm_inj_nstream’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fensapice_drop_icc.html#fensapice-drop-icc"><span class="std std-ref">fensapice_drop_icc</span></a></p></td>
+<td><p>‘fensapice_drop_icc’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fensapice_drop_ctemp.html#fensapice-drop-ctemp"><span class="std std-ref">fensapice_drop_ctemp</span></a></p></td>
+<td><p>‘fensapice_drop_ctemp’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fensapice_drop_cdiam.html#fensapice-drop-cdiam"><span class="std std-ref">fensapice_drop_cdiam</span></a></p></td>
+<td><p>‘fensapice_drop_cdiam’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fensapice_drop_cv.html#fensapice-drop-cv"><span class="std std-ref">fensapice_drop_cv</span></a></p></td>
+<td><p>‘fensapice_drop_cv’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fensapice_drop_cx.html#fensapice-drop-cx"><span class="std std-ref">fensapice_drop_cx</span></a></p></td>
+<td><p>‘fensapice_drop_cx’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fensapice_drop_cy.html#fensapice-drop-cy"><span class="std std-ref">fensapice_drop_cy</span></a></p></td>
+<td><p>‘fensapice_drop_cy’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fensapice_drop_cz.html#fensapice-drop-cz"><span class="std std-ref">fensapice_drop_cz</span></a></p></td>
+<td><p>‘fensapice_drop_cz’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fensapice_drop_vrh.html#fensapice-drop-vrh"><span class="std std-ref">fensapice_drop_vrh</span></a></p></td>
+<td><p>‘fensapice_drop_vrh’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fensapice_drop_vrh_1.html#fensapice-drop-vrh-1"><span class="std std-ref">fensapice_drop_vrh_1</span></a></p></td>
+<td><p>‘fensapice_drop_vrh’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fensapice_drop_vc.html#fensapice-drop-vc"><span class="std std-ref">fensapice_drop_vc</span></a></p></td>
+<td><p>‘fensapice_drop_vc’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="uds_bc.html#uds-bc"><span class="std std-ref">uds_bc</span></a></p></td>
+<td><p>‘uds_bc’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="uds.html#uds"><span class="std std-ref">uds</span></a></p></td>
+<td><p>‘uds’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="dpm_bc_type.html#dpm-bc-type"><span class="std std-ref">dpm_bc_type</span></a></p></td>
+<td><p>‘dpm_bc_type’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="dpm_bc_collision_partner.html#dpm-bc-collision-partner"><span class="std std-ref">dpm_bc_collision_partner</span></a></p></td>
+<td><p>‘dpm_bc_collision_partner’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="reinj_inj.html#reinj-inj"><span class="std std-ref">reinj_inj</span></a></p></td>
+<td><p>‘reinj_inj’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="dpm_bc_udf.html#dpm-bc-udf"><span class="std std-ref">dpm_bc_udf</span></a></p></td>
+<td><p>‘dpm_bc_udf’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="solar_fluxes.html#solar-fluxes"><span class="std std-ref">solar_fluxes</span></a></p></td>
+<td><p>‘solar_fluxes’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="solar_shining_factor.html#solar-shining-factor"><span class="std std-ref">solar_shining_factor</span></a></p></td>
+<td><p>‘solar_shining_factor’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="radiating_s2s_surface.html#radiating-s2s-surface"><span class="std std-ref">radiating_s2s_surface</span></a></p></td>
+<td><p>‘radiating_s2s_surface’ child.</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Included in:</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parent</p></th>
+<th class="head"><p>Summary</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="pressure_far_field.html#pressure-far-field"><span class="std std-ref">pressure_far_field</span></a></p></td>
+<td><p>‘pressure_far_field’ child.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+
+
+                </article>
+              
+              
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.settings_231.pressure_far_field_child.pressure_far_field_child"><code class="docutils literal notranslate"><span class="pre">pressure_far_field_child</span></code></a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  <div class="tocsection sourcelink">
+    <a href="../../../../_sources/api/solver/_autosummary/settings/pressure_far_field_child.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+  <p class="copyright">
+    
+      © Copyright (c) 2023 ANSYS, Inc. All rights reserved.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.13.3.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

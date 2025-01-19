@@ -1,0 +1,1821 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>plot &#8212; PyFluent</title>
+
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery.css?v=61a4c737" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/css/ansys_sphinx_theme.css?v=450015ff" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../../../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+ 
+<link href="../../../../_static/css/breadcrumbs.css" rel="stylesheet" />
+
+    <script src="../../../../_static/documentation_options.js?v=03f67e04"></script>
+    <script src="../../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/thebelab-helper.js"></script>
+    <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../_static/copybutton.js?v=49e1bf35"></script>
+    <script src="../../../../_static/js/table.js?v=b64f5182"></script>
+    <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/solver/tui/plot/index';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.14.4';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://fluent.docs.pyansys.com/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.19';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner = false;
+        </script>
+    <link rel="icon" href="../../../../_static/ansys-favicon.png"/>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="residuals_set" href="residuals_set/index.html" />
+    <link rel="prev" title="options" href="../mesh/polyhedra/options/index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <link rel="canonical" href="https://fluent.docs.pyansys.com/version/stable/api/solver/tui/plot/index.html" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container"><!-- Debugging: html_theme_options =  -->
+
+<!-- If there is no MiliSearch enabled, use the PyData search -->
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+   
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+
+<a class="navbar-brand logo" href="../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-light" alt="PyFluent - Home"/>
+    <script>document.write(`<img src="../../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-dark" alt="PyFluent - Home"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../getting_started/index.html">
+                        Getting started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../user_guide/index.html">
+                        User guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../../../index.html">
+                        API reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../examples/index.html">
+                        Examples
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../contributing.html">
+                        Contribute
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+<script>
+document.write(`
+  <div class="version-switcher__container dropdown">
+    <button id="pst-version-switcher-button-2"
+      type="button"
+      class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle"
+      data-bs-toggle="dropdown"
+      aria-haspopup="listbox"
+      aria-controls="pst-version-switcher-list-2"
+      aria-label="Version switcher list"
+    >
+      Choose version  <!-- this text may get changed later by javascript -->
+      <span class="caret"></span>
+    </button>
+    <div id="pst-version-switcher-list-2"
+      class="version-switcher__menu dropdown-menu list-group-flush py-0"
+      role="listbox" aria-labelledby="pst-version-switcher-button-2">
+      <!-- dropdown will be populated by javascript on page load -->
+    </div>
+  </div>
+`);
+</script></div>
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent/discussions" title="Support" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa fa-comment fa-fw fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Support</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </nav>
+    <div id="announcement_msg"></div>
+<script>
+  fetch("announcement.html")
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error: ${response.status}`);
+      }
+      return response.text();
+    })
+    .then(
+      (text) => (document.getElementById("announcement_msg").innerHTML = text),
+    )
+    .catch((error) => console.error(`Fetch problem: ${error.message}`));
+</script>  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item">
+<nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../getting_started/index.html">
+                        Getting started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../user_guide/index.html">
+                        User guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../../../index.html">
+                        API reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../examples/index.html">
+                        Examples
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../contributing.html">
+                        Contribute
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<script>
+document.write(`
+  <div class="version-switcher__container dropdown">
+    <button id="pst-version-switcher-button-3"
+      type="button"
+      class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle"
+      data-bs-toggle="dropdown"
+      aria-haspopup="listbox"
+      aria-controls="pst-version-switcher-list-3"
+      aria-label="Version switcher list"
+    >
+      Choose version  <!-- this text may get changed later by javascript -->
+      <span class="caret"></span>
+    </button>
+    <div id="pst-version-switcher-list-3"
+      class="version-switcher__menu dropdown-menu list-group-flush py-0"
+      role="listbox" aria-labelledby="pst-version-switcher-button-3">
+      <!-- dropdown will be populated by javascript on page load -->
+    </div>
+  </div>
+`);
+</script></div>
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent/discussions" title="Support" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa fa-comment fa-fw fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Support</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../general/index.html">General</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../meshing/index.html">Meshing</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../../index.html">Solver</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../settings.html">Solver settings objects</a></li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="../../tuicommands.html">Solver TUI commands</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l3 current active has-children"><a class="reference internal" href="../index.html">solver.tui</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../turbo_workflow/index.html">turbo_workflow</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../turbo_post/index.html">turbo_post</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../views/index.html">views</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../server/index.html">server</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../display/index.html">display</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../parameters/index.html">parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../results/index.html">results</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../setup/index.html">setup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../adjoint/index.html">adjoint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../solution/index.html">solution</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../report/index.html">report</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../mesh/index.html">mesh</a></li>
+<li class="toctree-l4 current active has-children"><a class="current reference internal" href="#">plot</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l5"><a class="reference internal" href="residuals_set/index.html">residuals_set</a></li>
+<li class="toctree-l5"><a class="reference internal" href="flamelet_curves/index.html">flamelet_curves</a></li>
+<li class="toctree-l5"><a class="reference internal" href="solution_set/index.html">solution_set</a></li>
+<li class="toctree-l5"><a class="reference internal" href="fft_set/index.html">fft_set</a></li>
+<li class="toctree-l5"><a class="reference internal" href="histogram_set/index.html">histogram_set</a></li>
+<li class="toctree-l5"><a class="reference internal" href="cumulative_plot/index.html">cumulative_plot</a></li>
+<li class="toctree-l5"><a class="reference internal" href="ansys_sound_analysis/index.html">ansys_sound_analysis</a></li>
+<li class="toctree-l5"><a class="reference internal" href="datasources/index.html">datasources</a></li>
+<li class="toctree-l5"><a class="reference internal" href="vrx_sound_analysis/index.html">vrx_sound_analysis</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_set/index.html">file_set</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../parametric_study/index.html">parametric_study</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../surface/index.html">surface</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../define/index.html">define</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../parallel/index.html">parallel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../icing/index.html">icing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../file/index.html">file</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../preferences/index.html">preferences</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../solve/index.html">solve</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../datamodel/index.html">solver.datamodel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../schemeeval.html">Scheme code evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../events.html">EventsManager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../monitors.html">MonitorsManager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reduction.html">Reduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../svar.html">SVAR data</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+      
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="https://docs.pyansys.com/" class="nav-link">PyAnsys</a>
+    </li>
+      
+    <li class="breadcrumb-item">
+      <a
+        href="../../../../index.html"
+        class="nav-link"
+        aria-label="Home"
+      >
+        <i class="fa-solid fa-home"></i
+      ></a>
+    </li> 
+    <li class="breadcrumb-item">
+      <a href="../../../index.html" class="nav-link">API reference</a>
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a href="../../index.html" class="nav-link">Solver</a>
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a href="../../tuicommands.html" class="nav-link">Solver TUI commands</a>
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a href="../index.html" class="nav-link">solver.tui</a>
+    </li>
+      
+    <li class="breadcrumb-item active" aria-current="page">plot</li>
+    
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="plot">
+<span id="ref-solver-tui-plot"></span><h1>plot<a class="headerlink" href="#plot" title="Link to this heading">#</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.solver.tui_241.main_menu.</span></span><span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">service</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Enter the XY plot menu.</p>
+<p><strong>Classes:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.ansys_sound_analysis" title="ansys.fluent.core.solver.tui_241.main_menu.plot.ansys_sound_analysis"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ansys_sound_analysis</span></code></a>(service, version, mode, ...)</p></td>
+<td><p>Enter the Ansys sound analysis menu.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.cumulative_plot" title="ansys.fluent.core.solver.tui_241.main_menu.plot.cumulative_plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cumulative_plot</span></code></a>(service, version, mode, path)</p></td>
+<td><p>Plot the development of force, force coefficient, moment, or moment coefficient across the specified wall zones.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.datasources" title="ansys.fluent.core.solver.tui_241.main_menu.plot.datasources"><code class="xref py py-obj docutils literal notranslate"><span class="pre">datasources</span></code></a>(service, version, mode, path)</p></td>
+<td><p>Enters the menu for creating and modifying plots containing multiple data sources.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.fft_set" title="ansys.fluent.core.solver.tui_241.main_menu.plot.fft_set"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fft_set</span></code></a>(service, version, mode, path)</p></td>
+<td><p>Enter the menu to set histogram plot parameters.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.file_set" title="ansys.fluent.core.solver.tui_241.main_menu.plot.file_set"><code class="xref py py-obj docutils literal notranslate"><span class="pre">file_set</span></code></a>(service, version, mode, path)</p></td>
+<td><p>Sets file plot parameters.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.flamelet_curves" title="ansys.fluent.core.solver.tui_241.main_menu.plot.flamelet_curves"><code class="xref py py-obj docutils literal notranslate"><span class="pre">flamelet_curves</span></code></a>(service, version, mode, path)</p></td>
+<td><p>Enters the flamelet curves menu.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.histogram_set" title="ansys.fluent.core.solver.tui_241.main_menu.plot.histogram_set"><code class="xref py py-obj docutils literal notranslate"><span class="pre">histogram_set</span></code></a>(service, version, mode, path)</p></td>
+<td><p>Sets histogram plot parameters.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.residuals_set" title="ansys.fluent.core.solver.tui_241.main_menu.plot.residuals_set"><code class="xref py py-obj docutils literal notranslate"><span class="pre">residuals_set</span></code></a>(service, version, mode, path)</p></td>
+<td><p>Sets residual plot parameters.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.solution_set" title="ansys.fluent.core.solver.tui_241.main_menu.plot.solution_set"><code class="xref py py-obj docutils literal notranslate"><span class="pre">solution_set</span></code></a>(service, version, mode, path)</p></td>
+<td><p>Sets solution plot parameters.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.vrx_sound_analysis" title="ansys.fluent.core.solver.tui_241.main_menu.plot.vrx_sound_analysis"><code class="xref py py-obj docutils literal notranslate"><span class="pre">vrx_sound_analysis</span></code></a>(service, version, mode, path)</p></td>
+<td><p>Ansys Sound analysis and specification.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.change_fft_ref_pressure" title="ansys.fluent.core.solver.tui_241.main_menu.plot.change_fft_ref_pressure"><code class="xref py py-obj docutils literal notranslate"><span class="pre">change_fft_ref_pressure</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Changes reference acoustic pressure.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.circum_avg_axial" title="ansys.fluent.core.solver.tui_241.main_menu.plot.circum_avg_axial"><code class="xref py py-obj docutils literal notranslate"><span class="pre">circum_avg_axial</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Computes iso-axial band surfaces and plots data vs.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.circum_avg_radial" title="ansys.fluent.core.solver.tui_241.main_menu.plot.circum_avg_radial"><code class="xref py py-obj docutils literal notranslate"><span class="pre">circum_avg_radial</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Computes iso-radial band surfaces and plots data vs.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.display_profile_data" title="ansys.fluent.core.solver.tui_241.main_menu.plot.display_profile_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">display_profile_data</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Plots profile data.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.fft" title="ansys.fluent.core.solver.tui_241.main_menu.plot.fft"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fft</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Plots fast Fourier transform (FFT) of file data.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.file" title="ansys.fluent.core.solver.tui_241.main_menu.plot.file"><code class="xref py py-obj docutils literal notranslate"><span class="pre">file</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Plots data from an external file.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.file_list" title="ansys.fluent.core.solver.tui_241.main_menu.plot.file_list"><code class="xref py py-obj docutils literal notranslate"><span class="pre">file_list</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Plots data from multiple external files.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.histogram" title="ansys.fluent.core.solver.tui_241.main_menu.plot.histogram"><code class="xref py py-obj docutils literal notranslate"><span class="pre">histogram</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Plots a histogram of the specified solution variable using the defined range and number of intervals.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.label_alignment" title="ansys.fluent.core.solver.tui_241.main_menu.plot.label_alignment"><code class="xref py py-obj docutils literal notranslate"><span class="pre">label_alignment</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Set the orientation of XY plot axis labels as either horizontal or axis-aligned.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.plot" title="ansys.fluent.core.solver.tui_241.main_menu.plot.plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Plots solution on surfaces.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.plot_direction" title="ansys.fluent.core.solver.tui_241.main_menu.plot.plot_direction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_direction</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Sets plot direction for XY plot.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.residuals" title="ansys.fluent.core.solver.tui_241.main_menu.plot.residuals"><code class="xref py py-obj docutils literal notranslate"><span class="pre">residuals</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Contains commands that allow you to select the variables for which you want to display XY plots of residual histories in the active graphics window.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.set_boundary_val_off" title="ansys.fluent.core.solver.tui_241.main_menu.plot.set_boundary_val_off"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_boundary_val_off</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Disables the use of boundary face values when node values are disabled in solution XY plots.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.solution" title="ansys.fluent.core.solver.tui_241.main_menu.plot.solution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">solution</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Plots solution on surfaces and/or zones.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ansys_sound_analysis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">service</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Enter the Ansys sound analysis menu.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.ansys_sound_analysis.print_indicators" title="ansys.fluent.core.solver.tui_241.main_menu.plot.ansys_sound_analysis.print_indicators"><code class="xref py py-obj docutils literal notranslate"><span class="pre">print_indicators</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Read in a pressure signal or spectrum file, then optionally read in a frequency response function (FRF) or transfer function file, before printing the acoustics indicators.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.ansys_sound_analysis.write_files" title="ansys.fluent.core.solver.tui_241.main_menu.plot.ansys_sound_analysis.write_files"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write_files</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Read in a pressure signal or spectrum file, then optionally read in a frequency response function (FRF) or transfer function file, before writing a WAV, output pressure, and/or acoustic indicators file.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">print_indicators</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Read in a pressure signal or spectrum file, then optionally read in a frequency response function (FRF) or transfer function file, before printing the acoustics indicators.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">write_files</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Read in a pressure signal or spectrum file, then optionally read in a frequency response function (FRF) or transfer function file, before writing a WAV, output pressure, and/or acoustic indicators file.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">change_fft_ref_pressure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Changes reference acoustic pressure.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">circum_avg_axial</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Computes iso-axial band surfaces and plots data vs. axial coordinate on them.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">circum_avg_radial</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Computes iso-radial band surfaces and plots data vs. radius on them.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">cumulative_plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">service</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Plot the development of force, force coefficient, moment, or moment coefficient across the specified wall zones.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.cumulative_plot.add" title="ansys.fluent.core.solver.tui_241.main_menu.plot.cumulative_plot.add"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Create a new cumulative plot.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.cumulative_plot.axes" title="ansys.fluent.core.solver.tui_241.main_menu.plot.cumulative_plot.axes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">axes</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Set axes options of an object.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.cumulative_plot.curves" title="ansys.fluent.core.solver.tui_241.main_menu.plot.cumulative_plot.curves"><code class="xref py py-obj docutils literal notranslate"><span class="pre">curves</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Set curves options of an object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.cumulative_plot.delete" title="ansys.fluent.core.solver.tui_241.main_menu.plot.cumulative_plot.delete"><code class="xref py py-obj docutils literal notranslate"><span class="pre">delete</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Delete an existing cumulative plot object.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.cumulative_plot.edit" title="ansys.fluent.core.solver.tui_241.main_menu.plot.cumulative_plot.edit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">edit</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Edit an existing cumulative plot object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.cumulative_plot.list" title="ansys.fluent.core.solver.tui_241.main_menu.plot.cumulative_plot.list"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Print the names of the existing cumulative plot objects to the console.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.cumulative_plot.list_properties" title="ansys.fluent.core.solver.tui_241.main_menu.plot.cumulative_plot.list_properties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list_properties</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Print the properties of the specified cumulative plot object to the console.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.cumulative_plot.plot" title="ansys.fluent.core.solver.tui_241.main_menu.plot.cumulative_plot.plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Plot a cumulative plot in the graphics window.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.cumulative_plot.print" title="ansys.fluent.core.solver.tui_241.main_menu.plot.cumulative_plot.print"><code class="xref py py-obj docutils literal notranslate"><span class="pre">print</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Print the value of a cumulative plot to the console.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.cumulative_plot.write" title="ansys.fluent.core.solver.tui_241.main_menu.plot.cumulative_plot.write"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Write a cumulative plot to a file.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Create a new cumulative plot.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">axes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Set axes options of an object.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">curves</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Set curves options of an object.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Delete an existing cumulative plot object.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">edit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Edit an existing cumulative plot object.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Print the names of the existing cumulative plot objects to the console.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">list_properties</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Print the properties of the specified cumulative plot object to the console.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Plot a cumulative plot in the graphics window.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">print</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Print the value of a cumulative plot to the console.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">write</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Write a cumulative plot to a file.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">datasources</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">service</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Enters the menu for creating and modifying plots containing multiple data sources.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.datasources.add_report_plot" title="ansys.fluent.core.solver.tui_241.main_menu.plot.datasources.add_report_plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_report_plot</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Specify an existing report plot to include in this plot.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.datasources.add_xy_plot" title="ansys.fluent.core.solver.tui_241.main_menu.plot.datasources.add_xy_plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_xy_plot</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Specify an existing XY plot to include in this plot.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.datasources.list_curve_information" title="ansys.fluent.core.solver.tui_241.main_menu.plot.datasources.list_curve_information"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list_curve_information</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Prints the names of the variables selected for plotting.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.datasources.list_data_sources" title="ansys.fluent.core.solver.tui_241.main_menu.plot.datasources.list_data_sources"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list_data_sources</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Prints the names of the selected/loaded data sources including the files and in-session plot objects.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.datasources.list_legend_names" title="ansys.fluent.core.solver.tui_241.main_menu.plot.datasources.list_legend_names"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list_legend_names</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Prints the names of the legends to the console.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.datasources.load_file" title="ansys.fluent.core.solver.tui_241.main_menu.plot.datasources.load_file"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_file</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Specify a file to load for plotting.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.datasources.plot" title="ansys.fluent.core.solver.tui_241.main_menu.plot.datasources.plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Plots the selected data in the active graphics window.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.datasources.properties" title="ansys.fluent.core.solver.tui_241.main_menu.plot.datasources.properties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">properties</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Prints the properties of whichever plot or file included in the multiple data sources plot that you specify.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.datasources.remove_data_source" title="ansys.fluent.core.solver.tui_241.main_menu.plot.datasources.remove_data_source"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_data_source</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Removes whichever data source (plot or file) you specify.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.datasources.rename_legend" title="ansys.fluent.core.solver.tui_241.main_menu.plot.datasources.rename_legend"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rename_legend</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Allows you to rename legend entries.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">add_report_plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Specify an existing report plot to include in this plot.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">add_xy_plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Specify an existing XY plot to include in this plot.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">list_curve_information</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Prints the names of the variables selected for plotting.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">list_data_sources</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Prints the names of the selected/loaded data sources including the files and in-session plot objects.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">list_legend_names</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Prints the names of the legends to the console.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">load_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Specify a file to load for plotting. The file must be located in the working directory.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Plots the selected data in the active graphics window.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">properties</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Prints the properties of whichever plot or file included in the multiple data sources plot that you specify.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">remove_data_source</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Removes whichever data source (plot or file) you specify.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">rename_legend</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Allows you to rename legend entries. Note that you must re-plot to see the legend name change.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">display_profile_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Plots profile data.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">fft</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Plots fast Fourier transform (FFT) of file data. If you respond yes to Acoustic Analysis?, then additional Y axis functions are made available.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">fft_set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">service</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Enter the menu to set histogram plot parameters.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.fft_set.axes" title="ansys.fluent.core.solver.tui_241.main_menu.plot.fft_set.axes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">axes</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Set axes options of an object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.fft_set.curves" title="ansys.fluent.core.solver.tui_241.main_menu.plot.fft_set.curves"><code class="xref py py-obj docutils literal notranslate"><span class="pre">curves</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Set curves options of an object.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">axes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Set axes options of an object.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">curves</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Set curves options of an object.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Plots data from an external file.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">file_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Plots data from multiple external files.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">file_set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">service</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Sets file plot parameters.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.file_set.auto_scale" title="ansys.fluent.core.solver.tui_241.main_menu.plot.file_set.auto_scale"><code class="xref py py-obj docutils literal notranslate"><span class="pre">auto_scale</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Sets the range for the   and   axes.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.file_set.background_color" title="ansys.fluent.core.solver.tui_241.main_menu.plot.file_set.background_color"><code class="xref py py-obj docutils literal notranslate"><span class="pre">background_color</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Sets the color of the field within the abscissa and ordinate axes.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.file_set.end_plot_to_file" title="ansys.fluent.core.solver.tui_241.main_menu.plot.file_set.end_plot_to_file"><code class="xref py py-obj docutils literal notranslate"><span class="pre">end_plot_to_file</span></code></a>(*args, **kwargs)</p></td>
+<td><p>End plot to file.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.file_set.file_lines" title="ansys.fluent.core.solver.tui_241.main_menu.plot.file_set.file_lines"><code class="xref py py-obj docutils literal notranslate"><span class="pre">file_lines</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Sets parameters for plot lines.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.file_set.file_markers" title="ansys.fluent.core.solver.tui_241.main_menu.plot.file_set.file_markers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">file_markers</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Sets parameters for data markers.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.file_set.get_residuals_window" title="ansys.fluent.core.solver.tui_241.main_menu.plot.file_set.get_residuals_window"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_residuals_window</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Get residuals window id.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.file_set.key" title="ansys.fluent.core.solver.tui_241.main_menu.plot.file_set.key"><code class="xref py py-obj docutils literal notranslate"><span class="pre">key</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables display of curve key and sets its window title.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.file_set.labels" title="ansys.fluent.core.solver.tui_241.main_menu.plot.file_set.labels"><code class="xref py py-obj docutils literal notranslate"><span class="pre">labels</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Sets labels for plot axes.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.file_set.lines" title="ansys.fluent.core.solver.tui_241.main_menu.plot.file_set.lines"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lines</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Sets parameters for plot lines.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.file_set.log" title="ansys.fluent.core.solver.tui_241.main_menu.plot.file_set.log"><code class="xref py py-obj docutils literal notranslate"><span class="pre">log</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Uses log scales for one or both axes.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.file_set.markers" title="ansys.fluent.core.solver.tui_241.main_menu.plot.file_set.markers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">markers</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Sets parameters for data markers.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.file_set.numbers" title="ansys.fluent.core.solver.tui_241.main_menu.plot.file_set.numbers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numbers</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Sets number formats for axes.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.file_set.plot_to_file" title="ansys.fluent.core.solver.tui_241.main_menu.plot.file_set.plot_to_file"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_to_file</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Specifies a file in which to write XY plot data.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.file_set.rules" title="ansys.fluent.core.solver.tui_241.main_menu.plot.file_set.rules"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rules</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Sets parameters for display of major and minor rules.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.file_set.windows" title="ansys.fluent.core.solver.tui_241.main_menu.plot.file_set.windows"><code class="xref py py-obj docutils literal notranslate"><span class="pre">windows</span></code></a>(*args, **kwargs)</p></td>
+<td><p>XY plot window options.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.file_set.xy_percent_y" title="ansys.fluent.core.solver.tui_241.main_menu.plot.file_set.xy_percent_y"><code class="xref py py-obj docutils literal notranslate"><span class="pre">xy_percent_y</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Scale xy plot by percentage of total elements.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">auto_scale</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Sets the range for the   and   axes. If auto-scaling is not activated for a particular axis, you are prompted for the minimum and maximum data values.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">background_color</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Sets the color of the field within the abscissa and ordinate axes.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">end_plot_to_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>End plot to file.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">file_lines</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Sets parameters for plot lines.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">file_markers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Sets parameters for data markers.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_residuals_window</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Get residuals window id.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">key</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables display of curve key and sets its window title.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">labels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Sets labels for plot axes.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">lines</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Sets parameters for plot lines.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">log</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Uses log scales for one or both axes.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">markers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Sets parameters for data markers.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">numbers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Sets number formats for axes.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">plot_to_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Specifies a file in which to write XY plot data.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">rules</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Sets parameters for display of major and minor rules.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">windows</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>XY plot window options. For a description of the items in this menu, see display/set/windows/xy.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">xy_percent_y</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Scale xy plot by percentage of total elements.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">flamelet_curves</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">service</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Enters the flamelet curves menu.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.flamelet_curves.plot_curves" title="ansys.fluent.core.solver.tui_241.main_menu.plot.flamelet_curves.plot_curves"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_curves</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Plots of a curve property.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.flamelet_curves.write_to_file" title="ansys.fluent.core.solver.tui_241.main_menu.plot.flamelet_curves.write_to_file"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write_to_file</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Writes curve to a file instead of plot.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">plot_curves</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Plots of a curve property.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">write_to_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Writes curve to a file instead of plot.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">histogram</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Plots a histogram of the specified solution variable using the defined range and number of intervals.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">histogram_set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">service</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Sets histogram plot parameters. Sub-menu items are the same as file-set/ above.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.histogram_set.auto_scale" title="ansys.fluent.core.solver.tui_241.main_menu.plot.histogram_set.auto_scale"><code class="xref py py-obj docutils literal notranslate"><span class="pre">auto_scale</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Automatically compute x/y-axis extents?.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.histogram_set.background_color" title="ansys.fluent.core.solver.tui_241.main_menu.plot.histogram_set.background_color"><code class="xref py py-obj docutils literal notranslate"><span class="pre">background_color</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Set the color of the plot background.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.histogram_set.end_plot_to_file" title="ansys.fluent.core.solver.tui_241.main_menu.plot.histogram_set.end_plot_to_file"><code class="xref py py-obj docutils literal notranslate"><span class="pre">end_plot_to_file</span></code></a>(*args, **kwargs)</p></td>
+<td><p>End plot to file.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.histogram_set.file_lines" title="ansys.fluent.core.solver.tui_241.main_menu.plot.histogram_set.file_lines"><code class="xref py py-obj docutils literal notranslate"><span class="pre">file_lines</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Set parameters for plot lines.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.histogram_set.file_markers" title="ansys.fluent.core.solver.tui_241.main_menu.plot.histogram_set.file_markers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">file_markers</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Set parameters for data markers.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.histogram_set.get_residuals_window" title="ansys.fluent.core.solver.tui_241.main_menu.plot.histogram_set.get_residuals_window"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_residuals_window</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Get residuals window id.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.histogram_set.key" title="ansys.fluent.core.solver.tui_241.main_menu.plot.histogram_set.key"><code class="xref py py-obj docutils literal notranslate"><span class="pre">key</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enable/disable display of curve key and set its window title.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.histogram_set.labels" title="ansys.fluent.core.solver.tui_241.main_menu.plot.histogram_set.labels"><code class="xref py py-obj docutils literal notranslate"><span class="pre">labels</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Set labels for plot axes.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.histogram_set.lines" title="ansys.fluent.core.solver.tui_241.main_menu.plot.histogram_set.lines"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lines</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Set parameters for plot lines.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.histogram_set.log" title="ansys.fluent.core.solver.tui_241.main_menu.plot.histogram_set.log"><code class="xref py py-obj docutils literal notranslate"><span class="pre">log</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Use log scales for one or both axes?.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.histogram_set.markers" title="ansys.fluent.core.solver.tui_241.main_menu.plot.histogram_set.markers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">markers</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Set parameters for data markers.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.histogram_set.numbers" title="ansys.fluent.core.solver.tui_241.main_menu.plot.histogram_set.numbers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numbers</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Set number formats for axes.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.histogram_set.plot_to_file" title="ansys.fluent.core.solver.tui_241.main_menu.plot.histogram_set.plot_to_file"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_to_file</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Specify a file to write an xy plot to.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.histogram_set.rules" title="ansys.fluent.core.solver.tui_241.main_menu.plot.histogram_set.rules"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rules</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Set parameters for display of major and minor rules.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.histogram_set.windows" title="ansys.fluent.core.solver.tui_241.main_menu.plot.histogram_set.windows"><code class="xref py py-obj docutils literal notranslate"><span class="pre">windows</span></code></a>(*args, **kwargs)</p></td>
+<td><p>X-Y plot window options.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.histogram_set.xy_percent_y" title="ansys.fluent.core.solver.tui_241.main_menu.plot.histogram_set.xy_percent_y"><code class="xref py py-obj docutils literal notranslate"><span class="pre">xy_percent_y</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Scale xy plot by percentage of total elements.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">auto_scale</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Automatically compute x/y-axis extents?.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">background_color</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Set the color of the plot background.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">end_plot_to_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>End plot to file.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">file_lines</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Set parameters for plot lines.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">file_markers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Set parameters for data markers.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_residuals_window</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Get residuals window id.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">key</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enable/disable display of curve key and set its window title.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">labels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Set labels for plot axes.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">lines</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Set parameters for plot lines.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">log</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Use log scales for one or both axes?.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">markers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Set parameters for data markers.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">numbers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Set number formats for axes.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">plot_to_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Specify a file to write an xy plot to.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">rules</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Set parameters for display of major and minor rules.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">windows</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>X-Y plot window options.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">xy_percent_y</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Scale xy plot by percentage of total elements.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">label_alignment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Set the orientation of XY plot axis labels as either horizontal or axis-aligned.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Plots solution on surfaces.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">plot_direction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Sets plot direction for XY plot.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">residuals</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Contains commands that allow you to select the variables for which you want to display XY plots of residual histories in the active graphics window.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">residuals_set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">service</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Sets residual plot parameters. Sub-menu items are the same as file-set/ above.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.residuals_set.auto_scale" title="ansys.fluent.core.solver.tui_241.main_menu.plot.residuals_set.auto_scale"><code class="xref py py-obj docutils literal notranslate"><span class="pre">auto_scale</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Automatically compute x/y-axis extents?.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.residuals_set.background_color" title="ansys.fluent.core.solver.tui_241.main_menu.plot.residuals_set.background_color"><code class="xref py py-obj docutils literal notranslate"><span class="pre">background_color</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Set the color of the plot background.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.residuals_set.end_plot_to_file" title="ansys.fluent.core.solver.tui_241.main_menu.plot.residuals_set.end_plot_to_file"><code class="xref py py-obj docutils literal notranslate"><span class="pre">end_plot_to_file</span></code></a>(*args, **kwargs)</p></td>
+<td><p>End plot to file.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.residuals_set.file_lines" title="ansys.fluent.core.solver.tui_241.main_menu.plot.residuals_set.file_lines"><code class="xref py py-obj docutils literal notranslate"><span class="pre">file_lines</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Set parameters for plot lines.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.residuals_set.file_markers" title="ansys.fluent.core.solver.tui_241.main_menu.plot.residuals_set.file_markers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">file_markers</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Set parameters for data markers.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.residuals_set.get_residuals_window" title="ansys.fluent.core.solver.tui_241.main_menu.plot.residuals_set.get_residuals_window"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_residuals_window</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Get residuals window id.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.residuals_set.key" title="ansys.fluent.core.solver.tui_241.main_menu.plot.residuals_set.key"><code class="xref py py-obj docutils literal notranslate"><span class="pre">key</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enable/disable display of curve key and set its window title.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.residuals_set.labels" title="ansys.fluent.core.solver.tui_241.main_menu.plot.residuals_set.labels"><code class="xref py py-obj docutils literal notranslate"><span class="pre">labels</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Set labels for plot axes.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.residuals_set.lines" title="ansys.fluent.core.solver.tui_241.main_menu.plot.residuals_set.lines"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lines</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Set parameters for plot lines.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.residuals_set.log" title="ansys.fluent.core.solver.tui_241.main_menu.plot.residuals_set.log"><code class="xref py py-obj docutils literal notranslate"><span class="pre">log</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Use log scales for one or both axes?.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.residuals_set.markers" title="ansys.fluent.core.solver.tui_241.main_menu.plot.residuals_set.markers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">markers</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Set parameters for data markers.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.residuals_set.numbers" title="ansys.fluent.core.solver.tui_241.main_menu.plot.residuals_set.numbers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numbers</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Set number formats for axes.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.residuals_set.plot_to_file" title="ansys.fluent.core.solver.tui_241.main_menu.plot.residuals_set.plot_to_file"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_to_file</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Specify a file to write an xy plot to.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.residuals_set.rules" title="ansys.fluent.core.solver.tui_241.main_menu.plot.residuals_set.rules"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rules</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Set parameters for display of major and minor rules.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.residuals_set.windows" title="ansys.fluent.core.solver.tui_241.main_menu.plot.residuals_set.windows"><code class="xref py py-obj docutils literal notranslate"><span class="pre">windows</span></code></a>(*args, **kwargs)</p></td>
+<td><p>X-Y plot window options.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.residuals_set.xy_percent_y" title="ansys.fluent.core.solver.tui_241.main_menu.plot.residuals_set.xy_percent_y"><code class="xref py py-obj docutils literal notranslate"><span class="pre">xy_percent_y</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Scale xy plot by percentage of total elements.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">auto_scale</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Automatically compute x/y-axis extents?.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">background_color</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Set the color of the plot background.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">end_plot_to_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>End plot to file.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">file_lines</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Set parameters for plot lines.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">file_markers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Set parameters for data markers.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_residuals_window</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Get residuals window id.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">key</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enable/disable display of curve key and set its window title.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">labels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Set labels for plot axes.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">lines</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Set parameters for plot lines.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">log</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Use log scales for one or both axes?.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">markers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Set parameters for data markers.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">numbers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Set number formats for axes.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">plot_to_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Specify a file to write an xy plot to.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">rules</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Set parameters for display of major and minor rules.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">windows</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>X-Y plot window options.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">xy_percent_y</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Scale xy plot by percentage of total elements.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">set_boundary_val_off</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Disables the use of boundary face values when node values are disabled in solution XY plots. This option is disabled by default, that is, boundary face values are used when node values are disabled.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">solution</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Plots solution on surfaces and/or zones. Zone and surface names can be indicated using a  wildcard (*).</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">solution_set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">service</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Sets solution plot parameters. Sub-menu items are the same as file-set/ above.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.solution_set.auto_scale" title="ansys.fluent.core.solver.tui_241.main_menu.plot.solution_set.auto_scale"><code class="xref py py-obj docutils literal notranslate"><span class="pre">auto_scale</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Automatically compute x/y-axis extents?.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.solution_set.background_color" title="ansys.fluent.core.solver.tui_241.main_menu.plot.solution_set.background_color"><code class="xref py py-obj docutils literal notranslate"><span class="pre">background_color</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Set the color of the plot background.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.solution_set.end_plot_to_file" title="ansys.fluent.core.solver.tui_241.main_menu.plot.solution_set.end_plot_to_file"><code class="xref py py-obj docutils literal notranslate"><span class="pre">end_plot_to_file</span></code></a>(*args, **kwargs)</p></td>
+<td><p>End plot to file.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.solution_set.file_lines" title="ansys.fluent.core.solver.tui_241.main_menu.plot.solution_set.file_lines"><code class="xref py py-obj docutils literal notranslate"><span class="pre">file_lines</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Set parameters for plot lines.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.solution_set.file_markers" title="ansys.fluent.core.solver.tui_241.main_menu.plot.solution_set.file_markers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">file_markers</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Set parameters for data markers.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.solution_set.get_residuals_window" title="ansys.fluent.core.solver.tui_241.main_menu.plot.solution_set.get_residuals_window"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_residuals_window</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Get residuals window id.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.solution_set.key" title="ansys.fluent.core.solver.tui_241.main_menu.plot.solution_set.key"><code class="xref py py-obj docutils literal notranslate"><span class="pre">key</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enable/disable display of curve key and set its window title.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.solution_set.labels" title="ansys.fluent.core.solver.tui_241.main_menu.plot.solution_set.labels"><code class="xref py py-obj docutils literal notranslate"><span class="pre">labels</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Set labels for plot axes.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.solution_set.lines" title="ansys.fluent.core.solver.tui_241.main_menu.plot.solution_set.lines"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lines</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Set parameters for plot lines.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.solution_set.log" title="ansys.fluent.core.solver.tui_241.main_menu.plot.solution_set.log"><code class="xref py py-obj docutils literal notranslate"><span class="pre">log</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Use log scales for one or both axes?.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.solution_set.markers" title="ansys.fluent.core.solver.tui_241.main_menu.plot.solution_set.markers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">markers</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Set parameters for data markers.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.solution_set.numbers" title="ansys.fluent.core.solver.tui_241.main_menu.plot.solution_set.numbers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numbers</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Set number formats for axes.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.solution_set.plot_to_file" title="ansys.fluent.core.solver.tui_241.main_menu.plot.solution_set.plot_to_file"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_to_file</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Specify a file to write an xy plot to.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.solution_set.rules" title="ansys.fluent.core.solver.tui_241.main_menu.plot.solution_set.rules"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rules</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Set parameters for display of major and minor rules.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.solution_set.windows" title="ansys.fluent.core.solver.tui_241.main_menu.plot.solution_set.windows"><code class="xref py py-obj docutils literal notranslate"><span class="pre">windows</span></code></a>(*args, **kwargs)</p></td>
+<td><p>X-Y plot window options.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.solution_set.xy_percent_y" title="ansys.fluent.core.solver.tui_241.main_menu.plot.solution_set.xy_percent_y"><code class="xref py py-obj docutils literal notranslate"><span class="pre">xy_percent_y</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Scale xy plot by percentage of total elements.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">auto_scale</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Automatically compute x/y-axis extents?.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">background_color</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Set the color of the plot background.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">end_plot_to_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>End plot to file.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">file_lines</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Set parameters for plot lines.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">file_markers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Set parameters for data markers.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_residuals_window</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Get residuals window id.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">key</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enable/disable display of curve key and set its window title.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">labels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Set labels for plot axes.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">lines</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Set parameters for plot lines.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">log</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Use log scales for one or both axes?.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">markers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Set parameters for data markers.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">numbers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Set number formats for axes.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">plot_to_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Specify a file to write an xy plot to.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">rules</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Set parameters for display of major and minor rules.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">windows</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>X-Y plot window options.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">xy_percent_y</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Scale xy plot by percentage of total elements.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">vrx_sound_analysis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">service</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Ansys Sound analysis and specification.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.vrx_sound_analysis.print_indicators" title="ansys.fluent.core.solver.tui_241.main_menu.plot.vrx_sound_analysis.print_indicators"><code class="xref py py-obj docutils literal notranslate"><span class="pre">print_indicators</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Print Ansys Sound indicators.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_241.main_menu.plot.vrx_sound_analysis.write_files" title="ansys.fluent.core.solver.tui_241.main_menu.plot.vrx_sound_analysis.write_files"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write_files</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Write Ansys Sound out files.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">print_indicators</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Print Ansys Sound indicators.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">write_files</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Write Ansys Sound out files.</p>
+</dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+<div class="toctree-wrapper compound">
+</div>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+<!-- If there is no fix edit button function, use the PyData edit-this-button-->
+</div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../../../../_sources/api/solver/tui/plot/index.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright (c) 2024 ANSYS, Inc. All rights reserved.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="theme-version">
+  Built with the
+  <a href="https://sphinxdocs.ansys.com/version/stable/index.html"
+    >Ansys Sphinx Theme</a
+  >
+  0.12.5. <br />Last updated on
+  <span id="date"></span>
+</p>
+<script>
+  var options = { day: "numeric", month: "long", year: "numeric" };
+  var lastModifiedDate = new Date(document.lastModified);
+  var date = lastModifiedDate.toLocaleDateString("en-US", options);
+  document.getElementById("date").innerHTML = date;
+</script></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

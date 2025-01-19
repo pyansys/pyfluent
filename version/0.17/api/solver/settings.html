@@ -1,0 +1,920 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Solver settings objects &#8212; PyFluent</title>
+
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=61a4c737" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=e5fbc548" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/ansys_sphinx_theme.css?v=068850c2" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+ 
+<link href="../../_static/css/breadcrumbs.css" rel="stylesheet" />
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=10705bdc"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../../_static/thebelab-helper.js"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=49e1bf35"></script>
+    <script src="../../_static/js/table.js?v=b64f5182"></script>
+    <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/solver/settings';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://fluent.docs.pyansys.com/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.17';
+        </script>
+    <link rel="icon" href="../../_static/ansys-favicon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Solver TUI commands" href="tuicommands.html" />
+    <link rel="prev" title="Solver" href="index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <link rel="canonical" href="https://fluent.docs.pyansys.com/version/stable/api/solver/settings.html" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container"><!-- Debugging: html_theme_options =  -->
+
+<!-- If there is no MiliSearch enabled, use the PyData search -->
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+   
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  <div class="navbar-header-items__start">
+    
+      <div class="navbar-item">
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/pyansys-logo-black-cropped.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../_static/pyansys-logo-black-cropped.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../getting_started/index.html">
+                        Getting started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../user_guide/index.html">
+                        User guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../index.html">
+                        API reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../examples/index.html">
+                        Examples
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../contributing.html">
+                        Contribute
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+        </div>
+      
+      
+        <div class="navbar-item">
+<script>
+document.write(`
+  <div class="version-switcher__container dropdown">
+    <button type="button" class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle" data-bs-toggle="dropdown">
+      0.17  <!-- this text may get changed later by javascript -->
+      <span class="caret"></span>
+    </button>
+    <div class="version-switcher__menu dropdown-menu list-group-flush py-0">
+    <!-- dropdown will be populated by javascript on page load -->
+    </div>
+  </div>
+`);
+</script></div>
+      
+        <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent/discussions" title="Support" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa fa-comment fa-fw"></i></span>
+            <label class="sr-only">Support</label></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </nav>
+    <div id="announcement_msg"></div>
+<script>
+  fetch("announcement.html")
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error: ${response.status}`);
+      }
+      return response.text();
+    })
+    .then(
+      (text) => (document.getElementById("announcement_msg").innerHTML = text),
+    )
+    .catch((error) => console.error(`Fetch problem: ${error.message}`));
+</script>   <div class="container-xl">
+  <div class="row">
+    <div class="col-12 col-md-3" id="breadcrumbs-spacer"></div>
+    <div class="col-12 col-md-11 col-xl-9" id="breadcrumbs">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul> 
+<li class="nav-item nav-item-additional-breadcrumb">
+  <a href="https://docs.pyansys.com/">PyAnsys</a> » 
+</li>
+ 
+<li class="nav-item nav-item-0">
+  <a href="../../index.html">PyFluent</a> » 
+</li>
+ 
+          <li class="nav-item nav-item-1"><a href="../index.html" >API reference</a> » </li>
+          <li class="nav-item nav-item-2"><a href="index.html" accesskey="U">Solver</a> » </li>
+        <li class="nav-item nav-item-this"><a href="">Solver settings objects</a></li> 
+      </ul>
+    </div></div>
+  </div>
+</div>
+ 
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../getting_started/index.html">
+                        Getting started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../user_guide/index.html">
+                        User guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../index.html">
+                        API reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../examples/index.html">
+                        Examples
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../contributing.html">
+                        Contribute
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<script>
+document.write(`
+  <div class="version-switcher__container dropdown">
+    <button type="button" class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle" data-bs-toggle="dropdown">
+      0.17  <!-- this text may get changed later by javascript -->
+      <span class="caret"></span>
+    </button>
+    <div class="version-switcher__menu dropdown-menu list-group-flush py-0">
+    <!-- dropdown will be populated by javascript on page load -->
+    </div>
+  </div>
+`);
+</script></div>
+        
+          <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent/discussions" title="Support" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa fa-comment fa-fw"></i></span>
+            <label class="sr-only">Support</label></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item"><nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../general/index.html">General</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../meshing/index.html">Meshing</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Solver</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Solver settings objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tuicommands.html">Solver TUI commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datamodel/index.html">solver.datamodel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="schemeeval.html">Scheme code evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fielddata.html">Field data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fieldinfo.html">Field info</a></li>
+<li class="toctree-l2"><a class="reference internal" href="events.html">EventsManager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="monitors.html">MonitorsManager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reduction.html">Reduction</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article"></div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="solver-settings-objects">
+<span id="ref-settings"></span><h1>Solver settings objects<a class="headerlink" href="#solver-settings-objects" title="Permalink to this heading">#</a></h1>
+<p>Solver settings objects provide a natural way to access and modify Fluent solver
+settings and issue commands to be executed in the Fluent solver.</p>
+<section id="accessing-solver-settings">
+<h2>Accessing solver settings<a class="headerlink" href="#accessing-solver-settings" title="Permalink to this heading">#</a></h2>
+<p>An appropriate call to the <a class="reference internal" href="../general/launcher/index.html#ansys.fluent.core.launcher.launcher.launch_fluent" title="ansys.fluent.core.launcher.launcher.launch_fluent"><code class="xref py py-func docutils literal notranslate"><span class="pre">launch_fluent()</span></code></a>
+function returns an object (named <code class="docutils literal notranslate"><span class="pre">solver</span></code> in
+the following code snippets) whose interface directly exposes the
+<a class="reference internal" href="#settings-root-section"><span class="std std-ref">root</span></a> of the solver settings hierarchy.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">ansys.fluent.core</span> <span class="k">as</span> <span class="nn">pyfluent</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">solver</span> <span class="o">=</span> <span class="n">pyfluent</span><span class="o">.</span><span class="n">launch_fluent</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s2">&quot;solver&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">solver</span></code> object contains attributes such as <a class="reference internal" href="_autosummary/settings/file.html#ansys.fluent.core.solver.settings_232.file.file" title="ansys.fluent.core.solver.settings_232.file.file"><code class="xref py py-obj docutils literal notranslate"><span class="pre">file</span></code></a>,
+<a class="reference internal" href="_autosummary/settings/setup.html#ansys.fluent.core.solver.settings_232.setup.setup" title="ansys.fluent.core.solver.settings_232.setup.setup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setup</span></code></a>,
+<a class="reference internal" href="_autosummary/settings/solution.html#ansys.fluent.core.solver.settings_232.solution.solution" title="ansys.fluent.core.solver.settings_232.solution.solution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">solution</span></code></a>, and
+<a class="reference internal" href="_autosummary/settings/results.html#ansys.fluent.core.solver.settings_232.results.results" title="ansys.fluent.core.solver.settings_232.results.results"><code class="xref py py-obj docutils literal notranslate"><span class="pre">results</span></code></a>,
+which are also instances of settings objects. Note that the last three are
+top-level nodes in the outline tree view in Fluent’s graphical user interface (GUI) — much
+of this settings hierarchy has been designed in close alignment with this GUI hierarchy.</p>
+</section>
+<section id="types-of-settings-objects">
+<h2>Types of settings objects<a class="headerlink" href="#types-of-settings-objects" title="Permalink to this heading">#</a></h2>
+<p>A settings object can be one of the primitive types: <a class="reference internal" href="_autosummary/ansys.fluent.core.solver.flobject.Integer.html#ansys.fluent.core.solver.flobject.Integer" title="ansys.fluent.core.solver.flobject.Integer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Integer</span></code></a>,
+<a class="reference internal" href="_autosummary/ansys.fluent.core.solver.flobject.Real.html#ansys.fluent.core.solver.flobject.Real" title="ansys.fluent.core.solver.flobject.Real"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Real</span></code></a>,
+<a class="reference internal" href="_autosummary/ansys.fluent.core.solver.flobject.String.html#ansys.fluent.core.solver.flobject.String" title="ansys.fluent.core.solver.flobject.String"><code class="xref py py-obj docutils literal notranslate"><span class="pre">String</span></code></a>, and
+<a class="reference internal" href="_autosummary/ansys.fluent.core.solver.flobject.Boolean.html#ansys.fluent.core.solver.flobject.Boolean" title="ansys.fluent.core.solver.flobject.Boolean"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Boolean</span></code></a>. A settings object can also be one of the three types
+of container objects: <a class="reference internal" href="_autosummary/ansys.fluent.core.solver.flobject.Group.html#ansys.fluent.core.solver.flobject.Group" title="ansys.fluent.core.solver.flobject.Group"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Group</span></code></a>,
+<a class="reference internal" href="_autosummary/ansys.fluent.core.solver.flobject.NamedObject.html#ansys.fluent.core.solver.flobject.NamedObject" title="ansys.fluent.core.solver.flobject.NamedObject"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NamedObject</span></code></a>, and
+<a class="reference internal" href="_autosummary/ansys.fluent.core.solver.flobject.ListObject.html#ansys.fluent.core.solver.flobject.ListObject" title="ansys.fluent.core.solver.flobject.ListObject"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ListObject</span></code></a>.</p>
+<ul class="simple">
+<li><p>The <a class="reference internal" href="_autosummary/ansys.fluent.core.solver.flobject.Group.html#ansys.fluent.core.solver.flobject.Group" title="ansys.fluent.core.solver.flobject.Group"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Group</span></code></a> type is a static container with predefined child objects that
+can be accessed as attributes. For example, using the expression <code class="docutils literal notranslate"><span class="pre">solver.setup.models.energy</span></code>,
+which resolves to <a class="reference internal" href="_autosummary/settings/energy.html#ansys.fluent.core.solver.settings_232.energy.energy" title="ansys.fluent.core.solver.settings_232.energy.energy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">energy</span></code></a>,
+which is a child of <a class="reference internal" href="_autosummary/settings/models_1.html#ansys.fluent.core.solver.settings_232.models_1.models" title="ansys.fluent.core.solver.settings_232.models_1.models"><code class="xref py py-obj docutils literal notranslate"><span class="pre">models</span></code></a>,
+which itself is a child of <a class="reference internal" href="_autosummary/settings/setup.html#ansys.fluent.core.solver.settings_232.setup.setup" title="ansys.fluent.core.solver.settings_232.setup.setup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setup</span></code></a>, and each of those
+three objects is a <code class="docutils literal notranslate"><span class="pre">Group</span></code>.
+The names of the child objects of a group can be accessed
+via <code class="docutils literal notranslate"><span class="pre">&lt;Group&gt;.child_names</span></code>.</p></li>
+<li><p>The <a class="reference internal" href="_autosummary/ansys.fluent.core.solver.flobject.NamedObject.html#ansys.fluent.core.solver.flobject.NamedObject" title="ansys.fluent.core.solver.flobject.NamedObject"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NamedObject</span></code></a> type is a container holding dynamically
+created named objects. For
+a given <code class="docutils literal notranslate"><span class="pre">NamedObject</span></code> container, each contained object is of the same
+specific type. A given named object can be accessed using the index operator. For example,
+<code class="docutils literal notranslate"><span class="pre">solver.setup.boundary_conditions.velocity_inlet['inlet2']</span></code> yields a <code class="docutils literal notranslate"><span class="pre">velocity_inlet</span></code>
+object with the name <code class="docutils literal notranslate"><span class="pre">inlet2</span></code>, assuming it exists. The current list of named object
+children can be accessed via <code class="docutils literal notranslate"><span class="pre">&lt;NamedObject&gt;.get_object_names()</span></code>.</p></li>
+<li><p>The <a class="reference internal" href="_autosummary/ansys.fluent.core.solver.flobject.ListObject.html#ansys.fluent.core.solver.flobject.ListObject" title="ansys.fluent.core.solver.flobject.ListObject"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ListObject</span></code></a> type is a container holding dynamically
+created unnamed objects of
+its specified child type (accessible via a <code class="docutils literal notranslate"><span class="pre">child_object_type</span></code> attribute) in a
+list. Children of a <code class="docutils literal notranslate"><span class="pre">ListObject</span></code> object can be accessed using the index operator.
+For example, <code class="docutils literal notranslate"><span class="pre">solver.setup.cell_zone_conditions.fluid['fluid-1'].source_terms['mass'][2]</span></code>
+refers to the third (starting from index 0) mass source entry for the fluid zone
+named <code class="docutils literal notranslate"><span class="pre">fluid-1</span></code>. The current number of child objects can be accessed with the
+<code class="docutils literal notranslate"><span class="pre">get_size()</span></code> method.</p></li>
+</ul>
+</section>
+<section id="object-state">
+<h2>Object state<a class="headerlink" href="#object-state" title="Permalink to this heading">#</a></h2>
+<p>You can access the state of any object by “calling” it. This returns the state of the children
+as a dictionary for <code class="docutils literal notranslate"><span class="pre">Group</span></code> and <code class="docutils literal notranslate"><span class="pre">NamedObject</span></code> types or as a list for <code class="docutils literal notranslate"><span class="pre">ListObject</span></code> types:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">solver</span><span class="o">.</span><span class="n">setup</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">viscous</span><span class="o">.</span><span class="n">model</span><span class="p">()</span>
+<span class="go">&#39;k-epsilon-standard&#39;</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pprint</span> <span class="p">(</span><span class="n">solver</span><span class="o">.</span><span class="n">setup</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">energy</span><span class="p">())</span>
+<span class="go">{&#39;enabled&#39;: True,</span>
+<span class="go"> &#39;inlet_diffusion&#39;: True,</span>
+<span class="go"> &#39;kinetic_energy&#39;: False,</span>
+<span class="go"> &#39;pressure_work&#39;: False,</span>
+<span class="go"> &#39;viscous_dissipation&#39;: False}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">solver</span><span class="o">.</span><span class="n">setup</span><span class="o">.</span><span class="n">boundary_conditions</span><span class="o">.</span><span class="n">velocity_inlet</span><span class="p">[</span><span class="s1">&#39;inlet1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">vmag</span><span class="o">.</span><span class="n">constant</span><span class="p">()</span>
+<span class="go">10.0</span>
+</pre></div>
+</div>
+<p>To modify the state of any object, you can assign the corresponding attribute
+in its parent object. This assignment can be done at any level. For <code class="docutils literal notranslate"><span class="pre">Group</span></code>
+and <code class="docutils literal notranslate"><span class="pre">NamedObject</span></code> types, the state value is a dictionary. For the
+<code class="docutils literal notranslate"><span class="pre">ListObject</span></code> type, the state value is a list.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">solver</span><span class="o">.</span><span class="n">setup</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">viscous</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="s1">&#39;laminar&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">solver</span><span class="o">.</span><span class="n">setup</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">energy</span> <span class="o">=</span> <span class="p">{</span> <span class="s1">&#39;enabled&#39;</span> <span class="p">:</span> <span class="kc">False</span> <span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">solver</span><span class="o">.</span><span class="n">setup</span><span class="o">.</span><span class="n">boundary_conditions</span><span class="o">.</span><span class="n">velocity_inlet</span><span class="p">[</span><span class="s1">&#39;inlet1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">vmag</span><span class="o">.</span><span class="n">constant</span> <span class="o">=</span> <span class="mi">14</span>
+</pre></div>
+</div>
+<p>You can also access the state of an object with the <code class="docutils literal notranslate"><span class="pre">get_state</span></code> method and
+modify it with the <code class="docutils literal notranslate"><span class="pre">set_state</span></code> method.</p>
+<p>You can print the current state in a simple text format with the
+<code class="docutils literal notranslate"><span class="pre">print_state</span></code> method. For example, assume you entered:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">solver</span><span class="o">.</span><span class="n">setup</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">print_state</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>The following output is returned:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>viscous :
+  k_epsilon_model : standard
+  near_wall_treatment : standard-wall-fn?
+  model : k-epsilon-standard
+  options :
+    viscous_heating : False
+    curvature_correction : False
+    production_kato_launder : False
+    production_limiter : False
+energy :
+  enabled : True
+  pressure_work : False
+  viscous_dissipation : False
+  inlet_diffusion : True
+  kinetic_energy : False
+multiphase :
+  number_of_phases : 0
+  models : none
+</pre></div>
+</div>
+</section>
+<section id="commands">
+<h2>Commands<a class="headerlink" href="#commands" title="Permalink to this heading">#</a></h2>
+<p>Commands are methods of settings objects that you use to modify the state of
+the application. For example, the <code class="docutils literal notranslate"><span class="pre">hybrid_initialize()</span></code> method of
+<code class="docutils literal notranslate"><span class="pre">solution.initialization</span></code> initializes the solution using the hybrid
+initialization method. The <code class="docutils literal notranslate"><span class="pre">command_names</span></code> attribute of a settings object
+provides the names of its commands.</p>
+<p>If keyword arguments are needed, you can use commands to pass them. To access a
+list of valid arguments, use the <code class="docutils literal notranslate"><span class="pre">arguments</span></code> attribute. If you do not specify
+an argument, its default value is used. Arguments are also settings objects
+and can be of either primitive or container type.</p>
+</section>
+<section id="additional-metadata">
+<h2>Additional metadata<a class="headerlink" href="#additional-metadata" title="Permalink to this heading">#</a></h2>
+<p>Settings object methods are provided to access some additional metadata. There are
+a number of explicit methods and two generic methods: <code class="docutils literal notranslate"><span class="pre">get_attr</span></code> and <code class="docutils literal notranslate"><span class="pre">get_attrs</span></code>.</p>
+<p>The following examples access the list of allowed values for a particular state of
+the viscous model. All string and string list objects have an <code class="docutils literal notranslate"><span class="pre">allowed_values</span></code>
+method, which returns a list of allowed string values if such a constraint currently applies
+for that object or returns <code class="docutils literal notranslate"><span class="pre">None</span></code> otherwise.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">solver</span><span class="o">.</span><span class="n">setup</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">viscous</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">allowed_values</span><span class="p">()</span>
+<span class="go">[&#39;inviscid&#39;, &#39;laminar&#39;, &#39;k-epsilon-standard&#39;, &#39;k-omega-standard&#39;, &#39;mixing-length&#39;, &#39;spalart-allmaras&#39;, &#39;k-kl-w&#39;, &#39;transition-sst&#39;, &#39;reynolds-stress&#39;, &#39;scale-adaptive-simulation&#39;, &#39;detached-eddy-simulation&#39;, &#39;large-eddy-simulation&#39;]</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">solver</span><span class="o">.</span><span class="n">setup</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">viscous</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">get_attr</span><span class="p">(</span><span class="s1">&#39;allowed-values&#39;</span><span class="p">)</span>
+<span class="go">[&#39;inviscid&#39;, &#39;laminar&#39;, &#39;k-epsilon-standard&#39;, &#39;k-omega-standard&#39;, &#39;mixing-length&#39;, &#39;spalart-allmaras&#39;, &#39;k-kl-w&#39;, &#39;transition-sst&#39;, &#39;reynolds-stress&#39;, &#39;scale-adaptive-simulation&#39;, &#39;detached-eddy-simulation&#39;, &#39;large-eddy-simulation&#39;]</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">solver</span><span class="o">.</span><span class="n">setup</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">viscous</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">get_attrs</span><span class="p">([</span><span class="s1">&#39;allowed-values&#39;</span><span class="p">])</span>
+<span class="go">{&#39;allowed-values&#39;: [&#39;inviscid&#39;, &#39;laminar&#39;, &#39;k-epsilon&#39;, &#39;k-omega&#39;, &#39;mixing-length&#39;, &#39;spalart-allmaras&#39;, &#39;k-kl-w&#39;, &#39;transition-sst&#39;, &#39;reynolds-stress&#39;, &#39;scale-adaptive-simulation&#39;, &#39;detached-eddy-simulation&#39;, &#39;large-eddy-simulation&#39;]}</span>
+</pre></div>
+</div>
+<p>These examples accesses the list of zone surfaces:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">root</span><span class="o">.</span><span class="n">solution</span><span class="o">.</span><span class="n">report_definitions</span><span class="o">.</span><span class="n">flux</span><span class="p">[</span><span class="s2">&quot;mass_flow_rate&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">root</span><span class="o">.</span><span class="n">solution</span><span class="o">.</span><span class="n">report_definitions</span><span class="o">.</span><span class="n">flux</span><span class="p">[</span>
+<span class="go">        &quot;mass_flow_rate&quot;</span>
+<span class="go">    ].zone_names.allowed_values()</span>
+<span class="go">[&#39;symmetry-xyplane&#39;, &#39;hot-inlet&#39;, &#39;cold-inlet&#39;, &#39;outlet&#39;, &#39;wall-inlet&#39;, &#39;wall-elbow&#39;, &#39;interior--elbow-fluid&#39;]</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">root</span><span class="o">.</span><span class="n">solution</span><span class="o">.</span><span class="n">report_definitions</span><span class="o">.</span><span class="n">flux</span><span class="p">[</span><span class="s2">&quot;mass_flow_rate&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">root</span><span class="o">.</span><span class="n">solution</span><span class="o">.</span><span class="n">report_definitions</span><span class="o">.</span><span class="n">flux</span><span class="p">[</span>
+<span class="go">        &quot;mass_flow_rate&quot;</span>
+<span class="go">    ].zone_names.get_attr(&quot;allowed-values&quot;)</span>
+<span class="go">[&#39;symmetry-xyplane&#39;, &#39;hot-inlet&#39;, &#39;cold-inlet&#39;, &#39;outlet&#39;, &#39;wall-inlet&#39;, &#39;wall-elbow&#39;, &#39;interior--elbow-fluid&#39;]</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">root</span><span class="o">.</span><span class="n">solution</span><span class="o">.</span><span class="n">report_definitions</span><span class="o">.</span><span class="n">flux</span><span class="p">[</span><span class="s2">&quot;mass_flow_rate&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">root</span><span class="o">.</span><span class="n">solution</span><span class="o">.</span><span class="n">report_definitions</span><span class="o">.</span><span class="n">flux</span><span class="p">[</span>
+<span class="go">        &quot;mass_flow_rate&quot;</span>
+<span class="go">    ].zone_names.get_attrs([&quot;allowed-values&quot;])</span>
+<span class="go">{&#39;allowed-values&#39;: [&#39;symmetry-xyplane&#39;, &#39;hot-inlet&#39;, &#39;cold-inlet&#39;, &#39;outlet&#39;, &#39;wall-inlet&#39;, &#39;wall-elbow&#39;, &#39;interior--elbow-fluid&#39;]}</span>
+</pre></div>
+</div>
+<p>The following table contains metadata names, corresponding methods to access this metadata, whether the method can return None, applicable object types, and returned data types:</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Metadata name</p></th>
+<th class="head"><p>Method</p></th>
+<th class="head"><p>Can return None</p></th>
+<th class="head"><p>Type applicability</p></th>
+<th class="head"><p>Metadata type</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">is-active?</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">is_active</span></code></p></td>
+<td><p>no</p></td>
+<td><p>all</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">bool</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">is-read-only?</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">is_read_only</span></code></p></td>
+<td><p>no</p></td>
+<td><p>all</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">bool</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">default-value</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">default</span></code></p></td>
+<td><p>yes</p></td>
+<td><p>all primitives</p></td>
+<td><p>type of primitive</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">allowed-values</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">allowed_values</span></code></p></td>
+<td><p>yes</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code>, <code class="docutils literal notranslate"><span class="pre">str</span> <span class="pre">list</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str</span> <span class="pre">list</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">min</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">min</span></code></p></td>
+<td><p>yes</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int</span></code>, <code class="docutils literal notranslate"><span class="pre">float</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int</span></code> or <code class="docutils literal notranslate"><span class="pre">float</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">max</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">max</span></code></p></td>
+<td><p>yes</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int</span></code>, <code class="docutils literal notranslate"><span class="pre">float</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int</span></code> or <code class="docutils literal notranslate"><span class="pre">float</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<p>Using the <code class="docutils literal notranslate"><span class="pre">get_attr</span></code> method requires knowledge of metadata names, their applicability, and
+the ability to interpret the raw values of the metadata. You can avoid all these issues by
+using the explicitly named methods. Note also that the metadata is dynamic, which means
+values can change based on the application state. A <code class="docutils literal notranslate"><span class="pre">None</span></code> value signifies that no value
+is currently designated for this metadata.</p>
+<p>This simple example shows you how to use a number of these explicit metadata access methods
+in a single solver session:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">ansys.fluent.core</span> <span class="k">as</span> <span class="nn">pyfluent</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">ansys.fluent.core</span> <span class="kn">import</span> <span class="n">examples</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">import_filename</span> <span class="o">=</span> <span class="n">examples</span><span class="o">.</span><span class="n">download_file</span><span class="p">(</span><span class="s2">&quot;mixing_elbow.msh.h5&quot;</span><span class="p">,</span> <span class="s2">&quot;pyfluent/mixing_elbow&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">solver</span> <span class="o">=</span> <span class="n">pyfluent</span><span class="o">.</span><span class="n">launch_fluent</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s2">&quot;solver&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">solver</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">file_type</span><span class="o">=</span><span class="s2">&quot;case&quot;</span><span class="p">,</span> <span class="n">file_name</span><span class="o">=</span><span class="n">import_filename</span><span class="p">)</span>
+<span class="go">Fast-loading...</span>
+<span class="go">...Done</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">solver</span><span class="o">.</span><span class="n">setup</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">viscous</span><span class="o">.</span><span class="n">is_active</span><span class="p">()</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">solver</span><span class="o">.</span><span class="n">setup</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">viscous</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">is_read_only</span><span class="p">()</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">solver</span><span class="o">.</span><span class="n">setup</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">viscous</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">default_value</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pprint</span><span class="p">(</span><span class="n">solver</span><span class="o">.</span><span class="n">setup</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">viscous</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">allowed_values</span><span class="p">())</span>
+<span class="go">[&#39;inviscid&#39;,</span>
+<span class="go"> &#39;laminar&#39;,</span>
+<span class="go"> &#39;k-epsilon&#39;,</span>
+<span class="go"> &#39;k-omega&#39;,</span>
+<span class="go"> &#39;mixing-length&#39;,</span>
+<span class="go"> &#39;spalart-allmaras&#39;,</span>
+<span class="go"> &#39;k-kl-w&#39;,</span>
+<span class="go"> &#39;transition-sst&#39;,</span>
+<span class="go"> &#39;reynolds-stress&#39;,</span>
+<span class="go"> &#39;scale-adaptive-simulation&#39;,</span>
+<span class="go"> &#39;detached-eddy-simulation&#39;,</span>
+<span class="go"> &#39;large-eddy-simulation&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">solver</span><span class="o">.</span><span class="n">setup</span><span class="o">.</span><span class="n">boundary_conditions</span><span class="o">.</span><span class="n">velocity_inlet</span><span class="p">[</span><span class="s1">&#39;cold-inlet&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">turb_intensity</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+<span class="go">0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">solver</span><span class="o">.</span><span class="n">setup</span><span class="o">.</span><span class="n">boundary_conditions</span><span class="o">.</span><span class="n">velocity_inlet</span><span class="p">[</span><span class="s1">&#39;cold-inlet&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">turb_intensity</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<span class="go">1</span>
+</pre></div>
+</div>
+</section>
+<section id="active-objects-and-commands">
+<h2>Active objects and commands<a class="headerlink" href="#active-objects-and-commands" title="Permalink to this heading">#</a></h2>
+<p>Objects and commands can be active or inactive based on the application state.
+The <code class="docutils literal notranslate"><span class="pre">is_active()</span></code> method returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if an object or command
+is currently active.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">get_active_child_names</span></code> method returns a list of
+active children:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">solver</span><span class="o">.</span><span class="n">setup</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">get_active_child_names</span><span class="p">()</span>
+<span class="go">[&#39;energy&#39;, &#39;multiphase&#39;, &#39;viscous&#39;]</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">get_active_command_names</span></code> method returns the list of active
+commands:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">solver</span><span class="o">.</span><span class="n">solution</span><span class="o">.</span><span class="n">run_calculation</span><span class="o">.</span><span class="n">get_active_command_names</span><span class="p">()</span>
+<span class="go">[&#39;iterate&#39;]</span>
+</pre></div>
+</div>
+</section>
+<section id="supporting-wildcards">
+<h2>Supporting wildcards<a class="headerlink" href="#supporting-wildcards" title="Permalink to this heading">#</a></h2>
+<p>You can use wildcards when using named objects, list objects, and string list settings.
+For named objects and list objects, for instance:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">solver</span><span class="o">.</span><span class="n">setup</span><span class="o">.</span><span class="n">cell_zone_conditions</span><span class="o">.</span><span class="n">fluid</span><span class="p">[</span><span class="s2">&quot;*&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">source_terms</span><span class="p">[</span><span class="s2">&quot;*mom*&quot;</span><span class="p">]()</span>
+<span class="go">{&#39;fluid&#39;: {&#39;source_terms&#39;: {&#39;x-momentum&#39;: [], &#39;y-momentum&#39;: [], &#39;z-momentum&#39;: []}}}</span>
+</pre></div>
+</div>
+<p>Also, when you have one or more velocity inlets with “inlet” in their names:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">solver</span><span class="o">.</span><span class="n">setup</span><span class="o">.</span><span class="n">boundary_conditions</span><span class="o">.</span><span class="n">velocity_inlet</span><span class="p">[</span><span class="s2">&quot;*inlet*&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">vmag</span><span class="p">()</span>
+<span class="go">{&#39;velo-inlet_2&#39;: {&#39;vmag&#39;: {&#39;option&#39;: &#39;value&#39;, &#39;value&#39;: 50}},</span>
+<span class="go">&#39;velo-inlet_1&#39;: {&#39;vmag&#39;: {&#39;option&#39;: &#39;value&#39;, &#39;value&#39;: 35}}</span>
+</pre></div>
+</div>
+<p>For string lists with allowed values, for instance:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">solver</span><span class="o">.</span><span class="n">results</span><span class="o">.</span><span class="n">graphics</span><span class="o">.</span><span class="n">contour</span><span class="p">[</span><span class="s1">&#39;contour-1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">surfaces_list</span> <span class="o">=</span> <span class="s1">&#39;in*&#39;</span>
+</pre></div>
+</div>
+<p>sets <code class="docutils literal notranslate"><span class="pre">surfaces_list</span></code> to all matches of surface names starting with <code class="docutils literal notranslate"><span class="pre">in</span></code>, so when you prompt for the
+list of surfaces:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">solver</span><span class="o">.</span><span class="n">results</span><span class="o">.</span><span class="n">graphics</span><span class="o">.</span><span class="n">contour</span><span class="p">[</span><span class="s1">&#39;contour-1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">surfaces_list</span><span class="p">()</span>
+<span class="go">[&#39;in1&#39;, &#39;in2&#39;]</span>
+</pre></div>
+</div>
+<p>The following list summarizes common wildcards:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">*</span></code> indicates zero or more occurrences of the preceding element. For example, <code class="docutils literal notranslate"><span class="pre">'in*'</span></code> lists
+only items starting with “in” such as in1 and in2, whereas <em>in</em> lists only items that have
+the string “in” within the name.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">?</span></code> substitutes for a single unknown character. For example, <code class="docutils literal notranslate"><span class="pre">'gr?y'</span></code> would list “grey” and “gray”.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[]</span></code> indicates a range of numbers or characters at the beginning of a string. For example,
+<code class="docutils literal notranslate"><span class="pre">'[to]'</span></code> would match anything starting with “t” and anything starting with “o” in the name. Using
+<code class="docutils literal notranslate"><span class="pre">'[a-z]'</span></code> would match anything starting with a character between “a” and “z” inclusively, or
+using <code class="docutils literal notranslate"><span class="pre">'[0-9]'</span></code> would match the initial character with any number between “0” and “9” inclusively.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">^</span></code> indicates a Boolean NOT function, or negation. For example, <code class="docutils literal notranslate"><span class="pre">'^*in*'</span></code> would list anything
+not containing “in”.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">|</span></code> indicates a Boolean OR function. For example, <code class="docutils literal notranslate"><span class="pre">'*part*|*solid*'</span></code> would list anything
+containing either “part” or “solid” such as “part2-solid-1”, “part2-solid-2”, “part-3”,
+“solid”, and “solid-1”.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&amp;</span></code> indicates a Boolean AND function. For example, <code class="docutils literal notranslate"><span class="pre">'*part*&amp;*solid*'</span></code> would list anything
+containing both “part” and “solid” such as “part2-solid-1” and “part2-solid-2”.</p></li>
+</ul>
+</section>
+<section id="root-object">
+<span id="settings-root-section"></span><h2>Root object<a class="headerlink" href="#root-object" title="Permalink to this heading">#</a></h2>
+<p>The <a class="reference internal" href="_autosummary/settings/root.html#ansys.fluent.core.solver.settings_232.root.root" title="ansys.fluent.core.solver.settings_232.root.root"><code class="xref py py-obj docutils literal notranslate"><span class="pre">root</span></code></a> object (named solver in the preceding examples) is the top-level
+solver settings object. It contains all other settings objects in a hierarchical structure.</p>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-solver-settings">Accessing solver settings</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-settings-objects">Types of settings objects</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#object-state">Object state</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#commands">Commands</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-metadata">Additional metadata</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#active-objects-and-commands">Active objects and commands</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#supporting-wildcards">Supporting wildcards</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#root-object">Root object</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  <div class="tocsection sourcelink">
+    <a href="../../_sources/api/solver/settings.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+  <p class="copyright">
+    
+      © Copyright (c) 2023 ANSYS, Inc. All rights reserved.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.1.2.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="theme-version">
+  Built with the
+  <a href="https://sphinxdocs.ansys.com/version/stable/index.html"
+    >Ansys Sphinx Theme</a
+  >
+  0.10.2. <br />Last updated on
+  <span id="date"></span>
+</p>
+<script>
+  var options = { day: "numeric", month: "long", year: "numeric" };
+  var lastModifiedDate = new Date(document.lastModified);
+  var date = lastModifiedDate.toLocaleDateString("en-US", options);
+  document.getElementById("date").innerHTML = date;
+</script></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,981 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>mesh &#8212; PyFluent</title>
+  
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery.css?v=d2d258e8" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/css/ansys_sphinx_theme.css?v=77703c5e" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://www.nerdfonts.com/assets/css/webfont.css" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../../../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+  
+    <link href="../../../../_static/css/breadcrumbs.css" rel="stylesheet" />
+  
+    <script src="../../../../_static/documentation_options.js?v=09352719"></script>
+    <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/thebelab-helper.js"></script>
+    <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../_static/copybutton.js?v=49e1bf35"></script>
+    <script src="../../../../_static/toggleprompt.js?v=cec9bd37"></script>
+    <script src="../../../../_static/js/table.js?v=b64f5182"></script>
+    <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/solver/tui/mesh/index';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.0';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://fluent.docs.pyansys.com/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.27';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner = false;
+        </script>
+    <link rel="icon" href="../../../../_static/ansys-favicon.png"/>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="adapt" href="adapt/index.html" />
+    <link rel="prev" title="icing" href="../icing/index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="0.27.0" />
+  <link rel="canonical" href="https://fluent.docs.pyansys.com/version/stable/api/solver/tui/mesh/index.html" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../_static/pyansys_logo_transparent_black.png" class="logo__image only-light" alt="PyFluent - Home"/>
+    <img src="../../../../_static/pyansys_logo_transparent_white.png" class="logo__image only-dark pst-js-only" alt="PyFluent - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../getting_started/index.html">
+    Getting started
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../user_guide/index.html">
+    User guide
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../../index.html">
+    API reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../contributing/index.html">
+    Contributing to PyFluent
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+<div class="search-bar pst-js-only" id="search-bar">
+    <form class="bd-search d-flex align-items-center" action="../../../../search.html" method="get">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input type="search" class="form-control" name="q" placeholder="Search the docs ..."
+             aria-label="Search the docs ..." autocomplete="off" autocorrect="off"
+             autocapitalize="off" spellcheck="false"/>
+      <span class="search-button__kbd-shortcut">
+        <kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd>
+      </span>
+    </form>
+    <div id="search-results" class="search-results" style="display: none;" tabindex="0"></div>
+</div>
+        </div>
+      
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent/discussions" title="Support" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa fa-comment fa-fw fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Support</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+<div class="search-bar pst-js-only" id="search-bar">
+    <form class="bd-search d-flex align-items-center" action="../../../../search.html" method="get">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input type="search" class="form-control" name="q" placeholder="Search the docs ..."
+             aria-label="Search the docs ..." autocomplete="off" autocorrect="off"
+             autocapitalize="off" spellcheck="false"/>
+      <span class="search-button__kbd-shortcut">
+        <kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd>
+      </span>
+    </form>
+    <div id="search-results" class="search-results" style="display: none;" tabindex="0"></div>
+</div>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+  
+    <div id="announcement_msg"></div>
+<script>
+  fetch("announcement.html")
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error: ${response.status}`);
+      }
+      return response.text();
+    })
+    .then(
+      (text) => (document.getElementById("announcement_msg").innerHTML = text),
+    )
+    .catch((error) => console.error(`Fetch problem: ${error.message}`));
+</script>
+  
+
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../getting_started/index.html">
+    Getting started
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../user_guide/index.html">
+    User guide
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../../index.html">
+    API reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../contributing/index.html">
+    Contributing to PyFluent
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent/discussions" title="Support" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa fa-comment fa-fw fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Support</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../filereader/index.html">ansys.fluent.core.filereader</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../launcher/index.html">ansys.fluent.core.launcher</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../meshing/index.html">ansys.fluent.core.meshing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../post_objects/index.html">ansys.fluent.core.post_objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../scheduler/index.html">ansys.fluent.core.scheduler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../services/index.html">ansys.fluent.core.services</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../../index.html">ansys.fluent.core.solver</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../error_message.html">error_message</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../flobject.html">flobject</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../flunits.html">flunits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../settings_external.html">settings_external</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../datamodel/index.html">solver.datamodel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../settings_root.html">solver.settings</a></li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="../index.html">solver.tui</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../adjoint/index.html">adjoint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../define/index.html">define</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../display/index.html">display</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../file/index.html">file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../icing/index.html">icing</a></li>
+<li class="toctree-l3 current active has-children"><a class="current reference internal" href="#">mesh</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="adapt/index.html">adapt</a></li>
+<li class="toctree-l4"><a class="reference internal" href="anisotropic_adaption/index.html">anisotropic_adaption</a></li>
+<li class="toctree-l4"><a class="reference internal" href="geometry/index.html">geometry</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modify_zones/index.html">modify_zones</a></li>
+<li class="toctree-l4"><a class="reference internal" href="polyhedra/index.html">polyhedra</a></li>
+<li class="toctree-l4"><a class="reference internal" href="reorder/index.html">reorder</a></li>
+<li class="toctree-l4"><a class="reference internal" href="repair_improve/index.html">repair_improve</a></li>
+<li class="toctree-l4"><a class="reference internal" href="surface_mesh/index.html">surface_mesh</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3"><a class="reference internal" href="../parallel/index.html">parallel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../parameters/index.html">parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../parametric_study/index.html">parametric_study</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../plot/index.html">plot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../preferences/index.html">preferences</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../report/index.html">report</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../results/index.html">results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../server/index.html">server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../setup/index.html">setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../solution/index.html">solution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../solve/index.html">solve</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../surface/index.html">surface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../transient_post_processing/index.html">transient_post_processing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../turbo_post/index.html">turbo_post</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../turbo_workflow/index.html">turbo_workflow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../views/index.html">views</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../streaming_services/index.html">ansys.fluent.core.streaming_services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../utils/index.html">ansys.fluent.core.utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../data_model_cache.html">ansys.fluent.core.data_model_cache</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../exceptions.html">ansys.fluent.core.exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../file_session.html">ansys.fluent.core.file_session</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../fluent_connection.html">ansys.fluent.core.fluent_connection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../journaling.html">ansys.fluent.core.journaling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../logging.html">ansys.fluent.core.logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../parametric.html">ansys.fluent.core.parametric</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../rpvars.html">ansys.fluent.core.rpvars</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../search.html">ansys.fluent.core.search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../session_base_meshing.html">ansys.fluent.core.session_base_meshing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../session_meshing.html">ansys.fluent.core.session_meshing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../session_pure_meshing.html">ansys.fluent.core.session_pure_meshing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../session_solver_icing.html">ansys.fluent.core.session_solver_icing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../session_solver_lite.html">ansys.fluent.core.session_solver_lite</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../session_solver.html">ansys.fluent.core.session_solver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../session.html">ansys.fluent.core.session</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../systemcoupling.html">ansys.fluent.core.systemcoupling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../warnings.html">ansys.fluent.core.warnings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../workflow.html">ansys.fluent.core.workflow</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+         
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="https://docs.pyansys.com/" class="nav-link">PyAnsys</a>
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a
+        href="../../../../index.html"
+        class="nav-link"
+        aria-label="Home"
+      >
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a href="../../../index.html" class="nav-link">API reference</a>
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a href="../../index.html" class="nav-link">ansys.fluent.core.solver</a>
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a href="../index.html" class="nav-link">solver.tui</a>
+    </li>
+      
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">mesh</span></li>
+    
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="mesh">
+<span id="ref-solver-tui-mesh"></span><h1>mesh<a class="headerlink" href="#mesh" title="Link to this heading">#</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.generated.solver.tui_251.main_menu.mesh">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.generated.solver.tui_251.main_menu.</span></span><span class="sig-name descname"><span class="pre">mesh</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">service</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.generated.solver.tui_251.main_menu.mesh" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../../../services/datamodel_tui.html#ansys.fluent.core.services.datamodel_tui.TUIMenu" title="ansys.fluent.core.services.datamodel_tui.TUIMenu"><code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></a></p>
+<p>Enter the mesh menu.</p>
+<p><strong>Methods:</strong></p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.__init__" title="ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(service, version, mode, path)</p></td>
+<td><p>__init__ method of TUIMenu class.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Classes:</strong></p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="adapt/index.html#ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.adapt" title="ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.adapt"><code class="xref py py-obj docutils literal notranslate"><span class="pre">adapt</span></code></a>(service, version, mode, path)</p></td>
+<td><p>Enters the mesh adaption menu.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.adjacency" title="ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.adjacency"><code class="xref py py-obj docutils literal notranslate"><span class="pre">adjacency</span></code></a>(service, version, mode, path)</p></td>
+<td><p>Views and renames face zones adjacent to selected cell  zones.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="anisotropic_adaption/index.html#ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.anisotropic_adaption" title="ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.anisotropic_adaption"><code class="xref py py-obj docutils literal notranslate"><span class="pre">anisotropic_adaption</span></code></a>(service, version, mode, ...)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.check" title="ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.check"><code class="xref py py-obj docutils literal notranslate"><span class="pre">check</span></code></a>(service, version, mode, path)</p></td>
+<td><p>Performs various mesh consistency checks and displays a report in the console that lists the domain extents, the volume statistics, the face area statistics, and any warnings, as well as details about the various checks and mesh failures (depending on the setting specified for mesh/check-verbosity).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.check_before_solve" title="ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.check_before_solve"><code class="xref py py-obj docutils literal notranslate"><span class="pre">check_before_solve</span></code></a>(service, version, mode, path)</p></td>
+<td><p>The default value for mesh/check-before-solve is “no”.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.check_verbosity" title="ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.check_verbosity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">check_verbosity</span></code></a>(service, version, mode, path)</p></td>
+<td><p>Sets the level of details that will be added to the mesh check report generated by mesh/check.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.enhanced_orthogonal_quality" title="ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.enhanced_orthogonal_quality"><code class="xref py py-obj docutils literal notranslate"><span class="pre">enhanced_orthogonal_quality</span></code></a>(service, ...)</p></td>
+<td><p>Enables / disables an enhanced definition when calculating the orthogonal quality.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="geometry/index.html#ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.geometry" title="ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.geometry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geometry</span></code></a>(service, version, mode, path)</p></td>
+<td><p>Enter the auxiliary geometry menu.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.memory_usage" title="ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.memory_usage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">memory_usage</span></code></a>(service, version, mode, path)</p></td>
+<td><p>Reports solver memory use.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.mesh_info" title="ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.mesh_info"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mesh_info</span></code></a>(service, version, mode, path)</p></td>
+<td><p>Prints zone information size.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="modify_zones/index.html#ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.modify_zones" title="ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.modify_zones"><code class="xref py py-obj docutils literal notranslate"><span class="pre">modify_zones</span></code></a>(service, version, mode, path)</p></td>
+<td><p>Enters the zone modification menu.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="polyhedra/index.html#ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.polyhedra" title="ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.polyhedra"><code class="xref py py-obj docutils literal notranslate"><span class="pre">polyhedra</span></code></a>(service, version, mode, path)</p></td>
+<td><p>Enters the polyhedra menu.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.quality" title="ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.quality"><code class="xref py py-obj docutils literal notranslate"><span class="pre">quality</span></code></a>(service, version, mode, path)</p></td>
+<td><p>Displays information about the quality of the mesh in the console, including the minimum orthogonal quality and the maximum aspect ratio.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.redistribute_boundary_layer" title="ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.redistribute_boundary_layer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">redistribute_boundary_layer</span></code></a>(service, ...)</p></td>
+<td><p>Redistributes the nodes in a boundary layer zone to achieve a desired growth rate after anisotropic adaption.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="reorder/index.html#ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.reorder" title="ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.reorder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reorder</span></code></a>(service, version, mode, path)</p></td>
+<td><p>Reorders domain menu.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="repair_improve/index.html#ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.repair_improve" title="ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.repair_improve"><code class="xref py py-obj docutils literal notranslate"><span class="pre">repair_improve</span></code></a>(service, version, mode, path)</p></td>
+<td><p>Enter the repair and improve quality menu.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.replace" title="ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.replace"><code class="xref py py-obj docutils literal notranslate"><span class="pre">replace</span></code></a>(service, version, mode, path)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.rotate" title="ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.rotate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rotate</span></code></a>(service, version, mode, path)</p></td>
+<td><p>Rotates the mesh.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.scale" title="ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.scale"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale</span></code></a>(service, version, mode, path)</p></td>
+<td><p>Prompts for the scaling factors in each of the active Cartesian coordinate directions.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.show_periodic_shadow_zones" title="ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.show_periodic_shadow_zones"><code class="xref py py-obj docutils literal notranslate"><span class="pre">show_periodic_shadow_zones</span></code></a>(service, version, ...)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.size_info" title="ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.size_info"><code class="xref py py-obj docutils literal notranslate"><span class="pre">size_info</span></code></a>(service, version, mode, path)</p></td>
+<td><p>Prints mesh size.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.smooth_mesh" title="ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.smooth_mesh"><code class="xref py py-obj docutils literal notranslate"><span class="pre">smooth_mesh</span></code></a>(service, version, mode, path)</p></td>
+<td><p>Smooths the mesh using quality-based, Laplacian, or skewness methods.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="surface_mesh/index.html#ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.surface_mesh" title="ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.surface_mesh"><code class="xref py py-obj docutils literal notranslate"><span class="pre">surface_mesh</span></code></a>(service, version, mode, path)</p></td>
+<td><p>Enters the Surface Mesh menu.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.swap_mesh_faces" title="ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.swap_mesh_faces"><code class="xref py py-obj docutils literal notranslate"><span class="pre">swap_mesh_faces</span></code></a>(service, version, mode, path)</p></td>
+<td><p>Swaps mesh faces.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.translate" title="ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.translate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">translate</span></code></a>(service, version, mode, path)</p></td>
+<td><p>Prompts for the translation offset in each of the active Cartesian coordinate directions.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.wall_distance_method" title="ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.wall_distance_method"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wall_distance_method</span></code></a>(service, version, mode, ...)</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">service</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.__init__" title="Link to this definition">#</a></dt>
+<dd><p>__init__ method of TUIMenu class.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.adjacency">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">adjacency</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">service</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.adjacency" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../../../services/datamodel_tui.html#ansys.fluent.core.services.datamodel_tui.TUIMethod" title="ansys.fluent.core.services.datamodel_tui.TUIMethod"><code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMethod</span></code></a></p>
+<p>Views and renames face zones adjacent to selected cell  zones.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.check">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">check</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">service</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.check" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../../../services/datamodel_tui.html#ansys.fluent.core.services.datamodel_tui.TUIMethod" title="ansys.fluent.core.services.datamodel_tui.TUIMethod"><code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMethod</span></code></a></p>
+<p>Performs various mesh consistency checks and displays a report in the console that lists the domain extents, the volume statistics, the face area statistics, and any warnings, as well as details about the various checks and mesh failures (depending on the setting specified for mesh/check-verbosity).</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.check_before_solve">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">check_before_solve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">service</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.check_before_solve" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../../../services/datamodel_tui.html#ansys.fluent.core.services.datamodel_tui.TUIMethod" title="ansys.fluent.core.services.datamodel_tui.TUIMethod"><code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMethod</span></code></a></p>
+<p>The default value for mesh/check-before-solve is “no”. If mesh/check-before-solve is set to “yes”, a mesh check operation will be invoked prior to starting solver. If grid check fails, solver will be interrupted, and relevant information will be printed in the Fluent console.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.check_verbosity">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">check_verbosity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">service</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.check_verbosity" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../../../services/datamodel_tui.html#ansys.fluent.core.services.datamodel_tui.TUIMethod" title="ansys.fluent.core.services.datamodel_tui.TUIMethod"><code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMethod</span></code></a></p>
+<p>Sets the level of details that will be added to the mesh check report generated by mesh/check. A value of 0 (the default) notes when checks are being performed, but does not list them individually. A value of 1 lists the individual checks as they are performed. A value of 2 enables the availability of additional mesh field variables, lists the individual checks as they are performed, and provides additional details (for example, the location of the problem, the affected cells).  The check-verbosity text command can also be used to set the level of detail displayed in the mesh quality report generated by mesh/quality. A value of 0 (the default) or 1 lists the minimum orthogonal quality and the maximum aspect ratio. A value of 2 adds information about the zones that contain the cells with the lowest quality, and additional metrics such as the maximum cell squish index and the minimum expansion ratio.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.enhanced_orthogonal_quality">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">enhanced_orthogonal_quality</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">service</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.enhanced_orthogonal_quality" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../../../services/datamodel_tui.html#ansys.fluent.core.services.datamodel_tui.TUIMethod" title="ansys.fluent.core.services.datamodel_tui.TUIMethod"><code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMethod</span></code></a></p>
+<p>Enables / disables an enhanced definition when calculating the orthogonal quality. When enabled, the orthogonal quality is defined using a variety quality measures, including: the orthogonality of a face relative to a vector between the face and cell centroids; a metric that detects poor cell shape at a local edge (such as twisting and/or concavity); and the variation of normals between the faces that can be constructed from the cell face. This enhanced definition is optimal for evaluating thin prism cells.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.memory_usage">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">memory_usage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">service</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.memory_usage" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../../../services/datamodel_tui.html#ansys.fluent.core.services.datamodel_tui.TUIMethod" title="ansys.fluent.core.services.datamodel_tui.TUIMethod"><code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMethod</span></code></a></p>
+<p>Reports solver memory use.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.mesh_info">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">mesh_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">service</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.mesh_info" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../../../services/datamodel_tui.html#ansys.fluent.core.services.datamodel_tui.TUIMethod" title="ansys.fluent.core.services.datamodel_tui.TUIMethod"><code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMethod</span></code></a></p>
+<p>Prints zone information size.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.quality">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">quality</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">service</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.quality" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../../../services/datamodel_tui.html#ansys.fluent.core.services.datamodel_tui.TUIMethod" title="ansys.fluent.core.services.datamodel_tui.TUIMethod"><code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMethod</span></code></a></p>
+<p>Displays information about the quality of the mesh in the console, including the minimum orthogonal quality and the maximum aspect ratio. The level of detail displayed depends on the setting specified for mesh/check-verbosity.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.redistribute_boundary_layer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">redistribute_boundary_layer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">service</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.redistribute_boundary_layer" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../../../services/datamodel_tui.html#ansys.fluent.core.services.datamodel_tui.TUIMethod" title="ansys.fluent.core.services.datamodel_tui.TUIMethod"><code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMethod</span></code></a></p>
+<p>Redistributes the nodes in a boundary layer zone to achieve a desired growth rate after anisotropic adaption.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.replace">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">replace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">service</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.replace" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../../../services/datamodel_tui.html#ansys.fluent.core.services.datamodel_tui.TUIMethod" title="ansys.fluent.core.services.datamodel_tui.TUIMethod"><code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMethod</span></code></a></p>
+<p>.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.rotate">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">rotate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">service</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.rotate" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../../../services/datamodel_tui.html#ansys.fluent.core.services.datamodel_tui.TUIMethod" title="ansys.fluent.core.services.datamodel_tui.TUIMethod"><code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMethod</span></code></a></p>
+<p>Rotates the mesh.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.scale">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">scale</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">service</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.scale" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../../../services/datamodel_tui.html#ansys.fluent.core.services.datamodel_tui.TUIMethod" title="ansys.fluent.core.services.datamodel_tui.TUIMethod"><code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMethod</span></code></a></p>
+<p>Prompts for the scaling factors in each of the active Cartesian coordinate directions.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.show_periodic_shadow_zones">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">show_periodic_shadow_zones</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">service</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.show_periodic_shadow_zones" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../../../services/datamodel_tui.html#ansys.fluent.core.services.datamodel_tui.TUIMethod" title="ansys.fluent.core.services.datamodel_tui.TUIMethod"><code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMethod</span></code></a></p>
+<p>.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.size_info">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">size_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">service</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.size_info" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../../../services/datamodel_tui.html#ansys.fluent.core.services.datamodel_tui.TUIMethod" title="ansys.fluent.core.services.datamodel_tui.TUIMethod"><code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMethod</span></code></a></p>
+<p>Prints mesh size.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.smooth_mesh">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">smooth_mesh</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">service</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.smooth_mesh" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../../../services/datamodel_tui.html#ansys.fluent.core.services.datamodel_tui.TUIMethod" title="ansys.fluent.core.services.datamodel_tui.TUIMethod"><code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMethod</span></code></a></p>
+<p>Smooths the mesh using quality-based, Laplacian, or skewness methods.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.swap_mesh_faces">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">swap_mesh_faces</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">service</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.swap_mesh_faces" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../../../services/datamodel_tui.html#ansys.fluent.core.services.datamodel_tui.TUIMethod" title="ansys.fluent.core.services.datamodel_tui.TUIMethod"><code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMethod</span></code></a></p>
+<p>Swaps mesh faces.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.translate">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">translate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">service</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.translate" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../../../services/datamodel_tui.html#ansys.fluent.core.services.datamodel_tui.TUIMethod" title="ansys.fluent.core.services.datamodel_tui.TUIMethod"><code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMethod</span></code></a></p>
+<p>Prompts for the translation offset in each of the active Cartesian coordinate directions.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.wall_distance_method">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">wall_distance_method</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">service</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.wall_distance_method" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../../../services/datamodel_tui.html#ansys.fluent.core.services.datamodel_tui.TUIMethod" title="ansys.fluent.core.services.datamodel_tui.TUIMethod"><code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMethod</span></code></a></p>
+<p>.</p>
+</dd></dl>
+
+</dd></dl>
+
+<div class="toctree-wrapper compound">
+</div>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.generated.solver.tui_251.main_menu.mesh"><code class="docutils literal notranslate"><span class="pre">mesh</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.__init__"><code class="docutils literal notranslate"><span class="pre">mesh.__init__()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.adjacency"><code class="docutils literal notranslate"><span class="pre">mesh.adjacency</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.check"><code class="docutils literal notranslate"><span class="pre">mesh.check</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.check_before_solve"><code class="docutils literal notranslate"><span class="pre">mesh.check_before_solve</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.check_verbosity"><code class="docutils literal notranslate"><span class="pre">mesh.check_verbosity</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.enhanced_orthogonal_quality"><code class="docutils literal notranslate"><span class="pre">mesh.enhanced_orthogonal_quality</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.memory_usage"><code class="docutils literal notranslate"><span class="pre">mesh.memory_usage</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.mesh_info"><code class="docutils literal notranslate"><span class="pre">mesh.mesh_info</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.quality"><code class="docutils literal notranslate"><span class="pre">mesh.quality</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.redistribute_boundary_layer"><code class="docutils literal notranslate"><span class="pre">mesh.redistribute_boundary_layer</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.replace"><code class="docutils literal notranslate"><span class="pre">mesh.replace</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.rotate"><code class="docutils literal notranslate"><span class="pre">mesh.rotate</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.scale"><code class="docutils literal notranslate"><span class="pre">mesh.scale</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.show_periodic_shadow_zones"><code class="docutils literal notranslate"><span class="pre">mesh.show_periodic_shadow_zones</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.size_info"><code class="docutils literal notranslate"><span class="pre">mesh.size_info</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.smooth_mesh"><code class="docutils literal notranslate"><span class="pre">mesh.smooth_mesh</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.swap_mesh_faces"><code class="docutils literal notranslate"><span class="pre">mesh.swap_mesh_faces</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.translate"><code class="docutils literal notranslate"><span class="pre">mesh.translate</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.generated.solver.tui_251.main_menu.mesh.wall_distance_method"><code class="docutils literal notranslate"><span class="pre">mesh.wall_distance_method</span></code></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+<!-- If there is no fix edit button function, use the PyData edit-this-button-->
+</div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../../../../_sources/api/solver/tui/mesh/index.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+<link rel="stylesheet" href="../../../../_static/css/fuse-search.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.7/require.min.js"></script>
+
+<script>
+// Passing the search options to the search.js file
+const SEARCH_OPTIONS = JSON.parse('{"keys": ["title", "text"], "limit": 10, "threshold": 0.2}');
+const SEARCH_FILE = "../../../../_static/search.json";
+</script>
+
+
+<script src="../../../../_static/js/search.js"></script>
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright (c) 2024 ANSYS, Inc. All rights reserved.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.7.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="theme-version">
+  Built with the
+  <a href="https://sphinxdocs.ansys.com/version/stable/index.html"
+    >Ansys Sphinx Theme</a
+  >
+  1.2.0. <br />Last updated on
+  <span id="date"></span>
+</p>
+<script>
+  var options = { day: "numeric", month: "long", year: "numeric" };
+  var lastModifiedDate = new Date(document.lastModified);
+  var date = lastModifiedDate.toLocaleDateString("en-US", options);
+  document.getElementById("date").innerHTML = date;
+</script></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

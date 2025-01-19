@@ -1,0 +1,868 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>phase_child &#8212; PyFluent</title>
+    
+<script>
+  document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+  document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
+</script>
+
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../../_static/styles/theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+<link href="../../../../../_static/styles/pydata-sphinx-theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+
+
+  <link rel="stylesheet"
+    href="../../../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/css/ansys_sphinx_theme.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sg_gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sg_gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sg_gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sg_gallery-rendered-html.css" />
+
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
+
+    
+        <link href="../../../../../_static/css/breadcrumbs.css" rel="stylesheet">
+    
+    <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
+    <script src="../../../../../_static/jquery.js"></script>
+    <script src="../../../../../_static/underscore.js"></script>
+    <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../../../_static/doctools.js"></script>
+    <script src="../../../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../../../_static/thebelab-helper.js"></script>
+    <script src="../../../../../_static/clipboard.min.js"></script>
+    <script src="../../../../../_static/copybutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
+    <link rel="shortcut icon" href="../../../../../_static/ansys-favicon.png"/>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="docsearch:language" content="en">
+  <link rel="canonical" href="https://fluent.docs.pyansys.com/version/stable/api/core/solver/_autosummary/settings/phase_child_3.html" />
+  </head>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+    <div class="bd-header-announcement container-fluid" id="banner">
+      
+
+    </div>
+
+    
+    
+    <nav class="bd-header navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="bd-header__inner container-xl">
+
+  <div id="navbar-start">
+    
+    
+  
+
+
+<a class="navbar-brand logo" href="../../../../../index.html">
+  
+  
+  
+  
+    <img src="../../../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-light" alt="Logo image">
+    <img src="../../../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="fas fa-bars"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../../../getting_started/index.html">
+  Getting started
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../../../user_guide/index.html">
+  User guide
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../../index.html">
+  API reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../../../examples/index.html">
+  Examples
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../../../contributing.html">
+  Contributing
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <div class="dropdown" id="version_switcher">
+    <button type="button" class="btn btn-sm navbar-btn dropdown-toggle" id="version_switcher_button" data-toggle="dropdown">
+        0.11  <!-- this text may get changed later by javascript -->
+        <span class="caret"></span>
+    </button>
+    <div id="version_switcher_menu" class="dropdown-menu list-group-flush py-0" aria-labelledby="version_switcher_button">
+    <!-- dropdown will be populated by javascript on page load -->
+    </div>
+</div>
+
+<!-- NOTE: this JS must live here (not in our global JS file) because it relies
+     on being processed by Jinja before it is run (specifically for replacing
+     variables api/core/solver/_autosummary/settings/phase_child_3 and {'json_url': 'https://fluent.docs.pyansys.com/versions.json', 'version_match': '0.11'}.
+-->
+
+<script type="text/javascript">
+// Check if corresponding page path exists in other version of docs
+// and, if so, go there instead of the homepage of the other docs version
+function checkPageExistsAndRedirect(event) {
+    const currentFilePath = "api/core/solver/_autosummary/settings/phase_child_3.html",
+          tryUrl = event.target.getAttribute("href");
+    let otherDocsHomepage = tryUrl.replace(currentFilePath, "");
+    $.ajax({
+        type: 'HEAD',
+        url: tryUrl,
+        // if the page exists, go there
+        success: function() {
+            location.href = tryUrl;
+        }
+    }).fail(function() {
+        location.href = otherDocsHomepage;
+    });
+    // this prevents the browser from following the href of the clicked node
+    // (which is fine because this function takes care of redirecting)
+    return false;
+}
+
+// Populate the version switcher from the JSON config file
+(function () {
+    $.getJSON("https://fluent.docs.pyansys.com/versions.json", function(data, textStatus, jqXHR) {
+        const currentFilePath = "api/core/solver/_autosummary/settings/phase_child_3.html";
+        let btn = document.getElementById("version_switcher_button");
+        // Set empty strings by default so that these attributes exist and can be used in CSS selectors
+        btn.dataset["activeVersionName"] = "";
+        btn.dataset["activeVersion"] = "";
+        // create links to the corresponding page in the other docs versions
+        $.each(data, function(index, entry) {
+            // if no custom name specified (e.g., "latest"), use version string
+            if (!("name" in entry)) {
+                entry.name = entry.version;
+            }
+            // create the node
+            const node = document.createElement("a");
+            node.setAttribute("class", "list-group-item list-group-item-action py-1");
+            node.textContent = `${entry.name}`;
+            node.setAttribute("href", `${entry.url}${currentFilePath}`);
+            // on click, AJAX calls will check if the linked page exists before
+            // trying to redirect, and if not, will redirect to the homepage
+            // for that version of the docs.
+            node.onclick = checkPageExistsAndRedirect;
+            // Add dataset values for the version and name in case people want
+            // to apply CSS styling based on this information.
+            node.dataset["versionName"] = entry.name;
+            node.dataset["version"] = entry.version;
+
+            $("#version_switcher_menu").append(node);
+            // replace dropdown button text with the preferred display name of
+            // this version, rather than using sphinx's 0.11.1 variable.
+            // also highlight the dropdown entry for the currently-viewed
+            // version's entry
+            if (entry.version == "0.11") {
+                node.classList.add("active");
+                btn.innerText = btn.dataset["activeVersionName"] = entry.name;
+                btn.dataset["activeVersion"] = entry.version;
+            }
+        });
+    });
+})();
+</script>
+      </div>
+      
+      <div class="navbar-end-item">
+        <span id="theme-switch" class="btn btn-sm btn-outline-primary navbar-btn rounded-circle">
+    <a class="theme-switch" data-mode="light"><i class="fas fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="far fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fas fa-adjust"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/pyansys/pyfluent" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+     
+<div id="announcement_msg"></div>
+<script>
+  fetch("announcement.html")
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error: ${response.status}`);
+      }
+      return response.text();
+    })
+    .then(text => document.getElementById("announcement_msg").innerHTML = text)
+    .catch((error) => console.error(`Fetch problem: ${error.message}`));
+</script>
+
+    
+        <div class="container-xl">
+    <div class="row">
+        <div class="col-12 col-md-3" id="breadcrumbs-spacer"></div>
+        <div class="col-12 col-md-11 col-xl-9" id="breadcrumbs">
+          
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+    
+        <li class="nav-item nav-item-additional-breadcrumb"><a href="https://docs.pyansys.com/">PyAnsys</a> » </li>
+    
+    
+        <li class="nav-item nav-item-0"><a href="../../../../../index.html">PyFluent</a> » </li>
+    
+
+        <li class="nav-item nav-item-this"><a href="">phase_child</a></li> 
+      </ul>
+    </div>
+        </div>
+  </div>
+</div>
+    
+
+
+    <div class="bd-container container-xl">
+      <div class="bd-container__inner row">
+          
+
+<!-- Only show if we have sidebars configured, else just a small margin  -->
+<div class="bd-sidebar-primary col-12 col-md-3 bd-sidebar">
+  <div class="sidebar-start-items"><form class="bd-search d-flex align-items-center" action="../../../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    
+  </div>
+</nav>
+  </div>
+  <div class="sidebar-end-items">
+  </div>
+</div>
+
+
+          
+
+
+<div class="bd-sidebar-secondary d-none d-xl-block col-xl-2 bd-toc">
+  
+    
+    <div class="toc-item">
+      
+<div class="tocsection onthispage mt-5 pt-1 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ansys.fluent.core.solver.settings_222.phase_child_3.phase_child">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     phase_child
+    </span>
+   </code>
+  </a>
+ </li>
+</ul>
+
+</nav>
+    </div>
+    
+    <div class="toc-item">
+      
+    </div>
+    
+  
+</div>
+
+
+          
+          
+          <div class="bd-content col-12 col-md-9 col-xl-7">
+              
+              <article class="bd-article" role="main">
+                
+  <section id="phase-child">
+<span id="phase-child-3"></span><h1>phase_child<a class="headerlink" href="#phase-child" title="Permalink to this heading">#</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.settings_222.phase_child_3.phase_child">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.solver.settings_222.phase_child_3.</span></span><span class="sig-name descname"><span class="pre">phase_child</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.settings_222.phase_child_3.phase_child" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../ansys.fluent.core.solver.flobject.Group.html#ansys.fluent.core.solver.flobject.Group" title="ansys.fluent.core.solver.flobject.Group"><code class="xref py py-class docutils literal notranslate"><span class="pre">Group</span></code></a></p>
+<p>‘child_object_type’ of phase.</p>
+</dd></dl>
+
+<p class="rubric">Children</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Child</p></th>
+<th class="head"><p>Summary</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="geom_disable.html#geom-disable"><span class="std std-ref">geom_disable</span></a></p></td>
+<td><p>‘geom_disable’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="geom_dir_spec.html#geom-dir-spec"><span class="std std-ref">geom_dir_spec</span></a></p></td>
+<td><p>‘geom_dir_spec’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="geom_dir_x.html#geom-dir-x"><span class="std std-ref">geom_dir_x</span></a></p></td>
+<td><p>‘geom_dir_x’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="geom_dir_y.html#geom-dir-y"><span class="std std-ref">geom_dir_y</span></a></p></td>
+<td><p>‘geom_dir_y’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="geom_dir_z.html#geom-dir-z"><span class="std std-ref">geom_dir_z</span></a></p></td>
+<td><p>‘geom_dir_z’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="geom_levels.html#geom-levels"><span class="std std-ref">geom_levels</span></a></p></td>
+<td><p>‘geom_levels’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="geom_bgthread.html#geom-bgthread"><span class="std std-ref">geom_bgthread</span></a></p></td>
+<td><p>‘geom_bgthread’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="open_channel.html#open-channel"><span class="std std-ref">open_channel</span></a></p></td>
+<td><p>‘open_channel’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="outlet_number.html#outlet-number"><span class="std std-ref">outlet_number</span></a></p></td>
+<td><p>‘outlet_number’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pressure_spec_method.html#pressure-spec-method"><span class="std std-ref">pressure_spec_method</span></a></p></td>
+<td><p>‘pressure_spec_method’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="press_spec.html#press-spec"><span class="std std-ref">press_spec</span></a></p></td>
+<td><p>‘press_spec’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="frame_of_reference.html#frame-of-reference"><span class="std std-ref">frame_of_reference</span></a></p></td>
+<td><p>‘frame_of_reference’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="phase_spec.html#phase-spec"><span class="std std-ref">phase_spec</span></a></p></td>
+<td><p>‘phase_spec’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="ht_local.html#ht-local"><span class="std std-ref">ht_local</span></a></p></td>
+<td><p>‘ht_local’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="p.html#p"><span class="std std-ref">p</span></a></p></td>
+<td><p>‘p’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="p_profile_multiplier.html#p-profile-multiplier"><span class="std std-ref">p_profile_multiplier</span></a></p></td>
+<td><p>‘p_profile_multiplier’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="ht_bottom.html#ht-bottom"><span class="std std-ref">ht_bottom</span></a></p></td>
+<td><p>‘ht_bottom’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="den_spec.html#den-spec"><span class="std std-ref">den_spec</span></a></p></td>
+<td><p>‘den_spec’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="t0.html#t0"><span class="std std-ref">t0</span></a></p></td>
+<td><p>‘t0’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="direction_spec.html#direction-spec"><span class="std std-ref">direction_spec</span></a></p></td>
+<td><p>‘direction_spec’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="coordinate_system.html#coordinate-system"><span class="std std-ref">coordinate_system</span></a></p></td>
+<td><p>‘coordinate_system’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="flow_direction_component.html#flow-direction-component"><span class="std std-ref">flow_direction_component</span></a></p></td>
+<td><p>‘flow_direction_component’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="axis_direction_component_1.html#axis-direction-component-1"><span class="std std-ref">axis_direction_component</span></a></p></td>
+<td><p>‘axis_direction_component’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="axis_origin_component_1.html#axis-origin-component-1"><span class="std std-ref">axis_origin_component</span></a></p></td>
+<td><p>‘axis_origin_component’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="ke_spec.html#ke-spec"><span class="std std-ref">ke_spec</span></a></p></td>
+<td><p>‘ke_spec’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="nut.html#nut"><span class="std std-ref">nut</span></a></p></td>
+<td><p>‘nut’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="kl.html#kl"><span class="std std-ref">kl</span></a></p></td>
+<td><p>‘kl’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="intermit.html#intermit"><span class="std std-ref">intermit</span></a></p></td>
+<td><p>‘intermit’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="k.html#k"><span class="std std-ref">k</span></a></p></td>
+<td><p>‘k’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="e.html#e"><span class="std std-ref">e</span></a></p></td>
+<td><p>‘e’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="o.html#o"><span class="std std-ref">o</span></a></p></td>
+<td><p>‘o’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="v2.html#v2"><span class="std std-ref">v2</span></a></p></td>
+<td><p>‘v2’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="turb_intensity.html#turb-intensity"><span class="std std-ref">turb_intensity</span></a></p></td>
+<td><p>‘turb_intensity’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="turb_length_scale.html#turb-length-scale"><span class="std std-ref">turb_length_scale</span></a></p></td>
+<td><p>‘turb_length_scale’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="turb_hydraulic_diam.html#turb-hydraulic-diam"><span class="std std-ref">turb_hydraulic_diam</span></a></p></td>
+<td><p>‘turb_hydraulic_diam’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="turb_viscosity_ratio.html#turb-viscosity-ratio"><span class="std std-ref">turb_viscosity_ratio</span></a></p></td>
+<td><p>‘turb_viscosity_ratio’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="turb_viscosity_ratio_profile.html#turb-viscosity-ratio-profile"><span class="std std-ref">turb_viscosity_ratio_profile</span></a></p></td>
+<td><p>‘turb_viscosity_ratio_profile’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="rst_spec.html#rst-spec"><span class="std std-ref">rst_spec</span></a></p></td>
+<td><p>‘rst_spec’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="uu.html#uu"><span class="std std-ref">uu</span></a></p></td>
+<td><p>‘uu’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="vv.html#vv"><span class="std std-ref">vv</span></a></p></td>
+<td><p>‘vv’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="ww.html#ww"><span class="std std-ref">ww</span></a></p></td>
+<td><p>‘ww’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="uv.html#uv"><span class="std std-ref">uv</span></a></p></td>
+<td><p>‘uv’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="vw.html#vw"><span class="std std-ref">vw</span></a></p></td>
+<td><p>‘vw’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="uw.html#uw"><span class="std std-ref">uw</span></a></p></td>
+<td><p>‘uw’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="ksgs_spec.html#ksgs-spec"><span class="std std-ref">ksgs_spec</span></a></p></td>
+<td><p>‘ksgs_spec’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="ksgs.html#ksgs"><span class="std std-ref">ksgs</span></a></p></td>
+<td><p>‘ksgs’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="sgs_turb_intensity.html#sgs-turb-intensity"><span class="std std-ref">sgs_turb_intensity</span></a></p></td>
+<td><p>‘sgs_turb_intensity’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="radiation_bc.html#radiation-bc"><span class="std std-ref">radiation_bc</span></a></p></td>
+<td><p>‘radiation_bc’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="radial_direction_component.html#radial-direction-component"><span class="std std-ref">radial_direction_component</span></a></p></td>
+<td><p>‘radial_direction_component’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="coll_dtheta.html#coll-dtheta"><span class="std std-ref">coll_dtheta</span></a></p></td>
+<td><p>‘coll_dtheta’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="coll_dphi.html#coll-dphi"><span class="std std-ref">coll_dphi</span></a></p></td>
+<td><p>‘coll_dphi’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="band_q_irrad.html#band-q-irrad"><span class="std std-ref">band_q_irrad</span></a></p></td>
+<td><p>‘band_q_irrad’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="band_q_irrad_diffuse.html#band-q-irrad-diffuse"><span class="std std-ref">band_q_irrad_diffuse</span></a></p></td>
+<td><p>‘band_q_irrad_diffuse’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="parallel_collimated_beam.html#parallel-collimated-beam"><span class="std std-ref">parallel_collimated_beam</span></a></p></td>
+<td><p>‘parallel_collimated_beam’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="solar_direction.html#solar-direction"><span class="std std-ref">solar_direction</span></a></p></td>
+<td><p>‘solar_direction’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="solar_irradiation.html#solar-irradiation"><span class="std std-ref">solar_irradiation</span></a></p></td>
+<td><p>‘solar_irradiation’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="t_b_b_spec.html#t-b-b-spec"><span class="std std-ref">t_b_b_spec</span></a></p></td>
+<td><p>‘t_b_b_spec’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="t_b_b.html#t-b-b"><span class="std std-ref">t_b_b</span></a></p></td>
+<td><p>‘t_b_b’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="in_emiss.html#in-emiss"><span class="std std-ref">in_emiss</span></a></p></td>
+<td><p>‘in_emiss’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fmean.html#fmean"><span class="std std-ref">fmean</span></a></p></td>
+<td><p>‘fmean’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fmean2.html#fmean2"><span class="std std-ref">fmean2</span></a></p></td>
+<td><p>‘fmean2’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fvar.html#fvar"><span class="std std-ref">fvar</span></a></p></td>
+<td><p>‘fvar’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fvar2.html#fvar2"><span class="std std-ref">fvar2</span></a></p></td>
+<td><p>‘fvar2’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="granular_temperature.html#granular-temperature"><span class="std std-ref">granular_temperature</span></a></p></td>
+<td><p>‘granular_temperature’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="iac.html#iac"><span class="std std-ref">iac</span></a></p></td>
+<td><p>‘iac’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="lsfun.html#lsfun"><span class="std std-ref">lsfun</span></a></p></td>
+<td><p>‘lsfun’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="vof_spec.html#vof-spec"><span class="std std-ref">vof_spec</span></a></p></td>
+<td><p>‘vof_spec’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="volume_fraction.html#volume-fraction"><span class="std std-ref">volume_fraction</span></a></p></td>
+<td><p>‘volume_fraction’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="species_in_mole_fractions.html#species-in-mole-fractions"><span class="std std-ref">species_in_mole_fractions</span></a></p></td>
+<td><p>‘species_in_mole_fractions’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="mf.html#mf"><span class="std std-ref">mf</span></a></p></td>
+<td><p>‘mf’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="elec_potential_type.html#elec-potential-type"><span class="std std-ref">elec_potential_type</span></a></p></td>
+<td><p>‘elec_potential_type’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="potential_value.html#potential-value"><span class="std std-ref">potential_value</span></a></p></td>
+<td><p>‘potential_value’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="dual_potential_type.html#dual-potential-type"><span class="std std-ref">dual_potential_type</span></a></p></td>
+<td><p>‘dual_potential_type’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="dual_potential_value.html#dual-potential-value"><span class="std std-ref">dual_potential_value</span></a></p></td>
+<td><p>‘dual_potential_value’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="x_displacement_type.html#x-displacement-type"><span class="std std-ref">x_displacement_type</span></a></p></td>
+<td><p>‘x_displacement_type’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="x_displacement_value.html#x-displacement-value"><span class="std std-ref">x_displacement_value</span></a></p></td>
+<td><p>‘x_displacement_value’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="y_displacement_type.html#y-displacement-type"><span class="std std-ref">y_displacement_type</span></a></p></td>
+<td><p>‘y_displacement_type’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="y_displacement_value.html#y-displacement-value"><span class="std std-ref">y_displacement_value</span></a></p></td>
+<td><p>‘y_displacement_value’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="z_displacement_type.html#z-displacement-type"><span class="std std-ref">z_displacement_type</span></a></p></td>
+<td><p>‘z_displacement_type’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="z_displacement_value.html#z-displacement-value"><span class="std std-ref">z_displacement_value</span></a></p></td>
+<td><p>‘z_displacement_value’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="prob_mode_1.html#prob-mode-1"><span class="std std-ref">prob_mode_1</span></a></p></td>
+<td><p>‘prob_mode_1’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="prob_mode_2.html#prob-mode-2"><span class="std std-ref">prob_mode_2</span></a></p></td>
+<td><p>‘prob_mode_2’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="prob_mode_3.html#prob-mode-3"><span class="std std-ref">prob_mode_3</span></a></p></td>
+<td><p>‘prob_mode_3’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="premixc.html#premixc"><span class="std std-ref">premixc</span></a></p></td>
+<td><p>‘premixc’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="premixc_var.html#premixc-var"><span class="std std-ref">premixc_var</span></a></p></td>
+<td><p>‘premixc_var’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="ecfm_sigma.html#ecfm-sigma"><span class="std std-ref">ecfm_sigma</span></a></p></td>
+<td><p>‘ecfm_sigma’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="inert.html#inert"><span class="std std-ref">inert</span></a></p></td>
+<td><p>‘inert’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pollut_no.html#pollut-no"><span class="std std-ref">pollut_no</span></a></p></td>
+<td><p>‘pollut_no’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pollut_hcn.html#pollut-hcn"><span class="std std-ref">pollut_hcn</span></a></p></td>
+<td><p>‘pollut_hcn’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pollut_nh3.html#pollut-nh3"><span class="std std-ref">pollut_nh3</span></a></p></td>
+<td><p>‘pollut_nh3’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pollut_n2o.html#pollut-n2o"><span class="std std-ref">pollut_n2o</span></a></p></td>
+<td><p>‘pollut_n2o’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pollut_urea.html#pollut-urea"><span class="std std-ref">pollut_urea</span></a></p></td>
+<td><p>‘pollut_urea’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pollut_hnco.html#pollut-hnco"><span class="std std-ref">pollut_hnco</span></a></p></td>
+<td><p>‘pollut_hnco’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pollut_nco.html#pollut-nco"><span class="std std-ref">pollut_nco</span></a></p></td>
+<td><p>‘pollut_nco’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pollut_so2.html#pollut-so2"><span class="std std-ref">pollut_so2</span></a></p></td>
+<td><p>‘pollut_so2’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pollut_h2s.html#pollut-h2s"><span class="std std-ref">pollut_h2s</span></a></p></td>
+<td><p>‘pollut_h2s’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pollut_so3.html#pollut-so3"><span class="std std-ref">pollut_so3</span></a></p></td>
+<td><p>‘pollut_so3’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pollut_sh.html#pollut-sh"><span class="std std-ref">pollut_sh</span></a></p></td>
+<td><p>‘pollut_sh’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pollut_so.html#pollut-so"><span class="std std-ref">pollut_so</span></a></p></td>
+<td><p>‘pollut_so’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pollut_soot.html#pollut-soot"><span class="std std-ref">pollut_soot</span></a></p></td>
+<td><p>‘pollut_soot’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pollut_nuclei.html#pollut-nuclei"><span class="std std-ref">pollut_nuclei</span></a></p></td>
+<td><p>‘pollut_nuclei’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pollut_ctar.html#pollut-ctar"><span class="std std-ref">pollut_ctar</span></a></p></td>
+<td><p>‘pollut_ctar’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pollut_hg.html#pollut-hg"><span class="std std-ref">pollut_hg</span></a></p></td>
+<td><p>‘pollut_hg’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pollut_hgcl2.html#pollut-hgcl2"><span class="std std-ref">pollut_hgcl2</span></a></p></td>
+<td><p>‘pollut_hgcl2’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pollut_hcl.html#pollut-hcl"><span class="std std-ref">pollut_hcl</span></a></p></td>
+<td><p>‘pollut_hcl’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pollut_hgo.html#pollut-hgo"><span class="std std-ref">pollut_hgo</span></a></p></td>
+<td><p>‘pollut_hgo’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pollut_cl.html#pollut-cl"><span class="std std-ref">pollut_cl</span></a></p></td>
+<td><p>‘pollut_cl’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pollut_cl2.html#pollut-cl2"><span class="std std-ref">pollut_cl2</span></a></p></td>
+<td><p>‘pollut_cl2’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pollut_hgcl.html#pollut-hgcl"><span class="std std-ref">pollut_hgcl</span></a></p></td>
+<td><p>‘pollut_hgcl’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pollut_hocl.html#pollut-hocl"><span class="std std-ref">pollut_hocl</span></a></p></td>
+<td><p>‘pollut_hocl’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="tss_scalar.html#tss-scalar"><span class="std std-ref">tss_scalar</span></a></p></td>
+<td><p>‘tss_scalar’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fensapice_flow_bc_subtype.html#fensapice-flow-bc-subtype"><span class="std std-ref">fensapice_flow_bc_subtype</span></a></p></td>
+<td><p>‘fensapice_flow_bc_subtype’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="uds_bc.html#uds-bc"><span class="std std-ref">uds_bc</span></a></p></td>
+<td><p>‘uds_bc’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="uds.html#uds"><span class="std std-ref">uds</span></a></p></td>
+<td><p>‘uds’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pb_disc_bc.html#pb-disc-bc"><span class="std std-ref">pb_disc_bc</span></a></p></td>
+<td><p>‘pb_disc_bc’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pb_disc.html#pb-disc"><span class="std std-ref">pb_disc</span></a></p></td>
+<td><p>‘pb_disc’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pb_qmom_bc.html#pb-qmom-bc"><span class="std std-ref">pb_qmom_bc</span></a></p></td>
+<td><p>‘pb_qmom_bc’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pb_qmom.html#pb-qmom"><span class="std std-ref">pb_qmom</span></a></p></td>
+<td><p>‘pb_qmom’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pb_smm_bc.html#pb-smm-bc"><span class="std std-ref">pb_smm_bc</span></a></p></td>
+<td><p>‘pb_smm_bc’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pb_smm.html#pb-smm"><span class="std std-ref">pb_smm</span></a></p></td>
+<td><p>‘pb_smm’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pb_dqmom_bc.html#pb-dqmom-bc"><span class="std std-ref">pb_dqmom_bc</span></a></p></td>
+<td><p>‘pb_dqmom_bc’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pb_dqmom.html#pb-dqmom"><span class="std std-ref">pb_dqmom</span></a></p></td>
+<td><p>‘pb_dqmom’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="dpm_bc_type.html#dpm-bc-type"><span class="std std-ref">dpm_bc_type</span></a></p></td>
+<td><p>‘dpm_bc_type’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="dpm_bc_collision_partner.html#dpm-bc-collision-partner"><span class="std std-ref">dpm_bc_collision_partner</span></a></p></td>
+<td><p>‘dpm_bc_collision_partner’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="reinj_inj.html#reinj-inj"><span class="std std-ref">reinj_inj</span></a></p></td>
+<td><p>‘reinj_inj’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="dpm_bc_udf.html#dpm-bc-udf"><span class="std std-ref">dpm_bc_udf</span></a></p></td>
+<td><p>‘dpm_bc_udf’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="mixing_plane_thread.html#mixing-plane-thread"><span class="std std-ref">mixing_plane_thread</span></a></p></td>
+<td><p>‘mixing_plane_thread’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="ac_options.html#ac-options"><span class="std std-ref">ac_options</span></a></p></td>
+<td><p>‘ac_options’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="p_backflow_spec.html#p-backflow-spec"><span class="std std-ref">p_backflow_spec</span></a></p></td>
+<td><p>‘p_backflow_spec’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="p_backflow_spec_gen.html#p-backflow-spec-gen"><span class="std std-ref">p_backflow_spec_gen</span></a></p></td>
+<td><p>‘p_backflow_spec_gen’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="impedance_0.html#impedance-0"><span class="std std-ref">impedance_0</span></a></p></td>
+<td><p>‘impedance_0’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="impedance_1.html#impedance-1"><span class="std std-ref">impedance_1</span></a></p></td>
+<td><p>‘impedance_1’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="impedance_2.html#impedance-2"><span class="std std-ref">impedance_2</span></a></p></td>
+<td><p>‘impedance_2’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="ac_wave.html#ac-wave"><span class="std std-ref">ac_wave</span></a></p></td>
+<td><p>‘ac_wave’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="prevent_reverse_flow.html#prevent-reverse-flow"><span class="std std-ref">prevent_reverse_flow</span></a></p></td>
+<td><p>‘prevent_reverse_flow’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="radial.html#radial"><span class="std std-ref">radial</span></a></p></td>
+<td><p>‘radial’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="avg_press_spec.html#avg-press-spec"><span class="std std-ref">avg_press_spec</span></a></p></td>
+<td><p>‘avg_press_spec’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="press_averaging_method.html#press-averaging-method"><span class="std std-ref">press_averaging_method</span></a></p></td>
+<td><p>‘press_averaging_method’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="targeted_mf_boundary.html#targeted-mf-boundary"><span class="std std-ref">targeted_mf_boundary</span></a></p></td>
+<td><p>‘targeted_mf_boundary’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="targeted_mf.html#targeted-mf"><span class="std std-ref">targeted_mf</span></a></p></td>
+<td><p>‘targeted_mf’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="targeted_mf_pmax.html#targeted-mf-pmax"><span class="std std-ref">targeted_mf_pmax</span></a></p></td>
+<td><p>‘targeted_mf_pmax’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="targeted_mf_pmin.html#targeted-mf-pmin"><span class="std std-ref">targeted_mf_pmin</span></a></p></td>
+<td><p>‘targeted_mf_pmin’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="gen_nrbc_spec.html#gen-nrbc-spec"><span class="std std-ref">gen_nrbc_spec</span></a></p></td>
+<td><p>‘gen_nrbc_spec’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="wsf.html#wsf"><span class="std std-ref">wsf</span></a></p></td>
+<td><p>‘wsf’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="wsb.html#wsb"><span class="std std-ref">wsb</span></a></p></td>
+<td><p>‘wsb’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="wsn.html#wsn"><span class="std std-ref">wsn</span></a></p></td>
+<td><p>‘wsn’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="solar_fluxes.html#solar-fluxes"><span class="std std-ref">solar_fluxes</span></a></p></td>
+<td><p>‘solar_fluxes’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="solar_shining_factor.html#solar-shining-factor"><span class="std std-ref">solar_shining_factor</span></a></p></td>
+<td><p>‘solar_shining_factor’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="radiating_s2s_surface.html#radiating-s2s-surface"><span class="std std-ref">radiating_s2s_surface</span></a></p></td>
+<td><p>‘radiating_s2s_surface’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="a.html#a"><span class="std std-ref">a</span></a></p></td>
+<td><p>‘a’ child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="strength.html#strength"><span class="std std-ref">strength</span></a></p></td>
+<td><p>‘strength’ child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="new_fan_definition.html#new-fan-definition"><span class="std std-ref">new_fan_definition</span></a></p></td>
+<td><p>‘new_fan_definition’ child.</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Included in:</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parent</p></th>
+<th class="head"><p>Summary</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="phase_3.html#phase-3"><span class="std std-ref">phase</span></a></p></td>
+<td><p>‘phase’ child.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+
+
+              </article>
+              
+
+              
+          </div>
+          
+      </div>
+    </div>
+
+  
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695"></script>
+
+<footer class="bd-footer"><div class="bd-footer__inner container">
+  
+  <div class="footer-item">
+    <p class="copyright">
+    &copy; Copyright (c) 2023 ANSYS, Inc. All rights reserved.<br>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br>
+</p>
+  </div>
+  
+</div>
+</footer>
+  </body>
+</html>

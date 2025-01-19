@@ -1,0 +1,2049 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>viscous &#8212; PyFluent</title>
+
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../../../../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../../../../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../../../../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/sg_gallery.css?v=61a4c737" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/css/ansys_sphinx_theme.css?v=450015ff" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../../../../../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../../../../../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+ 
+<link href="../../../../../../_static/css/breadcrumbs.css" rel="stylesheet" />
+
+    <script src="../../../../../../_static/documentation_options.js?v=03f67e04"></script>
+    <script src="../../../../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../../../_static/thebelab-helper.js"></script>
+    <script src="../../../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../../../_static/copybutton.js?v=49e1bf35"></script>
+    <script src="../../../../../../_static/js/table.js?v=b64f5182"></script>
+    <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/solver/tui/define/models/viscous/index';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.14.4';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://fluent.docs.pyansys.com/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.19';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner = false;
+        </script>
+    <link rel="icon" href="../../../../../../_static/ansys-favicon.png"/>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+    <link rel="next" title="near_wall_treatment" href="near_wall_treatment/index.html" />
+    <link rel="prev" title="expert" href="../dpm/parallel/expert/index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <link rel="canonical" href="https://fluent.docs.pyansys.com/version/stable/api/solver/tui/define/models/viscous/index.html" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container"><!-- Debugging: html_theme_options =  -->
+
+<!-- If there is no MiliSearch enabled, use the PyData search -->
+<form class="bd-search d-flex align-items-center"
+      action="../../../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+   
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+
+<a class="navbar-brand logo" href="../../../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-light" alt="PyFluent - Home"/>
+    <script>document.write(`<img src="../../../../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-dark" alt="PyFluent - Home"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../../getting_started/index.html">
+                        Getting started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../../user_guide/index.html">
+                        User guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../../../../../index.html">
+                        API reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../../examples/index.html">
+                        Examples
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../../contributing.html">
+                        Contribute
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+<script>
+document.write(`
+  <div class="version-switcher__container dropdown">
+    <button id="pst-version-switcher-button-2"
+      type="button"
+      class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle"
+      data-bs-toggle="dropdown"
+      aria-haspopup="listbox"
+      aria-controls="pst-version-switcher-list-2"
+      aria-label="Version switcher list"
+    >
+      Choose version  <!-- this text may get changed later by javascript -->
+      <span class="caret"></span>
+    </button>
+    <div id="pst-version-switcher-list-2"
+      class="version-switcher__menu dropdown-menu list-group-flush py-0"
+      role="listbox" aria-labelledby="pst-version-switcher-button-2">
+      <!-- dropdown will be populated by javascript on page load -->
+    </div>
+  </div>
+`);
+</script></div>
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent/discussions" title="Support" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa fa-comment fa-fw fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Support</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </nav>
+    <div id="announcement_msg"></div>
+<script>
+  fetch("announcement.html")
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error: ${response.status}`);
+      }
+      return response.text();
+    })
+    .then(
+      (text) => (document.getElementById("announcement_msg").innerHTML = text),
+    )
+    .catch((error) => console.error(`Fetch problem: ${error.message}`));
+</script>  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item">
+<nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../../getting_started/index.html">
+                        Getting started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../../user_guide/index.html">
+                        User guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../../../../../index.html">
+                        API reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../../examples/index.html">
+                        Examples
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../../contributing.html">
+                        Contribute
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<script>
+document.write(`
+  <div class="version-switcher__container dropdown">
+    <button id="pst-version-switcher-button-3"
+      type="button"
+      class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle"
+      data-bs-toggle="dropdown"
+      aria-haspopup="listbox"
+      aria-controls="pst-version-switcher-list-3"
+      aria-label="Version switcher list"
+    >
+      Choose version  <!-- this text may get changed later by javascript -->
+      <span class="caret"></span>
+    </button>
+    <div id="pst-version-switcher-list-3"
+      class="version-switcher__menu dropdown-menu list-group-flush py-0"
+      role="listbox" aria-labelledby="pst-version-switcher-button-3">
+      <!-- dropdown will be populated by javascript on page load -->
+    </div>
+  </div>
+`);
+</script></div>
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent/discussions" title="Support" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa fa-comment fa-fw fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Support</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../../../general/index.html">General</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../meshing/index.html">Meshing</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../../../../index.html">Solver</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../../settings.html">Solver settings objects</a></li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="../../../../tuicommands.html">Solver TUI commands</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l3 current active has-children"><a class="reference internal" href="../../../index.html">solver.tui</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../../../turbo_workflow/index.html">turbo_workflow</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../turbo_post/index.html">turbo_post</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../views/index.html">views</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../server/index.html">server</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../display/index.html">display</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../parameters/index.html">parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../results/index.html">results</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../setup/index.html">setup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../adjoint/index.html">adjoint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../solution/index.html">solution</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../report/index.html">report</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../mesh/index.html">mesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../plot/index.html">plot</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../parametric_study/index.html">parametric_study</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../surface/index.html">surface</a></li>
+<li class="toctree-l4 current active has-children"><a class="reference internal" href="../../index.html">define</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l5"><a class="reference internal" href="../../mesh_interfaces/index.html">mesh_interfaces</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../user_defined/index.html">user_defined</a></li>
+<li class="toctree-l5 current active has-children"><a class="reference internal" href="../index.html">models</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l6"><a class="reference internal" href="../dpm/index.html">dpm</a></li>
+<li class="toctree-l6 current active has-children"><a class="current reference internal" href="#">viscous</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l7"><a class="reference internal" href="near_wall_treatment/index.html">near_wall_treatment</a></li>
+<li class="toctree-l7"><a class="reference internal" href="transition_model_options/index.html">transition_model_options</a></li>
+<li class="toctree-l7"><a class="reference internal" href="multiphase_turbulence/index.html">multiphase_turbulence</a></li>
+<li class="toctree-l7"><a class="reference internal" href="les_model_options/index.html">les_model_options</a></li>
+<li class="toctree-l7"><a class="reference internal" href="geko_options/index.html">geko_options</a></li>
+<li class="toctree-l7"><a class="reference internal" href="turbulence_expert/index.html">turbulence_expert</a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="../multiphase/index.html">multiphase</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../virtual_blade_model/index.html">virtual_blade_model</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../structure/index.html">structure</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../heat_exchanger/index.html">heat_exchanger</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../species/index.html">species</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../radiation/index.html">radiation</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../cht/index.html">cht</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../system_coupling_settings/index.html">system_coupling_settings</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../eulerian_wallfilm/index.html">eulerian_wallfilm</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../acoustics/index.html">acoustics</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../nox_parameters/index.html">nox_parameters</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../shell_conduction/index.html">shell_conduction</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../optics/index.html">optics</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../electrolysis_setup/index.html">electrolysis_setup</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../two_temperature/index.html">two_temperature</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../soot_parameters/index.html">soot_parameters</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../solver/index.html">solver</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../../reference_frames/index.html">reference_frames</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../mixing_planes/index.html">mixing_planes</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../solution_strategy/index.html">solution_strategy</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../custom_field_functions/index.html">custom_field_functions</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../dynamic_mesh/index.html">dynamic_mesh</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../materials/index.html">materials</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../phases/index.html">phases</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../operating_conditions/index.html">operating_conditions</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../spectral/index.html">spectral</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../parameters/index.html">parameters</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../overset_interfaces/index.html">overset_interfaces</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../profiles/index.html">profiles</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../periodic_conditions/index.html">periodic_conditions</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../named_expressions/index.html">named_expressions</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../curvilinear_coordinate_system/index.html">curvilinear_coordinate_system</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../gap_model/index.html">gap_model</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../turbo_model/index.html">turbo_model</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../virtual_boundary/index.html">virtual_boundary</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../motion_definitions/index.html">motion_definitions</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../../../parallel/index.html">parallel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../icing/index.html">icing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../file/index.html">file</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../preferences/index.html">preferences</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../solve/index.html">solve</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../datamodel/index.html">solver.datamodel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../schemeeval.html">Scheme code evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../events.html">EventsManager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../monitors.html">MonitorsManager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../reduction.html">Reduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../svar.html">SVAR data</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+      
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="https://docs.pyansys.com/" class="nav-link">PyAnsys</a>
+    </li>
+      
+    <li class="breadcrumb-item">
+      <a
+        href="../../../../../../index.html"
+        class="nav-link"
+        aria-label="Home"
+      >
+        <i class="fa-solid fa-home"></i
+      ></a>
+    </li> 
+    <li class="breadcrumb-item">
+      <a href="../../../../../index.html" class="nav-link">API reference</a>
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a href="../../../../index.html" class="nav-link">Solver</a>
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a href="../../../../tuicommands.html" class="nav-link">Solver TUI commands</a>
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a href="../../../index.html" class="nav-link">solver.tui</a>
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a href="../../index.html" class="nav-link">define</a>
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a href="../index.html" class="nav-link">models</a>
+    </li>
+      
+    <li class="breadcrumb-item active" aria-current="page">viscous</li>
+    
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="viscous">
+<span id="ref-solver-tui-define-models-viscous"></span><h1>viscous<a class="headerlink" href="#viscous" title="Link to this heading">#</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.solver.tui_241.main_menu.define.models.</span></span><span class="sig-name descname"><span class="pre">viscous</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">service</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Enters the viscous model menu.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.add_intermittency_transition_model" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.add_intermittency_transition_model"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_intermittency_transition_model</span></code></a>(*args, ...)</p></td>
+<td><p>Enable/disable the intermittency transition model to account for transitional effects.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.add_transition_model" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.add_transition_model"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_transition_model</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Sets Transition model to account for transitional effects.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.buoyancy_effects" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.buoyancy_effects"><code class="xref py py-obj docutils literal notranslate"><span class="pre">buoyancy_effects</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enable/disable effects of buoyancy on turbulence.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.corner_flow_correction" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.corner_flow_correction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">corner_flow_correction</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables the corner flow correction.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.corner_flow_correction_ccorner" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.corner_flow_correction_ccorner"><code class="xref py py-obj docutils literal notranslate"><span class="pre">corner_flow_correction_ccorner</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Sets the strength of the quadratic term of the corner flow correction.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.curvature_correction" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.curvature_correction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">curvature_correction</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables the curvature correction.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.curvature_correction_ccurv" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.curvature_correction_ccurv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">curvature_correction_ccurv</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Sets the strength of the curvature correction term.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.des_limiter_option" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.des_limiter_option"><code class="xref py py-obj docutils literal notranslate"><span class="pre">des_limiter_option</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Selects the DES limiter option (none, F1, F2, Delayed DES, or Improved Delayed      DES).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.detached_eddy_simulation" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.detached_eddy_simulation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">detached_eddy_simulation</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables detached eddy simulation.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.geko" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.geko"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geko</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enable/disable the GEKO model.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.inviscid" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.inviscid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">inviscid</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables inviscid flow model.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.k_kl_w" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.k_kl_w"><code class="xref py py-obj docutils literal notranslate"><span class="pre">k_kl_w</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables the k-kl-  turbulence model.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.ke1e" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.ke1e"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ke1e</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enable/disable the KE1E turbulence model.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.ke_easm" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.ke_easm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ke_easm</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables the EASM -  turbulence model.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.ke_realizable" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.ke_realizable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ke_realizable</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables the realizable -  turbulence model.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.ke_rng" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.ke_rng"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ke_rng</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables the RNG -  turbulence model.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.ke_standard" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.ke_standard"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ke_standard</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables the standard -  turbulence model.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.kw_bsl" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.kw_bsl"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kw_bsl</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables the baseline (BSL) -  turbulence model.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.kw_buoyancy_effects" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.kw_buoyancy_effects"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kw_buoyancy_effects</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enable/disable effects of buoyancy on k-omega turbulence model.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.kw_easm" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.kw_easm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kw_easm</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables the EASM -  turbulence model.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.kw_geko" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.kw_geko"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kw_geko</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables the generalized -  (GEKO) turbulence model.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.kw_low_re_correction" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.kw_low_re_correction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kw_low_re_correction</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables the -  low Re option.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.kw_shear_correction" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.kw_shear_correction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kw_shear_correction</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables the -  shear-flow correction option.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.kw_sst" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.kw_sst"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kw_sst</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables the SST -  turbulence model.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.kw_standard" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.kw_standard"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kw_standard</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables the standard -  turbulence model.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.kw_wj_bsl_earsm" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.kw_wj_bsl_earsm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kw_wj_bsl_earsm</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enable/disable the EASM k-omega turbulence model.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.laminar" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.laminar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">laminar</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables laminar flow model.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.large_eddy_simulation" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.large_eddy_simulation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">large_eddy_simulation</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables large eddy simulation.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.les_dynamic_energy_flux" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.les_dynamic_energy_flux"><code class="xref py py-obj docutils literal notranslate"><span class="pre">les_dynamic_energy_flux</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables the dynamic sub-grid scale turbulent Prandtl Number.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.les_dynamic_scalar_flux" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.les_dynamic_scalar_flux"><code class="xref py py-obj docutils literal notranslate"><span class="pre">les_dynamic_scalar_flux</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables the dynamic sub-grid scale turbulent Schmidt Number.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.les_subgrid_dynamic_fvar" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.les_subgrid_dynamic_fvar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">les_subgrid_dynamic_fvar</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables the dynamic subgrid-scale mixture fraction variance model.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.les_subgrid_rng" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.les_subgrid_rng"><code class="xref py py-obj docutils literal notranslate"><span class="pre">les_subgrid_rng</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enable/disable the RNG subgrid-scale model.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.les_subgrid_sigma" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.les_subgrid_sigma"><code class="xref py py-obj docutils literal notranslate"><span class="pre">les_subgrid_sigma</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enable/disable the Sigma subgrid-scale model.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.les_subgrid_smagorinsky" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.les_subgrid_smagorinsky"><code class="xref py py-obj docutils literal notranslate"><span class="pre">les_subgrid_smagorinsky</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables the Smagorinsky-Lilly subgrid-scale model.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.les_subgrid_tke" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.les_subgrid_tke"><code class="xref py py-obj docutils literal notranslate"><span class="pre">les_subgrid_tke</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables kinetic energy transport subgrid-scale model.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.les_subgrid_vreman" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.les_subgrid_vreman"><code class="xref py py-obj docutils literal notranslate"><span class="pre">les_subgrid_vreman</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enable/disable the Vreman subgrid-scale model.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.les_subgrid_wale" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.les_subgrid_wale"><code class="xref py py-obj docutils literal notranslate"><span class="pre">les_subgrid_wale</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables WALE subgrid-scale model.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.les_subgrid_wmles" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.les_subgrid_wmles"><code class="xref py py-obj docutils literal notranslate"><span class="pre">les_subgrid_wmles</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables the WMLES subgrid-scale model.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.les_subgrid_wmles_s_minus_omega" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.les_subgrid_wmles_s_minus_omega"><code class="xref py py-obj docutils literal notranslate"><span class="pre">les_subgrid_wmles_s_minus_omega</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables the WMLES -  subgrid-scale model.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.low_pressure_boundary_slip" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.low_pressure_boundary_slip"><code class="xref py py-obj docutils literal notranslate"><span class="pre">low_pressure_boundary_slip</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables the slip boundary formulation for  low-pressure gas systems.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.mixing_length" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.mixing_length"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mixing_length</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables mixing-length (algebraic) turbulence model.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.reynolds_stress_model" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.reynolds_stress_model"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reynolds_stress_model</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables the Reynolds-stress turbulence model.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.rng_differential_visc" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.rng_differential_visc"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rng_differential_visc</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables the differential-viscosity model.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.rng_swirl_model" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.rng_swirl_model"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rng_swirl_model</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables swirl corrections for rng-model.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.rsm_bsl_based" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.rsm_bsl_based"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rsm_bsl_based</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables the stress-BSL Reynolds stress model.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.rsm_linear_pressure_strain" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.rsm_linear_pressure_strain"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rsm_linear_pressure_strain</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables the linear pressure-strain model in RSM.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.rsm_omega_based" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.rsm_omega_based"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rsm_omega_based</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables the stress-omega Reynolds stress model.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.rsm_or_earsm_geko_option" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.rsm_or_earsm_geko_option"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rsm_or_earsm_geko_option</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables the RSM version of the GEKO model.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.rsm_solve_tke" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.rsm_solve_tke"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rsm_solve_tke</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables the solution of T.K.E.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.rsm_ssg_pressure_strain" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.rsm_ssg_pressure_strain"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rsm_ssg_pressure_strain</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables quadratic pressure-strain model in RSM.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.rsm_wall_echo" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.rsm_wall_echo"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rsm_wall_echo</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables wall-echo effects in RSM model.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.sa_alternate_prod" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.sa_alternate_prod"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sa_alternate_prod</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables strain/vorticity production in Spalart-Allmaras model.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.sa_damping" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.sa_damping"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sa_damping</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables full low-Reynolds number form of Spalart-Allmaras model.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.sa_enhanced_wall_treatment" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.sa_enhanced_wall_treatment"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sa_enhanced_wall_treatment</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables the enhanced wall treatment for the Spalart-Allmaras model.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.sas" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.sas"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sas</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables Scale-Adaptive Simulation (SAS) in combination with the SST  -  turbulence model.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.spalart_allmaras" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.spalart_allmaras"><code class="xref py py-obj docutils literal notranslate"><span class="pre">spalart_allmaras</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables Spalart-Allmaras turbulence model.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.trans_sst_roughness_correlation" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.trans_sst_roughness_correlation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">trans_sst_roughness_correlation</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables the Transition-SST roughness correlation option.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.transition_sst" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.transition_sst"><code class="xref py py-obj docutils literal notranslate"><span class="pre">transition_sst</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables the transition SST turbulence model.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.turb_buoyancy_effects" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.turb_buoyancy_effects"><code class="xref py py-obj docutils literal notranslate"><span class="pre">turb_buoyancy_effects</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables effects of buoyancy on     turbulence.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.turb_compressibility" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.turb_compressibility"><code class="xref py py-obj docutils literal notranslate"><span class="pre">turb_compressibility</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables the compressibility correction option.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.user_defined" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.user_defined"><code class="xref py py-obj docutils literal notranslate"><span class="pre">user_defined</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Selects user-defined functions to define the turbulent viscosity and the turbulent  Prandtl and Schmidt numbers.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.user_defined_transition" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.user_defined_transition"><code class="xref py py-obj docutils literal notranslate"><span class="pre">user_defined_transition</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Sets user-defined transition correlations.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.v2f" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.v2f"><code class="xref py py-obj docutils literal notranslate"><span class="pre">v2f</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables V2F turbulence model.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.zero_equation_hvac" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.zero_equation_hvac"><code class="xref py py-obj docutils literal notranslate"><span class="pre">zero_equation_hvac</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables zero-equation HVAC turbulence model.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Classes:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.geko_options" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.geko_options"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geko_options</span></code></a>(service, version, mode, path)</p></td>
+<td><p>Enters the GEKO model menu..</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.les_model_options" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.les_model_options"><code class="xref py py-obj docutils literal notranslate"><span class="pre">les_model_options</span></code></a>(service, version, mode, path)</p></td>
+<td><p>Enter the LES model options menu.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.multiphase_turbulence" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.multiphase_turbulence"><code class="xref py py-obj docutils literal notranslate"><span class="pre">multiphase_turbulence</span></code></a>(service, version, ...)</p></td>
+<td><p>Enters the multiphase turbulence menu.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.near_wall_treatment" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.near_wall_treatment"><code class="xref py py-obj docutils literal notranslate"><span class="pre">near_wall_treatment</span></code></a>(service, version, mode, path)</p></td>
+<td><p>Enters the near wall treatment menu.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.transition_model_options" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.transition_model_options"><code class="xref py py-obj docutils literal notranslate"><span class="pre">transition_model_options</span></code></a>(service, version, ...)</p></td>
+<td><p>Enters the transition model options menu.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.turbulence_expert" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.turbulence_expert"><code class="xref py py-obj docutils literal notranslate"><span class="pre">turbulence_expert</span></code></a>(service, version, mode, path)</p></td>
+<td><p>Enters the turbulence expert menu.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">add_intermittency_transition_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enable/disable the intermittency transition model to account for transitional effects.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">add_transition_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Sets Transition model to account for transitional effects. The default is none, however you can     select gamma-algebraic or gamma-transport-eqn.  After a transition model has been enabled, you have additional options in the   submenu transition-model-options.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">buoyancy_effects</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enable/disable effects of buoyancy on turbulence.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">corner_flow_correction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables the corner flow correction.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">corner_flow_correction_ccorner</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Sets the strength of the quadratic term of the corner flow correction. The default  value is 1. This is available after the corner-flow-correction?         option is enabled.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">curvature_correction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables the curvature correction.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">curvature_correction_ccurv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Sets the strength of the curvature correction term.         The default value is 1. This is available after the curvature-correction?       option is enabled.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">des_limiter_option</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Selects the DES limiter option (none, F1, F2, Delayed DES, or Improved Delayed      DES).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">detached_eddy_simulation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables detached eddy simulation.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">geko</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enable/disable the GEKO model.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">geko_options</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">service</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Enters the GEKO model menu..</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.geko_options.blending_function" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.geko_options.blending_function"><code class="xref py py-obj docutils literal notranslate"><span class="pre">blending_function</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Sets the blending function, which deactivatescmix and cjet inside boundary layers.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.geko_options.cbf_lam" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.geko_options.cbf_lam"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cbf_lam</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Setscbf_lam, a part of the blending function and shields the laminar boundary layer.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.geko_options.cbf_tur" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.geko_options.cbf_tur"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cbf_tur</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Setscbf_tur, a factor for the main blending factor, controlling the thickness of the layer near walls.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.geko_options.cjet" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.geko_options.cjet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cjet</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Setscjet, the parameter to optimize free shear layer mixing (optimize free jets independent of mixing layer).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.geko_options.cjet_aux" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.geko_options.cjet_aux"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cjet_aux</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Setscjet_aux, which allows fine-tuning of the parameter to optimize free jets.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.geko_options.cmix" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.geko_options.cmix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cmix</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Setscmix, the parameter to optimize strength of mixing in free shear flows.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.geko_options.cnw" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.geko_options.cnw"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cnw</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Setscnw, the parameter to optimize flow in non-equilibrium near wall regions.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.geko_options.cnw_sub" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.geko_options.cnw_sub"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cnw_sub</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Setscnw_sub, which allows the adjustment of log-layer and cf.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.geko_options.creal" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.geko_options.creal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">creal</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Setscreal, a realizability limiter that ensures positive normal stresses in the entire domain.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.geko_options.csep" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.geko_options.csep"><code class="xref py py-obj docutils literal notranslate"><span class="pre">csep</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Setscsep, the parameter to optimize flow separation from smooth surfaces.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.geko_options.geko_defaults" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.geko_options.geko_defaults"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geko_defaults</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Restores the defaults of all GEKO parameters.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.geko_options.wall_distance_free" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.geko_options.wall_distance_free"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wall_distance_free</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables the wall distance free version of the GEKO model.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">blending_function</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Sets the blending function, which deactivatescmix and cjet inside boundary layers.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">cbf_lam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Setscbf_lam, a part of the blending function and shields the laminar boundary layer.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">cbf_tur</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Setscbf_tur, a factor for the main blending factor, controlling the thickness of the layer near walls.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">cjet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Setscjet, the parameter to optimize free shear layer mixing (optimize free jets independent of mixing layer).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">cjet_aux</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Setscjet_aux, which allows fine-tuning of the parameter to optimize free jets.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">cmix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Setscmix, the parameter to optimize strength of mixing in free shear flows.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">cnw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Setscnw, the parameter to optimize flow in non-equilibrium near wall regions.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">cnw_sub</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Setscnw_sub, which allows the adjustment of log-layer and cf.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">creal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Setscreal, a realizability limiter that ensures positive normal stresses in the entire domain.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">csep</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Setscsep, the parameter to optimize flow separation from smooth surfaces.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">geko_defaults</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Restores the defaults of all GEKO parameters.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">wall_distance_free</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables the wall distance free version of the GEKO model.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">inviscid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables inviscid flow model.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">k_kl_w</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables the k-kl-  turbulence model.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">ke1e</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enable/disable the KE1E turbulence model.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">ke_easm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables the EASM -  turbulence model.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">ke_realizable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables the realizable -  turbulence model.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">ke_rng</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables the RNG -  turbulence model.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">ke_standard</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables the standard -  turbulence model.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">kw_bsl</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables the baseline (BSL) -  turbulence model.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">kw_buoyancy_effects</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enable/disable effects of buoyancy on k-omega turbulence model.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">kw_easm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables the EASM -  turbulence model.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">kw_geko</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables the generalized -  (GEKO) turbulence model.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">kw_low_re_correction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables the -  low Re option.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">kw_shear_correction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables the -  shear-flow correction option. This  text command is only available for the standard  -  model and the stress-omega RSM      model.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">kw_sst</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables the SST -  turbulence model.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">kw_standard</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables the standard -  turbulence model.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">kw_wj_bsl_earsm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enable/disable the EASM k-omega turbulence model.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">laminar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables laminar flow model.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">large_eddy_simulation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables large eddy simulation.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">les_dynamic_energy_flux</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables the dynamic sub-grid scale turbulent Prandtl Number.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">les_dynamic_scalar_flux</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables the dynamic sub-grid scale turbulent Schmidt Number.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">les_model_options</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">service</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Enter the LES model options menu.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.les_model_options.csigma" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.les_model_options.csigma"><code class="xref py py-obj docutils literal notranslate"><span class="pre">csigma</span></code></a>(*args, **kwargs)</p></td>
+<td><p><p>.</p>
+</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.les_model_options.cvreman" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.les_model_options.cvreman"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cvreman</span></code></a>(*args, **kwargs)</p></td>
+<td><p><p>.</p>
+</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.les_model_options.cw1" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.les_model_options.cw1"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cw1</span></code></a>(*args, **kwargs)</p></td>
+<td><p><p>.</p>
+</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.les_model_options.cw2" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.les_model_options.cw2"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cw2</span></code></a>(*args, **kwargs)</p></td>
+<td><p><p>.</p>
+</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.les_model_options.near_wall_rans_layer" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.les_model_options.near_wall_rans_layer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">near_wall_rans_layer</span></code></a>(*args, **kwargs)</p></td>
+<td><p><p>.</p>
+</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">csigma</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">cvreman</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">cw1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">cw2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">near_wall_rans_layer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">les_subgrid_dynamic_fvar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables the dynamic subgrid-scale mixture fraction variance model.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">les_subgrid_rng</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enable/disable the RNG subgrid-scale model.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">les_subgrid_sigma</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enable/disable the Sigma subgrid-scale model.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">les_subgrid_smagorinsky</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables the Smagorinsky-Lilly subgrid-scale model.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">les_subgrid_tke</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables kinetic energy transport subgrid-scale model.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">les_subgrid_vreman</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enable/disable the Vreman subgrid-scale model.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">les_subgrid_wale</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables WALE subgrid-scale model.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">les_subgrid_wmles</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables the WMLES subgrid-scale model.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">les_subgrid_wmles_s_minus_omega</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables the WMLES -  subgrid-scale model.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">low_pressure_boundary_slip</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables the slip boundary formulation for  low-pressure gas systems.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">mixing_length</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables mixing-length (algebraic) turbulence model.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">multiphase_turbulence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">service</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Enters the multiphase turbulence menu.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.multiphase_turbulence.multiphase_options" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.multiphase_turbulence.multiphase_options"><code class="xref py py-obj docutils literal notranslate"><span class="pre">multiphase_options</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables multiphase options.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.multiphase_turbulence.rsm_multiphase_models" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.multiphase_turbulence.rsm_multiphase_models"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rsm_multiphase_models</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Selects Reynolds Stress multiphase model.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.multiphase_turbulence.subgrid_turbulence_contribution_aiad" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.multiphase_turbulence.subgrid_turbulence_contribution_aiad"><code class="xref py py-obj docutils literal notranslate"><span class="pre">subgrid_turbulence_contribution_aiad</span></code></a>(*args, ...)</p></td>
+<td><p><p>.</p>
+</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.multiphase_turbulence.turbulence_multiphase_models" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.multiphase_turbulence.turbulence_multiphase_models"><code class="xref py py-obj docutils literal notranslate"><span class="pre">turbulence_multiphase_models</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Selects -  multiphase model.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">multiphase_options</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables multiphase options.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">rsm_multiphase_models</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Selects Reynolds Stress multiphase model.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">subgrid_turbulence_contribution_aiad</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">turbulence_multiphase_models</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Selects -  multiphase model.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">near_wall_treatment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">service</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Enters the near wall treatment menu.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.near_wall_treatment.enhanced_wall_treatment" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.near_wall_treatment.enhanced_wall_treatment"><code class="xref py py-obj docutils literal notranslate"><span class="pre">enhanced_wall_treatment</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables enhanced wall functions.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.near_wall_treatment.harmonic_blend_rplus_wf" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.near_wall_treatment.harmonic_blend_rplus_wf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">harmonic_blend_rplus_wf</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enable/disable harmonic blended wall functions based on r-plus.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.near_wall_treatment.menter_lechner" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.near_wall_treatment.menter_lechner"><code class="xref py py-obj docutils literal notranslate"><span class="pre">menter_lechner</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables the Menter-Lechner near-wall treatment.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.near_wall_treatment.non_equilibrium_wall_fn" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.near_wall_treatment.non_equilibrium_wall_fn"><code class="xref py py-obj docutils literal notranslate"><span class="pre">non_equilibrium_wall_fn</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables non-equilibrium wall functions.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.near_wall_treatment.scalable_wall_functions" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.near_wall_treatment.scalable_wall_functions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scalable_wall_functions</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables scalable wall functions.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.near_wall_treatment.user_defined_wall_functions" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.near_wall_treatment.user_defined_wall_functions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">user_defined_wall_functions</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables user-defined wall functions.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.near_wall_treatment.wall_omega_treatment" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.near_wall_treatment.wall_omega_treatment"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wall_omega_treatment</span></code></a>(*args, **kwargs)</p></td>
+<td><p><p>.</p>
+</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.near_wall_treatment.werner_wengle_wall_fn" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.near_wall_treatment.werner_wengle_wall_fn"><code class="xref py py-obj docutils literal notranslate"><span class="pre">werner_wengle_wall_fn</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables Werner-Wengle wall functions.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.near_wall_treatment.wf_pressure_gradient_effects" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.near_wall_treatment.wf_pressure_gradient_effects"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wf_pressure_gradient_effects</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables wall function pressure- gradient effects.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.near_wall_treatment.wf_thermal_effects" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.near_wall_treatment.wf_thermal_effects"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wf_thermal_effects</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables wall function thermal effects.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">enhanced_wall_treatment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables enhanced wall functions.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">harmonic_blend_rplus_wf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enable/disable harmonic blended wall functions based on r-plus.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">menter_lechner</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables the Menter-Lechner near-wall treatment.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">non_equilibrium_wall_fn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables non-equilibrium wall functions.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">scalable_wall_functions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables scalable wall functions.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">user_defined_wall_functions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables user-defined wall functions.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">wall_omega_treatment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">werner_wengle_wall_fn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables Werner-Wengle wall functions.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">wf_pressure_gradient_effects</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables wall function pressure- gradient effects.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">wf_thermal_effects</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables wall function thermal effects.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">reynolds_stress_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables the Reynolds-stress turbulence model.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">rng_differential_visc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables the differential-viscosity model.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">rng_swirl_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables swirl corrections for rng-model.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">rsm_bsl_based</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables the stress-BSL Reynolds stress model.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">rsm_linear_pressure_strain</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables the linear pressure-strain model in RSM.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">rsm_omega_based</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables the stress-omega Reynolds stress model.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">rsm_or_earsm_geko_option</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables the RSM version of the GEKO model.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">rsm_solve_tke</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables the solution of T.K.E. in RSM model.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">rsm_ssg_pressure_strain</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables quadratic pressure-strain model in RSM.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">rsm_wall_echo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables wall-echo effects in RSM model.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">sa_alternate_prod</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables strain/vorticity production in Spalart-Allmaras model.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">sa_damping</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables full low-Reynolds number form of Spalart-Allmaras model. This option is only available if your response wasno to sa-enhanced-wall-treatment?.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">sa_enhanced_wall_treatment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables the enhanced wall treatment for the Spalart-Allmaras model. If     disabled, no smooth blending between the viscous        sublayer and the log-law formulation is employed, as was        done in versions previous to Fluent 14.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">sas</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables Scale-Adaptive Simulation (SAS) in combination with the SST  -  turbulence model.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">spalart_allmaras</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables Spalart-Allmaras turbulence model.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">trans_sst_roughness_correlation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables the Transition-SST roughness correlation option.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">transition_model_options</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">service</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Enters the transition model options menu.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.transition_model_options.capg_hightu" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.transition_model_options.capg_hightu"><code class="xref py py-obj docutils literal notranslate"><span class="pre">capg_hightu</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Sets the algebraic transition model coefficient CAPG_HIGHTU.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.transition_model_options.capg_lowtu" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.transition_model_options.capg_lowtu"><code class="xref py py-obj docutils literal notranslate"><span class="pre">capg_lowtu</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Sets the algebraic transition model coefficient CAPG_LOWTU.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.transition_model_options.cbubble_c1" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.transition_model_options.cbubble_c1"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cbubble_c1</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Sets the algebraic transition model coefficient CBUBBLE_C1.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.transition_model_options.cbubble_c2" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.transition_model_options.cbubble_c2"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cbubble_c2</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Sets the algebraic transition model coefficient CBUBBLE_C2.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.transition_model_options.cfpg_hightu" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.transition_model_options.cfpg_hightu"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cfpg_hightu</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Sets the algebraic transition model coefficient CFPG_HIGHTU.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.transition_model_options.cfpg_lowtu" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.transition_model_options.cfpg_lowtu"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cfpg_lowtu</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Sets the algebraic transition model coefficient CFPG_LOWTU.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.transition_model_options.clambda_scale" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.transition_model_options.clambda_scale"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clambda_scale</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Sets the algebraic transition model coefficient CLAMBDA_SCALE.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.transition_model_options.critical_reynolds_number_correlation" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.transition_model_options.critical_reynolds_number_correlation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">critical_reynolds_number_correlation</span></code></a>(*args, ...)</p></td>
+<td><p>Sets the critical Reynolds number correlation.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.transition_model_options.crossflow_transition" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.transition_model_options.crossflow_transition"><code class="xref py py-obj docutils literal notranslate"><span class="pre">crossflow_transition</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables the effects of crossflow instability.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.transition_model_options.ctu_hightu" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.transition_model_options.ctu_hightu"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ctu_hightu</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Sets the algebraic transition model coefficient CTU_HIGHTU.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.transition_model_options.ctu_lowtu" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.transition_model_options.ctu_lowtu"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ctu_lowtu</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Sets the algebraic transition model coefficient CTU_LOWTU.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.transition_model_options.rec_c1" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.transition_model_options.rec_c1"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rec_c1</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Sets the algebraic transition model coefficient REC_C1.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.transition_model_options.rec_c2" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.transition_model_options.rec_c2"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rec_c2</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Sets the algebraic transition model coefficient REC_C2.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.transition_model_options.rec_max" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.transition_model_options.rec_max"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rec_max</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Sets the algebraic transition model coefficient REC_MAX.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.transition_model_options.rv1_switch" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.transition_model_options.rv1_switch"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rv1_switch</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Sets the algebraic transition model coefficient RV1_SWITCH.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">capg_hightu</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Sets the algebraic transition model coefficient CAPG_HIGHTU.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">capg_lowtu</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Sets the algebraic transition model coefficient CAPG_LOWTU.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">cbubble_c1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Sets the algebraic transition model coefficient CBUBBLE_C1.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">cbubble_c2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Sets the algebraic transition model coefficient CBUBBLE_C2.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">cfpg_hightu</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Sets the algebraic transition model coefficient CFPG_HIGHTU.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">cfpg_lowtu</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Sets the algebraic transition model coefficient CFPG_LOWTU.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">clambda_scale</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Sets the algebraic transition model coefficient CLAMBDA_SCALE.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">critical_reynolds_number_correlation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Sets the critical Reynolds number correlation.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">crossflow_transition</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables the effects of crossflow instability.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">ctu_hightu</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Sets the algebraic transition model coefficient CTU_HIGHTU.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">ctu_lowtu</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Sets the algebraic transition model coefficient CTU_LOWTU.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">rec_c1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Sets the algebraic transition model coefficient REC_C1.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">rec_c2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Sets the algebraic transition model coefficient REC_C2.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">rec_max</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Sets the algebraic transition model coefficient REC_MAX.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">rv1_switch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Sets the algebraic transition model coefficient RV1_SWITCH.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">transition_sst</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables the transition SST turbulence model.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">turb_buoyancy_effects</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables effects of buoyancy on     turbulence.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">turb_compressibility</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables the compressibility correction option.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">turbulence_expert</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">service</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Enters the turbulence expert menu.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.turbulence_expert.curvature_correction_coefficient" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.turbulence_expert.curvature_correction_coefficient"><code class="xref py py-obj docutils literal notranslate"><span class="pre">curvature_correction_coefficient</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Set the strength of the curvature correction term.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.turbulence_expert.kato_launder_model" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.turbulence_expert.kato_launder_model"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kato_launder_model</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables Kato-Launder modification.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.turbulence_expert.kw_add_des" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.turbulence_expert.kw_add_des"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kw_add_des</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables Detached Eddy Simulation (DES) in combination with the currently selected BSL -  model or transition SST model.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.turbulence_expert.kw_add_sas" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.turbulence_expert.kw_add_sas"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kw_add_sas</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables Scale-Adaptive Simulation (SAS) in combination with the currently selected -based URANS turbulence model.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.turbulence_expert.kw_vorticity_based_production" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.turbulence_expert.kw_vorticity_based_production"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kw_vorticity_based_production</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables vorticity-based production.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.turbulence_expert.low_re_ke" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.turbulence_expert.low_re_ke"><code class="xref py py-obj docutils literal notranslate"><span class="pre">low_re_ke</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables the low-Re -  turbulence model.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.turbulence_expert.low_re_ke_index" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.turbulence_expert.low_re_ke_index"><code class="xref py py-obj docutils literal notranslate"><span class="pre">low_re_ke_index</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Specifies which low-Reynolds-number -  model is to be used.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.turbulence_expert.non_newtonian_modification" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.turbulence_expert.non_newtonian_modification"><code class="xref py py-obj docutils literal notranslate"><span class="pre">non_newtonian_modification</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables non-Newtonian modification for Lam-Bremhorst model.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.turbulence_expert.production_limiter" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.turbulence_expert.production_limiter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">production_limiter</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables Production Limiter modification.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.turbulence_expert.restore_sst_v61" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.turbulence_expert.restore_sst_v61"><code class="xref py py-obj docutils literal notranslate"><span class="pre">restore_sst_v61</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables SST formulation of v6.1.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.turbulence_expert.rke_cmu_rotation_term" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.turbulence_expert.rke_cmu_rotation_term"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rke_cmu_rotation_term</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Modifies the  definition for the realizable  -  model.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.turbulence_expert.sbes_les_subgrid_dynamic_fvar" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.turbulence_expert.sbes_les_subgrid_dynamic_fvar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sbes_les_subgrid_dynamic_fvar</span></code></a>(*args, **kwargs)</p></td>
+<td><p><p>.</p>
+</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.turbulence_expert.sbes_sdes_hybrid_model" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.turbulence_expert.sbes_sdes_hybrid_model"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sbes_sdes_hybrid_model</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Selects the hybrid model, to specify whether you want to apply the Shielded Detached Eddy Simulation (SDES) model, Stress-Blended Eddy Simulation (SBES), or SBES with a user-defined function.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.turbulence_expert.sbes_sgs_option" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.turbulence_expert.sbes_sgs_option"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sbes_sgs_option</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Selects the subgrid-scale model for the LES portion of your Stress-Blended Eddy Simulation (SBES).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.turbulence_expert.sbes_update_interval_k_omega" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.turbulence_expert.sbes_update_interval_k_omega"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sbes_update_interval_k_omega</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Sets the number of time steps between updates of the k-ω part of the SBES model.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.turbulence_expert.thermal_p_function" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.turbulence_expert.thermal_p_function"><code class="xref py py-obj docutils literal notranslate"><span class="pre">thermal_p_function</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables Jayatilleke P function.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.turbulence_expert.turb_add_sbes_sdes" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.turbulence_expert.turb_add_sbes_sdes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">turb_add_sbes_sdes</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables the Stress-Blended Eddy Simulation (SBES) model or Shielded Detached Eddy Simulation (SDES) model.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.turbulence_expert.turb_non_newtonian" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.turbulence_expert.turb_non_newtonian"><code class="xref py py-obj docutils literal notranslate"><span class="pre">turb_non_newtonian</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables turbulence for non-Newtonian fluids.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.turbulence_expert.turb_pk_compressible" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.turbulence_expert.turb_pk_compressible"><code class="xref py py-obj docutils literal notranslate"><span class="pre">turb_pk_compressible</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables turbulent production due to compressible divergence.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.turbulence_expert.turbulence_damping" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.viscous.turbulence_expert.turbulence_damping"><code class="xref py py-obj docutils literal notranslate"><span class="pre">turbulence_damping</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables turbulence damping and sets turbulence damping parameters.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">curvature_correction_coefficient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Set the strength of the curvature correction term. The default value is 1.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">kato_launder_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables Kato-Launder modification.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">kw_add_des</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables Detached Eddy Simulation (DES) in combination with the currently selected BSL -  model or transition SST model. This text command is only available for transient cases.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">kw_add_sas</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables Scale-Adaptive Simulation (SAS) in combination with the currently selected -based URANS turbulence model. This text command is only available for transient cases.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">kw_vorticity_based_production</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables vorticity-based production.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">low_re_ke</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables the low-Re -  turbulence model.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">low_re_ke_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Specifies which low-Reynolds-number -  model is to be used. Six models are available:
+Index
+Model
+0
+Abid
+1
+Lam-Bremhorst
+2
+Launder-Sharma
+3
+Yang-Shih
+4
+Abe-Kondoh-Nagano
+5
+Chang-Hsieh-Chen
+Contact your Ansys, Inc. technical support engineer for more details.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">non_newtonian_modification</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables non-Newtonian modification for Lam-Bremhorst model.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">production_limiter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables Production Limiter modification.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">restore_sst_v61</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables SST formulation of v6.1.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">rke_cmu_rotation_term</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Modifies the  definition for the realizable  -  model.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">sbes_les_subgrid_dynamic_fvar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">sbes_sdes_hybrid_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Selects the hybrid model, to specify whether you want to apply the Shielded Detached Eddy Simulation (SDES) model, Stress-Blended Eddy Simulation (SBES), or SBES with a user-defined function.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">sbes_sgs_option</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Selects the subgrid-scale model for the LES portion of your Stress-Blended Eddy Simulation (SBES).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">sbes_update_interval_k_omega</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Sets the number of time steps between updates of the k-ω part of the SBES model.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">thermal_p_function</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables Jayatilleke P function.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">turb_add_sbes_sdes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables the Stress-Blended Eddy Simulation (SBES) model or Shielded Detached Eddy Simulation (SDES) model.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">turb_non_newtonian</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables turbulence for non-Newtonian fluids.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">turb_pk_compressible</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables turbulent production due to compressible divergence.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">turbulence_damping</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables turbulence damping and sets turbulence damping parameters.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">user_defined</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Selects user-defined functions to define the turbulent viscosity and the turbulent  Prandtl and Schmidt numbers.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">user_defined_transition</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Sets user-defined transition correlations.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">v2f</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables V2F turbulence model.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">zero_equation_hvac</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables zero-equation HVAC turbulence model.</p>
+</dd></dl>
+
+</dd></dl>
+
+<div class="toctree-wrapper compound">
+</div>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+<!-- If there is no fix edit button function, use the PyData edit-this-button-->
+</div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../../../../../../_sources/api/solver/tui/define/models/viscous/index.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../../../../../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright (c) 2024 ANSYS, Inc. All rights reserved.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="theme-version">
+  Built with the
+  <a href="https://sphinxdocs.ansys.com/version/stable/index.html"
+    >Ansys Sphinx Theme</a
+  >
+  0.12.5. <br />Last updated on
+  <span id="date"></span>
+</p>
+<script>
+  var options = { day: "numeric", month: "long", year: "numeric" };
+  var lastModifiedDate = new Date(document.lastModified);
+  var date = lastModifiedDate.toLocaleDateString("en-US", options);
+  document.getElementById("date").innerHTML = date;
+</script></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

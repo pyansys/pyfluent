@@ -1,0 +1,1703 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>pulse &#8212; PyFluent</title>
+    
+<script>
+  document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+  document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
+</script>
+
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../../../_static/styles/theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+<link href="../../../../../../_static/styles/pydata-sphinx-theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+
+
+  <link rel="stylesheet"
+    href="../../../../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/css/ansys_sphinx_theme.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/sg_gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/sg_gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/sg_gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/sg_gallery-rendered-html.css" />
+
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
+
+    
+        <link href="../../../../../../_static/css/breadcrumbs.css" rel="stylesheet">
+    
+    <script data-url_root="../../../../../../" id="documentation_options" src="../../../../../../_static/documentation_options.js"></script>
+    <script src="../../../../../../_static/jquery.js"></script>
+    <script src="../../../../../../_static/underscore.js"></script>
+    <script src="../../../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../../../../_static/doctools.js"></script>
+    <script src="../../../../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../../../../_static/thebelab-helper.js"></script>
+    <script src="../../../../../../_static/clipboard.min.js"></script>
+    <script src="../../../../../../_static/copybutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <link rel="shortcut icon" href="../../../../../../_static/ansys-favicon.png"/>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+    <link rel="next" title="video" href="video/index.html" />
+    <link rel="prev" title="define" href="../define/index.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="docsearch:language" content="en">
+  <link rel="canonical" href="https://fluent.docs.pyansys.com/version/stable/api/solver/tui/solve/animate/pulse/index.html" />
+  </head>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+    <div class="bd-header-announcement container-fluid" id="banner">
+      
+
+    </div>
+
+    
+    
+    <nav class="bd-header navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="bd-header__inner container-xl">
+
+  <div id="navbar-start">
+    
+    
+  
+
+
+<a class="navbar-brand logo" href="../../../../../../index.html">
+  
+  
+  
+  
+    <img src="../../../../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-light" alt="Logo image">
+    <img src="../../../../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="fas fa-bars"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../../../../getting_started/index.html">
+  Getting started
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../../../../user_guide/index.html">
+  User guide
+ </a>
+</li>
+
+<li class="toctree-l1 current active nav-item">
+ <a class="reference internal nav-link" href="../../../../../index.html">
+  API reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../../../../examples/index.html">
+  Examples
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../../../../contributing.html">
+  Contribute
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <div class="dropdown" id="version_switcher">
+    <button type="button" class="btn btn-sm navbar-btn dropdown-toggle" id="version_switcher_button" data-toggle="dropdown">
+        0.13  <!-- this text may get changed later by javascript -->
+        <span class="caret"></span>
+    </button>
+    <div id="version_switcher_menu" class="dropdown-menu list-group-flush py-0" aria-labelledby="version_switcher_button">
+    <!-- dropdown will be populated by javascript on page load -->
+    </div>
+</div>
+
+<!-- NOTE: this JS must live here (not in our global JS file) because it relies
+     on being processed by Jinja before it is run (specifically for replacing
+     variables api/solver/tui/solve/animate/pulse/index and {'json_url': 'https://fluent.docs.pyansys.com/versions.json', 'version_match': '0.13'}.
+-->
+
+<script type="text/javascript">
+// Check if corresponding page path exists in other version of docs
+// and, if so, go there instead of the homepage of the other docs version
+function checkPageExistsAndRedirect(event) {
+    const currentFilePath = "api/solver/tui/solve/animate/pulse/index.html",
+          tryUrl = event.target.getAttribute("href");
+    let otherDocsHomepage = tryUrl.replace(currentFilePath, "");
+    $.ajax({
+        type: 'HEAD',
+        url: tryUrl,
+        // if the page exists, go there
+        success: function() {
+            location.href = tryUrl;
+        }
+    }).fail(function() {
+        location.href = otherDocsHomepage;
+    });
+    // this prevents the browser from following the href of the clicked node
+    // (which is fine because this function takes care of redirecting)
+    return false;
+}
+
+// Populate the version switcher from the JSON config file
+(function () {
+    $.getJSON("https://fluent.docs.pyansys.com/versions.json", function(data, textStatus, jqXHR) {
+        const currentFilePath = "api/solver/tui/solve/animate/pulse/index.html";
+        let btn = document.getElementById("version_switcher_button");
+        // Set empty strings by default so that these attributes exist and can be used in CSS selectors
+        btn.dataset["activeVersionName"] = "";
+        btn.dataset["activeVersion"] = "";
+        // create links to the corresponding page in the other docs versions
+        $.each(data, function(index, entry) {
+            // if no custom name specified (e.g., "latest"), use version string
+            if (!("name" in entry)) {
+                entry.name = entry.version;
+            }
+            // create the node
+            const node = document.createElement("a");
+            node.setAttribute("class", "list-group-item list-group-item-action py-1");
+            node.textContent = `${entry.name}`;
+            node.setAttribute("href", `${entry.url}${currentFilePath}`);
+            // on click, AJAX calls will check if the linked page exists before
+            // trying to redirect, and if not, will redirect to the homepage
+            // for that version of the docs.
+            node.onclick = checkPageExistsAndRedirect;
+            // Add dataset values for the version and name in case people want
+            // to apply CSS styling based on this information.
+            node.dataset["versionName"] = entry.name;
+            node.dataset["version"] = entry.version;
+
+            $("#version_switcher_menu").append(node);
+            // replace dropdown button text with the preferred display name of
+            // this version, rather than using sphinx's 0.13.1 variable.
+            // also highlight the dropdown entry for the currently-viewed
+            // version's entry
+            if (entry.version == "0.13") {
+                node.classList.add("active");
+                btn.innerText = btn.dataset["activeVersionName"] = entry.name;
+                btn.dataset["activeVersion"] = entry.version;
+            }
+        });
+    });
+})();
+</script>
+      </div>
+      
+      <div class="navbar-end-item">
+        <span id="theme-switch" class="btn btn-sm btn-outline-primary navbar-btn rounded-circle">
+    <a class="theme-switch" data-mode="light"><i class="fas fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="far fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fas fa-adjust"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/pyansys/pyfluent" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/pyansys/pyfluent/discussions" rel="noopener" target="_blank" title="Support"><span><i class="fa fa-comment fa-fw"></i></span>
+            <label class="sr-only">Support</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+     
+<div id="announcement_msg"></div>
+<script>
+  fetch("announcement.html")
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error: ${response.status}`);
+      }
+      return response.text();
+    })
+    .then(text => document.getElementById("announcement_msg").innerHTML = text)
+    .catch((error) => console.error(`Fetch problem: ${error.message}`));
+</script>
+
+    
+        <div class="container-xl">
+    <div class="row">
+        <div class="col-12 col-md-3" id="breadcrumbs-spacer"></div>
+        <div class="col-12 col-md-11 col-xl-9" id="breadcrumbs">
+          
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+    
+        <li class="nav-item nav-item-additional-breadcrumb"><a href="https://docs.pyansys.com/">PyAnsys</a> » </li>
+    
+    
+        <li class="nav-item nav-item-0"><a href="../../../../../../index.html">PyFluent</a> » </li>
+    
+
+          <li class="nav-item nav-item-1"><a href="../../../../../index.html" >API reference</a> » </li>
+          <li class="nav-item nav-item-2"><a href="../../../../index.html" >Solver</a> » </li>
+          <li class="nav-item nav-item-3"><a href="../../../../tuicommands.html" >Solver TUI commands</a> » </li>
+          <li class="nav-item nav-item-4"><a href="../../../index.html" >solver.tui</a> » </li>
+          <li class="nav-item nav-item-5"><a href="../../index.html" >solve</a> » </li>
+          <li class="nav-item nav-item-6"><a href="../index.html" accesskey="U">animate</a> » </li>
+        <li class="nav-item nav-item-this"><a href="">pulse</a></li> 
+      </ul>
+    </div>
+        </div>
+  </div>
+</div>
+    
+
+
+    <div class="bd-container container-xl">
+      <div class="bd-container__inner row">
+          
+
+<!-- Only show if we have sidebars configured, else just a small margin  -->
+<div class="bd-sidebar-primary col-12 col-md-3 bd-sidebar">
+  <div class="sidebar-start-items"><form class="bd-search d-flex align-items-center" action="../../../../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../../general/index.html">
+   General
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../../meshing/index.html">
+   Meshing
+  </a>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../../../../index.html">
+   Solver
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../settings.html">
+     Solver settings objects
+    </a>
+   </li>
+   <li class="toctree-l2 current active has-children">
+    <a class="reference internal" href="../../../../tuicommands.html">
+     Solver TUI commands
+    </a>
+    <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+    <label for="toctree-checkbox-2">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul class="current">
+     <li class="toctree-l3 current active has-children">
+      <a class="reference internal" href="../../../index.html">
+       solver.tui
+      </a>
+      <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+      <label for="toctree-checkbox-3">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul class="current">
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../icing/index.html">
+         icing
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../views/index.html">
+         views
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../setup/index.html">
+         setup
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../report/index.html">
+         report
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../preferences/index.html">
+         preferences
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../results/index.html">
+         results
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../mesh/index.html">
+         mesh
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../display/index.html">
+         display
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../file/index.html">
+         file
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../solution/index.html">
+         solution
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../adjoint/index.html">
+         adjoint
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../surface/index.html">
+         surface
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../parameters__and__customization/index.html">
+         parameters__and__customization
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../turbo_workflow/index.html">
+         turbo_workflow
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../parametric_study/index.html">
+         parametric_study
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../parallel/index.html">
+         parallel
+        </a>
+       </li>
+       <li class="toctree-l4 current active has-children">
+        <a class="reference internal" href="../../index.html">
+         solve
+        </a>
+        <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+        <label for="toctree-checkbox-4">
+         <i class="fas fa-chevron-down">
+         </i>
+        </label>
+        <ul class="current">
+         <li class="toctree-l5">
+          <a class="reference internal" href="../../cell_register_operations/index.html">
+           cell_register_operations
+          </a>
+         </li>
+         <li class="toctree-l5">
+          <a class="reference internal" href="../../report_definitions/index.html">
+           report_definitions
+          </a>
+         </li>
+         <li class="toctree-l5">
+          <a class="reference internal" href="../../set/index.html">
+           set
+          </a>
+         </li>
+         <li class="toctree-l5">
+          <a class="reference internal" href="../../report_files/index.html">
+           report_files
+          </a>
+         </li>
+         <li class="toctree-l5">
+          <a class="reference internal" href="../../cell_registers/index.html">
+           cell_registers
+          </a>
+         </li>
+         <li class="toctree-l5">
+          <a class="reference internal" href="../../report_plots/index.html">
+           report_plots
+          </a>
+         </li>
+         <li class="toctree-l5">
+          <a class="reference internal" href="../../monitors/index.html">
+           monitors
+          </a>
+         </li>
+         <li class="toctree-l5">
+          <a class="reference internal" href="../../execute_commands/index.html">
+           execute_commands
+          </a>
+         </li>
+         <li class="toctree-l5 current active has-children">
+          <a class="reference internal" href="../index.html">
+           animate
+          </a>
+          <input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+          <label for="toctree-checkbox-5">
+           <i class="fas fa-chevron-down">
+           </i>
+          </label>
+          <ul class="current">
+           <li class="toctree-l6">
+            <a class="reference internal" href="../define/index.html">
+             define
+            </a>
+           </li>
+           <li class="toctree-l6 current active has-children">
+            <a class="current reference internal" href="#">
+             pulse
+            </a>
+            <input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+            <label for="toctree-checkbox-6">
+             <i class="fas fa-chevron-down">
+             </i>
+            </label>
+            <ul>
+             <li class="toctree-l7">
+              <a class="reference internal" href="video/index.html">
+               video
+              </a>
+             </li>
+             <li class="toctree-l7">
+              <a class="reference internal" href="hardcopy/index.html">
+               hardcopy
+              </a>
+             </li>
+            </ul>
+           </li>
+           <li class="toctree-l6">
+            <a class="reference internal" href="../objects/index.html">
+             objects
+            </a>
+           </li>
+           <li class="toctree-l6">
+            <a class="reference internal" href="../playback/index.html">
+             playback
+            </a>
+           </li>
+          </ul>
+         </li>
+         <li class="toctree-l5">
+          <a class="reference internal" href="../../initialize/index.html">
+           initialize
+          </a>
+         </li>
+        </ul>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../define/index.html">
+         define
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../turbo_post/index.html">
+         turbo_post
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../simulation_reports/index.html">
+         simulation_reports
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../server/index.html">
+         server
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../plot/index.html">
+         plot
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../datamodel/index.html">
+     solver.datamodel
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../schemeeval.html">
+     Scheme code evaluation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../fielddata.html">
+     Field data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../fieldinfo.html">
+     Field info
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../events.html">
+     EventsManager
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../monitors.html">
+     MonitorsManager
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../reduction.html">
+     Reduction
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+  </div>
+</nav>
+  </div>
+  <div class="sidebar-end-items">
+  </div>
+</div>
+
+
+          
+
+
+<div class="bd-sidebar-secondary d-none d-xl-block col-xl-2 bd-toc">
+  
+    
+    <div class="toc-item">
+      
+<div class="tocsection onthispage mt-5 pt-1 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     pulse
+    </span>
+   </code>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       pulse.hardcopy
+      </span>
+     </code>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.color_mode">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         pulse.hardcopy.color_mode
+        </span>
+       </code>
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.color_mode.color">
+         <code class="docutils literal notranslate">
+          <span class="pre">
+           pulse.hardcopy.color_mode.color()
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.color_mode.gray_scale">
+         <code class="docutils literal notranslate">
+          <span class="pre">
+           pulse.hardcopy.color_mode.gray_scale()
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.color_mode.list">
+         <code class="docutils literal notranslate">
+          <span class="pre">
+           pulse.hardcopy.color_mode.list()
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.color_mode.mono_chrome">
+         <code class="docutils literal notranslate">
+          <span class="pre">
+           pulse.hardcopy.color_mode.mono_chrome()
+          </span>
+         </code>
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.dpi">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         pulse.hardcopy.dpi()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.driver">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         pulse.hardcopy.driver
+        </span>
+       </code>
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.driver.avz">
+         <code class="docutils literal notranslate">
+          <span class="pre">
+           pulse.hardcopy.driver.avz()
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.driver.dump_window">
+         <code class="docutils literal notranslate">
+          <span class="pre">
+           pulse.hardcopy.driver.dump_window()
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.driver.eps">
+         <code class="docutils literal notranslate">
+          <span class="pre">
+           pulse.hardcopy.driver.eps()
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.driver.glb">
+         <code class="docutils literal notranslate">
+          <span class="pre">
+           pulse.hardcopy.driver.glb()
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.driver.hsf">
+         <code class="docutils literal notranslate">
+          <span class="pre">
+           pulse.hardcopy.driver.hsf()
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.driver.jpeg">
+         <code class="docutils literal notranslate">
+          <span class="pre">
+           pulse.hardcopy.driver.jpeg()
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.driver.list">
+         <code class="docutils literal notranslate">
+          <span class="pre">
+           pulse.hardcopy.driver.list()
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.driver.options">
+         <code class="docutils literal notranslate">
+          <span class="pre">
+           pulse.hardcopy.driver.options()
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.driver.png">
+         <code class="docutils literal notranslate">
+          <span class="pre">
+           pulse.hardcopy.driver.png()
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.driver.post_format">
+         <code class="docutils literal notranslate">
+          <span class="pre">
+           pulse.hardcopy.driver.post_format
+          </span>
+         </code>
+        </a>
+        <ul class="nav section-nav flex-column">
+         <li class="toc-h6 nav-item toc-entry">
+          <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.driver.post_format.fast_raster">
+           <code class="docutils literal notranslate">
+            <span class="pre">
+             pulse.hardcopy.driver.post_format.fast_raster()
+            </span>
+           </code>
+          </a>
+         </li>
+         <li class="toc-h6 nav-item toc-entry">
+          <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.driver.post_format.raster">
+           <code class="docutils literal notranslate">
+            <span class="pre">
+             pulse.hardcopy.driver.post_format.raster()
+            </span>
+           </code>
+          </a>
+         </li>
+         <li class="toc-h6 nav-item toc-entry">
+          <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.driver.post_format.rle_raster">
+           <code class="docutils literal notranslate">
+            <span class="pre">
+             pulse.hardcopy.driver.post_format.rle_raster()
+            </span>
+           </code>
+          </a>
+         </li>
+         <li class="toc-h6 nav-item toc-entry">
+          <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.driver.post_format.vector">
+           <code class="docutils literal notranslate">
+            <span class="pre">
+             pulse.hardcopy.driver.post_format.vector()
+            </span>
+           </code>
+          </a>
+         </li>
+        </ul>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.driver.post_script">
+         <code class="docutils literal notranslate">
+          <span class="pre">
+           pulse.hardcopy.driver.post_script()
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.driver.ppm">
+         <code class="docutils literal notranslate">
+          <span class="pre">
+           pulse.hardcopy.driver.ppm()
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.driver.tiff">
+         <code class="docutils literal notranslate">
+          <span class="pre">
+           pulse.hardcopy.driver.tiff()
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.driver.vrml">
+         <code class="docutils literal notranslate">
+          <span class="pre">
+           pulse.hardcopy.driver.vrml()
+          </span>
+         </code>
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.invert_background">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         pulse.hardcopy.invert_background()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.jpeg_hardcopy_quality">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         pulse.hardcopy.jpeg_hardcopy_quality()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.landscape">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         pulse.hardcopy.landscape()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.preview">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         pulse.hardcopy.preview()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.set_standard_resolution">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         pulse.hardcopy.set_standard_resolution()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.use_window_resolution">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         pulse.hardcopy.use_window_resolution()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.x_resolution">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         pulse.hardcopy.x_resolution()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.y_resolution">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         pulse.hardcopy.y_resolution()
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.pulse_mode">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       pulse.pulse_mode()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.video">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       pulse.video
+      </span>
+     </code>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.video.advance_quality">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         pulse.video.advance_quality
+        </span>
+       </code>
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.video.advance_quality.bitrate">
+         <code class="docutils literal notranslate">
+          <span class="pre">
+           pulse.video.advance_quality.bitrate()
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.video.advance_quality.bitrate_scale">
+         <code class="docutils literal notranslate">
+          <span class="pre">
+           pulse.video.advance_quality.bitrate_scale()
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.video.advance_quality.compression_method">
+         <code class="docutils literal notranslate">
+          <span class="pre">
+           pulse.video.advance_quality.compression_method()
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.video.advance_quality.enable_h264">
+         <code class="docutils literal notranslate">
+          <span class="pre">
+           pulse.video.advance_quality.enable_h264()
+          </span>
+         </code>
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.video.format">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         pulse.video.format()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.video.fps">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         pulse.video.fps()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.video.height">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         pulse.video.height()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.video.name">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         pulse.video.name()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.video.quality">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         pulse.video.quality()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.video.scale">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         pulse.video.scale()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.video.set_standard_resolution">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         pulse.video.set_standard_resolution()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.video.use_original_resolution">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         pulse.video.use_original_resolution()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.video.width">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         pulse.video.width()
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.write">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       pulse.write()
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+</nav>
+    </div>
+    
+    <div class="toc-item">
+      
+    </div>
+    
+  
+</div>
+
+
+          
+          
+          <div class="bd-content col-12 col-md-9 col-xl-7">
+              
+              <article class="bd-article" role="main">
+                
+  <section id="pulse">
+<span id="ref-solver-tui-solve-animate-pulse"></span><h1>pulse<a class="headerlink" href="#pulse" title="Permalink to this heading">#</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.solver.tui_231.main_menu.solve.animate.</span></span><span class="sig-name descname"><span class="pre">pulse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">service</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Enter the pulse animation menu (only available when one or more particle track or pathline graphics objects are defined).</p>
+<p><strong>Classes:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy" title="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hardcopy</span></code></a>(path, service)</p></td>
+<td><p>Hardcopy options menu.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.video" title="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.video"><code class="xref py py-obj docutils literal notranslate"><span class="pre">video</span></code></a>(path, service)</p></td>
+<td><p>Enter the video window options menu.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.pulse_mode" title="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.pulse_mode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pulse_mode</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Set whether the pulse is a single pulse or continuous.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.write" title="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.write"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Select a pathline or particle track graphics object, specify whether you want to write a video file or picture files, and enter the destination directory for the files.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">hardcopy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">service</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Hardcopy options menu.</p>
+<p><strong>Classes:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.color_mode" title="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.color_mode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">color_mode</span></code></a>(path, service)</p></td>
+<td><p>Enter the hardcopy color mode menu.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.driver" title="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.driver"><code class="xref py py-obj docutils literal notranslate"><span class="pre">driver</span></code></a>(path, service)</p></td>
+<td><p>Enter the set hardcopy driver menu.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.dpi" title="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.dpi"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dpi</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Set the DPI for EPS and Postscript files, specifies the resolution in dots per inch (DPI) instead of setting the width and height.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.invert_background" title="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.invert_background"><code class="xref py py-obj docutils literal notranslate"><span class="pre">invert_background</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Use a white background when the picture is saved.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.jpeg_hardcopy_quality" title="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.jpeg_hardcopy_quality"><code class="xref py py-obj docutils literal notranslate"><span class="pre">jpeg_hardcopy_quality</span></code></a>(*args, **kwargs)</p></td>
+<td><p>To set jpeg hardcopy quality.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.landscape" title="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.landscape"><code class="xref py py-obj docutils literal notranslate"><span class="pre">landscape</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Plot hardcopies in landscape or portrait orientation.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.preview" title="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.preview"><code class="xref py py-obj docutils literal notranslate"><span class="pre">preview</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Display a preview image of a hardcopy.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.set_standard_resolution" title="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.set_standard_resolution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_standard_resolution</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Select from pre-defined resolution list.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.use_window_resolution" title="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.use_window_resolution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">use_window_resolution</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Use the currently active window's resolution for hardcopy (ignores the x-resolution and y-resolution in this case).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.x_resolution" title="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.x_resolution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">x_resolution</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Set the width of raster-formatted images in pixels (0 implies current window size).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.y_resolution" title="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.y_resolution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">y_resolution</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Set the height of raster-formatted images in pixels (0 implies current window size).</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.color_mode">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">color_mode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">service</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.color_mode" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Enter the hardcopy color mode menu.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.color_mode.color" title="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.color_mode.color"><code class="xref py py-obj docutils literal notranslate"><span class="pre">color</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Plot hardcopies in color.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.color_mode.gray_scale" title="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.color_mode.gray_scale"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gray_scale</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Convert color to grayscale for hardcopy.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.color_mode.list" title="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.color_mode.list"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Display the current hardcopy color mode.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.color_mode.mono_chrome" title="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.color_mode.mono_chrome"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mono_chrome</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Convert color to monochrome (black and white) for hardcopy.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.color_mode.color">
+<span class="sig-name descname"><span class="pre">color</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.color_mode.color" title="Permalink to this definition">#</a></dt>
+<dd><p>Plot hardcopies in color.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.color_mode.gray_scale">
+<span class="sig-name descname"><span class="pre">gray_scale</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.color_mode.gray_scale" title="Permalink to this definition">#</a></dt>
+<dd><p>Convert color to grayscale for hardcopy.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.color_mode.list">
+<span class="sig-name descname"><span class="pre">list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.color_mode.list" title="Permalink to this definition">#</a></dt>
+<dd><p>Display the current hardcopy color mode.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.color_mode.mono_chrome">
+<span class="sig-name descname"><span class="pre">mono_chrome</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.color_mode.mono_chrome" title="Permalink to this definition">#</a></dt>
+<dd><p>Convert color to monochrome (black and white) for hardcopy.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.dpi">
+<span class="sig-name descname"><span class="pre">dpi</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.dpi" title="Permalink to this definition">#</a></dt>
+<dd><p>Set the DPI for EPS and Postscript files, specifies the resolution in dots per inch (DPI) instead of setting the width and height.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.driver">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">driver</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">service</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.driver" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Enter the set hardcopy driver menu.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.driver.avz" title="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.driver.avz"><code class="xref py py-obj docutils literal notranslate"><span class="pre">avz</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Use AVZ output for hardcopies.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.driver.dump_window" title="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.driver.dump_window"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dump_window</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Set the command used to dump the graphics window to a file.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.driver.eps" title="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.driver.eps"><code class="xref py py-obj docutils literal notranslate"><span class="pre">eps</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Produce encapsulated PostScript (EPS) output for hardcopies.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.driver.glb" title="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.driver.glb"><code class="xref py py-obj docutils literal notranslate"><span class="pre">glb</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Use GLB output for hardcopies.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.driver.hsf" title="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.driver.hsf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hsf</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Use HSF output for hardcopies.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.driver.jpeg" title="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.driver.jpeg"><code class="xref py py-obj docutils literal notranslate"><span class="pre">jpeg</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Produce JPEG output for hardcopies.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.driver.list" title="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.driver.list"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code></a>(*args, **kwargs)</p></td>
+<td><p>List the current hardcopy driver.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.driver.options" title="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.driver.options"><code class="xref py py-obj docutils literal notranslate"><span class="pre">options</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Set the hardcopy options.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.driver.png" title="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.driver.png"><code class="xref py py-obj docutils literal notranslate"><span class="pre">png</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Use PNG output for hardcopies.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.driver.post_script" title="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.driver.post_script"><code class="xref py py-obj docutils literal notranslate"><span class="pre">post_script</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Produce PostScript output for hardcopies.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.driver.ppm" title="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.driver.ppm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ppm</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Produce PPM output for hardcopies.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.driver.tiff" title="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.driver.tiff"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tiff</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Use TIFF output for hardcopies.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.driver.vrml" title="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.driver.vrml"><code class="xref py py-obj docutils literal notranslate"><span class="pre">vrml</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Use VRML output for hardcopies.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Classes:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.driver.post_format" title="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.driver.post_format"><code class="xref py py-obj docutils literal notranslate"><span class="pre">post_format</span></code></a>(path, service)</p></td>
+<td><p>Enter the PostScript driver format menu.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.driver.avz">
+<span class="sig-name descname"><span class="pre">avz</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.driver.avz" title="Permalink to this definition">#</a></dt>
+<dd><p>Use AVZ output for hardcopies.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.driver.dump_window">
+<span class="sig-name descname"><span class="pre">dump_window</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.driver.dump_window" title="Permalink to this definition">#</a></dt>
+<dd><p>Set the command used to dump the graphics window to a file.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.driver.eps">
+<span class="sig-name descname"><span class="pre">eps</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.driver.eps" title="Permalink to this definition">#</a></dt>
+<dd><p>Produce encapsulated PostScript (EPS) output for hardcopies.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.driver.glb">
+<span class="sig-name descname"><span class="pre">glb</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.driver.glb" title="Permalink to this definition">#</a></dt>
+<dd><p>Use GLB output for hardcopies.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.driver.hsf">
+<span class="sig-name descname"><span class="pre">hsf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.driver.hsf" title="Permalink to this definition">#</a></dt>
+<dd><p>Use HSF output for hardcopies.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.driver.jpeg">
+<span class="sig-name descname"><span class="pre">jpeg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.driver.jpeg" title="Permalink to this definition">#</a></dt>
+<dd><p>Produce JPEG output for hardcopies.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.driver.list">
+<span class="sig-name descname"><span class="pre">list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.driver.list" title="Permalink to this definition">#</a></dt>
+<dd><p>List the current hardcopy driver.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.driver.options">
+<span class="sig-name descname"><span class="pre">options</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.driver.options" title="Permalink to this definition">#</a></dt>
+<dd><p>Set the hardcopy options. Available options are:
+“no gamma correction”, disables gamma correction of colors,
+“physical size = (width,height)”, where width and height
+are the actual measurements of the printable area of the page
+in centimeters.
+“subscreen = (left,right,bottom,top)”, where left,right,
+bottom, and top are numbers in [-1,1] describing a subwindow on
+the page in which to place the hardcopy.
+The options may be combined by separating them with commas.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.driver.png">
+<span class="sig-name descname"><span class="pre">png</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.driver.png" title="Permalink to this definition">#</a></dt>
+<dd><p>Use PNG output for hardcopies.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.driver.post_format">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">post_format</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">service</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.driver.post_format" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Enter the PostScript driver format menu.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.driver.post_format.fast_raster" title="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.driver.post_format.fast_raster"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fast_raster</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Use the new raster format.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.driver.post_format.raster" title="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.driver.post_format.raster"><code class="xref py py-obj docutils literal notranslate"><span class="pre">raster</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Use the original raster format.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.driver.post_format.rle_raster" title="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.driver.post_format.rle_raster"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rle_raster</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Use the run-length encoded raster format.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.driver.post_format.vector" title="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.driver.post_format.vector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">vector</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Use vector format.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.driver.post_format.fast_raster">
+<span class="sig-name descname"><span class="pre">fast_raster</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.driver.post_format.fast_raster" title="Permalink to this definition">#</a></dt>
+<dd><p>Use the new raster format.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.driver.post_format.raster">
+<span class="sig-name descname"><span class="pre">raster</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.driver.post_format.raster" title="Permalink to this definition">#</a></dt>
+<dd><p>Use the original raster format.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.driver.post_format.rle_raster">
+<span class="sig-name descname"><span class="pre">rle_raster</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.driver.post_format.rle_raster" title="Permalink to this definition">#</a></dt>
+<dd><p>Use the run-length encoded raster format.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.driver.post_format.vector">
+<span class="sig-name descname"><span class="pre">vector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.driver.post_format.vector" title="Permalink to this definition">#</a></dt>
+<dd><p>Use vector format.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.driver.post_script">
+<span class="sig-name descname"><span class="pre">post_script</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.driver.post_script" title="Permalink to this definition">#</a></dt>
+<dd><p>Produce PostScript output for hardcopies.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.driver.ppm">
+<span class="sig-name descname"><span class="pre">ppm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.driver.ppm" title="Permalink to this definition">#</a></dt>
+<dd><p>Produce PPM output for hardcopies.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.driver.tiff">
+<span class="sig-name descname"><span class="pre">tiff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.driver.tiff" title="Permalink to this definition">#</a></dt>
+<dd><p>Use TIFF output for hardcopies.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.driver.vrml">
+<span class="sig-name descname"><span class="pre">vrml</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.driver.vrml" title="Permalink to this definition">#</a></dt>
+<dd><p>Use VRML output for hardcopies.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.invert_background">
+<span class="sig-name descname"><span class="pre">invert_background</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.invert_background" title="Permalink to this definition">#</a></dt>
+<dd><p>Use a white background when the picture is saved.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.jpeg_hardcopy_quality">
+<span class="sig-name descname"><span class="pre">jpeg_hardcopy_quality</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.jpeg_hardcopy_quality" title="Permalink to this definition">#</a></dt>
+<dd><p>To set jpeg hardcopy quality.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.landscape">
+<span class="sig-name descname"><span class="pre">landscape</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.landscape" title="Permalink to this definition">#</a></dt>
+<dd><p>Plot hardcopies in landscape or portrait orientation.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.preview">
+<span class="sig-name descname"><span class="pre">preview</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.preview" title="Permalink to this definition">#</a></dt>
+<dd><p>Display a preview image of a hardcopy.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.set_standard_resolution">
+<span class="sig-name descname"><span class="pre">set_standard_resolution</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.set_standard_resolution" title="Permalink to this definition">#</a></dt>
+<dd><p>Select from pre-defined resolution list.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.use_window_resolution">
+<span class="sig-name descname"><span class="pre">use_window_resolution</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.use_window_resolution" title="Permalink to this definition">#</a></dt>
+<dd><p>Use the currently active window’s resolution for hardcopy (ignores the x-resolution and y-resolution in this case).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.x_resolution">
+<span class="sig-name descname"><span class="pre">x_resolution</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.x_resolution" title="Permalink to this definition">#</a></dt>
+<dd><p>Set the width of raster-formatted images in pixels (0 implies current window size).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.y_resolution">
+<span class="sig-name descname"><span class="pre">y_resolution</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.hardcopy.y_resolution" title="Permalink to this definition">#</a></dt>
+<dd><p>Set the height of raster-formatted images in pixels (0 implies current window size).</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.pulse_mode">
+<span class="sig-name descname"><span class="pre">pulse_mode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.pulse_mode" title="Permalink to this definition">#</a></dt>
+<dd><p>Set whether the pulse is a single pulse or continuous.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.video">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">video</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">service</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.video" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Enter the video window options menu.</p>
+<p><strong>Classes:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.video.advance_quality" title="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.video.advance_quality"><code class="xref py py-obj docutils literal notranslate"><span class="pre">advance_quality</span></code></a>(path, service)</p></td>
+<td><p>Advance Quality setting.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.video.format" title="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.video.format"><code class="xref py py-obj docutils literal notranslate"><span class="pre">format</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Set format for exporting video file.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.video.fps" title="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.video.fps"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fps</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Set the Frame Per Sec(FPS) for exporting video file.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.video.height" title="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.video.height"><code class="xref py py-obj docutils literal notranslate"><span class="pre">height</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Set the height for exporting video file.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.video.name" title="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.video.name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">name</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Exporting video file name.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.video.quality" title="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.video.quality"><code class="xref py py-obj docutils literal notranslate"><span class="pre">quality</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Set quality for exporting video file.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.video.scale" title="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.video.scale"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Set scale by which video resolution will expand.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.video.set_standard_resolution" title="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.video.set_standard_resolution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_standard_resolution</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Select from pre-defined resolution list.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.video.use_original_resolution" title="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.video.use_original_resolution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">use_original_resolution</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enable original resolution.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.video.width" title="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.video.width"><code class="xref py py-obj docutils literal notranslate"><span class="pre">width</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Set the width for exporting video file.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.video.advance_quality">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">advance_quality</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">service</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.video.advance_quality" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Advance Quality setting.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.video.advance_quality.bitrate" title="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.video.advance_quality.bitrate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bitrate</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Set video bitrate(kbits/sec) for exporting video file.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.video.advance_quality.bitrate_scale" title="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.video.advance_quality.bitrate_scale"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bitrate_scale</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Mp4 bitrate scale - Best-64000 High-32000 Medium-16000 Low-8000.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.video.advance_quality.compression_method" title="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.video.advance_quality.compression_method"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compression_method</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Compression methode for Microsoft AVI movie.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.video.advance_quality.enable_h264" title="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.video.advance_quality.enable_h264"><code class="xref py py-obj docutils literal notranslate"><span class="pre">enable_h264</span></code></a>(*args, **kwargs)</p></td>
+<td><p>H264 encoding flag.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.video.advance_quality.bitrate">
+<span class="sig-name descname"><span class="pre">bitrate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.video.advance_quality.bitrate" title="Permalink to this definition">#</a></dt>
+<dd><p>Set video bitrate(kbits/sec) for exporting video file.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.video.advance_quality.bitrate_scale">
+<span class="sig-name descname"><span class="pre">bitrate_scale</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.video.advance_quality.bitrate_scale" title="Permalink to this definition">#</a></dt>
+<dd><p>Mp4 bitrate scale - Best-64000 High-32000 Medium-16000 Low-8000.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.video.advance_quality.compression_method">
+<span class="sig-name descname"><span class="pre">compression_method</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.video.advance_quality.compression_method" title="Permalink to this definition">#</a></dt>
+<dd><p>Compression methode for Microsoft AVI movie.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.video.advance_quality.enable_h264">
+<span class="sig-name descname"><span class="pre">enable_h264</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.video.advance_quality.enable_h264" title="Permalink to this definition">#</a></dt>
+<dd><p>H264 encoding flag.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.video.format">
+<span class="sig-name descname"><span class="pre">format</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.video.format" title="Permalink to this definition">#</a></dt>
+<dd><p>Set format for exporting video file.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.video.fps">
+<span class="sig-name descname"><span class="pre">fps</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.video.fps" title="Permalink to this definition">#</a></dt>
+<dd><p>Set the Frame Per Sec(FPS) for exporting video file.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.video.height">
+<span class="sig-name descname"><span class="pre">height</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.video.height" title="Permalink to this definition">#</a></dt>
+<dd><p>Set the height for exporting video file.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.video.name">
+<span class="sig-name descname"><span class="pre">name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.video.name" title="Permalink to this definition">#</a></dt>
+<dd><p>Exporting video file name.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.video.quality">
+<span class="sig-name descname"><span class="pre">quality</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.video.quality" title="Permalink to this definition">#</a></dt>
+<dd><p>Set quality for exporting video file.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.video.scale">
+<span class="sig-name descname"><span class="pre">scale</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.video.scale" title="Permalink to this definition">#</a></dt>
+<dd><p>Set scale by which video resolution will expand.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.video.set_standard_resolution">
+<span class="sig-name descname"><span class="pre">set_standard_resolution</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.video.set_standard_resolution" title="Permalink to this definition">#</a></dt>
+<dd><p>Select from pre-defined resolution list.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.video.use_original_resolution">
+<span class="sig-name descname"><span class="pre">use_original_resolution</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.video.use_original_resolution" title="Permalink to this definition">#</a></dt>
+<dd><p>Enable original resolution.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.video.width">
+<span class="sig-name descname"><span class="pre">width</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.video.width" title="Permalink to this definition">#</a></dt>
+<dd><p>Set the width for exporting video file.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.write">
+<span class="sig-name descname"><span class="pre">write</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.animate.pulse.write" title="Permalink to this definition">#</a></dt>
+<dd><p>Select a pathline or particle track graphics object, specify whether you want to write a video file or picture files, and enter the destination directory for the files. Continuous pulse animations result in a 5 second video. Single pulse animations run for a full cycle.</p>
+</dd></dl>
+
+</dd></dl>
+
+<div class="toctree-wrapper compound">
+</div>
+</section>
+
+
+              </article>
+              
+
+              
+          </div>
+          
+      </div>
+    </div>
+
+  
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695"></script>
+
+<footer class="bd-footer"><div class="bd-footer__inner container">
+  
+  <div class="footer-item">
+    <p class="copyright">
+    &copy; Copyright (c) 2023 ANSYS, Inc. All rights reserved.<br>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br>
+</p>
+  </div>
+  
+</div>
+</footer>
+  </body>
+</html>

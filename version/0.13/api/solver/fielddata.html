@@ -1,0 +1,800 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Field data &#8212; PyFluent</title>
+    
+<script>
+  document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+  document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
+</script>
+
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+
+
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/ansys_sphinx_theme.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css" />
+
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
+
+    
+        <link href="../../_static/css/breadcrumbs.css" rel="stylesheet">
+    
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/thebelab-helper.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <link rel="shortcut icon" href="../../_static/ansys-favicon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="ansys.fluent.core.services.field_data.FieldTransaction" href="_autosummary/ansys.fluent.core.services.field_data.FieldTransaction.html" />
+    <link rel="prev" title="string_eval" href="_autosummary/ansys.fluent.core.services.scheme_eval.SchemeEval.string_eval.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="docsearch:language" content="en">
+  <link rel="canonical" href="https://fluent.docs.pyansys.com/version/stable/api/solver/fielddata.html" />
+  </head>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+    <div class="bd-header-announcement container-fluid" id="banner">
+      
+
+    </div>
+
+    
+    
+    <nav class="bd-header navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="bd-header__inner container-xl">
+
+  <div id="navbar-start">
+    
+    
+  
+
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+    <img src="../../_static/pyansys-logo-black-cropped.png" class="logo__image only-light" alt="Logo image">
+    <img src="../../_static/pyansys-logo-black-cropped.png" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="fas fa-bars"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../getting_started/index.html">
+  Getting started
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../user_guide/index.html">
+  User guide
+ </a>
+</li>
+
+<li class="toctree-l1 current active nav-item">
+ <a class="reference internal nav-link" href="../index.html">
+  API reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../examples/index.html">
+  Examples
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../contributing.html">
+  Contribute
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <div class="dropdown" id="version_switcher">
+    <button type="button" class="btn btn-sm navbar-btn dropdown-toggle" id="version_switcher_button" data-toggle="dropdown">
+        0.13  <!-- this text may get changed later by javascript -->
+        <span class="caret"></span>
+    </button>
+    <div id="version_switcher_menu" class="dropdown-menu list-group-flush py-0" aria-labelledby="version_switcher_button">
+    <!-- dropdown will be populated by javascript on page load -->
+    </div>
+</div>
+
+<!-- NOTE: this JS must live here (not in our global JS file) because it relies
+     on being processed by Jinja before it is run (specifically for replacing
+     variables api/solver/fielddata and {'json_url': 'https://fluent.docs.pyansys.com/versions.json', 'version_match': '0.13'}.
+-->
+
+<script type="text/javascript">
+// Check if corresponding page path exists in other version of docs
+// and, if so, go there instead of the homepage of the other docs version
+function checkPageExistsAndRedirect(event) {
+    const currentFilePath = "api/solver/fielddata.html",
+          tryUrl = event.target.getAttribute("href");
+    let otherDocsHomepage = tryUrl.replace(currentFilePath, "");
+    $.ajax({
+        type: 'HEAD',
+        url: tryUrl,
+        // if the page exists, go there
+        success: function() {
+            location.href = tryUrl;
+        }
+    }).fail(function() {
+        location.href = otherDocsHomepage;
+    });
+    // this prevents the browser from following the href of the clicked node
+    // (which is fine because this function takes care of redirecting)
+    return false;
+}
+
+// Populate the version switcher from the JSON config file
+(function () {
+    $.getJSON("https://fluent.docs.pyansys.com/versions.json", function(data, textStatus, jqXHR) {
+        const currentFilePath = "api/solver/fielddata.html";
+        let btn = document.getElementById("version_switcher_button");
+        // Set empty strings by default so that these attributes exist and can be used in CSS selectors
+        btn.dataset["activeVersionName"] = "";
+        btn.dataset["activeVersion"] = "";
+        // create links to the corresponding page in the other docs versions
+        $.each(data, function(index, entry) {
+            // if no custom name specified (e.g., "latest"), use version string
+            if (!("name" in entry)) {
+                entry.name = entry.version;
+            }
+            // create the node
+            const node = document.createElement("a");
+            node.setAttribute("class", "list-group-item list-group-item-action py-1");
+            node.textContent = `${entry.name}`;
+            node.setAttribute("href", `${entry.url}${currentFilePath}`);
+            // on click, AJAX calls will check if the linked page exists before
+            // trying to redirect, and if not, will redirect to the homepage
+            // for that version of the docs.
+            node.onclick = checkPageExistsAndRedirect;
+            // Add dataset values for the version and name in case people want
+            // to apply CSS styling based on this information.
+            node.dataset["versionName"] = entry.name;
+            node.dataset["version"] = entry.version;
+
+            $("#version_switcher_menu").append(node);
+            // replace dropdown button text with the preferred display name of
+            // this version, rather than using sphinx's 0.13.1 variable.
+            // also highlight the dropdown entry for the currently-viewed
+            // version's entry
+            if (entry.version == "0.13") {
+                node.classList.add("active");
+                btn.innerText = btn.dataset["activeVersionName"] = entry.name;
+                btn.dataset["activeVersion"] = entry.version;
+            }
+        });
+    });
+})();
+</script>
+      </div>
+      
+      <div class="navbar-end-item">
+        <span id="theme-switch" class="btn btn-sm btn-outline-primary navbar-btn rounded-circle">
+    <a class="theme-switch" data-mode="light"><i class="fas fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="far fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fas fa-adjust"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/pyansys/pyfluent" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/pyansys/pyfluent/discussions" rel="noopener" target="_blank" title="Support"><span><i class="fa fa-comment fa-fw"></i></span>
+            <label class="sr-only">Support</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+     
+<div id="announcement_msg"></div>
+<script>
+  fetch("announcement.html")
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error: ${response.status}`);
+      }
+      return response.text();
+    })
+    .then(text => document.getElementById("announcement_msg").innerHTML = text)
+    .catch((error) => console.error(`Fetch problem: ${error.message}`));
+</script>
+
+    
+        <div class="container-xl">
+    <div class="row">
+        <div class="col-12 col-md-3" id="breadcrumbs-spacer"></div>
+        <div class="col-12 col-md-11 col-xl-9" id="breadcrumbs">
+          
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+    
+        <li class="nav-item nav-item-additional-breadcrumb"><a href="https://docs.pyansys.com/">PyAnsys</a> » </li>
+    
+    
+        <li class="nav-item nav-item-0"><a href="../../index.html">PyFluent</a> » </li>
+    
+
+          <li class="nav-item nav-item-1"><a href="../index.html" >API reference</a> » </li>
+          <li class="nav-item nav-item-2"><a href="index.html" accesskey="U">Solver</a> » </li>
+        <li class="nav-item nav-item-this"><a href="">Field data</a></li> 
+      </ul>
+    </div>
+        </div>
+  </div>
+</div>
+    
+
+
+    <div class="bd-container container-xl">
+      <div class="bd-container__inner row">
+          
+
+<!-- Only show if we have sidebars configured, else just a small margin  -->
+<div class="bd-sidebar-primary col-12 col-md-3 bd-sidebar">
+  <div class="sidebar-start-items"><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../general/index.html">
+   General
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../meshing/index.html">
+   Meshing
+  </a>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="index.html">
+   Solver
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="settings.html">
+     Solver settings objects
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="tuicommands.html">
+     Solver TUI commands
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="datamodel/index.html">
+     solver.datamodel
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="schemeeval.html">
+     Scheme code evaluation
+    </a>
+   </li>
+   <li class="toctree-l2 current active has-children">
+    <a class="current reference internal" href="#">
+     Field data
+    </a>
+    <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+    <label for="toctree-checkbox-2">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="_autosummary/ansys.fluent.core.services.field_data.FieldTransaction.html">
+       ansys.fluent.core.services.field_data.FieldTransaction
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="_autosummary/ansys.fluent.core.services.field_data.FieldData.html">
+       ansys.fluent.core.services.field_data.FieldData
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="fieldinfo.html">
+     Field info
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="events.html">
+     EventsManager
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="monitors.html">
+     MonitorsManager
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="reduction.html">
+     Reduction
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+  </div>
+</nav>
+  </div>
+  <div class="sidebar-end-items">
+  </div>
+</div>
+
+
+          
+
+
+<div class="bd-sidebar-secondary d-none d-xl-block col-xl-2 bd-toc">
+  
+    
+    <div class="toc-item">
+      
+<div class="tocsection onthispage mt-5 pt-1 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#accessing-field-data-objects">
+   Accessing field data objects
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#simple-requests">
+   Simple requests
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#get-surface-data">
+     Get surface data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#get-scalar-field-data">
+     Get scalar field data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#get-vector-field-data">
+     Get vector field data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#get-pathlines-field-data">
+     Get pathlines field data
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#making-multiple-requests-in-a-single-transaction">
+   Making multiple requests in a single transaction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tag">
+   Tag
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#fluent-versions-earlier-than-2023-r1">
+     Fluent versions earlier than 2023 R1
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#fluent-versions-2023-r1-and-later">
+     Fluent versions 2023 R1 and later
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#surface-id">
+   Surface ID
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#field-name">
+   Field name
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#surface-request">
+     Surface request
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#scalar-field-request">
+     Scalar field request
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vector-field-request">
+     Vector field request
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pathlines-field-request">
+     Pathlines field request
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#allowed-values">
+   Allowed values
+  </a>
+ </li>
+</ul>
+
+</nav>
+    </div>
+    
+    <div class="toc-item">
+      
+    </div>
+    
+  
+</div>
+
+
+          
+          
+          <div class="bd-content col-12 col-md-9 col-xl-7">
+              
+              <article class="bd-article" role="main">
+                
+  <section id="field-data">
+<span id="ref-field-data"></span><h1>Field data<a class="headerlink" href="#field-data" title="Permalink to this heading">#</a></h1>
+<p>You can use field data objects to access Fluent surface, scalar, vector, and
+pathlines data.</p>
+<section id="accessing-field-data-objects">
+<h2>Accessing field data objects<a class="headerlink" href="#accessing-field-data-objects" title="Permalink to this heading">#</a></h2>
+<p>In order to access field data, launch the fluent solver, and make field data
+available (for example, by reading case and data files):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">ansys.fluent.core</span> <span class="k">as</span> <span class="nn">pyfluent</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">solver</span> <span class="o">=</span> <span class="n">pyfluent</span><span class="o">.</span><span class="n">launch_fluent</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s2">&quot;solver&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">solver</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">file_type</span><span class="o">=</span><span class="s2">&quot;case-dats&quot;</span><span class="p">,</span> <span class="n">file_name</span><span class="o">=</span><span class="n">mixing_elbow_case_path</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The field data object is an attribute of the solver object:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">field_data</span> <span class="o">=</span> <span class="n">solver</span><span class="o">.</span><span class="n">field_data</span>
+</pre></div>
+</div>
+</section>
+<section id="simple-requests">
+<h2>Simple requests<a class="headerlink" href="#simple-requests" title="Permalink to this heading">#</a></h2>
+<p>Here are the methods for requesting each type of field:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">get_surface_data</span></code> for surface data.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">get_scalar_field_data</span></code> for scalar field data.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">get_vector_field_data</span></code> for vector field data</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">get_pathlines_field_data</span></code> for vector field data</p></li>
+</ul>
+<section id="get-surface-data">
+<h3>Get surface data<a class="headerlink" href="#get-surface-data" title="Permalink to this heading">#</a></h3>
+<p>You can request surface vertices for a given <code class="docutils literal notranslate"><span class="pre">surface_name</span></code> by calling
+the <code class="docutils literal notranslate"><span class="pre">get_surface_data</span></code> method and specifying <code class="docutils literal notranslate"><span class="pre">Vertices</span></code> for <code class="docutils literal notranslate"><span class="pre">data_type</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">ansys.fluent.core.services.field_data</span> <span class="kn">import</span> <span class="n">SurfaceDataType</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">field_data</span><span class="o">.</span><span class="n">get_surface_data</span><span class="p">(</span><span class="n">surface_name</span><span class="o">=</span><span class="s2">&quot;inlet&quot;</span><span class="p">,</span> <span class="n">data_type</span><span class="o">=</span><span class="n">SurfaceDataType</span><span class="o">.</span><span class="n">Vertices</span><span class="p">)</span>
+<span class="go">{4: array([-0.34760258,  0.        , -0.04240644, ..., -0.2953132 ,</span>
+<span class="go">      0.        , -0.06207064], dtype=float32)}</span>
+</pre></div>
+</div>
+<p>You can call the same method to get the corresponding surface face connectivity, normals, and centroids
+by specifying <code class="docutils literal notranslate"><span class="pre">FacesConnectivity</span></code>, <code class="docutils literal notranslate"><span class="pre">FacesNormal</span></code> and <code class="docutils literal notranslate"><span class="pre">FacesCentroid</span></code> respectively for <code class="docutils literal notranslate"><span class="pre">data_type</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">field_data</span><span class="o">.</span><span class="n">get_surface_data</span><span class="p">(</span><span class="n">surface_name</span><span class="o">=</span><span class="s2">&quot;inlet&quot;</span><span class="p">,</span> <span class="n">data_type</span><span class="o">=</span><span class="n">SurfaceDataType</span><span class="o">.</span><span class="n">FacesConnectivity</span><span class="p">)</span>
+<span class="go">{4: array([  4,   3,   2, ..., 379, 382, 388])}</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">field_data</span><span class="o">.</span><span class="n">get_surface_data</span><span class="p">(</span><span class="n">surface_name</span><span class="o">=</span><span class="s2">&quot;inlet&quot;</span><span class="p">,</span> <span class="n">data_type</span><span class="o">=</span><span class="n">SurfaceDataType</span><span class="o">.</span><span class="n">FacesNormal</span><span class="p">)</span>
+<span class="go">{4: array([ 0.0000000e+00,  2.5835081e-06,  ...,</span>
+<span class="go">        2.7459005e-06,  0.0000000e+00,  0.0000000e+00,  3.0340884e-06], dtype=float32)}</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">field_data</span><span class="o">.</span><span class="n">get_surface_data</span><span class="p">(</span><span class="n">surface_name</span><span class="o">=</span><span class="s2">&quot;inlet&quot;</span><span class="p">,</span> <span class="n">data_type</span><span class="o">=</span><span class="n">SurfaceDataType</span><span class="o">.</span><span class="n">FacesCentroid</span><span class="p">)</span>
+<span class="go">{4: array([-0.34724122,  0.        , -0.0442204 , -0.34724477, ...,</span>
+<span class="go">       -0.04050309, -0.34645557,  0.        , -0.04421487, -0.34646705], dtype=float32)}</span>
+</pre></div>
+</div>
+<p>Response contains a dictionary of surface IDs to numpy array of the requested field.</p>
+</section>
+<section id="get-scalar-field-data">
+<h3>Get scalar field data<a class="headerlink" href="#get-scalar-field-data" title="Permalink to this heading">#</a></h3>
+<p>You can call the <code class="docutils literal notranslate"><span class="pre">get_scalar_field_data</span></code> method to get scalar field data, such as temperature:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">field_data</span><span class="o">.</span><span class="n">get_scalar_field_data</span><span class="p">(</span><span class="n">surface_name</span><span class="o">=</span><span class="s2">&quot;inlet&quot;</span><span class="p">,</span> <span class="n">field_name</span><span class="o">=</span><span class="s2">&quot;temperature&quot;</span><span class="p">)</span>
+<span class="go">{4: array([922.6778 , 923.7954 , 923.791  , 922.67017, 922.88135,  ...,</span>
+<span class="go">       924.94556, 924.9451 , 924.9536 , 923.87366, 922.8334 , 922.82434], dtype=float32)}</span>
+</pre></div>
+</div>
+<p>The response contains a dictionary of surface IDs to a numpy array of the requested field.</p>
+</section>
+<section id="get-vector-field-data">
+<h3>Get vector field data<a class="headerlink" href="#get-vector-field-data" title="Permalink to this heading">#</a></h3>
+<p>You can call the <code class="docutils literal notranslate"><span class="pre">get_vector_field_data</span></code> method to get vector field data.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">field_data</span><span class="o">.</span><span class="n">get_vector_field_data</span><span class="p">(</span><span class="n">surface_name</span><span class="o">=</span><span class="s2">&quot;inlet&quot;</span><span class="p">,</span> <span class="n">vector_field</span><span class="o">=</span><span class="s2">&quot;velocity&quot;</span><span class="p">)</span>
+<span class="go">{4: (array([ 5.81938386e-01, -1.01187916e+01,  3.14891455e-03,  ...,</span>
+<span class="go">      -6.49216697e-02,  1.44923580e+00, -1.04387817e+01], dtype=float32), 0.00012235096)}</span>
+</pre></div>
+</div>
+<p>Response is a dictionary of surface IDs to a tuple containing a numpy array of <code class="docutils literal notranslate"><span class="pre">vector</span> <span class="pre">field</span></code> and <code class="docutils literal notranslate"><span class="pre">vector-scale</span></code>.</p>
+</section>
+<section id="get-pathlines-field-data">
+<h3>Get pathlines field data<a class="headerlink" href="#get-pathlines-field-data" title="Permalink to this heading">#</a></h3>
+<p>You can call the <code class="docutils literal notranslate"><span class="pre">get_pathlines_field_data</span></code> method to get pathlines field data.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">field_data</span><span class="o">.</span><span class="n">get_pathlines_field_data</span><span class="p">(</span><span class="n">surface_name</span><span class="o">=</span><span class="s2">&quot;inlet&quot;</span><span class="p">,</span> <span class="n">field_name</span><span class="o">=</span><span class="s2">&quot;temperature&quot;</span><span class="p">)</span>
+<span class="go">{4: {&#39;vertices&#39;: array([-0.34724122,  0.        , -0.0442204 , ..., -0.20095952, -0.1250188 , -0.0317937 ], dtype=float32),</span>
+<span class="go">    &#39;lines&#39;: array([    2,     0,     1, ...,     2, 29581, 29582]), &#39;temperature&#39;: array([879.1005 , 831.87085, 861.82495, ..., 899.1867 , 892.27   ,</span>
+<span class="go">     896.4489 ], dtype=float32), &#39;pathlines-count&#39;: array([90])}}</span>
+</pre></div>
+</div>
+<p>Pathlines data is returned as line surface. So response is a dictionary of surface IDs to a information about line surface.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In Fluent, a surface name can be associated with multiple surface IDs.
+Thus, a response contain a surface ID as a key of the returned dictionary.</p>
+</div>
+</section>
+</section>
+<section id="making-multiple-requests-in-a-single-transaction">
+<h2>Making multiple requests in a single transaction<a class="headerlink" href="#making-multiple-requests-in-a-single-transaction" title="Permalink to this heading">#</a></h2>
+<p>You can get data for multiple fields in a single transaction.</p>
+<p>First create transaction object for field data.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">transaction</span> <span class="o">=</span> <span class="n">solver</span><span class="o">.</span><span class="n">field_data</span><span class="o">.</span><span class="n">new_transaction</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Then combine requests for multiple fields using <code class="docutils literal notranslate"><span class="pre">add_&lt;items&gt;_request</span></code> methods in a single transaction:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">add_surfaces_request</span></code> adds a surfaces request.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">add_scalar_fields_request</span></code> adds a scalar fields request.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">add_vector_fields_request</span></code> adds a vector fields request.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">add_pathlines_fields_request</span></code> adds a pathlines fields request.</p></li>
+</ul>
+<p>Following code demonstrate adding multiple requests to a single transaction.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">transaction</span><span class="o">.</span><span class="n">add_surfaces_request</span><span class="p">(</span><span class="n">surface_ids</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">provide_vertices</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="go">                                        provide_faces=False, provide_faces_centroid=True</span>
+<span class="go">                                       )</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">transaction</span><span class="o">.</span><span class="n">add_surfaces_request</span><span class="p">(</span><span class="n">surface_ids</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">provide_vertices</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="go">                                       provide_faces=True</span>
+<span class="go">                                       )</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">transaction</span><span class="o">.</span><span class="n">add_scalar_fields_request</span><span class="p">(</span><span class="n">surface_ids</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="n">field_name</span><span class="o">=</span><span class="s2">&quot;temperature&quot;</span><span class="p">,</span>
+<span class="go">                                            node_value=True, boundary_value=True</span>
+<span class="go">                                            )</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">transaction</span><span class="o">.</span><span class="n">add_vector_fields_request</span><span class="p">(</span><span class="n">surface_ids</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">transaction</span><span class="o">.</span><span class="n">add_pathlines_fields_request</span><span class="p">(</span><span class="n">surface_ids</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="n">field_name</span><span class="o">=</span><span class="s2">&quot;temperature&quot;</span>
+<span class="go">                                            )</span>
+</pre></div>
+</div>
+<p>You can call the <code class="docutils literal notranslate"><span class="pre">get_fields</span></code> method to get the data for all these requests. This call also
+clears all requests, so that subsequent calls to the <code class="docutils literal notranslate"><span class="pre">get_fields</span></code> method yield nothing until
+more requests are added.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">payload_data</span> <span class="o">=</span> <span class="n">transaction</span><span class="o">.</span><span class="n">get_fields</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">payload_data</span></code> is a dictionary containing the requested fields as a numpy array in the following order:</p>
+<p><code class="docutils literal notranslate"><span class="pre">tag</span> <span class="pre">-&gt;</span> <span class="pre">surface_id</span> <span class="pre">[int]</span> <span class="pre">-&gt;</span> <span class="pre">field_name</span> <span class="pre">[str]</span> <span class="pre">-&gt;</span> <span class="pre">field_data[np.array]</span></code></p>
+</section>
+<section id="tag">
+<h2>Tag<a class="headerlink" href="#tag" title="Permalink to this heading">#</a></h2>
+<section id="fluent-versions-earlier-than-2023-r1">
+<h3>Fluent versions earlier than 2023 R1<a class="headerlink" href="#fluent-versions-earlier-than-2023-r1" title="Permalink to this heading">#</a></h3>
+<p>A tag is int, generated by applying <code class="docutils literal notranslate"><span class="pre">bitwise</span> <span class="pre">or</span></code> on all tags for a request. Here is a list
+of supported tags and their values:</p>
+<ul class="simple">
+<li><p>OVERSET_MESH: 1,</p></li>
+<li><p>ELEMENT_LOCATION: 2,</p></li>
+<li><p>NODE_LOCATION: 4,</p></li>
+<li><p>BOUNDARY_VALUES: 8,</p></li>
+</ul>
+<p>For example, if you request the scalar field data for element location[2], in the
+dictionary,  <code class="docutils literal notranslate"><span class="pre">tag</span></code> is <code class="docutils literal notranslate"><span class="pre">2</span></code>. Similarly, if you request the boundary values[8] for
+node location[4], <code class="docutils literal notranslate"><span class="pre">tag</span></code> is <code class="docutils literal notranslate"><span class="pre">(4|8)</span></code> or 12.</p>
+</section>
+<section id="fluent-versions-2023-r1-and-later">
+<h3>Fluent versions 2023 R1 and later<a class="headerlink" href="#fluent-versions-2023-r1-and-later" title="Permalink to this heading">#</a></h3>
+<p>A tag is tuple of input, value pairs for which field data is generated.</p>
+<p>For example, if you request the scalar field data for element location, in the
+dictionary,  <code class="docutils literal notranslate"><span class="pre">tag</span></code> is <code class="docutils literal notranslate"><span class="pre">(('type','scalar-field'),</span> <span class="pre">('dataLocation',</span> <span class="pre">1),</span> <span class="pre">('boundaryValues',False))</span></code>.
+Similarly, if you request the boundary values for node location, <code class="docutils literal notranslate"><span class="pre">tag</span></code> is
+<code class="docutils literal notranslate"><span class="pre">(('type','scalar-field'),</span> <span class="pre">('dataLocation',</span> <span class="pre">0),</span> <span class="pre">('boundaryValues',True)</span></code>.</p>
+</section>
+</section>
+<section id="surface-id">
+<h2>Surface ID<a class="headerlink" href="#surface-id" title="Permalink to this heading">#</a></h2>
+<p>The surface ID is the same one that is passed in the request.</p>
+</section>
+<section id="field-name">
+<h2>Field name<a class="headerlink" href="#field-name" title="Permalink to this heading">#</a></h2>
+<p>A request returns multiple fields. The number of fields depends on the request
+type.</p>
+<section id="surface-request">
+<h3>Surface request<a class="headerlink" href="#surface-request" title="Permalink to this heading">#</a></h3>
+<p>The response to a surface request contains any of the following fields,
+depending on the request arguments:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">faces</span></code>, which contain face connectivity</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">vertices</span></code>, which contain node coordinates</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">centroid</span></code>, which contains face centroids</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">face-normal</span></code>, which contains face normals</p></li>
+</ul>
+</section>
+<section id="scalar-field-request">
+<h3>Scalar field request<a class="headerlink" href="#scalar-field-request" title="Permalink to this heading">#</a></h3>
+<p>The response to a scalar field request contains a single field with the same
+name as the scalar field name passed in the request.</p>
+</section>
+<section id="vector-field-request">
+<h3>Vector field request<a class="headerlink" href="#vector-field-request" title="Permalink to this heading">#</a></h3>
+<p>The response to a vector field request contains two fields:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">vector</span> <span class="pre">field</span></code>, with the same name as the vector field name that is passed
+in the request</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">vector-scale</span></code>, a float value indicating the vector scale.</p></li>
+</ul>
+</section>
+<section id="pathlines-field-request">
+<h3>Pathlines field request<a class="headerlink" href="#pathlines-field-request" title="Permalink to this heading">#</a></h3>
+<p>The response to a pathlines field request contains the following fields:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">pathlines-count</span></code>, which contains pathlines count.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lines</span></code>, which contain pathlines connectivity.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">vertices</span></code>, which contain node coordinates.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">field</span> <span class="pre">name</span></code>, which contains pathlines field. field name is the same name as
+the scalar field name passed in the request.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">particle-time</span></code>, which contains  particle time, if requested.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">additional</span> <span class="pre">field</span> <span class="pre">name</span></code>, which contains  additional field, if requested.
+additional field name is the same name as the additional field name passed in
+the request.</p></li>
+</ul>
+</section>
+</section>
+<section id="allowed-values">
+<h2>Allowed values<a class="headerlink" href="#allowed-values" title="Permalink to this heading">#</a></h2>
+<p>Additionally there is an <code class="docutils literal notranslate"><span class="pre">allowed_values</span></code> method provided on all of
+<code class="docutils literal notranslate"><span class="pre">field_name</span></code>, <code class="docutils literal notranslate"><span class="pre">surface_name</span></code> and <code class="docutils literal notranslate"><span class="pre">surface_ids</span></code> which tells you what object
+names are accessible.</p>
+<p>Some sample use cases are demonstrated below:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">field_data</span><span class="o">.</span><span class="n">get_scalar_field_data</span><span class="o">.</span><span class="n">field_name</span><span class="o">.</span><span class="n">allowed_values</span><span class="p">()</span>
+<span class="go">[&#39;abs-angular-coordinate&#39;, &#39;absolute-pressure&#39;, &#39;angular-coordinate&#39;,</span>
+<span class="go">&#39;anisotropic-adaption-cells&#39;, &#39;axial-coordinate&#39;, &#39;axial-velocity&#39;,</span>
+<span class="go">&#39;boundary-cell-dist&#39;, &#39;boundary-layer-cells&#39;, &#39;boundary-normal-dist&#39;, ...]</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">transaction</span> <span class="o">=</span> <span class="n">field_data</span><span class="o">.</span><span class="n">new_transaction</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">transaction</span><span class="o">.</span><span class="n">add_scalar_fields_request</span><span class="o">.</span><span class="n">field_name</span><span class="o">.</span><span class="n">allowed_values</span><span class="p">()</span>
+<span class="go">[&#39;abs-angular-coordinate&#39;, &#39;absolute-pressure&#39;, &#39;angular-coordinate&#39;,</span>
+<span class="go">&#39;anisotropic-adaption-cells&#39;, &#39;axial-coordinate&#39;, &#39;axial-velocity&#39;,</span>
+<span class="go">&#39;boundary-cell-dist&#39;, &#39;boundary-layer-cells&#39;, &#39;boundary-normal-dist&#39;, ...]</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">field_data</span><span class="o">.</span><span class="n">get_scalar_field_data</span><span class="o">.</span><span class="n">surface_name</span><span class="o">.</span><span class="n">allowed_values</span><span class="p">()</span>
+<span class="go">[&#39;cold-inlet&#39;, &#39;hot-inlet&#39;, &#39;outlet&#39;, &#39;symmetry-xyplane&#39;, &#39;wall-elbow&#39;, &#39;wall-inlet&#39;]</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">field_data</span><span class="o">.</span><span class="n">get_surface_data</span><span class="o">.</span><span class="n">surface_ids</span><span class="o">.</span><span class="n">allowed_values</span><span class="p">()</span>
+<span class="go">[0, 1, 2, 3, 4, 5]</span>
+</pre></div>
+</div>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="_autosummary/ansys.fluent.core.services.field_data.FieldTransaction.html#ansys.fluent.core.services.field_data.FieldTransaction" title="ansys.fluent.core.services.field_data.FieldTransaction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">field_data.FieldTransaction</span></code></a>(service, ...)</p></td>
+<td><p>Populates Fluent field data on surfaces.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="_autosummary/ansys.fluent.core.services.field_data.FieldData.html#ansys.fluent.core.services.field_data.FieldData" title="ansys.fluent.core.services.field_data.FieldData"><code class="xref py py-obj docutils literal notranslate"><span class="pre">field_data.FieldData</span></code></a>(service, field_info, ...)</p></td>
+<td><p>Provides access to Fluent field data on surfaces.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+
+              </article>
+              
+
+              
+          </div>
+          
+      </div>
+    </div>
+
+  
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695"></script>
+
+<footer class="bd-footer"><div class="bd-footer__inner container">
+  
+  <div class="footer-item">
+    <p class="copyright">
+    &copy; Copyright (c) 2023 ANSYS, Inc. All rights reserved.<br>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br>
+</p>
+  </div>
+  
+</div>
+</footer>
+  </body>
+</html>

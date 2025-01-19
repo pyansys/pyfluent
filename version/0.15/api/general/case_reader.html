@@ -1,0 +1,1003 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>CaseFile &#8212; PyFluent</title>
+    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/ansys_sphinx_theme.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    
+        <link href="../../_static/css/breadcrumbs.css" rel="stylesheet">
+    
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/thebelab-helper.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/js/table.js"></script>
+    <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/general/case_reader';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://fluent.docs.pyansys.com/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.15';
+        </script>
+    <link rel="shortcut icon" href="../../_static/ansys-favicon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Transfer data" href="data_transfer.html" />
+    <link rel="prev" title="sort_by_core_count_ascending" href="scheduler/_autosummary/ansys.fluent.core.scheduler.machine_list.MachineList.sort_by_core_count_ascending.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <link rel="canonical" href="https://fluent.docs.pyansys.com/version/stable/api/general/case_reader.html" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container"><!-- Debugging: html_theme_options =  -->
+
+  <!-- If there is no MiliSearch enabled, use the PyData search -->
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  <div class="navbar-header-items__start">
+    
+      <div class="navbar-item">
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/pyansys-logo-black-cropped.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../_static/pyansys-logo-black-cropped.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../getting_started/index.html">
+                        Getting started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../user_guide/index.html">
+                        User guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../index.html">
+                        API reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../examples/index.html">
+                        Examples
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../contributing.html">
+                        Contribute
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+        </div>
+      
+      
+        <div class="navbar-item">
+<script>
+document.write(`
+  <div class="version-switcher__container dropdown">
+    <button type="button" class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle" data-bs-toggle="dropdown">
+      0.15  <!-- this text may get changed later by javascript -->
+      <span class="caret"></span>
+    </button>
+    <div class="version-switcher__menu dropdown-menu list-group-flush py-0">
+    <!-- dropdown will be populated by javascript on page load -->
+    </div>
+  </div>
+`);
+</script></div>
+      
+        <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent/discussions" title="Support" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa fa-comment fa-fw"></i></span>
+            <label class="sr-only">Support</label></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </nav>
+  
+
+    
+    <div id="announcement_msg"></div>
+<script>
+  fetch("announcement.html")
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error: ${response.status}`);
+      }
+      return response.text();
+    })
+    .then(text => document.getElementById("announcement_msg").innerHTML = text)
+    .catch((error) => console.error(`Fetch problem: ${error.message}`));
+</script>
+    
+
+    
+    <div class="container-xl">
+    <div class="row">
+        <div class="col-12 col-md-3" id="breadcrumbs-spacer"></div>
+        <div class="col-12 col-md-11 col-xl-9" id="breadcrumbs">
+          
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+    
+        <li class="nav-item nav-item-additional-breadcrumb"><a href="https://docs.pyansys.com/">PyAnsys</a> » </li>
+    
+    
+        <li class="nav-item nav-item-0"><a href="../../index.html">PyFluent</a> » </li>
+    
+
+          <li class="nav-item nav-item-1"><a href="../index.html" >API reference</a> » </li>
+          <li class="nav-item nav-item-2"><a href="index.html" accesskey="U">General</a> » </li>
+        <li class="nav-item nav-item-this"><a href="">CaseFile</a></li> 
+      </ul>
+    </div>
+        </div>
+  </div>
+</div>
+    
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../getting_started/index.html">
+                        Getting started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../user_guide/index.html">
+                        User guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../index.html">
+                        API reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../examples/index.html">
+                        Examples
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../contributing.html">
+                        Contribute
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<script>
+document.write(`
+  <div class="version-switcher__container dropdown">
+    <button type="button" class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle" data-bs-toggle="dropdown">
+      0.15  <!-- this text may get changed later by javascript -->
+      <span class="caret"></span>
+    </button>
+    <div class="version-switcher__menu dropdown-menu list-group-flush py-0">
+    <!-- dropdown will be populated by javascript on page load -->
+    </div>
+  </div>
+`);
+</script></div>
+        
+          <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent/discussions" title="Support" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa fa-comment fa-fw"></i></span>
+            <label class="sr-only">Support</label></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item"><nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">General</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="launcher/index.html">Launcher</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils/index.html">Asynchronous execution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sessions/index.html">Sessions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="services/index.html">Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="streaming_services/index.html">Streaming services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post_objects/index.html">Post objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scheduler/index.html">Scheduler</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">CaseFile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_transfer.html">Transfer data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="journaling.html">Journaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="meta.html">Meta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quantity.html">Quantity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rpvars.html">rpvars</a></li>
+<li class="toctree-l2"><a class="reference internal" href="workflow.html">Workflow</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../meshing/index.html">Meshing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../solver/index.html">Solver</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article"></div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="casefile">
+<span id="ref-case-reader"></span><h1>CaseFile<a class="headerlink" href="#casefile" title="Permalink to this heading">#</a></h1>
+<p>The CaseFile class provides a reader for Fluent case files.</p>
+<section id="sample-usage">
+<h2>Sample usage<a class="headerlink" href="#sample-usage" title="Permalink to this heading">#</a></h2>
+<p>You can use the CaseFile class by importing it and passing a case file path.
+This example shows how to have the CaseFile class read a case file (.cas.h5)
+from the <code class="docutils literal notranslate"><span class="pre">examples</span></code> repository:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">ansys.fluent.core</span> <span class="kn">import</span> <span class="n">examples</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">ansys.fluent.core.filereader.casereader</span> <span class="kn">import</span> <span class="n">CaseReader</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">case_filepath</span> <span class="o">=</span> <span class="n">examples</span><span class="o">.</span><span class="n">download_file</span><span class="p">(</span><span class="s2">&quot;Static_Mixer_Parameters.cas.h5&quot;</span><span class="p">,</span> <span class="s2">&quot;pyfluent/static_mixer&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">reader</span> <span class="o">=</span> <span class="n">CaseReader</span><span class="p">(</span><span class="n">case_filepath</span><span class="o">=</span><span class="n">case_filepath</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">reader</span><span class="o">.</span><span class="n">precision</span><span class="p">()</span>
+<span class="go">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">reader</span><span class="o">.</span><span class="n">num_dimensions</span><span class="p">()</span>
+<span class="go">3</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">{</span><span class="n">p</span><span class="o">.</span><span class="n">name</span><span class="p">:</span> <span class="n">p</span><span class="o">.</span><span class="n">value</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">reader</span><span class="o">.</span><span class="n">input_parameters</span><span class="p">()}</span>
+<span class="go">{&#39;inlet1_vel&#39;: &#39;1 [m/s]&#39;, &#39;inlet1_temp&#39;: &#39;300 [K]&#39;, &#39;inlet2_vel&#39;: &#39;1 [m/s]&#39;, &#39;inlet2_temp&#39;: &#39;350 [K]&#39;}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">{</span><span class="n">p</span><span class="o">.</span><span class="n">name</span><span class="p">:</span> <span class="n">p</span><span class="o">.</span><span class="n">units</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">reader</span><span class="o">.</span><span class="n">output_parameters</span><span class="p">()}</span>
+<span class="go">{&#39;outlet-temp-avg-op&#39;: &#39;K&#39;, &#39;outlet-vel-avg-op&#39;: &#39;m s^-1&#39;}</span>
+</pre></div>
+</div>
+</section>
+<section id="additional-features">
+<h2>Additional features<a class="headerlink" href="#additional-features" title="Permalink to this heading">#</a></h2>
+<p>Along with basic functionality, the CaseFile class provides many additional features, including these:</p>
+<ul>
+<li><p><strong>Supports multiple file formats</strong>
+The CaseFile class can read Fluent case files (CAS, CAS.HF, and CAS.GZ) in both text and binary formats.</p></li>
+<li><p><strong>Takes a project path as an argument</strong>
+The CaseFile class has an option for taking a Fluent project path (FLPRJ) as an argument and locating
+the case file path:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">reader</span> <span class="o">=</span> <span class="n">CaseReader</span><span class="p">(</span><span class="n">project_filepath</span><span class="o">=</span><span class="s2">&quot;Dir1/Dir2/project.flprj&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Reads ``rp_vars`` and ``config_vars`` variables</strong>
+The CaseFile class can provide the <code class="docutils literal notranslate"><span class="pre">rp_vars</span></code> and <code class="docutils literal notranslate"><span class="pre">config_vars</span></code> variables:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">reader</span><span class="o">.</span><span class="n">rp_vars</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">reader</span><span class="o">.</span><span class="n">config_vars</span><span class="p">()</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<span class="target" id="module-ansys.fluent.core.filereader.case_file"></span><p>Reader for Fluent case files.</p>
+<section id="example">
+<h3>Example<a class="headerlink" href="#example" title="Permalink to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">ansys.fluent.core</span> <span class="kn">import</span> <span class="n">examples</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">ansys.fluent.core.filereader.casereader</span> <span class="kn">import</span> <span class="n">CaseReader</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">case_filepath</span> <span class="o">=</span> <span class="n">examples</span><span class="o">.</span><span class="n">download_file</span><span class="p">(</span><span class="s2">&quot;Static_Mixer_Parameters.cas.h5&quot;</span><span class="p">,</span> <span class="s2">&quot;pyfluent/static_mixer&quot;</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">reader</span> <span class="o">=</span> <span class="n">CaseReader</span><span class="p">(</span><span class="n">case_filepath</span><span class="o">=</span><span class="n">case_filepath</span><span class="p">)</span> <span class="c1"># Instantiate a CaseFile class</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">input_parameters</span> <span class="o">=</span> <span class="n">reader</span><span class="o">.</span><span class="n">input_parameters</span><span class="p">()</span>     <span class="c1"># Get lists of input parameters</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">output_parameters</span> <span class="o">=</span> <span class="n">reader</span><span class="o">.</span><span class="n">output_parameters</span><span class="p">()</span>   <span class="c1"># Get lists of output parameters</span>
+</pre></div>
+</div>
+</section>
+<p><strong>Classes:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.filereader.case_file.CaseFile" title="ansys.fluent.core.filereader.case_file.CaseFile"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CaseFile</span></code></a>([case_filepath, project_filepath])</p></td>
+<td><p>Class to read a Fluent case file.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.filereader.case_file.InputParameter" title="ansys.fluent.core.filereader.case_file.InputParameter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InputParameter</span></code></a>(raw_data)</p></td>
+<td><p>Class to represent an input parameter.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.filereader.case_file.OutputParameter" title="ansys.fluent.core.filereader.case_file.OutputParameter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">OutputParameter</span></code></a>(raw_data)</p></td>
+<td><p>Class to represent an output parameter.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.filereader.case_file.CaseFile">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.filereader.case_file.</span></span><span class="sig-name descname"><span class="pre">CaseFile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">case_filepath</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">project_filepath</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.filereader.case_file.CaseFile" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/dev/library/functions.html#object" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Class to read a Fluent case file.</p>
+<p class="rubric">Methods</p>
+<table class="table">
+<tbody>
+<tr class="row-odd"><td><p><strong>input_parameters</strong></p></td>
+<td><p>Get a list of input parameter objects</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>output_parameters</strong></p></td>
+<td><p>Get a list of output parameter objects</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>num_dimensions</strong></p></td>
+<td><p>Get the dimensionality of the case (2 or 3)</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>precision</strong></p></td>
+<td><p>Get the precision (1 or 2 for 1D of 2D)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>iter_count</strong></p></td>
+<td><p>Get the number of iterations</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>rp_vars</strong></p></td>
+<td><p>Get dictionary of all RP vars</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>rp_var</strong></p></td>
+<td><p>Get specific RP var by name, either by providing the Scheme name: <cite>reader.rp_var(“rad/enable-netm?”)</cite> or a pythonic version: <cite>reader.rp_var.rad.enable_netm__q()</cite></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>has_rp_var</strong></p></td>
+<td><p>Whether case has particular RP var</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>config_vars</strong></p></td>
+<td><p>Get dictionary of all RP vars</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>config_var</strong></p></td>
+<td><p>Get specific config var by name, either by providing the Scheme name: <cite>reader.config_var(“rp-3d?”)</cite> or a pythonic version: <cite>reader.config_var.rp_3d__q()</cite></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>has_config_var</strong></p></td>
+<td><p>Whether case has particular config var</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.filereader.case_file.CaseFile.__init__" title="ansys.fluent.core.filereader.case_file.CaseFile.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>([case_filepath, project_filepath])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.filereader.case_file.CaseFile.config_vars" title="ansys.fluent.core.filereader.case_file.CaseFile.config_vars"><code class="xref py py-obj docutils literal notranslate"><span class="pre">config_vars</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.filereader.case_file.CaseFile.has_config_var" title="ansys.fluent.core.filereader.case_file.CaseFile.has_config_var"><code class="xref py py-obj docutils literal notranslate"><span class="pre">has_config_var</span></code></a>(name)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.filereader.case_file.CaseFile.has_rp_var" title="ansys.fluent.core.filereader.case_file.CaseFile.has_rp_var"><code class="xref py py-obj docutils literal notranslate"><span class="pre">has_rp_var</span></code></a>(name)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.filereader.case_file.CaseFile.input_parameters" title="ansys.fluent.core.filereader.case_file.CaseFile.input_parameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">input_parameters</span></code></a>()</p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">rtype<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/dev/library/typing.html#typing.List" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code></a>[<a class="reference internal" href="#ansys.fluent.core.filereader.case_file.InputParameter" title="ansys.fluent.core.filereader.case_file.InputParameter"><code class="xref py py-class docutils literal notranslate"><span class="pre">InputParameter</span></code></a>]</p>
+</dd>
+</dl>
+</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.filereader.case_file.CaseFile.iter_count" title="ansys.fluent.core.filereader.case_file.CaseFile.iter_count"><code class="xref py py-obj docutils literal notranslate"><span class="pre">iter_count</span></code></a>()</p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">rtype<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/dev/library/functions.html#int" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a></p>
+</dd>
+</dl>
+</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.filereader.case_file.CaseFile.num_dimensions" title="ansys.fluent.core.filereader.case_file.CaseFile.num_dimensions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">num_dimensions</span></code></a>()</p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">rtype<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/dev/library/functions.html#int" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a></p>
+</dd>
+</dl>
+</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.filereader.case_file.CaseFile.output_parameters" title="ansys.fluent.core.filereader.case_file.CaseFile.output_parameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">output_parameters</span></code></a>()</p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">rtype<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/dev/library/typing.html#typing.List" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code></a>[<a class="reference internal" href="#ansys.fluent.core.filereader.case_file.OutputParameter" title="ansys.fluent.core.filereader.case_file.OutputParameter"><code class="xref py py-class docutils literal notranslate"><span class="pre">OutputParameter</span></code></a>]</p>
+</dd>
+</dl>
+</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.filereader.case_file.CaseFile.precision" title="ansys.fluent.core.filereader.case_file.CaseFile.precision"><code class="xref py py-obj docutils literal notranslate"><span class="pre">precision</span></code></a>()</p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">rtype<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/dev/library/functions.html#int" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a></p>
+</dd>
+</dl>
+</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.filereader.case_file.CaseFile.rp_vars" title="ansys.fluent.core.filereader.case_file.CaseFile.rp_vars"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rp_vars</span></code></a>()</p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">rtype<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#dict" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a></p>
+</dd>
+</dl>
+</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Attributes:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.filereader.case_file.CaseFile.config_var" title="ansys.fluent.core.filereader.case_file.CaseFile.config_var"><code class="xref py py-obj docutils literal notranslate"><span class="pre">config_var</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.filereader.case_file.CaseFile.rp_var" title="ansys.fluent.core.filereader.case_file.CaseFile.rp_var"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rp_var</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.filereader.case_file.CaseFile.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">case_filepath</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">project_filepath</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.filereader.case_file.CaseFile.__init__" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ansys.fluent.core.filereader.case_file.CaseFile.config_var">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">config_var</span></span><a class="headerlink" href="#ansys.fluent.core.filereader.case_file.CaseFile.config_var" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.filereader.case_file.CaseFile.config_vars">
+<span class="sig-name descname"><span class="pre">config_vars</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.filereader.case_file.CaseFile.config_vars" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.filereader.case_file.CaseFile.has_config_var">
+<span class="sig-name descname"><span class="pre">has_config_var</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.filereader.case_file.CaseFile.has_config_var" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.filereader.case_file.CaseFile.has_rp_var">
+<span class="sig-name descname"><span class="pre">has_rp_var</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.filereader.case_file.CaseFile.has_rp_var" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.filereader.case_file.CaseFile.input_parameters">
+<span class="sig-name descname"><span class="pre">input_parameters</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.filereader.case_file.CaseFile.input_parameters" title="Permalink to this definition">#</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/dev/library/typing.html#typing.List" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code></a>[<a class="reference internal" href="#ansys.fluent.core.filereader.case_file.InputParameter" title="ansys.fluent.core.filereader.case_file.InputParameter"><code class="xref py py-class docutils literal notranslate"><span class="pre">InputParameter</span></code></a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.filereader.case_file.CaseFile.iter_count">
+<span class="sig-name descname"><span class="pre">iter_count</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.filereader.case_file.CaseFile.iter_count" title="Permalink to this definition">#</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/dev/library/functions.html#int" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.filereader.case_file.CaseFile.num_dimensions">
+<span class="sig-name descname"><span class="pre">num_dimensions</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.filereader.case_file.CaseFile.num_dimensions" title="Permalink to this definition">#</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/dev/library/functions.html#int" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.filereader.case_file.CaseFile.output_parameters">
+<span class="sig-name descname"><span class="pre">output_parameters</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.filereader.case_file.CaseFile.output_parameters" title="Permalink to this definition">#</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/dev/library/typing.html#typing.List" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code></a>[<a class="reference internal" href="#ansys.fluent.core.filereader.case_file.OutputParameter" title="ansys.fluent.core.filereader.case_file.OutputParameter"><code class="xref py py-class docutils literal notranslate"><span class="pre">OutputParameter</span></code></a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.filereader.case_file.CaseFile.precision">
+<span class="sig-name descname"><span class="pre">precision</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.filereader.case_file.CaseFile.precision" title="Permalink to this definition">#</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/dev/library/functions.html#int" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ansys.fluent.core.filereader.case_file.CaseFile.rp_var">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">rp_var</span></span><a class="headerlink" href="#ansys.fluent.core.filereader.case_file.CaseFile.rp_var" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.filereader.case_file.CaseFile.rp_vars">
+<span class="sig-name descname"><span class="pre">rp_vars</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.filereader.case_file.CaseFile.rp_vars" title="Permalink to this definition">#</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#dict" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.filereader.case_file.InputParameter">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.filereader.case_file.</span></span><span class="sig-name descname"><span class="pre">InputParameter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">raw_data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.filereader.case_file.InputParameter" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/dev/library/functions.html#object" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Class to represent an input parameter.</p>
+<dl class="field-list">
+<dt class="field-odd">Attributes<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>name</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#str" title="(in Python v3.13)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a></span></dt><dd></dd>
+<dt><strong>value</strong></dt><dd><p>The value of this input parameter, usually
+a string, qualified by units</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.filereader.case_file.InputParameter.__init__" title="ansys.fluent.core.filereader.case_file.InputParameter.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(raw_data)</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Attributes:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.filereader.case_file.InputParameter.numeric_value" title="ansys.fluent.core.filereader.case_file.InputParameter.numeric_value"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numeric_value</span></code></a></p></td>
+<td><p>Get the numeric value of a Fluent input parameter. Returns ------- float     Numeric value of the Fluent input parameter.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.filereader.case_file.InputParameter.units" title="ansys.fluent.core.filereader.case_file.InputParameter.units"><code class="xref py py-obj docutils literal notranslate"><span class="pre">units</span></code></a></p></td>
+<td><p>Get the unit label of a Fluent input parameter. Returns ------- str     Unit label of the Fluent input parameter.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.filereader.case_file.InputParameter.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">raw_data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.filereader.case_file.InputParameter.__init__" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ansys.fluent.core.filereader.case_file.InputParameter.numeric_value">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">numeric_value</span></span><a class="headerlink" href="#ansys.fluent.core.filereader.case_file.InputParameter.numeric_value" title="Permalink to this definition">#</a></dt>
+<dd><p>Get the numeric value of a Fluent input parameter.
+Returns
+——-
+float</p>
+<blockquote>
+<div><p>Numeric value of the Fluent input parameter.</p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ansys.fluent.core.filereader.case_file.InputParameter.units">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">units</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></em><a class="headerlink" href="#ansys.fluent.core.filereader.case_file.InputParameter.units" title="Permalink to this definition">#</a></dt>
+<dd><p>Get the unit label of a Fluent input parameter.
+Returns
+——-
+str</p>
+<blockquote>
+<div><p>Unit label of the Fluent input parameter.</p>
+</div></blockquote>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.filereader.case_file.OutputParameter">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.filereader.case_file.</span></span><span class="sig-name descname"><span class="pre">OutputParameter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">raw_data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.filereader.case_file.OutputParameter" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/dev/library/functions.html#object" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Class to represent an output parameter.</p>
+<dl class="field-list">
+<dt class="field-odd">Attributes<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>name</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#str" title="(in Python v3.13)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a></span></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.filereader.case_file.OutputParameter.__init__" title="ansys.fluent.core.filereader.case_file.OutputParameter.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(raw_data)</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.filereader.case_file.OutputParameter.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">raw_data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.filereader.case_file.OutputParameter.__init__" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-usage">Sample usage</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-features">Additional features</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example">Example</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.filereader.case_file.CaseFile"><code class="docutils literal notranslate"><span class="pre">CaseFile</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.filereader.case_file.CaseFile.__init__"><code class="docutils literal notranslate"><span class="pre">CaseFile.__init__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.filereader.case_file.CaseFile.config_var"><code class="docutils literal notranslate"><span class="pre">CaseFile.config_var</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.filereader.case_file.CaseFile.config_vars"><code class="docutils literal notranslate"><span class="pre">CaseFile.config_vars()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.filereader.case_file.CaseFile.has_config_var"><code class="docutils literal notranslate"><span class="pre">CaseFile.has_config_var()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.filereader.case_file.CaseFile.has_rp_var"><code class="docutils literal notranslate"><span class="pre">CaseFile.has_rp_var()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.filereader.case_file.CaseFile.input_parameters"><code class="docutils literal notranslate"><span class="pre">CaseFile.input_parameters()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.filereader.case_file.CaseFile.iter_count"><code class="docutils literal notranslate"><span class="pre">CaseFile.iter_count()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.filereader.case_file.CaseFile.num_dimensions"><code class="docutils literal notranslate"><span class="pre">CaseFile.num_dimensions()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.filereader.case_file.CaseFile.output_parameters"><code class="docutils literal notranslate"><span class="pre">CaseFile.output_parameters()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.filereader.case_file.CaseFile.precision"><code class="docutils literal notranslate"><span class="pre">CaseFile.precision()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.filereader.case_file.CaseFile.rp_var"><code class="docutils literal notranslate"><span class="pre">CaseFile.rp_var</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.filereader.case_file.CaseFile.rp_vars"><code class="docutils literal notranslate"><span class="pre">CaseFile.rp_vars()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.filereader.case_file.InputParameter"><code class="docutils literal notranslate"><span class="pre">InputParameter</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.filereader.case_file.InputParameter.__init__"><code class="docutils literal notranslate"><span class="pre">InputParameter.__init__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.filereader.case_file.InputParameter.numeric_value"><code class="docutils literal notranslate"><span class="pre">InputParameter.numeric_value</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.filereader.case_file.InputParameter.units"><code class="docutils literal notranslate"><span class="pre">InputParameter.units</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.filereader.case_file.OutputParameter"><code class="docutils literal notranslate"><span class="pre">OutputParameter</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.filereader.case_file.OutputParameter.__init__"><code class="docutils literal notranslate"><span class="pre">OutputParameter.__init__()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  <div class="tocsection sourcelink">
+    <a href="../../_sources/api/general/case_reader.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+  <p class="copyright">
+    
+      © Copyright (c) 2023 ANSYS, Inc. All rights reserved.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.13.3.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

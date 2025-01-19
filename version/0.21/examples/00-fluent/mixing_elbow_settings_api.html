@@ -1,0 +1,1171 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Fluent setup and solution using settings objects &#8212; PyFluent</title>
+
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=61a4c737" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/ansys_sphinx_theme.css?v=3ea42de1" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://www.nerdfonts.com/assets/css/webfont.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+ 
+<link href="../../_static/css/breadcrumbs.css" rel="stylesheet" />
+
+    <script src="../../_static/documentation_options.js?v=88e4c0c0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/thebelab-helper.js"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=49e1bf35"></script>
+    <script src="../../_static/toggleprompt.js?v=cec9bd37"></script>
+    <script src="../../_static/js/table.js?v=b64f5182"></script>
+    <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'examples/00-fluent/mixing_elbow_settings_api';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.14.4';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://fluent.docs.pyansys.com/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.21';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner = false;
+        </script>
+    <link rel="icon" href="../../_static/ansys-favicon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Modeling Cavitation" href="modeling_cavitation.html" />
+    <link rel="prev" title="Watertight geometry meshing workflow" href="mixing_elbow.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <link rel="canonical" href="https://fluent.docs.pyansys.com/version/stable/examples/00-fluent/mixing_elbow_settings_api.html" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container"><!-- Debugging: html_theme_options =  -->
+
+<!-- If there is no MiliSearch enabled, use the PyData search -->
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+   
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/pyansys-logo-black-cropped.png" class="logo__image only-light" alt="PyFluent - Home"/>
+    <script>document.write(`<img src="../../_static/pyansys-logo-black-cropped.png" class="logo__image only-dark" alt="PyFluent - Home"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../getting_started/index.html">
+                        Getting started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../user_guide/index.html">
+                        User guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../api/index.html">
+                        API reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../index.html">
+                        Examples
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../contributing.html">
+                        Contribute
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+<script>
+document.write(`
+  <div class="version-switcher__container dropdown">
+    <button id="pst-version-switcher-button-2"
+      type="button"
+      class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle"
+      data-bs-toggle="dropdown"
+      aria-haspopup="listbox"
+      aria-controls="pst-version-switcher-list-2"
+      aria-label="Version switcher list"
+    >
+      Choose version  <!-- this text may get changed later by javascript -->
+      <span class="caret"></span>
+    </button>
+    <div id="pst-version-switcher-list-2"
+      class="version-switcher__menu dropdown-menu list-group-flush py-0"
+      role="listbox" aria-labelledby="pst-version-switcher-button-2">
+      <!-- dropdown will be populated by javascript on page load -->
+    </div>
+  </div>
+`);
+</script></div>
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent/discussions" title="Support" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa fa-comment fa-fw fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Support</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </nav>
+    <div id="announcement_msg"></div>
+<script>
+  fetch("announcement.html")
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error: ${response.status}`);
+      }
+      return response.text();
+    })
+    .then(
+      (text) => (document.getElementById("announcement_msg").innerHTML = text),
+    )
+    .catch((error) => console.error(`Fetch problem: ${error.message}`));
+</script>  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item">
+<nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../getting_started/index.html">
+                        Getting started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../user_guide/index.html">
+                        User guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../api/index.html">
+                        API reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../index.html">
+                        Examples
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../contributing.html">
+                        Contribute
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<script>
+document.write(`
+  <div class="version-switcher__container dropdown">
+    <button id="pst-version-switcher-button-3"
+      type="button"
+      class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle"
+      data-bs-toggle="dropdown"
+      aria-haspopup="listbox"
+      aria-controls="pst-version-switcher-list-3"
+      aria-label="Version switcher list"
+    >
+      Choose version  <!-- this text may get changed later by javascript -->
+      <span class="caret"></span>
+    </button>
+    <div id="pst-version-switcher-list-3"
+      class="version-switcher__menu dropdown-menu list-group-flush py-0"
+      role="listbox" aria-labelledby="pst-version-switcher-button-3">
+      <!-- dropdown will be populated by javascript on page load -->
+    </div>
+  </div>
+`);
+</script></div>
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent/discussions" title="Support" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa fa-comment fa-fw fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Support</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://examples.fluent.docs.pyansys.com/version/dev/index.html">Miscellaneous Examples</a></li>
+</ul>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Simulation Examples</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="exhaust_system.html">Fault-tolerant meshing workflow</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="exhaust_system_settings_api.html">Fault-tolerant meshing workflow using settings objects</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="external_compressible_flow.html">Modeling External Compressible Flow</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="mixing_elbow.html">Watertight geometry meshing workflow</a></li>
+
+
+
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Fluent setup and solution using settings objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modeling_cavitation.html">Modeling Cavitation</a></li>
+
+</ul>
+</li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+         
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="https://docs.pyansys.com/" class="nav-link">PyAnsys</a>
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a
+        href="../../index.html"
+        class="nav-link"
+        aria-label="Home"
+      >
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a href="../index.html" class="nav-link">Examples</a>
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a href="index.html" class="nav-link">Simulation Examples</a>
+    </li>
+      
+    <li class="breadcrumb-item active" aria-current="page">Fluent setup and solution using settings objects</li>
+    
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <div class="sphx-glr-download-link-note admonition note">
+<p class="admonition-title">Note</p>
+<p><a class="reference internal" href="#sphx-glr-download-examples-00-fluent-mixing-elbow-settings-api-py"><span class="std std-ref">Go to the end</span></a>
+to download the full example code.</p>
+</div>
+<section class="sphx-glr-example-title" id="fluent-setup-and-solution-using-settings-objects">
+<span id="ref-mixing-elbow-settings-api-beta"></span><span id="sphx-glr-examples-00-fluent-mixing-elbow-settings-api-py"></span><h1>Fluent setup and solution using settings objects<a class="headerlink" href="#fluent-setup-and-solution-using-settings-objects" title="Link to this heading">#</a></h1>
+<p>This example sets up and solves a three-dimensional turbulent fluid flow
+and heat transfer problem in a mixing elbow, which is common in piping
+systems in power plants and process industries. Predicting the flow field
+and temperature field in the area of the mixing region is important to
+designing the junction properly.</p>
+<p>This example uses settings objects.</p>
+<p><strong>Problem description</strong></p>
+<p>A cold fluid at 20 deg C flows into the pipe through a large inlet. It then mixes
+with a warmer fluid at 40 deg C that enters through a smaller inlet located at
+the elbow. The pipe dimensions are in inches, and the fluid properties and
+boundary conditions are given in SI units. Because the Reynolds number for the
+flow at the larger inlet is <code class="docutils literal notranslate"><span class="pre">50,</span> <span class="pre">800</span></code>, a turbulent flow model is required.</p>
+<section id="perform-required-imports">
+<h2>Perform required imports<a class="headerlink" href="#perform-required-imports" title="Link to this heading">#</a></h2>
+<p>Perform required imports, which includes downloading and importing
+the geometry file.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ansys.fluent.core</span> <span class="k">as</span> <span class="nn">pyfluent</span>
+<span class="kn">from</span> <span class="nn">ansys.fluent.core</span> <span class="kn">import</span> <span class="n">examples</span>
+
+<a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">pyfluent</span><span class="o">.</span><span class="n">CONTAINER_MOUNT_PATH</span></a> <span class="o">=</span> <a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">pyfluent</span><span class="o">.</span><span class="n">EXAMPLES_PATH</span></a>
+<a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">import_file_name</span></a> <span class="o">=</span> <span class="n">examples</span><span class="o">.</span><span class="n">download_file</span><span class="p">(</span>
+    <span class="s2">&quot;mixing_elbow.msh.h5&quot;</span><span class="p">,</span> <span class="s2">&quot;pyfluent/mixing_elbow&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/ansys/actions-runner/_work/pyfluent/pyfluent/src/ansys/fluent/core/examples/downloads.py:74: PyFluentUserWarning:
+File already exists. File path:
+/home/ansys/.local/share/ansys_fluent_core/examples/mixing_elbow.msh.h5
+
+  warnings.warn(
+</pre></div>
+</div>
+</section>
+<section id="launch-fluent">
+<h2>Launch Fluent<a class="headerlink" href="#launch-fluent" title="Link to this heading">#</a></h2>
+<p>Launch Fluent as a service in solver mode with double precision running on
+two processors.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">solver</span> <span class="o">=</span> <span class="n">pyfluent</span><span class="o">.</span><span class="n">launch_fluent</span><span class="p">(</span>
+    <span class="n">precision</span><span class="o">=</span><span class="s2">&quot;double&quot;</span><span class="p">,</span>
+    <span class="n">processor_count</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+    <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;solver&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="import-mesh-and-perform-mesh-check">
+<h2>Import mesh and perform mesh check<a class="headerlink" href="#import-mesh-and-perform-mesh-check" title="Link to this heading">#</a></h2>
+<p>Import the mesh and perform a mesh check, which lists the minimum and maximum
+x, y, and z values from the mesh in the default SI units of meters. The mesh
+check also reports a number of other mesh features that are checked. Any errors
+in the mesh are reported. Ensure that the minimum volume is not negative because
+Fluent cannot begin a calculation when this is the case.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">solver</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">read_case</span><span class="p">(</span><span class="n">file_name</span><span class="o">=</span><a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">import_file_name</span></a><span class="p">)</span>
+<span class="n">solver</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">check</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Fast-loading &quot;/ansys_inc/v242/fluent/fluent24.2.0/addons/afd/lib/hdfio.bin&quot;
+Done.
+
+Reading from 216ed86bba83:&quot;/mnt/pyfluent/mixing_elbow.msh.h5&quot; in NODE0 mode ...
+  Reading mesh ...
+       17279 cells,     1 cell zone  ...
+          17279 mixed cells,  zone id: 87
+       88336 faces,     7 face zones ...
+           2170 polygonal wall faces,  zone id: 34
+            267 polygonal wall faces,  zone id: 33
+            155 polygonal pressure-outlet faces,  zone id: 32
+            152 polygonal velocity-inlet faces,  zone id: 31
+             53 polygonal velocity-inlet faces,  zone id: 30
+           2003 polygonal symmetry faces,  zone id: 29
+          83536 mixed interior faces,  zone id: 89
+       64580 nodes,     3 node zones ...
+
+Building...
+     mesh
+        distributing mesh
+                parts..,
+                faces..,
+                nodes..,
+                cells..,
+        bandwidth reduction using Reverse Cuthill-McKee: 8123/282 = 28.805
+  Reading boundary layer flags ...
+  Done.
+
+     materials,
+     interface,
+     domains,
+     zones,
+        Skipping thread 20 of domain 1 (not referenced by grid).
+        Skipping thread 21 of domain 1 (not referenced by grid).
+        Skipping thread 22 of domain 1 (not referenced by grid).
+        Skipping thread 23 of domain 1 (not referenced by grid).
+        Skipping thread 24 of domain 1 (not referenced by grid).
+        Skipping thread 25 of domain 1 (not referenced by grid).
+        Skipping thread 26 of domain 1 (not referenced by grid).
+        Skipping thread 27 of domain 1 (not referenced by grid).
+        Skipping thread 28 of domain 1 (not referenced by grid).
+        wall-elbow
+        wall-inlet
+        outlet
+        cold-inlet
+        hot-inlet
+        symmetry-xyplane
+        interior--elbow-fluid
+        elbow-fluid
+     parallel,
+Done.
+Mesh is now scaled to meters.
+
+ Domain Extents:
+   x-coordinate: min (m) = -2.000000e-01, max (m) = 2.000000e-01
+   y-coordinate: min (m) = -2.250000e-01, max (m) = 2.000000e-01
+   z-coordinate: min (m) = 0.000000e+00, max (m) = 4.991846e-02
+ Volume statistics:
+   minimum volume (m3): 2.878063e-10
+   maximum volume (m3): 5.958043e-07
+     total volume (m3): 2.500807e-03
+ Face area statistics:
+   minimum face area (m2): 3.887492e-08
+   maximum face area (m2): 8.240970e-05
+ Checking mesh.....................................
+Done.
+</pre></div>
+</div>
+</section>
+<section id="enable-heat-transfer">
+<h2>Enable heat transfer<a class="headerlink" href="#enable-heat-transfer" title="Link to this heading">#</a></h2>
+<p>Enable heat transfer by activating the energy equation.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">solver</span><span class="o">.</span><span class="n">setup</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">energy</span><span class="o">.</span><span class="n">enabled</span> <span class="o">=</span> <span class="kc">True</span>
+</pre></div>
+</div>
+</section>
+<section id="create-material">
+<h2>Create material<a class="headerlink" href="#create-material" title="Link to this heading">#</a></h2>
+<p>Create a material named <code class="docutils literal notranslate"><span class="pre">&quot;water-liquid&quot;</span></code>.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">solver</span><span class="o">.</span><span class="n">setup</span><span class="o">.</span><span class="n">materials</span><span class="o">.</span><span class="n">database</span><span class="o">.</span><span class="n">copy_by_name</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s2">&quot;fluid&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;water-liquid&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="set-up-cell-zone-conditions">
+<h2>Set up cell zone conditions<a class="headerlink" href="#set-up-cell-zone-conditions" title="Link to this heading">#</a></h2>
+<p>Set up the cell zone conditions for the fluid zone (<code class="docutils literal notranslate"><span class="pre">elbow-fluid</span></code>). Set <code class="docutils literal notranslate"><span class="pre">material</span></code>
+to <code class="docutils literal notranslate"><span class="pre">&quot;water-liquid&quot;</span></code>.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">solver</span><span class="o">.</span><span class="n">setup</span><span class="o">.</span><span class="n">cell_zone_conditions</span><span class="o">.</span><span class="n">fluid</span><span class="p">[</span><span class="s2">&quot;elbow-fluid&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">general</span><span class="o">.</span><span class="n">material</span> <span class="o">=</span> <span class="s2">&quot;water-liquid&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="set-up-boundary-conditions-for-cfd-analysis">
+<h2>Set up boundary conditions for CFD analysis<a class="headerlink" href="#set-up-boundary-conditions-for-cfd-analysis" title="Link to this heading">#</a></h2>
+<p>Set up the boundary conditions for the inlets, outlet, and walls for CFD
+analysis.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># cold inlet (cold-inlet), Setting: Value:</span>
+<span class="c1"># Velocity Specification Method: Magnitude, Normal to Boundary</span>
+<span class="c1"># Velocity Magnitude: 0.4 [m/s]</span>
+<span class="c1"># Specification Method: Intensity and Hydraulic Diameter</span>
+<span class="c1"># Turbulent Intensity: 5 [%]</span>
+<span class="c1"># Hydraulic Diameter: 4 [inch]</span>
+<span class="c1"># Temperature: 293.15 [K]</span>
+<span class="n">cold_inlet</span> <span class="o">=</span> <span class="n">solver</span><span class="o">.</span><span class="n">setup</span><span class="o">.</span><span class="n">boundary_conditions</span><span class="o">.</span><span class="n">velocity_inlet</span><span class="p">[</span><span class="s2">&quot;cold-inlet&quot;</span><span class="p">]</span>
+
+<span class="n">cold_inlet</span><span class="o">.</span><span class="n">momentum</span><span class="o">.</span><span class="n">velocity</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="mf">0.4</span>
+<span class="n">cold_inlet</span><span class="o">.</span><span class="n">turbulence</span><span class="o">.</span><span class="n">turbulence_specification</span> <span class="o">=</span> <span class="s2">&quot;Intensity and Hydraulic Diameter&quot;</span>
+<span class="n">cold_inlet</span><span class="o">.</span><span class="n">turbulence</span><span class="o">.</span><span class="n">turbulent_intensity</span> <span class="o">=</span> <span class="mf">0.05</span>
+<span class="n">cold_inlet</span><span class="o">.</span><span class="n">turbulence</span><span class="o">.</span><span class="n">hydraulic_diameter</span> <span class="o">=</span> <span class="s2">&quot;4 [in]&quot;</span>
+<span class="n">cold_inlet</span><span class="o">.</span><span class="n">thermal</span><span class="o">.</span><span class="n">temperature</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="mf">293.15</span>
+
+<span class="c1"># hot inlet (hot-inlet), Setting: Value:</span>
+<span class="c1"># Velocity Specification Method: Magnitude, Normal to Boundary</span>
+<span class="c1"># Velocity Magnitude: 1.2 [m/s]</span>
+<span class="c1"># Specification Method: Intensity and Hydraulic Diameter</span>
+<span class="c1"># Turbulent Intensity: 5 [%]</span>
+<span class="c1"># Hydraulic Diameter: 1 [inch]</span>
+<span class="c1"># Temperature: 313.15 [K]</span>
+<span class="n">hot_inlet</span> <span class="o">=</span> <span class="n">solver</span><span class="o">.</span><span class="n">setup</span><span class="o">.</span><span class="n">boundary_conditions</span><span class="o">.</span><span class="n">velocity_inlet</span><span class="p">[</span><span class="s2">&quot;hot-inlet&quot;</span><span class="p">]</span>
+
+<span class="n">hot_inlet</span><span class="o">.</span><span class="n">momentum</span><span class="o">.</span><span class="n">velocity</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="mf">1.2</span>
+<span class="n">hot_inlet</span><span class="o">.</span><span class="n">turbulence</span><span class="o">.</span><span class="n">turbulence_specification</span> <span class="o">=</span> <span class="s2">&quot;Intensity and Hydraulic Diameter&quot;</span>
+<span class="n">hot_inlet</span><span class="o">.</span><span class="n">turbulence</span><span class="o">.</span><span class="n">hydraulic_diameter</span> <span class="o">=</span> <span class="s2">&quot;1 [in]&quot;</span>
+<span class="n">hot_inlet</span><span class="o">.</span><span class="n">thermal</span><span class="o">.</span><span class="n">temperature</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="mf">313.15</span>
+
+<span class="c1"># pressure outlet (outlet), Setting: Value:</span>
+<span class="c1"># Backflow Turbulent Intensity: 5 [%]</span>
+<span class="c1"># Backflow Turbulent Viscosity Ratio: 4</span>
+
+<span class="n">solver</span><span class="o">.</span><span class="n">setup</span><span class="o">.</span><span class="n">boundary_conditions</span><span class="o">.</span><span class="n">pressure_outlet</span><span class="p">[</span>
+    <span class="s2">&quot;outlet&quot;</span>
+<span class="p">]</span><span class="o">.</span><span class="n">turbulence</span><span class="o">.</span><span class="n">turbulent_viscosity_ratio</span> <span class="o">=</span> <span class="mi">4</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/ansys/actions-runner/_work/pyfluent/pyfluent/src/ansys/fluent/core/solver/flobject.py:591: DeprecatedSettingWarning: Note: A newer syntax is available to perform the last operation:
+solver.setup.boundary_conditions.pressure_outlet[&#39;outlet&#39;].turbulence.backflow_turbulent_viscosity_ratio = 4
+  warnings.warn(
+</pre></div>
+</div>
+</section>
+<section id="disable-plotting-of-residuals-during-calculation">
+<h2>Disable plotting of residuals during calculation<a class="headerlink" href="#disable-plotting-of-residuals-during-calculation" title="Link to this heading">#</a></h2>
+<p>Disable plotting of residuals during the calculation.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">solver</span><span class="o">.</span><span class="n">solution</span><span class="o">.</span><span class="n">monitor</span><span class="o">.</span><span class="n">residual</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">plot</span> <span class="o">=</span> <span class="kc">False</span>
+</pre></div>
+</div>
+</section>
+<section id="initialize-flow-field">
+<h2>Initialize flow field<a class="headerlink" href="#initialize-flow-field" title="Link to this heading">#</a></h2>
+<p>Initialize the flow field using hybrid initialization.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">solver</span><span class="o">.</span><span class="n">solution</span><span class="o">.</span><span class="n">initialization</span><span class="o">.</span><span class="n">hybrid_initialize</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Initialize using the hybrid initialization method.
+
+Checking case topology...
+-This case has both inlets &amp; outlets
+-Pressure information is not available at the boundaries.
+ Case will be initialized with constant pressure
+
+        iter            scalar-0
+
+        1               1.000000e+00
+        2               1.772613e-04
+        3               1.190212e-05
+        4               1.186528e-05
+        5               2.332822e-06
+        6               2.911047e-06
+        7               5.508169e-07
+        8               6.254469e-07
+        9               1.697930e-07
+        10              1.777489e-07
+
+Hybrid initialization is done.
+</pre></div>
+</div>
+</section>
+<section id="solve-for-150-iterations">
+<h2>Solve for 150 iterations<a class="headerlink" href="#solve-for-150-iterations" title="Link to this heading">#</a></h2>
+<p>Solve for 150 iterations.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">solver</span><span class="o">.</span><span class="n">solution</span><span class="o">.</span><span class="n">run_calculation</span><span class="o">.</span><span class="n">iterate</span><span class="p">(</span><span class="n">iter_count</span><span class="o">=</span><span class="mi">150</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega     time/iter
+     1  1.0000e+00  4.1943e-03  4.5989e-03  1.1598e-03  8.7452e-05  1.0049e-01  7.4700e-01  0:00:38  149
+     2  8.1198e-01  2.5627e-03  3.1429e-03  7.1413e-04  1.0204e-04  5.8538e-02  1.0753e-01  0:00:37  148
+     3  7.8780e-01  1.6433e-03  2.3414e-03  6.1917e-04  1.1043e-04  2.1219e-02  6.7526e-02  0:00:36  147
+     4  7.6175e-01  1.0958e-03  2.0266e-03  5.0692e-04  1.1962e-04  1.8340e-02  4.2618e-02  0:00:35  146
+     5  7.2601e-01  9.3249e-04  1.8875e-03  4.4277e-04  1.2567e-04  1.7010e-02  2.8689e-02  0:00:34  145
+     6  6.6649e-01  8.8637e-04  1.7770e-03  4.0081e-04  1.2799e-04  1.6598e-02  2.1477e-02  0:00:35  144
+     7  6.0286e-01  8.3203e-04  1.6992e-03  3.6856e-04  1.2680e-04  1.6557e-02  1.7743e-02  0:00:34  143
+     8  5.4606e-01  7.7241e-04  1.6284e-03  3.4239e-04  1.2314e-04  1.7143e-02  1.4888e-02  0:00:34  142
+     9  4.9303e-01  7.2189e-04  1.5626e-03  3.1996e-04  1.1639e-04  1.7769e-02  1.2645e-02  0:00:33  141
+    10  4.5820e-01  6.8689e-04  1.4872e-03  3.0196e-04  1.0779e-04  1.8123e-02  1.0852e-02  0:00:32  140
+    11  4.2666e-01  6.5536e-04  1.3971e-03  2.8633e-04  9.8103e-05  1.8074e-02  9.4904e-03  0:00:31  139
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega     time/iter
+    12  3.9575e-01  6.2368e-04  1.3062e-03  2.7235e-04  8.7143e-05  1.7645e-02  8.4285e-03  0:00:31  138
+    13  3.6816e-01  5.9442e-04  1.2102e-03  2.5954e-04  7.5362e-05  1.6824e-02  7.5149e-03  0:00:30  137
+    14  3.4459e-01  5.6645e-04  1.1155e-03  2.4615e-04  6.3889e-05  1.5655e-02  6.6649e-03  0:00:30  136
+    15  3.2039e-01  5.3728e-04  1.0177e-03  2.3360e-04  5.4347e-05  1.4230e-02  5.8935e-03  0:00:30  135
+    16  3.0067e-01  5.0690e-04  9.2578e-04  2.2114e-04  4.7220e-05  1.2700e-02  5.2223e-03  0:00:29  134
+    17  2.8514e-01  4.7714e-04  8.3760e-04  2.0988e-04  4.2153e-05  1.1143e-02  4.6007e-03  0:00:29  133
+    18  2.7104e-01  4.4725e-04  7.5716e-04  2.0056e-04  3.8949e-05  9.6394e-03  4.0485e-03  0:00:28  132
+    19  2.5840e-01  4.1807e-04  6.8818e-04  1.9288e-04  3.5994e-05  8.3091e-03  3.5945e-03  0:00:28  131
+    20  2.4559e-01  3.8964e-04  6.2896e-04  1.8569e-04  3.2748e-05  7.1272e-03  3.2379e-03  0:00:28  130
+    21  2.3340e-01  3.6125e-04  5.8040e-04  1.7890e-04  2.9435e-05  6.0809e-03  2.9314e-03  0:00:28  129
+    22  2.2234e-01  3.3627e-04  5.4371e-04  1.7260e-04  2.6034e-05  5.1804e-03  2.6646e-03  0:00:27  128
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega     time/iter
+    23  2.1247e-01  3.1269e-04  5.1654e-04  1.6652e-04  2.2851e-05  4.4070e-03  2.4358e-03  0:00:27  127
+    24  2.0074e-01  2.9047e-04  4.9496e-04  1.6014e-04  1.9941e-05  3.7719e-03  2.2369e-03  0:00:27  126
+    25  1.8904e-01  2.6961e-04  4.7489e-04  1.5347e-04  1.7292e-05  3.2835e-03  2.0600e-03  0:00:27  125
+    26  1.7850e-01  2.4974e-04  4.5490e-04  1.4632e-04  1.4897e-05  2.9231e-03  1.8996e-03  0:00:26  124
+    27  1.6884e-01  2.3142e-04  4.3249e-04  1.3858e-04  1.2834e-05  2.6407e-03  1.7524e-03  0:00:26  123
+    28  1.5898e-01  2.1479e-04  4.0952e-04  1.3049e-04  1.1028e-05  2.3949e-03  1.6076e-03  0:00:26  122
+    29  1.4925e-01  1.9856e-04  3.8421e-04  1.2223e-04  9.5268e-06  2.1708e-03  1.4743e-03  0:00:25  121
+    30  1.3973e-01  1.8330e-04  3.5851e-04  1.1406e-04  8.2850e-06  1.9643e-03  1.3539e-03  0:00:25  120
+    31  1.3000e-01  1.6879e-04  3.3375e-04  1.0616e-04  7.2177e-06  1.7836e-03  1.2440e-03  0:00:25  119
+    32  1.2089e-01  1.5497e-04  3.1002e-04  9.8366e-05  6.2895e-06  1.6303e-03  1.1454e-03  0:00:25  118
+    33  1.1213e-01  1.4204e-04  2.8808e-04  9.0712e-05  5.4932e-06  1.5022e-03  1.0563e-03  0:00:24  117
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega     time/iter
+    34  1.0433e-01  1.2992e-04  2.6694e-04  8.3341e-05  4.8208e-06  1.3838e-03  9.7773e-04  0:00:24  116
+    35  9.7015e-02  1.1873e-04  2.4712e-04  7.6401e-05  4.2589e-06  1.2755e-03  9.0692e-04  0:00:23  115
+    36  9.0521e-02  1.0837e-04  2.2859e-04  6.9896e-05  3.7853e-06  1.1776e-03  8.4168e-04  0:00:23  114
+    37  8.3760e-02  9.8837e-05  2.1061e-04  6.3851e-05  3.3765e-06  1.0900e-03  7.8132e-04  0:00:23  113
+    38  7.7677e-02  9.0166e-05  1.9411e-04  5.8300e-05  3.0202e-06  1.0114e-03  7.2406e-04  0:00:23  112
+    39  7.2047e-02  8.2260e-05  1.7905e-04  5.3273e-05  2.7180e-06  9.4103e-04  6.7113e-04  0:00:23  111
+    40  6.6748e-02  7.5076e-05  1.6500e-04  4.8709e-05  2.4530e-06  8.7488e-04  6.2069e-04  0:00:22  110
+    41  6.1712e-02  6.8413e-05  1.5180e-04  4.4486e-05  2.2188e-06  8.1533e-04  5.7352e-04  0:00:22  109
+    42  5.7066e-02  6.2262e-05  1.3962e-04  4.0598e-05  2.0105e-06  7.6025e-04  5.2938e-04  0:00:22  108
+    43  5.2886e-02  5.6739e-05  1.2832e-04  3.7057e-05  1.8267e-06  7.0873e-04  4.8852e-04  0:00:22  107
+    44  4.8880e-02  5.1583e-05  1.1796e-04  3.3863e-05  1.6614e-06  6.6084e-04  4.5030e-04  0:00:22  106
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega     time/iter
+    45  4.5104e-02  4.6975e-05  1.0838e-04  3.0955e-05  1.5140e-06  6.1508e-04  4.1502e-04  0:00:22  105
+    46  4.1652e-02  4.2695e-05  9.9419e-05  2.8297e-05  1.3809e-06  5.7136e-04  3.8236e-04  0:00:22  104
+    47  3.8443e-02  3.8834e-05  9.1080e-05  2.5879e-05  1.2610e-06  5.3049e-04  3.5160e-04  0:00:22  103
+    48  3.5267e-02  3.5344e-05  8.3571e-05  2.3673e-05  1.1529e-06  4.9184e-04  3.2354e-04  0:00:22  102
+    49  3.2404e-02  3.2141e-05  7.6814e-05  2.1652e-05  1.0547e-06  4.5464e-04  2.9782e-04  0:00:22  101
+    50  2.9818e-02  2.9233e-05  7.0495e-05  1.9813e-05  9.6468e-07  4.1907e-04  2.7341e-04  0:00:22  100
+    51  2.7431e-02  2.6573e-05  6.4560e-05  1.8133e-05  8.8177e-07  3.8488e-04  2.5034e-04  0:00:22   99
+    52  2.5206e-02  2.4156e-05  5.9049e-05  1.6599e-05  8.0671e-07  3.5302e-04  2.2869e-04  0:00:22   98
+    53  2.3156e-02  2.1967e-05  5.3972e-05  1.5200e-05  7.3782e-07  3.2329e-04  2.0872e-04  0:00:21   97
+    54  2.1276e-02  1.9982e-05  4.9251e-05  1.3921e-05  6.7427e-07  2.9534e-04  1.9027e-04  0:00:21   96
+    55  1.9555e-02  1.8179e-05  4.4914e-05  1.2753e-05  6.1507e-07  2.6915e-04  1.7307e-04  0:00:21   95
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega     time/iter
+    56  1.7978e-02  1.6530e-05  4.0912e-05  1.1680e-05  5.6085e-07  2.4513e-04  1.5717e-04  0:00:20   94
+    57  1.6560e-02  1.5038e-05  3.7242e-05  1.0697e-05  5.1083e-07  2.2324e-04  1.4273e-04  0:00:20   93
+    58  1.5235e-02  1.3679e-05  3.3871e-05  9.7966e-06  4.6490e-07  2.0300e-04  1.2952e-04  0:00:19   92
+    59  1.3999e-02  1.2444e-05  3.0800e-05  8.9721e-06  4.2254e-07  1.8466e-04  1.1744e-04  0:00:19   91
+    60  1.2829e-02  1.1316e-05  2.8005e-05  8.2162e-06  3.8359e-07  1.6822e-04  1.0640e-04  0:00:22   90
+    61  1.1741e-02  1.0291e-05  2.5463e-05  7.5225e-06  3.4783e-07  1.5323e-04  9.6381e-05  0:00:22   89
+    62  1.0740e-02  9.3566e-06  2.3133e-05  6.8842e-06  3.1512e-07  1.3932e-04  8.7276e-05  0:00:21   88
+    63  9.8100e-03  8.5060e-06  2.0998e-05  6.2960e-06  2.8497e-07  1.2663e-04  7.9009e-05  0:00:20   87
+    64  8.9567e-03  7.7326e-06  1.9046e-05  5.7543e-06  2.5746e-07  1.1506e-04  7.1480e-05  0:00:19   86
+    65  8.1762e-03  7.0266e-06  1.7264e-05  5.2569e-06  2.3225e-07  1.0449e-04  6.4602e-05  0:00:19   85
+    66  7.4629e-03  6.3825e-06  1.5636e-05  4.7996e-06  2.0923e-07  9.4830e-05  5.8340e-05  0:00:18   84
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega     time/iter
+    67  6.8018e-03  5.7942e-06  1.4144e-05  4.3779e-06  1.8827e-07  8.5956e-05  5.2628e-05  0:00:18   83
+    68  6.1967e-03  5.2590e-06  1.2789e-05  3.9899e-06  1.6916e-07  7.7866e-05  4.7419e-05  0:00:25   82
+    69  5.6410e-03  4.7710e-06  1.1556e-05  3.6335e-06  1.5174e-07  7.0454e-05  4.2673e-05  0:00:23   81
+    70  5.1259e-03  4.3250e-06  1.0441e-05  3.3054e-06  1.3592e-07  6.3660e-05  3.8355e-05  0:00:22   80
+    71  4.6519e-03  3.9188e-06  9.4225e-06  3.0042e-06  1.2146e-07  5.7432e-05  3.4428e-05  0:00:20   79
+    72  4.2180e-03  3.5483e-06  8.4935e-06  2.7275e-06  1.0843e-07  5.1730e-05  3.0874e-05  0:00:19   78
+    73  3.8232e-03  3.2120e-06  7.6482e-06  2.4732e-06  9.6632e-08  4.6526e-05  2.7655e-05  0:00:18   77
+    74  3.4628e-03  2.9056e-06  6.8804e-06  2.2402e-06  8.5958e-08  4.1792e-05  2.4749e-05  0:00:17   76
+    75  3.1334e-03  2.6256e-06  6.1838e-06  2.0269e-06  7.6330e-08  3.7502e-05  2.2120e-05  0:00:17   75
+    76  2.8324e-03  2.3705e-06  5.5517e-06  1.8313e-06  6.7674e-08  3.3601e-05  1.9753e-05  0:00:16   74
+    77  2.5568e-03  2.1393e-06  4.9788e-06  1.6525e-06  5.9899e-08  3.0071e-05  1.7622e-05  0:00:16   73
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega     time/iter
+    78  2.3040e-03  1.9293e-06  4.4613e-06  1.4896e-06  5.2930e-08  2.6882e-05  1.5707e-05  0:00:15   72
+    79  2.0750e-03  1.7394e-06  3.9942e-06  1.3412e-06  4.6694e-08  2.4005e-05  1.3986e-05  0:00:15   71
+    80  1.8649e-03  1.5671e-06  3.5718e-06  1.2061e-06  4.1125e-08  2.1405e-05  1.2443e-05  0:00:14   70
+    81  1.6752e-03  1.4109e-06  3.1914e-06  1.0833e-06  3.5810e-08  1.8929e-05  1.0968e-05  0:00:14   69
+    82  1.5026e-03  1.2679e-06  2.8526e-06  9.7142e-07  3.1584e-08  1.6888e-05  9.7654e-06  0:00:14   68
+    83  1.3433e-03  1.1429e-06  2.5475e-06  8.7326e-07  2.7763e-08  1.5033e-05  8.6889e-06  0:00:13   67
+    84  1.2065e-03  1.0275e-06  2.2725e-06  7.8259e-07  2.4340e-08  1.3359e-05  7.7120e-06  0:00:13   66
+    85  1.0825e-03  9.2271e-07  2.0253e-06  7.0027e-07  2.1289e-08  1.1855e-05  6.8348e-06  0:00:13   65
+    86  9.6979e-04  8.2827e-07  1.8039e-06  6.2586e-07  1.8437e-08  1.0440e-05  6.0060e-06  0:00:12   64
+!   86 solution is converged
+</pre></div>
+</div>
+</section>
+<section id="configure-graphics-picture-export">
+<h2>Configure graphics picture export<a class="headerlink" href="#configure-graphics-picture-export" title="Link to this heading">#</a></h2>
+<p>Since Fluent is being run without the GUI, we will need to export plots as
+picture files. Edit the picture settings to use a custom resolution so that
+the images are large enough.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">graphics</span> <span class="o">=</span> <span class="n">solver</span><span class="o">.</span><span class="n">results</span><span class="o">.</span><span class="n">graphics</span>
+<span class="c1"># use_window_resolution option not active inside containers or Ansys Lab environment</span>
+<span class="k">if</span> <span class="n">graphics</span><span class="o">.</span><span class="n">picture</span><span class="o">.</span><span class="n">use_window_resolution</span><span class="o">.</span><span class="n">is_active</span><span class="p">():</span>
+    <span class="n">graphics</span><span class="o">.</span><span class="n">picture</span><span class="o">.</span><span class="n">use_window_resolution</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">graphics</span><span class="o">.</span><span class="n">picture</span><span class="o">.</span><span class="n">x_resolution</span> <span class="o">=</span> <span class="mi">1920</span>
+<span class="n">graphics</span><span class="o">.</span><span class="n">picture</span><span class="o">.</span><span class="n">y_resolution</span> <span class="o">=</span> <span class="mi">1440</span>
+</pre></div>
+</div>
+</section>
+<section id="create-velocity-vectors">
+<h2>Create velocity vectors<a class="headerlink" href="#create-velocity-vectors" title="Link to this heading">#</a></h2>
+<p>Create and display velocity vectors on the <code class="docutils literal notranslate"><span class="pre">symmetry-xyplane</span></code> plane, then
+export the image for inspection.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">graphics</span> <span class="o">=</span> <span class="n">solver</span><span class="o">.</span><span class="n">results</span><span class="o">.</span><span class="n">graphics</span>
+
+<span class="n">graphics</span><span class="o">.</span><span class="n">vector</span><span class="p">[</span><span class="s2">&quot;velocity_vector_symmetry&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">velocity_symmetry</span> <span class="o">=</span> <span class="n">solver</span><span class="o">.</span><span class="n">results</span><span class="o">.</span><span class="n">graphics</span><span class="o">.</span><span class="n">vector</span><span class="p">[</span><span class="s2">&quot;velocity_vector_symmetry&quot;</span><span class="p">]</span>
+<span class="n">velocity_symmetry</span><span class="o">.</span><span class="n">print_state</span><span class="p">()</span>
+<span class="n">velocity_symmetry</span><span class="o">.</span><span class="n">field</span> <span class="o">=</span> <span class="s2">&quot;velocity-magnitude&quot;</span>
+<span class="n">velocity_symmetry</span><span class="o">.</span><span class="n">surfaces_list</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;symmetry-xyplane&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+<span class="n">velocity_symmetry</span><span class="o">.</span><span class="n">scale</span><span class="o">.</span><span class="n">scale_f</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">velocity_symmetry</span><span class="o">.</span><span class="n">style</span> <span class="o">=</span> <span class="s2">&quot;arrow&quot;</span>
+<span class="n">velocity_symmetry</span><span class="o">.</span><span class="n">display</span><span class="p">()</span>
+
+<span class="n">graphics</span><span class="o">.</span><span class="n">views</span><span class="o">.</span><span class="n">restore_view</span><span class="p">(</span><span class="n">view_name</span><span class="o">=</span><span class="s2">&quot;front&quot;</span><span class="p">)</span>
+<span class="n">graphics</span><span class="o">.</span><span class="n">views</span><span class="o">.</span><span class="n">auto_scale</span><span class="p">()</span>
+<span class="n">graphics</span><span class="o">.</span><span class="n">picture</span><span class="o">.</span><span class="n">save_picture</span><span class="p">(</span><span class="n">file_name</span><span class="o">=</span><span class="s2">&quot;velocity_vector_symmetry.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>name : velocity_vector_symmetry
+field : velocity-magnitude
+vector_field : velocity
+scale :
+  auto_scale : True
+  scale_f : 1
+style : 3d arrow
+skip : 0
+vector_opt :
+  in_plane : False
+  fixed_length : False
+  x_comp : True
+  y_comp : True
+  z_comp : True
+  scale_head : 0.3
+  tessellation : 24
+  color :
+range_option :
+  option : auto-range-on
+  auto_range_on :
+    global_range : True
+color_map :
+  visible : True
+  size : 100
+  color : field-velocity
+  log_scale : False
+  format : %0.2e
+  user_skip : 9
+  show_all : True
+  position : 1
+  font_name : Helvetica
+  font_automatic : True
+  font_size : 0.032
+  length : 0.54
+  width : 6.0
+  bground_transparent : True
+  bground_color : #CCD3E2
+  title_elements : Variable and Object Name
+display_state_name : None
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/mixing_elbow_016.png"><img alt="../../_images/mixing_elbow_016.png" class="align-center" src="../../_images/mixing_elbow_016.png" style="width: 500pt;" />
+</a>
+</section>
+<section id="compute-mass-flow-rate">
+<h2>Compute mass flow rate<a class="headerlink" href="#compute-mass-flow-rate" title="Link to this heading">#</a></h2>
+<p>Compute the mass flow rate.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">solver</span><span class="o">.</span><span class="n">solution</span><span class="o">.</span><span class="n">report_definitions</span><span class="o">.</span><span class="n">flux</span><span class="p">[</span><span class="s2">&quot;mass_flow_rate&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="n">mass_flow_rate</span> <span class="o">=</span> <span class="n">solver</span><span class="o">.</span><span class="n">solution</span><span class="o">.</span><span class="n">report_definitions</span><span class="o">.</span><span class="n">flux</span><span class="p">[</span><span class="s2">&quot;mass_flow_rate&quot;</span><span class="p">]</span>
+<span class="n">mass_flow_rate</span><span class="o">.</span><span class="n">boundaries</span><span class="o">.</span><span class="n">allowed_values</span><span class="p">()</span>
+<span class="n">mass_flow_rate</span><span class="o">.</span><span class="n">boundaries</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;cold-inlet&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;hot-inlet&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;outlet&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+<span class="n">mass_flow_rate</span><span class="o">.</span><span class="n">print_state</span><span class="p">()</span>
+<span class="n">solver</span><span class="o">.</span><span class="n">solution</span><span class="o">.</span><span class="n">report_definitions</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">report_defs</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;mass_flow_rate&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>name : mass_flow_rate
+report_type : flux-massflow
+boundaries :
+  0 : cold-inlet
+  1 : hot-inlet
+  2 : outlet
+per_zone : False
+average_over : 1
+retain_instantaneous_values : False
+output_parameter : False
+
+      mass_flow_rate
+</pre></div>
+</div>
+</section>
+<section id="close-fluent">
+<h2>Close Fluent<a class="headerlink" href="#close-fluent" title="Link to this heading">#</a></h2>
+<p>Close Fluent.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">solver</span><span class="o">.</span><span class="n">exit</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>-------------------------------- -------------------
+                  mass_flow_rate      -7.0991748e-06
+</pre></div>
+</div>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 55.435 seconds)</p>
+<div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-00-fluent-mixing-elbow-settings-api-py">
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/7d0f5aafed66afa9a2202d8e8568e44c/mixing_elbow_settings_api.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">mixing_elbow_settings_api.ipynb</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/45aaee0dcfb1e7b228affc522bb033ed/mixing_elbow_settings_api.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">mixing_elbow_settings_api.py</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perform-required-imports">Perform required imports</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#launch-fluent">Launch Fluent</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-mesh-and-perform-mesh-check">Import mesh and perform mesh check</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#enable-heat-transfer">Enable heat transfer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-material">Create material</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up-cell-zone-conditions">Set up cell zone conditions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up-boundary-conditions-for-cfd-analysis">Set up boundary conditions for CFD analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#disable-plotting-of-residuals-during-calculation">Disable plotting of residuals during calculation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initialize-flow-field">Initialize flow field</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solve-for-150-iterations">Solve for 150 iterations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configure-graphics-picture-export">Configure graphics picture export</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-velocity-vectors">Create velocity vectors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-mass-flow-rate">Compute mass flow rate</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#close-fluent">Close Fluent</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+<!-- If there is no fix edit button function, use the PyData edit-this-button-->
+</div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../../_sources/examples/00-fluent/mixing_elbow_settings_api.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright (c) 2024 ANSYS, Inc. All rights reserved.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.3.7.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="theme-version">
+  Built with the
+  <a href="https://sphinxdocs.ansys.com/version/stable/index.html"
+    >Ansys Sphinx Theme</a
+  >
+  0.16.5. <br />Last updated on
+  <span id="date"></span>
+</p>
+<script>
+  var options = { day: "numeric", month: "long", year: "numeric" };
+  var lastModifiedDate = new Date(document.lastModified);
+  var date = lastModifiedDate.toLocaleDateString("en-US", options);
+  document.getElementById("date").innerHTML = date;
+</script></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,1295 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>numerics &#8212; PyFluent</title>
+    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../../../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../../../../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../../../../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../../../../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../../_static/css/ansys_sphinx_theme.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../../_static/sg_gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../../_static/sg_gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../../_static/sg_gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../../_static/sg_gallery-rendered-html.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../../../../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    
+        <link href="../../../../../../../_static/css/breadcrumbs.css" rel="stylesheet">
+    
+    <script data-url_root="../../../../../../../" id="documentation_options" src="../../../../../../../_static/documentation_options.js"></script>
+    <script src="../../../../../../../_static/jquery.js"></script>
+    <script src="../../../../../../../_static/underscore.js"></script>
+    <script src="../../../../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../../../../../_static/doctools.js"></script>
+    <script src="../../../../../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../../../../../_static/thebelab-helper.js"></script>
+    <script src="../../../../../../../_static/clipboard.min.js"></script>
+    <script src="../../../../../../../_static/copybutton.js"></script>
+    <script src="../../../../../../../_static/js/table.js"></script>
+    <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/solver/tui/setup/models/dpm/numerics/index';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://fluent.docs.pyansys.com/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.15';
+        </script>
+    <link rel="shortcut icon" href="../../../../../../../_static/ansys-favicon.png"/>
+    <link rel="index" title="Index" href="../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../search.html" />
+    <link rel="next" title="high_resolution_tracking" href="high_resolution_tracking/index.html" />
+    <link rel="prev" title="expert" href="../parallel/expert/index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <link rel="canonical" href="https://fluent.docs.pyansys.com/version/stable/api/solver/tui/setup/models/dpm/numerics/index.html" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container"><!-- Debugging: html_theme_options =  -->
+
+  <!-- If there is no MiliSearch enabled, use the PyData search -->
+<form class="bd-search d-flex align-items-center"
+      action="../../../../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  <div class="navbar-header-items__start">
+    
+      <div class="navbar-item">
+  
+
+<a class="navbar-brand logo" href="../../../../../../../index.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../../../../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../../../getting_started/index.html">
+                        Getting started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../../../user_guide/index.html">
+                        User guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../../../../../../index.html">
+                        API reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../../../examples/index.html">
+                        Examples
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../../../contributing.html">
+                        Contribute
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+        </div>
+      
+      
+        <div class="navbar-item">
+<script>
+document.write(`
+  <div class="version-switcher__container dropdown">
+    <button type="button" class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle" data-bs-toggle="dropdown">
+      0.15  <!-- this text may get changed later by javascript -->
+      <span class="caret"></span>
+    </button>
+    <div class="version-switcher__menu dropdown-menu list-group-flush py-0">
+    <!-- dropdown will be populated by javascript on page load -->
+    </div>
+  </div>
+`);
+</script></div>
+      
+        <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent/discussions" title="Support" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa fa-comment fa-fw"></i></span>
+            <label class="sr-only">Support</label></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </nav>
+  
+
+    
+    <div id="announcement_msg"></div>
+<script>
+  fetch("announcement.html")
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error: ${response.status}`);
+      }
+      return response.text();
+    })
+    .then(text => document.getElementById("announcement_msg").innerHTML = text)
+    .catch((error) => console.error(`Fetch problem: ${error.message}`));
+</script>
+    
+
+    
+    <div class="container-xl">
+    <div class="row">
+        <div class="col-12 col-md-3" id="breadcrumbs-spacer"></div>
+        <div class="col-12 col-md-11 col-xl-9" id="breadcrumbs">
+          
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+    
+        <li class="nav-item nav-item-additional-breadcrumb"><a href="https://docs.pyansys.com/">PyAnsys</a> » </li>
+    
+    
+        <li class="nav-item nav-item-0"><a href="../../../../../../../index.html">PyFluent</a> » </li>
+    
+
+          <li class="nav-item nav-item-1"><a href="../../../../../../index.html" >API reference</a> » </li>
+          <li class="nav-item nav-item-2"><a href="../../../../../index.html" >Solver</a> » </li>
+          <li class="nav-item nav-item-3"><a href="../../../../../tuicommands.html" >Solver TUI commands</a> » </li>
+          <li class="nav-item nav-item-4"><a href="../../../../index.html" >solver.tui</a> » </li>
+          <li class="nav-item nav-item-5"><a href="../../../index.html" >setup</a> » </li>
+          <li class="nav-item nav-item-6"><a href="../../index.html" >models</a> » </li>
+          <li class="nav-item nav-item-7"><a href="../index.html" accesskey="U">dpm</a> » </li>
+        <li class="nav-item nav-item-this"><a href="">numerics</a></li> 
+      </ul>
+    </div>
+        </div>
+  </div>
+</div>
+    
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../../../getting_started/index.html">
+                        Getting started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../../../user_guide/index.html">
+                        User guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../../../../../../index.html">
+                        API reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../../../examples/index.html">
+                        Examples
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../../../contributing.html">
+                        Contribute
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<script>
+document.write(`
+  <div class="version-switcher__container dropdown">
+    <button type="button" class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle" data-bs-toggle="dropdown">
+      0.15  <!-- this text may get changed later by javascript -->
+      <span class="caret"></span>
+    </button>
+    <div class="version-switcher__menu dropdown-menu list-group-flush py-0">
+    <!-- dropdown will be populated by javascript on page load -->
+    </div>
+  </div>
+`);
+</script></div>
+        
+          <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent/discussions" title="Support" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa fa-comment fa-fw"></i></span>
+            <label class="sr-only">Support</label></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item"><nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../general/index.html">General</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../meshing/index.html">Meshing</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../../../../../index.html">Solver</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../../../settings.html">Solver settings objects</a></li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="../../../../../tuicommands.html">Solver TUI commands</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l3 current active has-children"><a class="reference internal" href="../../../../index.html">solver.tui</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../../../../plot/index.html">plot</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../server/index.html">server</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../surface/index.html">surface</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../icing/index.html">icing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../file/index.html">file</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../views/index.html">views</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../display/index.html">display</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../simulation_reports/index.html">simulation_reports</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../turbo_post/index.html">turbo_post</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../parameters__and__customization/index.html">parameters__and__customization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../adjoint/index.html">adjoint</a></li>
+<li class="toctree-l4 current active has-children"><a class="reference internal" href="../../../index.html">setup</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l5"><a class="reference internal" href="../../../operating_conditions/index.html">operating_conditions</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../reference_frames/index.html">reference_frames</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../mesh_interfaces/index.html">mesh_interfaces</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../boundary_conditions/index.html">boundary_conditions</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../dynamic_mesh/index.html">dynamic_mesh</a></li>
+<li class="toctree-l5 current active has-children"><a class="reference internal" href="../../index.html">models</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l6"><a class="reference internal" href="../../nox_parameters/index.html">nox_parameters</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../viscous/index.html">viscous</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../heat_exchanger/index.html">heat_exchanger</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../solver/index.html">solver</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../shell_conduction/index.html">shell_conduction</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../two_temperature/index.html">two_temperature</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../electrolysis/index.html">electrolysis</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../acoustics/index.html">acoustics</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../structure/index.html">structure</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../soot_parameters/index.html">soot_parameters</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../optics/index.html">optics</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../multiphase/index.html">multiphase</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../cht/index.html">cht</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../species/index.html">species</a></li>
+<li class="toctree-l6 current active has-children"><a class="reference internal" href="../index.html">dpm</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l7"><a class="reference internal" href="../interaction/index.html">interaction</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../options/index.html">options</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../parallel/index.html">parallel</a></li>
+<li class="toctree-l7 current active has-children"><a class="current reference internal" href="#">numerics</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l8"><a class="reference internal" href="high_resolution_tracking/index.html">high_resolution_tracking</a></li>
+</ul>
+</li>
+<li class="toctree-l7"><a class="reference internal" href="../erosion_dynamic_mesh/index.html">erosion_dynamic_mesh</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../stripping_options/index.html">stripping_options</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../collisions/index.html">collisions</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../splash_options/index.html">splash_options</a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="../../eulerian_wallfilm/index.html">eulerian_wallfilm</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../radiation/index.html">radiation</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../system_coupling_settings/index.html">system_coupling_settings</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../../../gap_model/index.html">gap_model</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../overset_interfaces/index.html">overset_interfaces</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../reference_values/index.html">reference_values</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../turbo_model/index.html">turbo_model</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../mixing_planes/index.html">mixing_planes</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../expert/index.html">expert</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../materials/index.html">materials</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../named_expressions/index.html">named_expressions</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../report/index.html">report</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../parallel/index.html">parallel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../turbo_workflow/index.html">turbo_workflow</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../parametric_study/index.html">parametric_study</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../preferences/index.html">preferences</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../mesh/index.html">mesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../solve/index.html">solve</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../define/index.html">define</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../results/index.html">results</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../solution/index.html">solution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../datamodel/index.html">solver.datamodel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../schemeeval.html">Scheme code evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../fielddata.html">Field data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../fieldinfo.html">Field info</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../events.html">EventsManager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../monitors.html">MonitorsManager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../reduction.html">Reduction</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article"></div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="numerics">
+<span id="ref-solver-tui-setup-models-dpm-numerics"></span><h1>numerics<a class="headerlink" href="#numerics" title="Permalink to this heading">#</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.</span></span><span class="sig-name descname"><span class="pre">numerics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">service</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Enter the numerics menu to set numerical solution parameters.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.automated_scheme_selection" title="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.automated_scheme_selection"><code class="xref py py-obj docutils literal notranslate"><span class="pre">automated_scheme_selection</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enable/disable the adaptation of integration step length based on a maximum error.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.average_DDPM_variables" title="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.average_DDPM_variables"><code class="xref py py-obj docutils literal notranslate"><span class="pre">average_DDPM_variables</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Average DDPM specific variables like volume fractions and velocities on nodes.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.average_each_step" title="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.average_each_step"><code class="xref py py-obj docutils literal notranslate"><span class="pre">average_each_step</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Do the averaging after each integration step for higher accuracy at a higher cost.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.average_kernel" title="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.average_kernel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">average_kernel</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Specify a kernel for the averaging.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.average_source_terms" title="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.average_source_terms"><code class="xref py py-obj docutils literal notranslate"><span class="pre">average_source_terms</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Average DPM source terms on nodes.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.coupled_heat_mass_update" title="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.coupled_heat_mass_update"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coupled_heat_mass_update</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enable/disable coupled heat and mass update.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.drag_law" title="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.drag_law"><code class="xref py py-obj docutils literal notranslate"><span class="pre">drag_law</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Set the drag law.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.dynamic_interaction" title="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.dynamic_interaction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dynamic_interaction</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enable/disable dynamic interaction range.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.enable_node_based_averaging" title="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.enable_node_based_averaging"><code class="xref py py-obj docutils literal notranslate"><span class="pre">enable_node_based_averaging</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enable node based averaging of DPM variables.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.enhanced_packing_limit_numerics" title="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.enhanced_packing_limit_numerics"><code class="xref py py-obj docutils literal notranslate"><span class="pre">enhanced_packing_limit_numerics</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enable enhanced packing limit numerics to avoid exceeding of packing limit for granular phases.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.error_control" title="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.error_control"><code class="xref py py-obj docutils literal notranslate"><span class="pre">error_control</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Set the adapt integration step length based on a maximum error.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.gaussian_factor" title="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.gaussian_factor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gaussian_factor</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Set a factor for the gaussian kernel for node-based averaging.~%Large values give small size, small values give large size of kernel.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.granular_stress_tensor" title="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.granular_stress_tensor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">granular_stress_tensor</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enable granular stress tensor to be considered with solid pressure gradient as collision force.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.minimum_liquid_fraction" title="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.minimum_liquid_fraction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">minimum_liquid_fraction</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Evaporate droplet completely when the remaining mass is below this fraction of initial mass.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.mppic_settings" title="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.mppic_settings"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mppic_settings</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enable PIC and MPPIC to compute DPM and DDPM source terms.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.predictor_corrector" title="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.predictor_corrector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">predictor_corrector</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enable predictor/corrector approach to track particles.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.tracking_parameters" title="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.tracking_parameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tracking_parameters</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Set parameters for the (initial) tracking step length.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.tracking_scheme" title="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.tracking_scheme"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tracking_scheme</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Specify a tracking scheme.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.tracking_statistics" title="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.tracking_statistics"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tracking_statistics</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Control the format of the one-line tracking statistics printed after every DPM tracking pass.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.underrelax_film_height" title="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.underrelax_film_height"><code class="xref py py-obj docutils literal notranslate"><span class="pre">underrelax_film_height</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Define underrelaxation factor for film height.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.vaporization_limiting_factors" title="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.vaporization_limiting_factors"><code class="xref py py-obj docutils literal notranslate"><span class="pre">vaporization_limiting_factors</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Set Vaporization Fractional Change Limits.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.verbosity" title="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.verbosity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">verbosity</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Adjust the DPM tracker's verbosity level.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Classes:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking" title="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking"><code class="xref py py-obj docutils literal notranslate"><span class="pre">high_resolution_tracking</span></code></a>(path, service)</p></td>
+<td><p>Enter the high resolution tracking menu.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.automated_scheme_selection">
+<span class="sig-name descname"><span class="pre">automated_scheme_selection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.automated_scheme_selection" title="Permalink to this definition">#</a></dt>
+<dd><p>Enable/disable the adaptation of integration step length based on a maximum error.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.average_DDPM_variables">
+<span class="sig-name descname"><span class="pre">average_DDPM_variables</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.average_DDPM_variables" title="Permalink to this definition">#</a></dt>
+<dd><p>Average DDPM specific variables like volume fractions and velocities on nodes.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.average_each_step">
+<span class="sig-name descname"><span class="pre">average_each_step</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.average_each_step" title="Permalink to this definition">#</a></dt>
+<dd><p>Do the averaging after each integration step for higher accuracy at a higher cost.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.average_kernel">
+<span class="sig-name descname"><span class="pre">average_kernel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.average_kernel" title="Permalink to this definition">#</a></dt>
+<dd><p>Specify a kernel for the averaging.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.average_source_terms">
+<span class="sig-name descname"><span class="pre">average_source_terms</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.average_source_terms" title="Permalink to this definition">#</a></dt>
+<dd><p>Average DPM source terms on nodes.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.coupled_heat_mass_update">
+<span class="sig-name descname"><span class="pre">coupled_heat_mass_update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.coupled_heat_mass_update" title="Permalink to this definition">#</a></dt>
+<dd><p>Enable/disable coupled heat and mass update.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.drag_law">
+<span class="sig-name descname"><span class="pre">drag_law</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.drag_law" title="Permalink to this definition">#</a></dt>
+<dd><p>Set the drag law.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.dynamic_interaction">
+<span class="sig-name descname"><span class="pre">dynamic_interaction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.dynamic_interaction" title="Permalink to this definition">#</a></dt>
+<dd><p>Enable/disable dynamic interaction range.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.enable_node_based_averaging">
+<span class="sig-name descname"><span class="pre">enable_node_based_averaging</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.enable_node_based_averaging" title="Permalink to this definition">#</a></dt>
+<dd><p>Enable node based averaging of DPM variables.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.enhanced_packing_limit_numerics">
+<span class="sig-name descname"><span class="pre">enhanced_packing_limit_numerics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.enhanced_packing_limit_numerics" title="Permalink to this definition">#</a></dt>
+<dd><p>Enable enhanced packing limit numerics to avoid exceeding of packing limit for granular phases.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.error_control">
+<span class="sig-name descname"><span class="pre">error_control</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.error_control" title="Permalink to this definition">#</a></dt>
+<dd><p>Set the adapt integration step length based on a maximum error.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.gaussian_factor">
+<span class="sig-name descname"><span class="pre">gaussian_factor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.gaussian_factor" title="Permalink to this definition">#</a></dt>
+<dd><p>Set a factor for the gaussian kernel for node-based averaging.~%Large values give small size, small values give large size of kernel.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.granular_stress_tensor">
+<span class="sig-name descname"><span class="pre">granular_stress_tensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.granular_stress_tensor" title="Permalink to this definition">#</a></dt>
+<dd><p>Enable granular stress tensor to be considered with solid pressure gradient as collision force.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">high_resolution_tracking</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">service</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Enter the high resolution tracking menu.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.always_use_face_centroid_with_periodics" title="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.always_use_face_centroid_with_periodics"><code class="xref py py-obj docutils literal notranslate"><span class="pre">always_use_face_centroid_with_periodics</span></code></a>(...)</p></td>
+<td><p>Use quad face centroids when creating subtets if the case contains periodic boundaries.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.boundary_layer_tracking" title="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.boundary_layer_tracking"><code class="xref py py-obj docutils literal notranslate"><span class="pre">boundary_layer_tracking</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Adjust the particle timestep to account for high aspect ratio cells.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.check_subtet_validity" title="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.check_subtet_validity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">check_subtet_validity</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Test for inverted subtets due to warped cells.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.enable_automatic_intersection_tolerance" title="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.enable_automatic_intersection_tolerance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">enable_automatic_intersection_tolerance</span></code></a>(...)</p></td>
+<td><p>Enable automatic scaling of subtet intersection tolerance.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.enable_barycentric_intersections" title="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.enable_barycentric_intersections"><code class="xref py py-obj docutils literal notranslate"><span class="pre">enable_barycentric_intersections</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Use barycentric coordinates for intersection calculations.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.enable_high_resolution_tracking" title="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.enable_high_resolution_tracking"><code class="xref py py-obj docutils literal notranslate"><span class="pre">enable_high_resolution_tracking</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enable high resolution tracking.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.project_wall_film_particles_to_film" title="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.project_wall_film_particles_to_film"><code class="xref py py-obj docutils literal notranslate"><span class="pre">project_wall_film_particles_to_film</span></code></a>(*args, ...)</p></td>
+<td><p>Project existing particles to film to track using high resolution tracking?.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.remove_stuck_particles" title="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.remove_stuck_particles"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_stuck_particles</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Remove particles that are stuck at edges or faces.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.set_film_spreading_parameter" title="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.set_film_spreading_parameter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_film_spreading_parameter</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Set the spreading parameter for Lagrangian wallfilm particles.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.set_subtet_intersection_tolerance" title="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.set_subtet_intersection_tolerance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_subtet_intersection_tolerance</span></code></a>(*args, ...)</p></td>
+<td><p>Set the tolerance for subtet intersection calculations.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.sliding_interface_crossover_fraction" title="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.sliding_interface_crossover_fraction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sliding_interface_crossover_fraction</span></code></a>(*args, ...)</p></td>
+<td><p>Move the particle a fraction of the distance to the subtet center when crossing a sliding interface.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.use_barycentric_sampling" title="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.use_barycentric_sampling"><code class="xref py py-obj docutils literal notranslate"><span class="pre">use_barycentric_sampling</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Use barycentric coordinates when sampling at planes.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.use_particle_timestep_for_intersection_tolerance" title="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.use_particle_timestep_for_intersection_tolerance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">use_particle_timestep_for_intersection_tolerance</span></code></a>(...)</p></td>
+<td><p>Use the particle timestep for the axisymmetric subtet intersection tolerance.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.use_quad_face_centroid" title="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.use_quad_face_centroid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">use_quad_face_centroid</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Use quad face centroids when creating subtets.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.use_velocity_based_error_control" title="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.use_velocity_based_error_control"><code class="xref py py-obj docutils literal notranslate"><span class="pre">use_velocity_based_error_control</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Use adaptive time stepping based upon the particle velocity.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Classes:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.barycentric_interpolation" title="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.barycentric_interpolation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">barycentric_interpolation</span></code></a>(path, service)</p></td>
+<td><p>Enter the barycentric interpolation menu.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.particle_relocation" title="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.particle_relocation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">particle_relocation</span></code></a>(path, service)</p></td>
+<td><p>Enter the particle relocation menu.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.always_use_face_centroid_with_periodics">
+<span class="sig-name descname"><span class="pre">always_use_face_centroid_with_periodics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.always_use_face_centroid_with_periodics" title="Permalink to this definition">#</a></dt>
+<dd><p>Use quad face centroids when creating subtets if the case contains periodic boundaries.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.barycentric_interpolation">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">barycentric_interpolation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">service</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.barycentric_interpolation" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Enter the barycentric interpolation menu.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.barycentric_interpolation.enable_transient_variable_interpolation" title="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.barycentric_interpolation.enable_transient_variable_interpolation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">enable_transient_variable_interpolation</span></code></a>(...)</p></td>
+<td><p>Enable transient variable interpolation.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.barycentric_interpolation.interpolate_flow_cp" title="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.barycentric_interpolation.interpolate_flow_cp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">interpolate_flow_cp</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enable interpolation of flow specific heat to the particle position.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.barycentric_interpolation.interpolate_flow_density" title="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.barycentric_interpolation.interpolate_flow_density"><code class="xref py py-obj docutils literal notranslate"><span class="pre">interpolate_flow_density</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enable interpolation of flow density to the particle position.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.barycentric_interpolation.interpolate_flow_solution_gradients" title="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.barycentric_interpolation.interpolate_flow_solution_gradients"><code class="xref py py-obj docutils literal notranslate"><span class="pre">interpolate_flow_solution_gradients</span></code></a>(*args, ...)</p></td>
+<td><p>Enable interpolation of flow solution gradients.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.barycentric_interpolation.interpolate_flow_viscosity" title="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.barycentric_interpolation.interpolate_flow_viscosity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">interpolate_flow_viscosity</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enable interpolation of flow viscosity to the particle position.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.barycentric_interpolation.interpolate_temperature" title="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.barycentric_interpolation.interpolate_temperature"><code class="xref py py-obj docutils literal notranslate"><span class="pre">interpolate_temperature</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enable interpolation of temperature to the particle position.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.barycentric_interpolation.interpolate_wallfilm_properties" title="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.barycentric_interpolation.interpolate_wallfilm_properties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">interpolate_wallfilm_properties</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enable interpolation of wallfilm properties to the particle position.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.barycentric_interpolation.nodal_reconstruction_frequency" title="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.barycentric_interpolation.nodal_reconstruction_frequency"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nodal_reconstruction_frequency</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Update nodal reconstruction every N'th DPM iteration.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.barycentric_interpolation.precompute_pdf_species" title="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.barycentric_interpolation.precompute_pdf_species"><code class="xref py py-obj docutils literal notranslate"><span class="pre">precompute_pdf_species</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Precompute cell values of PDF species mass fractions prior to particle tracking.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.barycentric_interpolation.user_interpolation_function" title="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.barycentric_interpolation.user_interpolation_function"><code class="xref py py-obj docutils literal notranslate"><span class="pre">user_interpolation_function</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enter user interpolation function.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.barycentric_interpolation.zero_nodal_velocity_on_walls" title="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.barycentric_interpolation.zero_nodal_velocity_on_walls"><code class="xref py py-obj docutils literal notranslate"><span class="pre">zero_nodal_velocity_on_walls</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Set the nodal velocity on all walls to zero.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.barycentric_interpolation.enable_transient_variable_interpolation">
+<span class="sig-name descname"><span class="pre">enable_transient_variable_interpolation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.barycentric_interpolation.enable_transient_variable_interpolation" title="Permalink to this definition">#</a></dt>
+<dd><p>Enable transient variable interpolation.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.barycentric_interpolation.interpolate_flow_cp">
+<span class="sig-name descname"><span class="pre">interpolate_flow_cp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.barycentric_interpolation.interpolate_flow_cp" title="Permalink to this definition">#</a></dt>
+<dd><p>Enable interpolation of flow specific heat to the particle position.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.barycentric_interpolation.interpolate_flow_density">
+<span class="sig-name descname"><span class="pre">interpolate_flow_density</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.barycentric_interpolation.interpolate_flow_density" title="Permalink to this definition">#</a></dt>
+<dd><p>Enable interpolation of flow density to the particle position.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.barycentric_interpolation.interpolate_flow_solution_gradients">
+<span class="sig-name descname"><span class="pre">interpolate_flow_solution_gradients</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.barycentric_interpolation.interpolate_flow_solution_gradients" title="Permalink to this definition">#</a></dt>
+<dd><p>Enable interpolation of flow solution gradients.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.barycentric_interpolation.interpolate_flow_viscosity">
+<span class="sig-name descname"><span class="pre">interpolate_flow_viscosity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.barycentric_interpolation.interpolate_flow_viscosity" title="Permalink to this definition">#</a></dt>
+<dd><p>Enable interpolation of flow viscosity to the particle position.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.barycentric_interpolation.interpolate_temperature">
+<span class="sig-name descname"><span class="pre">interpolate_temperature</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.barycentric_interpolation.interpolate_temperature" title="Permalink to this definition">#</a></dt>
+<dd><p>Enable interpolation of temperature to the particle position.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.barycentric_interpolation.interpolate_wallfilm_properties">
+<span class="sig-name descname"><span class="pre">interpolate_wallfilm_properties</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.barycentric_interpolation.interpolate_wallfilm_properties" title="Permalink to this definition">#</a></dt>
+<dd><p>Enable interpolation of wallfilm properties to the particle position.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.barycentric_interpolation.nodal_reconstruction_frequency">
+<span class="sig-name descname"><span class="pre">nodal_reconstruction_frequency</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.barycentric_interpolation.nodal_reconstruction_frequency" title="Permalink to this definition">#</a></dt>
+<dd><p>Update nodal reconstruction every N’th DPM iteration.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.barycentric_interpolation.precompute_pdf_species">
+<span class="sig-name descname"><span class="pre">precompute_pdf_species</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.barycentric_interpolation.precompute_pdf_species" title="Permalink to this definition">#</a></dt>
+<dd><p>Precompute cell values of PDF species mass fractions prior to particle tracking.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.barycentric_interpolation.user_interpolation_function">
+<span class="sig-name descname"><span class="pre">user_interpolation_function</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.barycentric_interpolation.user_interpolation_function" title="Permalink to this definition">#</a></dt>
+<dd><p>Enter user interpolation function.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.barycentric_interpolation.zero_nodal_velocity_on_walls">
+<span class="sig-name descname"><span class="pre">zero_nodal_velocity_on_walls</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.barycentric_interpolation.zero_nodal_velocity_on_walls" title="Permalink to this definition">#</a></dt>
+<dd><p>Set the nodal velocity on all walls to zero.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.boundary_layer_tracking">
+<span class="sig-name descname"><span class="pre">boundary_layer_tracking</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.boundary_layer_tracking" title="Permalink to this definition">#</a></dt>
+<dd><p>Adjust the particle timestep to account for high aspect ratio cells.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.check_subtet_validity">
+<span class="sig-name descname"><span class="pre">check_subtet_validity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.check_subtet_validity" title="Permalink to this definition">#</a></dt>
+<dd><p>Test for inverted subtets due to warped cells.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.enable_automatic_intersection_tolerance">
+<span class="sig-name descname"><span class="pre">enable_automatic_intersection_tolerance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.enable_automatic_intersection_tolerance" title="Permalink to this definition">#</a></dt>
+<dd><p>Enable automatic scaling of subtet intersection tolerance.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.enable_barycentric_intersections">
+<span class="sig-name descname"><span class="pre">enable_barycentric_intersections</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.enable_barycentric_intersections" title="Permalink to this definition">#</a></dt>
+<dd><p>Use barycentric coordinates for intersection calculations.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.enable_high_resolution_tracking">
+<span class="sig-name descname"><span class="pre">enable_high_resolution_tracking</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.enable_high_resolution_tracking" title="Permalink to this definition">#</a></dt>
+<dd><p>Enable high resolution tracking.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.particle_relocation">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">particle_relocation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">service</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.particle_relocation" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Enter the particle relocation menu.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.particle_relocation.enhanced_cell_relocation_method" title="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.particle_relocation.enhanced_cell_relocation_method"><code class="xref py py-obj docutils literal notranslate"><span class="pre">enhanced_cell_relocation_method</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enable enhanced method of locating particles in cells.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.particle_relocation.enhanced_wallfilm_location_method" title="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.particle_relocation.enhanced_wallfilm_location_method"><code class="xref py py-obj docutils literal notranslate"><span class="pre">enhanced_wallfilm_location_method</span></code></a>(*args, ...)</p></td>
+<td><p>Enable enhanced method of locating film particles on faces.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.particle_relocation.load_legacy_particles" title="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.particle_relocation.load_legacy_particles"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_legacy_particles</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Load particles that were tracked without high-resolution tracking enabled.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.particle_relocation.overset_relocation_robustness_level" title="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.particle_relocation.overset_relocation_robustness_level"><code class="xref py py-obj docutils literal notranslate"><span class="pre">overset_relocation_robustness_level</span></code></a>(*args, ...)</p></td>
+<td><p>Set the robustness level for particle relocation in overset meshes.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.particle_relocation.use_legacy_particle_location_method" title="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.particle_relocation.use_legacy_particle_location_method"><code class="xref py py-obj docutils literal notranslate"><span class="pre">use_legacy_particle_location_method</span></code></a>(*args, ...)</p></td>
+<td><p>Enable legacy method of locating particles in cells.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.particle_relocation.wallfilm_relocation_tolerance_scale_factor" title="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.particle_relocation.wallfilm_relocation_tolerance_scale_factor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wallfilm_relocation_tolerance_scale_factor</span></code></a>(...)</p></td>
+<td><p>Set the relocation tolerance scaling factor for wallfilm particles after remeshing.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.particle_relocation.enhanced_cell_relocation_method">
+<span class="sig-name descname"><span class="pre">enhanced_cell_relocation_method</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.particle_relocation.enhanced_cell_relocation_method" title="Permalink to this definition">#</a></dt>
+<dd><p>Enable enhanced method of locating particles in cells.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.particle_relocation.enhanced_wallfilm_location_method">
+<span class="sig-name descname"><span class="pre">enhanced_wallfilm_location_method</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.particle_relocation.enhanced_wallfilm_location_method" title="Permalink to this definition">#</a></dt>
+<dd><p>Enable enhanced method of locating film particles on faces.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.particle_relocation.load_legacy_particles">
+<span class="sig-name descname"><span class="pre">load_legacy_particles</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.particle_relocation.load_legacy_particles" title="Permalink to this definition">#</a></dt>
+<dd><p>Load particles that were tracked without high-resolution tracking enabled.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.particle_relocation.overset_relocation_robustness_level">
+<span class="sig-name descname"><span class="pre">overset_relocation_robustness_level</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.particle_relocation.overset_relocation_robustness_level" title="Permalink to this definition">#</a></dt>
+<dd><p>Set the robustness level for particle relocation in overset meshes.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.particle_relocation.use_legacy_particle_location_method">
+<span class="sig-name descname"><span class="pre">use_legacy_particle_location_method</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.particle_relocation.use_legacy_particle_location_method" title="Permalink to this definition">#</a></dt>
+<dd><p>Enable legacy method of locating particles in cells.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.particle_relocation.wallfilm_relocation_tolerance_scale_factor">
+<span class="sig-name descname"><span class="pre">wallfilm_relocation_tolerance_scale_factor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.particle_relocation.wallfilm_relocation_tolerance_scale_factor" title="Permalink to this definition">#</a></dt>
+<dd><p>Set the relocation tolerance scaling factor for wallfilm particles after remeshing.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.project_wall_film_particles_to_film">
+<span class="sig-name descname"><span class="pre">project_wall_film_particles_to_film</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.project_wall_film_particles_to_film" title="Permalink to this definition">#</a></dt>
+<dd><p>Project existing particles to film to track using high resolution tracking?.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.remove_stuck_particles">
+<span class="sig-name descname"><span class="pre">remove_stuck_particles</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.remove_stuck_particles" title="Permalink to this definition">#</a></dt>
+<dd><p>Remove particles that are stuck at edges or faces.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.set_film_spreading_parameter">
+<span class="sig-name descname"><span class="pre">set_film_spreading_parameter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.set_film_spreading_parameter" title="Permalink to this definition">#</a></dt>
+<dd><p>Set the spreading parameter for Lagrangian wallfilm particles.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.set_subtet_intersection_tolerance">
+<span class="sig-name descname"><span class="pre">set_subtet_intersection_tolerance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.set_subtet_intersection_tolerance" title="Permalink to this definition">#</a></dt>
+<dd><p>Set the tolerance for subtet intersection calculations.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.sliding_interface_crossover_fraction">
+<span class="sig-name descname"><span class="pre">sliding_interface_crossover_fraction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.sliding_interface_crossover_fraction" title="Permalink to this definition">#</a></dt>
+<dd><p>Move the particle a fraction of the distance to the subtet center when crossing a sliding interface.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.use_barycentric_sampling">
+<span class="sig-name descname"><span class="pre">use_barycentric_sampling</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.use_barycentric_sampling" title="Permalink to this definition">#</a></dt>
+<dd><p>Use barycentric coordinates when sampling at planes.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.use_particle_timestep_for_intersection_tolerance">
+<span class="sig-name descname"><span class="pre">use_particle_timestep_for_intersection_tolerance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.use_particle_timestep_for_intersection_tolerance" title="Permalink to this definition">#</a></dt>
+<dd><p>Use the particle timestep for the axisymmetric subtet intersection tolerance.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.use_quad_face_centroid">
+<span class="sig-name descname"><span class="pre">use_quad_face_centroid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.use_quad_face_centroid" title="Permalink to this definition">#</a></dt>
+<dd><p>Use quad face centroids when creating subtets.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.use_velocity_based_error_control">
+<span class="sig-name descname"><span class="pre">use_velocity_based_error_control</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.use_velocity_based_error_control" title="Permalink to this definition">#</a></dt>
+<dd><p>Use adaptive time stepping based upon the particle velocity.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.minimum_liquid_fraction">
+<span class="sig-name descname"><span class="pre">minimum_liquid_fraction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.minimum_liquid_fraction" title="Permalink to this definition">#</a></dt>
+<dd><p>Evaporate droplet completely when the remaining mass is below this fraction of initial mass.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.mppic_settings">
+<span class="sig-name descname"><span class="pre">mppic_settings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.mppic_settings" title="Permalink to this definition">#</a></dt>
+<dd><p>Enable PIC and MPPIC to compute DPM and DDPM source terms.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.predictor_corrector">
+<span class="sig-name descname"><span class="pre">predictor_corrector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.predictor_corrector" title="Permalink to this definition">#</a></dt>
+<dd><p>Enable predictor/corrector approach to track particles.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.tracking_parameters">
+<span class="sig-name descname"><span class="pre">tracking_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.tracking_parameters" title="Permalink to this definition">#</a></dt>
+<dd><p>Set parameters for the (initial) tracking step length.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.tracking_scheme">
+<span class="sig-name descname"><span class="pre">tracking_scheme</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.tracking_scheme" title="Permalink to this definition">#</a></dt>
+<dd><p>Specify a tracking scheme.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.tracking_statistics">
+<span class="sig-name descname"><span class="pre">tracking_statistics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.tracking_statistics" title="Permalink to this definition">#</a></dt>
+<dd><p>Control the format of the one-line tracking statistics printed after every DPM tracking pass.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.underrelax_film_height">
+<span class="sig-name descname"><span class="pre">underrelax_film_height</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.underrelax_film_height" title="Permalink to this definition">#</a></dt>
+<dd><p>Define underrelaxation factor for film height.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.vaporization_limiting_factors">
+<span class="sig-name descname"><span class="pre">vaporization_limiting_factors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.vaporization_limiting_factors" title="Permalink to this definition">#</a></dt>
+<dd><p>Set Vaporization Fractional Change Limits.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.verbosity">
+<span class="sig-name descname"><span class="pre">verbosity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.verbosity" title="Permalink to this definition">#</a></dt>
+<dd><p>Adjust the DPM tracker’s verbosity level.</p>
+</dd></dl>
+
+</dd></dl>
+
+<div class="toctree-wrapper compound">
+</div>
+</section>
+
+
+                </article>
+              
+              
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics"><code class="docutils literal notranslate"><span class="pre">numerics</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.automated_scheme_selection"><code class="docutils literal notranslate"><span class="pre">numerics.automated_scheme_selection()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.average_DDPM_variables"><code class="docutils literal notranslate"><span class="pre">numerics.average_DDPM_variables()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.average_each_step"><code class="docutils literal notranslate"><span class="pre">numerics.average_each_step()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.average_kernel"><code class="docutils literal notranslate"><span class="pre">numerics.average_kernel()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.average_source_terms"><code class="docutils literal notranslate"><span class="pre">numerics.average_source_terms()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.coupled_heat_mass_update"><code class="docutils literal notranslate"><span class="pre">numerics.coupled_heat_mass_update()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.drag_law"><code class="docutils literal notranslate"><span class="pre">numerics.drag_law()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.dynamic_interaction"><code class="docutils literal notranslate"><span class="pre">numerics.dynamic_interaction()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.enable_node_based_averaging"><code class="docutils literal notranslate"><span class="pre">numerics.enable_node_based_averaging()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.enhanced_packing_limit_numerics"><code class="docutils literal notranslate"><span class="pre">numerics.enhanced_packing_limit_numerics()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.error_control"><code class="docutils literal notranslate"><span class="pre">numerics.error_control()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.gaussian_factor"><code class="docutils literal notranslate"><span class="pre">numerics.gaussian_factor()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.granular_stress_tensor"><code class="docutils literal notranslate"><span class="pre">numerics.granular_stress_tensor()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking"><code class="docutils literal notranslate"><span class="pre">numerics.high_resolution_tracking</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.always_use_face_centroid_with_periodics"><code class="docutils literal notranslate"><span class="pre">numerics.high_resolution_tracking.always_use_face_centroid_with_periodics()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.barycentric_interpolation"><code class="docutils literal notranslate"><span class="pre">numerics.high_resolution_tracking.barycentric_interpolation</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.barycentric_interpolation.enable_transient_variable_interpolation"><code class="docutils literal notranslate"><span class="pre">numerics.high_resolution_tracking.barycentric_interpolation.enable_transient_variable_interpolation()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.barycentric_interpolation.interpolate_flow_cp"><code class="docutils literal notranslate"><span class="pre">numerics.high_resolution_tracking.barycentric_interpolation.interpolate_flow_cp()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.barycentric_interpolation.interpolate_flow_density"><code class="docutils literal notranslate"><span class="pre">numerics.high_resolution_tracking.barycentric_interpolation.interpolate_flow_density()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.barycentric_interpolation.interpolate_flow_solution_gradients"><code class="docutils literal notranslate"><span class="pre">numerics.high_resolution_tracking.barycentric_interpolation.interpolate_flow_solution_gradients()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.barycentric_interpolation.interpolate_flow_viscosity"><code class="docutils literal notranslate"><span class="pre">numerics.high_resolution_tracking.barycentric_interpolation.interpolate_flow_viscosity()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.barycentric_interpolation.interpolate_temperature"><code class="docutils literal notranslate"><span class="pre">numerics.high_resolution_tracking.barycentric_interpolation.interpolate_temperature()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.barycentric_interpolation.interpolate_wallfilm_properties"><code class="docutils literal notranslate"><span class="pre">numerics.high_resolution_tracking.barycentric_interpolation.interpolate_wallfilm_properties()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.barycentric_interpolation.nodal_reconstruction_frequency"><code class="docutils literal notranslate"><span class="pre">numerics.high_resolution_tracking.barycentric_interpolation.nodal_reconstruction_frequency()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.barycentric_interpolation.precompute_pdf_species"><code class="docutils literal notranslate"><span class="pre">numerics.high_resolution_tracking.barycentric_interpolation.precompute_pdf_species()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.barycentric_interpolation.user_interpolation_function"><code class="docutils literal notranslate"><span class="pre">numerics.high_resolution_tracking.barycentric_interpolation.user_interpolation_function()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.barycentric_interpolation.zero_nodal_velocity_on_walls"><code class="docutils literal notranslate"><span class="pre">numerics.high_resolution_tracking.barycentric_interpolation.zero_nodal_velocity_on_walls()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.boundary_layer_tracking"><code class="docutils literal notranslate"><span class="pre">numerics.high_resolution_tracking.boundary_layer_tracking()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.check_subtet_validity"><code class="docutils literal notranslate"><span class="pre">numerics.high_resolution_tracking.check_subtet_validity()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.enable_automatic_intersection_tolerance"><code class="docutils literal notranslate"><span class="pre">numerics.high_resolution_tracking.enable_automatic_intersection_tolerance()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.enable_barycentric_intersections"><code class="docutils literal notranslate"><span class="pre">numerics.high_resolution_tracking.enable_barycentric_intersections()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.enable_high_resolution_tracking"><code class="docutils literal notranslate"><span class="pre">numerics.high_resolution_tracking.enable_high_resolution_tracking()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.particle_relocation"><code class="docutils literal notranslate"><span class="pre">numerics.high_resolution_tracking.particle_relocation</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.particle_relocation.enhanced_cell_relocation_method"><code class="docutils literal notranslate"><span class="pre">numerics.high_resolution_tracking.particle_relocation.enhanced_cell_relocation_method()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.particle_relocation.enhanced_wallfilm_location_method"><code class="docutils literal notranslate"><span class="pre">numerics.high_resolution_tracking.particle_relocation.enhanced_wallfilm_location_method()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.particle_relocation.load_legacy_particles"><code class="docutils literal notranslate"><span class="pre">numerics.high_resolution_tracking.particle_relocation.load_legacy_particles()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.particle_relocation.overset_relocation_robustness_level"><code class="docutils literal notranslate"><span class="pre">numerics.high_resolution_tracking.particle_relocation.overset_relocation_robustness_level()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.particle_relocation.use_legacy_particle_location_method"><code class="docutils literal notranslate"><span class="pre">numerics.high_resolution_tracking.particle_relocation.use_legacy_particle_location_method()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.particle_relocation.wallfilm_relocation_tolerance_scale_factor"><code class="docutils literal notranslate"><span class="pre">numerics.high_resolution_tracking.particle_relocation.wallfilm_relocation_tolerance_scale_factor()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.project_wall_film_particles_to_film"><code class="docutils literal notranslate"><span class="pre">numerics.high_resolution_tracking.project_wall_film_particles_to_film()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.remove_stuck_particles"><code class="docutils literal notranslate"><span class="pre">numerics.high_resolution_tracking.remove_stuck_particles()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.set_film_spreading_parameter"><code class="docutils literal notranslate"><span class="pre">numerics.high_resolution_tracking.set_film_spreading_parameter()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.set_subtet_intersection_tolerance"><code class="docutils literal notranslate"><span class="pre">numerics.high_resolution_tracking.set_subtet_intersection_tolerance()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.sliding_interface_crossover_fraction"><code class="docutils literal notranslate"><span class="pre">numerics.high_resolution_tracking.sliding_interface_crossover_fraction()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.use_barycentric_sampling"><code class="docutils literal notranslate"><span class="pre">numerics.high_resolution_tracking.use_barycentric_sampling()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.use_particle_timestep_for_intersection_tolerance"><code class="docutils literal notranslate"><span class="pre">numerics.high_resolution_tracking.use_particle_timestep_for_intersection_tolerance()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.use_quad_face_centroid"><code class="docutils literal notranslate"><span class="pre">numerics.high_resolution_tracking.use_quad_face_centroid()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.high_resolution_tracking.use_velocity_based_error_control"><code class="docutils literal notranslate"><span class="pre">numerics.high_resolution_tracking.use_velocity_based_error_control()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.minimum_liquid_fraction"><code class="docutils literal notranslate"><span class="pre">numerics.minimum_liquid_fraction()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.mppic_settings"><code class="docutils literal notranslate"><span class="pre">numerics.mppic_settings()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.predictor_corrector"><code class="docutils literal notranslate"><span class="pre">numerics.predictor_corrector()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.tracking_parameters"><code class="docutils literal notranslate"><span class="pre">numerics.tracking_parameters()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.tracking_scheme"><code class="docutils literal notranslate"><span class="pre">numerics.tracking_scheme()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.tracking_statistics"><code class="docutils literal notranslate"><span class="pre">numerics.tracking_statistics()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.underrelax_film_height"><code class="docutils literal notranslate"><span class="pre">numerics.underrelax_film_height()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.vaporization_limiting_factors"><code class="docutils literal notranslate"><span class="pre">numerics.vaporization_limiting_factors()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.setup.models.dpm.numerics.verbosity"><code class="docutils literal notranslate"><span class="pre">numerics.verbosity()</span></code></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  <div class="tocsection sourcelink">
+    <a href="../../../../../../../_sources/api/solver/tui/setup/models/dpm/numerics/index.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../../../../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+  <p class="copyright">
+    
+      © Copyright (c) 2023 ANSYS, Inc. All rights reserved.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.13.3.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

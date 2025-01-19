@@ -1,0 +1,855 @@
+/* Provided by the Sphinx base theme template at build time */
+@import "../basic.css";
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Open+Sans:ital,wght@0,400;0,600;1,400;1,600&display=swap');
+@import "../sg_gallery.css";
+@import "../design-style.4045f2051d55cab465a707391d5b2007.min.css";
+@import "../styles/pydata-sphinx-theme.css";
+
+
+@font-face {
+    font-family: "Source Sans Pro Light";
+    src: url(../fonts/SourceSansPro-Light.ttf);
+}
+
+@font-face {
+    font-family: "Source Sans Pro";
+    src: url(../fonts/SourceSansPro-Regular.ttf);
+}
+
+:root {
+  /* Ansys specific changes to the theme */
+
+  /*****************************************************************************
+  * Ansys Font family
+  **/
+  /* These are adapted from https://systemfontstack.com/ */
+  --pst-font-family-base-system: -apple-system, BlinkMacSystemFont, Segoe UI, "Helvetica Neue",
+    Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+  --pst-font-family-monospace-system: "SFMono-Regular", Menlo, Consolas, Monaco,
+    Liberation Mono, Lucida Console, monospace;
+
+  --pst-font-family-base: 'Source Sans Pro', sans-serif, var(--pst-font-family-base-system);
+  --pst-font-family-heading: 'Source Sans Pro', sans-serif, var(--pst-font-family-base-system);
+  --pst-font-family-monospace: monospace, Courier, var(--pst-font-family-monospace-system);
+
+  /*****************************************************************************
+  * Ansys compatible colors
+  * 
+  * Colors are defined in rgb string way, "red, green, blue"
+  **/
+  --ansysGold: 255, 183, 27; /* #FFB71B */
+  --ansysBronze: 200, 146, 17; /* #C89211 */
+  --pythonBlue: 57, 114, 161; /* #3972a1 */
+
+  --pst-color-active-navigation: 200, 146, 17;  /* --ansysBronze */
+  --pst-color-navbar-link: 255, 255, 255;
+  --pst-color-navbar-link-hover: 200, 146, 17;  /* --ansysBronze */
+  --pst-color-navbar-link-active: 255, 183, 27;  /* --ansysBronze */
+  --pst-font-size-h1: 48px;
+  --pst-font-size-h2: 36px;
+  --pst-font-size-h3: 28px;
+  --pst-font-size-h4: 20px;
+  --pst-font-size-h5: 14px;
+  --pst-font-size-h6: 11px;
+}
+
+html[data-theme="light"] {
+  /*****************************************************************************
+  * main colors
+  */
+  --pst-color-primary: #fff;
+  --pst-color-secondary: rgb(200, 146, 17);
+  --pst-color-success: rgb(40, 167, 69);
+  --pst-color-text-base: rgb(0, 0, 0);
+  --pst-color-text-muted: rgb(26, 24, 24);
+  --pst-color-border: #c9c9c9;
+  --pst-color-shadow: rgb(216, 216, 216);
+  --pst-color-info: var(--pst-color-link);
+
+  /*****************************************************************************
+  * depth colors
+  *
+  * background: the more in depth color
+  * on-background: the object directly set on the background, use of shadows in light theme
+  * surface: object set on the background (without shadows)
+  * on_surface: object set on surface object (without shadows)
+  */
+  --pst-color-on-background: rgb(0, 0, 0);
+  --pst-color-on-surface: #f2f2f2;
+
+  /*****************************************************************************
+  * extensions
+  */
+
+  --pst-color-panel-background: var(--pst-color-on-background);
+
+  /*****************************************************************************
+  * layout
+  */
+
+  --pst-color-link:#1E6DDC;
+  --pst-color-link-hover:#32cfea;
+  --pst-color-inline-code: #000;
+  --pst-color-target: rgb(255, 255, 255);
+  /* color for sphinx-gallery-code output*/
+  --pst-color-codeout: #fafae2;
+  --pst-color-sig:#0965C8;
+}
+
+html[data-theme="dark"] {
+  /*****************************************************************************
+  * main colors
+  */
+  --pst-color-primary: #D09735;
+  --pst-color-secondary: #C58E30;
+  --pst-color-success: rgb(72, 135, 87);
+  --pst-color-text-base: rgb(201, 209, 217);
+  --pst-color-text-muted: rgb(192, 192, 192);
+  --pst-color-border: rgb(192, 192, 192);
+  --pst-color-shadow: rgb(104, 102, 102);
+  --pst-color-background: rgb(18, 18, 18);
+  --pst-color-on-background: rgb(0, 0, 0);
+  --pst-color-surface: rgb(41, 41, 41);
+  --pst-color-on-surface: rgb(55, 55, 55);
+  --pst-color-info: var(--pst-color-secondary);
+
+
+  /*****************************************************************************
+  * extensions
+  */
+
+  --pst-color-panel-background: var(--pst-color-on-background);
+
+  /*****************************************************************************
+  * layout
+  */
+
+  --pst-color-link: #579CE5;
+  --pst-color-link-hover:#12B2E2;
+  --pst-color-inline-code: #fff;
+  --pst-color-target: rgb(71, 39, 0);
+  /* color for sphinx-gallery-code output*/
+  --pst-color-codeout: #929FAA;
+  --pst-color-sig:#d6ab1e;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
+body::-webkit-scrollbar {
+  width: 1rem;
+  height: 1rem;
+}
+
+body:not(:hover)::-webkit-scrollbar-thumb {
+  visibility: visible;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: var(--pst-color-border);
+  border-radius: inherit;
+}
+
+body::-webkit-scrollbar-track {
+  background: var(--pst-color-background);
+}
+
+.bd-sidebar::-webkit-scrollbar {
+  width: 1rem;
+  height: 1rem;
+}
+
+.bd-sidebar:not(:hover)::-webkit-scrollbar-thumb {
+  visibility: visible;
+}
+
+.bd-sidebar::-webkit-scrollbar-thumb {
+  background: var(--pst-color-border);
+  border-radius: inherit;
+}
+
+.bd-sidebar::-webkit-scrollbar-track {
+  background: var(--pst-color-background);
+}
+
+.bd-toc:not(:hover)::-webkit-scrollbar-thumb{visibility:visible}
+
+.bd-toc::-webkit-scrollbar {
+  width: .5rem;
+  height: .5rem;
+}
+
+.bd-toc::-webkit-scrollbar-thumb {
+  background: var(--pst-color-border);
+  border-radius: inherit;
+}
+
+.bd-toc::-webkit-scrollbar-track {
+  background: var(--pst-color-background);
+}
+
+h1, h2 {
+  color: var(--pst-color-text-base);
+}
+
+.admonition, div.admonition{
+  background-color: var( --pst-color-on-surface);
+}
+
+.bd-header.navbar-light#navbar-main .navbar-nav li a.nav-link {
+  color: #ddd;
+}
+
+dt:target, span.highlighted {
+  background-color: var(--pst-color-border)!important; 
+}
+
+.docutils {
+    color: var(--pst-color-inline-code);
+    font-family:var(--pst-font-family-monospace);
+    font-weight: 500;
+    font-size: 87.5%;
+}
+
+code.literal {
+  padding: .1rem .25rem;
+  padding-top: 0.1rem;
+  padding-right: 0.25rem;
+  padding-bottom: 0.1rem;
+  padding-left: 0.25rem;
+  background-color: var(--pst-color-on-surface);
+  border: 1px solid var(--pst-color-border);
+  border-radius: .25rem;
+}
+
+.xref.std.std-ref {
+    color: var(--pst-color-inline-code);
+    font-family: 'Inconsolata';
+    font-weight: normal;
+    font-style: italic;
+    padding: .1rem .25rem;
+    padding-top: 0.1rem;
+    padding-right: 0.25rem;
+    padding-bottom: 0.1rem;
+    padding-left: 0.25rem;
+    font-size: 90%;
+    background-color: var(--pst-color-on-surface);
+    border: 1px solid var(--pst-color-border);
+    border-radius: .25rem;
+}
+
+.sig {
+  font-family: 'Consolas', 'Menlo', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', monospace;
+}
+
+.sig-name.descname {
+  color: var(--pst-color-inline-code);
+}
+
+.sig-name {
+  color: var(--pst-color-sig);
+}
+
+/* make the github logo white */
+i.fa-github-square:before {
+    color: #ffffff !important;
+}
+
+/* Increase empty-space around classes, methods, properties, etc. that are descendants
+ of other items */
+dl.class dl.py {
+    margin-top: 2.5em;
+    margin-bottom: 2.5em;
+}
+
+/* Reduce empty-space around Notes and Examples headings */
+p.rubric {
+    margin-top: 0.75em;
+    margin-bottom: 0.75em;
+}
+
+
+/*
+#################
+   Sphinx-design 
+#################
+*/
+
+.sd-tab-set>input:not(.focus-visible)+label {
+    outline: none;
+    font-size: large;
+    -webkit-tap-highlight-color: transparent;
+    color: var(--pst-color-text-base);
+}
+
+
+.sd-tab-set>input:checked+label+.sd-tab-content {
+    display: block;
+    font-size: medium;
+}
+
+.sd-tab-set>input:checked+label+.sd-tab-content {
+    display: block;
+    font-size: .9rem;
+}
+
+.sd-tab-content {
+    font-family: var(--pst-font-family-base);
+}
+
+.bd-content .sd-tab-set>input:checked+label, .bd-content .sd-tab-set>input:not(:checked)+label:hover {
+    color: var(--pst-color-text-base);
+}
+
+
+.sd-sphinx-override, .sd-sphinx-override * {
+    background-color: transparent !important;
+    font-size: medium;
+    flex: auto;
+}
+
+html[data-theme=dark] .sd-shadow-sm {
+  box-shadow: 0 .1rem 1rem rgba(250, 250, 250, .6) !important
+}
+
+html[data-theme=dark] .sd-card-img-top[src*='.png'] {
+  filter: invert(0.82) brightness(0.8) contrast(1.2);
+}
+
+/*
+###############
+   table 
+###############
+*/
+
+table {
+  width:100%;
+  max-width: 100%; 
+  border-spacing: 0;
+  border-collapse: collapse;
+  overflow: hidden;
+  vertical-align: middle;
+
+  /* Disabling scroll bars */
+  overflow-y: scroll;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  }
+
+tr { 
+  background-color: var(--pst-color-background);
+}
+
+th {
+  background-color: rgb(255, 183, 27, 0.55);
+}
+
+tr:nth-child(odd){ 
+  background-color: var(--pst-color-background);
+}
+
+tr:nth-child(even){
+background-color: rgb(255, 183, 27, 0.15); 
+}
+
+/*
+#####################
+   Table-centered 
+#####################
+Same as table but with horizontally centered text.
+
+
+Use as:
+
+.. table:: 
+  :class: table-centered
+
+  +---------------------------+-------------------+
+  |                           | MAPDL Command     |
+  +===========================+===================+
+  | **GUI commands**          | * ``*ASK``        |
+  |                           +-------------------+
+  |   ...
+  |   ...
+
+
+*/
+table.table-centered {
+  width:100%;
+  max-width: 100%; 
+  border-spacing: 0;
+  border-collapse: collapse;
+  overflow: hidden;
+  vertical-align: middle;
+  text-align: center;
+
+  /* Disabling scroll bars */
+  overflow-y: scroll;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  }
+
+.table-centered tr { 
+  background-color: var(--pst-color-background);
+  text-align: center;
+}
+
+.table-centered th {
+  background-color: rgb(255, 183, 27, 0.55);
+  text-align: center;
+}
+
+.table-centered tr:nth-child(odd){ 
+  text-align: center;
+  background-color: var(--pst-color-background);
+}
+
+.table-centered tr:nth-child(even){
+  background-color: rgb(255, 183, 27, 0.15); 
+  text-align: center;
+}
+
+
+/*
+#########################
+   longtable-centered
+#########################
+
+Use as:
+
+
+.. table:: 
+  :class: longtable-centered
+
+  +---------------------------+-------------------+
+  |                           | MAPDL Command     |
+  +===========================+===================+
+  | **GUI commands**          | * ``*ASK``        |
+  |                           +-------------------+
+  |   ...
+  |   ...
+
+*/
+
+table.longtable-centered {
+  text-align: center;
+  }
+
+.longtable-centered tr { 
+  text-align: center;
+}
+
+.longtable-centered th {
+  text-align: center;
+}
+
+.longtable-centered tr:nth-child(odd){ 
+  text-align: center;
+}
+
+.longtable-centered tr:nth-child(even){
+  text-align: center;
+}
+
+table.longtable-centered tr:hover td {
+  background-color: rgb(255, 183, 27, 0.6);
+  text-align: center;
+}
+
+/*
+#########
+DataFrame
+#########
+Not sure why the odd columns (white) are rendered gray.
+
+I do not think we will be able to call this class.
+*/
+
+.dataframe tr{ 
+    background-color: var(--pst-color-background);
+  }
+
+.dataframe tr:nth-child(odd){ 
+    background-color: var(--pst-color-background) !important;
+  }
+
+.dataframe tr:nth-child(even){
+  background-color: rgb(255, 183, 27, 0.15);
+}
+
+.dataframe tr:hover td {
+  background-color: rgb(255, 183, 27, 0.6);
+}
+
+/*
+#########################
+   DataFrame-centered
+#########################
+Not sure why the odd columns (white) are rendered gray.
+
+I do not think we will be able to call this class.
+*/
+
+.dataframe-centered tr{ 
+    background-color: var(--pst-color-background);
+    text-align: center;
+  }
+
+.dataframe-centered tr:nth-child(odd){ 
+    background-color: var(--pst-color-background) !important;  
+    text-align: center;
+  }
+
+.dataframe-centered tr:nth-child(even){
+  background-color: rgb(255, 183, 27, 0.15);
+  text-align: center;
+}
+
+.dataframe-centered tr:hover td {
+  background-color: rgb(255, 183, 27, 0.6);
+  text-align: center;
+}
+
+.dataframe thead th {
+    text-align: center;
+}
+
+/*
+###############
+   Autosummary 
+###############
+*/
+/* .autosummary {
+        text-align: left;
+        } */
+
+.autosummary  tr:nth-child(odd){ 
+    background-color: var(--pst-color-background);
+  }
+
+.autosummary tr:nth-child(even){
+  background-color: var(--pst-color-background);
+}
+
+
+/*
+########################
+   ReST :download: links
+########################
+*/
+a > code.download
+{
+    font-family: var(--pst-font-family-base);
+    color: var(--pst-color-link);
+    text-decoration: none;
+    font-weight: normal;
+}
+
+/*
+########################
+   Sphinx gallery output
+########################
+*/
+.sphx-glr-script-out .highlight pre{
+  background-color:  var(--pst-color-codeout) !important;
+  }
+
+.prev-next-area a p.prev-next-title {
+  color: var(--pst-color-link);
+  font-weight: 600;
+  font-size: 1.1em;
+}
+
+html[data-theme="light"] .highlight .s1, .kc {
+  color: #753E0B !important;
+}
+
+html[data-theme="dark"] .highlight .s1, .s2, .kc {
+  color: #D79A60 !important;
+}
+
+html[data-theme="dark"] .highlight .kn {
+  color: #E18FFF;
+  font-weight: normal;
+}
+
+html[data-theme="light"] .highlight .c1 {
+  color: #095D0A;
+}
+
+html[data-theme="dark"] .highlight .c1 {
+  color: #8FB842;
+}
+
+html[data-theme="light"] .highlight .s2 {
+  color: #753E0B !important;
+}
+
+html[data-theme="dark"] .highlight .n {
+  color: #b3d7ff;
+}
+
+html[data-theme="dark"] .highlight .nn {
+  color: #43D69D;
+  text-decoration: none;
+}
+/*
+###############
+Dropdown button
+###############
+*/
+
+.navbar button.navbar-toggler {
+    margin-right: 1em;
+    border-color: rgb(255, 255, 255);
+    color: rgb(255, 255, 255);
+}
+
+/*
+####################################################
+Side column size (first and second column from left)
+####################################################
+*/
+
+.col-md-3 {
+    flex: 0 0 20%;
+    max-width: 20%;
+}
+
+a.headerlink {
+  color: #222;
+}
+
+/*
+#################################
+Right side toctree color and font
+#################################
+*/
+.toc-entry a {
+  padding: .125rem 1.5rem;
+  color: var(--pst-color-link);
+}
+
+.toc-entry>.nav-link.active {
+    font-weight: bold;
+    color: var(--pst-color-text-base);
+    background-color: transparent;
+    border-left: 2px solid var(--pst-color-text-muted);
+}
+
+
+.toc-h2 {
+  font-size: 0.98rem;
+  padding: 0.05em;
+}
+
+.toc-h3 {
+  font-size: .96rem;
+}
+
+.toc-h4 {
+  font-size: .90rem;
+}
+
+.toc-entry a:hover {
+  color: var(--pst-color-link);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/*
+############################################
+Navigation column (according to side column)
+############################################
+*/
+.col-lg-9 {
+  flex: 0 0 80%;
+  max-width: 80%;
+  padding-right: 5px;
+  padding-left: 20px;
+}
+
+/*
+#################################
+Syntax highlighting in code block
+#################################
+*/
+
+html[data-theme="light"] .highlight .o {
+  color: #B35000;
+  font-weight: bold;
+}
+
+/*
+#############################
+Bold font weight for **code**
+#############################
+*/
+
+b, strong {
+  font-weight: 900;
+}
+
+#theme-switch {
+  border-color: #fff;
+  border: 2px solid #898A8D;
+  margin-right: .4rem;
+  margin-left: .4rem;
+}
+
+#theme-switch:hover {
+  background-color: #fff
+}
+
+.bd-header.navbar-light#navbar-main .navbar-nav li a.nav-link:hover {
+  color: #fff;
+}
+
+.bd-header.navbar-light#navbar-main .navbar-nav>.active>.nav-link {
+  border-bottom: 2px solid #fff;
+}
+
+/*
+#############################
+Padding of main content block 
+#############################
+*/
+
+.bd-content {
+  padding: 1.5rem 1.5rem 2rem 3rem;
+}
+
+
+/*
+###########################
+Left side toc-tree hovering 
+###########################
+*/
+
+nav.bd-links .active:hover>a {
+  font-weight: bold;
+  color: var(--pst-color-text-base);
+  border-left: 2px solid var(--pst-color-text-base);
+}
+
+nav.bd-links .active>a {
+  font-weight: bold;
+  color: var(--pst-color-text-muted);
+  border-left: 2px solid var(--pst-color-text-base);
+}
+
+nav.bd-links li>a:hover {
+  font-weight: 900;
+  color: var(--pst-color-link);
+}
+
+/*
+######################
+Search bar button text 
+######################
+*/
+
+button, input, optgroup, select, textarea {
+  color: var(--pst-color-text-base)!important;
+}
+
+/*
+##############################
+image padding before and after 
+##############################
+*/
+
+img {
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+img.logo__image {
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+}
+
+/*
+##########################
+Nav-bar entity right side. 
+##########################
+*/
+
+nav.bd-links li>a {
+  color: var(--pst-color-link);
+  font-size: .98rem;
+}
+
+html[data-theme="light"] .highlight pre {
+  line-height: 125%;
+  font-size: 0.9em;
+}
+
+html[data-theme="dark"] .highlight pre {
+  line-height: 125%;
+  font-size: 0.9em;
+}
+
+.bd-toc {
+  padding-top: 5em;
+}
+
+#version_switcher_button {
+  background-color: var(--pst-color-background);
+}
+
+.editthispage a {
+  color: var(--pst-color-text-base);
+}
+
+#version_switcher_menu a.list-group-item.active {
+  background-color: #D09735!important;
+  border-color: var(--pst-color-text-base)!important;
+  color: var(--pst-color-text-base)!important;
+}
+
+.list-group-item.active {
+  z-index: 2;
+  color: var(--pst-color-text-base)!important;
+}
+
+table.dataframe {
+  table-layout: auto !important;
+}
+
+.sd-card {
+  border-radius: 0;
+  padding: 10px 10px 10px 10px;
+  font-family: var(--pst-font-family-base)!important;
+}
+
+details.sd-dropdown .sd-summary-title {
+  border: 1px solid var(--pst-color-text-base) !important;
+  color: var(--sd-color-card-text) !important;
+  font-family: var(monospace)!important;
+  font-size: medium;
+  text-align: left;
+  padding-left: 1rem;
+}
+
+.sd-card  .sd-card-text {
+  font-family: var(--pst-font-family-base)!important;
+}
+
+.sd-card .sd-card-header {
+border: none;
+background-color:white;
+color: #150458 !important;
+font-size: var(--pst-font-size-h5);
+font-weight: bold;
+font-family: var(--pst-font-family-base);
+padding: .5rem 0rem 0.5rem 0rem;
+}
+
+.sd-card .sd-card-footer .sd-card-text {
+max-width: 220px;
+margin-left: auto;
+margin-right: auto;
+font-family: var(--pst-font-family-base);
+}

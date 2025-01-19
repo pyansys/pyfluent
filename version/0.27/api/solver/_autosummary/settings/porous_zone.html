@@ -1,0 +1,645 @@
+
+<!DOCTYPE html>
+
+<html data-content_root="../../../../" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>porous_zone — PyFluent</title>
+<script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+<!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+<noscript>
+<style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+</noscript>
+<!-- Loaded before other Sphinx assets -->
+<link href="../../../../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet"/>
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet"/>
+<link href="../../../../_static/pygments.css?v=fa44fd50" rel="stylesheet" type="text/css"/>
+<link href="../../../../_static/jupyter-sphinx.css" rel="stylesheet" type="text/css"/>
+<link href="../../../../_static/thebelab.css" rel="stylesheet" type="text/css"/>
+<link href="../../../../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
+<link href="../../../../_static/sg_gallery.css?v=d2d258e8" rel="stylesheet" type="text/css"/>
+<link href="../../../../_static/sg_gallery-binder.css?v=f4aeca0c" rel="stylesheet" type="text/css"/>
+<link href="../../../../_static/sg_gallery-dataframe.css?v=2082cf3c" rel="stylesheet" type="text/css"/>
+<link href="../../../../_static/sg_gallery-rendered-html.css?v=1277b6f3" rel="stylesheet" type="text/css"/>
+<link href="../../../../_static/css/ansys_sphinx_theme.css?v=77703c5e" rel="stylesheet" type="text/css"/>
+<link href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
+<link href="https://www.nerdfonts.com/assets/css/webfont.css" rel="stylesheet" type="text/css"/>
+<!-- So that users can add custom icons -->
+<script src="../../../../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+<!-- Pre-loaded scripts that we'll load fully later -->
+<link as="script" href="../../../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" rel="preload"/>
+<link as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" rel="preload"/>
+<link href="../../../../_static/css/breadcrumbs.css" rel="stylesheet"/>
+<script src="../../../../_static/documentation_options.js?v=09352719"></script>
+<script src="../../../../_static/doctools.js?v=9a2dae69"></script>
+<script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+<script src="../../../../_static/thebelab-helper.js"></script>
+<script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+<script src="../../../../_static/copybutton.js?v=49e1bf35"></script>
+<script src="../../../../_static/toggleprompt.js?v=cec9bd37"></script>
+<script src="../../../../_static/js/table.js?v=b64f5182"></script>
+<script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+<script>DOCUMENTATION_OPTIONS.pagename = 'api/solver/_autosummary/settings/porous_zone';</script>
+<script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.0';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://fluent.docs.pyansys.com/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.27';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner = false;
+        </script>
+<link href="../../../../_static/ansys-favicon.png" rel="icon"/>
+<link href="../../../../genindex.html" rel="index" title="Index"/>
+<link href="../../../../search.html" rel="search" title="Search"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="en" name="docsearch:language"/>
+<meta content="0.27.0" name="docsearch:version"/>
+  <link rel="canonical" href="https://fluent.docs.pyansys.com/version/stable/api/solver/_autosummary/settings/porous_zone.html" />
+</head>
+<body data-bs-root-margin="0px 0px -60%" data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-default-mode="" data-offset="180">
+<div class="skip-link d-print-none" id="pst-skip-link"><a href="#main-content">Skip to main content</a></div>
+<div id="pst-scroll-pixel-helper"></div>
+<button class="btn rounded-pill" id="pst-back-to-top" type="button">
+<i class="fa-solid fa-arrow-up"></i>Back to top</button>
+<dialog id="pst-search-dialog">
+<form action="../../../../search.html" class="bd-search d-flex align-items-center" method="get">
+<i class="fa-solid fa-magnifying-glass"></i>
+<input aria-label="Search the docs ..." autocapitalize="off" autocomplete="off" autocorrect="off" class="form-control" name="q" placeholder="Search the docs ..." spellcheck="false" type="search"/>
+<span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+</dialog>
+<div class="pst-async-banner-revealer d-none">
+<aside aria-label="Version warning" class="d-none d-print-none" id="bd-header-version-warning"></aside>
+</div>
+<header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+<button aria-label="Site navigation" class="pst-navbar-icon sidebar-toggle primary-toggle">
+<span class="fa-solid fa-bars"></span>
+</button>
+<div class="col-lg-3 navbar-header-items__start">
+<div class="navbar-item">
+<a class="navbar-brand logo" href="../../../../index.html">
+<img alt="PyFluent - Home" class="logo__image only-light" src="../../../../_static/pyansys_logo_transparent_black.png"/>
+<img alt="PyFluent - Home" class="logo__image only-dark pst-js-only" src="../../../../_static/pyansys_logo_transparent_white.png"/>
+</a></div>
+</div>
+<div class="col-lg-9 navbar-header-items">
+<div class="me-auto navbar-header-items__center">
+<div class="navbar-item">
+<nav>
+<ul class="bd-navbar-elements navbar-nav">
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../../../getting_started/index.html">
+    Getting started
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../../../user_guide/index.html">
+    User guide
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../../index.html">
+    API reference
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../../../examples/index.html">
+    Examples
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../../../contributing/index.html">
+    Contributing to PyFluent
+  </a>
+</li>
+</ul>
+</nav></div>
+</div>
+<div class="navbar-header-items__end">
+<div class="navbar-item navbar-persistent--container">
+<div class="search-bar pst-js-only" id="search-bar">
+<form action="../../../../search.html" class="bd-search d-flex align-items-center" method="get">
+<i class="fa-solid fa-magnifying-glass"></i>
+<input aria-label="Search the docs ..." autocapitalize="off" autocomplete="off" autocorrect="off" class="form-control" name="q" placeholder="Search the docs ..." spellcheck="false" type="search"/>
+<span class="search-button__kbd-shortcut">
+<kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd>
+</span>
+</form>
+<div class="search-results" id="search-results" style="display: none;" tabindex="0"></div>
+</div>
+</div>
+<div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+<button aria-controls="pst-version-switcher-list-2" aria-haspopup="listbox" aria-label="Version switcher list" class="version-switcher__button btn btn-sm dropdown-toggle" data-bs-toggle="dropdown" id="pst-version-switcher-button-2" type="button">
+    Choose version  <!-- this text may get changed later by javascript -->
+<span class="caret"></span>
+</button>
+<div aria-labelledby="pst-version-switcher-button-2" class="version-switcher__menu dropdown-menu list-group-flush py-0" id="pst-version-switcher-list-2" role="listbox">
+<!-- dropdown will be populated by javascript on page load -->
+</div>
+</div></div>
+<div class="navbar-item">
+<button aria-label="Color mode" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" data-bs-placement="bottom" data-bs-title="Color mode" data-bs-toggle="tooltip">
+<i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light" title="Light"></i>
+<i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark" title="Dark"></i>
+<i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto" title="System Settings"></i>
+</button></div>
+<div class="navbar-item"><ul aria-label="Icon Links" class="navbar-icon-links">
+<li class="nav-item">
+<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://github.com/ansys/pyfluent" rel="noopener" target="_blank" title="GitHub"><i aria-hidden="true" class="fa-brands fa-square-github fa-lg"></i>
+<span class="sr-only">GitHub</span></a>
+</li>
+<li class="nav-item">
+<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://github.com/ansys/pyfluent/discussions" rel="noopener" target="_blank" title="Support"><i aria-hidden="true" class="fa fa-comment fa-fw fa-lg"></i>
+<span class="sr-only">Support</span></a>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="navbar-persistent--mobile">
+<div class="search-bar pst-js-only" id="search-bar">
+<form action="../../../../search.html" class="bd-search d-flex align-items-center" method="get">
+<i class="fa-solid fa-magnifying-glass"></i>
+<input aria-label="Search the docs ..." autocapitalize="off" autocomplete="off" autocorrect="off" class="form-control" name="q" placeholder="Search the docs ..." spellcheck="false" type="search"/>
+<span class="search-button__kbd-shortcut">
+<kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd>
+</span>
+</form>
+<div class="search-results" id="search-results" style="display: none;" tabindex="0"></div>
+</div>
+</div>
+<button aria-label="On this page" class="pst-navbar-icon sidebar-toggle secondary-toggle">
+<span class="fa-solid fa-outdent"></span>
+</button>
+</div>
+</header>
+<div id="announcement_msg"></div>
+<script>
+  fetch("announcement.html")
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error: ${response.status}`);
+      }
+      return response.text();
+    })
+    .then(
+      (text) => (document.getElementById("announcement_msg").innerHTML = text),
+    )
+    .catch((error) => console.error(`Fetch problem: ${error.message}`));
+</script>
+<div class="bd-container">
+<div class="bd-container__inner bd-page-width">
+<dialog id="pst-primary-sidebar-modal"></dialog>
+<div class="bd-sidebar-primary bd-sidebar hide-on-wide" id="pst-primary-sidebar">
+<div class="sidebar-header-items sidebar-primary__section">
+<div class="sidebar-header-items__center">
+<div class="navbar-item">
+<nav>
+<ul class="bd-navbar-elements navbar-nav">
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../../../getting_started/index.html">
+    Getting started
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../../../user_guide/index.html">
+    User guide
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../../index.html">
+    API reference
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../../../examples/index.html">
+    Examples
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../../../contributing/index.html">
+    Contributing to PyFluent
+  </a>
+</li>
+</ul>
+</nav></div>
+</div>
+<div class="sidebar-header-items__end">
+<div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+<button aria-controls="pst-version-switcher-list-3" aria-haspopup="listbox" aria-label="Version switcher list" class="version-switcher__button btn btn-sm dropdown-toggle" data-bs-toggle="dropdown" id="pst-version-switcher-button-3" type="button">
+    Choose version  <!-- this text may get changed later by javascript -->
+<span class="caret"></span>
+</button>
+<div aria-labelledby="pst-version-switcher-button-3" class="version-switcher__menu dropdown-menu list-group-flush py-0" id="pst-version-switcher-list-3" role="listbox">
+<!-- dropdown will be populated by javascript on page load -->
+</div>
+</div></div>
+<div class="navbar-item">
+<button aria-label="Color mode" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" data-bs-placement="bottom" data-bs-title="Color mode" data-bs-toggle="tooltip">
+<i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light" title="Light"></i>
+<i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark" title="Dark"></i>
+<i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto" title="System Settings"></i>
+</button></div>
+<div class="navbar-item"><ul aria-label="Icon Links" class="navbar-icon-links">
+<li class="nav-item">
+<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://github.com/ansys/pyfluent" rel="noopener" target="_blank" title="GitHub"><i aria-hidden="true" class="fa-brands fa-square-github fa-lg"></i>
+<span class="sr-only">GitHub</span></a>
+</li>
+<li class="nav-item">
+<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://github.com/ansys/pyfluent/discussions" rel="noopener" target="_blank" title="Support"><i aria-hidden="true" class="fa fa-comment fa-fw fa-lg"></i>
+<span class="sr-only">Support</span></a>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sidebar-primary-items__end sidebar-primary__section">
+</div>
+<div id="rtd-footer-container"></div>
+</div>
+<main class="bd-main" id="main-content" role="main">
+<div class="bd-content">
+<div class="bd-article-container">
+<div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+<div class="header-article-items__start">
+<div class="header-article-item">
+<nav aria-label="Breadcrumb">
+<ul class="bd-breadcrumbs">
+<li class="breadcrumb-item breadcrumb-home">
+<a class="nav-link" href="https://docs.pyansys.com/">PyAnsys</a>
+</li>
+<li class="breadcrumb-item">
+<a aria-label="Home" class="nav-link" href="../../../../index.html">
+<i class="fa-solid fa-home"></i>
+</a>
+</li>
+<li aria-current="page" class="breadcrumb-item active"><span class="ellipsis">porous_zone</span></li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</div>
+<div id="searchbox"></div>
+<article class="bd-article">
+<section id="porous-zone">
+<span id="id1"></span><h1>porous_zone<a class="headerlink" href="#porous-zone" title="Link to this heading">#</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.generated.solver.settings_251.porous_zone">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.generated.solver.settings_251.</span></span><span class="sig-name descname"><span class="pre">porous_zone</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.generated.solver.settings_251.porous_zone" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../../flobject.html#ansys.fluent.core.solver.flobject.Group" title="ansys.fluent.core.solver.flobject.Group"><code class="xref py py-class docutils literal notranslate"><span class="pre">Group</span></code></a></p>
+<p>Allows to change porous-zone model variables or settings.</p>
+</dd></dl>
+<p class="rubric">Attributes</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Attribute</p></th>
+<th class="head"><p>Summary</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="porous.html#porous"><span class="std std-ref">porous</span></a></p></td>
+<td><p>Porous zone?.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="dir_spec_cond.html#dir-spec-cond"><span class="std std-ref">dir_spec_cond</span></a></p></td>
+<td><p>Direction Specification.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="cursys_name.html#cursys-name"><span class="std std-ref">cursys_name</span></a></p></td>
+<td><p>Coordinate System.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="direction_1_vector.html#direction-1-vector"><span class="std std-ref">direction_1_vector</span></a></p></td>
+<td><p>Set direction 1 vector components.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="direction_2_vector.html#direction-2-vector"><span class="std std-ref">direction_2_vector</span></a></p></td>
+<td><p>Set direction 2 vector components.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="cone_axis_vector.html#cone-axis-vector"><span class="std std-ref">cone_axis_vector</span></a></p></td>
+<td><p>Set cone axis vector components.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="point_on_cone_axis.html#point-on-cone-axis"><span class="std std-ref">point_on_cone_axis</span></a></p></td>
+<td><p>Set point on cone axis components.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="cone_angle.html#cone-angle"><span class="std std-ref">cone_angle</span></a></p></td>
+<td><p>Half Angle of Cone Relative to its Axis.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="rel_vel_resistance.html#rel-vel-resistance"><span class="std std-ref">rel_vel_resistance</span></a></p></td>
+<td><p>Relative Velocity Resistance Formulation?.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="viscous_resistance.html#viscous-resistance"><span class="std std-ref">viscous_resistance</span></a></p></td>
+<td><p>Set viscous resistance components.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="alt_inertial_form.html#alt-inertial-form"><span class="std std-ref">alt_inertial_form</span></a></p></td>
+<td><p>Choose alternative formulation for inertial resistance?.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="inertial_resistance.html#inertial-resistance"><span class="std std-ref">inertial_resistance</span></a></p></td>
+<td><p>Set inertial resistance components.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="power_law_c0.html#power-law-c0"><span class="std std-ref">power_law_c0</span></a></p></td>
+<td><p>Help not available.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="power_law_c1.html#power-law-c1"><span class="std std-ref">power_law_c1</span></a></p></td>
+<td><p>Help not available.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="porosity.html#porosity"><span class="std std-ref">porosity</span></a></p></td>
+<td><p>Porosity.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="relative_viscosity.html#relative-viscosity"><span class="std std-ref">relative_viscosity</span></a></p></td>
+<td><p>Relative Viscosity.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="relative_permeability_1.html#relative-permeability-1"><span class="std std-ref">relative_permeability</span></a></p></td>
+<td><p>Enable/disable Relative Permeability.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="corey.html#corey"><span class="std std-ref">corey</span></a></p></td>
+<td><p>Two-Phase Corey’s Model?.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="stone_1.html#stone-1"><span class="std std-ref">stone_1</span></a></p></td>
+<td><p>Three-Phase Stone-1?.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="stone_2.html#stone-2"><span class="std std-ref">stone_2</span></a></p></td>
+<td><p>Three-Phase Stone-2?.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="rel_perm_limit_p1.html#rel-perm-limit-p1"><span class="std std-ref">rel_perm_limit_p1</span></a></p></td>
+<td><p>Minimum Relative Permeability.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="rel_perm_limit_p2.html#rel-perm-limit-p2"><span class="std std-ref">rel_perm_limit_p2</span></a></p></td>
+<td><p>Minimum Relative Permeability.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="ref_perm_p1.html#ref-perm-p1"><span class="std std-ref">ref_perm_p1</span></a></p></td>
+<td><p>Reference Relative Permeability.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="exp_p1.html#exp-p1"><span class="std std-ref">exp_p1</span></a></p></td>
+<td><p>Corey Exponent.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="res_sat_p1.html#res-sat-p1"><span class="std std-ref">res_sat_p1</span></a></p></td>
+<td><p>Residual Saturation.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="ref_perm_p2.html#ref-perm-p2"><span class="std std-ref">ref_perm_p2</span></a></p></td>
+<td><p>Reference Relative Permeability.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="exp_p2.html#exp-p2"><span class="std std-ref">exp_p2</span></a></p></td>
+<td><p>Corey Exponent.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="res_sat_p2.html#res-sat-p2"><span class="std std-ref">res_sat_p2</span></a></p></td>
+<td><p>Residual Saturation.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="ref_perm_p3.html#ref-perm-p3"><span class="std std-ref">ref_perm_p3</span></a></p></td>
+<td><p>Reference Relative Permeability.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="exp_p3.html#exp-p3"><span class="std std-ref">exp_p3</span></a></p></td>
+<td><p>Corey Exponent.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="res_sat_p3.html#res-sat-p3"><span class="std std-ref">res_sat_p3</span></a></p></td>
+<td><p>Residual Saturation.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="capillary_pressure_1.html#capillary-pressure-1"><span class="std std-ref">capillary_pressure</span></a></p></td>
+<td><p>Capillary Pressure.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="max_capillary_pressure.html#max-capillary-pressure"><span class="std std-ref">max_capillary_pressure</span></a></p></td>
+<td><p>Maximum Capillary Pressure.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="van_genuchten_pg.html#van-genuchten-pg"><span class="std std-ref">van_genuchten_pg</span></a></p></td>
+<td><p>Entry pressure.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="van_genuchten_ng.html#van-genuchten-ng"><span class="std std-ref">van_genuchten_ng</span></a></p></td>
+<td><p>Pore size exponent.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="skjaeveland_nw_pc_coef.html#skjaeveland-nw-pc-coef"><span class="std std-ref">skjaeveland_nw_pc_coef</span></a></p></td>
+<td><p>Entry pressure.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="skjaeveland_nw_pc_pwr.html#skjaeveland-nw-pc-pwr"><span class="std std-ref">skjaeveland_nw_pc_pwr</span></a></p></td>
+<td><p>Pore size exponent.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="skjaeveland_wet_pc_coef.html#skjaeveland-wet-pc-coef"><span class="std std-ref">skjaeveland_wet_pc_coef</span></a></p></td>
+<td><p>Entry pressure.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="skjaeveland_wet_pc_pwr.html#skjaeveland-wet-pc-pwr"><span class="std std-ref">skjaeveland_wet_pc_pwr</span></a></p></td>
+<td><p>Pore size exponent.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="brooks_corey_pe.html#brooks-corey-pe"><span class="std std-ref">brooks_corey_pe</span></a></p></td>
+<td><p>Entry Pressure.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="brooks_corey_ng.html#brooks-corey-ng"><span class="std std-ref">brooks_corey_ng</span></a></p></td>
+<td><p>Pore size exponent.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="leverett_con_ang.html#leverett-con-ang"><span class="std std-ref">leverett_con_ang</span></a></p></td>
+<td><p>Contact Angle.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="rp_cbox_p1.html#rp-cbox-p1"><span class="std std-ref">rp_cbox_p1</span></a></p></td>
+<td><p>Help not available.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="rp_edit_p1.html#rp-edit-p1"><span class="std std-ref">rp_edit_p1</span></a></p></td>
+<td><p>Help not available.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="rel_perm_tabular_p1.html#rel-perm-tabular-p1"><span class="std std-ref">rel_perm_tabular_p1</span></a></p></td>
+<td><p>Help not available.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="rel_perm_table_p1.html#rel-perm-table-p1"><span class="std std-ref">rel_perm_table_p1</span></a></p></td>
+<td><p>Help not available.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="rel_perm_satw_p1.html#rel-perm-satw-p1"><span class="std std-ref">rel_perm_satw_p1</span></a></p></td>
+<td><p>Help not available.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="rel_perm_rp_p1.html#rel-perm-rp-p1"><span class="std std-ref">rel_perm_rp_p1</span></a></p></td>
+<td><p>Help not available.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="rp_cbox_p2.html#rp-cbox-p2"><span class="std std-ref">rp_cbox_p2</span></a></p></td>
+<td><p>Help not available.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="rp_edit_p2.html#rp-edit-p2"><span class="std std-ref">rp_edit_p2</span></a></p></td>
+<td><p>Help not available.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="rel_perm_tabular_p2.html#rel-perm-tabular-p2"><span class="std std-ref">rel_perm_tabular_p2</span></a></p></td>
+<td><p>Help not available.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="rel_perm_table_p2.html#rel-perm-table-p2"><span class="std std-ref">rel_perm_table_p2</span></a></p></td>
+<td><p>Help not available.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="rel_perm_satw_p2.html#rel-perm-satw-p2"><span class="std std-ref">rel_perm_satw_p2</span></a></p></td>
+<td><p>Help not available.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="rel_perm_rp_p2.html#rel-perm-rp-p2"><span class="std std-ref">rel_perm_rp_p2</span></a></p></td>
+<td><p>Help not available.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="wetting_phase.html#wetting-phase"><span class="std std-ref">wetting_phase</span></a></p></td>
+<td><p>Wetting Phase.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="non_wetting_phase.html#non-wetting-phase"><span class="std std-ref">non_wetting_phase</span></a></p></td>
+<td><p>Non Wetting Phase.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="equib_thermal.html#equib-thermal"><span class="std std-ref">equib_thermal</span></a></p></td>
+<td><p>Equilibrium Thermal Model (if no, Non-Equilibrium)?.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="non_equib_thermal.html#non-equib-thermal"><span class="std std-ref">non_equib_thermal</span></a></p></td>
+<td><p>Non-Equilibrium Thermal Model?.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="solid_material.html#solid-material"><span class="std std-ref">solid_material</span></a></p></td>
+<td><p>Solid Material Name.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="area_density.html#area-density"><span class="std std-ref">area_density</span></a></p></td>
+<td><p>Interfacial Area Density.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="heat_transfer_coeff.html#heat-transfer-coeff"><span class="std std-ref">heat_transfer_coeff</span></a></p></td>
+<td><p>Heat Transfer Coefficient.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="porous_structure.html#porous-structure"><span class="std std-ref">porous_structure</span></a></p></td>
+<td><p>Porous Structure?.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="structure_material.html#structure-material"><span class="std std-ref">structure_material</span></a></p></td>
+<td><p>Structure Material Name.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="anisotropic_spe_diff.html#anisotropic-spe-diff"><span class="std std-ref">anisotropic_spe_diff</span></a></p></td>
+<td><p>Anisotropic Species Diffusion?.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="spe_diff_xx.html#spe-diff-xx"><span class="std std-ref">spe_diff_xx</span></a></p></td>
+<td><p>XX diffusion matrix coefficient.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="spe_diff_xy.html#spe-diff-xy"><span class="std std-ref">spe_diff_xy</span></a></p></td>
+<td><p>XY diffusion matrix coefficient.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="spe_diff_xz.html#spe-diff-xz"><span class="std std-ref">spe_diff_xz</span></a></p></td>
+<td><p>XZ diffusion matrix coefficient.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="spe_diff_yx.html#spe-diff-yx"><span class="std std-ref">spe_diff_yx</span></a></p></td>
+<td><p>YX diffusion matrix coefficient.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="spe_diff_yy.html#spe-diff-yy"><span class="std std-ref">spe_diff_yy</span></a></p></td>
+<td><p>YY diffusion matrix coefficient.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="spe_diff_yz.html#spe-diff-yz"><span class="std std-ref">spe_diff_yz</span></a></p></td>
+<td><p>YZ diffusion matrix coefficient.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="spe_diff_zx.html#spe-diff-zx"><span class="std std-ref">spe_diff_zx</span></a></p></td>
+<td><p>ZX diffusion matrix coefficient.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="spe_diff_zy.html#spe-diff-zy"><span class="std std-ref">spe_diff_zy</span></a></p></td>
+<td><p>ZY diffusion matrix coefficient.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="spe_diff_zz.html#spe-diff-zz"><span class="std std-ref">spe_diff_zz</span></a></p></td>
+<td><p>ZZ diffusion matrix coefficient.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="wall_treatment_1.html#wall-treatment-1"><span class="std std-ref">wall_treatment</span></a></p></td>
+<td><p>Enable wall treatment at porous fluid interfaces?.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="rad_porous_wall.html#rad-porous-wall"><span class="std std-ref">rad_porous_wall</span></a></p></td>
+<td><p>Enable (opaque) radiation wall model for porous-fluid interface?.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="rad_porous_wall_in_emiss.html#rad-porous-wall-in-emiss"><span class="std std-ref">rad_porous_wall_in_emiss</span></a></p></td>
+<td><p>Internal Emissivity.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="rad_porous_wall_diffuse_fraction.html#rad-porous-wall-diffuse-fraction"><span class="std std-ref">rad_porous_wall_diffuse_fraction</span></a></p></td>
+<td><p>Diffuse Fraction.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="rubric">Included in:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parent</p></th>
+<th class="head"><p>Summary</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="fluid_1_child.html#fluid-1-child"><span class="std std-ref">fluid_1_child</span></a></p></td>
+<td><p>‘child_object_type’ of fluid.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="phase_child.html#phase-child"><span class="std std-ref">phase_child</span></a></p></td>
+<td><p>‘child_object_type’ of phase.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="settings_4.html#settings-4"><span class="std std-ref">settings_4</span></a></p></td>
+<td><p>Select domain name to define settings on.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="phase_27_child.html#phase-27-child"><span class="std std-ref">phase_27_child</span></a></p></td>
+<td><p>‘child_object_type’ of phase.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</article>
+</div>
+<dialog id="pst-secondary-sidebar-modal"></dialog>
+<div class="bd-sidebar-secondary bd-toc" id="pst-secondary-sidebar"><div class="sidebar-secondary-items sidebar-secondary__inner">
+<div class="sidebar-secondary-item">
+<div class="page-toc tocsection onthispage" id="pst-page-navigation-heading-2">
+<i class="fa-solid fa-list"></i> On this page
+  </div>
+<nav aria-labelledby="pst-page-navigation-heading-2" class="bd-toc-nav page-toc">
+<ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.generated.solver.settings_251.porous_zone"><code class="docutils literal notranslate"><span class="pre">porous_zone</span></code></a></li>
+</ul>
+</nav></div>
+<div class="sidebar-secondary-item">
+<!-- If there is no fix edit button function, use the PyData edit-this-button-->
+</div>
+<div class="sidebar-secondary-item">
+<div class="tocsection sourcelink">
+<a href="../../../../_sources/api/solver/_autosummary/settings/porous_zone.rst.txt">
+<i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+</div>
+</div>
+</div></div>
+</div>
+<footer class="bd-footer-content">
+</footer>
+</main>
+</div>
+</div>
+<!-- Scripts loaded after <body> so the DOM is not blocked -->
+<script defer="" src="../../../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer="" src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+<link href="../../../../_static/css/fuse-search.css" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.7/require.min.js"></script>
+<script>
+// Passing the search options to the search.js file
+const SEARCH_OPTIONS = JSON.parse('{"keys": ["title", "text"], "limit": 10, "threshold": 0.2}');
+const SEARCH_FILE = "../../../../_static/search.json";
+</script>
+<script src="../../../../_static/js/search.js"></script>
+<footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+<div class="footer-items__start">
+<div class="footer-item">
+<p class="copyright">
+    
+      © Copyright (c) 2024 ANSYS, Inc. All rights reserved.
+      <br/>
+</p>
+</div>
+<div class="footer-item">
+<p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.7.
+    <br/>
+</p>
+</div>
+</div>
+<div class="footer-items__end">
+<div class="footer-item"><p class="theme-version">
+  Built with the
+  <a href="https://sphinxdocs.ansys.com/version/stable/index.html">Ansys Sphinx Theme</a>
+  1.2.0. <br/>Last updated on
+  <span id="date"></span>
+</p>
+<script>
+  var options = { day: "numeric", month: "long", year: "numeric" };
+  var lastModifiedDate = new Date(document.lastModified);
+  var date = lastModifiedDate.toLocaleDateString("en-US", options);
+  document.getElementById("date").innerHTML = date;
+</script></div>
+</div>
+</div>
+</footer>
+</body>
+</html>

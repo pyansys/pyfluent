@@ -1,0 +1,1236 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Modeling Radiation in a Headlamp Using the Monte Carlo Method &#8212; PyFluent</title>
+
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=d2d258e8" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/ansys_sphinx_theme.css?v=a362721a" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://www.nerdfonts.com/assets/css/webfont.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+ 
+<link href="../../_static/css/breadcrumbs.css" rel="stylesheet" />
+
+    <script src="../../_static/documentation_options.js?v=417b6048"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/thebelab-helper.js"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=49e1bf35"></script>
+    <script src="../../_static/toggleprompt.js?v=cec9bd37"></script>
+    <script src="../../_static/js/table.js?v=b64f5182"></script>
+    <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'examples/00-fluent/radiation_headlamp';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.14.4';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://fluent.docs.pyansys.com/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.23';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner = false;
+        </script>
+    <link rel="icon" href="../../_static/ansys-favicon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Contributing to PyFluent" href="../../contributing.html" />
+    <link rel="prev" title="Modeling Cavitation" href="modeling_cavitation.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <link rel="canonical" href="https://fluent.docs.pyansys.com/version/stable/examples/00-fluent/radiation_headlamp.html" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container"><!-- Debugging: html_theme_options =  -->
+
+<!-- If there is no MiliSearch enabled, use the PyData search -->
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+   
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/pyansys-logo-black-cropped.png" class="logo__image only-light" alt="PyFluent - Home"/>
+    <script>document.write(`<img src="../../_static/pyansys-logo-black-cropped.png" class="logo__image only-dark" alt="PyFluent - Home"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../getting_started/index.html">
+                        Getting started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../user_guide/index.html">
+                        User guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../api/index.html">
+                        API reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../index.html">
+                        Examples
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../contributing.html">
+                        Contributing to PyFluent
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+<script>
+document.write(`
+  <div class="version-switcher__container dropdown">
+    <button id="pst-version-switcher-button-2"
+      type="button"
+      class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle"
+      data-bs-toggle="dropdown"
+      aria-haspopup="listbox"
+      aria-controls="pst-version-switcher-list-2"
+      aria-label="Version switcher list"
+    >
+      Choose version  <!-- this text may get changed later by javascript -->
+      <span class="caret"></span>
+    </button>
+    <div id="pst-version-switcher-list-2"
+      class="version-switcher__menu dropdown-menu list-group-flush py-0"
+      role="listbox" aria-labelledby="pst-version-switcher-button-2">
+      <!-- dropdown will be populated by javascript on page load -->
+    </div>
+  </div>
+`);
+</script></div>
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent/discussions" title="Support" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa fa-comment fa-fw fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Support</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </nav>
+    <div id="announcement_msg"></div>
+<script>
+  fetch("announcement.html")
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error: ${response.status}`);
+      }
+      return response.text();
+    })
+    .then(
+      (text) => (document.getElementById("announcement_msg").innerHTML = text),
+    )
+    .catch((error) => console.error(`Fetch problem: ${error.message}`));
+</script>  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item">
+<nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../getting_started/index.html">
+                        Getting started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../user_guide/index.html">
+                        User guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../api/index.html">
+                        API reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../index.html">
+                        Examples
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../contributing.html">
+                        Contributing to PyFluent
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<script>
+document.write(`
+  <div class="version-switcher__container dropdown">
+    <button id="pst-version-switcher-button-3"
+      type="button"
+      class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle"
+      data-bs-toggle="dropdown"
+      aria-haspopup="listbox"
+      aria-controls="pst-version-switcher-list-3"
+      aria-label="Version switcher list"
+    >
+      Choose version  <!-- this text may get changed later by javascript -->
+      <span class="caret"></span>
+    </button>
+    <div id="pst-version-switcher-list-3"
+      class="version-switcher__menu dropdown-menu list-group-flush py-0"
+      role="listbox" aria-labelledby="pst-version-switcher-button-3">
+      <!-- dropdown will be populated by javascript on page load -->
+    </div>
+  </div>
+`);
+</script></div>
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent/discussions" title="Support" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa fa-comment fa-fw fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Support</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Simulation Examples</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="DOE_ML.html">Design of Experiments and Machine Learning model building</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ahmed_body_workflow.html">Ahmed Body External Aerodynamics Simulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="brake.html">Automotive Brake Thermal Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exhaust_system_settings_api.html">Fault-tolerant meshing workflow using settings objects</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="external_compressible_flow.html">Modeling External Compressible Flow</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="mixing_elbow_settings_api.html">Fluent setup and solution using settings objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modeling_cavitation.html">Modeling Cavitation</a></li>
+
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Modeling Radiation in a Headlamp Using the Monte Carlo Method</a></li>
+
+
+
+</ul>
+</li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+         
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="https://docs.pyansys.com/" class="nav-link">PyAnsys</a>
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a
+        href="../../index.html"
+        class="nav-link"
+        aria-label="Home"
+      >
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a href="../index.html" class="nav-link">Examples</a>
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a href="index.html" class="nav-link">Simulation Examples</a>
+    </li>
+      
+    <li class="breadcrumb-item active" aria-current="page">Modeling Radiation in a Headlamp Using the Monte Carlo Method</li>
+    
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <div class="sphx-glr-download-link-note admonition note">
+<p class="admonition-title">Note</p>
+<p><a class="reference internal" href="#sphx-glr-download-examples-00-fluent-radiation-headlamp-py"><span class="std std-ref">Go to the end</span></a>
+to download the full example code.</p>
+</div>
+<section class="sphx-glr-example-title" id="modeling-radiation-in-a-headlamp-using-the-monte-carlo-method">
+<span id="ref-radiation-headlamp"></span><span id="sphx-glr-examples-00-fluent-radiation-headlamp-py"></span><h1>Modeling Radiation in a Headlamp Using the Monte Carlo Method<a class="headerlink" href="#modeling-radiation-in-a-headlamp-using-the-monte-carlo-method" title="Link to this heading">#</a></h1>
+<p>This example solves for the radiative and conductive heat transfer within a car
+headlamp exposed to the sun’s rays to determine the severity of any hotspots
+that form. It uses a Monte Carlo radiation model and the  pressure-based
+solver. This is based on the Fluent tutorial titled “Using the Monte Carlo
+Radiation Model”.</p>
+<p><strong>Workflow tasks</strong></p>
+<p>The Modeling Radiation Using the Monte Carlo Method example guides you through
+these tasks:</p>
+<ul class="simple">
+<li><p>Creation of a mesh using the Watertight Geometry workflow.</p></li>
+<li><p>Setting up a Monte Carlo radiation model.</p></li>
+<li><p>Creation of materials with thermal and radiation properties.</p></li>
+<li><p>Setting boundary conditions for heat transfer and radiation calculations.</p></li>
+<li><p>Calculating a solution using the pressure-based solver.</p></li>
+</ul>
+<p><strong>Problem description</strong></p>
+<p>The problem considers the headlamp of a parked car exposed to sunlight. The
+lens focuses incoming radiation onto the internal components of the headlamp,
+producing thermal hotspots that could cause damage due to thermal stresses or
+material degradation.</p>
+<a class="reference internal image-reference" href="../../_images/radiation_headlamp_geom.png"><img alt="../../_images/radiation_headlamp_geom.png" class="align-center" src="../../_images/radiation_headlamp_geom.png" style="width: 500pt;" />
+</a>
+</section>
+<section id="example-setup">
+<h1>Example Setup<a class="headerlink" href="#example-setup" title="Link to this heading">#</a></h1>
+<p>Before you can use the watertight geometry meshing workflow, you must set up
+the example and initialize this workflow.</p>
+<section id="perform-required-imports">
+<h2>Perform required imports<a class="headerlink" href="#perform-required-imports" title="Link to this heading">#</a></h2>
+<p>Perform required imports, which includes downloading and importing the
+geometry files.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ansys.fluent.core</span> <span class="k">as</span> <span class="nn">pyfluent</span>
+<span class="kn">from</span> <span class="nn">ansys.fluent.core</span> <span class="kn">import</span> <span class="n">examples</span>
+
+<span class="n">headlamp_spaceclaim_file</span><span class="p">,</span> <span class="n">headlamp_pmdb_file</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">examples</span><span class="o">.</span><span class="n">download_file</span><span class="p">(</span>
+        <span class="n">f</span><span class="p">,</span> <span class="s2">&quot;pyfluent/radiation_headlamp&quot;</span><span class="p">,</span> <span class="n">save_path</span><span class="o">=</span><span class="n">pyfluent</span><span class="o">.</span><span class="n">EXAMPLES_PATH</span>
+    <span class="p">)</span>
+    <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;headlamp.scdoc&quot;</span><span class="p">,</span> <span class="s2">&quot;headlamp.pmdb&quot;</span><span class="p">]</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</section>
+<section id="launch-fluent">
+<h2>Launch Fluent<a class="headerlink" href="#launch-fluent" title="Link to this heading">#</a></h2>
+<p>Launch Fluent as a service in meshing mode with single precision running on
+four processors.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">meshing</span> <span class="o">=</span> <span class="n">pyfluent</span><span class="o">.</span><span class="n">launch_fluent</span><span class="p">(</span>
+    <span class="n">precision</span><span class="o">=</span><span class="s2">&quot;single&quot;</span><span class="p">,</span>
+    <span class="n">processor_count</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+    <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;meshing&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="initialize-workflow">
+<h2>Initialize workflow<a class="headerlink" href="#initialize-workflow" title="Link to this heading">#</a></h2>
+<p>Initialize the watertight geometry meshing workflow.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">meshing</span><span class="o">.</span><span class="n">workflow</span><span class="o">.</span><span class="n">InitializeWorkflow</span><span class="p">(</span><span class="n">WorkflowType</span><span class="o">=</span><span class="s2">&quot;Watertight Geometry&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="watertight-geometry-meshing-workflow">
+<h1>Watertight geometry meshing workflow<a class="headerlink" href="#watertight-geometry-meshing-workflow" title="Link to this heading">#</a></h1>
+<p>The fault-tolerant meshing workflow guides you through the several tasks that
+follow.</p>
+<section id="import-cad-and-set-length-units">
+<h2>Import CAD and set length units<a class="headerlink" href="#import-cad-and-set-length-units" title="Link to this heading">#</a></h2>
+<p>Import the CAD geometry and set the length units to millimeters.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">geo_import</span> <span class="o">=</span> <span class="n">meshing</span><span class="o">.</span><span class="n">workflow</span><span class="o">.</span><span class="n">TaskObject</span><span class="p">[</span><span class="s2">&quot;Import Geometry&quot;</span><span class="p">]</span>
+<span class="n">geo_import</span><span class="o">.</span><span class="n">Arguments</span><span class="o">.</span><span class="n">set_state</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;FileName&quot;</span><span class="p">:</span> <span class="n">headlamp_pmdb_file</span><span class="p">,</span>
+        <span class="s2">&quot;LengthUnit&quot;</span><span class="p">:</span> <span class="s2">&quot;mm&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+
+<span class="n">geo_import</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="add-local-sizing">
+<h2>Add local sizing<a class="headerlink" href="#add-local-sizing" title="Link to this heading">#</a></h2>
+<p>Add local sizing controls to the geometry.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">local_sizing</span> <span class="o">=</span> <span class="n">meshing</span><span class="o">.</span><span class="n">workflow</span><span class="o">.</span><span class="n">TaskObject</span><span class="p">[</span><span class="s2">&quot;Add Local Sizing&quot;</span><span class="p">]</span>
+<span class="n">local_sizing</span><span class="o">.</span><span class="n">Arguments</span><span class="o">.</span><span class="n">set_state</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;AddChild&quot;</span><span class="p">:</span> <span class="s2">&quot;yes&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;BOIControlName&quot;</span><span class="p">:</span> <span class="s2">&quot;boi_lens&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;BOIExecution&quot;</span><span class="p">:</span> <span class="s2">&quot;Body Of Influence&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;BOIFaceLabelList&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;boi&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;BOISize&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+
+<span class="n">local_sizing</span><span class="o">.</span><span class="n">AddChildAndUpdate</span><span class="p">()</span>
+
+<span class="n">local_sizing</span><span class="o">.</span><span class="n">Arguments</span><span class="o">.</span><span class="n">set_state</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;AddChild&quot;</span><span class="p">:</span> <span class="s2">&quot;yes&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;BOIControlName&quot;</span><span class="p">:</span> <span class="s2">&quot;bodysize_lens&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;BOIExecution&quot;</span><span class="p">:</span> <span class="s2">&quot;Body Size&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;BOIFaceLabelList&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;lens&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;BOISize&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+
+<span class="n">local_sizing</span><span class="o">.</span><span class="n">AddChildAndUpdate</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="generate-surface-mesh">
+<h2>Generate surface mesh<a class="headerlink" href="#generate-surface-mesh" title="Link to this heading">#</a></h2>
+<p>Generate the surface mesh.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">surface_mesh_gen</span> <span class="o">=</span> <span class="n">meshing</span><span class="o">.</span><span class="n">workflow</span><span class="o">.</span><span class="n">TaskObject</span><span class="p">[</span><span class="s2">&quot;Generate the Surface Mesh&quot;</span><span class="p">]</span>
+<span class="n">surface_mesh_gen</span><span class="o">.</span><span class="n">Arguments</span><span class="o">.</span><span class="n">set_state</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;CFDSurfaceMeshControls&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;MinSize&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;MaxSize&quot;</span><span class="p">:</span> <span class="mi">40</span><span class="p">,</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+
+<span class="n">surface_mesh_gen</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="improve-surface-mesh">
+<h2>Improve surface mesh<a class="headerlink" href="#improve-surface-mesh" title="Link to this heading">#</a></h2>
+<p>Improve the surface mesh.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">surface_mesh_gen</span><span class="o">.</span><span class="n">InsertNextTask</span><span class="p">(</span><span class="n">CommandName</span><span class="o">=</span><span class="s2">&quot;ImproveSurfaceMesh&quot;</span><span class="p">)</span>
+
+<span class="n">meshing</span><span class="o">.</span><span class="n">workflow</span><span class="o">.</span><span class="n">TaskObject</span><span class="p">[</span><span class="s2">&quot;Improve Surface Mesh&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="describe-geometry">
+<h2>Describe geometry<a class="headerlink" href="#describe-geometry" title="Link to this heading">#</a></h2>
+<p>Describe geometry and define the fluid region.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">describe_geo</span> <span class="o">=</span> <span class="n">meshing</span><span class="o">.</span><span class="n">workflow</span><span class="o">.</span><span class="n">TaskObject</span><span class="p">[</span><span class="s2">&quot;Describe Geometry&quot;</span><span class="p">]</span>
+<span class="n">describe_geo</span><span class="o">.</span><span class="n">Arguments</span><span class="o">.</span><span class="n">set_state</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;SetupType&quot;</span><span class="p">:</span> <span class="s2">&quot;The geometry consists of both fluid and solid regions and/or voids&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;CappingRequired&quot;</span><span class="p">:</span> <span class="s2">&quot;No&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;WallToInternal&quot;</span><span class="p">:</span> <span class="s2">&quot;No&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;InvokeShareTopology&quot;</span><span class="p">:</span> <span class="s2">&quot;No&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Multizone&quot;</span><span class="p">:</span> <span class="s2">&quot;No&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+
+<span class="n">describe_geo</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="update-boundaries">
+<h2>Update boundaries<a class="headerlink" href="#update-boundaries" title="Link to this heading">#</a></h2>
+<p>Update the boundaries.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">update_bc</span> <span class="o">=</span> <span class="n">meshing</span><span class="o">.</span><span class="n">workflow</span><span class="o">.</span><span class="n">TaskObject</span><span class="p">[</span><span class="s2">&quot;Update Boundaries&quot;</span><span class="p">]</span>
+<span class="n">update_bc</span><span class="o">.</span><span class="n">Arguments</span><span class="o">.</span><span class="n">set_state</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;BoundaryLabelList&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;rad-input&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;BoundaryLabelTypeList&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;wall&quot;</span><span class="p">],</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+
+<span class="n">update_bc</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="create-fluid-region">
+<h2>Create fluid region<a class="headerlink" href="#create-fluid-region" title="Link to this heading">#</a></h2>
+<p>Create the fluid region.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">create_regions</span> <span class="o">=</span> <span class="n">meshing</span><span class="o">.</span><span class="n">workflow</span><span class="o">.</span><span class="n">TaskObject</span><span class="p">[</span><span class="s2">&quot;Create Regions&quot;</span><span class="p">]</span>
+<span class="n">create_regions</span><span class="o">.</span><span class="n">Arguments</span><span class="o">.</span><span class="n">set_state</span><span class="p">({</span><span class="s2">&quot;NumberOfFlowVolumes&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">})</span>
+
+<span class="n">create_regions</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="update-regions">
+<h2>Update regions<a class="headerlink" href="#update-regions" title="Link to this heading">#</a></h2>
+<p>Update the regions.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">meshing</span><span class="o">.</span><span class="n">workflow</span><span class="o">.</span><span class="n">TaskObject</span><span class="p">[</span><span class="s2">&quot;Update Regions&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="boundary-layers">
+<h2>Boundary layers<a class="headerlink" href="#boundary-layers" title="Link to this heading">#</a></h2>
+<p>Do not add boundary layers and proceed to the next task.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">add_boundary_layers</span> <span class="o">=</span> <span class="n">meshing</span><span class="o">.</span><span class="n">workflow</span><span class="o">.</span><span class="n">TaskObject</span><span class="p">[</span><span class="s2">&quot;Add Boundary Layers&quot;</span><span class="p">]</span>
+<span class="n">add_boundary_layers</span><span class="o">.</span><span class="n">Arguments</span><span class="o">.</span><span class="n">set_state</span><span class="p">({</span><span class="s2">&quot;AddChild&quot;</span><span class="p">:</span> <span class="s2">&quot;no&quot;</span><span class="p">})</span>
+
+<span class="n">add_boundary_layers</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="generate-volume-mesh">
+<h2>Generate volume mesh<a class="headerlink" href="#generate-volume-mesh" title="Link to this heading">#</a></h2>
+<p>Generate the volume mesh, which consists of setting properties for the
+volume mesh.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">volume_mesh_gen</span> <span class="o">=</span> <span class="n">meshing</span><span class="o">.</span><span class="n">workflow</span><span class="o">.</span><span class="n">TaskObject</span><span class="p">[</span><span class="s2">&quot;Generate the Volume Mesh&quot;</span><span class="p">]</span>
+<span class="n">volume_mesh_gen</span><span class="o">.</span><span class="n">Arguments</span><span class="o">.</span><span class="n">set_state</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;VolumeMeshPreferences&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;PolyFeatureAngle&quot;</span><span class="p">:</span> <span class="mi">40</span><span class="p">,</span>
+        <span class="p">},</span>
+    <span class="p">},</span>
+<span class="p">)</span>
+<span class="n">volume_mesh_gen</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="check-mesh-in-meshing-mode">
+<h2>Check mesh in meshing mode<a class="headerlink" href="#check-mesh-in-meshing-mode" title="Link to this heading">#</a></h2>
+<p>Check the mesh in meshing mode.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">meshing</span><span class="o">.</span><span class="n">tui</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">check_mesh</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="save-mesh-file">
+<h2>Save mesh file<a class="headerlink" href="#save-mesh-file" title="Link to this heading">#</a></h2>
+<p>Save the mesh file (<code class="docutils literal notranslate"><span class="pre">headlamp.msh.h5</span></code>).</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">meshing</span><span class="o">.</span><span class="n">meshing</span><span class="o">.</span><span class="n">File</span><span class="o">.</span><span class="n">WriteMesh</span><span class="p">(</span><span class="n">FileName</span><span class="o">=</span><span class="s2">&quot;headlamp.msh.h5&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="solve-and-postprocess">
+<h1>Solve and postprocess<a class="headerlink" href="#solve-and-postprocess" title="Link to this heading">#</a></h1>
+<p>Once you have completed the watertight geometry meshing workflow, you can
+solve and postprocess the results.</p>
+<section id="switch-to-solution-mode">
+<h2>Switch to solution mode<a class="headerlink" href="#switch-to-solution-mode" title="Link to this heading">#</a></h2>
+<p>Switch to solution mode. Now that a high-quality mesh has been generated
+using Fluent in meshing mode, you can switch to solver mode to complete the
+setup of the simulation.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">solver</span> <span class="o">=</span> <span class="n">meshing</span><span class="o">.</span><span class="n">switch_to_solver</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="enable-energy-and-viscosity-models">
+<h2>Enable energy and viscosity models<a class="headerlink" href="#enable-energy-and-viscosity-models" title="Link to this heading">#</a></h2>
+<p>Set up the energy and viscosity models.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">models</span> <span class="o">=</span> <span class="n">solver</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">setup</span><span class="o">.</span><span class="n">models</span>
+<span class="n">models</span><span class="o">.</span><span class="n">energy</span><span class="o">.</span><span class="n">enabled</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">models</span><span class="o">.</span><span class="n">viscous</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="s2">&quot;laminar&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="set-up-radiation-model">
+<h2>Set up radiation model<a class="headerlink" href="#set-up-radiation-model" title="Link to this heading">#</a></h2>
+<p>Set up the Monte Carlo radiation model. The number of histories is set to 10
+million in order to reduce computation time, but this may need to be
+increased to obtain accurate results.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">radiation</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">radiation</span>
+<span class="n">radiation</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="s2">&quot;monte-carlo&quot;</span>
+<span class="n">radiation</span><span class="o">.</span><span class="n">monte_carlo</span><span class="o">.</span><span class="n">number_of_histories</span> <span class="o">=</span> <span class="mf">1e7</span>
+<span class="n">radiation</span><span class="o">.</span><span class="n">solve_frequency</span><span class="o">.</span><span class="n">iteration_interval</span> <span class="o">=</span> <span class="mi">20</span>
+</pre></div>
+</div>
+</section>
+<section id="define-materials">
+<h2>Define materials<a class="headerlink" href="#define-materials" title="Link to this heading">#</a></h2>
+<p>Create materials to represent the glass and plastic parts of the headlamp.
+To demonstrate two different methods of creating materials through the
+settings API, we will create glass using a dictionary and plastic using dot
+syntax.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># --- Properties of glass ---</span>
+<span class="c1"># Density: 2650 [kg/m^3]</span>
+<span class="c1"># Specific heat capacity: 1887 [J/(kg K)]</span>
+<span class="c1"># Thermal conductivity: 7.6 [W/(m K)]</span>
+<span class="c1"># Absorption coefficient: 5.302</span>
+<span class="c1"># Refractive index: 1.4714</span>
+
+<span class="n">glass</span> <span class="o">=</span> <span class="n">solver</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">setup</span><span class="o">.</span><span class="n">materials</span><span class="o">.</span><span class="n">solid</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="s2">&quot;glass&quot;</span><span class="p">)</span>
+<span class="n">glass</span><span class="o">.</span><span class="n">set_state</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;chemical_formula&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;density&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;option&quot;</span><span class="p">:</span> <span class="s2">&quot;constant&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">2650</span><span class="p">,</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;specific_heat&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;option&quot;</span><span class="p">:</span> <span class="s2">&quot;constant&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">1887</span><span class="p">,</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;thermal_conductivity&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;option&quot;</span><span class="p">:</span> <span class="s2">&quot;constant&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mf">7.6</span><span class="p">,</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;absorption_coefficient&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;option&quot;</span><span class="p">:</span> <span class="s2">&quot;constant&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mf">5.302</span><span class="p">,</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;refractive_index&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;option&quot;</span><span class="p">:</span> <span class="s2">&quot;constant&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mf">1.4714</span><span class="p">,</span>
+        <span class="p">},</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+
+<span class="c1"># --- Properties of plastic ---</span>
+<span class="c1"># Density: 1545.3 [kg/m^3]</span>
+<span class="c1"># Specific heat capacity: 2302 [J/(kg K)]</span>
+<span class="c1"># Thermal conductivity: 0.316 [W/(m K)]</span>
+
+<span class="n">plastic</span> <span class="o">=</span> <span class="n">solver</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">setup</span><span class="o">.</span><span class="n">materials</span><span class="o">.</span><span class="n">solid</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="s2">&quot;plastic&quot;</span><span class="p">)</span>
+<span class="n">plastic</span><span class="o">.</span><span class="n">chemical_formula</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+<span class="n">plastic</span><span class="o">.</span><span class="n">density</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="mf">1545.3</span>
+<span class="n">plastic</span><span class="o">.</span><span class="n">specific_heat</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="mi">2302</span>
+<span class="n">plastic</span><span class="o">.</span><span class="n">thermal_conductivity</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="mf">0.316</span>
+<span class="n">plastic</span><span class="o">.</span><span class="n">absorption_coefficient</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">plastic</span><span class="o">.</span><span class="n">refractive_index</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</section>
+<section id="cell-zone-conditions">
+<h2>Cell Zone Conditions<a class="headerlink" href="#cell-zone-conditions" title="Link to this heading">#</a></h2>
+<p>Set the cell zone conditions for the bezel and the lens.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">solver</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">setup</span><span class="o">.</span><span class="n">cell_zone_conditions</span><span class="o">.</span><span class="n">solid</span><span class="p">[</span><span class="s2">&quot;bezel&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">material</span> <span class="o">=</span> <span class="s2">&quot;plastic&quot;</span>
+<span class="n">solver</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">setup</span><span class="o">.</span><span class="n">cell_zone_conditions</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span>
+    <span class="n">from_</span><span class="o">=</span><span class="s2">&quot;bezel&quot;</span><span class="p">,</span>
+    <span class="n">to</span><span class="o">=</span><span class="p">[</span>
+        <span class="s2">&quot;holder&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;housing&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;inner-bezel&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;reflector&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;rim-bezel&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;seating-steel-rim&quot;</span><span class="p">,</span>
+    <span class="p">],</span>
+<span class="p">)</span>
+
+<span class="n">lens_cellzone_conds</span> <span class="o">=</span> <span class="n">solver</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">setup</span><span class="o">.</span><span class="n">cell_zone_conditions</span><span class="o">.</span><span class="n">solid</span><span class="p">[</span><span class="s2">&quot;lens&quot;</span><span class="p">]</span>
+<span class="n">lens_cellzone_conds</span><span class="o">.</span><span class="n">material</span> <span class="o">=</span> <span class="s2">&quot;glass&quot;</span>
+<span class="n">lens_cellzone_conds</span><span class="o">.</span><span class="n">general</span><span class="o">.</span><span class="n">participates_in_radiation</span> <span class="o">=</span> <span class="kc">True</span>
+</pre></div>
+</div>
+</section>
+<section id="boundary-conditions">
+<h2>Boundary Conditions<a class="headerlink" href="#boundary-conditions" title="Link to this heading">#</a></h2>
+<p>Set the boundary conditions.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># --- Set up bezel-enclosure BC ---</span>
+<span class="c1"># Material: plastic</span>
+<span class="c1"># BC type: opaque</span>
+<span class="c1"># Internal emissivity: 1</span>
+<span class="c1"># Diffuse fraction: 1</span>
+
+<span class="n">bezel_enc_bc</span> <span class="o">=</span> <span class="n">solver</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">setup</span><span class="o">.</span><span class="n">boundary_conditions</span><span class="o">.</span><span class="n">wall</span><span class="p">[</span><span class="s2">&quot;bezel-enclosure&quot;</span><span class="p">]</span>
+<span class="n">bezel_enc_bc</span><span class="o">.</span><span class="n">thermal</span><span class="o">.</span><span class="n">material</span> <span class="o">=</span> <span class="s2">&quot;plastic&quot;</span>
+<span class="n">bezel_enc_bc</span><span class="o">.</span><span class="n">radiation</span><span class="o">.</span><span class="n">radiation_bc</span> <span class="o">=</span> <span class="s2">&quot;Opaque&quot;</span>
+<span class="n">bezel_enc_bc</span><span class="o">.</span><span class="n">radiation</span><span class="o">.</span><span class="n">internal_emissivity</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">bezel_enc_bc</span><span class="o">.</span><span class="n">radiation</span><span class="o">.</span><span class="n">diffuse_fraction_band</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;s-&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span>
+
+<span class="c1"># Get list of wall zones</span>
+<span class="n">bc_state</span> <span class="o">=</span> <span class="n">solver</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">setup</span><span class="o">.</span><span class="n">boundary_conditions</span><span class="o">.</span><span class="n">get_state</span><span class="p">()</span>
+<span class="n">zones_to_copy</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">bc_state</span><span class="p">[</span><span class="s2">&quot;wall&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="n">incompatible_zones</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;bezel-enclosure&quot;</span><span class="p">,</span> <span class="s2">&quot;enclosure:1&quot;</span><span class="p">,</span> <span class="s2">&quot;rad-input&quot;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">incompatible_zone</span> <span class="ow">in</span> <span class="n">incompatible_zones</span><span class="p">:</span>
+    <span class="n">zones_to_copy</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">incompatible_zone</span><span class="p">)</span>
+
+<span class="c1"># Copy bezel-enclosure BC to all other BCs</span>
+<span class="n">solver</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">setup</span><span class="o">.</span><span class="n">boundary_conditions</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span>
+    <span class="n">from_</span><span class="o">=</span><span class="s2">&quot;bezel-enclosure&quot;</span><span class="p">,</span>
+    <span class="n">to</span><span class="o">=</span><span class="n">zones_to_copy</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># --- Set up enclosure-lens BC ---</span>
+<span class="c1"># Material: glass</span>
+<span class="c1"># BC type: semi-transparent</span>
+<span class="c1"># Diffuse fraction: 0</span>
+
+<span class="n">enc_lens_bc</span> <span class="o">=</span> <span class="n">solver</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">setup</span><span class="o">.</span><span class="n">boundary_conditions</span><span class="o">.</span><span class="n">wall</span><span class="p">[</span><span class="s2">&quot;enclosure-lens&quot;</span><span class="p">]</span>
+<span class="n">enc_lens_bc</span><span class="o">.</span><span class="n">thermal</span><span class="o">.</span><span class="n">material</span> <span class="o">=</span> <span class="s2">&quot;glass&quot;</span>
+<span class="n">enc_lens_bc</span><span class="o">.</span><span class="n">radiation</span><span class="o">.</span><span class="n">radiation_bc</span> <span class="o">=</span> <span class="s2">&quot;Semi Transparent&quot;</span>
+<span class="n">enc_lens_bc</span><span class="o">.</span><span class="n">radiation</span><span class="o">.</span><span class="n">diffuse_fraction_band</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;s-&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
+
+<span class="c1"># Copy enclosure-lens BC to other lens boundary</span>
+<span class="n">solver</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">setup</span><span class="o">.</span><span class="n">boundary_conditions</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span>
+    <span class="n">from_</span><span class="o">=</span><span class="s2">&quot;enclosure-lens&quot;</span><span class="p">,</span>
+    <span class="n">to</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;enclosure-lens-shadow&quot;</span><span class="p">],</span>
+<span class="p">)</span>
+
+<span class="c1"># --- Set up enclosure-rim-bezel BC ---</span>
+<span class="c1"># Material: plastic</span>
+<span class="c1"># BC type: opaque</span>
+<span class="c1"># Internal emissivity: 0.16</span>
+<span class="c1"># Diffuse fraction: 0.1</span>
+
+<span class="n">enc_rim_bezel_bc</span> <span class="o">=</span> <span class="n">solver</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">setup</span><span class="o">.</span><span class="n">boundary_conditions</span><span class="o">.</span><span class="n">wall</span><span class="p">[</span><span class="s2">&quot;enclosure-rim-bezel&quot;</span><span class="p">]</span>
+<span class="n">enc_rim_bezel_bc</span><span class="o">.</span><span class="n">thermal</span><span class="o">.</span><span class="n">material</span> <span class="o">=</span> <span class="s2">&quot;plastic&quot;</span>
+<span class="n">enc_rim_bezel_bc</span><span class="o">.</span><span class="n">radiation</span><span class="o">.</span><span class="n">radiation_bc</span> <span class="o">=</span> <span class="s2">&quot;Opaque&quot;</span>
+<span class="n">enc_rim_bezel_bc</span><span class="o">.</span><span class="n">radiation</span><span class="o">.</span><span class="n">internal_emissivity</span> <span class="o">=</span> <span class="mf">0.16</span>
+<span class="n">enc_rim_bezel_bc</span><span class="o">.</span><span class="n">radiation</span><span class="o">.</span><span class="n">diffuse_fraction_band</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;s-&quot;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">}</span>
+
+<span class="c1"># Copy enclosure-rim-bezel BC to other rim bezel boundaries</span>
+<span class="n">solver</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">setup</span><span class="o">.</span><span class="n">boundary_conditions</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span>
+    <span class="n">from_</span><span class="o">=</span><span class="s2">&quot;enclosure-rim-bezel&quot;</span><span class="p">,</span>
+    <span class="n">to</span><span class="o">=</span><span class="p">[</span>
+        <span class="s2">&quot;enclosure-rim-bezel-shadow&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;holder-rim-bezel&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;holder-rim-bezel-shadow&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;housing-rim-bezel&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;housing-rim-bezel-shadow&quot;</span><span class="p">,</span>
+    <span class="p">],</span>
+<span class="p">)</span>
+
+<span class="c1"># --- Set up enclosure:1 (domain boundaries) BC ---</span>
+<span class="c1"># BC type: temperature</span>
+<span class="c1"># Temperature: 298.15 [K]</span>
+
+<span class="n">enc1_bc</span> <span class="o">=</span> <span class="n">solver</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">setup</span><span class="o">.</span><span class="n">boundary_conditions</span><span class="o">.</span><span class="n">wall</span><span class="p">[</span><span class="s2">&quot;enclosure:1&quot;</span><span class="p">]</span>
+<span class="n">enc1_bc</span><span class="o">.</span><span class="n">thermal</span><span class="o">.</span><span class="n">thermal_condition</span> <span class="o">=</span> <span class="s2">&quot;Temperature&quot;</span>
+<span class="n">enc1_bc</span><span class="o">.</span><span class="n">thermal</span><span class="o">.</span><span class="n">temperature</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="mf">298.15</span>
+
+<span class="c1"># --- Set up radiation input BC ---</span>
+<span class="c1"># BC type: temperature</span>
+<span class="c1"># Temperature: 298.15 [K]</span>
+<span class="c1"># Boundary source: yes</span>
+<span class="c1"># Direct irradiation: 1200 [W/m^2]</span>
+<span class="c1"># Radiation direction: (-0.848, 0, -0.53)</span>
+
+<span class="n">rad_input_bc</span> <span class="o">=</span> <span class="n">solver</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">setup</span><span class="o">.</span><span class="n">boundary_conditions</span><span class="o">.</span><span class="n">wall</span><span class="p">[</span><span class="s2">&quot;rad-input&quot;</span><span class="p">]</span>
+<span class="n">rad_input_bc</span><span class="o">.</span><span class="n">thermal</span><span class="o">.</span><span class="n">thermal_condition</span> <span class="o">=</span> <span class="s2">&quot;Temperature&quot;</span>
+<span class="n">rad_input_bc</span><span class="o">.</span><span class="n">thermal</span><span class="o">.</span><span class="n">temperature</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="mf">298.15</span>
+<span class="n">rad_input_bc</span><span class="o">.</span><span class="n">radiation</span><span class="o">.</span><span class="n">boundary_source</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">rad_input_bc</span><span class="o">.</span><span class="n">radiation</span><span class="o">.</span><span class="n">direct_irradiation</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;s-&quot;</span><span class="p">:</span> <span class="mi">1200</span><span class="p">}</span>
+<span class="n">rad_input_bc</span><span class="o">.</span><span class="n">radiation</span><span class="o">.</span><span class="n">reference_direction</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.848</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.53</span><span class="p">]</span>
+</pre></div>
+</div>
+</section>
+<section id="set-convergence-criteria">
+<h2>Set convergence criteria<a class="headerlink" href="#set-convergence-criteria" title="Link to this heading">#</a></h2>
+<p>Enable residual plots and set the convergence criteria to ‘none’.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">solver</span><span class="o">.</span><span class="n">solution</span><span class="o">.</span><span class="n">monitor</span><span class="o">.</span><span class="n">residual</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">criterion_type</span> <span class="o">=</span> <span class="s2">&quot;none&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="define-surface-reports">
+<h2>Define surface reports<a class="headerlink" href="#define-surface-reports" title="Link to this heading">#</a></h2>
+<p>Define a surface report to find the maximum temperature of the inner bezel,
+then print the state of the report object.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">solver</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">solution</span><span class="o">.</span><span class="n">report_definitions</span><span class="o">.</span><span class="n">surface</span><span class="p">[</span><span class="s2">&quot;max-temp&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">max_temp_surf_report</span> <span class="o">=</span> <span class="n">solver</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">solution</span><span class="o">.</span><span class="n">report_definitions</span><span class="o">.</span><span class="n">surface</span><span class="p">[</span><span class="s2">&quot;max-temp&quot;</span><span class="p">]</span>
+<span class="n">max_temp_surf_report</span><span class="o">.</span><span class="n">surface_names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;enclosure-inner-bezel&quot;</span><span class="p">]</span>
+<span class="n">max_temp_surf_report</span><span class="o">.</span><span class="n">report_type</span> <span class="o">=</span> <span class="s2">&quot;surface-facetmax&quot;</span>
+<span class="n">max_temp_surf_report</span><span class="o">.</span><span class="n">field</span> <span class="o">=</span> <span class="s2">&quot;temperature&quot;</span>
+
+<span class="n">solver</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">solution</span><span class="o">.</span><span class="n">monitor</span><span class="o">.</span><span class="n">report_plots</span><span class="p">[</span><span class="s2">&quot;max-temp-rplot&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">max_temp_surf_report_plot</span> <span class="o">=</span> <span class="n">solver</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">solution</span><span class="o">.</span><span class="n">monitor</span><span class="o">.</span><span class="n">report_plots</span><span class="p">[</span>
+    <span class="s2">&quot;max-temp-rplot&quot;</span>
+<span class="p">]</span>
+<span class="n">max_temp_surf_report_plot</span><span class="o">.</span><span class="n">report_defs</span> <span class="o">=</span> <span class="s2">&quot;max-temp&quot;</span>
+<span class="n">max_temp_surf_report_plot</span><span class="o">.</span><span class="n">print</span> <span class="o">=</span> <span class="kc">True</span>
+</pre></div>
+</div>
+</section>
+<section id="define-report-plots">
+<h2>Define report plots<a class="headerlink" href="#define-report-plots" title="Link to this heading">#</a></h2>
+<p>Define a plot of the maximum temperature.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">solver</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">solution</span><span class="o">.</span><span class="n">monitor</span><span class="o">.</span><span class="n">report_plots</span><span class="p">[</span><span class="s2">&quot;max-temp-rplot&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">max_temp_rplot</span> <span class="o">=</span> <span class="n">solver</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">solution</span><span class="o">.</span><span class="n">monitor</span><span class="o">.</span><span class="n">report_plots</span><span class="p">[</span><span class="s2">&quot;max-temp-rplot&quot;</span><span class="p">]</span>
+<span class="n">max_temp_rplot</span><span class="o">.</span><span class="n">report_defs</span> <span class="o">=</span> <span class="s2">&quot;max-temp&quot;</span>
+<span class="n">max_temp_rplot</span><span class="o">.</span><span class="n">print</span> <span class="o">=</span> <span class="kc">True</span>
+</pre></div>
+</div>
+</section>
+<section id="save-case-file">
+<h2>Save case file<a class="headerlink" href="#save-case-file" title="Link to this heading">#</a></h2>
+<p>Save the case file (<code class="docutils literal notranslate"><span class="pre">headlamp.cas.h5</span></code>).</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">solver</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">file_name</span><span class="o">=</span><span class="s2">&quot;headlamp.cas.h5&quot;</span><span class="p">,</span> <span class="n">file_type</span><span class="o">=</span><span class="s2">&quot;case&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="initialize-flow-field">
+<h2>Initialize flow field<a class="headerlink" href="#initialize-flow-field" title="Link to this heading">#</a></h2>
+<p>Initialize the solution.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">solver</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">solution</span><span class="o">.</span><span class="n">initialization</span><span class="o">.</span><span class="n">initialize</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="solve-for-19-iterations">
+<h2>Solve for 19 iterations<a class="headerlink" href="#solve-for-19-iterations" title="Link to this heading">#</a></h2>
+<p>Solve for 19 iterations. 99 iterations is recommended by the tutorial, but is
+reduced to 19 for this example for demonstration purposes.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">solver</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">solution</span><span class="o">.</span><span class="n">run_calculation</span><span class="o">.</span><span class="n">iterate</span><span class="p">(</span><span class="n">iter_count</span><span class="o">=</span><span class="mi">19</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="write-final-case-file-and-data">
+<h2>Write final case file and data<a class="headerlink" href="#write-final-case-file-and-data" title="Link to this heading">#</a></h2>
+<p>Enable overwrite so that the original case file will be overwritten. Write
+the final case file and the data.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">solver</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">batch_options</span><span class="o">.</span><span class="n">confirm_overwrite</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">solver</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">file_name</span><span class="o">=</span><span class="s2">&quot;headlamp.cas.h5&quot;</span><span class="p">,</span> <span class="n">file_type</span><span class="o">=</span><span class="s2">&quot;case-data&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="close-fluent">
+<h2>Close Fluent<a class="headerlink" href="#close-fluent" title="Link to this heading">#</a></h2>
+<p>Close Fluent.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">solver</span><span class="o">.</span><span class="n">exit</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-00-fluent-radiation-headlamp-py">
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/58fed8711c57062d0c3a383c2e927898/radiation_headlamp.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">radiation_headlamp.ipynb</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/350f2c4fbe897923dfeccf33c3132c02/radiation_headlamp.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">radiation_headlamp.py</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-zip docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/8f232c8e87feb3fbd344b931b69b8f91/radiation_headlamp.zip"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">zipped:</span> <span class="pre">radiation_headlamp.zip</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Modeling Radiation in a Headlamp Using the Monte Carlo Method</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#example-setup">Example Setup</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perform-required-imports">Perform required imports</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#launch-fluent">Launch Fluent</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initialize-workflow">Initialize workflow</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#watertight-geometry-meshing-workflow">Watertight geometry meshing workflow</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-cad-and-set-length-units">Import CAD and set length units</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-local-sizing">Add local sizing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-surface-mesh">Generate surface mesh</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#improve-surface-mesh">Improve surface mesh</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#describe-geometry">Describe geometry</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#update-boundaries">Update boundaries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-fluid-region">Create fluid region</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#update-regions">Update regions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#boundary-layers">Boundary layers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-volume-mesh">Generate volume mesh</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#check-mesh-in-meshing-mode">Check mesh in meshing mode</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#save-mesh-file">Save mesh file</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#solve-and-postprocess">Solve and postprocess</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#switch-to-solution-mode">Switch to solution mode</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#enable-energy-and-viscosity-models">Enable energy and viscosity models</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up-radiation-model">Set up radiation model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#define-materials">Define materials</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cell-zone-conditions">Cell Zone Conditions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#boundary-conditions">Boundary Conditions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-convergence-criteria">Set convergence criteria</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#define-surface-reports">Define surface reports</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#define-report-plots">Define report plots</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#save-case-file">Save case file</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initialize-flow-field">Initialize flow field</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solve-for-19-iterations">Solve for 19 iterations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#write-final-case-file-and-data">Write final case file and data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#close-fluent">Close Fluent</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+<!-- If there is no fix edit button function, use the PyData edit-this-button-->
+</div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../../_sources/examples/00-fluent/radiation_headlamp.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright (c) 2024 ANSYS, Inc. All rights reserved.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.3.7.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="theme-version">
+  Built with the
+  <a href="https://sphinxdocs.ansys.com/version/stable/index.html"
+    >Ansys Sphinx Theme</a
+  >
+  0.16.6. <br />Last updated on
+  <span id="date"></span>
+</p>
+<script>
+  var options = { day: "numeric", month: "long", year: "numeric" };
+  var lastModifiedDate = new Date(document.lastModified);
+  var date = lastModifiedDate.toLocaleDateString("en-US", options);
+  document.getElementById("date").innerHTML = date;
+</script></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

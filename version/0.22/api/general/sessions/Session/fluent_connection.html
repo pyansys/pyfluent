@@ -1,0 +1,1172 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>fluent_connection &#8212; PyFluent</title>
+
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery.css?v=61a4c737" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/css/ansys_sphinx_theme.css?v=a362721a" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://www.nerdfonts.com/assets/css/webfont.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../../../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+ 
+<link href="../../../../_static/css/breadcrumbs.css" rel="stylesheet" />
+
+    <script src="../../../../_static/documentation_options.js?v=25b4b00c"></script>
+    <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/thebelab-helper.js"></script>
+    <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../_static/copybutton.js?v=49e1bf35"></script>
+    <script src="../../../../_static/toggleprompt.js?v=cec9bd37"></script>
+    <script src="../../../../_static/js/table.js?v=b64f5182"></script>
+    <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/general/sessions/Session/fluent_connection';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.14.4';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://fluent.docs.pyansys.com/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.22';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner = false;
+        </script>
+    <link rel="icon" href="../../../../_static/ansys-favicon.png"/>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="Meshing sessions" href="../Meshing/index.html" />
+    <link rel="prev" title="session" href="session.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <link rel="canonical" href="https://fluent.docs.pyansys.com/version/stable/api/general/sessions/Session/fluent_connection.html" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container"><!-- Debugging: html_theme_options =  -->
+
+<!-- If there is no MiliSearch enabled, use the PyData search -->
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+   
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+
+<a class="navbar-brand logo" href="../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-light" alt="PyFluent - Home"/>
+    <script>document.write(`<img src="../../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-dark" alt="PyFluent - Home"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../getting_started/index.html">
+                        Getting started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../user_guide/index.html">
+                        User guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../../../index.html">
+                        API reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../examples/index.html">
+                        Examples
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../contributing.html">
+                        Contribute
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+<script>
+document.write(`
+  <div class="version-switcher__container dropdown">
+    <button id="pst-version-switcher-button-2"
+      type="button"
+      class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle"
+      data-bs-toggle="dropdown"
+      aria-haspopup="listbox"
+      aria-controls="pst-version-switcher-list-2"
+      aria-label="Version switcher list"
+    >
+      Choose version  <!-- this text may get changed later by javascript -->
+      <span class="caret"></span>
+    </button>
+    <div id="pst-version-switcher-list-2"
+      class="version-switcher__menu dropdown-menu list-group-flush py-0"
+      role="listbox" aria-labelledby="pst-version-switcher-button-2">
+      <!-- dropdown will be populated by javascript on page load -->
+    </div>
+  </div>
+`);
+</script></div>
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent/discussions" title="Support" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa fa-comment fa-fw fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Support</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </nav>
+    <div id="announcement_msg"></div>
+<script>
+  fetch("announcement.html")
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error: ${response.status}`);
+      }
+      return response.text();
+    })
+    .then(
+      (text) => (document.getElementById("announcement_msg").innerHTML = text),
+    )
+    .catch((error) => console.error(`Fetch problem: ${error.message}`));
+</script>  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item">
+<nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../getting_started/index.html">
+                        Getting started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../user_guide/index.html">
+                        User guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../../../index.html">
+                        API reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../examples/index.html">
+                        Examples
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../contributing.html">
+                        Contribute
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<script>
+document.write(`
+  <div class="version-switcher__container dropdown">
+    <button id="pst-version-switcher-button-3"
+      type="button"
+      class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle"
+      data-bs-toggle="dropdown"
+      aria-haspopup="listbox"
+      aria-controls="pst-version-switcher-list-3"
+      aria-label="Version switcher list"
+    >
+      Choose version  <!-- this text may get changed later by javascript -->
+      <span class="caret"></span>
+    </button>
+    <div id="pst-version-switcher-list-3"
+      class="version-switcher__menu dropdown-menu list-group-flush py-0"
+      role="listbox" aria-labelledby="pst-version-switcher-button-3">
+      <!-- dropdown will be populated by javascript on page load -->
+    </div>
+  </div>
+`);
+</script></div>
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent/discussions" title="Support" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa fa-comment fa-fw fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Support</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../../index.html">General</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../launcher/index.html">Fluent launcher</a></li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="../index.html">Sessions</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l3 current active has-children"><a class="reference internal" href="index.html">Session</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="session.html">session</a></li>
+<li class="toctree-l4 current active"><a class="current reference internal" href="#">fluent_connection</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../Meshing/index.html">Meshing sessions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Solver/index.html">Solver sessions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../services/index.html">Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../streaming_services/index.html">Streaming services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../scheduler/index.html">Scheduler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../fielddata.html">Field data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../fieldinfo.html">Field info</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../case_reader.html">CaseFile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../data_reader.html">DataFile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../data_transfer.html">Transfer data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../journaling.html">Journaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../workflow.html">Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rpvars.html">rpvars</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../post_objects/index.html">Post objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../execution_utils.html">Execution utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../search.html">Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../schemeeval.html">Scheme code evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../logging.html">Logging</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../meshing/index.html">Meshing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../solver/index.html">Solver</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+         
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="https://docs.pyansys.com/" class="nav-link">PyAnsys</a>
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a
+        href="../../../../index.html"
+        class="nav-link"
+        aria-label="Home"
+      >
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a href="../../../index.html" class="nav-link">API reference</a>
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a href="../../index.html" class="nav-link">General</a>
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a href="../index.html" class="nav-link">Sessions</a>
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a href="index.html" class="nav-link">Session</a>
+    </li>
+      
+    <li class="breadcrumb-item active" aria-current="page">fluent_connection</li>
+    
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="module-ansys.fluent.core.fluent_connection">
+<span id="fluent-connection"></span><span id="ref-fluent-connection"></span><h1>fluent_connection<a class="headerlink" href="#module-ansys.fluent.core.fluent_connection" title="Link to this heading">#</a></h1>
+<p>Provides a module for Fluent connection functionality.</p>
+<p><strong>Classes:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.fluent_connection.ErrorState" title="ansys.fluent.core.fluent_connection.ErrorState"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ErrorState</span></code></a>([name, details])</p></td>
+<td><p>Object to indicate the error state of the connected Fluent client.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.fluent_connection.FluentConnection" title="ansys.fluent.core.fluent_connection.FluentConnection"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FluentConnection</span></code></a>([ip, port, password, ...])</p></td>
+<td><p>Encapsulates a Fluent connection.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.fluent_connection.FluentConnectionProperties" title="ansys.fluent.core.fluent_connection.FluentConnectionProperties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FluentConnectionProperties</span></code></a>([ip, port, ...])</p></td>
+<td><p>Stores Fluent connection properties, including connection IP, port and password; Fluent Cortex working directory, process ID and hostname; and whether Fluent was launched in a docker container.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.fluent_connection.MonitorThread" title="ansys.fluent.core.fluent_connection.MonitorThread"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MonitorThread</span></code></a>()</p></td>
+<td><p>A class used for monitoring a Fluent session.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Exceptions:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.fluent_connection.PortNotProvided" title="ansys.fluent.core.fluent_connection.PortNotProvided"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PortNotProvided</span></code></a>()</p></td>
+<td><p>Raised when port is not provided.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.fluent_connection.UnsupportedRemoteFluentInstance" title="ansys.fluent.core.fluent_connection.UnsupportedRemoteFluentInstance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UnsupportedRemoteFluentInstance</span></code></a>()</p></td>
+<td><p>Raised when 'wait_process_finished' does not support remote Fluent session.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.fluent_connection.WaitTypeError" title="ansys.fluent.core.fluent_connection.WaitTypeError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">WaitTypeError</span></code></a>()</p></td>
+<td><p>Raised when invalid <code class="docutils literal notranslate"><span class="pre">wait</span></code> type is provided.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Functions:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.fluent_connection.get_container" title="ansys.fluent.core.fluent_connection.get_container"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_container</span></code></a>(container_id_or_name)</p></td>
+<td><p>Get the Docker container object.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.fluent_connection.ErrorState">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.fluent_connection.</span></span><span class="sig-name descname"><span class="pre">ErrorState</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">details</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.fluent_connection.ErrorState" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Object to indicate the error state of the connected Fluent client.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">ansys.fluent.core</span> <span class="k">as</span> <span class="nn">pyfluent</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">session</span> <span class="o">=</span> <span class="n">pyfluent</span><span class="o">.</span><span class="n">launch_fluent</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">session</span><span class="o">.</span><span class="n">_fluent_connection</span><span class="o">.</span><span class="n">_error_state</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;test&quot;</span><span class="p">,</span> <span class="s2">&quot;test details&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">session</span><span class="o">.</span><span class="n">_fluent_connection</span><span class="o">.</span><span class="n">_error_state</span><span class="o">.</span><span class="n">name</span>
+<span class="go">&#39;test&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">session</span><span class="o">.</span><span class="n">_fluent_connection</span><span class="o">.</span><span class="n">_error_state</span><span class="o">.</span><span class="n">details</span>
+<span class="go">&#39;test details&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">session</span><span class="o">.</span><span class="n">_fluent_connection</span><span class="o">.</span><span class="n">_error_state</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">session</span><span class="o">.</span><span class="n">_fluent_connection</span><span class="o">.</span><span class="n">_error_state</span><span class="o">.</span><span class="n">name</span>
+<span class="go">&#39;&#39;</span>
+</pre></div>
+</div>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.fluent_connection.ErrorState.clear" title="ansys.fluent.core.fluent_connection.ErrorState.clear"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clear</span></code></a>()</p></td>
+<td><p>Method to clear the current error state, emptying the error name and details properties.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.fluent_connection.ErrorState.set" title="ansys.fluent.core.fluent_connection.ErrorState.set"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set</span></code></a>(name, details)</p></td>
+<td><p>Method to set the error state name and details to new values.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Attributes:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.fluent_connection.ErrorState.details" title="ansys.fluent.core.fluent_connection.ErrorState.details"><code class="xref py py-obj docutils literal notranslate"><span class="pre">details</span></code></a></p></td>
+<td><p>Get details.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.fluent_connection.ErrorState.name" title="ansys.fluent.core.fluent_connection.ErrorState.name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">name</span></code></a></p></td>
+<td><p>Get name.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.fluent_connection.ErrorState.clear">
+<span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.fluent_connection.ErrorState.clear" title="Link to this definition">#</a></dt>
+<dd><p>Method to clear the current error state, emptying the error name and details
+properties.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ansys.fluent.core.fluent_connection.ErrorState.details">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">details</span></span><a class="headerlink" href="#ansys.fluent.core.fluent_connection.ErrorState.details" title="Link to this definition">#</a></dt>
+<dd><p>Get details.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ansys.fluent.core.fluent_connection.ErrorState.name">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#ansys.fluent.core.fluent_connection.ErrorState.name" title="Link to this definition">#</a></dt>
+<dd><p>Get name.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.fluent_connection.ErrorState.set">
+<span class="sig-name descname"><span class="pre">set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">details</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.fluent_connection.ErrorState.set" title="Link to this definition">#</a></dt>
+<dd><p>Method to set the error state name and details to new values.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.fluent_connection.FluentConnection">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.fluent_connection.</span></span><span class="sig-name descname"><span class="pre">FluentConnection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ip</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">port</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">password</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cleanup_on_exit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remote_instance</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_transfer_service</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">slurm_job_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inside_container</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.fluent_connection.FluentConnection" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Encapsulates a Fluent connection.</p>
+<p class="rubric">Methods</p>
+<table class="table">
+<tbody>
+<tr class="row-odd"><td><p><strong>check_health()</strong></p></td>
+<td><p>Check health of Fluent connection.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>exit()</strong></p></td>
+<td><p>Close the Fluent connection and exit Fluent.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.fluent_connection.FluentConnection.check_health" title="ansys.fluent.core.fluent_connection.FluentConnection.check_health"><code class="xref py py-obj docutils literal notranslate"><span class="pre">check_health</span></code></a>()</p></td>
+<td><p>Check health of Fluent connection.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.fluent_connection.FluentConnection.create_grpc_service" title="ansys.fluent.core.fluent_connection.FluentConnection.create_grpc_service"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_grpc_service</span></code></a>(service, *args)</p></td>
+<td><p>Create a gRPC service.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.fluent_connection.FluentConnection.exit" title="ansys.fluent.core.fluent_connection.FluentConnection.exit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">exit</span></code></a>([timeout, timeout_force, wait])</p></td>
+<td><p>Close the Fluent connection and exit Fluent.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.fluent_connection.FluentConnection.force_exit" title="ansys.fluent.core.fluent_connection.FluentConnection.force_exit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">force_exit</span></code></a>()</p></td>
+<td><p>Immediately terminates the Fluent client, losing unsaved progress and data.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.fluent_connection.FluentConnection.register_finalizer_cb" title="ansys.fluent.core.fluent_connection.FluentConnection.register_finalizer_cb"><code class="xref py py-obj docutils literal notranslate"><span class="pre">register_finalizer_cb</span></code></a>(cb)</p></td>
+<td><p>Register a callback to run with the finalizer.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.fluent_connection.FluentConnection.wait_process_finished" title="ansys.fluent.core.fluent_connection.FluentConnection.wait_process_finished"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wait_process_finished</span></code></a>([wait])</p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if local Fluent processes have finished, <code class="docutils literal notranslate"><span class="pre">False</span></code> if they are still running when wait limit (default 60 seconds) is reached.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.fluent_connection.FluentConnection.check_health">
+<span class="sig-name descname"><span class="pre">check_health</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.fluent_connection.FluentConnection.check_health" title="Link to this definition">#</a></dt>
+<dd><p>Check health of Fluent connection.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.fluent_connection.FluentConnection.create_grpc_service">
+<span class="sig-name descname"><span class="pre">create_grpc_service</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">service</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.fluent_connection.FluentConnection.create_grpc_service" title="Link to this definition">#</a></dt>
+<dd><p>Create a gRPC service.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>service</strong><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Any</span></code></span></dt><dd><p>service class</p>
+</dd>
+<dt><strong>args</strong><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Any</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>additional arguments, by default empty</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">Any</span></code></dt><dd><p>service object</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.fluent_connection.FluentConnection.exit">
+<span class="sig-name descname"><span class="pre">exit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout_force</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.fluent_connection.FluentConnection.exit" title="Link to this definition">#</a></dt>
+<dd><p>Close the Fluent connection and exit Fluent.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>timeout</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">float</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Time in seconds before considering that the exit request has timed out.
+If omitted or specified as None, then the request will not time out and will lock up the interpreter
+while waiting for a response. Will return earlier if request succeeds earlier.</p>
+</dd>
+<dt><strong>timeout_force</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values" title="(in Python v3.12)"><span class="xref std std-ref">bool</span></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>If not specified, defaults to <code class="docutils literal notranslate"><span class="pre">True</span></code>. If <code class="docutils literal notranslate"><span class="pre">True</span></code>, attempts to terminate the Fluent process if
+exit request reached timeout. If no timeout is set, this option is ignored.
+Executes <a class="reference internal" href="#ansys.fluent.core.fluent_connection.FluentConnection.force_exit" title="ansys.fluent.core.fluent_connection.FluentConnection.force_exit"><code class="xref py py-func docutils literal notranslate"><span class="pre">force_exit()</span></code></a> or <code class="xref py py-func docutils literal notranslate"><span class="pre">force_exit_container()</span></code>,
+depending on how Fluent was launched.</p>
+</dd>
+<dt><strong>wait</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">float</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">int</span></code></a> or <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values" title="(in Python v3.12)"><span class="xref std std-ref">bool</span></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Specifies whether to wait for local Fluent processes to finish completely before proceeding.
+If omitted or specified as <code class="docutils literal notranslate"><span class="pre">False</span></code>, will proceed as usual without
+waiting for the Fluent processes to finish.
+Can be set to <code class="docutils literal notranslate"><span class="pre">True</span></code> which will wait for up to 60 seconds,
+or set to a float or int value to specify the wait limit.
+If wait limit is reached, will forcefully terminate the Fluent process.
+If set to wait, will return as soon as processes completely finish.
+Does not work for remote Fluent processes.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Can also set the <code class="docutils literal notranslate"><span class="pre">PYFLUENT_TIMEOUT_FORCE_EXIT</span></code> environment variable to specify the number of seconds and
+alter the default <code class="docutils literal notranslate"><span class="pre">timeout</span></code> value. Setting this env var to a non-number value, such as <code class="docutils literal notranslate"><span class="pre">OFF</span></code>,
+will return this function to default behavior. Note that the environment variable will be ignored if
+timeout is specified when calling this function.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">ansys.fluent.core</span> <span class="k">as</span> <span class="nn">pyfluent</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">session</span> <span class="o">=</span> <span class="n">pyfluent</span><span class="o">.</span><span class="n">launch_fluent</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">session</span><span class="o">.</span><span class="n">exit</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.fluent_connection.FluentConnection.force_exit">
+<span class="sig-name descname"><span class="pre">force_exit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.fluent_connection.FluentConnection.force_exit" title="Link to this definition">#</a></dt>
+<dd><p>Immediately terminates the Fluent client, losing unsaved progress and data.</p>
+<p class="rubric">Notes</p>
+<p>If the Fluent session is responsive, prefer using <a class="reference internal" href="#ansys.fluent.core.fluent_connection.FluentConnection.exit" title="ansys.fluent.core.fluent_connection.FluentConnection.exit"><code class="xref py py-func docutils literal notranslate"><span class="pre">exit()</span></code></a> instead.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">ansys.fluent.core</span> <span class="k">as</span> <span class="nn">pyfluent</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">session</span> <span class="o">=</span> <span class="n">pyfluent</span><span class="o">.</span><span class="n">launch_fluent</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">session</span><span class="o">.</span><span class="n">force_exit</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.fluent_connection.FluentConnection.register_finalizer_cb">
+<span class="sig-name descname"><span class="pre">register_finalizer_cb</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cb</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.fluent_connection.FluentConnection.register_finalizer_cb" title="Link to this definition">#</a></dt>
+<dd><p>Register a callback to run with the finalizer.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.fluent_connection.FluentConnection.wait_process_finished">
+<span class="sig-name descname"><span class="pre">wait_process_finished</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wait</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">60</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.fluent_connection.FluentConnection.wait_process_finished" title="Link to this definition">#</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if local Fluent processes have finished, <code class="docutils literal notranslate"><span class="pre">False</span></code> if they
+are still running when wait limit (default 60 seconds) is reached. Immediately
+cancels and returns <code class="docutils literal notranslate"><span class="pre">None</span></code> if <code class="docutils literal notranslate"><span class="pre">wait</span></code> is set to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>wait</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">float</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">int</span></code></a> or <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values" title="(in Python v3.12)"><span class="xref std std-ref">bool</span></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>How long to wait for processes to finish before returning, by default 60 seconds.
+Can also be set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, which will result in waiting indefinitely.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><a class="reference internal" href="#ansys.fluent.core.fluent_connection.UnsupportedRemoteFluentInstance" title="ansys.fluent.core.fluent_connection.UnsupportedRemoteFluentInstance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UnsupportedRemoteFluentInstance</span></code></a></dt><dd><p>If current Fluent instance is running remotely.</p>
+</dd>
+<dt><a class="reference internal" href="#ansys.fluent.core.fluent_connection.WaitTypeError" title="ansys.fluent.core.fluent_connection.WaitTypeError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">WaitTypeError</span></code></a></dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">wait</span></code> is specified improperly.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.fluent_connection.FluentConnectionProperties">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.fluent_connection.</span></span><span class="sig-name descname"><span class="pre">FluentConnectionProperties</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ip</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">port</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">password</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cortex_pwd</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cortex_pid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cortex_host</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fluent_host_pid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inside_container</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.fluent_connection.FluentConnectionProperties" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Stores Fluent connection properties, including connection IP, port and password;
+Fluent Cortex working directory, process ID and hostname; and whether Fluent was
+launched in a docker container.</p>
+<p class="rubric">Examples</p>
+<p>These properties are also available through the session object and can be accessed as:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">ansys.fluent.core</span> <span class="k">as</span> <span class="nn">pyfluent</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">session</span> <span class="o">=</span> <span class="n">pyfluent</span><span class="o">.</span><span class="n">launch_fluent</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">session</span><span class="o">.</span><span class="n">connection_properties</span><span class="o">.</span><span class="n">list_names</span><span class="p">()</span>
+<span class="go">[&#39;ip&#39;, &#39;port&#39;, &#39;password&#39;, &#39;cortex_pwd&#39;, &#39;cortex_pid&#39;, &#39;cortex_host&#39;, &#39;inside_container&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">session</span><span class="o">.</span><span class="n">connection_properties</span><span class="o">.</span><span class="n">ip</span>
+<span class="go">&#39;127.0.0.1&#39;</span>
+</pre></div>
+</div>
+<p><strong>Attributes:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.fluent_connection.FluentConnectionProperties.cortex_host" title="ansys.fluent.core.fluent_connection.FluentConnectionProperties.cortex_host"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cortex_host</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.fluent_connection.FluentConnectionProperties.cortex_pid" title="ansys.fluent.core.fluent_connection.FluentConnectionProperties.cortex_pid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cortex_pid</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.fluent_connection.FluentConnectionProperties.cortex_pwd" title="ansys.fluent.core.fluent_connection.FluentConnectionProperties.cortex_pwd"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cortex_pwd</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.fluent_connection.FluentConnectionProperties.fluent_host_pid" title="ansys.fluent.core.fluent_connection.FluentConnectionProperties.fluent_host_pid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fluent_host_pid</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.fluent_connection.FluentConnectionProperties.inside_container" title="ansys.fluent.core.fluent_connection.FluentConnectionProperties.inside_container"><code class="xref py py-obj docutils literal notranslate"><span class="pre">inside_container</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.fluent_connection.FluentConnectionProperties.ip" title="ansys.fluent.core.fluent_connection.FluentConnectionProperties.ip"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ip</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.fluent_connection.FluentConnectionProperties.password" title="ansys.fluent.core.fluent_connection.FluentConnectionProperties.password"><code class="xref py py-obj docutils literal notranslate"><span class="pre">password</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.fluent_connection.FluentConnectionProperties.port" title="ansys.fluent.core.fluent_connection.FluentConnectionProperties.port"><code class="xref py py-obj docutils literal notranslate"><span class="pre">port</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.fluent_connection.FluentConnectionProperties.list_names" title="ansys.fluent.core.fluent_connection.FluentConnectionProperties.list_names"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list_names</span></code></a>()</p></td>
+<td><p>Returns list with all property names.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.fluent_connection.FluentConnectionProperties.list_values" title="ansys.fluent.core.fluent_connection.FluentConnectionProperties.list_values"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list_values</span></code></a>()</p></td>
+<td><p>Returns dictionary with all property names and values.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ansys.fluent.core.fluent_connection.FluentConnectionProperties.cortex_host">
+<span class="sig-name descname"><span class="pre">cortex_host</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional[str]</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#ansys.fluent.core.fluent_connection.FluentConnectionProperties.cortex_host" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ansys.fluent.core.fluent_connection.FluentConnectionProperties.cortex_pid">
+<span class="sig-name descname"><span class="pre">cortex_pid</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional[int]</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#ansys.fluent.core.fluent_connection.FluentConnectionProperties.cortex_pid" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ansys.fluent.core.fluent_connection.FluentConnectionProperties.cortex_pwd">
+<span class="sig-name descname"><span class="pre">cortex_pwd</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional[str]</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#ansys.fluent.core.fluent_connection.FluentConnectionProperties.cortex_pwd" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ansys.fluent.core.fluent_connection.FluentConnectionProperties.fluent_host_pid">
+<span class="sig-name descname"><span class="pre">fluent_host_pid</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional[int]</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#ansys.fluent.core.fluent_connection.FluentConnectionProperties.fluent_host_pid" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ansys.fluent.core.fluent_connection.FluentConnectionProperties.inside_container">
+<span class="sig-name descname"><span class="pre">inside_container</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional[Union[bool,</span> <span class="pre">Container,</span> <span class="pre">None]]</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#ansys.fluent.core.fluent_connection.FluentConnectionProperties.inside_container" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ansys.fluent.core.fluent_connection.FluentConnectionProperties.ip">
+<span class="sig-name descname"><span class="pre">ip</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional[str]</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#ansys.fluent.core.fluent_connection.FluentConnectionProperties.ip" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.fluent_connection.FluentConnectionProperties.list_names">
+<span class="sig-name descname"><span class="pre">list_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.fluent_connection.FluentConnectionProperties.list_names" title="Link to this definition">#</a></dt>
+<dd><p>Returns list with all property names.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.fluent_connection.FluentConnectionProperties.list_values">
+<span class="sig-name descname"><span class="pre">list_values</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.fluent_connection.FluentConnectionProperties.list_values" title="Link to this definition">#</a></dt>
+<dd><p>Returns dictionary with all property names and values.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ansys.fluent.core.fluent_connection.FluentConnectionProperties.password">
+<span class="sig-name descname"><span class="pre">password</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional[str]</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#ansys.fluent.core.fluent_connection.FluentConnectionProperties.password" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ansys.fluent.core.fluent_connection.FluentConnectionProperties.port">
+<span class="sig-name descname"><span class="pre">port</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional[int]</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#ansys.fluent.core.fluent_connection.FluentConnectionProperties.port" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.fluent_connection.MonitorThread">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.fluent_connection.</span></span><span class="sig-name descname"><span class="pre">MonitorThread</span></span><a class="headerlink" href="#ansys.fluent.core.fluent_connection.MonitorThread" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/threading.html#threading.Thread" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Thread</span></code></a></p>
+<p>A class used for monitoring a Fluent session.</p>
+<p>Daemon thread which will ensure cleanup of session objects, shutdown of
+non-deamon threads etc.</p>
+<dl class="field-list">
+<dt class="field-odd">Attributes<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>cbs</strong><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">Callable</span></code>]</span></dt><dd><p>Cleanup/shutdown functions</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.fluent_connection.MonitorThread.run" title="ansys.fluent.core.fluent_connection.MonitorThread.run"><code class="xref py py-obj docutils literal notranslate"><span class="pre">run</span></code></a>()</p></td>
+<td><p>Run monitor thread.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.fluent_connection.MonitorThread.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.fluent_connection.MonitorThread.run" title="Link to this definition">#</a></dt>
+<dd><p>Run monitor thread.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="ansys.fluent.core.fluent_connection.PortNotProvided">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.fluent_connection.</span></span><span class="sig-name descname"><span class="pre">PortNotProvided</span></span><a class="headerlink" href="#ansys.fluent.core.fluent_connection.PortNotProvided" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ValueError</span></code></a></p>
+<p>Raised when port is not provided.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="ansys.fluent.core.fluent_connection.UnsupportedRemoteFluentInstance">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.fluent_connection.</span></span><span class="sig-name descname"><span class="pre">UnsupportedRemoteFluentInstance</span></span><a class="headerlink" href="#ansys.fluent.core.fluent_connection.UnsupportedRemoteFluentInstance" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ValueError</span></code></a></p>
+<p>Raised when ‘wait_process_finished’ does not support remote Fluent session.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="ansys.fluent.core.fluent_connection.WaitTypeError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.fluent_connection.</span></span><span class="sig-name descname"><span class="pre">WaitTypeError</span></span><a class="headerlink" href="#ansys.fluent.core.fluent_connection.WaitTypeError" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#TypeError" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">TypeError</span></code></a></p>
+<p>Raised when invalid <code class="docutils literal notranslate"><span class="pre">wait</span></code> type is provided.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ansys.fluent.core.fluent_connection.get_container">
+<span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.fluent_connection.</span></span><span class="sig-name descname"><span class="pre">get_container</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">container_id_or_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.fluent_connection.get_container" title="Link to this definition">#</a></dt>
+<dd><p>Get the Docker container object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">Union</span></code>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values" title="(in Python v3.12)"><span class="xref std std-ref">bool</span></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">Container</span></code>, <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">None</span></code></a>]</dt><dd><p>If the system is not correctly set up to run Docker containers, returns <code class="docutils literal notranslate"><span class="pre">None</span></code>.
+If the container was not found, returns <code class="docutils literal notranslate"><span class="pre">False</span></code>.
+If the container is found, returns the associated Docker container object.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>See <a class="reference external" href="https://docker-py.readthedocs.io/en/stable/containers.html#docker.models.containers.Container">Docker container</a> for more information.</p>
+</dd></dl>
+
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.fluent_connection.ErrorState"><code class="docutils literal notranslate"><span class="pre">ErrorState</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.fluent_connection.ErrorState.clear"><code class="docutils literal notranslate"><span class="pre">ErrorState.clear()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.fluent_connection.ErrorState.details"><code class="docutils literal notranslate"><span class="pre">ErrorState.details</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.fluent_connection.ErrorState.name"><code class="docutils literal notranslate"><span class="pre">ErrorState.name</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.fluent_connection.ErrorState.set"><code class="docutils literal notranslate"><span class="pre">ErrorState.set()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.fluent_connection.FluentConnection"><code class="docutils literal notranslate"><span class="pre">FluentConnection</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.fluent_connection.FluentConnection.check_health"><code class="docutils literal notranslate"><span class="pre">FluentConnection.check_health()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.fluent_connection.FluentConnection.create_grpc_service"><code class="docutils literal notranslate"><span class="pre">FluentConnection.create_grpc_service()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.fluent_connection.FluentConnection.exit"><code class="docutils literal notranslate"><span class="pre">FluentConnection.exit()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.fluent_connection.FluentConnection.force_exit"><code class="docutils literal notranslate"><span class="pre">FluentConnection.force_exit()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.fluent_connection.FluentConnection.register_finalizer_cb"><code class="docutils literal notranslate"><span class="pre">FluentConnection.register_finalizer_cb()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.fluent_connection.FluentConnection.wait_process_finished"><code class="docutils literal notranslate"><span class="pre">FluentConnection.wait_process_finished()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.fluent_connection.FluentConnectionProperties"><code class="docutils literal notranslate"><span class="pre">FluentConnectionProperties</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.fluent_connection.FluentConnectionProperties.cortex_host"><code class="docutils literal notranslate"><span class="pre">FluentConnectionProperties.cortex_host</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.fluent_connection.FluentConnectionProperties.cortex_pid"><code class="docutils literal notranslate"><span class="pre">FluentConnectionProperties.cortex_pid</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.fluent_connection.FluentConnectionProperties.cortex_pwd"><code class="docutils literal notranslate"><span class="pre">FluentConnectionProperties.cortex_pwd</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.fluent_connection.FluentConnectionProperties.fluent_host_pid"><code class="docutils literal notranslate"><span class="pre">FluentConnectionProperties.fluent_host_pid</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.fluent_connection.FluentConnectionProperties.inside_container"><code class="docutils literal notranslate"><span class="pre">FluentConnectionProperties.inside_container</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.fluent_connection.FluentConnectionProperties.ip"><code class="docutils literal notranslate"><span class="pre">FluentConnectionProperties.ip</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.fluent_connection.FluentConnectionProperties.list_names"><code class="docutils literal notranslate"><span class="pre">FluentConnectionProperties.list_names()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.fluent_connection.FluentConnectionProperties.list_values"><code class="docutils literal notranslate"><span class="pre">FluentConnectionProperties.list_values()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.fluent_connection.FluentConnectionProperties.password"><code class="docutils literal notranslate"><span class="pre">FluentConnectionProperties.password</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.fluent_connection.FluentConnectionProperties.port"><code class="docutils literal notranslate"><span class="pre">FluentConnectionProperties.port</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.fluent_connection.MonitorThread"><code class="docutils literal notranslate"><span class="pre">MonitorThread</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.fluent_connection.MonitorThread.run"><code class="docutils literal notranslate"><span class="pre">MonitorThread.run()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.fluent_connection.PortNotProvided"><code class="docutils literal notranslate"><span class="pre">PortNotProvided</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.fluent_connection.UnsupportedRemoteFluentInstance"><code class="docutils literal notranslate"><span class="pre">UnsupportedRemoteFluentInstance</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.fluent_connection.WaitTypeError"><code class="docutils literal notranslate"><span class="pre">WaitTypeError</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.fluent_connection.get_container"><code class="docutils literal notranslate"><span class="pre">get_container()</span></code></a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+<!-- If there is no fix edit button function, use the PyData edit-this-button-->
+</div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../../../../_sources/api/general/sessions/Session/fluent_connection.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright (c) 2024 ANSYS, Inc. All rights reserved.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.3.7.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="theme-version">
+  Built with the
+  <a href="https://sphinxdocs.ansys.com/version/stable/index.html"
+    >Ansys Sphinx Theme</a
+  >
+  0.16.6. <br />Last updated on
+  <span id="date"></span>
+</p>
+<script>
+  var options = { day: "numeric", month: "long", year: "numeric" };
+  var lastModifiedDate = new Date(document.lastModified);
+  var date = lastModifiedDate.toLocaleDateString("en-US", options);
+  document.getElementById("date").innerHTML = date;
+</script></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

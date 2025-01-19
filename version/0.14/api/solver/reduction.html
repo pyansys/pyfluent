@@ -1,0 +1,899 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Reduction &#8212; PyFluent</title>
+    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/ansys_sphinx_theme.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    
+        <link href="../../_static/css/breadcrumbs.css" rel="stylesheet">
+    
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/thebelab-helper.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/js/table.js"></script>
+    <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/solver/reduction';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://fluent.docs.pyansys.com/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.14';
+        </script>
+    <link rel="shortcut icon" href="../../_static/ansys-favicon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="reduction" href="_autosummary/ansys.fluent.core.solver.function.reduction.html" />
+    <link rel="prev" title="unregister_callback" href="_autosummary/ansys.fluent.core.streaming_services.monitor_streaming.MonitorsManager.unregister_callback.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <link rel="canonical" href="https://fluent.docs.pyansys.com/version/stable/api/solver/reduction.html" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container"><!-- Debugging: html_theme_options =  -->
+
+  <!-- If there is no MiliSearch enabled, use the PyData search -->
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  <div class="navbar-header-items__start">
+    
+      <div class="navbar-item">
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/pyansys-logo-black-cropped.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../_static/pyansys-logo-black-cropped.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../getting_started/index.html">
+                        Getting started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../user_guide/index.html">
+                        User guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../index.html">
+                        API reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../examples/index.html">
+                        Examples
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../contributing.html">
+                        Contribute
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+        </div>
+      
+      
+        <div class="navbar-item">
+<script>
+document.write(`
+  <div class="version-switcher__container dropdown">
+    <button type="button" class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle" data-bs-toggle="dropdown">
+      0.14  <!-- this text may get changed later by javascript -->
+      <span class="caret"></span>
+    </button>
+    <div class="version-switcher__menu dropdown-menu list-group-flush py-0">
+    <!-- dropdown will be populated by javascript on page load -->
+    </div>
+  </div>
+`);
+</script></div>
+      
+        <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent/discussions" title="Support" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa fa-comment fa-fw"></i></span>
+            <label class="sr-only">Support</label></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </nav>
+  
+
+    
+    <div id="announcement_msg"></div>
+<script>
+  fetch("announcement.html")
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error: ${response.status}`);
+      }
+      return response.text();
+    })
+    .then(text => document.getElementById("announcement_msg").innerHTML = text)
+    .catch((error) => console.error(`Fetch problem: ${error.message}`));
+</script>
+    
+
+    
+    <div class="container-xl">
+    <div class="row">
+        <div class="col-12 col-md-3" id="breadcrumbs-spacer"></div>
+        <div class="col-12 col-md-11 col-xl-9" id="breadcrumbs">
+          
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+    
+        <li class="nav-item nav-item-additional-breadcrumb"><a href="https://docs.pyansys.com/">PyAnsys</a> » </li>
+    
+    
+        <li class="nav-item nav-item-0"><a href="../../index.html">PyFluent</a> » </li>
+    
+
+          <li class="nav-item nav-item-1"><a href="../index.html" >API reference</a> » </li>
+          <li class="nav-item nav-item-2"><a href="index.html" accesskey="U">Solver</a> » </li>
+        <li class="nav-item nav-item-this"><a href="">Reduction</a></li> 
+      </ul>
+    </div>
+        </div>
+  </div>
+</div>
+    
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../getting_started/index.html">
+                        Getting started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../user_guide/index.html">
+                        User guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../index.html">
+                        API reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../examples/index.html">
+                        Examples
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../contributing.html">
+                        Contribute
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<script>
+document.write(`
+  <div class="version-switcher__container dropdown">
+    <button type="button" class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle" data-bs-toggle="dropdown">
+      0.14  <!-- this text may get changed later by javascript -->
+      <span class="caret"></span>
+    </button>
+    <div class="version-switcher__menu dropdown-menu list-group-flush py-0">
+    <!-- dropdown will be populated by javascript on page load -->
+    </div>
+  </div>
+`);
+</script></div>
+        
+          <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent/discussions" title="Support" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa fa-comment fa-fw"></i></span>
+            <label class="sr-only">Support</label></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item"><nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../general/index.html">General</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../meshing/index.html">Meshing</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Solver</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="settings.html">Solver settings objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tuicommands.html">Solver TUI commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datamodel/index.html">solver.datamodel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="schemeeval.html">Scheme code evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fielddata.html">Field data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fieldinfo.html">Field info</a></li>
+<li class="toctree-l2"><a class="reference internal" href="events.html">EventsManager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="monitors.html">MonitorsManager</a></li>
+<li class="toctree-l2 current active has-children"><a class="current reference internal" href="#">Reduction</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/ansys.fluent.core.solver.function.reduction.html">reduction</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article"></div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="reduction">
+<span id="ref-reduction"></span><h1>Reduction<a class="headerlink" href="#reduction" title="Permalink to this heading">#</a></h1>
+<p>You can use reduction functions on Fluent data from one
+or across multiple remote Fluent sessions.</p>
+<section id="accessing-reduction-functions">
+<h2>Accessing reduction functions<a class="headerlink" href="#accessing-reduction-functions" title="Permalink to this heading">#</a></h2>
+<p>In order to access reduction function, import it and launch the fluent solver.
+Then, make boundary conditions data, etc. available (for example, by reading case files):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">ansys.fluent.core.solver.function</span> <span class="kn">import</span> <span class="n">reduction</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">ansys.fluent.core</span> <span class="k">as</span> <span class="nn">pyfluent</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">ansys.fluent.core.examples</span> <span class="kn">import</span> <span class="n">download_file</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">solver</span> <span class="o">=</span> <span class="n">pyfluent</span><span class="o">.</span><span class="n">launch_fluent</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s2">&quot;solver&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">case_path</span> <span class="o">=</span> <span class="n">download_file</span><span class="p">(</span><span class="s2">&quot;Static_Mixer_main.cas.h5&quot;</span><span class="p">,</span> <span class="s2">&quot;pyfluent/static_mixer&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">solver</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">file_type</span><span class="o">=</span><span class="s2">&quot;case&quot;</span><span class="p">,</span> <span class="n">file_name</span><span class="o">=</span><span class="n">case_path</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="simple-usage">
+<h2>Simple usage<a class="headerlink" href="#simple-usage" title="Permalink to this heading">#</a></h2>
+<p>You can use the reduction functions from PyFluent simply by initializing the solution
+and accessing the select functions with the required parameters.</p>
+<p>For example, in the below case, do hybrid initialization of the solution and perform
+an area-average of absolute pressure over the velocity inlet.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">solver</span><span class="o">.</span><span class="n">solution</span><span class="o">.</span><span class="n">initialization</span><span class="o">.</span><span class="n">hybrid_initialize</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">reduction</span><span class="o">.</span><span class="n">area_average</span><span class="p">(</span>
+<span class="gp">&gt;&gt;&gt; </span>  <span class="n">expr</span><span class="o">=</span><span class="s2">&quot;AbsolutePressure&quot;</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>  <span class="n">locations</span><span class="o">=</span><span class="n">solver</span><span class="o">.</span><span class="n">setup</span><span class="o">.</span><span class="n">boundary_conditions</span><span class="o">.</span><span class="n">velocity_inlet</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">)</span>
+<span class="go">101325.0000000001</span>
+</pre></div>
+</div>
+<p>Similarly one can use the other functions available currently with PyFluent.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The fluxes are evaluated on boundaries and face zones. So, for ‘volume’, ‘mass_flow’,
+‘mass_average’ and ‘mass_integrated_average’ the chosen location cannot be a
+user-defined surface.</p>
+</div>
+</section>
+<section id="usage-of-context">
+<h2>Usage of context<a class="headerlink" href="#usage-of-context" title="Permalink to this heading">#</a></h2>
+<p>You can also use the context argument available with all the reduction functions
+to mention the context instead of listing down the entire path of the locations,
+and the path to the location is identified automatically.</p>
+<p>For example, to calculate area of a location one has to do:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">solver</span><span class="o">.</span><span class="n">solution</span><span class="o">.</span><span class="n">initialization</span><span class="o">.</span><span class="n">hybrid_initialize</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">reduction</span><span class="o">.</span><span class="n">area</span><span class="p">(</span>
+<span class="gp">&gt;&gt;&gt; </span>  <span class="n">locations</span><span class="o">=</span><span class="p">[</span><span class="n">solver</span><span class="o">.</span><span class="n">setup</span><span class="o">.</span><span class="n">boundary_conditions</span><span class="o">.</span><span class="n">velocity_inlet</span><span class="p">[</span><span class="s2">&quot;inlet1&quot;</span><span class="p">]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">)</span>
+<span class="go">7.565427133371293e-07</span>
+</pre></div>
+</div>
+<p>Instead, one can use the context argument:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">solver</span><span class="o">.</span><span class="n">solution</span><span class="o">.</span><span class="n">initialization</span><span class="o">.</span><span class="n">hybrid_initialize</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">reduction</span><span class="o">.</span><span class="n">area</span><span class="p">(</span><span class="n">locations</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;inlet1&quot;</span><span class="p">],</span> <span class="n">ctxt</span><span class="o">=</span><span class="n">solver</span><span class="p">)</span>
+<span class="go">7.565427133371293e-07</span>
+</pre></div>
+</div>
+</section>
+<section id="current-capabilities">
+<h2>Current capabilities<a class="headerlink" href="#current-capabilities" title="Permalink to this heading">#</a></h2>
+<p>At present, PyFluent allows the usage of the following reduction functions:</p>
+<section id="area">
+<h3>Area<a class="headerlink" href="#area" title="Permalink to this heading">#</a></h3>
+<p>Compute the total area of the specified locations.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">reduction</span><span class="o">.</span><span class="n">area</span><span class="p">(</span><span class="n">locations</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="area-average">
+<h3>Area average<a class="headerlink" href="#area-average" title="Permalink to this heading">#</a></h3>
+<p>Compute the area averaged value of the specified expression over the specified locations.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">reduction</span><span class="o">.</span><span class="n">area_average</span><span class="p">(</span><span class="n">expression</span><span class="p">,</span> <span class="n">locations</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="area-integrated-average">
+<h3>Area integrated average<a class="headerlink" href="#area-integrated-average" title="Permalink to this heading">#</a></h3>
+<p>Compute the area integrated averaged of the specified expression over the specified locations.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">reduction</span><span class="o">.</span><span class="n">area_integrated_average</span><span class="p">(</span><span class="n">expression</span><span class="p">,</span> <span class="n">locations</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="volume">
+<h3>Volume<a class="headerlink" href="#volume" title="Permalink to this heading">#</a></h3>
+<p>Compute the total volume of the specified locations.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">reduction</span><span class="o">.</span><span class="n">volume</span><span class="p">(</span><span class="n">locations</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Only boundaries and face zones are allowed locations. It cannot be a user-defined surface.</p>
+</div>
+</section>
+<section id="volume-average">
+<h3>Volume average<a class="headerlink" href="#volume-average" title="Permalink to this heading">#</a></h3>
+<p>Compute the volume averaged value of the specified expression over the specified locations.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">reduction</span><span class="o">.</span><span class="n">volume_average</span><span class="p">(</span><span class="n">expression</span><span class="p">,</span> <span class="n">locations</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="volume-integrated-average">
+<h3>Volume integrated average<a class="headerlink" href="#volume-integrated-average" title="Permalink to this heading">#</a></h3>
+<p>Compute the volume integrated averaged of the specified expression over the specified locations.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">reduction</span><span class="o">.</span><span class="n">volume_integrated_average</span><span class="p">(</span><span class="n">expression</span><span class="p">,</span> <span class="n">locations</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="centroid">
+<h3>Centroid<a class="headerlink" href="#centroid" title="Permalink to this heading">#</a></h3>
+<p>Compute the geometric centroid of the specified locations as a vector.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">reduction</span><span class="o">.</span><span class="n">centroid</span><span class="p">(</span><span class="n">locations</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="force">
+<h3>Force<a class="headerlink" href="#force" title="Permalink to this heading">#</a></h3>
+<p>Compute the force acting on the locations specified (should be walls) as a vector.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">reduction</span><span class="o">.</span><span class="n">force</span><span class="p">(</span><span class="n">locations</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="pressure-force">
+<h3>Pressure force<a class="headerlink" href="#pressure-force" title="Permalink to this heading">#</a></h3>
+<p>Compute the pressure force acting on the locations specified (should be walls) as a vector.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">reduction</span><span class="o">.</span><span class="n">pressure_force</span><span class="p">(</span><span class="n">locations</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="viscous-force">
+<h3>Viscous force<a class="headerlink" href="#viscous-force" title="Permalink to this heading">#</a></h3>
+<p>Compute the viscous force acting on the locations specified (should be walls) as a vector.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">reduction</span><span class="o">.</span><span class="n">viscous_force</span><span class="p">(</span><span class="n">locations</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="moment">
+<h3>Moment<a class="headerlink" href="#moment" title="Permalink to this heading">#</a></h3>
+<p>Compute the moment vector about the specified point (which can be single-valued expression)
+for the specified locations.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">reduction</span><span class="o">.</span><span class="n">moment</span><span class="p">(</span><span class="n">expression</span><span class="p">,</span> <span class="n">locations</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="count">
+<h3>Count<a class="headerlink" href="#count" title="Permalink to this heading">#</a></h3>
+<p>Compute the total number of cells included in the specified locations.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">reduction</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">locations</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="minimum">
+<h3>Minimum<a class="headerlink" href="#minimum" title="Permalink to this heading">#</a></h3>
+<p>Compute the minimum of the specified expression over the specified locations.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">reduction</span><span class="o">.</span><span class="n">minimum</span><span class="p">(</span><span class="n">expression</span><span class="p">,</span> <span class="n">locations</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="maximum">
+<h3>Maximum<a class="headerlink" href="#maximum" title="Permalink to this heading">#</a></h3>
+<p>Compute the maximum of the specified expression over the specified locations.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">reduction</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">expression</span><span class="p">,</span> <span class="n">locations</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="mass-average">
+<h3>Mass average<a class="headerlink" href="#mass-average" title="Permalink to this heading">#</a></h3>
+<p>Compute the mass-weighted average value of the specified expression over the specified locations.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">reduction</span><span class="o">.</span><span class="n">mass_average</span><span class="p">(</span><span class="n">expression</span><span class="p">,</span> <span class="n">locations</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Only boundaries and face zones are allowed locations. It cannot be a user-defined surface.</p>
+</div>
+</section>
+<section id="mass-integrated-average">
+<h3>Mass integrated average<a class="headerlink" href="#mass-integrated-average" title="Permalink to this heading">#</a></h3>
+<p>Compute the total mass-weighted value of the specified expression over the specified locations.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">reduction</span><span class="o">.</span><span class="n">mass_integrated_average</span><span class="p">(</span><span class="n">expression</span><span class="p">,</span> <span class="n">locations</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Only boundaries and face zones are allowed locations. It cannot be a user-defined surface.</p>
+</div>
+</section>
+<section id="mass-flow">
+<h3>Mass flow<a class="headerlink" href="#mass-flow" title="Permalink to this heading">#</a></h3>
+<p>Compute the total mass flow rate of the specified locations.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">reduction</span><span class="o">.</span><span class="n">mass_flow</span><span class="p">(</span><span class="n">locations</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Only boundaries and face zones are allowed locations. It cannot be a user-defined surface.</p>
+</div>
+</section>
+<section id="mass-flow-average">
+<h3>Mass flow average<a class="headerlink" href="#mass-flow-average" title="Permalink to this heading">#</a></h3>
+<p>Compute the mass-flow-weighted average value of the specified expression over the specified locations.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">reduction</span><span class="o">.</span><span class="n">mass_flow_average</span><span class="p">(</span><span class="n">expression</span><span class="p">,</span> <span class="n">locations</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="mass-flow-integrated-average">
+<h3>Mass flow integrated average<a class="headerlink" href="#mass-flow-integrated-average" title="Permalink to this heading">#</a></h3>
+<p>Compute the total mass-flow-weighted value of the specified expression over the specified locations.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">reduction</span><span class="o">.</span><span class="n">mass_flow_integrated_average</span><span class="p">(</span><span class="n">expression</span><span class="p">,</span> <span class="n">locations</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="example-use-cases">
+<h2>Example use cases<a class="headerlink" href="#example-use-cases" title="Permalink to this heading">#</a></h2>
+<p>You can either calculate the area of one inlet or the combine area of all
+the velocity inlets with the below examples:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">area_inlet_1</span> <span class="o">=</span> <span class="n">reduction</span><span class="o">.</span><span class="n">area</span><span class="p">(</span>
+<span class="gp">&gt;&gt;&gt; </span>  <span class="n">locations</span><span class="o">=</span><span class="p">[</span><span class="n">solver</span><span class="o">.</span><span class="n">setup</span><span class="o">.</span><span class="n">boundary_conditions</span><span class="o">.</span><span class="n">velocity_inlet</span><span class="p">[</span><span class="s2">&quot;inlet1&quot;</span><span class="p">]],</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">)</span>
+<span class="go">7.565427133371293e-07</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">area_inlet</span> <span class="o">=</span> <span class="n">reduction</span><span class="o">.</span><span class="n">area</span><span class="p">(</span>
+<span class="gp">&gt;&gt;&gt; </span>  <span class="n">locations</span><span class="o">=</span><span class="p">[</span><span class="n">solver</span><span class="o">.</span><span class="n">setup</span><span class="o">.</span><span class="n">boundary_conditions</span><span class="o">.</span><span class="n">velocity_inlet</span><span class="p">],</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">)</span>
+<span class="go">1.513085401926681e-06</span>
+</pre></div>
+</div>
+<p>You can calculate the area average of “Absolute Pressure” over the entire set of velocity
+inlets as shown:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">reduction</span><span class="o">.</span><span class="n">area_average</span><span class="p">(</span>
+<span class="gp">&gt;&gt;&gt; </span>  <span class="n">expr</span><span class="o">=</span><span class="s2">&quot;AbsolutePressure&quot;</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>  <span class="n">locations</span><span class="o">=</span><span class="n">solver</span><span class="o">.</span><span class="n">setup</span><span class="o">.</span><span class="n">boundary_conditions</span><span class="o">.</span><span class="n">velocity_inlet</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">)</span>
+<span class="go">101325.0000000001</span>
+</pre></div>
+</div>
+<p>You can calculate the area integrated average of “Absolute Pressure” over the velocity inlet 1
+as shown:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">reduction</span><span class="o">.</span><span class="n">area_integrated_average</span><span class="p">(</span>
+<span class="gp">&gt;&gt;&gt; </span>  <span class="n">expr</span><span class="o">=</span><span class="s2">&quot;AbsolutePressure&quot;</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>  <span class="n">locations</span><span class="o">=</span><span class="p">[</span><span class="n">solver</span><span class="o">.</span><span class="n">setup</span><span class="o">.</span><span class="n">boundary_conditions</span><span class="o">.</span><span class="n">velocity_inlet</span><span class="p">[</span><span class="s2">&quot;inlet1&quot;</span><span class="p">]],</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">)</span>
+<span class="go">0.07665669042888468</span>
+</pre></div>
+</div>
+<p>You can calculate the geometric centroid of the velocity inlet 2 as shown:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">reduction</span><span class="o">.</span><span class="n">centroid</span><span class="p">(</span>
+<span class="gp">&gt;&gt;&gt; </span>  <span class="n">locations</span><span class="o">=</span><span class="p">[</span><span class="n">solver</span><span class="o">.</span><span class="n">setup</span><span class="o">.</span><span class="n">boundary_conditions</span><span class="o">.</span><span class="n">velocity_inlet</span><span class="p">[</span><span class="s2">&quot;inlet2&quot;</span><span class="p">]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">)</span>
+<span class="go">[-0.001000006193379666, -0.002999999999999999, 0.001500047988232209]</span>
+</pre></div>
+</div>
+<p>You can calculate the moment vector about a single-valued expression
+for the specified locations as shown:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">reduction</span><span class="o">.</span><span class="n">moment</span><span class="p">(</span>
+<span class="gp">&gt;&gt;&gt; </span>  <span class="n">expr</span><span class="o">=</span><span class="s2">&quot;Force([&#39;wall&#39;])&quot;</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>  <span class="n">locations</span><span class="o">=</span><span class="p">[</span><span class="n">solver</span><span class="o">.</span><span class="n">setup</span><span class="o">.</span><span class="n">boundary_conditions</span><span class="o">.</span><span class="n">velocity_inlet</span><span class="p">[</span><span class="s2">&quot;inlet2&quot;</span><span class="p">]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">)</span>
+<span class="go">[ 1.15005117e-24,  1.15218653e-24, -6.60723735e-20]</span>
+</pre></div>
+</div>
+<p>You can calculate the moment vector about the specified point for the
+specified locations as shown:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">reduction</span><span class="o">.</span><span class="n">moment</span><span class="p">(</span>
+<span class="gp">&gt;&gt;&gt; </span>  <span class="n">expr</span><span class="o">=</span><span class="s2">&quot;[&#39;inlet1&#39;]&quot;</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>  <span class="n">locations</span><span class="o">=</span><span class="p">[</span><span class="n">solver</span><span class="o">.</span><span class="n">setup</span><span class="o">.</span><span class="n">boundary_conditions</span><span class="o">.</span><span class="n">velocity_inlet</span><span class="p">[</span><span class="s2">&quot;inlet2&quot;</span><span class="p">]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">)</span>
+<span class="go">[ 1.15005117e-24,  1.15218653e-24, -6.60723735e-20]</span>
+</pre></div>
+</div>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="_autosummary/ansys.fluent.core.solver.function.reduction.html#module-ansys.fluent.core.solver.function.reduction" title="ansys.fluent.core.solver.function.reduction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reduction</span></code></a></p></td>
+<td><p>Module providing reductions functions that can be applied to Fluent data from one or across multiple remote Fluent sessions.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-reduction-functions">Accessing reduction functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-usage">Simple usage</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#usage-of-context">Usage of context</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#current-capabilities">Current capabilities</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#area">Area</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#area-average">Area average</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#area-integrated-average">Area integrated average</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#volume">Volume</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#volume-average">Volume average</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#volume-integrated-average">Volume integrated average</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#centroid">Centroid</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#force">Force</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pressure-force">Pressure force</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#viscous-force">Viscous force</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#moment">Moment</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#count">Count</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#minimum">Minimum</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#maximum">Maximum</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mass-average">Mass average</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mass-integrated-average">Mass integrated average</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mass-flow">Mass flow</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mass-flow-average">Mass flow average</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mass-flow-integrated-average">Mass flow integrated average</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-use-cases">Example use cases</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  <div class="tocsection sourcelink">
+    <a href="../../_sources/api/solver/reduction.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+  <p class="copyright">
+    
+      © Copyright (c) 2023 ANSYS, Inc. All rights reserved.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.13.3.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

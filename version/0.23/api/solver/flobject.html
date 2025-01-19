@@ -1,0 +1,2190 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>flobject &#8212; PyFluent</title>
+
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=d2d258e8" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/ansys_sphinx_theme.css?v=a362721a" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://www.nerdfonts.com/assets/css/webfont.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+ 
+<link href="../../_static/css/breadcrumbs.css" rel="stylesheet" />
+
+    <script src="../../_static/documentation_options.js?v=417b6048"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/thebelab-helper.js"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=49e1bf35"></script>
+    <script src="../../_static/toggleprompt.js?v=cec9bd37"></script>
+    <script src="../../_static/js/table.js?v=b64f5182"></script>
+    <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/solver/flobject';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.14.4';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://fluent.docs.pyansys.com/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.23';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner = false;
+        </script>
+    <link rel="icon" href="../../_static/ansys-favicon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <link rel="canonical" href="https://fluent.docs.pyansys.com/version/stable/api/solver/flobject.html" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container"><!-- Debugging: html_theme_options =  -->
+
+<!-- If there is no MiliSearch enabled, use the PyData search -->
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+   
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/pyansys-logo-black-cropped.png" class="logo__image only-light" alt="PyFluent - Home"/>
+    <script>document.write(`<img src="../../_static/pyansys-logo-black-cropped.png" class="logo__image only-dark" alt="PyFluent - Home"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../getting_started/index.html">
+                        Getting started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../user_guide/index.html">
+                        User guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../index.html">
+                        API reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../examples/index.html">
+                        Examples
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../contributing.html">
+                        Contributing to PyFluent
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+<script>
+document.write(`
+  <div class="version-switcher__container dropdown">
+    <button id="pst-version-switcher-button-2"
+      type="button"
+      class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle"
+      data-bs-toggle="dropdown"
+      aria-haspopup="listbox"
+      aria-controls="pst-version-switcher-list-2"
+      aria-label="Version switcher list"
+    >
+      Choose version  <!-- this text may get changed later by javascript -->
+      <span class="caret"></span>
+    </button>
+    <div id="pst-version-switcher-list-2"
+      class="version-switcher__menu dropdown-menu list-group-flush py-0"
+      role="listbox" aria-labelledby="pst-version-switcher-button-2">
+      <!-- dropdown will be populated by javascript on page load -->
+    </div>
+  </div>
+`);
+</script></div>
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent/discussions" title="Support" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa fa-comment fa-fw fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Support</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </nav>
+    <div id="announcement_msg"></div>
+<script>
+  fetch("announcement.html")
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error: ${response.status}`);
+      }
+      return response.text();
+    })
+    .then(
+      (text) => (document.getElementById("announcement_msg").innerHTML = text),
+    )
+    .catch((error) => console.error(`Fetch problem: ${error.message}`));
+</script>  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item">
+<nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../getting_started/index.html">
+                        Getting started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../user_guide/index.html">
+                        User guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../index.html">
+                        API reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../examples/index.html">
+                        Examples
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../contributing.html">
+                        Contributing to PyFluent
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<script>
+document.write(`
+  <div class="version-switcher__container dropdown">
+    <button id="pst-version-switcher-button-3"
+      type="button"
+      class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle"
+      data-bs-toggle="dropdown"
+      aria-haspopup="listbox"
+      aria-controls="pst-version-switcher-list-3"
+      aria-label="Version switcher list"
+    >
+      Choose version  <!-- this text may get changed later by javascript -->
+      <span class="caret"></span>
+    </button>
+    <div id="pst-version-switcher-list-3"
+      class="version-switcher__menu dropdown-menu list-group-flush py-0"
+      role="listbox" aria-labelledby="pst-version-switcher-button-3">
+      <!-- dropdown will be populated by javascript on page load -->
+    </div>
+  </div>
+`);
+</script></div>
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent/discussions" title="Support" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa fa-comment fa-fw fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Support</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+         
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="https://docs.pyansys.com/" class="nav-link">PyAnsys</a>
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a
+        href="../../index.html"
+        class="nav-link"
+        aria-label="Home"
+      >
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+      
+    <li class="breadcrumb-item active" aria-current="page"><code class="docutils literal notranslate"><span class="pre">flobject</span></code></li>
+    
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="module-ansys.fluent.core.solver.flobject">
+<span id="flobject"></span><h1><code class="docutils literal notranslate"><span class="pre">flobject</span></code><a class="headerlink" href="#module-ansys.fluent.core.solver.flobject" title="Link to this heading">#</a></h1>
+<p>Module for accessing and modifying hierarchy of Fluent settings.</p>
+<p>The only useful method is ‘<cite>get_root`</cite>, which returns the root object for
+accessing Fluent settings.</p>
+<p>Child objects can be generally accessed or modified using attribute access.
+Named child objects can be accessed or modified using index operators.</p>
+<p>Calling an object will return its current value.</p>
+<section id="example">
+<h2>Example<a class="headerlink" href="#example" title="Link to this heading">#</a></h2>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">r</span> <span class="o">=</span> <span class="n">flobject</span><span class="o">.</span><span class="n">get_root</span><span class="p">(</span><span class="n">proxy</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">is_energy_on</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">setup</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">energy</span><span class="o">.</span><span class="n">enabled</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r</span><span class="o">.</span><span class="n">setup</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">energy</span><span class="o">.</span><span class="n">enabled</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r</span><span class="o">.</span><span class="n">boundary_conditions</span><span class="o">.</span><span class="n">velocity_inlet</span><span class="p">[</span><span class="s1">&#39;inlet&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">vmag</span><span class="o">.</span><span class="n">constant</span> <span class="o">=</span> <span class="mi">20</span>
+</pre></div>
+</div>
+</section>
+<p><strong>Classes:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.Action" title="ansys.fluent.core.solver.flobject.Action"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Action</span></code></a>([name, parent])</p></td>
+<td><p>Intermediate Base class for Command and Query class.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.AllowedValuesMixin" title="ansys.fluent.core.solver.flobject.AllowedValuesMixin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AllowedValuesMixin</span></code></a>()</p></td>
+<td><p>Provides allowed values.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.Base" title="ansys.fluent.core.solver.flobject.Base"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Base</span></code></a>([name, parent])</p></td>
+<td><p>Provides the base class for settings and command objects.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.BaseCommand" title="ansys.fluent.core.solver.flobject.BaseCommand"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BaseCommand</span></code></a>([name, parent])</p></td>
+<td><p>Executes command.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.Boolean" title="ansys.fluent.core.solver.flobject.Boolean"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Boolean</span></code></a>([name, parent])</p></td>
+<td><p>A <code class="docutils literal notranslate"><span class="pre">Boolean</span></code> object representing a Boolean value setting.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.BooleanList" title="ansys.fluent.core.solver.flobject.BooleanList"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BooleanList</span></code></a>([name, parent])</p></td>
+<td><p>A <code class="docutils literal notranslate"><span class="pre">BooleanList</span></code> object representing a Boolean list setting.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.Command" title="ansys.fluent.core.solver.flobject.Command"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Command</span></code></a>([name, parent])</p></td>
+<td><p>Command object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.CommandWithPositionalArgs" title="ansys.fluent.core.solver.flobject.CommandWithPositionalArgs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CommandWithPositionalArgs</span></code></a>([name, parent])</p></td>
+<td><p>Command Object.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.CreatableNamedObjectMixin" title="ansys.fluent.core.solver.flobject.CreatableNamedObjectMixin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CreatableNamedObjectMixin</span></code></a>()</p></td>
+<td><p>Provides creatable named objects for Fluent 2025 R1 and later.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.CreatableNamedObjectMixinOld" title="ansys.fluent.core.solver.flobject.CreatableNamedObjectMixinOld"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CreatableNamedObjectMixinOld</span></code></a>()</p></td>
+<td><p>Provides creatable named objects for Fluent 2024 R2 and earlier.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.FileName" title="ansys.fluent.core.solver.flobject.FileName"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FileName</span></code></a>([name, parent])</p></td>
+<td><p>Resolves MRO for child classes.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.Filename" title="ansys.fluent.core.solver.flobject.Filename"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Filename</span></code></a>([name, parent])</p></td>
+<td><p>A <code class="docutils literal notranslate"><span class="pre">Filename</span></code> object representing a file name.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.FilenameList" title="ansys.fluent.core.solver.flobject.FilenameList"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FilenameList</span></code></a>([name, parent])</p></td>
+<td><p>A FilenameList object represents a list of file names.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.Group" title="ansys.fluent.core.solver.flobject.Group"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Group</span></code></a>([name, parent])</p></td>
+<td><p>A <code class="docutils literal notranslate"><span class="pre">Group</span></code> container object.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.Integer" title="ansys.fluent.core.solver.flobject.Integer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Integer</span></code></a>([name, parent])</p></td>
+<td><p>An <code class="docutils literal notranslate"><span class="pre">Integer</span></code> object representing an integer value setting.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.IntegerList" title="ansys.fluent.core.solver.flobject.IntegerList"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IntegerList</span></code></a>([name, parent])</p></td>
+<td><p>An <code class="docutils literal notranslate"><span class="pre">Integer</span></code> object representing an integer list setting.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.ListObject" title="ansys.fluent.core.solver.flobject.ListObject"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ListObject</span></code></a>([name, parent])</p></td>
+<td><p>A <code class="docutils literal notranslate"><span class="pre">ListObject</span></code> container is a container object, similar to a Python list object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.Map" title="ansys.fluent.core.solver.flobject.Map"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Map</span></code></a>([name, parent])</p></td>
+<td><p>A <code class="docutils literal notranslate"><span class="pre">Map</span></code> object representing key-value settings.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.NamedObject" title="ansys.fluent.core.solver.flobject.NamedObject"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NamedObject</span></code></a>([name, parent])</p></td>
+<td><p>A <code class="docutils literal notranslate"><span class="pre">NamedObject</span></code> container is a container object similar to a Python dictionary object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.NamedObjectWildcardPath" title="ansys.fluent.core.solver.flobject.NamedObjectWildcardPath"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NamedObjectWildcardPath</span></code></a>(flproxy, path, ...)</p></td>
+<td><p>WildcardPath at a NamedObject path, so it can be looked up by wildcard again.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.Numerical" title="ansys.fluent.core.solver.flobject.Numerical"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Numerical</span></code></a>([name, parent])</p></td>
+<td><p>Exposes attribute accessor on settings object - specific to numerical objects.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.Property" title="ansys.fluent.core.solver.flobject.Property"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Property</span></code></a>([name, parent])</p></td>
+<td><p>Exposes attribute accessor on settings object.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.Query" title="ansys.fluent.core.solver.flobject.Query"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Query</span></code></a>([name, parent])</p></td>
+<td><p>Query object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.Real" title="ansys.fluent.core.solver.flobject.Real"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Real</span></code></a>([name, parent])</p></td>
+<td><p>A <code class="docutils literal notranslate"><span class="pre">Real</span></code> object representing a real value setting.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.RealList" title="ansys.fluent.core.solver.flobject.RealList"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RealList</span></code></a>([name, parent])</p></td>
+<td><p>A <code class="docutils literal notranslate"><span class="pre">RealList</span></code> object representing a real list setting.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.RealNumerical" title="ansys.fluent.core.solver.flobject.RealNumerical"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RealNumerical</span></code></a>([name, parent])</p></td>
+<td><p>A <code class="docutils literal notranslate"><span class="pre">RealNumerical</span></code> object representing a real value setting, including single real values and containers of real values, such as lists.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.RealVector" title="ansys.fluent.core.solver.flobject.RealVector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RealVector</span></code></a>([name, parent])</p></td>
+<td><p>An object representing a 3D vector.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.SettingsBase" title="ansys.fluent.core.solver.flobject.SettingsBase"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SettingsBase</span></code></a>([name, parent])</p></td>
+<td><p>Base class for settings objects.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.String" title="ansys.fluent.core.solver.flobject.String"><code class="xref py py-obj docutils literal notranslate"><span class="pre">String</span></code></a>([name, parent])</p></td>
+<td><p>A <code class="docutils literal notranslate"><span class="pre">String</span></code> object representing a string value setting.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.StringList" title="ansys.fluent.core.solver.flobject.StringList"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StringList</span></code></a>([name, parent])</p></td>
+<td><p>A <code class="docutils literal notranslate"><span class="pre">StringList</span></code> object representing a string list setting.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.Textual" title="ansys.fluent.core.solver.flobject.Textual"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Textual</span></code></a>([name, parent])</p></td>
+<td><p>Exposes attribute accessor on settings object - specific to string objects.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.WildcardPath" title="ansys.fluent.core.solver.flobject.WildcardPath"><code class="xref py py-obj docutils literal notranslate"><span class="pre">WildcardPath</span></code></a>(flproxy, path, state_cls, ...)</p></td>
+<td><p>Class wrapping a wildcard path to perform get_var and set_var on flproxy.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Exceptions:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.DeprecatedSettingWarning" title="ansys.fluent.core.solver.flobject.DeprecatedSettingWarning"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DeprecatedSettingWarning</span></code></a></p></td>
+<td><p>Provides deprecated settings warning.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.InactiveObjectError" title="ansys.fluent.core.solver.flobject.InactiveObjectError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InactiveObjectError</span></code></a>(python_path)</p></td>
+<td><p>Inactive object access.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.UnstableSettingWarning" title="ansys.fluent.core.solver.flobject.UnstableSettingWarning"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UnstableSettingWarning</span></code></a></p></td>
+<td><p>Provides unstable settings warning.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Functions:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.assert_type" title="ansys.fluent.core.solver.flobject.assert_type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">assert_type</span></code></a>(val, tp)</p></td>
+<td><p>Assert type.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.check_type" title="ansys.fluent.core.solver.flobject.check_type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">check_type</span></code></a>(val, tp)</p></td>
+<td><p>Check type of object.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.find_children" title="ansys.fluent.core.solver.flobject.find_children"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_children</span></code></a>(obj[, identifier])</p></td>
+<td><p>Returns path of all the child objects matching an identifier.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.get_cls" title="ansys.fluent.core.solver.flobject.get_cls"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_cls</span></code></a>(name, info[, parent, version, ...])</p></td>
+<td><p>Create a class for the object identified by &quot;path&quot;.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.get_root" title="ansys.fluent.core.solver.flobject.get_root"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_root</span></code></a>(flproxy[, version, interrupt, ...])</p></td>
+<td><p>Get the root settings object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.to_python_name" title="ansys.fluent.core.solver.flobject.to_python_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_python_name</span></code></a>(fluent_name)</p></td>
+<td><p>Convert a scheme string to a Python variable name.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.Action">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.solver.flobject.</span></span><span class="sig-name descname"><span class="pre">Action</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.Action" title="Link to this definition">#</a></dt>
+<dd><p>Intermediate Base class for Command and Query class.</p>
+<p><strong>Attributes:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.Action.argument_names" title="ansys.fluent.core.solver.flobject.Action.argument_names"><code class="xref py py-obj docutils literal notranslate"><span class="pre">argument_names</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.Action.get_completer_info" title="ansys.fluent.core.solver.flobject.Action.get_completer_info"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_completer_info</span></code></a>([prefix, excluded])</p></td>
+<td><p>Get completer info of all arguments.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.Action.argument_names">
+<span class="sig-name descname"><span class="pre">argument_names</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#ansys.fluent.core.solver.flobject.Action.argument_names" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.Action.get_completer_info">
+<span class="sig-name descname"><span class="pre">get_completer_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prefix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">excluded</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.Action.get_completer_info" title="Link to this definition">#</a></dt>
+<dd><p>Get completer info of all arguments.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">List</span></code>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a>]]</dt><dd><p>Name, type and docstring of all arguments.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.AllowedValuesMixin">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.solver.flobject.</span></span><span class="sig-name descname"><span class="pre">AllowedValuesMixin</span></span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.AllowedValuesMixin" title="Link to this definition">#</a></dt>
+<dd><p>Provides allowed values.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.AllowedValuesMixin.allowed_values" title="ansys.fluent.core.solver.flobject.AllowedValuesMixin.allowed_values"><code class="xref py py-obj docutils literal notranslate"><span class="pre">allowed_values</span></code></a>()</p></td>
+<td><p>Get the allowed values of the object.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.AllowedValuesMixin.allowed_values">
+<span class="sig-name descname"><span class="pre">allowed_values</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.AllowedValuesMixin.allowed_values" title="Link to this definition">#</a></dt>
+<dd><p>Get the allowed values of the object.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.Base">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.solver.flobject.</span></span><span class="sig-name descname"><span class="pre">Base</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.Base" title="Link to this definition">#</a></dt>
+<dd><p>Provides the base class for settings and command objects.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>name</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a></span></dt><dd><p>Name of the object if a child of a named object.</p>
+</dd>
+<dt><strong>parent: Base</strong></dt><dd><p>Parent of the object.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Attributes<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><a class="reference internal" href="#ansys.fluent.core.solver.flobject.Base.flproxy" title="ansys.fluent.core.solver.flobject.Base.flproxy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">flproxy</span></code></a></dt><dd><p>Proxy object.</p>
+</dd>
+<dt><a class="reference internal" href="#ansys.fluent.core.solver.flobject.Base.obj_name" title="ansys.fluent.core.solver.flobject.Base.obj_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">obj_name</span></code></a></dt><dd><p>Name of the scheme of this object.</p>
+</dd>
+<dt><strong>fluent_name</strong></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.Base.after_execute" title="ansys.fluent.core.solver.flobject.Base.after_execute"><code class="xref py py-obj docutils literal notranslate"><span class="pre">after_execute</span></code></a>(command_name, value, kwargs)</p></td>
+<td><p>Executes after command execution.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.Base.before_execute" title="ansys.fluent.core.solver.flobject.Base.before_execute"><code class="xref py py-obj docutils literal notranslate"><span class="pre">before_execute</span></code></a>(command_name, value, kwargs)</p></td>
+<td><p>Executes before command execution.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.Base.find_object" title="ansys.fluent.core.solver.flobject.Base.find_object"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_object</span></code></a>(relative_path)</p></td>
+<td><p>Find object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.Base.get_attr" title="ansys.fluent.core.solver.flobject.Base.get_attr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_attr</span></code></a>(attr[, attr_type_or_types])</p></td>
+<td><p>Get the requested attribute for the object.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.Base.get_attrs" title="ansys.fluent.core.solver.flobject.Base.get_attrs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_attrs</span></code></a>(attrs[, recursive])</p></td>
+<td><p>Get the requested attributes for the object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.Base.is_active" title="ansys.fluent.core.solver.flobject.Base.is_active"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_active</span></code></a>()</p></td>
+<td><p>Whether the object is active.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.Base.is_read_only" title="ansys.fluent.core.solver.flobject.Base.is_read_only"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_read_only</span></code></a>()</p></td>
+<td><p>Whether the object is read-only.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.Base.set_flproxy" title="ansys.fluent.core.solver.flobject.Base.set_flproxy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_flproxy</span></code></a>(flproxy)</p></td>
+<td><p>Set flproxy object.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Attributes:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.Base.flproxy" title="ansys.fluent.core.solver.flobject.Base.flproxy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">flproxy</span></code></a></p></td>
+<td><p>Proxy object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.Base.fluent_name" title="ansys.fluent.core.solver.flobject.Base.fluent_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fluent_name</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.Base.obj_name" title="ansys.fluent.core.solver.flobject.Base.obj_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">obj_name</span></code></a></p></td>
+<td><p>Name of the scheme of this object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.Base.parent" title="ansys.fluent.core.solver.flobject.Base.parent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parent</span></code></a></p></td>
+<td><p>Parent (container) object.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.Base.path" title="ansys.fluent.core.solver.flobject.Base.path"><code class="xref py py-obj docutils literal notranslate"><span class="pre">path</span></code></a></p></td>
+<td><p>Path of the object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.Base.python_name" title="ansys.fluent.core.solver.flobject.Base.python_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">python_name</span></code></a></p></td>
+<td><p>Python name of this object.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.Base.python_path" title="ansys.fluent.core.solver.flobject.Base.python_path"><code class="xref py py-obj docutils literal notranslate"><span class="pre">python_path</span></code></a></p></td>
+<td><p>Path of the object.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.Base.after_execute">
+<span class="sig-name descname"><span class="pre">after_execute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">command_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.Base.after_execute" title="Link to this definition">#</a></dt>
+<dd><p>Executes after command execution.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.Base.before_execute">
+<span class="sig-name descname"><span class="pre">before_execute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">command_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.Base.before_execute" title="Link to this definition">#</a></dt>
+<dd><p>Executes before command execution.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.Base.find_object">
+<span class="sig-name descname"><span class="pre">find_object</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">relative_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.Base.find_object" title="Link to this definition">#</a></dt>
+<dd><p>Find object.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.Base.flproxy">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">flproxy</span></span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.Base.flproxy" title="Link to this definition">#</a></dt>
+<dd><p>Proxy object.</p>
+<p>The proxy object is set at the root level and accessed via the parent for the
+child classes.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.Base.fluent_name">
+<span class="sig-name descname"><span class="pre">fluent_name</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#ansys.fluent.core.solver.flobject.Base.fluent_name" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.Base.get_attr">
+<span class="sig-name descname"><span class="pre">get_attr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">attr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attr_type_or_types</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.Base.get_attr" title="Link to this definition">#</a></dt>
+<dd><p>Get the requested attribute for the object.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>attr</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a></span></dt><dd><p>attribute name</p>
+</dd>
+<dt><strong>attr_type_or_types</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code></a> or <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">tuple</span></code></a> <code class="xref py py-obj docutils literal notranslate"><span class="pre">of</span></code> <a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>attribute type, by default None</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">Any</span></code></dt><dd><p>attribute value</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><a class="reference internal" href="#ansys.fluent.core.solver.flobject.InactiveObjectError" title="ansys.fluent.core.solver.flobject.InactiveObjectError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InactiveObjectError</span></code></a></dt><dd><p>If any attribute other than <code class="docutils literal notranslate"><span class="pre">&quot;active?</span></code> is queried when the object is not active.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.Base.get_attrs">
+<span class="sig-name descname"><span class="pre">get_attrs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">attrs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">recursive</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.Base.get_attrs" title="Link to this definition">#</a></dt>
+<dd><p>Get the requested attributes for the object.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.Base.is_active">
+<span class="sig-name descname"><span class="pre">is_active</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.Base.is_active" title="Link to this definition">#</a></dt>
+<dd><p>Whether the object is active.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.Base.is_read_only">
+<span class="sig-name descname"><span class="pre">is_read_only</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.Base.is_read_only" title="Link to this definition">#</a></dt>
+<dd><p>Whether the object is read-only.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.Base.obj_name">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">obj_name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></em><a class="headerlink" href="#ansys.fluent.core.solver.flobject.Base.obj_name" title="Link to this definition">#</a></dt>
+<dd><p>Name of the scheme of this object.</p>
+<p>By default, this returns the object’s static name. If the object is a child of a
+named object, the object’s name is returned.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.Base.parent">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">parent</span></span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.Base.parent" title="Link to this definition">#</a></dt>
+<dd><p>Parent (container) object.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.Base.path">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">path</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></em><a class="headerlink" href="#ansys.fluent.core.solver.flobject.Base.path" title="Link to this definition">#</a></dt>
+<dd><p>Path of the object.</p>
+<p>Constructed from the <code class="docutils literal notranslate"><span class="pre">obj_name</span></code> of self and the path of
+parent.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.Base.python_name">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">python_name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></em><a class="headerlink" href="#ansys.fluent.core.solver.flobject.Base.python_name" title="Link to this definition">#</a></dt>
+<dd><p>Python name of this object.</p>
+<p>By default, this returns the object’s static name. If the object is a child of a
+named object, the object’s name is returned.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.Base.python_path">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">python_path</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></em><a class="headerlink" href="#ansys.fluent.core.solver.flobject.Base.python_path" title="Link to this definition">#</a></dt>
+<dd><p>Path of the object.</p>
+<p>Constructed in python syntax from ‘python_path’ and the parents python path.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.Base.set_flproxy">
+<span class="sig-name descname"><span class="pre">set_flproxy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flproxy</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.Base.set_flproxy" title="Link to this definition">#</a></dt>
+<dd><p>Set flproxy object.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.BaseCommand">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.solver.flobject.</span></span><span class="sig-name descname"><span class="pre">BaseCommand</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.BaseCommand" title="Link to this definition">#</a></dt>
+<dd><p>Executes command.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.BaseCommand.execute_command" title="ansys.fluent.core.solver.flobject.BaseCommand.execute_command"><code class="xref py py-obj docutils literal notranslate"><span class="pre">execute_command</span></code></a>(*args, **kwds)</p></td>
+<td><p>Execute command.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.BaseCommand.execute_command">
+<span class="sig-name descname"><span class="pre">execute_command</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwds</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.BaseCommand.execute_command" title="Link to this definition">#</a></dt>
+<dd><p>Execute command.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.Boolean">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.solver.flobject.</span></span><span class="sig-name descname"><span class="pre">Boolean</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.Boolean" title="Link to this definition">#</a></dt>
+<dd><p>A <code class="docutils literal notranslate"><span class="pre">Boolean</span></code> object representing a Boolean value setting.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.BooleanList">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.solver.flobject.</span></span><span class="sig-name descname"><span class="pre">BooleanList</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.BooleanList" title="Link to this definition">#</a></dt>
+<dd><p>A <code class="docutils literal notranslate"><span class="pre">BooleanList</span></code> object representing a Boolean list setting.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.Command">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.solver.flobject.</span></span><span class="sig-name descname"><span class="pre">Command</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.Command" title="Link to this definition">#</a></dt>
+<dd><p>Command object.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.CommandWithPositionalArgs">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.solver.flobject.</span></span><span class="sig-name descname"><span class="pre">CommandWithPositionalArgs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.CommandWithPositionalArgs" title="Link to this definition">#</a></dt>
+<dd><p>Command Object.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.CreatableNamedObjectMixin">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.solver.flobject.</span></span><span class="sig-name descname"><span class="pre">CreatableNamedObjectMixin</span></span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.CreatableNamedObjectMixin" title="Link to this definition">#</a></dt>
+<dd><p>Provides creatable named objects for Fluent 2025 R1 and later.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.CreatableNamedObjectMixinOld">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.solver.flobject.</span></span><span class="sig-name descname"><span class="pre">CreatableNamedObjectMixinOld</span></span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.CreatableNamedObjectMixinOld" title="Link to this definition">#</a></dt>
+<dd><p>Provides creatable named objects for Fluent 2024 R2 and earlier.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.CreatableNamedObjectMixinOld.create" title="ansys.fluent.core.solver.flobject.CreatableNamedObjectMixinOld.create"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create</span></code></a>([name])</p></td>
+<td><p>Create a named object.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.CreatableNamedObjectMixinOld.create">
+<span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.CreatableNamedObjectMixinOld.create" title="Link to this definition">#</a></dt>
+<dd><p>Create a named object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>name: str</strong></dt><dd><p>Name of the new object.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">Object</span></code></dt><dd><p>Object that has been created.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.DeprecatedSettingWarning">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.solver.flobject.</span></span><span class="sig-name descname"><span class="pre">DeprecatedSettingWarning</span></span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.DeprecatedSettingWarning" title="Link to this definition">#</a></dt>
+<dd><p>Provides deprecated settings warning.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.FileName">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.solver.flobject.</span></span><span class="sig-name descname"><span class="pre">FileName</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.FileName" title="Link to this definition">#</a></dt>
+<dd><p>Resolves MRO for child classes.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.Filename">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.solver.flobject.</span></span><span class="sig-name descname"><span class="pre">Filename</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.Filename" title="Link to this definition">#</a></dt>
+<dd><p>A <code class="docutils literal notranslate"><span class="pre">Filename</span></code> object representing a file name.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.Filename.file_purpose" title="ansys.fluent.core.solver.flobject.Filename.file_purpose"><code class="xref py py-obj docutils literal notranslate"><span class="pre">file_purpose</span></code></a>()</p></td>
+<td><p>Specifies whether this file is used as input or output by Fluent.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.Filename.file_purpose">
+<span class="sig-name descname"><span class="pre">file_purpose</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.Filename.file_purpose" title="Link to this definition">#</a></dt>
+<dd><p>Specifies whether this file is used as input or output by Fluent.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.FilenameList">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.solver.flobject.</span></span><span class="sig-name descname"><span class="pre">FilenameList</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.FilenameList" title="Link to this definition">#</a></dt>
+<dd><p>A FilenameList object represents a list of file names.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.FilenameList.file_purpose" title="ansys.fluent.core.solver.flobject.FilenameList.file_purpose"><code class="xref py py-obj docutils literal notranslate"><span class="pre">file_purpose</span></code></a>()</p></td>
+<td><p>Specifies whether this file is used as input or output by Fluent.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.FilenameList.file_purpose">
+<span class="sig-name descname"><span class="pre">file_purpose</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.FilenameList.file_purpose" title="Link to this definition">#</a></dt>
+<dd><p>Specifies whether this file is used as input or output by Fluent.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.Group">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.solver.flobject.</span></span><span class="sig-name descname"><span class="pre">Group</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.Group" title="Link to this definition">#</a></dt>
+<dd><p>A <code class="docutils literal notranslate"><span class="pre">Group</span></code> container object.</p>
+<p>A <code class="docutils literal notranslate"><span class="pre">Group</span></code> object is a container similar to a C++ structure object.
+Child objects can be accessed via attribute access.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Attributes<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>child_names: list[str]</strong></dt><dd><p>Names of the child objects</p>
+</dd>
+<dt><strong>command_names: list[str]</strong></dt><dd><p>Names of the commands</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p><strong>Attributes:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.Group.child_names" title="ansys.fluent.core.solver.flobject.Group.child_names"><code class="xref py py-obj docutils literal notranslate"><span class="pre">child_names</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.Group.command_names" title="ansys.fluent.core.solver.flobject.Group.command_names"><code class="xref py py-obj docutils literal notranslate"><span class="pre">command_names</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.Group.query_names" title="ansys.fluent.core.solver.flobject.Group.query_names"><code class="xref py py-obj docutils literal notranslate"><span class="pre">query_names</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.Group.get_active_child_names" title="ansys.fluent.core.solver.flobject.Group.get_active_child_names"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_active_child_names</span></code></a>()</p></td>
+<td><p>Names of children that are currently active.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.Group.get_active_command_names" title="ansys.fluent.core.solver.flobject.Group.get_active_command_names"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_active_command_names</span></code></a>()</p></td>
+<td><p>Names of commands that are currently active.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.Group.get_active_query_names" title="ansys.fluent.core.solver.flobject.Group.get_active_query_names"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_active_query_names</span></code></a>()</p></td>
+<td><p>Names of queries that are currently active.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.Group.get_completer_info" title="ansys.fluent.core.solver.flobject.Group.get_completer_info"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_completer_info</span></code></a>([prefix, excluded])</p></td>
+<td><p>Get completer info of all children.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.Group.to_python_keys" title="ansys.fluent.core.solver.flobject.Group.to_python_keys"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_python_keys</span></code></a>(value)</p></td>
+<td><p>Convert value to have keys with Python names.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.Group.to_scheme_keys" title="ansys.fluent.core.solver.flobject.Group.to_scheme_keys"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_scheme_keys</span></code></a>(value)</p></td>
+<td><p>Convert value to have keys with scheme names.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.Group.child_names">
+<span class="sig-name descname"><span class="pre">child_names</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#ansys.fluent.core.solver.flobject.Group.child_names" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.Group.command_names">
+<span class="sig-name descname"><span class="pre">command_names</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#ansys.fluent.core.solver.flobject.Group.command_names" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.Group.get_active_child_names">
+<span class="sig-name descname"><span class="pre">get_active_child_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.Group.get_active_child_names" title="Link to this definition">#</a></dt>
+<dd><p>Names of children that are currently active.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.Group.get_active_command_names">
+<span class="sig-name descname"><span class="pre">get_active_command_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.Group.get_active_command_names" title="Link to this definition">#</a></dt>
+<dd><p>Names of commands that are currently active.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.Group.get_active_query_names">
+<span class="sig-name descname"><span class="pre">get_active_query_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.Group.get_active_query_names" title="Link to this definition">#</a></dt>
+<dd><p>Names of queries that are currently active.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.Group.get_completer_info">
+<span class="sig-name descname"><span class="pre">get_completer_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prefix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">excluded</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.Group.get_completer_info" title="Link to this definition">#</a></dt>
+<dd><p>Get completer info of all children.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">List</span></code>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a>]]</dt><dd><p>Name, type and docstring of all children.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.Group.query_names">
+<span class="sig-name descname"><span class="pre">query_names</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#ansys.fluent.core.solver.flobject.Group.query_names" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.Group.to_python_keys">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">to_python_keys</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.Group.to_python_keys" title="Link to this definition">#</a></dt>
+<dd><p>Convert value to have keys with Python names.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.Group.to_scheme_keys">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">to_scheme_keys</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.Group.to_scheme_keys" title="Link to this definition">#</a></dt>
+<dd><p>Convert value to have keys with scheme names.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RuntimeError</span></code></a></dt><dd><p>If key is invalid.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.InactiveObjectError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.solver.flobject.</span></span><span class="sig-name descname"><span class="pre">InactiveObjectError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">python_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.InactiveObjectError" title="Link to this definition">#</a></dt>
+<dd><p>Inactive object access.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.Integer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.solver.flobject.</span></span><span class="sig-name descname"><span class="pre">Integer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.Integer" title="Link to this definition">#</a></dt>
+<dd><p>An <code class="docutils literal notranslate"><span class="pre">Integer</span></code> object representing an integer value setting.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.IntegerList">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.solver.flobject.</span></span><span class="sig-name descname"><span class="pre">IntegerList</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.IntegerList" title="Link to this definition">#</a></dt>
+<dd><p>An <code class="docutils literal notranslate"><span class="pre">Integer</span></code> object representing an integer list setting.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.ListObject">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.solver.flobject.</span></span><span class="sig-name descname"><span class="pre">ListObject</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.ListObject" title="Link to this definition">#</a></dt>
+<dd><p>A <code class="docutils literal notranslate"><span class="pre">ListObject</span></code> container is a container object, similar to a Python list
+object. Generally, many such objects can be created.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Attributes<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>command_names: list[str]</strong></dt><dd><p>Names of the commands.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<table class="table">
+<tbody>
+<tr class="row-odd"><td><p><strong>get_size()</strong></p></td>
+<td><p>Get the size of the list.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Attributes:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.ListObject.command_names" title="ansys.fluent.core.solver.flobject.ListObject.command_names"><code class="xref py py-obj docutils literal notranslate"><span class="pre">command_names</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.ListObject.query_names" title="ansys.fluent.core.solver.flobject.ListObject.query_names"><code class="xref py py-obj docutils literal notranslate"><span class="pre">query_names</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.ListObject.get_size" title="ansys.fluent.core.solver.flobject.ListObject.get_size"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_size</span></code></a>()</p></td>
+<td><p>Return the number of elements in a list object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.ListObject.to_python_keys" title="ansys.fluent.core.solver.flobject.ListObject.to_python_keys"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_python_keys</span></code></a>(value)</p></td>
+<td><p>Convert value to have keys with scheme names.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.ListObject.to_scheme_keys" title="ansys.fluent.core.solver.flobject.ListObject.to_scheme_keys"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_scheme_keys</span></code></a>(value)</p></td>
+<td><p>Convert value to have keys with scheme names.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.ListObject.command_names">
+<span class="sig-name descname"><span class="pre">command_names</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#ansys.fluent.core.solver.flobject.ListObject.command_names" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.ListObject.get_size">
+<span class="sig-name descname"><span class="pre">get_size</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.ListObject.get_size" title="Link to this definition">#</a></dt>
+<dd><p>Return the number of elements in a list object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">int</span></code></a></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.ListObject.query_names">
+<span class="sig-name descname"><span class="pre">query_names</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#ansys.fluent.core.solver.flobject.ListObject.query_names" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.ListObject.to_python_keys">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">to_python_keys</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.ListObject.to_python_keys" title="Link to this definition">#</a></dt>
+<dd><p>Convert value to have keys with scheme names.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.ListObject.to_scheme_keys">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">to_scheme_keys</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.ListObject.to_scheme_keys" title="Link to this definition">#</a></dt>
+<dd><p>Convert value to have keys with scheme names.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.Map">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.solver.flobject.</span></span><span class="sig-name descname"><span class="pre">Map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.Map" title="Link to this definition">#</a></dt>
+<dd><p>A <code class="docutils literal notranslate"><span class="pre">Map</span></code> object representing key-value settings.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.NamedObject">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.solver.flobject.</span></span><span class="sig-name descname"><span class="pre">NamedObject</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.NamedObject" title="Link to this definition">#</a></dt>
+<dd><p>A <code class="docutils literal notranslate"><span class="pre">NamedObject</span></code> container is a container object similar to a Python dictionary
+object. Generally, many such objects can be created with different names.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Attributes<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>command_names: list[str]</strong></dt><dd><p>Names of the commands</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p><strong>Attributes:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.NamedObject.command_names" title="ansys.fluent.core.solver.flobject.NamedObject.command_names"><code class="xref py py-obj docutils literal notranslate"><span class="pre">command_names</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.NamedObject.query_names" title="ansys.fluent.core.solver.flobject.NamedObject.query_names"><code class="xref py py-obj docutils literal notranslate"><span class="pre">query_names</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.NamedObject.get" title="ansys.fluent.core.solver.flobject.NamedObject.get"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get</span></code></a>(name)</p></td>
+<td><p>Return the child object by key.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.NamedObject.get_completer_info" title="ansys.fluent.core.solver.flobject.NamedObject.get_completer_info"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_completer_info</span></code></a>([prefix, excluded])</p></td>
+<td><p>Get completer info of all children.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.NamedObject.get_object_names" title="ansys.fluent.core.solver.flobject.NamedObject.get_object_names"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_object_names</span></code></a>()</p></td>
+<td><p>Object names.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.NamedObject.items" title="ansys.fluent.core.solver.flobject.NamedObject.items"><code class="xref py py-obj docutils literal notranslate"><span class="pre">items</span></code></a>()</p></td>
+<td><p>Items.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.NamedObject.keys" title="ansys.fluent.core.solver.flobject.NamedObject.keys"><code class="xref py py-obj docutils literal notranslate"><span class="pre">keys</span></code></a>()</p></td>
+<td><p>Object names.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.NamedObject.to_python_keys" title="ansys.fluent.core.solver.flobject.NamedObject.to_python_keys"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_python_keys</span></code></a>(value)</p></td>
+<td><p>Convert value to have keys with Python names.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.NamedObject.to_scheme_keys" title="ansys.fluent.core.solver.flobject.NamedObject.to_scheme_keys"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_scheme_keys</span></code></a>(value)</p></td>
+<td><p>Convert value to have keys with scheme names.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.NamedObject.user_creatable" title="ansys.fluent.core.solver.flobject.NamedObject.user_creatable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">user_creatable</span></code></a>()</p></td>
+<td><p>Whether the object is user-creatable.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.NamedObject.values" title="ansys.fluent.core.solver.flobject.NamedObject.values"><code class="xref py py-obj docutils literal notranslate"><span class="pre">values</span></code></a>()</p></td>
+<td><p>Object values.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.NamedObject.command_names">
+<span class="sig-name descname"><span class="pre">command_names</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#ansys.fluent.core.solver.flobject.NamedObject.command_names" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.NamedObject.get">
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.NamedObject.get" title="Link to this definition">#</a></dt>
+<dd><p>Return the child object by key.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>name</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a></span></dt><dd><p>Name of the child object.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">ChildTypeT</span></code></dt><dd><p>Child object.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.NamedObject.get_completer_info">
+<span class="sig-name descname"><span class="pre">get_completer_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prefix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">excluded</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.NamedObject.get_completer_info" title="Link to this definition">#</a></dt>
+<dd><p>Get completer info of all children.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">List</span></code>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a>]]</dt><dd><p>Name, type and docstring of all children.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.NamedObject.get_object_names">
+<span class="sig-name descname"><span class="pre">get_object_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.NamedObject.get_object_names" title="Link to this definition">#</a></dt>
+<dd><p>Object names.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.NamedObject.items">
+<span class="sig-name descname"><span class="pre">items</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.NamedObject.items" title="Link to this definition">#</a></dt>
+<dd><p>Items.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.NamedObject.keys">
+<span class="sig-name descname"><span class="pre">keys</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.NamedObject.keys" title="Link to this definition">#</a></dt>
+<dd><p>Object names.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.NamedObject.query_names">
+<span class="sig-name descname"><span class="pre">query_names</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#ansys.fluent.core.solver.flobject.NamedObject.query_names" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.NamedObject.to_python_keys">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">to_python_keys</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.NamedObject.to_python_keys" title="Link to this definition">#</a></dt>
+<dd><p>Convert value to have keys with Python names.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.NamedObject.to_scheme_keys">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">to_scheme_keys</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.NamedObject.to_scheme_keys" title="Link to this definition">#</a></dt>
+<dd><p>Convert value to have keys with scheme names.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.NamedObject.user_creatable">
+<span class="sig-name descname"><span class="pre">user_creatable</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.NamedObject.user_creatable" title="Link to this definition">#</a></dt>
+<dd><p>Whether the object is user-creatable.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.NamedObject.values">
+<span class="sig-name descname"><span class="pre">values</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.NamedObject.values" title="Link to this definition">#</a></dt>
+<dd><p>Object values.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.NamedObjectWildcardPath">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.solver.flobject.</span></span><span class="sig-name descname"><span class="pre">NamedObjectWildcardPath</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flproxy</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state_cls</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">settings_cls</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.NamedObjectWildcardPath" title="Link to this definition">#</a></dt>
+<dd><p>WildcardPath at a NamedObject path, so it can be looked up by wildcard again.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.Numerical">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.solver.flobject.</span></span><span class="sig-name descname"><span class="pre">Numerical</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.Numerical" title="Link to this definition">#</a></dt>
+<dd><p>Exposes attribute accessor on settings object - specific to numerical objects.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.Numerical.max" title="ansys.fluent.core.solver.flobject.Numerical.max"><code class="xref py py-obj docutils literal notranslate"><span class="pre">max</span></code></a>()</p></td>
+<td><p>Get the maximum value of the object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.Numerical.min" title="ansys.fluent.core.solver.flobject.Numerical.min"><code class="xref py py-obj docutils literal notranslate"><span class="pre">min</span></code></a>()</p></td>
+<td><p>Get the minimum value of the object.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.Numerical.max">
+<span class="sig-name descname"><span class="pre">max</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.Numerical.max" title="Link to this definition">#</a></dt>
+<dd><p>Get the maximum value of the object.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.Numerical.min">
+<span class="sig-name descname"><span class="pre">min</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.Numerical.min" title="Link to this definition">#</a></dt>
+<dd><p>Get the minimum value of the object.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.Property">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.solver.flobject.</span></span><span class="sig-name descname"><span class="pre">Property</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.Property" title="Link to this definition">#</a></dt>
+<dd><p>Exposes attribute accessor on settings object.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.Property.default_value" title="ansys.fluent.core.solver.flobject.Property.default_value"><code class="xref py py-obj docutils literal notranslate"><span class="pre">default_value</span></code></a>()</p></td>
+<td><p>Gets the default value of the object.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.Property.default_value">
+<span class="sig-name descname"><span class="pre">default_value</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.Property.default_value" title="Link to this definition">#</a></dt>
+<dd><p>Gets the default value of the object.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.Query">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.solver.flobject.</span></span><span class="sig-name descname"><span class="pre">Query</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.Query" title="Link to this definition">#</a></dt>
+<dd><p>Query object.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.Real">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.solver.flobject.</span></span><span class="sig-name descname"><span class="pre">Real</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.Real" title="Link to this definition">#</a></dt>
+<dd><p>A <code class="docutils literal notranslate"><span class="pre">Real</span></code> object representing a real value setting.</p>
+<p>Some <code class="docutils literal notranslate"><span class="pre">Real</span></code> objects also accept string arguments representing
+expression values.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.Real.base_set_state" title="ansys.fluent.core.solver.flobject.Real.base_set_state"><code class="xref py py-obj docutils literal notranslate"><span class="pre">base_set_state</span></code></a>([state])</p></td>
+<td><p>Set the state of the object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.Real.set_state" title="ansys.fluent.core.solver.flobject.Real.set_state"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_state</span></code></a>([state])</p></td>
+<td><p>Set the state of the object.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.Real.base_set_state">
+<span class="sig-name descname"><span class="pre">base_set_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.Real.base_set_state" title="Link to this definition">#</a></dt>
+<dd><p>Set the state of the object.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.Real.set_state">
+<span class="sig-name descname"><span class="pre">set_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.Real.set_state" title="Link to this definition">#</a></dt>
+<dd><p>Set the state of the object.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>state</strong></dt><dd><p>The type of state can be float, str (representing either
+an expression or a value with units), or an ansys.units.Quantity.</p>
+</dd>
+<dt><strong>kwargs</strong><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Any</span></code></span></dt><dd><p>Keyword arguments.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">UnhandledQuantity</span></code></dt><dd><p>If the quantity object cannot be handled for the given path. This can
+happen if the quantity attribute specifies an unsupported quantity, or if
+the units specified for the quantity are not supported.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.RealList">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.solver.flobject.</span></span><span class="sig-name descname"><span class="pre">RealList</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.RealList" title="Link to this definition">#</a></dt>
+<dd><p>A <code class="docutils literal notranslate"><span class="pre">RealList</span></code> object representing a real list setting.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.RealList.base_set_state" title="ansys.fluent.core.solver.flobject.RealList.base_set_state"><code class="xref py py-obj docutils literal notranslate"><span class="pre">base_set_state</span></code></a>([state])</p></td>
+<td><p>Set the state of the object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.RealList.set_state" title="ansys.fluent.core.solver.flobject.RealList.set_state"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_state</span></code></a>([state])</p></td>
+<td><p>Set the state of the object.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.RealList.base_set_state">
+<span class="sig-name descname"><span class="pre">base_set_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.RealList.base_set_state" title="Link to this definition">#</a></dt>
+<dd><p>Set the state of the object.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.RealList.set_state">
+<span class="sig-name descname"><span class="pre">set_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.RealList.set_state" title="Link to this definition">#</a></dt>
+<dd><p>Set the state of the object.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>state</strong></dt><dd><p>The type of state can be float, str (representing either
+an expression or a value with units), or an ansys.units.Quantity.</p>
+</dd>
+<dt><strong>kwargs</strong><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Any</span></code></span></dt><dd><p>Keyword arguments.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">UnhandledQuantity</span></code></dt><dd><p>If the quantity object cannot be handled for the given path. This can
+happen if the quantity attribute specifies an unsupported quantity, or if
+the units specified for the quantity are not supported.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.RealNumerical">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.solver.flobject.</span></span><span class="sig-name descname"><span class="pre">RealNumerical</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.RealNumerical" title="Link to this definition">#</a></dt>
+<dd><p>A <code class="docutils literal notranslate"><span class="pre">RealNumerical</span></code> object representing a real value setting, including single
+real values and containers of real values, such as lists.</p>
+<p class="rubric">Methods</p>
+<table class="table">
+<tbody>
+<tr class="row-odd"><td><p><strong>as_quantity()</strong></p></td>
+<td><p>Get the current state of the object as an ansys.units.Quantity.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>set_state(state)</strong></p></td>
+<td><p>Set the state of the object.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>units()</strong></p></td>
+<td><p>Get the units string.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.RealNumerical.as_quantity" title="ansys.fluent.core.solver.flobject.RealNumerical.as_quantity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">as_quantity</span></code></a>()</p></td>
+<td><p>Get the state of the object as an ansys.units.Quantity.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.RealNumerical.set_state" title="ansys.fluent.core.solver.flobject.RealNumerical.set_state"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_state</span></code></a>([state])</p></td>
+<td><p>Set the state of the object.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.RealNumerical.units" title="ansys.fluent.core.solver.flobject.RealNumerical.units"><code class="xref py py-obj docutils literal notranslate"><span class="pre">units</span></code></a>()</p></td>
+<td><p>Get the physical units of the object as a string.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.RealNumerical.as_quantity">
+<span class="sig-name descname"><span class="pre">as_quantity</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.RealNumerical.as_quantity" title="Link to this definition">#</a></dt>
+<dd><p>Get the state of the object as an ansys.units.Quantity.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.RealNumerical.set_state">
+<span class="sig-name descname"><span class="pre">set_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.RealNumerical.set_state" title="Link to this definition">#</a></dt>
+<dd><p>Set the state of the object.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>state</strong></dt><dd><p>The type of state can be float, str (representing either
+an expression or a value with units), or an ansys.units.Quantity.</p>
+</dd>
+<dt><strong>kwargs</strong><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Any</span></code></span></dt><dd><p>Keyword arguments.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">UnhandledQuantity</span></code></dt><dd><p>If the quantity object cannot be handled for the given path. This can
+happen if the quantity attribute specifies an unsupported quantity, or if
+the units specified for the quantity are not supported.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.RealNumerical.units">
+<span class="sig-name descname"><span class="pre">units</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.RealNumerical.units" title="Link to this definition">#</a></dt>
+<dd><p>Get the physical units of the object as a string.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.RealVector">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.solver.flobject.</span></span><span class="sig-name descname"><span class="pre">RealVector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.RealVector" title="Link to this definition">#</a></dt>
+<dd><p>An object representing a 3D vector.</p>
+<p>A <code class="docutils literal notranslate"><span class="pre">RealVector</span></code> object representing a real vector setting
+consisting of three real values.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.SettingsBase">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.solver.flobject.</span></span><span class="sig-name descname"><span class="pre">SettingsBase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.SettingsBase" title="Link to this definition">#</a></dt>
+<dd><p>Base class for settings objects.</p>
+<p class="rubric">Methods</p>
+<table class="table">
+<tbody>
+<tr class="row-odd"><td><p><strong>get_state()</strong></p></td>
+<td><p>Get the current state of the object.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>set_state(state)</strong></p></td>
+<td><p>Set the state of the object.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.SettingsBase.get_state" title="ansys.fluent.core.solver.flobject.SettingsBase.get_state"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_state</span></code></a>()</p></td>
+<td><p>Get the state of the object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.SettingsBase.print_state" title="ansys.fluent.core.solver.flobject.SettingsBase.print_state"><code class="xref py py-obj docutils literal notranslate"><span class="pre">print_state</span></code></a>([out, indent_factor])</p></td>
+<td><p>Print the state of the object.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.SettingsBase.set_state" title="ansys.fluent.core.solver.flobject.SettingsBase.set_state"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_state</span></code></a>([state])</p></td>
+<td><p>Set the state of the object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.SettingsBase.state_with_units" title="ansys.fluent.core.solver.flobject.SettingsBase.state_with_units"><code class="xref py py-obj docutils literal notranslate"><span class="pre">state_with_units</span></code></a>()</p></td>
+<td><p>Get the state of the object with units where available.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.SettingsBase.to_python_keys" title="ansys.fluent.core.solver.flobject.SettingsBase.to_python_keys"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_python_keys</span></code></a>(value)</p></td>
+<td><p>Convert value to have keys with Python names.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.SettingsBase.to_scheme_keys" title="ansys.fluent.core.solver.flobject.SettingsBase.to_scheme_keys"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_scheme_keys</span></code></a>(value)</p></td>
+<td><p>Convert value to have keys with scheme names.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.SettingsBase.get_state">
+<span class="sig-name descname"><span class="pre">get_state</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.SettingsBase.get_state" title="Link to this definition">#</a></dt>
+<dd><p>Get the state of the object.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.SettingsBase.print_state">
+<span class="sig-name descname"><span class="pre">print_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">out</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indent_factor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.SettingsBase.print_state" title="Link to this definition">#</a></dt>
+<dd><p>Print the state of the object.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.SettingsBase.set_state">
+<span class="sig-name descname"><span class="pre">set_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.SettingsBase.set_state" title="Link to this definition">#</a></dt>
+<dd><p>Set the state of the object.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.SettingsBase.state_with_units">
+<span class="sig-name descname"><span class="pre">state_with_units</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.SettingsBase.state_with_units" title="Link to this definition">#</a></dt>
+<dd><p>Get the state of the object with units where available.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.SettingsBase.to_python_keys">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">to_python_keys</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.SettingsBase.to_python_keys" title="Link to this definition">#</a></dt>
+<dd><p>Convert value to have keys with Python names.</p>
+<p>This is overridden in the <code class="docutils literal notranslate"><span class="pre">Group</span></code>, <code class="docutils literal notranslate"><span class="pre">NamedObject</span></code>, and
+<code class="docutils literal notranslate"><span class="pre">ListObject</span></code> classes.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.SettingsBase.to_scheme_keys">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">to_scheme_keys</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.SettingsBase.to_scheme_keys" title="Link to this definition">#</a></dt>
+<dd><p>Convert value to have keys with scheme names.</p>
+<p>This is overridden in the <code class="docutils literal notranslate"><span class="pre">Group</span></code>, <code class="docutils literal notranslate"><span class="pre">NamedObject</span></code>, and
+<code class="docutils literal notranslate"><span class="pre">ListObject</span></code> classes.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.String">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.solver.flobject.</span></span><span class="sig-name descname"><span class="pre">String</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.String" title="Link to this definition">#</a></dt>
+<dd><p>A <code class="docutils literal notranslate"><span class="pre">String</span></code> object representing a string value setting.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.StringList">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.solver.flobject.</span></span><span class="sig-name descname"><span class="pre">StringList</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.StringList" title="Link to this definition">#</a></dt>
+<dd><p>A <code class="docutils literal notranslate"><span class="pre">StringList</span></code> object representing a string list setting.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.Textual">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.solver.flobject.</span></span><span class="sig-name descname"><span class="pre">Textual</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.Textual" title="Link to this definition">#</a></dt>
+<dd><p>Exposes attribute accessor on settings object - specific to string objects.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.UnstableSettingWarning">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.solver.flobject.</span></span><span class="sig-name descname"><span class="pre">UnstableSettingWarning</span></span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.UnstableSettingWarning" title="Link to this definition">#</a></dt>
+<dd><p>Provides unstable settings warning.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.WildcardPath">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.solver.flobject.</span></span><span class="sig-name descname"><span class="pre">WildcardPath</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flproxy</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state_cls</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">settings_cls</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.WildcardPath" title="Link to this definition">#</a></dt>
+<dd><p>Class wrapping a wildcard path to perform get_var and set_var on flproxy.</p>
+<p><strong>Attributes:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.WildcardPath.flproxy" title="ansys.fluent.core.solver.flobject.WildcardPath.flproxy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">flproxy</span></code></a></p></td>
+<td><p>Proxy object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.WildcardPath.path" title="ansys.fluent.core.solver.flobject.WildcardPath.path"><code class="xref py py-obj docutils literal notranslate"><span class="pre">path</span></code></a></p></td>
+<td><p>Path with wildcards.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.WildcardPath.items" title="ansys.fluent.core.solver.flobject.WildcardPath.items"><code class="xref py py-obj docutils literal notranslate"><span class="pre">items</span></code></a>()</p></td>
+<td><p>Items.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.WildcardPath.to_python_keys" title="ansys.fluent.core.solver.flobject.WildcardPath.to_python_keys"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_python_keys</span></code></a>(value)</p></td>
+<td><p>Convert value to have keys with Python names.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.solver.flobject.WildcardPath.to_scheme_keys" title="ansys.fluent.core.solver.flobject.WildcardPath.to_scheme_keys"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_scheme_keys</span></code></a>(value)</p></td>
+<td><p>Convert value to have keys with scheme names.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py property">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.WildcardPath.flproxy">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">flproxy</span></span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.WildcardPath.flproxy" title="Link to this definition">#</a></dt>
+<dd><p>Proxy object.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.WildcardPath.items">
+<span class="sig-name descname"><span class="pre">items</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.WildcardPath.items" title="Link to this definition">#</a></dt>
+<dd><p>Items.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.WildcardPath.path">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">path</span></span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.WildcardPath.path" title="Link to this definition">#</a></dt>
+<dd><p>Path with wildcards.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.WildcardPath.to_python_keys">
+<span class="sig-name descname"><span class="pre">to_python_keys</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.WildcardPath.to_python_keys" title="Link to this definition">#</a></dt>
+<dd><p>Convert value to have keys with Python names.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.WildcardPath.to_scheme_keys">
+<span class="sig-name descname"><span class="pre">to_scheme_keys</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.WildcardPath.to_scheme_keys" title="Link to this definition">#</a></dt>
+<dd><p>Convert value to have keys with scheme names.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.assert_type">
+<span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.solver.flobject.</span></span><span class="sig-name descname"><span class="pre">assert_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">val</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tp</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.assert_type" title="Link to this definition">#</a></dt>
+<dd><p>Assert type.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#TypeError" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TypeError</span></code></a></dt><dd><p>If the given value is not of the given type.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.check_type">
+<span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.solver.flobject.</span></span><span class="sig-name descname"><span class="pre">check_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">val</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tp</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.check_type" title="Link to this definition">#</a></dt>
+<dd><p>Check type of object.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.find_children">
+<span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.solver.flobject.</span></span><span class="sig-name descname"><span class="pre">find_children</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'*'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.find_children" title="Link to this definition">#</a></dt>
+<dd><p>Returns path of all the child objects matching an identifier.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>obj: Object</strong></dt><dd><p>Object whose children need to be queried.</p>
+</dd>
+<dt><strong>identifier: str</strong></dt><dd><p>Identifier to find specific children.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">List</span></code></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.get_cls">
+<span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.solver.flobject.</span></span><span class="sig-name descname"><span class="pre">get_cls</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">info</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent_taboo</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.get_cls" title="Link to this definition">#</a></dt>
+<dd><p>Create a class for the object identified by “path”.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.get_root">
+<span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.solver.flobject.</span></span><span class="sig-name descname"><span class="pre">get_root</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flproxy</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interrupt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_transfer_service</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scheme_eval</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.get_root" title="Link to this definition">#</a></dt>
+<dd><p>Get the root settings object.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>flproxy: Proxy</strong></dt><dd><p>Object that interfaces with the Fluent backend.</p>
+</dd>
+<dt><strong>interrupt: optional</strong></dt><dd><p>To interrupt interruptible commands.</p>
+</dd>
+<dt><strong>file_transfer_service</strong><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>File transfer service. Uploads/downloads files to/from the server.</p>
+</dd>
+<dt><strong>scheme_eval</strong><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Any</span></code></span></dt><dd><p>A gRPC service to execute Scheme code.</p>
+</dd>
+<dt><strong>version</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a></span></dt><dd><p>Fluent version.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">root</span></code> <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">object</span></code></a></dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RuntimeError</span></code></a></dt><dd><p>If hash values are inconsistent.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.flobject.to_python_name">
+<span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.solver.flobject.</span></span><span class="sig-name descname"><span class="pre">to_python_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fluent_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.flobject.to_python_name" title="Link to this definition">#</a></dt>
+<dd><p>Convert a scheme string to a Python variable name.</p>
+<p>This function replaces symbols with _. Any <code class="docutils literal notranslate"><span class="pre">?</span></code> symbols are
+ignored.</p>
+</dd></dl>
+
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example">Example</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.Action"><code class="docutils literal notranslate"><span class="pre">Action</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.Action.argument_names"><code class="docutils literal notranslate"><span class="pre">Action.argument_names</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.Action.get_completer_info"><code class="docutils literal notranslate"><span class="pre">Action.get_completer_info()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.AllowedValuesMixin"><code class="docutils literal notranslate"><span class="pre">AllowedValuesMixin</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.AllowedValuesMixin.allowed_values"><code class="docutils literal notranslate"><span class="pre">AllowedValuesMixin.allowed_values()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.Base"><code class="docutils literal notranslate"><span class="pre">Base</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.Base.after_execute"><code class="docutils literal notranslate"><span class="pre">Base.after_execute()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.Base.before_execute"><code class="docutils literal notranslate"><span class="pre">Base.before_execute()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.Base.find_object"><code class="docutils literal notranslate"><span class="pre">Base.find_object()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.Base.flproxy"><code class="docutils literal notranslate"><span class="pre">Base.flproxy</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.Base.fluent_name"><code class="docutils literal notranslate"><span class="pre">Base.fluent_name</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.Base.get_attr"><code class="docutils literal notranslate"><span class="pre">Base.get_attr()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.Base.get_attrs"><code class="docutils literal notranslate"><span class="pre">Base.get_attrs()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.Base.is_active"><code class="docutils literal notranslate"><span class="pre">Base.is_active()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.Base.is_read_only"><code class="docutils literal notranslate"><span class="pre">Base.is_read_only()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.Base.obj_name"><code class="docutils literal notranslate"><span class="pre">Base.obj_name</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.Base.parent"><code class="docutils literal notranslate"><span class="pre">Base.parent</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.Base.path"><code class="docutils literal notranslate"><span class="pre">Base.path</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.Base.python_name"><code class="docutils literal notranslate"><span class="pre">Base.python_name</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.Base.python_path"><code class="docutils literal notranslate"><span class="pre">Base.python_path</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.Base.set_flproxy"><code class="docutils literal notranslate"><span class="pre">Base.set_flproxy()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.BaseCommand"><code class="docutils literal notranslate"><span class="pre">BaseCommand</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.BaseCommand.execute_command"><code class="docutils literal notranslate"><span class="pre">BaseCommand.execute_command()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.Boolean"><code class="docutils literal notranslate"><span class="pre">Boolean</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.BooleanList"><code class="docutils literal notranslate"><span class="pre">BooleanList</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.Command"><code class="docutils literal notranslate"><span class="pre">Command</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.CommandWithPositionalArgs"><code class="docutils literal notranslate"><span class="pre">CommandWithPositionalArgs</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.CreatableNamedObjectMixin"><code class="docutils literal notranslate"><span class="pre">CreatableNamedObjectMixin</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.CreatableNamedObjectMixinOld"><code class="docutils literal notranslate"><span class="pre">CreatableNamedObjectMixinOld</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.CreatableNamedObjectMixinOld.create"><code class="docutils literal notranslate"><span class="pre">CreatableNamedObjectMixinOld.create()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.DeprecatedSettingWarning"><code class="docutils literal notranslate"><span class="pre">DeprecatedSettingWarning</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.FileName"><code class="docutils literal notranslate"><span class="pre">FileName</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.Filename"><code class="docutils literal notranslate"><span class="pre">Filename</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.Filename.file_purpose"><code class="docutils literal notranslate"><span class="pre">Filename.file_purpose()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.FilenameList"><code class="docutils literal notranslate"><span class="pre">FilenameList</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.FilenameList.file_purpose"><code class="docutils literal notranslate"><span class="pre">FilenameList.file_purpose()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.Group"><code class="docutils literal notranslate"><span class="pre">Group</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.Group.child_names"><code class="docutils literal notranslate"><span class="pre">Group.child_names</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.Group.command_names"><code class="docutils literal notranslate"><span class="pre">Group.command_names</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.Group.get_active_child_names"><code class="docutils literal notranslate"><span class="pre">Group.get_active_child_names()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.Group.get_active_command_names"><code class="docutils literal notranslate"><span class="pre">Group.get_active_command_names()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.Group.get_active_query_names"><code class="docutils literal notranslate"><span class="pre">Group.get_active_query_names()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.Group.get_completer_info"><code class="docutils literal notranslate"><span class="pre">Group.get_completer_info()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.Group.query_names"><code class="docutils literal notranslate"><span class="pre">Group.query_names</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.Group.to_python_keys"><code class="docutils literal notranslate"><span class="pre">Group.to_python_keys()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.Group.to_scheme_keys"><code class="docutils literal notranslate"><span class="pre">Group.to_scheme_keys()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.InactiveObjectError"><code class="docutils literal notranslate"><span class="pre">InactiveObjectError</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.Integer"><code class="docutils literal notranslate"><span class="pre">Integer</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.IntegerList"><code class="docutils literal notranslate"><span class="pre">IntegerList</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.ListObject"><code class="docutils literal notranslate"><span class="pre">ListObject</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.ListObject.command_names"><code class="docutils literal notranslate"><span class="pre">ListObject.command_names</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.ListObject.get_size"><code class="docutils literal notranslate"><span class="pre">ListObject.get_size()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.ListObject.query_names"><code class="docutils literal notranslate"><span class="pre">ListObject.query_names</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.ListObject.to_python_keys"><code class="docutils literal notranslate"><span class="pre">ListObject.to_python_keys()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.ListObject.to_scheme_keys"><code class="docutils literal notranslate"><span class="pre">ListObject.to_scheme_keys()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.Map"><code class="docutils literal notranslate"><span class="pre">Map</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.NamedObject"><code class="docutils literal notranslate"><span class="pre">NamedObject</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.NamedObject.command_names"><code class="docutils literal notranslate"><span class="pre">NamedObject.command_names</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.NamedObject.get"><code class="docutils literal notranslate"><span class="pre">NamedObject.get()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.NamedObject.get_completer_info"><code class="docutils literal notranslate"><span class="pre">NamedObject.get_completer_info()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.NamedObject.get_object_names"><code class="docutils literal notranslate"><span class="pre">NamedObject.get_object_names()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.NamedObject.items"><code class="docutils literal notranslate"><span class="pre">NamedObject.items()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.NamedObject.keys"><code class="docutils literal notranslate"><span class="pre">NamedObject.keys()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.NamedObject.query_names"><code class="docutils literal notranslate"><span class="pre">NamedObject.query_names</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.NamedObject.to_python_keys"><code class="docutils literal notranslate"><span class="pre">NamedObject.to_python_keys()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.NamedObject.to_scheme_keys"><code class="docutils literal notranslate"><span class="pre">NamedObject.to_scheme_keys()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.NamedObject.user_creatable"><code class="docutils literal notranslate"><span class="pre">NamedObject.user_creatable()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.NamedObject.values"><code class="docutils literal notranslate"><span class="pre">NamedObject.values()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.NamedObjectWildcardPath"><code class="docutils literal notranslate"><span class="pre">NamedObjectWildcardPath</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.Numerical"><code class="docutils literal notranslate"><span class="pre">Numerical</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.Numerical.max"><code class="docutils literal notranslate"><span class="pre">Numerical.max()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.Numerical.min"><code class="docutils literal notranslate"><span class="pre">Numerical.min()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.Property"><code class="docutils literal notranslate"><span class="pre">Property</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.Property.default_value"><code class="docutils literal notranslate"><span class="pre">Property.default_value()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.Query"><code class="docutils literal notranslate"><span class="pre">Query</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.Real"><code class="docutils literal notranslate"><span class="pre">Real</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.Real.base_set_state"><code class="docutils literal notranslate"><span class="pre">Real.base_set_state()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.Real.set_state"><code class="docutils literal notranslate"><span class="pre">Real.set_state()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.RealList"><code class="docutils literal notranslate"><span class="pre">RealList</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.RealList.base_set_state"><code class="docutils literal notranslate"><span class="pre">RealList.base_set_state()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.RealList.set_state"><code class="docutils literal notranslate"><span class="pre">RealList.set_state()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.RealNumerical"><code class="docutils literal notranslate"><span class="pre">RealNumerical</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.RealNumerical.as_quantity"><code class="docutils literal notranslate"><span class="pre">RealNumerical.as_quantity()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.RealNumerical.set_state"><code class="docutils literal notranslate"><span class="pre">RealNumerical.set_state()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.RealNumerical.units"><code class="docutils literal notranslate"><span class="pre">RealNumerical.units()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.RealVector"><code class="docutils literal notranslate"><span class="pre">RealVector</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.SettingsBase"><code class="docutils literal notranslate"><span class="pre">SettingsBase</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.SettingsBase.get_state"><code class="docutils literal notranslate"><span class="pre">SettingsBase.get_state()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.SettingsBase.print_state"><code class="docutils literal notranslate"><span class="pre">SettingsBase.print_state()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.SettingsBase.set_state"><code class="docutils literal notranslate"><span class="pre">SettingsBase.set_state()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.SettingsBase.state_with_units"><code class="docutils literal notranslate"><span class="pre">SettingsBase.state_with_units()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.SettingsBase.to_python_keys"><code class="docutils literal notranslate"><span class="pre">SettingsBase.to_python_keys()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.SettingsBase.to_scheme_keys"><code class="docutils literal notranslate"><span class="pre">SettingsBase.to_scheme_keys()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.String"><code class="docutils literal notranslate"><span class="pre">String</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.StringList"><code class="docutils literal notranslate"><span class="pre">StringList</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.Textual"><code class="docutils literal notranslate"><span class="pre">Textual</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.UnstableSettingWarning"><code class="docutils literal notranslate"><span class="pre">UnstableSettingWarning</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.WildcardPath"><code class="docutils literal notranslate"><span class="pre">WildcardPath</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.WildcardPath.flproxy"><code class="docutils literal notranslate"><span class="pre">WildcardPath.flproxy</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.WildcardPath.items"><code class="docutils literal notranslate"><span class="pre">WildcardPath.items()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.WildcardPath.path"><code class="docutils literal notranslate"><span class="pre">WildcardPath.path</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.WildcardPath.to_python_keys"><code class="docutils literal notranslate"><span class="pre">WildcardPath.to_python_keys()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.WildcardPath.to_scheme_keys"><code class="docutils literal notranslate"><span class="pre">WildcardPath.to_scheme_keys()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.assert_type"><code class="docutils literal notranslate"><span class="pre">assert_type()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.check_type"><code class="docutils literal notranslate"><span class="pre">check_type()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.find_children"><code class="docutils literal notranslate"><span class="pre">find_children()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.get_cls"><code class="docutils literal notranslate"><span class="pre">get_cls()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.get_root"><code class="docutils literal notranslate"><span class="pre">get_root()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.flobject.to_python_name"><code class="docutils literal notranslate"><span class="pre">to_python_name()</span></code></a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+<!-- If there is no fix edit button function, use the PyData edit-this-button-->
+</div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../../_sources/api/solver/flobject.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright (c) 2024 ANSYS, Inc. All rights reserved.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.3.7.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="theme-version">
+  Built with the
+  <a href="https://sphinxdocs.ansys.com/version/stable/index.html"
+    >Ansys Sphinx Theme</a
+  >
+  0.16.6. <br />Last updated on
+  <span id="date"></span>
+</p>
+<script>
+  var options = { day: "numeric", month: "long", year: "numeric" };
+  var lastModifiedDate = new Date(document.lastModified);
+  var date = lastModifiedDate.toLocaleDateString("en-US", options);
+  document.getElementById("date").innerHTML = date;
+</script></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

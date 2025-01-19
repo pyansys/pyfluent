@@ -1,0 +1,959 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>instability_detector &#8212; PyFluent</title>
+    
+<script>
+  document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+  document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
+</script>
+
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../../../../../../_static/styles/theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+<link href="../../../../../../../../../_static/styles/pydata-sphinx-theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+
+
+  <link rel="stylesheet"
+    href="../../../../../../../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../../../../../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../../../../../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../../../../../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../../../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../../../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../../../../_static/css/ansys_sphinx_theme.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../../../../_static/sg_gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../../../../_static/sg_gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../../../../_static/sg_gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../../../../_static/sg_gallery-rendered-html.css" />
+
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../../../../../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
+
+    
+        <link href="../../../../../../../../../_static/css/breadcrumbs.css" rel="stylesheet">
+    
+    <script data-url_root="../../../../../../../../../" id="documentation_options" src="../../../../../../../../../_static/documentation_options.js"></script>
+    <script src="../../../../../../../../../_static/jquery.js"></script>
+    <script src="../../../../../../../../../_static/underscore.js"></script>
+    <script src="../../../../../../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../../../../../../../_static/doctools.js"></script>
+    <script src="../../../../../../../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../../../../../../../_static/thebelab-helper.js"></script>
+    <script src="../../../../../../../../../_static/clipboard.min.js"></script>
+    <script src="../../../../../../../../../_static/copybutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <link rel="shortcut icon" href="../../../../../../../../../_static/ansys-favicon.png"/>
+    <link rel="index" title="Index" href="../../../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../../../search.html" />
+    <link rel="next" title="anti_diffusion" href="../../anti_diffusion/index.html" />
+    <link rel="prev" title="hybrid_nita" href="../index.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="docsearch:language" content="en">
+  <link rel="canonical" href="https://fluent.docs.pyansys.com/version/stable/api/solver/tui/solve/set/multiphase_numerics/advanced_stability_controls/hybrid_nita/instability_detector/index.html" />
+  </head>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+    <div class="bd-header-announcement container-fluid" id="banner">
+      
+
+    </div>
+
+    
+    
+    <nav class="bd-header navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="bd-header__inner container-xl">
+
+  <div id="navbar-start">
+    
+    
+  
+
+
+<a class="navbar-brand logo" href="../../../../../../../../../index.html">
+  
+  
+  
+  
+    <img src="../../../../../../../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-light" alt="Logo image">
+    <img src="../../../../../../../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="fas fa-bars"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../../../../../../../getting_started/index.html">
+  Getting started
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../../../../../../../user_guide/index.html">
+  User guide
+ </a>
+</li>
+
+<li class="toctree-l1 current active nav-item">
+ <a class="reference internal nav-link" href="../../../../../../../../index.html">
+  API reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../../../../../../../examples/index.html">
+  Examples
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../../../../../../../contributing.html">
+  Contribute
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <div class="dropdown" id="version_switcher">
+    <button type="button" class="btn btn-sm navbar-btn dropdown-toggle" id="version_switcher_button" data-toggle="dropdown">
+        0.13  <!-- this text may get changed later by javascript -->
+        <span class="caret"></span>
+    </button>
+    <div id="version_switcher_menu" class="dropdown-menu list-group-flush py-0" aria-labelledby="version_switcher_button">
+    <!-- dropdown will be populated by javascript on page load -->
+    </div>
+</div>
+
+<!-- NOTE: this JS must live here (not in our global JS file) because it relies
+     on being processed by Jinja before it is run (specifically for replacing
+     variables api/solver/tui/solve/set/multiphase_numerics/advanced_stability_controls/hybrid_nita/instability_detector/index and {'json_url': 'https://fluent.docs.pyansys.com/versions.json', 'version_match': '0.13'}.
+-->
+
+<script type="text/javascript">
+// Check if corresponding page path exists in other version of docs
+// and, if so, go there instead of the homepage of the other docs version
+function checkPageExistsAndRedirect(event) {
+    const currentFilePath = "api/solver/tui/solve/set/multiphase_numerics/advanced_stability_controls/hybrid_nita/instability_detector/index.html",
+          tryUrl = event.target.getAttribute("href");
+    let otherDocsHomepage = tryUrl.replace(currentFilePath, "");
+    $.ajax({
+        type: 'HEAD',
+        url: tryUrl,
+        // if the page exists, go there
+        success: function() {
+            location.href = tryUrl;
+        }
+    }).fail(function() {
+        location.href = otherDocsHomepage;
+    });
+    // this prevents the browser from following the href of the clicked node
+    // (which is fine because this function takes care of redirecting)
+    return false;
+}
+
+// Populate the version switcher from the JSON config file
+(function () {
+    $.getJSON("https://fluent.docs.pyansys.com/versions.json", function(data, textStatus, jqXHR) {
+        const currentFilePath = "api/solver/tui/solve/set/multiphase_numerics/advanced_stability_controls/hybrid_nita/instability_detector/index.html";
+        let btn = document.getElementById("version_switcher_button");
+        // Set empty strings by default so that these attributes exist and can be used in CSS selectors
+        btn.dataset["activeVersionName"] = "";
+        btn.dataset["activeVersion"] = "";
+        // create links to the corresponding page in the other docs versions
+        $.each(data, function(index, entry) {
+            // if no custom name specified (e.g., "latest"), use version string
+            if (!("name" in entry)) {
+                entry.name = entry.version;
+            }
+            // create the node
+            const node = document.createElement("a");
+            node.setAttribute("class", "list-group-item list-group-item-action py-1");
+            node.textContent = `${entry.name}`;
+            node.setAttribute("href", `${entry.url}${currentFilePath}`);
+            // on click, AJAX calls will check if the linked page exists before
+            // trying to redirect, and if not, will redirect to the homepage
+            // for that version of the docs.
+            node.onclick = checkPageExistsAndRedirect;
+            // Add dataset values for the version and name in case people want
+            // to apply CSS styling based on this information.
+            node.dataset["versionName"] = entry.name;
+            node.dataset["version"] = entry.version;
+
+            $("#version_switcher_menu").append(node);
+            // replace dropdown button text with the preferred display name of
+            // this version, rather than using sphinx's 0.13.1 variable.
+            // also highlight the dropdown entry for the currently-viewed
+            // version's entry
+            if (entry.version == "0.13") {
+                node.classList.add("active");
+                btn.innerText = btn.dataset["activeVersionName"] = entry.name;
+                btn.dataset["activeVersion"] = entry.version;
+            }
+        });
+    });
+})();
+</script>
+      </div>
+      
+      <div class="navbar-end-item">
+        <span id="theme-switch" class="btn btn-sm btn-outline-primary navbar-btn rounded-circle">
+    <a class="theme-switch" data-mode="light"><i class="fas fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="far fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fas fa-adjust"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/pyansys/pyfluent" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/pyansys/pyfluent/discussions" rel="noopener" target="_blank" title="Support"><span><i class="fa fa-comment fa-fw"></i></span>
+            <label class="sr-only">Support</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+     
+<div id="announcement_msg"></div>
+<script>
+  fetch("announcement.html")
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error: ${response.status}`);
+      }
+      return response.text();
+    })
+    .then(text => document.getElementById("announcement_msg").innerHTML = text)
+    .catch((error) => console.error(`Fetch problem: ${error.message}`));
+</script>
+
+    
+        <div class="container-xl">
+    <div class="row">
+        <div class="col-12 col-md-3" id="breadcrumbs-spacer"></div>
+        <div class="col-12 col-md-11 col-xl-9" id="breadcrumbs">
+          
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+    
+        <li class="nav-item nav-item-additional-breadcrumb"><a href="https://docs.pyansys.com/">PyAnsys</a> » </li>
+    
+    
+        <li class="nav-item nav-item-0"><a href="../../../../../../../../../index.html">PyFluent</a> » </li>
+    
+
+          <li class="nav-item nav-item-1"><a href="../../../../../../../../index.html" >API reference</a> » </li>
+          <li class="nav-item nav-item-2"><a href="../../../../../../../index.html" >Solver</a> » </li>
+          <li class="nav-item nav-item-3"><a href="../../../../../../../tuicommands.html" >Solver TUI commands</a> » </li>
+          <li class="nav-item nav-item-4"><a href="../../../../../../index.html" >solver.tui</a> » </li>
+          <li class="nav-item nav-item-5"><a href="../../../../../index.html" >solve</a> » </li>
+          <li class="nav-item nav-item-6"><a href="../../../../index.html" >set</a> » </li>
+          <li class="nav-item nav-item-7"><a href="../../../index.html" >multiphase_numerics</a> » </li>
+          <li class="nav-item nav-item-8"><a href="../../index.html" >advanced_stability_controls</a> » </li>
+          <li class="nav-item nav-item-9"><a href="../index.html" accesskey="U">hybrid_nita</a> » </li>
+        <li class="nav-item nav-item-this"><a href="">instability_detector</a></li> 
+      </ul>
+    </div>
+        </div>
+  </div>
+</div>
+    
+
+
+    <div class="bd-container container-xl">
+      <div class="bd-container__inner row">
+          
+
+<!-- Only show if we have sidebars configured, else just a small margin  -->
+<div class="bd-sidebar-primary col-12 col-md-3 bd-sidebar">
+  <div class="sidebar-start-items"><form class="bd-search d-flex align-items-center" action="../../../../../../../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../../../../../general/index.html">
+   General
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../../../../../meshing/index.html">
+   Meshing
+  </a>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../../../../../../../index.html">
+   Solver
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../../../../settings.html">
+     Solver settings objects
+    </a>
+   </li>
+   <li class="toctree-l2 current active has-children">
+    <a class="reference internal" href="../../../../../../../tuicommands.html">
+     Solver TUI commands
+    </a>
+    <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+    <label for="toctree-checkbox-2">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul class="current">
+     <li class="toctree-l3 current active has-children">
+      <a class="reference internal" href="../../../../../../index.html">
+       solver.tui
+      </a>
+      <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+      <label for="toctree-checkbox-3">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul class="current">
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../../../icing/index.html">
+         icing
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../../../views/index.html">
+         views
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../../../setup/index.html">
+         setup
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../../../report/index.html">
+         report
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../../../preferences/index.html">
+         preferences
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../../../results/index.html">
+         results
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../../../mesh/index.html">
+         mesh
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../../../display/index.html">
+         display
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../../../file/index.html">
+         file
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../../../solution/index.html">
+         solution
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../../../adjoint/index.html">
+         adjoint
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../../../surface/index.html">
+         surface
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../../../parameters__and__customization/index.html">
+         parameters__and__customization
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../../../turbo_workflow/index.html">
+         turbo_workflow
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../../../parametric_study/index.html">
+         parametric_study
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../../../parallel/index.html">
+         parallel
+        </a>
+       </li>
+       <li class="toctree-l4 current active has-children">
+        <a class="reference internal" href="../../../../../index.html">
+         solve
+        </a>
+        <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+        <label for="toctree-checkbox-4">
+         <i class="fas fa-chevron-down">
+         </i>
+        </label>
+        <ul class="current">
+         <li class="toctree-l5">
+          <a class="reference internal" href="../../../../../cell_register_operations/index.html">
+           cell_register_operations
+          </a>
+         </li>
+         <li class="toctree-l5">
+          <a class="reference internal" href="../../../../../report_definitions/index.html">
+           report_definitions
+          </a>
+         </li>
+         <li class="toctree-l5 current active has-children">
+          <a class="reference internal" href="../../../../index.html">
+           set
+          </a>
+          <input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+          <label for="toctree-checkbox-5">
+           <i class="fas fa-chevron-down">
+           </i>
+          </label>
+          <ul class="current">
+           <li class="toctree-l6">
+            <a class="reference internal" href="../../../../transient_controls/index.html">
+             transient_controls
+            </a>
+           </li>
+           <li class="toctree-l6">
+            <a class="reference internal" href="../../../../advanced/index.html">
+             advanced
+            </a>
+           </li>
+           <li class="toctree-l6">
+            <a class="reference internal" href="../../../../warped_face_gradient_correction/index.html">
+             warped_face_gradient_correction
+            </a>
+           </li>
+           <li class="toctree-l6">
+            <a class="reference internal" href="../../../../pseudo_time_method/index.html">
+             pseudo_time_method
+            </a>
+           </li>
+           <li class="toctree-l6">
+            <a class="reference internal" href="../../../../high_speed_numerics/index.html">
+             high_speed_numerics
+            </a>
+           </li>
+           <li class="toctree-l6">
+            <a class="reference internal" href="../../../../overset/index.html">
+             overset
+            </a>
+           </li>
+           <li class="toctree-l6">
+            <a class="reference internal" href="../../../../nita_expert_controls/index.html">
+             nita_expert_controls
+            </a>
+           </li>
+           <li class="toctree-l6">
+            <a class="reference internal" href="../../../../open_channel_wave_options/index.html">
+             open_channel_wave_options
+            </a>
+           </li>
+           <li class="toctree-l6">
+            <a class="reference internal" href="../../../../amg_options/index.html">
+             amg_options
+            </a>
+           </li>
+           <li class="toctree-l6">
+            <a class="reference internal" href="../../../../previous_defaults/index.html">
+             previous_defaults
+            </a>
+           </li>
+           <li class="toctree-l6">
+            <a class="reference internal" href="../../../../divergence_prevention/index.html">
+             divergence_prevention
+            </a>
+           </li>
+           <li class="toctree-l6 current active has-children">
+            <a class="reference internal" href="../../../index.html">
+             multiphase_numerics
+            </a>
+            <input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+            <label for="toctree-checkbox-6">
+             <i class="fas fa-chevron-down">
+             </i>
+            </label>
+            <ul class="current">
+             <li class="toctree-l7">
+              <a class="reference internal" href="../../../viscous_flow/index.html">
+               viscous_flow
+              </a>
+             </li>
+             <li class="toctree-l7">
+              <a class="reference internal" href="../../../default_controls/index.html">
+               default_controls
+              </a>
+             </li>
+             <li class="toctree-l7">
+              <a class="reference internal" href="../../../face_pressure_controls/index.html">
+               face_pressure_controls
+              </a>
+             </li>
+             <li class="toctree-l7">
+              <a class="reference internal" href="../../../heat_mass_transfer/index.html">
+               heat_mass_transfer
+              </a>
+             </li>
+             <li class="toctree-l7">
+              <a class="reference internal" href="../../../solution_stabilization/index.html">
+               solution_stabilization
+              </a>
+             </li>
+             <li class="toctree-l7">
+              <a class="reference internal" href="../../../boiling_parameters/index.html">
+               boiling_parameters
+              </a>
+             </li>
+             <li class="toctree-l7 current active has-children">
+              <a class="reference internal" href="../../index.html">
+               advanced_stability_controls
+              </a>
+              <input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+              <label for="toctree-checkbox-7">
+               <i class="fas fa-chevron-down">
+               </i>
+              </label>
+              <ul class="current">
+               <li class="toctree-l8">
+                <a class="reference internal" href="../../equation_order/index.html">
+                 equation_order
+                </a>
+               </li>
+               <li class="toctree-l8">
+                <a class="reference internal" href="../../pseudo_time/index.html">
+                 pseudo_time
+                </a>
+               </li>
+               <li class="toctree-l8">
+                <a class="reference internal" href="../../num_ventilation/index.html">
+                 num_ventilation
+                </a>
+               </li>
+               <li class="toctree-l8 current active has-children">
+                <a class="reference internal" href="../index.html">
+                 hybrid_nita
+                </a>
+                <input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+                <label for="toctree-checkbox-8">
+                 <i class="fas fa-chevron-down">
+                 </i>
+                </label>
+                <ul class="current">
+                 <li class="toctree-l9 current active">
+                  <a class="current reference internal" href="#">
+                   instability_detector
+                  </a>
+                 </li>
+                </ul>
+               </li>
+               <li class="toctree-l8">
+                <a class="reference internal" href="../../anti_diffusion/index.html">
+                 anti_diffusion
+                </a>
+               </li>
+               <li class="toctree-l8">
+                <a class="reference internal" href="../../p_v_coupling/index.html">
+                 p_v_coupling
+                </a>
+               </li>
+              </ul>
+             </li>
+             <li class="toctree-l7">
+              <a class="reference internal" href="../../../porous_media/index.html">
+               porous_media
+              </a>
+             </li>
+             <li class="toctree-l7">
+              <a class="reference internal" href="../../../compressible_flow/index.html">
+               compressible_flow
+              </a>
+             </li>
+            </ul>
+           </li>
+           <li class="toctree-l6">
+            <a class="reference internal" href="../../../../fast_transient_settings/index.html">
+             fast_transient_settings
+            </a>
+           </li>
+           <li class="toctree-l6">
+            <a class="reference internal" href="../../../../high_order_term_relaxation/index.html">
+             high_order_term_relaxation
+            </a>
+           </li>
+           <li class="toctree-l6">
+            <a class="reference internal" href="../../../../data_sampling_options/index.html">
+             data_sampling_options
+            </a>
+           </li>
+           <li class="toctree-l6">
+            <a class="reference internal" href="../../../../contact_solution_controls/index.html">
+             contact_solution_controls
+            </a>
+           </li>
+           <li class="toctree-l6">
+            <a class="reference internal" href="../../../../enhanced_les_numerics/index.html">
+             enhanced_les_numerics
+            </a>
+           </li>
+           <li class="toctree-l6">
+            <a class="reference internal" href="../../../../acoustics_wave_equation_controls/index.html">
+             acoustics_wave_equation_controls
+            </a>
+           </li>
+           <li class="toctree-l6">
+            <a class="reference internal" href="../../../../poor_mesh_numerics/index.html">
+             poor_mesh_numerics
+            </a>
+           </li>
+          </ul>
+         </li>
+         <li class="toctree-l5">
+          <a class="reference internal" href="../../../../../report_files/index.html">
+           report_files
+          </a>
+         </li>
+         <li class="toctree-l5">
+          <a class="reference internal" href="../../../../../cell_registers/index.html">
+           cell_registers
+          </a>
+         </li>
+         <li class="toctree-l5">
+          <a class="reference internal" href="../../../../../report_plots/index.html">
+           report_plots
+          </a>
+         </li>
+         <li class="toctree-l5">
+          <a class="reference internal" href="../../../../../monitors/index.html">
+           monitors
+          </a>
+         </li>
+         <li class="toctree-l5">
+          <a class="reference internal" href="../../../../../execute_commands/index.html">
+           execute_commands
+          </a>
+         </li>
+         <li class="toctree-l5">
+          <a class="reference internal" href="../../../../../animate/index.html">
+           animate
+          </a>
+         </li>
+         <li class="toctree-l5">
+          <a class="reference internal" href="../../../../../initialize/index.html">
+           initialize
+          </a>
+         </li>
+        </ul>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../../../define/index.html">
+         define
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../../../turbo_post/index.html">
+         turbo_post
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../../../simulation_reports/index.html">
+         simulation_reports
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../../../server/index.html">
+         server
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../../../plot/index.html">
+         plot
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../../../../datamodel/index.html">
+     solver.datamodel
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../../../../schemeeval.html">
+     Scheme code evaluation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../../../../fielddata.html">
+     Field data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../../../../fieldinfo.html">
+     Field info
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../../../../events.html">
+     EventsManager
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../../../../monitors.html">
+     MonitorsManager
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../../../../reduction.html">
+     Reduction
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+  </div>
+</nav>
+  </div>
+  <div class="sidebar-end-items">
+  </div>
+</div>
+
+
+          
+
+
+<div class="bd-sidebar-secondary d-none d-xl-block col-xl-2 bd-toc">
+  
+    
+    <div class="toc-item">
+      
+<div class="tocsection onthispage mt-5 pt-1 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.set.multiphase_numerics.advanced_stability_controls.hybrid_nita.instability_detector">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     instability_detector
+    </span>
+   </code>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.set.multiphase_numerics.advanced_stability_controls.hybrid_nita.instability_detector.enable_instability_detector">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       instability_detector.enable_instability_detector()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.set.multiphase_numerics.advanced_stability_controls.hybrid_nita.instability_detector.set_cfl_limit">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       instability_detector.set_cfl_limit()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.set.multiphase_numerics.advanced_stability_controls.hybrid_nita.instability_detector.set_cfl_type">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       instability_detector.set_cfl_type()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.set.multiphase_numerics.advanced_stability_controls.hybrid_nita.instability_detector.set_velocity_limit">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       instability_detector.set_velocity_limit()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.set.multiphase_numerics.advanced_stability_controls.hybrid_nita.instability_detector.unstable_event_outer_iterations">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       instability_detector.unstable_event_outer_iterations()
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+</nav>
+    </div>
+    
+    <div class="toc-item">
+      
+    </div>
+    
+  
+</div>
+
+
+          
+          
+          <div class="bd-content col-12 col-md-9 col-xl-7">
+              
+              <article class="bd-article" role="main">
+                
+  <section id="instability-detector">
+<span id="ref-solver-tui-solve-set-multiphase-numerics-advanced-stability-controls-hybrid-nita-instability-detector"></span><h1>instability_detector<a class="headerlink" href="#instability-detector" title="Permalink to this heading">#</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solve.set.multiphase_numerics.advanced_stability_controls.hybrid_nita.instability_detector">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.solver.tui_231.main_menu.solve.set.multiphase_numerics.advanced_stability_controls.hybrid_nita.</span></span><span class="sig-name descname"><span class="pre">instability_detector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">service</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.set.multiphase_numerics.advanced_stability_controls.hybrid_nita.instability_detector" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Enters the menu for the instability detector controls.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solve.set.multiphase_numerics.advanced_stability_controls.hybrid_nita.instability_detector.enable_instability_detector" title="ansys.fluent.core.solver.tui_231.main_menu.solve.set.multiphase_numerics.advanced_stability_controls.hybrid_nita.instability_detector.enable_instability_detector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">enable_instability_detector</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables the instability detector to deal with  possible instability problems.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solve.set.multiphase_numerics.advanced_stability_controls.hybrid_nita.instability_detector.set_cfl_limit" title="ansys.fluent.core.solver.tui_231.main_menu.solve.set.multiphase_numerics.advanced_stability_controls.hybrid_nita.instability_detector.set_cfl_limit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_cfl_limit</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Sets the Courant number limit for detecting unstable  events.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solve.set.multiphase_numerics.advanced_stability_controls.hybrid_nita.instability_detector.set_cfl_type" title="ansys.fluent.core.solver.tui_231.main_menu.solve.set.multiphase_numerics.advanced_stability_controls.hybrid_nita.instability_detector.set_cfl_type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_cfl_type</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Selects the CFL number type for detection of an unstable  event.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solve.set.multiphase_numerics.advanced_stability_controls.hybrid_nita.instability_detector.set_velocity_limit" title="ansys.fluent.core.solver.tui_231.main_menu.solve.set.multiphase_numerics.advanced_stability_controls.hybrid_nita.instability_detector.set_velocity_limit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_velocity_limit</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Sets the velocity limit for detecting unstable events.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../../../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solve.set.multiphase_numerics.advanced_stability_controls.hybrid_nita.instability_detector.unstable_event_outer_iterations" title="ansys.fluent.core.solver.tui_231.main_menu.solve.set.multiphase_numerics.advanced_stability_controls.hybrid_nita.instability_detector.unstable_event_outer_iterations"><code class="xref py py-obj docutils literal notranslate"><span class="pre">unstable_event_outer_iterations</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Sets the number of outer iterations for an unstable  event.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solve.set.multiphase_numerics.advanced_stability_controls.hybrid_nita.instability_detector.enable_instability_detector">
+<span class="sig-name descname"><span class="pre">enable_instability_detector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.set.multiphase_numerics.advanced_stability_controls.hybrid_nita.instability_detector.enable_instability_detector" title="Permalink to this definition">#</a></dt>
+<dd><p>Enables/disables the instability detector to deal with  possible instability problems. Once this option is enabled,  additional instability detection options become  available.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solve.set.multiphase_numerics.advanced_stability_controls.hybrid_nita.instability_detector.set_cfl_limit">
+<span class="sig-name descname"><span class="pre">set_cfl_limit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.set.multiphase_numerics.advanced_stability_controls.hybrid_nita.instability_detector.set_cfl_limit" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the Courant number limit for detecting unstable  events. This command becomes available once the enable-instability-detector? text  option has been enabled.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solve.set.multiphase_numerics.advanced_stability_controls.hybrid_nita.instability_detector.set_cfl_type">
+<span class="sig-name descname"><span class="pre">set_cfl_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.set.multiphase_numerics.advanced_stability_controls.hybrid_nita.instability_detector.set_cfl_type" title="Permalink to this definition">#</a></dt>
+<dd><p>Selects the CFL number type for detection of an unstable  event. This command becomes available once the enable-instability-detector? text  option has been enabled.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solve.set.multiphase_numerics.advanced_stability_controls.hybrid_nita.instability_detector.set_velocity_limit">
+<span class="sig-name descname"><span class="pre">set_velocity_limit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.set.multiphase_numerics.advanced_stability_controls.hybrid_nita.instability_detector.set_velocity_limit" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the velocity limit for detecting unstable events.  This command becomes available once the enable-instability-detector? text  option has been enabled.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solve.set.multiphase_numerics.advanced_stability_controls.hybrid_nita.instability_detector.unstable_event_outer_iterations">
+<span class="sig-name descname"><span class="pre">unstable_event_outer_iterations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solve.set.multiphase_numerics.advanced_stability_controls.hybrid_nita.instability_detector.unstable_event_outer_iterations" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the number of outer iterations for an unstable  event.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+              </article>
+              
+
+              
+          </div>
+          
+      </div>
+    </div>
+
+  
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../../../../../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695"></script>
+
+<footer class="bd-footer"><div class="bd-footer__inner container">
+  
+  <div class="footer-item">
+    <p class="copyright">
+    &copy; Copyright (c) 2023 ANSYS, Inc. All rights reserved.<br>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br>
+</p>
+  </div>
+  
+</div>
+</footer>
+  </body>
+</html>

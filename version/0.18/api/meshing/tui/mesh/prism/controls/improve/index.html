@@ -1,0 +1,976 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>improve &#8212; PyFluent</title>
+
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../../../../_static/styles/theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="../../../../../../../_static/styles/bootstrap.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="../../../../../../../_static/styles/pydata-sphinx-theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+
+  
+  <link href="../../../../../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../../../../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../../_static/sg_gallery.css?v=61a4c737" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../../_static/css/ansys_sphinx_theme.css?v=18fd1f76" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../../../../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6" />
+<link rel="preload" as="script" href="../../../../../../../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6" />
+  <script src="../../../../../../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=365ca57ee442770a23c6"></script>
+ 
+<link href="../../../../../../../_static/css/breadcrumbs.css" rel="stylesheet" />
+
+    <script src="../../../../../../../_static/documentation_options.js?v=29ae757a"></script>
+    <script src="../../../../../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../../../../_static/thebelab-helper.js"></script>
+    <script src="../../../../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../../../../_static/copybutton.js?v=49e1bf35"></script>
+    <script src="../../../../../../../_static/js/table.js?v=b64f5182"></script>
+    <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/meshing/tui/mesh/prism/controls/improve/index';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.14.3';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://fluent.docs.pyansys.com/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.18';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner = false;
+        </script>
+    <link rel="icon" href="../../../../../../../_static/ansys-favicon.png"/>
+    <link rel="index" title="Index" href="../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../search.html" />
+    <link rel="next" title="improve" href="../../improve/index.html" />
+    <link rel="prev" title="proximity" href="../proximity/index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <link rel="canonical" href="https://fluent.docs.pyansys.com/version/stable/api/meshing/tui/mesh/prism/controls/improve/index.html" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container"><!-- Debugging: html_theme_options =  -->
+
+<!-- If there is no MiliSearch enabled, use the PyData search -->
+<form class="bd-search d-flex align-items-center"
+      action="../../../../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+   
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+  
+
+<a class="navbar-brand logo" href="../../../../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-light" alt="PyFluent - Home"/>
+    <script>document.write(`<img src="../../../../../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-dark" alt="PyFluent - Home"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../../../getting_started/index.html">
+                        Getting started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../../../user_guide/index.html">
+                        User guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../../../../../../index.html">
+                        API reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../../../examples/index.html">
+                        Examples
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../../../contributing.html">
+                        Contribute
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+<script>
+document.write(`
+  <div class="version-switcher__container dropdown">
+    <button id="pst-version-switcher-button-2"
+      type="button"
+      class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle"
+      data-bs-toggle="dropdown"
+      aria-haspopup="listbox"
+      aria-controls="pst-version-switcher-list-2"
+      aria-label="Version switcher list"
+    >
+      Choose version  <!-- this text may get changed later by javascript -->
+      <span class="caret"></span>
+    </button>
+    <div id="pst-version-switcher-list-2"
+      class="version-switcher__menu dropdown-menu list-group-flush py-0"
+      role="listbox" aria-labelledby="pst-version-switcher-button-2">
+      <!-- dropdown will be populated by javascript on page load -->
+    </div>
+  </div>
+`);
+</script></div>
+      
+        <div class="navbar-item">
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent/discussions" title="Support" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa fa-comment fa-fw fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Support</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </nav>
+    <div id="announcement_msg"></div>
+<script>
+  fetch("announcement.html")
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error: ${response.status}`);
+      }
+      return response.text();
+    })
+    .then(
+      (text) => (document.getElementById("announcement_msg").innerHTML = text),
+    )
+    .catch((error) => console.error(`Fetch problem: ${error.message}`));
+</script>  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../../../getting_started/index.html">
+                        Getting started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../../../user_guide/index.html">
+                        User guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../../../../../../index.html">
+                        API reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../../../examples/index.html">
+                        Examples
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../../../contributing.html">
+                        Contribute
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<script>
+document.write(`
+  <div class="version-switcher__container dropdown">
+    <button id="pst-version-switcher-button-3"
+      type="button"
+      class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle"
+      data-bs-toggle="dropdown"
+      aria-haspopup="listbox"
+      aria-controls="pst-version-switcher-list-3"
+      aria-label="Version switcher list"
+    >
+      Choose version  <!-- this text may get changed later by javascript -->
+      <span class="caret"></span>
+    </button>
+    <div id="pst-version-switcher-list-3"
+      class="version-switcher__menu dropdown-menu list-group-flush py-0"
+      role="listbox" aria-labelledby="pst-version-switcher-button-3">
+      <!-- dropdown will be populated by javascript on page load -->
+    </div>
+  </div>
+`);
+</script></div>
+        
+          <div class="navbar-item">
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent/discussions" title="Support" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa fa-comment fa-fw fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Support</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item"><nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../general/index.html">General</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../../../../../index.html">Meshing</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../../../_autosummary/ansys.fluent.core.meshing.faulttolerant.html">faulttolerant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../_autosummary/ansys.fluent.core.meshing.meshing_workflow.html">meshing_workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../_autosummary/ansys.fluent.core.meshing.watertight.html">watertight</a></li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="../../../../index.html">meshing.tui</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../../../boundary/index.html">boundary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../material_point/index.html">material_point</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../size_functions/index.html">size_functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../display/index.html">display</a></li>
+<li class="toctree-l3 current active has-children"><a class="reference internal" href="../../../index.html">mesh</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../../../hexcore/index.html">hexcore</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../cartesian/index.html">cartesian</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../auto_mesh_controls/index.html">auto_mesh_controls</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../pyramid/index.html">pyramid</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../domains/index.html">domains</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../cell_zone_conditions/index.html">cell_zone_conditions</a></li>
+<li class="toctree-l4 current active has-children"><a class="reference internal" href="../../index.html">prism</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l5"><a class="reference internal" href="../../post_ignore/index.html">post_ignore</a></li>
+<li class="toctree-l5 current active has-children"><a class="reference internal" href="../index.html">controls</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l6"><a class="reference internal" href="../morph/index.html">morph</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../zone_specific_growth/index.html">zone_specific_growth</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../offset/index.html">offset</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../normal/index.html">normal</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../post_ignore/index.html">post_ignore</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../adjacent_zone/index.html">adjacent_zone</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../proximity/index.html">proximity</a></li>
+<li class="toctree-l6 current active"><a class="current reference internal" href="#">improve</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../../improve/index.html">improve</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../split/index.html">split</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../../../non_conformals/index.html">non_conformals</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../thin_volume_mesh/index.html">thin_volume_mesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../separate/index.html">separate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../poly_hexcore/index.html">poly_hexcore</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../poly/index.html">poly</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../cavity/index.html">cavity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../rapid_octree/index.html">rapid_octree</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../scoped_prisms/index.html">scoped_prisms</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../modify/index.html">modify</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../tet/index.html">tet</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../manage/index.html">manage</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../preferences/index.html">preferences</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../objects/index.html">objects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference_frames/index.html">reference_frames</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../openmp_controls/index.html">openmp_controls</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../file/index.html">file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../cad_assemblies/index.html">cad_assemblies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../report/index.html">report</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../parallel/index.html">parallel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../scoped_sizing/index.html">scoped_sizing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../diagnostics/index.html">diagnostics</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../datamodel/index.html">meshing.datamodel</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../solver/index.html">Solver</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+      
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="https://docs.pyansys.com/" class="nav-link">PyAnsys</a>
+    </li>
+      
+    <li class="breadcrumb-item">
+      <a
+        href="../../../../../../../index.html"
+        class="nav-link"
+        aria-label="Home"
+      >
+        <i class="fa-solid fa-home"></i
+      ></a>
+    </li> 
+    <li class="breadcrumb-item">
+      <a href="../../../../../../index.html" class="nav-link">API reference</a>
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a href="../../../../../index.html" class="nav-link">Meshing</a>
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a href="../../../../index.html" class="nav-link">meshing.tui</a>
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a href="../../../index.html" class="nav-link">mesh</a>
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a href="../../index.html" class="nav-link">prism</a>
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a href="../index.html" class="nav-link">controls</a>
+    </li>
+      
+    <li class="breadcrumb-item active" aria-current="page">improve</li>
+    
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="improve">
+<span id="ref-meshing-tui-mesh-prism-controls-improve"></span><h1>improve<a class="headerlink" href="#improve" title="Link to this heading">#</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.meshing.tui_232.main_menu.mesh.prism.controls.</span></span><span class="sig-name descname"><span class="pre">improve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">service</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Enters the prism smoothing controls menu.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.prism.controls.improve.check_allowable_skew" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.prism.controls.improve.check_allowable_skew"><code class="xref py py-obj docutils literal notranslate"><span class="pre">check_allowable_skew</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables you to check the skewness of the prism cap for every layer.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.prism.controls.improve.check_size" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.prism.controls.improve.check_size"><code class="xref py py-obj docutils literal notranslate"><span class="pre">check_size</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Check for negative cell volume?.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.prism.controls.improve.corner_height_weight" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.prism.controls.improve.corner_height_weight"><code class="xref py py-obj docutils literal notranslate"><span class="pre">corner_height_weight</span></code></a>(*args, **kwargs)</p></td>
+<td><p>When enabled, the offset height at corners with large angles (for example, 270º) is reduced to give a smoother prism cap.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.prism.controls.improve.edge_smooth" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.prism.controls.improve.edge_smooth"><code class="xref py py-obj docutils literal notranslate"><span class="pre">edge_smooth</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Perform local smoothing of nodes on longest edges of skewed faces?.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.prism.controls.improve.edge_smooth_angle" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.prism.controls.improve.edge_smooth_angle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">edge_smooth_angle</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Skewness-driven edge smoothing is only allowed between cap faces whose normals are within this angle.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.prism.controls.improve.edge_swap" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.prism.controls.improve.edge_swap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">edge_swap</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Perform edge swapping to improve skewness?.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.prism.controls.improve.edge_swap_base_angle" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.prism.controls.improve.edge_swap_base_angle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">edge_swap_base_angle</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Specifies the maximum allowable angle between the normals of the base faces for skewness-driven edge swapping.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.prism.controls.improve.edge_swap_cap_angle" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.prism.controls.improve.edge_swap_cap_angle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">edge_swap_cap_angle</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Specifies the maximum allowable angle between the normals of the cap faces for skewness-driven edge swapping.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.prism.controls.improve.face_smooth" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.prism.controls.improve.face_smooth"><code class="xref py py-obj docutils literal notranslate"><span class="pre">face_smooth</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Perform face-driven smoothing to improve skewness?.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.prism.controls.improve.face_smooth_converged" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.prism.controls.improve.face_smooth_converged"><code class="xref py py-obj docutils literal notranslate"><span class="pre">face_smooth_converged</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Convergence criteria for cap face smoothing.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.prism.controls.improve.face_smooth_rings" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.prism.controls.improve.face_smooth_rings"><code class="xref py py-obj docutils literal notranslate"><span class="pre">face_smooth_rings</span></code></a>(*args, **kwargs)</p></td>
+<td><p>No.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.prism.controls.improve.face_smooth_skew" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.prism.controls.improve.face_smooth_skew"><code class="xref py py-obj docutils literal notranslate"><span class="pre">face_smooth_skew</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Min.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.prism.controls.improve.identify_feature_line" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.prism.controls.improve.identify_feature_line"><code class="xref py py-obj docutils literal notranslate"><span class="pre">identify_feature_line</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Perform normal smoothing on feature lines?.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.prism.controls.improve.improve_warp" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.prism.controls.improve.improve_warp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">improve_warp</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables or disables improving of face warp during prism generation.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.prism.controls.improve.layer_by_layer_smoothing" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.prism.controls.improve.layer_by_layer_smoothing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">layer_by_layer_smoothing</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Perform normals and heights smoothing to improve cell quality/shape?.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.prism.controls.improve.left_hand_check" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.prism.controls.improve.left_hand_check"><code class="xref py py-obj docutils literal notranslate"><span class="pre">left_hand_check</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Controls checking for left-handedness of faces.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.prism.controls.improve.max_allowable_cap_skew" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.prism.controls.improve.max_allowable_cap_skew"><code class="xref py py-obj docutils literal notranslate"><span class="pre">max_allowable_cap_skew</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Specifies the maximum skewness allowed for a prism cap face.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.prism.controls.improve.max_allowable_cell_skew" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.prism.controls.improve.max_allowable_cell_skew"><code class="xref py py-obj docutils literal notranslate"><span class="pre">max_allowable_cell_skew</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Specifies the cell quality criteria for smoothing and quality checking.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.prism.controls.improve.node_smooth" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.prism.controls.improve.node_smooth"><code class="xref py py-obj docutils literal notranslate"><span class="pre">node_smooth</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Perform node-driven smoothing to improve skewness?.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.prism.controls.improve.node_smooth_angle" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.prism.controls.improve.node_smooth_angle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">node_smooth_angle</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Only manifolds having characteristic angles within this many degrees of 180 will be smoothed.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.prism.controls.improve.node_smooth_converged" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.prism.controls.improve.node_smooth_converged"><code class="xref py py-obj docutils literal notranslate"><span class="pre">node_smooth_converged</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Convergence criterion for node smoothing.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.prism.controls.improve.node_smooth_iter" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.prism.controls.improve.node_smooth_iter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">node_smooth_iter</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Maximum number of smoothing iterations for nodes on advancing layers.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.prism.controls.improve.node_smooth_local" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.prism.controls.improve.node_smooth_local"><code class="xref py py-obj docutils literal notranslate"><span class="pre">node_smooth_local</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Allow node-smoothing to converge locally (for large geometries).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.prism.controls.improve.node_smooth_rings" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.prism.controls.improve.node_smooth_rings"><code class="xref py py-obj docutils literal notranslate"><span class="pre">node_smooth_rings</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Controls locality of skewness-driven node smoothing.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.prism.controls.improve.post_adjust_height" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.prism.controls.improve.post_adjust_height"><code class="xref py py-obj docutils literal notranslate"><span class="pre">post_adjust_height</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Perform prism height adjustment based on growth rate?.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.prism.controls.improve.shrink_left_handed_cap" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.prism.controls.improve.shrink_left_handed_cap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shrink_left_handed_cap</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Shrink if required to get rid of left handed faces.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.prism.controls.improve.smooth_improve_prism_cells" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.prism.controls.improve.smooth_improve_prism_cells"><code class="xref py py-obj docutils literal notranslate"><span class="pre">smooth_improve_prism_cells</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables you to set the parameters for improving the prism cells after the required prism layers are created.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.prism.controls.improve.swap_smooth_skew" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.prism.controls.improve.swap_smooth_skew"><code class="xref py py-obj docutils literal notranslate"><span class="pre">swap_smooth_skew</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Only faces with skewness &gt;= this value are swapped and/or smoothed.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">check_allowable_skew</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables you to check the skewness of the prism cap for every layer.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">check_size</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Check for negative cell volume?.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">corner_height_weight</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>When enabled, the offset height at corners with large angles (for example, 270º) is reduced to give a smoother prism cap.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">edge_smooth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Perform local smoothing of nodes on longest edges of skewed faces?.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">edge_smooth_angle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Skewness-driven edge smoothing is only allowed between cap faces whose normals
+are within this angle.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">edge_swap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Perform edge swapping to improve skewness?.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">edge_swap_base_angle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Specifies the maximum allowable angle between the normals of the base faces for skewness-driven edge swapping.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">edge_swap_cap_angle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Specifies the maximum allowable angle between the normals of the cap faces for skewness-driven edge swapping.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">face_smooth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Perform face-driven smoothing to improve skewness?.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">face_smooth_converged</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Convergence criteria for cap face smoothing.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">face_smooth_rings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>No. of rings to propagate skewness during smoothing of cap faces.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">face_smooth_skew</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Min. skewness to smooth cap faces.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">identify_feature_line</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Perform normal smoothing on feature lines?.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">improve_warp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables or disables improving of face warp during prism generation. This option is disabled by default.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">layer_by_layer_smoothing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Perform normals and heights smoothing to improve cell quality/shape?.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">left_hand_check</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Controls checking for left-handedness of faces. The default setting of 0 implies face handedness will not be checked. A value of 1 implies only cap faces will be checked, while 2 implies faces of all cells in current layer will be checked.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">max_allowable_cap_skew</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Specifies the maximum skewness allowed for a prism cap face. If the skewness of a cap face exceeds this value, the meshing process will stop and a warning indicates that the skewness for that layer is too high.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">max_allowable_cell_skew</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Specifies the cell quality criteria for smoothing and quality checking.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">node_smooth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Perform node-driven smoothing to improve skewness?.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">node_smooth_angle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Only manifolds having characteristic angles
+within this many degrees of 180 will be smoothed.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">node_smooth_converged</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Convergence criterion for node smoothing.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">node_smooth_iter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Maximum number of smoothing iterations for nodes on advancing layers.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">node_smooth_local</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Allow node-smoothing to converge locally (for large geometries).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">node_smooth_rings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Controls locality of skewness-driven node smoothing.
+If greater than zero, nodes surrounding a node to be smoothed are smoothed
+first.  Nodes directly connected to the target node are in ring 1.  Nodes not
+in ring 1 which are directly connected to nodes in ring 1 are in ring 2,
+and so on.  This value determines how many surrounding rings to smooth.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">post_adjust_height</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Perform prism height adjustment based on growth rate?.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">shrink_left_handed_cap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Shrink if required to get rid of left handed faces.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">smooth_improve_prism_cells</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables you to set the parameters for improving the prism cells after the required prism layers are created. You can select optimized smoothing (smooth), node movement (improve), or a combination of both to improve the quality. Specify the quality measure to be used, the cell quality threshold, the number of improvement iterations, and the minimum improvement required.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">swap_smooth_skew</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Only faces with skewness &gt;= this value are swapped and/or smoothed.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+<!-- If there is no fix edit button function, use the PyData edit-this-button--></div>
+
+  <div class="sidebar-secondary-item">
+  <div class="tocsection sourcelink">
+    <a href="../../../../../../../_sources/api/meshing/tui/mesh/prism/controls/improve/index.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../../../../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6"></script>
+<script src="../../../../../../../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+  <p class="copyright">
+    
+      © Copyright (c) 2023 ANSYS, Inc. All rights reserved.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="theme-version">
+  Built with the
+  <a href="https://sphinxdocs.ansys.com/version/stable/index.html"
+    >Ansys Sphinx Theme</a
+  >
+  0.12.2. <br />Last updated on
+  <span id="date"></span>
+</p>
+<script>
+  var options = { day: "numeric", month: "long", year: "numeric" };
+  var lastModifiedDate = new Date(document.lastModified);
+  var date = lastModifiedDate.toLocaleDateString("en-US", options);
+  document.getElementById("date").innerHTML = date;
+</script></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

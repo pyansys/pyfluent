@@ -1,0 +1,1171 @@
+/* Provided by the Sphinx base theme template at build time */
+
+@import "../basic.css";
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Open+Sans:ital,wght@0,400;0,600;1,400;1,600&display=swap");
+@import "../sg_gallery.css";
+@import "../design-style.4045f2051d55cab465a707391d5b2007.min.css";
+@import "../styles/pydata-sphinx-theme.css";
+
+@font-face {
+  font-family: "Source Sans Pro Light";
+  src: url(../fonts/SourceSansPro-Light.ttf);
+}
+
+@font-face {
+  font-family: "Source Sans Pro";
+  src: url(../fonts/SourceSansPro-Regular.ttf);
+}
+
+:root {
+  /* Ansys specific changes to the theme */
+
+  /*****************************************************************************
+  * Ansys Font family
+  **/
+  /* These are adapted from https://systemfontstack.com/ */
+  --pst-font-family-base-system: -apple-system, BlinkMacSystemFont, Segoe UI,
+    "Helvetica Neue", Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji,
+    Segoe UI Symbol;
+  --pst-font-family-monospace-system: "SFMono-Regular", Menlo, Consolas, Monaco,
+    Liberation Mono, Lucida Console, monospace;
+
+  --pst-font-family-base: "Source Sans Pro", sans-serif,
+    var(--pst-font-family-base-system);
+  --pst-font-family-heading: "Source Sans Pro", sans-serif,
+    var(--pst-font-family-base-system);
+  --pst-font-family-monospace: monospace, Courier,
+    var(--pst-font-family-monospace-system);
+
+  /*****************************************************************************
+  * Ansys compatible colors
+  *
+  * Colors are defined in rgb string way, "red, green, blue"
+  **/
+  --ansysGold: rgb(255, 183, 27); /* #FFB71B */
+  --ansysBronze: rgb(200, 146, 17); /* #C89211 */
+  --pythonBlue: rgb(57, 114, 161); /* #3972a1 */
+
+  --pst-color-active-navigation: var(--ansysBronze); /* --ansysBronze */
+  --pst-color-navbar-link: rgb(255, 255, 255);
+  --pst-color-navbar-link-hover: var(--ansysBronze); /* --ansysBronze */
+  --pst-color-navbar-link-active: var(--ansysGold); /* --ansysBronze */
+  --pst-font-size-h1: 48px;
+  --pst-font-size-h2: 36px;
+  --pst-font-size-h3: 28px;
+  --pst-font-size-h4: 20px;
+  --pst-font-size-h5: 14px;
+  --pst-font-size-h6: 11px;
+}
+
+html[data-theme="light"] {
+  /*****************************************************************************
+  * main colors
+  */
+  --pst-color-primary: #fff;
+  --pst-color-secondary: rgb(200, 146, 17);
+  --pst-color-success: rgb(40, 167, 69);
+  --pst-color-text-base: rgb(0, 0, 0);
+  --pst-color-text-muted: rgb(26, 24, 24);
+  --pst-color-border: #a19d9d;
+  --pst-color-shadow: rgb(216, 216, 216);
+  --pst-color-info: var(--pst-color-link);
+
+  /*****************************************************************************
+  * depth colors
+  */
+  --pst-color-on-background: rgb(0, 0, 0);
+  --pst-color-on-surface: #f2f2f2;
+
+  /*****************************************************************************
+  * extensions
+  */
+
+  --pst-color-panel-background: var(--pst-color-on-background);
+
+  /*****************************************************************************
+  * layout
+  */
+
+  --pst-color-link: #1e6ddc;
+  --pst-color-link-hover: #32cfea;
+  --pst-color-link-visted: #9428f2;
+  --pst-color-inline-code: #000;
+  --pst-color-target: rgb(255, 255, 255);
+
+  /*****************************************************************************
+  * color for sphinx-gallery-code output
+  */
+  --pst-color-codecell: #fafae2;
+  --pst-color-codeout: var(--pst-color-inline-code);
+  --pst-color-sig: #0965c8;
+  --pst-color-code-s1: #b35000;
+  --pst-color-code-c1: #095d0a;
+  /*****************************************************************************
+  * sphinx design primary color
+  */
+  --sd-color-primary: var(--pst-color-text-base);
+
+  /*****************************************************************************
+  * table hovering
+  */
+  --pst-color-table-hover: var(--pst-color-border);
+
+  /*****************************************************************************
+  * search hide match
+  */
+  --pst-color-search-match: #91969b;
+}
+
+html[data-theme="dark"] {
+  /*****************************************************************************
+  * main colors
+  */
+  --pst-color-primary: #d09735;
+  --pst-color-secondary: #c58e30;
+  --pst-color-success: rgb(72, 135, 87);
+  --pst-color-text-base: rgb(201, 209, 217);
+  --pst-color-text-muted: rgb(192, 192, 192);
+  --pst-color-border: rgb(192, 192, 192);
+  --pst-color-shadow: rgb(104, 102, 102);
+  --pst-color-background: rgb(18, 18, 18);
+  --pst-color-on-background: rgb(0, 0, 0);
+  --pst-color-surface: rgb(41, 41, 41);
+  --pst-color-on-surface: rgb(55, 55, 55);
+  --pst-color-info: var(--pst-color-secondary);
+
+  /*****************************************************************************
+  * extensions
+  */
+
+  --pst-color-panel-background: var(--pst-color-on-background);
+
+  /*****************************************************************************
+  * layout
+  */
+
+  --pst-color-link: #579ce5;
+  --pst-color-link-hover: #12b2e2;
+  --pst-color-link-visted: #c58af9;
+  --pst-color-inline-code: #fff;
+  --pst-color-target: rgb(71, 39, 0);
+
+  /*****************************************************************************
+  * color for sphinx-gallery-code output
+  */
+  --pst-color-codecell: #495057;
+  --pst-color-codeout: #f2f4f6;
+  --pst-color-sig: #d6ab1e;
+  --pst-color-code-s1: #d79a60;
+  --pst-color-code-c1: #8fb842;
+
+  /*****************************************************************************
+  * table hovering
+  */
+  --pst-color-table-hover: var(--pst-color-target);
+
+  /*****************************************************************************
+  * search hide match
+  */
+  --pst-color-search-match: var(--pst-color-primary);
+}
+
+/*
+#################
+body and content
+#################
+*/
+
+body {
+  font-family: "Open Sans", sans-serif;
+}
+
+h1,
+h2 {
+  color: var(--pst-color-text-base);
+}
+
+/*
+##########
+Codecell
+##########
+*/
+
+dt:target,
+span.highlighted {
+  background-color: var(--pst-color-codecell) !important;
+}
+
+.docutils {
+  color: var(--pst-color-inline-code);
+  font-family: var(--pst-font-family-monospace);
+  font-weight: 500;
+}
+
+code.literal {
+  padding: 0.1rem 0.25rem;
+  padding-top: 0.1rem;
+  padding-right: 0.25rem;
+  padding-bottom: 0.1rem;
+  padding-left: 0.25rem;
+  background-color: var(--pst-color-on-surface);
+  border: 1px solid var(--pst-color-border);
+  border-radius: 0.25rem;
+}
+
+.xref.std.std-ref {
+  color: var(--pst-color-inline-code);
+  font-family: "Inconsolata";
+  font-weight: normal;
+  font-style: italic;
+  padding: 0.1rem 0.25rem;
+  padding-top: 0.1rem;
+  padding-right: 0.25rem;
+  padding-bottom: 0.1rem;
+  padding-left: 0.25rem;
+  font-size: 90%;
+  background-color: var(--pst-color-on-surface);
+  border: 1px solid var(--pst-color-border);
+  border-radius: 0.25rem;
+}
+
+.sig {
+  font-family: "Consolas", "Menlo", "DejaVu Sans Mono",
+    "Bitstream Vera Sans Mono", monospace;
+}
+
+.sig-name.descname {
+  color: var(--pst-color-inline-code);
+}
+
+.sig-name {
+  color: var(--pst-color-sig);
+}
+
+/* Increase empty-space around classes, methods, properties, etc. that are descendants
+ of other items */
+dl.class dl.py {
+  margin-top: 2.5em;
+  margin-bottom: 2.5em;
+}
+
+/* Reduce empty-space around Notes and Examples headings */
+p.rubric {
+  margin-top: 0.75em;
+  margin-bottom: 0.75em;
+}
+
+/*
+########
+Table
+########
+*/
+
+.table {
+  width: 100%;
+  max-width: 100%;
+  border-spacing: 0;
+  border-collapse: collapse;
+  overflow: hidden;
+  vertical-align: middle;
+  color: var(--pst-color-text-base);
+  /* Disabling scroll bars */
+  overflow-y: scroll;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+tr {
+  background-color: var(--pst-color-background);
+}
+
+th {
+  background-color: rgb(255, 183, 27, 0.55);
+}
+
+tr:nth-child(odd),
+tr:nth-child(even) {
+  background-color: var(--pst-color-background);
+}
+
+.table tr:hover td {
+  background-color: var(--pst-color-table-hover);
+}
+
+div.rendered_html table.dataframe td {
+  color: var(--pst-color-text-base);
+}
+
+/*
+###############
+Table-centered
+################
+Same as table but with horizontally centered text.
+
+see examples.
+*/
+table.table-centered {
+  width: 100%;
+  max-width: 100%;
+  border-spacing: 0;
+  border-collapse: collapse;
+  overflow: hidden;
+  vertical-align: middle;
+  text-align: center;
+
+  /* Disabling scroll bars */
+  overflow-y: scroll;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+.table-centered tr {
+  background-color: var(--pst-color-background);
+  text-align: center;
+}
+
+.table-centered th {
+  background-color: rgb(255, 183, 27, 0.55);
+  text-align: center;
+}
+
+.table-centered tr:nth-child(odd),
+.table-centered tr:nth-child(even) {
+  text-align: center;
+  background-color: var(--pst-color-background);
+}
+
+.table-centered tr:hover td {
+  background-color: var(--pst-color-table-hover);
+  text-align: center;
+}
+
+table.dataframe {
+  table-layout: auto !important;
+}
+
+/*
+###################
+longtable-centered
+####################
+*/
+
+table.longtable-centered {
+  text-align: center;
+}
+
+.longtable-centered tr {
+  text-align: center;
+}
+
+.longtable-centered th {
+  text-align: center;
+}
+
+.longtable-centered tr:nth-child(odd) {
+  text-align: center;
+}
+
+.longtable-centered tr:nth-child(even) {
+  text-align: center;
+}
+
+table.longtable-centered tr:hover td {
+  background-color: var(--pst-color-table-hover);
+  text-align: center;
+}
+
+/*
+#########
+DataFrame
+#########
+*/
+
+.dataframe tr {
+  background-color: var(--pst-color-background);
+}
+
+.dataframe tr:nth-child(odd),
+.dataframe tr:nth-child(even) {
+  background-color: var(--pst-color-background) !important;
+}
+
+.dataframe tr:hover td {
+  background-color: var(--pst-color-table-hover);
+}
+
+/*
+###################
+DataFrame-centered
+###################
+*/
+
+.dataframe-centered tr {
+  background-color: var(--pst-color-background);
+  text-align: center;
+}
+
+.dataframe-centered tr:nth-child(odd) {
+  background-color: var(--pst-color-background) !important;
+  text-align: center;
+}
+
+.dataframe-centered tr:nth-child(even) {
+  background-color: var(--pst-color-border);
+  text-align: center;
+}
+
+.dataframe-centered tr:hover td {
+  background-color: var(--pst-color-border);
+  text-align: center;
+}
+
+.dataframe thead th {
+  text-align: center;
+}
+
+/*
+############
+data table
+############
+*/
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.disabled,
+.dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover,
+.dataTables_wrapper .dataTables_paginate .paginate_button.disabled:active {
+  color: var(--pst-color-text-base) !important;
+}
+
+.dataTables_wrapper,
+.dataTables_wrapper .dataTables_filter,
+.dataTables_wrapper .dataTables_info,
+.dataTables_wrapper .dataTables_processing,
+.dataTables_wrapper .dataTables_paginate {
+  color: var(--pst-color-text-base) !important;
+}
+
+table.dataTable tbody th,
+table.dataTable tbody td {
+  background: var(--pst-color-background);
+}
+
+label {
+  color: var(--pst-color-text-base);
+}
+
+/*
+##########
+Scroll-bar
+##########
+*/
+
+body::-webkit-scrollbar {
+  width: 1rem;
+  height: 1rem;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: var(--pst-color-border);
+  border-radius: inherit;
+}
+
+body::-webkit-scrollbar-track {
+  background: var(--pst-color-background);
+}
+
+.bd-sidebar::-webkit-scrollbar {
+  width: 0.5rem;
+  height: 0.5rem;
+}
+
+.bd-sidebar::-webkit-scrollbar-thumb {
+  background: var(--pst-color-border);
+  border-radius: inherit;
+  visibility: hidden !important;
+}
+
+.bd-sidebar::-webkit-scrollbar-track {
+  background: var(--pst-color-border);
+  visibility: hidden !important;
+}
+
+.bd-toc::-webkit-scrollbar {
+  width: 0.5rem;
+  height: 0.5rem;
+}
+
+.bd-toc::-webkit-scrollbar-thumb {
+  background: var(--pst-color-border);
+  border-radius: inherit;
+}
+
+.bd-toc::-webkit-scrollbar-track {
+  background: var(--pst-color-border);
+}
+
+/*
+############
+Autosummary
+############
+*/
+
+.autosummary tr:nth-child(odd),
+.autosummary tr:nth-child(even) {
+  background-color: var(--pst-color-background);
+}
+
+/*
+#####################
+ReST :download: links
+#####################
+*/
+a > code.download {
+  font-family: var(--pst-font-family-base);
+  color: var(--pst-color-link);
+  text-decoration: none;
+  font-weight: normal;
+}
+
+/*
+###############
+Dropdown button
+###############
+*/
+
+.navbar button.navbar-toggler {
+  margin-right: 1em;
+  border-color: rgb(255, 255, 255);
+  color: rgb(255, 255, 255);
+}
+
+/*
+####################################################
+Side column size (first and second column from left)
+####################################################
+*/
+
+.col-md-3 {
+  flex: 0 0 20%;
+  max-width: 20%;
+}
+
+a.headerlink {
+  color: #222;
+}
+
+@media (min-width: 1200px) {
+  .container,
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container-xl {
+    max-width: 1200px;
+  }
+}
+
+@media (min-width: 1600px) {
+  .container,
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container-xl {
+    max-width: 1600px;
+  }
+}
+
+/*
+############################################
+Navigation column (according to side column)
+############################################
+*/
+.col-lg-9 {
+  padding-right: 5px;
+  padding-left: 20px;
+}
+.bd-main .bd-content {
+  display: flex;
+  height: 100%;
+  justify-content: end;
+}
+
+.bd-main .bd-content .bd-article-container .bd-article {
+  padding-left: 1rem;
+  padding-top: 1rem;
+  padding-right: 1rem;
+}
+.bd-header .navbar-nav li a.nav-link {
+  color: #ddd;
+}
+.bd-header .navbar-nav .dropdown button {
+  color: #ddd;
+  display: unset;
+}
+
+/*
+#################################
+Syntax highlighting in code block
+#################################
+*/
+
+html[data-theme="light"] .highlight .o {
+  color: #b35000;
+  font-weight: bold;
+}
+
+/*
+#############################
+Bold font weight for **code**
+#############################
+*/
+
+b,
+strong {
+  font-weight: 900;
+}
+
+.bd-header .navbar-header-items__start {
+  width: fit-content;
+  padding-right: 3rem;
+}
+
+.navbar-nav li a:focus,
+.navbar-nav li a:hover,
+.navbar-nav li.current > a {
+  color: white !important;
+}
+
+.navbar-nav .dropdown .dropdown-menu {
+  min-width: 250px;
+}
+
+/*
+###########################
+Left side toc-tree hovering
+###########################
+*/
+
+nav.bd-links .active:hover > a {
+  font-weight: bold;
+  color: var(--pst-color-text-base);
+  border-left: 2px solid var(--pst-color-text-base);
+}
+
+nav.bd-links .active > a {
+  font-weight: bold;
+  color: var(--pst-color-text-muted) !important;
+  border-left: 2px solid var(--pst-color-text-base);
+  border-bottom: none !important;
+  padding-left: 0.5rem;
+}
+
+nav.bd-links li > a:hover {
+  font-weight: 900;
+  color: var(--pst-color-link) !important;
+}
+
+.bd-header .navbar-nav .dropdown button:hover {
+  color: white;
+}
+
+.dropdown-item:hover {
+  font-weight: bold;
+  background-color: transparent;
+}
+
+/*
+##################
+icon, button, logo
+##################
+*/
+
+button,
+input,
+optgroup,
+select,
+textarea,
+button:hover {
+  color: #ddd;
+}
+
+.theme-switch-button {
+  border-color: #f8f9fa;
+}
+
+button.btn.version-switcher__button {
+  border-color: var(--pst-color-border);
+  color: #ddd;
+}
+
+button.version-switcher__button:hover {
+  color: #f8f8f2;
+}
+
+button.version-switcher__button {
+  color: #f8f9fa;
+}
+
+.search-button {
+  color: #ddd;
+}
+
+kbd {
+  background-color: #f8f9fa;
+}
+
+/*
+#####################################
+icon, button, logo  for small screen
+#####################################
+*/
+@media screen and (max-width: 576px) {
+  html[data-theme="light"] .theme-switch-button span {
+    color: rgb(19, 18, 18) !important;
+  }
+  button.btn.version-switcher__button {
+    border-color: var(--pst-color-border);
+    color: var(--pst-color-text-base);
+    font-weight: 700;
+  }
+  button.btn.version-switcher__button {
+    border-color: var(--pst-color-border);
+    color: var(--pst-color-text-base);
+  }
+  button.version-switcher__button {
+    color: var(--pst-color-text-base);
+  }
+  .navbar-nav li a:focus,
+  .navbar-nav li a:hover,
+  .navbar-nav li.current > a {
+    color: var(--pst-color-text-base) !important;
+    font-weight: 700;
+  }
+  button,
+  input,
+  optgroup,
+  select,
+  textarea,
+  button:hover {
+    color: var(--pst-color-text-base);
+  }
+}
+
+.theme-switch-button span {
+  color: #f8f9fa;
+}
+
+.theme-switch-button span:hover {
+  color: var(--ansysGold);
+  border-color: white;
+}
+
+.navbar-icon-links {
+  column-gap: 0.2rem;
+}
+
+.search-button-field {
+  color: white;
+  background-color: transparent;
+}
+
+.search-button-field:hover {
+  color: var(--pst-color-border);
+}
+
+/* make the github logo white */
+
+i.fa-github-square:before,
+i.fa-square-github:before {
+  color: white;
+  font-size: 1rem;
+}
+
+.version-switcher__menu a.list-group-item:hover {
+  background-color: #d09735 !important;
+  border-color: var(--pst-color-text-base) !important;
+  color: #000 !important;
+}
+
+.version-switcher__menu a.list-group-item {
+  background-color: #f8f9fa;
+  border-color: var(--pst-color-border);
+  color: #000;
+}
+
+.fa-wrench:before {
+  content: "\f0ad";
+  color: white;
+}
+
+.navbar-icon-links {
+  font-size: 1.5rem;
+  color: white;
+}
+
+html[data-theme="light"] #pst-back-to-top {
+  background-color: var(--pst-color-link);
+}
+/*
+##############################
+image padding before and after
+##############################
+*/
+
+img {
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+html[data-theme="dark"] .bd-content img:not(.only-dark):not(.dark-light) {
+  background: transparent;
+}
+
+img.logo__image {
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+}
+
+/*
+##########################
+Nav-bar entity right side.
+##########################
+*/
+
+nav.bd-links li > a {
+  color: var(--pst-color-link);
+  font-size: 0.98rem;
+}
+
+html[data-theme="light"] .highlight pre {
+  line-height: 125%;
+  font-size: 0.9em;
+}
+
+html[data-theme="dark"] .highlight pre {
+  line-height: 125%;
+  font-size: 0.9em;
+}
+
+.bd-toc {
+  padding-top: 5em;
+}
+
+#version_switcher_button {
+  background-color: var(--pst-color-background);
+}
+
+.editthispage a {
+  color: var(--pst-color-text-base);
+}
+
+.list-group-item.active {
+  z-index: 2;
+  color: var(--pst-color-text-base) !important;
+}
+
+/*
+##############
+Sphinx design
+##############
+*/
+
+blockquote {
+  background-color: var(--pst-color-background);
+}
+.sd-sphinx-override,
+.sd-sphinx-override * {
+  flex: auto;
+}
+
+/* Sphinx-design tab */
+
+/* Common styles for all screen sizes */
+.sd-tab-set > input:not(.focus-visible) + label {
+  outline: none;
+  font-size: large;
+  -webkit-tap-highlight-color: var(--pst-color-background) !important;
+  color: var(--pst-color-text-base);
+}
+
+.sd-tab-set > input:checked + label + .sd-tab-content {
+  display: block;
+  font-size: medium;
+}
+
+.sd-tab-set > input:checked + label + .sd-tab-content {
+  display: block;
+  font-size: 0.9rem;
+}
+
+.sd-tab-content {
+  font-family: var(--pst-font-family-base);
+}
+
+.bd-content .sd-tab-set > input:checked + label,
+.bd-content .sd-tab-set > input:not(:checked) + label:hover {
+  color: var(--pst-color-text-base);
+  border-color: var(--pst-color-text-base);
+}
+
+/* Media query for medium-sized screens */
+@media screen and (max-width: 768px) {
+  .sd-tab-set > input:not(.focus-visible) + label {
+    font-size: medium;
+  }
+}
+
+/* Media query for small-sized screens */
+@media screen and (max-width: 576px) {
+  .sd-tab-set > input:not(.focus-visible) + label {
+    font-size: small;
+  }
+}
+
+/* Sphinx-design card */
+
+/* Common styles for all screen sizes */
+.sd-card .sd-card-text {
+  font-family: var(--pst-font-family-base) !important;
+  background-color: var(--pst-color-background) !important;
+}
+
+.bd-content .sd-card .sd-card-header {
+  border: none;
+  background-color: transparent;
+  color: var(--pst-color-text-base) !important;
+  font-size: var(--pst-font-size-h5);
+  font-weight: bold;
+  font-family: var(--pst-font-family-base);
+  padding: 0.5rem 0rem 0.5rem 0rem;
+}
+
+.sd-card .sd-card-footer .sd-card-text {
+  max-width: 220px;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: var(--pst-font-family-base);
+}
+
+.sd-card-title {
+  font-family: var(--pst-font-family-base-system);
+}
+
+.bd-content .sd-card .sd-card-body,
+.bd-content .sd-card .sd-card-footer,
+.bd-content .sd-card .sd-card-text {
+  background-color: transparent;
+}
+
+html[data-theme="dark"] .sd-shadow-sm {
+  box-shadow: 0 0.1rem 1rem rgba(250, 250, 250, 0.6) !important;
+}
+
+html[data-theme="dark"] .sd-card-img-top[src*=".png"] {
+  filter: invert(0.82) brightness(0.8) contrast(1.2);
+}
+
+/* Common styles for all screen sizes */
+.sd-card {
+  border-radius: 0;
+  padding: 10px 10px 10px 10px;
+  font-family: var(--pst-font-family-base) !important;
+}
+
+/* Media query for medium-sized screens */
+@media screen and (max-width: 768px) {
+  .sd-card .sd-card-header {
+    font-size: var(--pst-font-size-h6);
+  }
+}
+
+/* Media query for small-sized screens */
+@media screen and (max-width: 576px) {
+  .sd-card .sd-card-header {
+    font-size: var(--pst-font-size-h5);
+  }
+  .sd-card {
+    padding: 5px 5px 5px 5px;
+  }
+  .sd-sphinx-override,
+  .sd-sphinx-override * {
+    box-sizing: content-box !important;
+  }
+}
+
+/*
+Sphinx-design dropdown
+*/
+
+.bd-content details.sd-dropdown .sd-summary-title {
+  border: 1px solid var(--pst-color-text-base) !important;
+  color: var(--pst-color-text-base) !important;
+  font-family: var(monospace) !important;
+  font-size: medium;
+  text-align: left;
+  padding-left: 1rem;
+}
+
+details.sd-dropdown summary.sd-card-header + div.sd-summary-content {
+  background-color: transparent;
+}
+
+/*
+#################################
+Right side toctree color and font
+#################################
+*/
+.toc-entry a.nav-link {
+  padding: 0.125rem 1.5rem;
+  color: var(--pst-color-link);
+}
+
+.toc-entry a.nav-link.active {
+  font-weight: bold;
+  color: var(--pst-color-text-base);
+  background-color: transparent;
+  border-left: 2px solid var(--pst-color-text-muted);
+}
+
+.toc-h2 {
+  font-size: 0.98rem;
+  padding: 0.05em;
+}
+
+.toc-h3 {
+  font-size: 0.96rem;
+}
+
+.toc-h4 {
+  font-size: 0.9rem;
+}
+
+.toc-entry a.nav-link:hover {
+  color: var(--pst-color-link);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/*
+###########
+Directives
+###########
+*/
+
+div.deprecated {
+  border-color: var(--pst-color-danger);
+  background-color: #dc354514;
+}
+
+div.deprecated,
+div.versionadded,
+div.versionchanged {
+  background-color: transparent;
+}
+
+.admonition,
+div.admonition {
+  background-color: var(--pst-color-on-surface);
+}
+
+/* Select only divisions that contain a dataframe, with enough specificity to override pydata css */
+div.nboutput
+  div.output_area.rendered_html.docutils.container:has(table.dataframe) {
+  background-color: transparent;
+}
+
+aside.topic > p {
+  color: var(--pst-color-text-base) !important;
+}
+
+/*
+############
+Border lines
+############
+*/
+.bd-sidebar-primary,
+.bd-sidebar-secondary {
+  max-height: calc(100vh - var(--pst-header-height) - 1vh);
+}
+
+/*
+#################
+search hide match
+#################
+*/
+
+div#searchbox p.highlight-link a {
+  background-color: var(--pst-color-search-match);
+}
+
+.header-article__inner {
+  padding: 0 1rem;
+}
+
+.table > :not(caption) > * > * {
+  background-color: transparent !important;
+  color: var(--pst-color-text-base) !important;
+}
+
+nav.bd-links li > a {
+  text-decoration: none;
+}
+
+.bd-header .navbar-nav li a.nav-link:hover {
+  text-decoration: none;
+  font-weight: 600;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:active,
+a:visited,
+a:visited:hover,
+a:active:hover,
+a:hover {
+  text-decoration: underline;
+  color: var(--pst-color-link);
+  font-weight: 500;
+}
+
+a:visited,
+a:visited:hover {
+  color: var(--pst-color-link-visted);
+}
+
+/* Cheat sheet sidebar */
+
+.sidebar-cheatsheets h4 {
+  font-weight: var(--pst-sidebar-header-font-weight) !important;
+  font-size: var(--pst-sidebar-header-font-size) !important;
+  margin-bottom: 0.5rem;
+}
+
+.sidebar-cheatsheets a {
+  display: inline-flex;
+  border: 0.5px solid var(--pst-color-border);
+  padding: 0.25rem;
+  max-width: 80%;
+}
+
+.sidebar-cheatsheets a:hover {
+  background-color: var(--pst-color-border);
+  color: var(--pst-color-text-base);
+}
+
+.sidebar-cheatsheets img {
+  padding: 0rem;
+}
+
+.bd-sidebar-primary {
+  padding: 0.5rem;
+}
+
+/* Do not display object domain namespace when documenting objects.
+
+   Example: class ansys.module.foo.Foo.method -> method
+
+  */
+
+.sig-prename.descclassname {
+  display: none;
+}

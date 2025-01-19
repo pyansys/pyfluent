@@ -1,0 +1,1037 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Modeling Cavitation &#8212; PyFluent</title>
+
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=61a4c737" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/ansys_sphinx_theme.css?v=450015ff" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+ 
+<link href="../../_static/css/breadcrumbs.css" rel="stylesheet" />
+
+    <script src="../../_static/documentation_options.js?v=03f67e04"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/thebelab-helper.js"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=49e1bf35"></script>
+    <script src="../../_static/js/table.js?v=b64f5182"></script>
+    <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'examples/00-fluent/modeling_cavitation';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.14.4';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://fluent.docs.pyansys.com/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.19';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner = false;
+        </script>
+    <link rel="icon" href="../../_static/ansys-favicon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Contribute" href="../../contributing.html" />
+    <link rel="prev" title="Fluent setup and solution using settings objects" href="mixing_elbow_settings_api.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <link rel="canonical" href="https://fluent.docs.pyansys.com/version/stable/examples/00-fluent/modeling_cavitation.html" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container"><!-- Debugging: html_theme_options =  -->
+
+<!-- If there is no MiliSearch enabled, use the PyData search -->
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+   
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/pyansys-logo-black-cropped.png" class="logo__image only-light" alt="PyFluent - Home"/>
+    <script>document.write(`<img src="../../_static/pyansys-logo-black-cropped.png" class="logo__image only-dark" alt="PyFluent - Home"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../getting_started/index.html">
+                        Getting started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../user_guide/index.html">
+                        User guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../api/index.html">
+                        API reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../index.html">
+                        Examples
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../contributing.html">
+                        Contribute
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+<script>
+document.write(`
+  <div class="version-switcher__container dropdown">
+    <button id="pst-version-switcher-button-2"
+      type="button"
+      class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle"
+      data-bs-toggle="dropdown"
+      aria-haspopup="listbox"
+      aria-controls="pst-version-switcher-list-2"
+      aria-label="Version switcher list"
+    >
+      Choose version  <!-- this text may get changed later by javascript -->
+      <span class="caret"></span>
+    </button>
+    <div id="pst-version-switcher-list-2"
+      class="version-switcher__menu dropdown-menu list-group-flush py-0"
+      role="listbox" aria-labelledby="pst-version-switcher-button-2">
+      <!-- dropdown will be populated by javascript on page load -->
+    </div>
+  </div>
+`);
+</script></div>
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent/discussions" title="Support" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa fa-comment fa-fw fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Support</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </nav>
+    <div id="announcement_msg"></div>
+<script>
+  fetch("announcement.html")
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error: ${response.status}`);
+      }
+      return response.text();
+    })
+    .then(
+      (text) => (document.getElementById("announcement_msg").innerHTML = text),
+    )
+    .catch((error) => console.error(`Fetch problem: ${error.message}`));
+</script>  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item">
+<nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../getting_started/index.html">
+                        Getting started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../user_guide/index.html">
+                        User guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../api/index.html">
+                        API reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../index.html">
+                        Examples
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../contributing.html">
+                        Contribute
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<script>
+document.write(`
+  <div class="version-switcher__container dropdown">
+    <button id="pst-version-switcher-button-3"
+      type="button"
+      class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle"
+      data-bs-toggle="dropdown"
+      aria-haspopup="listbox"
+      aria-controls="pst-version-switcher-list-3"
+      aria-label="Version switcher list"
+    >
+      Choose version  <!-- this text may get changed later by javascript -->
+      <span class="caret"></span>
+    </button>
+    <div id="pst-version-switcher-list-3"
+      class="version-switcher__menu dropdown-menu list-group-flush py-0"
+      role="listbox" aria-labelledby="pst-version-switcher-button-3">
+      <!-- dropdown will be populated by javascript on page load -->
+    </div>
+  </div>
+`);
+</script></div>
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent/discussions" title="Support" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa fa-comment fa-fw fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Support</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://examples.fluent.docs.pyansys.com/version/dev/index.html">Miscellaneous Examples</a></li>
+</ul>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Simulation Examples</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="exhaust_system.html">Fault-tolerant meshing workflow</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="exhaust_system_settings_api.html">Fault-tolerant meshing workflow using settings objects</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="external_compressible_flow.html">Modeling External Compressible Flow</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="mixing_elbow.html">Watertight geometry meshing workflow</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="mixing_elbow_settings_api.html">Fluent setup and solution using settings objects</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Modeling Cavitation</a></li>
+
+</ul>
+</li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+      
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="https://docs.pyansys.com/" class="nav-link">PyAnsys</a>
+    </li>
+      
+    <li class="breadcrumb-item">
+      <a
+        href="../../index.html"
+        class="nav-link"
+        aria-label="Home"
+      >
+        <i class="fa-solid fa-home"></i
+      ></a>
+    </li> 
+    <li class="breadcrumb-item">
+      <a href="../index.html" class="nav-link">Examples</a>
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a href="index.html" class="nav-link">Simulation Examples</a>
+    </li>
+      
+    <li class="breadcrumb-item active" aria-current="page">Modeling Cavitation</li>
+    
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <div class="sphx-glr-download-link-note admonition note">
+<p class="admonition-title">Note</p>
+<p><a class="reference internal" href="#sphx-glr-download-examples-00-fluent-modeling-cavitation-py"><span class="std std-ref">Go to the end</span></a>
+to download the full example code</p>
+</div>
+<section class="sphx-glr-example-title" id="modeling-cavitation">
+<span id="sphx-glr-examples-00-fluent-modeling-cavitation-py"></span><h1>Modeling Cavitation<a class="headerlink" href="#modeling-cavitation" title="Link to this heading">#</a></h1>
+<p>This example examines the pressure-driven cavitating flow of water through a
+sharp-edged orifice. This is a typical configuration in fuel injectors, and
+brings a challenge to the physics and numerics of cavitation models because of
+the high pressure differentials involved and the high ratio of liquid to vapor
+density.</p>
+<p>This example uses the multiphase modeling capability of Ansys Fluent, and will
+be able to predict the strong cavitation near the orifice after flow separation
+at a sharp edge.</p>
+<p><strong>Workflow tasks</strong></p>
+<p>This example demonstrates how to do the following:</p>
+<ul class="simple">
+<li><p>Set boundary conditions for internal flow</p></li>
+<li><p>Use the mixture model with cavitation effects</p></li>
+<li><p>Calculate a solution using the pressure-based coupled solver</p></li>
+</ul>
+<p><strong>Problem description</strong></p>
+<p>The problem considers the cavitation caused by the flow separation after a
+sharp-edged orifice. The flow is pressure driven, with an inlet pressure of 500
+kPa and an outlet pressure of 95 kPa. The orifice diameter is 4 mm, and the
+geometrical parameters of the orifice are D/d = 2.88 and L/d = 4, where D, d,
+and L are the inlet diameter, orifice diameter, and orifice length respectively.</p>
+</section>
+<section id="example-setup">
+<h1>Example Setup<a class="headerlink" href="#example-setup" title="Link to this heading">#</a></h1>
+<p>Before you can begin, you must set up the example and initialize this
+workflow.</p>
+<section id="launch-fluent">
+<h2>Launch Fluent<a class="headerlink" href="#launch-fluent" title="Link to this heading">#</a></h2>
+<p>Perform required imports, which includes downloading and importing
+the geometry file.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ansys.fluent.core</span> <span class="k">as</span> <span class="nn">pyfluent</span>
+<span class="kn">from</span> <span class="nn">ansys.fluent.core</span> <span class="kn">import</span> <span class="n">examples</span>
+
+<a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">cav_file</span></a> <span class="o">=</span> <span class="n">examples</span><span class="o">.</span><span class="n">download_file</span><span class="p">(</span><span class="s2">&quot;cav.msh.gz&quot;</span><span class="p">,</span> <span class="s2">&quot;pyfluent/cavitation&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Download successful. File path:
+/home/ansys/.local/share/ansys_fluent_core/examples/cav.msh.gz
+</pre></div>
+</div>
+<p>Launch a Fluent session in the 2d solution mode with double precision running
+on four processors.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">solver</span> <span class="o">=</span> <span class="n">pyfluent</span><span class="o">.</span><span class="n">launch_fluent</span><span class="p">(</span>
+    <span class="n">precision</span><span class="o">=</span><span class="s2">&quot;double&quot;</span><span class="p">,</span>
+    <span class="n">processor_count</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+    <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;solver&quot;</span><span class="p">,</span>
+    <span class="n">version</span><span class="o">=</span><span class="s2">&quot;2d&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>Read the mesh that was downloaded.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">solver</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">read_mesh</span><span class="p">(</span><span class="n">file_name</span><span class="o">=</span><a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">cav_file</span></a><span class="p">)</span>
+
+<span class="n">solver</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">check</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Specify an axisymmetric model.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">solver</span><span class="o">.</span><span class="n">setup</span><span class="o">.</span><span class="n">general</span><span class="o">.</span><span class="n">solver</span><span class="o">.</span><span class="n">two_dim_space</span> <span class="o">=</span> <span class="s2">&quot;axisymmetric&quot;</span>
+</pre></div>
+</div>
+<p>Enable the multiphase mixture model.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">solver</span><span class="o">.</span><span class="n">setup</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">multiphase</span><span class="o">.</span><span class="n">models</span> <span class="o">=</span> <span class="s2">&quot;mixture&quot;</span>
+
+<span class="n">solver</span><span class="o">.</span><span class="n">tui</span><span class="o">.</span><span class="n">define</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">multiphase</span><span class="o">.</span><span class="n">mixture_parameters</span><span class="p">(</span><span class="s2">&quot;no&quot;</span><span class="p">,</span> <span class="s2">&quot;implicit&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Enable the k-ω SST turbulence model.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">solver</span><span class="o">.</span><span class="n">setup</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">viscous</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;model&quot;</span><span class="p">:</span> <span class="s2">&quot;k-omega&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;k_omega_model&quot;</span><span class="p">:</span> <span class="s2">&quot;sst&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="define-materials">
+<h2>Define materials<a class="headerlink" href="#define-materials" title="Link to this heading">#</a></h2>
+<p>Create a material named water, using 1000 kg/m3 for density and 0.001 kg/m–s
+for viscosity. Then, copy water vapor properties from the database and modify
+the copy by changing the density to 0.02558 kg/m3 and the viscosity to
+1.26e-06 kg/m–s.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">solver</span><span class="o">.</span><span class="n">setup</span><span class="o">.</span><span class="n">materials</span><span class="o">.</span><span class="n">fluid</span><span class="p">[</span><span class="s2">&quot;water&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;density&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;option&quot;</span><span class="p">:</span> <span class="s2">&quot;constant&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;viscosity&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;option&quot;</span><span class="p">:</span> <span class="s2">&quot;constant&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mf">0.001</span><span class="p">,</span>
+    <span class="p">},</span>
+<span class="p">}</span>
+
+<span class="n">solver</span><span class="o">.</span><span class="n">setup</span><span class="o">.</span><span class="n">materials</span><span class="o">.</span><span class="n">database</span><span class="o">.</span><span class="n">copy_by_name</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s2">&quot;fluid&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;water-vapor&quot;</span><span class="p">)</span>
+
+<span class="n">solver</span><span class="o">.</span><span class="n">setup</span><span class="o">.</span><span class="n">materials</span><span class="o">.</span><span class="n">fluid</span><span class="p">[</span><span class="s2">&quot;water-vapor&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;density&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mf">0.02558</span><span class="p">},</span>
+    <span class="s2">&quot;viscosity&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mf">1.26e-06</span><span class="p">},</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="phases">
+<h2>Phases<a class="headerlink" href="#phases" title="Link to this heading">#</a></h2>
+<p>Change the name of the primary phase to “liquid” and the secondary phase to
+“water-vapor”. Then, enable the cavitation model and set the number of mass
+transfer mechanisms to 1. Finally, specify cavitation as a mass transfer
+mechanism occurring from the liquid to the vapor.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">solver</span><span class="o">.</span><span class="n">tui</span><span class="o">.</span><span class="n">define</span><span class="o">.</span><span class="n">phases</span><span class="o">.</span><span class="n">set_domain_properties</span><span class="o">.</span><span class="n">change_phases_names</span><span class="p">(</span><span class="s2">&quot;vapor&quot;</span><span class="p">,</span> <span class="s2">&quot;liquid&quot;</span><span class="p">)</span>
+
+<span class="n">solver</span><span class="o">.</span><span class="n">tui</span><span class="o">.</span><span class="n">define</span><span class="o">.</span><span class="n">phases</span><span class="o">.</span><span class="n">set_domain_properties</span><span class="o">.</span><span class="n">phase_domains</span><span class="o">.</span><span class="n">liquid</span><span class="o">.</span><span class="n">material</span><span class="p">(</span>
+    <span class="s2">&quot;yes&quot;</span><span class="p">,</span> <span class="s2">&quot;water&quot;</span>
+<span class="p">)</span>
+
+<span class="n">solver</span><span class="o">.</span><span class="n">tui</span><span class="o">.</span><span class="n">define</span><span class="o">.</span><span class="n">phases</span><span class="o">.</span><span class="n">set_domain_properties</span><span class="o">.</span><span class="n">phase_domains</span><span class="o">.</span><span class="n">vapor</span><span class="o">.</span><span class="n">material</span><span class="p">(</span>
+    <span class="s2">&quot;yes&quot;</span><span class="p">,</span> <span class="s2">&quot;water-vapor&quot;</span>
+<span class="p">)</span>
+
+<span class="n">solver</span><span class="o">.</span><span class="n">tui</span><span class="o">.</span><span class="n">define</span><span class="o">.</span><span class="n">phases</span><span class="o">.</span><span class="n">set_domain_properties</span><span class="o">.</span><span class="n">interaction_domain</span><span class="o">.</span><span class="n">heat_mass_reactions</span><span class="o">.</span><span class="n">mass_transfer</span><span class="p">(</span>
+    <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;liquid&quot;</span><span class="p">,</span> <span class="s2">&quot;vapor&quot;</span><span class="p">,</span> <span class="s2">&quot;cavitation&quot;</span><span class="p">,</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="s2">&quot;no&quot;</span><span class="p">,</span> <span class="s2">&quot;no&quot;</span><span class="p">,</span> <span class="s2">&quot;no&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="boundary-conditions">
+<h2>Boundary Conditions<a class="headerlink" href="#boundary-conditions" title="Link to this heading">#</a></h2>
+<p>For the first inlet momentum boundary conditions set the direction
+specification method to ‘normal to boundary’, gauge total pressure as 500 kPa
+and supersonic or initial gauge pressure as 449 kPa.</p>
+<p>For the turbulence settings choose ‘Intensity and Viscosity Ratio’ for
+turbulent specification. Set turbulent intensity and turbulent viscosity
+ratio to 0.05 and 10 respectively.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">inlet_1</span> <span class="o">=</span> <span class="n">solver</span><span class="o">.</span><span class="n">setup</span><span class="o">.</span><span class="n">boundary_conditions</span><span class="o">.</span><span class="n">pressure_inlet</span><span class="p">[</span><span class="s2">&quot;inlet_1&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">phase</span>
+
+<span class="n">inlet_1</span><span class="p">[</span><span class="s2">&quot;mixture&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;momentum&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;gauge_total_pressure&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">500000</span><span class="p">},</span>
+        <span class="s2">&quot;supersonic_or_initial_gauge_pressure&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">449000</span><span class="p">},</span>
+        <span class="s2">&quot;direction_specification_method&quot;</span><span class="p">:</span> <span class="s2">&quot;Normal to Boundary&quot;</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;turbulence&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;turbulent_specification&quot;</span><span class="p">:</span> <span class="s2">&quot;Intensity and Viscosity Ratio&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;turbulent_intensity&quot;</span><span class="p">:</span> <span class="mf">0.05</span><span class="p">,</span>
+        <span class="s2">&quot;turbulent_viscosity_ratio_real&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+    <span class="p">},</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Before copying inlet_1’s boundary conditions to inlet_2, set the vapor fraction
+to 0.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">inlet_1</span><span class="p">[</span><span class="s2">&quot;vapor&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;multiphase&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;volume_fraction&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span>
+    <span class="p">},</span>
+<span class="p">}</span>
+
+<span class="n">solver</span><span class="o">.</span><span class="n">setup</span><span class="o">.</span><span class="n">boundary_conditions</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">from_</span><span class="o">=</span><span class="s2">&quot;inlet_1&quot;</span><span class="p">,</span> <span class="n">to</span><span class="o">=</span><span class="s2">&quot;inlet_2&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>For the outlet boundary conditions, set the gauge pressure as 95 kPa. Use
+the same turbulence and volume fraction settings as the inlets.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">outlet</span> <span class="o">=</span> <span class="n">solver</span><span class="o">.</span><span class="n">setup</span><span class="o">.</span><span class="n">boundary_conditions</span><span class="o">.</span><span class="n">pressure_outlet</span><span class="p">[</span><span class="s2">&quot;outlet&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">phase</span>
+
+<span class="n">outlet</span><span class="p">[</span><span class="s2">&quot;mixture&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;momentum&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;gauge_pressure&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">95000</span><span class="p">},</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;turbulence&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;turbulent_specification&quot;</span><span class="p">:</span> <span class="s2">&quot;Intensity and Viscosity Ratio&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;turbulent_intensity&quot;</span><span class="p">:</span> <span class="mf">0.04</span><span class="p">,</span>
+        <span class="s2">&quot;turbulent_viscosity_ratio_real&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+    <span class="p">},</span>
+<span class="p">}</span>
+
+<span class="n">outlet</span><span class="p">[</span><span class="s2">&quot;vapor&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;multiphase&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;volume_fraction&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span>
+    <span class="p">},</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="operating-conditions">
+<h2>Operating Conditions<a class="headerlink" href="#operating-conditions" title="Link to this heading">#</a></h2>
+<p>Set the operating pressure to 0.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">solver</span><span class="o">.</span><span class="n">setup</span><span class="o">.</span><span class="n">general</span><span class="o">.</span><span class="n">operating_conditions</span><span class="o">.</span><span class="n">operating_pressure</span> <span class="o">=</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</section>
+<section id="solution">
+<h2>Solution<a class="headerlink" href="#solution" title="Link to this heading">#</a></h2>
+<p>To configure the discretization scheme, set ‘first order
+upwind’ method for turbulent kinetic energy and turbulent dissipation rate, ‘quick’
+for the momentum and volume fraction, and ‘presto!’ for pressure.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">methods</span> <span class="o">=</span> <span class="n">solver</span><span class="o">.</span><span class="n">solution</span><span class="o">.</span><span class="n">methods</span>
+
+<span class="n">methods</span><span class="o">.</span><span class="n">discretization_scheme</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;k&quot;</span><span class="p">:</span> <span class="s2">&quot;first-order-upwind&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;mom&quot;</span><span class="p">:</span> <span class="s2">&quot;quick&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;mp&quot;</span><span class="p">:</span> <span class="s2">&quot;quick&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;omega&quot;</span><span class="p">:</span> <span class="s2">&quot;first-order-upwind&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;pressure&quot;</span><span class="p">:</span> <span class="s2">&quot;presto!&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>For the pressure velocity coupling scheme choose ‘Coupled’. Set the pseudo
+time step method to ‘global time step’ and enable ‘High Order Term Relaxation’.
+Then, set the explicit relaxation factor for ‘Volume Fraction’ to
+0.3.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">methods</span><span class="o">.</span><span class="n">p_v_coupling</span><span class="o">.</span><span class="n">flow_scheme</span> <span class="o">=</span> <span class="s2">&quot;Coupled&quot;</span>
+
+<span class="n">methods</span><span class="o">.</span><span class="n">pseudo_time_method</span><span class="o">.</span><span class="n">formulation</span><span class="o">.</span><span class="n">coupled_solver</span> <span class="o">=</span> <span class="s2">&quot;global-time-step&quot;</span>
+
+<span class="n">methods</span><span class="o">.</span><span class="n">high_order_term_relaxation</span><span class="o">.</span><span class="n">enable</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="n">solver</span><span class="o">.</span><span class="n">solution</span><span class="o">.</span><span class="n">controls</span><span class="o">.</span><span class="n">pseudo_time_explicit_relaxation_factor</span><span class="o">.</span><span class="n">global_dt_pseudo_relax</span><span class="p">[</span>
+    <span class="s2">&quot;mp&quot;</span>
+<span class="p">]</span> <span class="o">=</span> <span class="mf">0.3</span>
+</pre></div>
+</div>
+<p>To plot the residuals, enable plotting and set the convergence criteria to
+1e-05 for x-velocity, y-velocity, k, omega, and vf-vapor. Enable the specified
+initial pressure then initialize the solution with hybrid initialization.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">solver</span><span class="o">.</span><span class="n">solution</span><span class="o">.</span><span class="n">monitor</span><span class="o">.</span><span class="n">residual</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">plot</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="n">resid_eqns</span> <span class="o">=</span> <span class="n">solver</span><span class="o">.</span><span class="n">solution</span><span class="o">.</span><span class="n">monitor</span><span class="o">.</span><span class="n">residual</span><span class="o">.</span><span class="n">equations</span>
+
+<span class="n">resid_eqns</span><span class="p">[</span><span class="s2">&quot;continuity&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">absolute_criteria</span> <span class="o">=</span> <span class="mf">1e-5</span>
+<span class="n">resid_eqns</span><span class="p">[</span><span class="s2">&quot;x-velocity&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">absolute_criteria</span> <span class="o">=</span> <span class="mf">1e-5</span>
+<span class="n">resid_eqns</span><span class="p">[</span><span class="s2">&quot;y-velocity&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">absolute_criteria</span> <span class="o">=</span> <span class="mf">1e-5</span>
+<span class="n">resid_eqns</span><span class="p">[</span><span class="s2">&quot;k&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">absolute_criteria</span> <span class="o">=</span> <span class="mf">1e-5</span>
+<span class="n">resid_eqns</span><span class="p">[</span><span class="s2">&quot;omega&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">absolute_criteria</span> <span class="o">=</span> <span class="mf">1e-5</span>
+<span class="n">resid_eqns</span><span class="p">[</span><span class="s2">&quot;vf-vapor&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">absolute_criteria</span> <span class="o">=</span> <span class="mf">1e-5</span>
+
+<span class="n">initialization</span> <span class="o">=</span> <span class="n">solver</span><span class="o">.</span><span class="n">solution</span><span class="o">.</span><span class="n">initialization</span>
+
+<span class="n">initialization</span><span class="o">.</span><span class="n">initialization_type</span> <span class="o">=</span> <span class="s2">&quot;hybrid&quot;</span>
+<span class="n">initialization</span><span class="o">.</span><span class="n">hybrid_init_options</span><span class="o">.</span><span class="n">general_settings</span><span class="o">.</span><span class="n">initial_pressure</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">initialization</span><span class="o">.</span><span class="n">hybrid_initialize</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="save-and-run">
+<h2>Save and Run<a class="headerlink" href="#save-and-run" title="Link to this heading">#</a></h2>
+<p>Save the case file ‘cav.cas.h5’. Then, start the calculation by requesting
+500 iterations. Save the final case file and the data.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">solver</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">write_case</span><span class="p">(</span><span class="n">file_name</span><span class="o">=</span><span class="s2">&quot;cav&quot;</span><span class="p">)</span>
+
+<span class="n">solver</span><span class="o">.</span><span class="n">solution</span><span class="o">.</span><span class="n">run_calculation</span><span class="o">.</span><span class="n">iterate</span><span class="p">(</span><span class="n">iter_count</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+
+<span class="n">solver</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">write_case_data</span><span class="p">(</span><span class="n">file_name</span><span class="o">=</span><span class="s2">&quot;cav&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="post-processing">
+<h2>Post Processing<a class="headerlink" href="#post-processing" title="Link to this heading">#</a></h2>
+<p>Since Fluent is being run without the GUI, we will need to export plots as
+picture files. Edit the picture settings to use a custom resolution so that
+the images are large enough.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">graphics</span> <span class="o">=</span> <span class="n">solver</span><span class="o">.</span><span class="n">results</span><span class="o">.</span><span class="n">graphics</span>
+<span class="c1"># use_window_resolution option not available inside containers</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">solver</span><span class="o">.</span><span class="n">connection_properties</span><span class="o">.</span><span class="n">inside_container</span><span class="p">:</span>
+    <span class="n">graphics</span><span class="o">.</span><span class="n">picture</span><span class="o">.</span><span class="n">use_window_resolution</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">graphics</span><span class="o">.</span><span class="n">picture</span><span class="o">.</span><span class="n">x_resolution</span> <span class="o">=</span> <span class="mi">1920</span>
+<span class="n">graphics</span><span class="o">.</span><span class="n">picture</span><span class="o">.</span><span class="n">y_resolution</span> <span class="o">=</span> <span class="mi">1440</span>
+</pre></div>
+</div>
+</section>
+<section id="create-contour-plots">
+<h2>Create contour plots<a class="headerlink" href="#create-contour-plots" title="Link to this heading">#</a></h2>
+<p>Create a contour plot for static pressure, turbulent kinetic energy and the
+volume fraction of water vapor. For each plot enable banded coloring and
+filled option.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">graphics</span> <span class="o">=</span> <span class="n">solver</span><span class="o">.</span><span class="n">results</span><span class="o">.</span><span class="n">graphics</span>
+
+<span class="n">graphics</span><span class="o">.</span><span class="n">contour</span><span class="p">[</span><span class="s2">&quot;contour_static_pressure&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;coloring&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;option&quot;</span><span class="p">:</span> <span class="s2">&quot;banded&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;smooth&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s2">&quot;pressure&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;filled&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Mirror the display around the symmetry plane to show the full model.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">solver</span><span class="o">.</span><span class="n">tui</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">set</span><span class="o">.</span><span class="n">mirror_zones</span><span class="p">([</span><span class="s2">&quot;symm_2&quot;</span><span class="p">,</span> <span class="s2">&quot;symm_1&quot;</span><span class="p">])</span>
+
+<span class="n">graphics</span><span class="o">.</span><span class="n">contour</span><span class="p">[</span><span class="s2">&quot;contour_static_pressure&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">display</span><span class="p">()</span>
+
+<span class="n">graphics</span><span class="o">.</span><span class="n">picture</span><span class="o">.</span><span class="n">save_picture</span><span class="p">(</span><span class="n">file_name</span><span class="o">=</span><span class="s2">&quot;contour_static_pressure.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/cavitation_model_012.png"><img alt="../../_images/cavitation_model_012.png" class="align-center" src="../../_images/cavitation_model_012.png" style="width: 500pt;" /></a>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">graphics</span><span class="o">.</span><span class="n">contour</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="s2">&quot;contour_tke&quot;</span><span class="p">)</span>
+
+<span class="n">graphics</span><span class="o">.</span><span class="n">contour</span><span class="p">[</span><span class="s2">&quot;contour_tke&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;coloring&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;option&quot;</span><span class="p">:</span> <span class="s2">&quot;banded&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;smooth&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s2">&quot;turb-kinetic-energy&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;filled&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">graphics</span><span class="o">.</span><span class="n">contour</span><span class="p">[</span><span class="s2">&quot;contour_tke&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">display</span><span class="p">()</span>
+
+<span class="n">graphics</span><span class="o">.</span><span class="n">picture</span><span class="o">.</span><span class="n">save_picture</span><span class="p">(</span><span class="n">file_name</span><span class="o">=</span><span class="s2">&quot;contour_tke.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/cavitation_model_011.png"><img alt="../../_images/cavitation_model_011.png" class="align-center" src="../../_images/cavitation_model_011.png" style="width: 500pt;" /></a>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">graphics</span><span class="o">.</span><span class="n">contour</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="s2">&quot;contour_vf_vapor&quot;</span><span class="p">)</span>
+
+<span class="n">graphics</span><span class="o">.</span><span class="n">contour</span><span class="p">[</span><span class="s2">&quot;contour_vf_vapor&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;coloring&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;option&quot;</span><span class="p">:</span> <span class="s2">&quot;banded&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;smooth&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s2">&quot;vapor-vof&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;filled&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">graphics</span><span class="o">.</span><span class="n">contour</span><span class="p">[</span><span class="s2">&quot;contour_vf_vapor&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">display</span><span class="p">()</span>
+
+<span class="n">graphics</span><span class="o">.</span><span class="n">picture</span><span class="o">.</span><span class="n">save_picture</span><span class="p">(</span><span class="n">file_name</span><span class="o">=</span><span class="s2">&quot;contour_vf_vapor.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/cavitation_model.png"><img alt="../../_images/cavitation_model.png" class="align-center" src="../../_images/cavitation_model.png" style="width: 500pt;" /></a>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Save case to &#39;cav.cas.h5&#39; and exit</span>
+
+<span class="n">solver</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">write_case</span><span class="p">(</span><span class="n">file_name</span><span class="o">=</span><span class="s2">&quot;cav&quot;</span><span class="p">)</span>
+
+<span class="n">solver</span><span class="o">.</span><span class="n">exit</span><span class="p">()</span>
+</pre></div>
+</div>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (1 minutes 21.049 seconds)</p>
+<div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-00-fluent-modeling-cavitation-py">
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/549f6c678fe92ab86c6aec31ffed4492/modeling_cavitation.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">modeling_cavitation.ipynb</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/9891f20812f9674eae76cc1d11c3de4c/modeling_cavitation.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">modeling_cavitation.py</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Modeling Cavitation</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#example-setup">Example Setup</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#launch-fluent">Launch Fluent</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#define-materials">Define materials</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#phases">Phases</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#boundary-conditions">Boundary Conditions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operating-conditions">Operating Conditions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#save-and-run">Save and Run</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#post-processing">Post Processing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-contour-plots">Create contour plots</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+<!-- If there is no fix edit button function, use the PyData edit-this-button-->
+</div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../../_sources/examples/00-fluent/modeling_cavitation.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright (c) 2024 ANSYS, Inc. All rights reserved.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="theme-version">
+  Built with the
+  <a href="https://sphinxdocs.ansys.com/version/stable/index.html"
+    >Ansys Sphinx Theme</a
+  >
+  0.12.5. <br />Last updated on
+  <span id="date"></span>
+</p>
+<script>
+  var options = { day: "numeric", month: "long", year: "numeric" };
+  var lastModifiedDate = new Date(document.lastModified);
+  var date = lastModifiedDate.toLocaleDateString("en-US", options);
+  document.getElementById("date").innerHTML = date;
+</script></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

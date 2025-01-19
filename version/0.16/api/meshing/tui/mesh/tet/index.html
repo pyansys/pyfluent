@@ -1,0 +1,1496 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>tet &#8212; PyFluent</title>
+    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/css/ansys_sphinx_theme.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sg_gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sg_gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sg_gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sg_gallery-rendered-html.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    
+        <link href="../../../../../_static/css/breadcrumbs.css" rel="stylesheet">
+    
+    <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
+    <script src="../../../../../_static/jquery.js"></script>
+    <script src="../../../../../_static/underscore.js"></script>
+    <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../../../_static/doctools.js"></script>
+    <script src="../../../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../../../_static/thebelab-helper.js"></script>
+    <script src="../../../../../_static/clipboard.min.js"></script>
+    <script src="../../../../../_static/copybutton.js"></script>
+    <script src="../../../../../_static/js/table.js"></script>
+    <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/meshing/tui/mesh/tet/index';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://fluent.docs.pyansys.com/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.16';
+        </script>
+    <link rel="shortcut icon" href="../../../../../_static/ansys-favicon.png"/>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <link rel="next" title="local_regions" href="local_regions/index.html" />
+    <link rel="prev" title="mesh" href="../index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <link rel="canonical" href="https://fluent.docs.pyansys.com/version/stable/api/meshing/tui/mesh/tet/index.html" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container"><!-- Debugging: html_theme_options =  -->
+
+  <!-- If there is no MiliSearch enabled, use the PyData search -->
+<form class="bd-search d-flex align-items-center"
+      action="../../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  <div class="navbar-header-items__start">
+    
+      <div class="navbar-item">
+  
+
+<a class="navbar-brand logo" href="../../../../../index.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../getting_started/index.html">
+                        Getting started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../user_guide/index.html">
+                        User guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../../../../index.html">
+                        API reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../examples/index.html">
+                        Examples
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../contributing.html">
+                        Contribute
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+        </div>
+      
+      
+        <div class="navbar-item">
+<script>
+document.write(`
+  <div class="version-switcher__container dropdown">
+    <button type="button" class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle" data-bs-toggle="dropdown">
+      0.16  <!-- this text may get changed later by javascript -->
+      <span class="caret"></span>
+    </button>
+    <div class="version-switcher__menu dropdown-menu list-group-flush py-0">
+    <!-- dropdown will be populated by javascript on page load -->
+    </div>
+  </div>
+`);
+</script></div>
+      
+        <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent/discussions" title="Support" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa fa-comment fa-fw"></i></span>
+            <label class="sr-only">Support</label></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </nav>
+  
+
+    
+    <div id="announcement_msg"></div>
+<script>
+  fetch("announcement.html")
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error: ${response.status}`);
+      }
+      return response.text();
+    })
+    .then(text => document.getElementById("announcement_msg").innerHTML = text)
+    .catch((error) => console.error(`Fetch problem: ${error.message}`));
+</script>
+    
+
+    
+    <div class="container-xl">
+    <div class="row">
+        <div class="col-12 col-md-3" id="breadcrumbs-spacer"></div>
+        <div class="col-12 col-md-11 col-xl-9" id="breadcrumbs">
+          
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+    
+        <li class="nav-item nav-item-additional-breadcrumb"><a href="https://docs.pyansys.com/">PyAnsys</a> » </li>
+    
+    
+        <li class="nav-item nav-item-0"><a href="../../../../../index.html">PyFluent</a> » </li>
+    
+
+          <li class="nav-item nav-item-1"><a href="../../../../index.html" >API reference</a> » </li>
+          <li class="nav-item nav-item-2"><a href="../../../index.html" >Meshing</a> » </li>
+          <li class="nav-item nav-item-3"><a href="../../index.html" >meshing.tui</a> » </li>
+          <li class="nav-item nav-item-4"><a href="../index.html" accesskey="U">mesh</a> » </li>
+        <li class="nav-item nav-item-this"><a href="">tet</a></li> 
+      </ul>
+    </div>
+        </div>
+  </div>
+</div>
+    
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../getting_started/index.html">
+                        Getting started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../user_guide/index.html">
+                        User guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../../../../index.html">
+                        API reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../examples/index.html">
+                        Examples
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../contributing.html">
+                        Contribute
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<script>
+document.write(`
+  <div class="version-switcher__container dropdown">
+    <button type="button" class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle" data-bs-toggle="dropdown">
+      0.16  <!-- this text may get changed later by javascript -->
+      <span class="caret"></span>
+    </button>
+    <div class="version-switcher__menu dropdown-menu list-group-flush py-0">
+    <!-- dropdown will be populated by javascript on page load -->
+    </div>
+  </div>
+`);
+</script></div>
+        
+          <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent/discussions" title="Support" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa fa-comment fa-fw"></i></span>
+            <label class="sr-only">Support</label></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item"><nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../../general/index.html">General</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../../../index.html">Meshing</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="../../index.html">meshing.tui</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../display/index.html">display</a></li>
+<li class="toctree-l3 current active has-children"><a class="reference internal" href="../index.html">mesh</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l4 current active has-children"><a class="current reference internal" href="#">tet</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l5"><a class="reference internal" href="local_regions/index.html">local_regions</a></li>
+<li class="toctree-l5"><a class="reference internal" href="controls/index.html">controls</a></li>
+<li class="toctree-l5"><a class="reference internal" href="improve/index.html">improve</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../manage/index.html">manage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cavity/index.html">cavity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../rapid_octree/index.html">rapid_octree</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cell_zone_conditions/index.html">cell_zone_conditions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../thin_volume_mesh/index.html">thin_volume_mesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../scoped_prisms/index.html">scoped_prisms</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../modify/index.html">modify</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../domains/index.html">domains</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cartesian/index.html">cartesian</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../pyramid/index.html">pyramid</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../poly_hexcore/index.html">poly_hexcore</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../non_conformals/index.html">non_conformals</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../separate/index.html">separate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../hexcore/index.html">hexcore</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../auto_mesh_controls/index.html">auto_mesh_controls</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../poly/index.html">poly</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../prism/index.html">prism</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../cad_assemblies/index.html">cad_assemblies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../diagnostics/index.html">diagnostics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../material_point/index.html">material_point</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../openmp_controls/index.html">openmp_controls</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../parallel/index.html">parallel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference_frames/index.html">reference_frames</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../preferences/index.html">preferences</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../boundary/index.html">boundary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../scoped_sizing/index.html">scoped_sizing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../objects/index.html">objects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../file/index.html">file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../size_functions/index.html">size_functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../report/index.html">report</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../datamodel/index.html">meshing.datamodel</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../solver/index.html">Solver</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article"></div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="tet">
+<span id="ref-meshing-tui-mesh-tet"></span><h1>tet<a class="headerlink" href="#tet" title="Permalink to this heading">#</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.meshing.tui_232.main_menu.mesh.</span></span><span class="sig-name descname"><span class="pre">tet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">service</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Enters the tetrahedral mesh menu.</p>
+<p><strong>Classes:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls"><code class="xref py py-obj docutils literal notranslate"><span class="pre">controls</span></code></a>(path, service)</p></td>
+<td><p>Enters the tet controls menu.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.improve" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.improve"><code class="xref py py-obj docutils literal notranslate"><span class="pre">improve</span></code></a>(path, service)</p></td>
+<td><p>Enters the tet improve menu.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.local_regions" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.local_regions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">local_regions</span></code></a>(path, service)</p></td>
+<td><p>Enters the local refinement menu.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.delete_virtual_cells" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.delete_virtual_cells"><code class="xref py py-obj docutils literal notranslate"><span class="pre">delete_virtual_cells</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Deletes virtual cells created due to the use of the  keep-virtual-entities? option.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.init" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.init"><code class="xref py py-obj docutils literal notranslate"><span class="pre">init</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Generates the initial Delaunay mesh by meshing the boundary nodes.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.init_refine" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.init_refine"><code class="xref py py-obj docutils literal notranslate"><span class="pre">init_refine</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Generates the tetrahedral mesh.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.mesh_object" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.mesh_object"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mesh_object</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Tet mesh object of type mesh.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.preserve_cell_zone" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.preserve_cell_zone"><code class="xref py py-obj docutils literal notranslate"><span class="pre">preserve_cell_zone</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Allows you to specify the cell zones to be preserved during the meshing process.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.refine" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.refine"><code class="xref py py-obj docutils literal notranslate"><span class="pre">refine</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Refines the initialized mesh.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.trace_path_between_cells" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.trace_path_between_cells"><code class="xref py py-obj docutils literal notranslate"><span class="pre">trace_path_between_cells</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Detects holes in the geometry by tracing the path between the two specified cells.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.un_preserve_cell_zone" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.un_preserve_cell_zone"><code class="xref py py-obj docutils literal notranslate"><span class="pre">un_preserve_cell_zone</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Un-preserve cell zone.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">controls</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">service</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Enters the tet controls menu.</p>
+<p><strong>Classes:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.adv_front_method" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.adv_front_method"><code class="xref py py-obj docutils literal notranslate"><span class="pre">adv_front_method</span></code></a>(path, service)</p></td>
+<td><p>Enters the advancing front refinement controls menu.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.advanced" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.advanced"><code class="xref py py-obj docutils literal notranslate"><span class="pre">advanced</span></code></a>(path, service)</p></td>
+<td><p>Tet advanced controls.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.improve_mesh" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.improve_mesh"><code class="xref py py-obj docutils literal notranslate"><span class="pre">improve_mesh</span></code></a>(path, service)</p></td>
+<td><p>Enters the improve mesh controls menu.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.remove_slivers" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.remove_slivers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_slivers</span></code></a>(path, service)</p></td>
+<td><p>Enters the sliver remove controls menu.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.tet_improve" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.tet_improve"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tet_improve</span></code></a>(path, service)</p></td>
+<td><p>Improve cells controls.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.cell_sizing" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.cell_sizing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cell_sizing</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Specifies the cell sizing function for refinement.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.clear_zone_growth_rate" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.clear_zone_growth_rate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clear_zone_growth_rate</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Clear zone specific geometric growth rates.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.compute_max_cell_volume" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.compute_max_cell_volume"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute_max_cell_volume</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Computes the maximum cell volume for the current mesh.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.delete_dead_zones" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.delete_dead_zones"><code class="xref py py-obj docutils literal notranslate"><span class="pre">delete_dead_zones</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Specifies the maximum allowable cell volume.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.delete_unused_nodes" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.delete_unused_nodes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">delete_unused_nodes</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Toggles the deleting of unused nodes during mesh initialization.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.improve_surface_mesh" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.improve_surface_mesh"><code class="xref py py-obj docutils literal notranslate"><span class="pre">improve_surface_mesh</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables you to improve the surface mesh by swapping face edges where Delaunay violations occur.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.max_cell_length" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.max_cell_length"><code class="xref py py-obj docutils literal notranslate"><span class="pre">max_cell_length</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Specifies the maximum allowable cell length.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.max_cell_volume" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.max_cell_volume"><code class="xref py py-obj docutils literal notranslate"><span class="pre">max_cell_volume</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Specifies the maximum allowable cell volume.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.merge_free_nodes" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.merge_free_nodes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">merge_free_nodes</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Automatically merge duplicate nodes?.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.non_fluid_type" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.non_fluid_type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">non_fluid_type</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Selects the non-fluid cell zone type.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.print_region_based_sizing" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.print_region_based_sizing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">print_region_based_sizing</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Displays local sizing settings (max cell length) for specified region(s).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.refine_method" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.refine_method"><code class="xref py py-obj docutils literal notranslate"><span class="pre">refine_method</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables you to select the refinement method.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.set_region_based_sizing" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.set_region_based_sizing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_region_based_sizing</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Allows you to specify local sizing settings (max cell length) for specified region(s).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.set_zone_growth_rate" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.set_zone_growth_rate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_zone_growth_rate</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Set zone specific geometric growth rates.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.skewness_method" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.skewness_method"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skewness_method</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enters the skewness refinement controls menu.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.use_max_cell_size" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.use_max_cell_size"><code class="xref py py-obj docutils literal notranslate"><span class="pre">use_max_cell_size</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables you to use the maximum cell size specified instead of recomputing the value based on the objects, when the volume mesh is generated.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">adv_front_method</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">service</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Enters the advancing front refinement controls menu.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.adv_front_method.first_improve_params" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.adv_front_method.first_improve_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">first_improve_params</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Defines the refining front improvement parameters for the advancing front method.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.adv_front_method.refine_parameters" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.adv_front_method.refine_parameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">refine_parameters</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Defines the cell zone improvement parameters for the advancing front method.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.adv_front_method.second_improve_params" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.adv_front_method.second_improve_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">second_improve_params</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Defines the cell zone improvement parameters for the advancing front method.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Classes:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.adv_front_method.skew_improve" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.adv_front_method.skew_improve"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skew_improve</span></code></a>(path, service)</p></td>
+<td><p>Enters the refine improve controls menu.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">first_improve_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Defines the refining front improvement parameters for the advancing front method.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">refine_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Defines the cell zone improvement parameters for the advancing front method.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">second_improve_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Defines the cell zone improvement parameters for the advancing front method.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">skew_improve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">service</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Enters the refine improve controls menu.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.adv_front_method.skew_improve.attempts" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.adv_front_method.skew_improve.attempts"><code class="xref py py-obj docutils literal notranslate"><span class="pre">attempts</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Specifies the number of overall improvement attempts for the advancing front  method.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.adv_front_method.skew_improve.boundary_sliver_skew" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.adv_front_method.skew_improve.boundary_sliver_skew"><code class="xref py py-obj docutils literal notranslate"><span class="pre">boundary_sliver_skew</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Specifies the boundary sliver skewness for the advancing front method.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.adv_front_method.skew_improve.iterations" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.adv_front_method.skew_improve.iterations"><code class="xref py py-obj docutils literal notranslate"><span class="pre">iterations</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Specifies the number of improvement iterations in each attempt for the  advancing front method.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.adv_front_method.skew_improve.sliver_skew" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.adv_front_method.skew_improve.sliver_skew"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sliver_skew</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Specifies the sliver skewness for the advancing front method.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.adv_front_method.skew_improve.target" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.adv_front_method.skew_improve.target"><code class="xref py py-obj docutils literal notranslate"><span class="pre">target</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables you to enable targeted skewness-based refinement for the advancing  front method.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.adv_front_method.skew_improve.target_low_skew" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.adv_front_method.skew_improve.target_low_skew"><code class="xref py py-obj docutils literal notranslate"><span class="pre">target_low_skew</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Specifies the targeted skewness threshold above which cells will be improved.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.adv_front_method.skew_improve.target_skew" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.adv_front_method.skew_improve.target_skew"><code class="xref py py-obj docutils literal notranslate"><span class="pre">target_skew</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Specifies the targeted skewness during improvement for the advancing front  method.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">attempts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Specifies the number of overall improvement attempts for the advancing front  method.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">boundary_sliver_skew</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Specifies the boundary sliver skewness for the advancing front method. This  parameter is used for removing sliver cells along the boundary.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">iterations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Specifies the number of improvement iterations in each attempt for the  advancing front method.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">sliver_skew</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Specifies the sliver skewness for the advancing front method. This parameter  is used for removing sliver cells in the interior.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">target</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables you to enable targeted skewness-based refinement for the advancing  front method. This option enables you to improve the mesh until the targeted  skewness value is achieved.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">target_low_skew</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Specifies the targeted skewness threshold above which cells will be improved.  The improve operation will attempt to improve cells with skewness above the target-low-skew value specified, but there will be no  attempt to reduce the skewness below the specified value. A limited set of improve  operations will be used as compared to the operations required for the target-skew value-based improvement. The value specified  could be approximately 0.1 lower than the target-skew  value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">target_skew</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Specifies the targeted skewness during improvement for the advancing front  method.</p>
+</dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">advanced</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">service</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Tet advanced controls.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.advanced.defaults" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.advanced.defaults"><code class="xref py py-obj docutils literal notranslate"><span class="pre">defaults</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Calculate defaults.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.advanced.freeze_boundary_cells" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.advanced.freeze_boundary_cells"><code class="xref py py-obj docutils literal notranslate"><span class="pre">freeze_boundary_cells</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Freeze boundary cells .</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.advanced.keep_virtual_entities" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.advanced.keep_virtual_entities"><code class="xref py py-obj docutils literal notranslate"><span class="pre">keep_virtual_entities</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Toggle deletion of virtual entities after intialization.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.advanced.max_cells" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.advanced.max_cells"><code class="xref py py-obj docutils literal notranslate"><span class="pre">max_cells</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Set maximum number of cells in mesh.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.advanced.max_nodes" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.advanced.max_nodes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">max_nodes</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Set maximum number of nodes in mesh.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.advanced.node_tolerance" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.advanced.node_tolerance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">node_tolerance</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Set node-tolerance.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.advanced.progress_reports" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.advanced.progress_reports"><code class="xref py py-obj docutils literal notranslate"><span class="pre">progress_reports</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Set time between progress reports in seconds.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.advanced.report_max_unmeshed" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.advanced.report_max_unmeshed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">report_max_unmeshed</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Max number of unmeshed entities reported.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.advanced.report_unmeshed_faces" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.advanced.report_unmeshed_faces"><code class="xref py py-obj docutils literal notranslate"><span class="pre">report_unmeshed_faces</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Report unmeshed faces.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.advanced.report_unmeshed_nodes" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.advanced.report_unmeshed_nodes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">report_unmeshed_nodes</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Report unmeshed nodes.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.advanced.sliver_size" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.advanced.sliver_size"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sliver_size</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Set sliver-size.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">defaults</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Calculate defaults.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">freeze_boundary_cells</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Freeze boundary cells .</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">keep_virtual_entities</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Toggle deletion of virtual entities after intialization.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">max_cells</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Set maximum number of cells in mesh.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">max_nodes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Set maximum number of nodes in mesh.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">node_tolerance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Set node-tolerance.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">progress_reports</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Set time between progress reports in seconds.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">report_max_unmeshed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Max number of unmeshed entities reported.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">report_unmeshed_faces</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Report unmeshed faces.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">report_unmeshed_nodes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Report unmeshed nodes.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">sliver_size</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Set sliver-size.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">cell_sizing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Specifies the cell sizing function for refinement. You can select geometric, linear, none, or size-field as appropriate.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">clear_zone_growth_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Clear zone specific geometric growth rates.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">compute_max_cell_volume</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Computes the maximum cell volume for the current mesh.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">delete_dead_zones</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Specifies the maximum allowable cell volume.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">delete_unused_nodes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Toggles the deleting of unused nodes during mesh initialization.  The delete-unused-nodes? option is no longer supported and will be removed at a future release.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">improve_mesh</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">service</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Enters the improve mesh controls menu.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.improve_mesh.improve" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.improve_mesh.improve"><code class="xref py py-obj docutils literal notranslate"><span class="pre">improve</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Automatically improves the mesh.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.improve_mesh.laplace_smooth" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.improve_mesh.laplace_smooth"><code class="xref py py-obj docutils literal notranslate"><span class="pre">laplace_smooth</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables you to specify the Laplace smoothing parameters.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.improve_mesh.skewness_smooth" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.improve_mesh.skewness_smooth"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skewness_smooth</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables you to specify the skewness smooth parameters.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.improve_mesh.swap" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.improve_mesh.swap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">swap</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables you to specify the face swap parameters.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">improve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Automatically improves the mesh.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">laplace_smooth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables you to specify the Laplace smoothing parameters.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">skewness_smooth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables you to specify the skewness smooth parameters.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">swap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables you to specify the face swap parameters.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">improve_surface_mesh</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables you to improve the surface mesh by swapping face edges where Delaunay violations occur. The improve-surface-mesh? option is no longer supported and will be removed at a future release.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">max_cell_length</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Specifies the maximum allowable cell length.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">max_cell_volume</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Specifies the maximum allowable cell volume.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">merge_free_nodes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Automatically merge duplicate nodes?.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">non_fluid_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Selects the non-fluid cell zone type. After the mesh is initialized, any non-fluid zones will be set to this type. If the mesh includes multiple regions (for example, the problem for which you are creating the mesh includes a fluid zone and one or more solid zones), and you plan to refine all of them using the same refinement parameters, modify the non-fluid type before generating the mesh.  For zone-based meshing, if any cell zone has at least one boundary zone type as inlet, it will automatically be set to fluid type. For object based meshing, volume region type is used to determine the cell zone type.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">print_region_based_sizing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Displays local sizing settings (max cell length) for specified region(s).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">refine_method</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables you to select the refinement method. You can select either skewness-based refinement or the advancing front method.  The skewness-based refinement option is no longer supported and will be removed at a future release.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">remove_slivers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">service</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Enters the sliver remove controls menu.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.remove_slivers.angle" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.remove_slivers.angle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">angle</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Specifies the maximum dihedral angle for considering the cell to be a sliver.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.remove_slivers.attempts" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.remove_slivers.attempts"><code class="xref py py-obj docutils literal notranslate"><span class="pre">attempts</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Specifies the number of attempts overall to remove slivers.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.remove_slivers.iterations" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.remove_slivers.iterations"><code class="xref py py-obj docutils literal notranslate"><span class="pre">iterations</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Specifies the number of iterations to be performed for the specific sliver removal operation.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.remove_slivers.low_skew" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.remove_slivers.low_skew"><code class="xref py py-obj docutils literal notranslate"><span class="pre">low_skew</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Specifies the targeted skewness threshold above which cells will be improved.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.remove_slivers.method" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.remove_slivers.method"><code class="xref py py-obj docutils literal notranslate"><span class="pre">method</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables you to select the method for sliver removal.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.remove_slivers.remove" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.remove_slivers.remove"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables the automatic removal of slivers.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.remove_slivers.skew" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.remove_slivers.skew"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skew</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Specifies the skewness threshold for sliver removal.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">angle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Specifies the maximum dihedral angle for considering the cell to be a sliver.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">attempts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Specifies the number of attempts overall to remove slivers.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">iterations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Specifies the number of iterations to be performed for the specific sliver removal operation.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">low_skew</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Specifies the targeted skewness threshold above which cells will be improved. The improve operation will attempt to improve cells with skewness above the low-skew value specified, but there will be no attempt to reduce the skewness below the specified value. A limited set of improve operations will be used as compared to the operations required for the skew value-based improvement.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">method</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables you to select the method for sliver removal. The default method used is the fast method. The fast and the aggressive methods use the same controls and give similar results for good quality surface meshes. In case of poor surface meshes, the aggressive method will typically succeed in improving the mesh to a greater extent, but it may be slower than the fast method.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">remove</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables the automatic removal of slivers.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">skew</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Specifies the skewness threshold for sliver removal.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">set_region_based_sizing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Allows you to specify local sizing settings (max cell length) for specified region(s).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">set_zone_growth_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Set zone specific geometric growth rates.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">skewness_method</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enters the skewness refinement controls menu.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">tet_improve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">service</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Improve cells controls.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.tet_improve.angle" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.tet_improve.angle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">angle</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Max dihedral angle defining a valid boundary cell.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.tet_improve.attempts" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.tet_improve.attempts"><code class="xref py py-obj docutils literal notranslate"><span class="pre">attempts</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Improve attempts.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.tet_improve.iterations" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.tet_improve.iterations"><code class="xref py py-obj docutils literal notranslate"><span class="pre">iterations</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Improve iterations.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.tet_improve.skew" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.controls.tet_improve.skew"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skew</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Remove skew.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">angle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Max dihedral angle defining a valid boundary cell.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">attempts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Improve attempts.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">iterations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Improve iterations.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">skew</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Remove skew.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">use_max_cell_size</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables you to use the maximum cell size specified instead of recomputing the value based on the objects, when the volume mesh is generated. This option is disabled by default.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">delete_virtual_cells</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Deletes virtual cells created due to the use of the  keep-virtual-entities? option.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">improve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">service</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Enters the tet improve menu.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.improve.collapse_slivers" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.improve.collapse_slivers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">collapse_slivers</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Attempts to collapse the nodes of a skewed sliver cell on any one of its neighbors.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.improve.improve_cells" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.improve.improve_cells"><code class="xref py py-obj docutils literal notranslate"><span class="pre">improve_cells</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Improves skewed tetrahedral cells.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.improve.refine_boundary_slivers" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.improve.refine_boundary_slivers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">refine_boundary_slivers</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Attempts to increase the volume of boundary slivers to create a valid tet cell.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.improve.refine_slivers" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.improve.refine_slivers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">refine_slivers</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Attempts to remove the sliver by placing a node at or near the centroid of the sliver cell.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.improve.skew_smooth_nodes" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.improve.skew_smooth_nodes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skew_smooth_nodes</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Applies skewness-based smoothing to nodes on the tetrahedral cell zones to improve the mesh quality.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.improve.sliver_boundary_swap" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.improve.sliver_boundary_swap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sliver_boundary_swap</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Removes boundary slivers by moving the boundary to exclude the cells from the zone.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.improve.smooth_boundary_sliver" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.improve.smooth_boundary_sliver"><code class="xref py py-obj docutils literal notranslate"><span class="pre">smooth_boundary_sliver</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Smooths nodes on sliver cells having all four nodes on the boundary until the skewness value is less than the specified value.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.improve.smooth_interior_sliver" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.improve.smooth_interior_sliver"><code class="xref py py-obj docutils literal notranslate"><span class="pre">smooth_interior_sliver</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Smooths non-boundary nodes on sliver cells having skewness greater than the specified threshold value.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.improve.smooth_nodes" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.improve.smooth_nodes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">smooth_nodes</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables you to apply either Laplacian or variational smoothing to nodes on the tetrahedral cell zones to improve the mesh quality.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.improve.swap_faces" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.improve.swap_faces"><code class="xref py py-obj docutils literal notranslate"><span class="pre">swap_faces</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Performs interior face swapping to improve cell skewness.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">collapse_slivers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Attempts to collapse the nodes of a skewed sliver cell on any one of its neighbors.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">improve_cells</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Improves skewed tetrahedral cells.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">refine_boundary_slivers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Attempts to increase the volume of boundary slivers to create a valid tet cell. Tetrahedra having one or two faces on the boundary are identified and then the appropriate edge split. The split node is then smoothed such that the volume of the tetrahedron increases, thereby creating a valid tet cell.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">refine_slivers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Attempts to remove the sliver by placing a node at or near the centroid of the sliver cell. Swapping and smoothing are performed to improve the skewness. You can also specify whether boundary cells are to be refined. Refining the boundary cells may enable you to carry out further improvement options such as smoothing, swapping, and collapsing slivers.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">skew_smooth_nodes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Applies skewness-based smoothing to nodes on the tetrahedral cell zones to improve the mesh quality.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">sliver_boundary_swap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Removes boundary slivers by moving the boundary to exclude the cells from the zone.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">smooth_boundary_sliver</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Smooths nodes on sliver cells having all four nodes on the boundary until the skewness value is less than the specified value. The default values for the skewness threshold, minimum dihedral angle between boundary faces, and feature angle are 0.985, 10, and 30, respectively.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">smooth_interior_sliver</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Smooths non-boundary nodes on sliver cells having skewness greater than the specified threshold value. The default value for the skewness threshold is 0.985.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">smooth_nodes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables you to apply either Laplacian or variational smoothing to nodes on the tetrahedral cell zones to improve the mesh quality.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">swap_faces</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Performs interior face swapping to improve cell skewness.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">init</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Generates the initial Delaunay mesh by meshing the boundary nodes.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">init_refine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Generates the tetrahedral mesh.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">local_regions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">service</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Enters the local refinement menu.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.local_regions.activate" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.local_regions.activate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">activate</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Activates the specified regions for refinement.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.local_regions.deactivate" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.local_regions.deactivate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">deactivate</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Deactivates the specified regions for refinement.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.local_regions.define" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.local_regions.define"><code class="xref py py-obj docutils literal notranslate"><span class="pre">define</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Defines the refinement region according to the specified parameters.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.local_regions.delete" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.local_regions.delete"><code class="xref py py-obj docutils literal notranslate"><span class="pre">delete</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Deletes the specified refinement region.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.local_regions.ideal_area" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.local_regions.ideal_area"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ideal_area</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Ideal triangle area for given edge length.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.local_regions.ideal_vol" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.local_regions.ideal_vol"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ideal_vol</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Reports the volume of an ideal tetrahedron for the edge length specified.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.local_regions.init" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.local_regions.init"><code class="xref py py-obj docutils literal notranslate"><span class="pre">init</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Defines the default refinement region encompassing the entire geometry.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.local_regions.list_all_regions" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.local_regions.list_all_regions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list_all_regions</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Lists all refinement region parameters and the activated regions in the console.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.local_regions.refine" title="ansys.fluent.core.meshing.tui_232.main_menu.mesh.tet.local_regions.refine"><code class="xref py py-obj docutils literal notranslate"><span class="pre">refine</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Refines the active cells inside the selected region based on the specified refinement parameters.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">activate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Activates the specified regions for refinement.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">deactivate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Deactivates the specified regions for refinement.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">define</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Defines the refinement region according to the specified parameters.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Deletes the specified refinement region.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">ideal_area</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Ideal triangle area for given edge length.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">ideal_vol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Reports the volume of an ideal tetrahedron for the edge length specified.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">init</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Defines the default refinement region encompassing the entire geometry.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">list_all_regions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Lists all refinement region parameters and the activated regions in the console.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">refine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Refines the active cells inside the selected region based on the specified refinement parameters.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">mesh_object</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Tet mesh object of type mesh.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">preserve_cell_zone</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Allows you to specify the cell zones to be preserved during the meshing process.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">refine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Refines the initialized mesh.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">trace_path_between_cells</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Detects holes in the geometry by tracing the path between the two specified cells.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">un_preserve_cell_zone</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Un-preserve cell zone.</p>
+</dd></dl>
+
+</dd></dl>
+
+<div class="toctree-wrapper compound">
+</div>
+</section>
+
+
+                </article>
+              
+              
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="tocsection sourcelink">
+    <a href="../../../../../_sources/api/meshing/tui/mesh/tet/index.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+  <p class="copyright">
+    
+      © Copyright (c) 2023 ANSYS, Inc. All rights reserved.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.13.3.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,1085 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>events_streaming &#8212; PyFluent</title>
+  
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=d2d258e8" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/ansys_sphinx_theme.css?v=77703c5e" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://www.nerdfonts.com/assets/css/webfont.css" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+  
+    <link href="../../_static/css/breadcrumbs.css" rel="stylesheet" />
+  
+    <script src="../../_static/documentation_options.js?v=09352719"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/thebelab-helper.js"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=49e1bf35"></script>
+    <script src="../../_static/toggleprompt.js?v=cec9bd37"></script>
+    <script src="../../_static/js/table.js?v=b64f5182"></script>
+    <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/streaming_services/events_streaming';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.0';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://fluent.docs.pyansys.com/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.27';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner = false;
+        </script>
+    <link rel="icon" href="../../_static/ansys-favicon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="field_data_streaming" href="field_data_streaming.html" />
+    <link rel="prev" title="datamodel_streaming" href="datamodel_streaming.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="0.27.0" />
+  <link rel="canonical" href="https://fluent.docs.pyansys.com/version/stable/api/streaming_services/events_streaming.html" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/pyansys_logo_transparent_black.png" class="logo__image only-light" alt="PyFluent - Home"/>
+    <img src="../../_static/pyansys_logo_transparent_white.png" class="logo__image only-dark pst-js-only" alt="PyFluent - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../getting_started/index.html">
+    Getting started
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../user_guide/index.html">
+    User guide
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    API reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../contributing/index.html">
+    Contributing to PyFluent
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+<div class="search-bar pst-js-only" id="search-bar">
+    <form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input type="search" class="form-control" name="q" placeholder="Search the docs ..."
+             aria-label="Search the docs ..." autocomplete="off" autocorrect="off"
+             autocapitalize="off" spellcheck="false"/>
+      <span class="search-button__kbd-shortcut">
+        <kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd>
+      </span>
+    </form>
+    <div id="search-results" class="search-results" style="display: none;" tabindex="0"></div>
+</div>
+        </div>
+      
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent/discussions" title="Support" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa fa-comment fa-fw fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Support</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+<div class="search-bar pst-js-only" id="search-bar">
+    <form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input type="search" class="form-control" name="q" placeholder="Search the docs ..."
+             aria-label="Search the docs ..." autocomplete="off" autocorrect="off"
+             autocapitalize="off" spellcheck="false"/>
+      <span class="search-button__kbd-shortcut">
+        <kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd>
+      </span>
+    </form>
+    <div id="search-results" class="search-results" style="display: none;" tabindex="0"></div>
+</div>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+  
+    <div id="announcement_msg"></div>
+<script>
+  fetch("announcement.html")
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error: ${response.status}`);
+      }
+      return response.text();
+    })
+    .then(
+      (text) => (document.getElementById("announcement_msg").innerHTML = text),
+    )
+    .catch((error) => console.error(`Fetch problem: ${error.message}`));
+</script>
+  
+
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../getting_started/index.html">
+    Getting started
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../user_guide/index.html">
+    User guide
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    API reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../contributing/index.html">
+    Contributing to PyFluent
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent/discussions" title="Support" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa fa-comment fa-fw fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Support</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../filereader/index.html">ansys.fluent.core.filereader</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../launcher/index.html">ansys.fluent.core.launcher</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../meshing/index.html">ansys.fluent.core.meshing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../post_objects/index.html">ansys.fluent.core.post_objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scheduler/index.html">ansys.fluent.core.scheduler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../services/index.html">ansys.fluent.core.services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../solver/index.html">ansys.fluent.core.solver</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">ansys.fluent.core.streaming_services</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="datamodel_event_streaming.html">datamodel_event_streaming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datamodel_streaming.html">datamodel_streaming</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">events_streaming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="field_data_streaming.html">field_data_streaming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="monitor_streaming.html">monitor_streaming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="streaming.html">streaming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transcript_streaming.html">transcript_streaming</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../utils/index.html">ansys.fluent.core.utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data_model_cache.html">ansys.fluent.core.data_model_cache</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exceptions.html">ansys.fluent.core.exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file_session.html">ansys.fluent.core.file_session</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fluent_connection.html">ansys.fluent.core.fluent_connection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../journaling.html">ansys.fluent.core.journaling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../logging.html">ansys.fluent.core.logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parametric.html">ansys.fluent.core.parametric</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpvars.html">ansys.fluent.core.rpvars</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../search.html">ansys.fluent.core.search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_base_meshing.html">ansys.fluent.core.session_base_meshing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_meshing.html">ansys.fluent.core.session_meshing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_pure_meshing.html">ansys.fluent.core.session_pure_meshing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_solver_icing.html">ansys.fluent.core.session_solver_icing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_solver_lite.html">ansys.fluent.core.session_solver_lite</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_solver.html">ansys.fluent.core.session_solver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session.html">ansys.fluent.core.session</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../systemcoupling.html">ansys.fluent.core.systemcoupling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../warnings.html">ansys.fluent.core.warnings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../workflow.html">ansys.fluent.core.workflow</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+         
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="https://docs.pyansys.com/" class="nav-link">PyAnsys</a>
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a
+        href="../../index.html"
+        class="nav-link"
+        aria-label="Home"
+      >
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a href="../index.html" class="nav-link">API reference</a>
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a href="index.html" class="nav-link">ansys.fluent.core.streaming_services</a>
+    </li>
+      
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">events_streaming</span></li>
+    
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="module-ansys.fluent.core.streaming_services.events_streaming">
+<span id="events-streaming"></span><span id="ref-events-streaming"></span><h1>events_streaming<a class="headerlink" href="#module-ansys.fluent.core.streaming_services.events_streaming" title="Link to this heading">#</a></h1>
+<p>Module for events management.</p>
+<p><strong>Classes:</strong></p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.streaming_services.events_streaming.Event" title="ansys.fluent.core.streaming_services.events_streaming.Event"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Event</span></code></a></p></td>
+<td><p>alias of <a class="reference internal" href="#ansys.fluent.core.streaming_services.events_streaming.SolverEvent" title="ansys.fluent.core.streaming_services.events_streaming.SolverEvent"><code class="xref py py-class docutils literal notranslate"><span class="pre">SolverEvent</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.streaming_services.events_streaming.EventsManager" title="ansys.fluent.core.streaming_services.events_streaming.EventsManager"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EventsManager</span></code></a>(event_type, ...)</p></td>
+<td><p>Manages server-side events.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.streaming_services.events_streaming.MeshingEvent" title="ansys.fluent.core.streaming_services.events_streaming.MeshingEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MeshingEvent</span></code></a>(value[, names, module, ...])</p></td>
+<td><p>Enumerates over supported server (Fluent) events.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.streaming_services.events_streaming.SolverEvent" title="ansys.fluent.core.streaming_services.events_streaming.SolverEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SolverEvent</span></code></a>(value[, names, module, ...])</p></td>
+<td><p>Enumerates over supported server (Fluent) events.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ansys.fluent.core.streaming_services.events_streaming.Event">
+<span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.streaming_services.events_streaming.</span></span><span class="sig-name descname"><span class="pre">Event</span></span><a class="headerlink" href="#ansys.fluent.core.streaming_services.events_streaming.Event" title="Link to this definition">#</a></dt>
+<dd><p>alias of <a class="reference internal" href="#ansys.fluent.core.streaming_services.events_streaming.SolverEvent" title="ansys.fluent.core.streaming_services.events_streaming.SolverEvent"><code class="xref py py-class docutils literal notranslate"><span class="pre">SolverEvent</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.streaming_services.events_streaming.EventsManager">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.streaming_services.events_streaming.</span></span><span class="sig-name descname"><span class="pre">EventsManager</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">session_events_service</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fluent_error_state</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">session</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.streaming_services.events_streaming.EventsManager" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Generic" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Generic</span></code></a>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">TEvent</span></code>]</p>
+<p>Manages server-side events.</p>
+<p>This class allows the client to register and unregister callbacks with server
+events.</p>
+<p><strong>Methods:</strong></p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.streaming_services.events_streaming.EventsManager.__init__" title="ansys.fluent.core.streaming_services.events_streaming.EventsManager.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(event_type, session_events_service, ...)</p></td>
+<td><p>__init__ method of EventsManager class.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.streaming_services.events_streaming.EventsManager.register_callback" title="ansys.fluent.core.streaming_services.events_streaming.EventsManager.register_callback"><code class="xref py py-obj docutils literal notranslate"><span class="pre">register_callback</span></code></a>(event_name, callback, ...)</p></td>
+<td><p>Register the callback.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.streaming_services.events_streaming.EventsManager.start" title="ansys.fluent.core.streaming_services.events_streaming.EventsManager.start"><code class="xref py py-obj docutils literal notranslate"><span class="pre">start</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Start streaming.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.streaming_services.events_streaming.EventsManager.stop" title="ansys.fluent.core.streaming_services.events_streaming.EventsManager.stop"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stop</span></code></a>()</p></td>
+<td><p>Stop streaming.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.streaming_services.events_streaming.EventsManager.unregister_callback" title="ansys.fluent.core.streaming_services.events_streaming.EventsManager.unregister_callback"><code class="xref py py-obj docutils literal notranslate"><span class="pre">unregister_callback</span></code></a>(callback_id)</p></td>
+<td><p>Unregister the callback.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.streaming_services.events_streaming.EventsManager.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">session_events_service</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fluent_error_state</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">session</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.streaming_services.events_streaming.EventsManager.__init__" title="Link to this definition">#</a></dt>
+<dd><p>__init__ method of EventsManager class.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.streaming_services.events_streaming.EventsManager.register_callback">
+<span class="sig-name descname"><span class="pre">register_callback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.streaming_services.events_streaming.EventsManager.register_callback" title="Link to this definition">#</a></dt>
+<dd><p>Register the callback.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>event_name</strong><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TEvent</span></code> or <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a></span></dt><dd><p>Event to register the callback to.</p>
+</dd>
+<dt><strong>callback</strong><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Callable</span></code></span></dt><dd><p>Callback to register. If the custom arguments,
+args and kwargs, are empty then the callback
+signature must be precisely &lt;function&gt;(session, event_info).
+Otherwise, the arguments for args and/or kwargs
+must precede the other arguments in the signature.</p>
+</dd>
+<dt><strong>args</strong><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Any</span></code></span></dt><dd><p>Arguments.</p>
+</dd>
+<dt><strong>kwargs</strong><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Any</span></code></span></dt><dd><p>Keyword arguments.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a></dt><dd><p>Registered callback ID.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">InvalidArgument</span></code></dt><dd><p>If event name is not valid.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.streaming_services.events_streaming.EventsManager.start">
+<span class="sig-name descname"><span class="pre">start</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.streaming_services.events_streaming.EventsManager.start" title="Link to this definition">#</a></dt>
+<dd><p>Start streaming.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.streaming_services.events_streaming.EventsManager.stop">
+<span class="sig-name descname"><span class="pre">stop</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.streaming_services.events_streaming.EventsManager.stop" title="Link to this definition">#</a></dt>
+<dd><p>Stop streaming.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.streaming_services.events_streaming.EventsManager.unregister_callback">
+<span class="sig-name descname"><span class="pre">unregister_callback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">callback_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.streaming_services.events_streaming.EventsManager.unregister_callback" title="Link to this definition">#</a></dt>
+<dd><p>Unregister the callback.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>callback_id</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a></span></dt><dd><p>ID of the registered callback.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.streaming_services.events_streaming.MeshingEvent">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.streaming_services.events_streaming.</span></span><span class="sig-name descname"><span class="pre">MeshingEvent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qualname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">boundary</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.streaming_services.events_streaming.MeshingEvent" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/enum.html#enum.Enum" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></a></p>
+<p>Enumerates over supported server (Fluent) events.</p>
+<p><strong>Attributes:</strong></p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.streaming_services.events_streaming.MeshingEvent.ABOUT_TO_LOAD_CASE" title="ansys.fluent.core.streaming_services.events_streaming.MeshingEvent.ABOUT_TO_LOAD_CASE"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ABOUT_TO_LOAD_CASE</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.streaming_services.events_streaming.MeshingEvent.CASE_LOADED" title="ansys.fluent.core.streaming_services.events_streaming.MeshingEvent.CASE_LOADED"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CASE_LOADED</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.streaming_services.events_streaming.MeshingEvent.FATAL_ERROR" title="ansys.fluent.core.streaming_services.events_streaming.MeshingEvent.FATAL_ERROR"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FATAL_ERROR</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.streaming_services.events_streaming.MeshingEvent.PROGRESS_UPDATED" title="ansys.fluent.core.streaming_services.events_streaming.MeshingEvent.PROGRESS_UPDATED"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PROGRESS_UPDATED</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.streaming_services.events_streaming.MeshingEvent.SETTINGS_CLEARED" title="ansys.fluent.core.streaming_services.events_streaming.MeshingEvent.SETTINGS_CLEARED"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SETTINGS_CLEARED</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ansys.fluent.core.streaming_services.events_streaming.MeshingEvent.ABOUT_TO_LOAD_CASE">
+<span class="sig-name descname"><span class="pre">ABOUT_TO_LOAD_CASE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'AboutToReadCaseEvent'</span></em><a class="headerlink" href="#ansys.fluent.core.streaming_services.events_streaming.MeshingEvent.ABOUT_TO_LOAD_CASE" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ansys.fluent.core.streaming_services.events_streaming.MeshingEvent.CASE_LOADED">
+<span class="sig-name descname"><span class="pre">CASE_LOADED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'CaseReadEvent'</span></em><a class="headerlink" href="#ansys.fluent.core.streaming_services.events_streaming.MeshingEvent.CASE_LOADED" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ansys.fluent.core.streaming_services.events_streaming.MeshingEvent.FATAL_ERROR">
+<span class="sig-name descname"><span class="pre">FATAL_ERROR</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'ErrorEvent'</span></em><a class="headerlink" href="#ansys.fluent.core.streaming_services.events_streaming.MeshingEvent.FATAL_ERROR" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ansys.fluent.core.streaming_services.events_streaming.MeshingEvent.PROGRESS_UPDATED">
+<span class="sig-name descname"><span class="pre">PROGRESS_UPDATED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'ProgressEvent'</span></em><a class="headerlink" href="#ansys.fluent.core.streaming_services.events_streaming.MeshingEvent.PROGRESS_UPDATED" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ansys.fluent.core.streaming_services.events_streaming.MeshingEvent.SETTINGS_CLEARED">
+<span class="sig-name descname"><span class="pre">SETTINGS_CLEARED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'ClearSettingsDoneEvent'</span></em><a class="headerlink" href="#ansys.fluent.core.streaming_services.events_streaming.MeshingEvent.SETTINGS_CLEARED" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.streaming_services.events_streaming.SolverEvent">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.streaming_services.events_streaming.</span></span><span class="sig-name descname"><span class="pre">SolverEvent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qualname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">boundary</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.streaming_services.events_streaming.SolverEvent" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/enum.html#enum.Enum" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></a></p>
+<p>Enumerates over supported server (Fluent) events.</p>
+<p><strong>Attributes:</strong></p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.streaming_services.events_streaming.SolverEvent.ABOUT_TO_INITIALIZE_SOLUTION" title="ansys.fluent.core.streaming_services.events_streaming.SolverEvent.ABOUT_TO_INITIALIZE_SOLUTION"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ABOUT_TO_INITIALIZE_SOLUTION</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.streaming_services.events_streaming.SolverEvent.ABOUT_TO_LOAD_CASE" title="ansys.fluent.core.streaming_services.events_streaming.SolverEvent.ABOUT_TO_LOAD_CASE"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ABOUT_TO_LOAD_CASE</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.streaming_services.events_streaming.SolverEvent.ABOUT_TO_LOAD_DATA" title="ansys.fluent.core.streaming_services.events_streaming.SolverEvent.ABOUT_TO_LOAD_DATA"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ABOUT_TO_LOAD_DATA</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.streaming_services.events_streaming.SolverEvent.CALCULATIONS_ENDED" title="ansys.fluent.core.streaming_services.events_streaming.SolverEvent.CALCULATIONS_ENDED"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CALCULATIONS_ENDED</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.streaming_services.events_streaming.SolverEvent.CALCULATIONS_PAUSED" title="ansys.fluent.core.streaming_services.events_streaming.SolverEvent.CALCULATIONS_PAUSED"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CALCULATIONS_PAUSED</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.streaming_services.events_streaming.SolverEvent.CALCULATIONS_RESUMED" title="ansys.fluent.core.streaming_services.events_streaming.SolverEvent.CALCULATIONS_RESUMED"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CALCULATIONS_RESUMED</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.streaming_services.events_streaming.SolverEvent.CALCULATIONS_STARTED" title="ansys.fluent.core.streaming_services.events_streaming.SolverEvent.CALCULATIONS_STARTED"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CALCULATIONS_STARTED</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.streaming_services.events_streaming.SolverEvent.CASE_LOADED" title="ansys.fluent.core.streaming_services.events_streaming.SolverEvent.CASE_LOADED"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CASE_LOADED</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.streaming_services.events_streaming.SolverEvent.DATA_LOADED" title="ansys.fluent.core.streaming_services.events_streaming.SolverEvent.DATA_LOADED"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DATA_LOADED</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.streaming_services.events_streaming.SolverEvent.FATAL_ERROR" title="ansys.fluent.core.streaming_services.events_streaming.SolverEvent.FATAL_ERROR"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FATAL_ERROR</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.streaming_services.events_streaming.SolverEvent.ITERATION_ENDED" title="ansys.fluent.core.streaming_services.events_streaming.SolverEvent.ITERATION_ENDED"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ITERATION_ENDED</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.streaming_services.events_streaming.SolverEvent.PROGRESS_UPDATED" title="ansys.fluent.core.streaming_services.events_streaming.SolverEvent.PROGRESS_UPDATED"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PROGRESS_UPDATED</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.streaming_services.events_streaming.SolverEvent.REPORT_DEFINITION_UPDATED" title="ansys.fluent.core.streaming_services.events_streaming.SolverEvent.REPORT_DEFINITION_UPDATED"><code class="xref py py-obj docutils literal notranslate"><span class="pre">REPORT_DEFINITION_UPDATED</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.streaming_services.events_streaming.SolverEvent.REPORT_PLOT_SET_UPDATED" title="ansys.fluent.core.streaming_services.events_streaming.SolverEvent.REPORT_PLOT_SET_UPDATED"><code class="xref py py-obj docutils literal notranslate"><span class="pre">REPORT_PLOT_SET_UPDATED</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.streaming_services.events_streaming.SolverEvent.RESIDUAL_PLOT_UPDATED" title="ansys.fluent.core.streaming_services.events_streaming.SolverEvent.RESIDUAL_PLOT_UPDATED"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RESIDUAL_PLOT_UPDATED</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.streaming_services.events_streaming.SolverEvent.SETTINGS_CLEARED" title="ansys.fluent.core.streaming_services.events_streaming.SolverEvent.SETTINGS_CLEARED"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SETTINGS_CLEARED</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.streaming_services.events_streaming.SolverEvent.SOLUTION_INITIALIZED" title="ansys.fluent.core.streaming_services.events_streaming.SolverEvent.SOLUTION_INITIALIZED"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SOLUTION_INITIALIZED</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.streaming_services.events_streaming.SolverEvent.SOLUTION_PAUSED" title="ansys.fluent.core.streaming_services.events_streaming.SolverEvent.SOLUTION_PAUSED"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SOLUTION_PAUSED</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.streaming_services.events_streaming.SolverEvent.SOLVER_TIME_ESTIMATE_UPDATED" title="ansys.fluent.core.streaming_services.events_streaming.SolverEvent.SOLVER_TIME_ESTIMATE_UPDATED"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SOLVER_TIME_ESTIMATE_UPDATED</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.streaming_services.events_streaming.SolverEvent.TIMESTEP_ENDED" title="ansys.fluent.core.streaming_services.events_streaming.SolverEvent.TIMESTEP_ENDED"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TIMESTEP_ENDED</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.streaming_services.events_streaming.SolverEvent.TIMESTEP_STARTED" title="ansys.fluent.core.streaming_services.events_streaming.SolverEvent.TIMESTEP_STARTED"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TIMESTEP_STARTED</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ansys.fluent.core.streaming_services.events_streaming.SolverEvent.ABOUT_TO_INITIALIZE_SOLUTION">
+<span class="sig-name descname"><span class="pre">ABOUT_TO_INITIALIZE_SOLUTION</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'AboutToInitializeEvent'</span></em><a class="headerlink" href="#ansys.fluent.core.streaming_services.events_streaming.SolverEvent.ABOUT_TO_INITIALIZE_SOLUTION" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ansys.fluent.core.streaming_services.events_streaming.SolverEvent.ABOUT_TO_LOAD_CASE">
+<span class="sig-name descname"><span class="pre">ABOUT_TO_LOAD_CASE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'AboutToReadCaseEvent'</span></em><a class="headerlink" href="#ansys.fluent.core.streaming_services.events_streaming.SolverEvent.ABOUT_TO_LOAD_CASE" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ansys.fluent.core.streaming_services.events_streaming.SolverEvent.ABOUT_TO_LOAD_DATA">
+<span class="sig-name descname"><span class="pre">ABOUT_TO_LOAD_DATA</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'AboutToReadDataEvent'</span></em><a class="headerlink" href="#ansys.fluent.core.streaming_services.events_streaming.SolverEvent.ABOUT_TO_LOAD_DATA" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ansys.fluent.core.streaming_services.events_streaming.SolverEvent.CALCULATIONS_ENDED">
+<span class="sig-name descname"><span class="pre">CALCULATIONS_ENDED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'CalculationsEndedEvent'</span></em><a class="headerlink" href="#ansys.fluent.core.streaming_services.events_streaming.SolverEvent.CALCULATIONS_ENDED" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ansys.fluent.core.streaming_services.events_streaming.SolverEvent.CALCULATIONS_PAUSED">
+<span class="sig-name descname"><span class="pre">CALCULATIONS_PAUSED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'CalculationsPausedEvent'</span></em><a class="headerlink" href="#ansys.fluent.core.streaming_services.events_streaming.SolverEvent.CALCULATIONS_PAUSED" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ansys.fluent.core.streaming_services.events_streaming.SolverEvent.CALCULATIONS_RESUMED">
+<span class="sig-name descname"><span class="pre">CALCULATIONS_RESUMED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'CalculationsResumedEvent'</span></em><a class="headerlink" href="#ansys.fluent.core.streaming_services.events_streaming.SolverEvent.CALCULATIONS_RESUMED" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ansys.fluent.core.streaming_services.events_streaming.SolverEvent.CALCULATIONS_STARTED">
+<span class="sig-name descname"><span class="pre">CALCULATIONS_STARTED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'CalculationsStartedEvent'</span></em><a class="headerlink" href="#ansys.fluent.core.streaming_services.events_streaming.SolverEvent.CALCULATIONS_STARTED" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ansys.fluent.core.streaming_services.events_streaming.SolverEvent.CASE_LOADED">
+<span class="sig-name descname"><span class="pre">CASE_LOADED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'CaseReadEvent'</span></em><a class="headerlink" href="#ansys.fluent.core.streaming_services.events_streaming.SolverEvent.CASE_LOADED" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ansys.fluent.core.streaming_services.events_streaming.SolverEvent.DATA_LOADED">
+<span class="sig-name descname"><span class="pre">DATA_LOADED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'DataReadEvent'</span></em><a class="headerlink" href="#ansys.fluent.core.streaming_services.events_streaming.SolverEvent.DATA_LOADED" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ansys.fluent.core.streaming_services.events_streaming.SolverEvent.FATAL_ERROR">
+<span class="sig-name descname"><span class="pre">FATAL_ERROR</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'ErrorEvent'</span></em><a class="headerlink" href="#ansys.fluent.core.streaming_services.events_streaming.SolverEvent.FATAL_ERROR" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ansys.fluent.core.streaming_services.events_streaming.SolverEvent.ITERATION_ENDED">
+<span class="sig-name descname"><span class="pre">ITERATION_ENDED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'IterationEndedEvent'</span></em><a class="headerlink" href="#ansys.fluent.core.streaming_services.events_streaming.SolverEvent.ITERATION_ENDED" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ansys.fluent.core.streaming_services.events_streaming.SolverEvent.PROGRESS_UPDATED">
+<span class="sig-name descname"><span class="pre">PROGRESS_UPDATED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'ProgressEvent'</span></em><a class="headerlink" href="#ansys.fluent.core.streaming_services.events_streaming.SolverEvent.PROGRESS_UPDATED" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ansys.fluent.core.streaming_services.events_streaming.SolverEvent.REPORT_DEFINITION_UPDATED">
+<span class="sig-name descname"><span class="pre">REPORT_DEFINITION_UPDATED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'ReportDefinitionChangedEvent'</span></em><a class="headerlink" href="#ansys.fluent.core.streaming_services.events_streaming.SolverEvent.REPORT_DEFINITION_UPDATED" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ansys.fluent.core.streaming_services.events_streaming.SolverEvent.REPORT_PLOT_SET_UPDATED">
+<span class="sig-name descname"><span class="pre">REPORT_PLOT_SET_UPDATED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'PlotSetChangedEvent'</span></em><a class="headerlink" href="#ansys.fluent.core.streaming_services.events_streaming.SolverEvent.REPORT_PLOT_SET_UPDATED" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ansys.fluent.core.streaming_services.events_streaming.SolverEvent.RESIDUAL_PLOT_UPDATED">
+<span class="sig-name descname"><span class="pre">RESIDUAL_PLOT_UPDATED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'ResidualPlotChangedEvent'</span></em><a class="headerlink" href="#ansys.fluent.core.streaming_services.events_streaming.SolverEvent.RESIDUAL_PLOT_UPDATED" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ansys.fluent.core.streaming_services.events_streaming.SolverEvent.SETTINGS_CLEARED">
+<span class="sig-name descname"><span class="pre">SETTINGS_CLEARED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'ClearSettingsDoneEvent'</span></em><a class="headerlink" href="#ansys.fluent.core.streaming_services.events_streaming.SolverEvent.SETTINGS_CLEARED" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ansys.fluent.core.streaming_services.events_streaming.SolverEvent.SOLUTION_INITIALIZED">
+<span class="sig-name descname"><span class="pre">SOLUTION_INITIALIZED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'InitializedEvent'</span></em><a class="headerlink" href="#ansys.fluent.core.streaming_services.events_streaming.SolverEvent.SOLUTION_INITIALIZED" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ansys.fluent.core.streaming_services.events_streaming.SolverEvent.SOLUTION_PAUSED">
+<span class="sig-name descname"><span class="pre">SOLUTION_PAUSED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'AutoPauseEvent'</span></em><a class="headerlink" href="#ansys.fluent.core.streaming_services.events_streaming.SolverEvent.SOLUTION_PAUSED" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ansys.fluent.core.streaming_services.events_streaming.SolverEvent.SOLVER_TIME_ESTIMATE_UPDATED">
+<span class="sig-name descname"><span class="pre">SOLVER_TIME_ESTIMATE_UPDATED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'SolverTimeEstimateEvent'</span></em><a class="headerlink" href="#ansys.fluent.core.streaming_services.events_streaming.SolverEvent.SOLVER_TIME_ESTIMATE_UPDATED" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ansys.fluent.core.streaming_services.events_streaming.SolverEvent.TIMESTEP_ENDED">
+<span class="sig-name descname"><span class="pre">TIMESTEP_ENDED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'TimestepEndedEvent'</span></em><a class="headerlink" href="#ansys.fluent.core.streaming_services.events_streaming.SolverEvent.TIMESTEP_ENDED" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ansys.fluent.core.streaming_services.events_streaming.SolverEvent.TIMESTEP_STARTED">
+<span class="sig-name descname"><span class="pre">TIMESTEP_STARTED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'TimestepStartedEvent'</span></em><a class="headerlink" href="#ansys.fluent.core.streaming_services.events_streaming.SolverEvent.TIMESTEP_STARTED" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.streaming_services.events_streaming.Event"><code class="docutils literal notranslate"><span class="pre">Event</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.streaming_services.events_streaming.EventsManager"><code class="docutils literal notranslate"><span class="pre">EventsManager</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.streaming_services.events_streaming.EventsManager.__init__"><code class="docutils literal notranslate"><span class="pre">EventsManager.__init__()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.streaming_services.events_streaming.EventsManager.register_callback"><code class="docutils literal notranslate"><span class="pre">EventsManager.register_callback()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.streaming_services.events_streaming.EventsManager.start"><code class="docutils literal notranslate"><span class="pre">EventsManager.start()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.streaming_services.events_streaming.EventsManager.stop"><code class="docutils literal notranslate"><span class="pre">EventsManager.stop()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.streaming_services.events_streaming.EventsManager.unregister_callback"><code class="docutils literal notranslate"><span class="pre">EventsManager.unregister_callback()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.streaming_services.events_streaming.MeshingEvent"><code class="docutils literal notranslate"><span class="pre">MeshingEvent</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.streaming_services.events_streaming.MeshingEvent.ABOUT_TO_LOAD_CASE"><code class="docutils literal notranslate"><span class="pre">MeshingEvent.ABOUT_TO_LOAD_CASE</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.streaming_services.events_streaming.MeshingEvent.CASE_LOADED"><code class="docutils literal notranslate"><span class="pre">MeshingEvent.CASE_LOADED</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.streaming_services.events_streaming.MeshingEvent.FATAL_ERROR"><code class="docutils literal notranslate"><span class="pre">MeshingEvent.FATAL_ERROR</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.streaming_services.events_streaming.MeshingEvent.PROGRESS_UPDATED"><code class="docutils literal notranslate"><span class="pre">MeshingEvent.PROGRESS_UPDATED</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.streaming_services.events_streaming.MeshingEvent.SETTINGS_CLEARED"><code class="docutils literal notranslate"><span class="pre">MeshingEvent.SETTINGS_CLEARED</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.streaming_services.events_streaming.SolverEvent"><code class="docutils literal notranslate"><span class="pre">SolverEvent</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.streaming_services.events_streaming.SolverEvent.ABOUT_TO_INITIALIZE_SOLUTION"><code class="docutils literal notranslate"><span class="pre">SolverEvent.ABOUT_TO_INITIALIZE_SOLUTION</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.streaming_services.events_streaming.SolverEvent.ABOUT_TO_LOAD_CASE"><code class="docutils literal notranslate"><span class="pre">SolverEvent.ABOUT_TO_LOAD_CASE</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.streaming_services.events_streaming.SolverEvent.ABOUT_TO_LOAD_DATA"><code class="docutils literal notranslate"><span class="pre">SolverEvent.ABOUT_TO_LOAD_DATA</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.streaming_services.events_streaming.SolverEvent.CALCULATIONS_ENDED"><code class="docutils literal notranslate"><span class="pre">SolverEvent.CALCULATIONS_ENDED</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.streaming_services.events_streaming.SolverEvent.CALCULATIONS_PAUSED"><code class="docutils literal notranslate"><span class="pre">SolverEvent.CALCULATIONS_PAUSED</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.streaming_services.events_streaming.SolverEvent.CALCULATIONS_RESUMED"><code class="docutils literal notranslate"><span class="pre">SolverEvent.CALCULATIONS_RESUMED</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.streaming_services.events_streaming.SolverEvent.CALCULATIONS_STARTED"><code class="docutils literal notranslate"><span class="pre">SolverEvent.CALCULATIONS_STARTED</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.streaming_services.events_streaming.SolverEvent.CASE_LOADED"><code class="docutils literal notranslate"><span class="pre">SolverEvent.CASE_LOADED</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.streaming_services.events_streaming.SolverEvent.DATA_LOADED"><code class="docutils literal notranslate"><span class="pre">SolverEvent.DATA_LOADED</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.streaming_services.events_streaming.SolverEvent.FATAL_ERROR"><code class="docutils literal notranslate"><span class="pre">SolverEvent.FATAL_ERROR</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.streaming_services.events_streaming.SolverEvent.ITERATION_ENDED"><code class="docutils literal notranslate"><span class="pre">SolverEvent.ITERATION_ENDED</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.streaming_services.events_streaming.SolverEvent.PROGRESS_UPDATED"><code class="docutils literal notranslate"><span class="pre">SolverEvent.PROGRESS_UPDATED</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.streaming_services.events_streaming.SolverEvent.REPORT_DEFINITION_UPDATED"><code class="docutils literal notranslate"><span class="pre">SolverEvent.REPORT_DEFINITION_UPDATED</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.streaming_services.events_streaming.SolverEvent.REPORT_PLOT_SET_UPDATED"><code class="docutils literal notranslate"><span class="pre">SolverEvent.REPORT_PLOT_SET_UPDATED</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.streaming_services.events_streaming.SolverEvent.RESIDUAL_PLOT_UPDATED"><code class="docutils literal notranslate"><span class="pre">SolverEvent.RESIDUAL_PLOT_UPDATED</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.streaming_services.events_streaming.SolverEvent.SETTINGS_CLEARED"><code class="docutils literal notranslate"><span class="pre">SolverEvent.SETTINGS_CLEARED</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.streaming_services.events_streaming.SolverEvent.SOLUTION_INITIALIZED"><code class="docutils literal notranslate"><span class="pre">SolverEvent.SOLUTION_INITIALIZED</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.streaming_services.events_streaming.SolverEvent.SOLUTION_PAUSED"><code class="docutils literal notranslate"><span class="pre">SolverEvent.SOLUTION_PAUSED</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.streaming_services.events_streaming.SolverEvent.SOLVER_TIME_ESTIMATE_UPDATED"><code class="docutils literal notranslate"><span class="pre">SolverEvent.SOLVER_TIME_ESTIMATE_UPDATED</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.streaming_services.events_streaming.SolverEvent.TIMESTEP_ENDED"><code class="docutils literal notranslate"><span class="pre">SolverEvent.TIMESTEP_ENDED</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.streaming_services.events_streaming.SolverEvent.TIMESTEP_STARTED"><code class="docutils literal notranslate"><span class="pre">SolverEvent.TIMESTEP_STARTED</span></code></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+<!-- If there is no fix edit button function, use the PyData edit-this-button-->
+</div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../../_sources/api/streaming_services/events_streaming.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+<link rel="stylesheet" href="../../_static/css/fuse-search.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.7/require.min.js"></script>
+
+<script>
+// Passing the search options to the search.js file
+const SEARCH_OPTIONS = JSON.parse('{"keys": ["title", "text"], "limit": 10, "threshold": 0.2}');
+const SEARCH_FILE = "../../_static/search.json";
+</script>
+
+
+<script src="../../_static/js/search.js"></script>
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright (c) 2024 ANSYS, Inc. All rights reserved.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.7.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="theme-version">
+  Built with the
+  <a href="https://sphinxdocs.ansys.com/version/stable/index.html"
+    >Ansys Sphinx Theme</a
+  >
+  1.2.0. <br />Last updated on
+  <span id="date"></span>
+</p>
+<script>
+  var options = { day: "numeric", month: "long", year: "numeric" };
+  var lastModifiedDate = new Date(document.lastModified);
+  var date = lastModifiedDate.toLocaleDateString("en-US", options);
+  document.getElementById("date").innerHTML = date;
+</script></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

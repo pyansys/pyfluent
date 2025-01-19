@@ -1,0 +1,12 @@
+.. _ref_session_solver_icing:
+
+session_solver_icing
+====================
+
+.. automodule:: ansys.fluent.core.session_solver_icing
+    :members:
+    :show-inheritance:
+    :undoc-members:
+    :exclude-members: __weakref__, __dict__
+    :special-members: __init__
+    :autosummary:

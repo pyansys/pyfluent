@@ -1,0 +1,1270 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>adapt &#8212; PyFluent</title>
+    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/css/ansys_sphinx_theme.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sg_gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sg_gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sg_gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sg_gallery-rendered-html.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    
+        <link href="../../../../../_static/css/breadcrumbs.css" rel="stylesheet">
+    
+    <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
+    <script src="../../../../../_static/jquery.js"></script>
+    <script src="../../../../../_static/underscore.js"></script>
+    <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../../../_static/doctools.js"></script>
+    <script src="../../../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../../../_static/thebelab-helper.js"></script>
+    <script src="../../../../../_static/clipboard.min.js"></script>
+    <script src="../../../../../_static/copybutton.js"></script>
+    <script src="../../../../../_static/js/table.js"></script>
+    <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/solver/tui/mesh/adapt/index';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://fluent.docs.pyansys.com/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.14';
+        </script>
+    <link rel="shortcut icon" href="../../../../../_static/ansys-favicon.png"/>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <link rel="next" title="geometry" href="geometry/index.html" />
+    <link rel="prev" title="reorder" href="../reorder/index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <link rel="canonical" href="https://fluent.docs.pyansys.com/version/stable/api/solver/tui/mesh/adapt/index.html" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container"><!-- Debugging: html_theme_options =  -->
+
+  <!-- If there is no MiliSearch enabled, use the PyData search -->
+<form class="bd-search d-flex align-items-center"
+      action="../../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  <div class="navbar-header-items__start">
+    
+      <div class="navbar-item">
+  
+
+<a class="navbar-brand logo" href="../../../../../index.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../getting_started/index.html">
+                        Getting started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../user_guide/index.html">
+                        User guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../../../../index.html">
+                        API reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../examples/index.html">
+                        Examples
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../contributing.html">
+                        Contribute
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+        </div>
+      
+      
+        <div class="navbar-item">
+<script>
+document.write(`
+  <div class="version-switcher__container dropdown">
+    <button type="button" class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle" data-bs-toggle="dropdown">
+      0.14  <!-- this text may get changed later by javascript -->
+      <span class="caret"></span>
+    </button>
+    <div class="version-switcher__menu dropdown-menu list-group-flush py-0">
+    <!-- dropdown will be populated by javascript on page load -->
+    </div>
+  </div>
+`);
+</script></div>
+      
+        <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent/discussions" title="Support" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa fa-comment fa-fw"></i></span>
+            <label class="sr-only">Support</label></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </nav>
+  
+
+    
+    <div id="announcement_msg"></div>
+<script>
+  fetch("announcement.html")
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error: ${response.status}`);
+      }
+      return response.text();
+    })
+    .then(text => document.getElementById("announcement_msg").innerHTML = text)
+    .catch((error) => console.error(`Fetch problem: ${error.message}`));
+</script>
+    
+
+    
+    <div class="container-xl">
+    <div class="row">
+        <div class="col-12 col-md-3" id="breadcrumbs-spacer"></div>
+        <div class="col-12 col-md-11 col-xl-9" id="breadcrumbs">
+          
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+    
+        <li class="nav-item nav-item-additional-breadcrumb"><a href="https://docs.pyansys.com/">PyAnsys</a> » </li>
+    
+    
+        <li class="nav-item nav-item-0"><a href="../../../../../index.html">PyFluent</a> » </li>
+    
+
+          <li class="nav-item nav-item-1"><a href="../../../../index.html" >API reference</a> » </li>
+          <li class="nav-item nav-item-2"><a href="../../../index.html" >Solver</a> » </li>
+          <li class="nav-item nav-item-3"><a href="../../../tuicommands.html" >Solver TUI commands</a> » </li>
+          <li class="nav-item nav-item-4"><a href="../../index.html" >solver.tui</a> » </li>
+          <li class="nav-item nav-item-5"><a href="../index.html" accesskey="U">mesh</a> » </li>
+        <li class="nav-item nav-item-this"><a href="">adapt</a></li> 
+      </ul>
+    </div>
+        </div>
+  </div>
+</div>
+    
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../getting_started/index.html">
+                        Getting started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../user_guide/index.html">
+                        User guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../../../../index.html">
+                        API reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../examples/index.html">
+                        Examples
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../contributing.html">
+                        Contribute
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<script>
+document.write(`
+  <div class="version-switcher__container dropdown">
+    <button type="button" class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle" data-bs-toggle="dropdown">
+      0.14  <!-- this text may get changed later by javascript -->
+      <span class="caret"></span>
+    </button>
+    <div class="version-switcher__menu dropdown-menu list-group-flush py-0">
+    <!-- dropdown will be populated by javascript on page load -->
+    </div>
+  </div>
+`);
+</script></div>
+        
+          <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent/discussions" title="Support" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa fa-comment fa-fw"></i></span>
+            <label class="sr-only">Support</label></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item"><nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../../general/index.html">General</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../meshing/index.html">Meshing</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../../../index.html">Solver</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../settings.html">Solver settings objects</a></li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="../../../tuicommands.html">Solver TUI commands</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l3 current active has-children"><a class="reference internal" href="../../index.html">solver.tui</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../../adjoint/index.html">adjoint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../surface/index.html">surface</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../simulation_reports/index.html">simulation_reports</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../parametric_study/index.html">parametric_study</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../report/index.html">report</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../turbo_post/index.html">turbo_post</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../parameters__and__customization/index.html">parameters__and__customization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../setup/index.html">setup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../server/index.html">server</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../views/index.html">views</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../preferences/index.html">preferences</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../define/index.html">define</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../plot/index.html">plot</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../parallel/index.html">parallel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../display/index.html">display</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../results/index.html">results</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../solve/index.html">solve</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../solution/index.html">solution</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../icing/index.html">icing</a></li>
+<li class="toctree-l4 current active has-children"><a class="reference internal" href="../index.html">mesh</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l5"><a class="reference internal" href="../geometry/index.html">geometry</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../modify_zones/index.html">modify_zones</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../surface_mesh/index.html">surface_mesh</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../reorder/index.html">reorder</a></li>
+<li class="toctree-l5 current active has-children"><a class="current reference internal" href="#">adapt</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l6"><a class="reference internal" href="geometry/index.html">geometry</a></li>
+<li class="toctree-l6"><a class="reference internal" href="manage_criteria/index.html">manage_criteria</a></li>
+<li class="toctree-l6"><a class="reference internal" href="set/index.html">set</a></li>
+<li class="toctree-l6"><a class="reference internal" href="cell_registers/index.html">cell_registers</a></li>
+<li class="toctree-l6"><a class="reference internal" href="multi_layer_refinement/index.html">multi_layer_refinement</a></li>
+<li class="toctree-l6"><a class="reference internal" href="profile/index.html">profile</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../repair_improve/index.html">repair_improve</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../polyhedra/index.html">polyhedra</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../../turbo_workflow/index.html">turbo_workflow</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../file/index.html">file</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../datamodel/index.html">solver.datamodel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../schemeeval.html">Scheme code evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../fielddata.html">Field data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../fieldinfo.html">Field info</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../events.html">EventsManager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../monitors.html">MonitorsManager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reduction.html">Reduction</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article"></div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="adapt">
+<span id="ref-solver-tui-mesh-adapt"></span><h1>adapt<a class="headerlink" href="#adapt" title="Permalink to this heading">#</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.solver.tui_231.main_menu.mesh.</span></span><span class="sig-name descname"><span class="pre">adapt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">service</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Enters the mesh adaption menu.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.adapt_mesh" title="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.adapt_mesh"><code class="xref py py-obj docutils literal notranslate"><span class="pre">adapt_mesh</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Performs manual adaption on the mesh according to the methods and settings that you specified.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.anisotropic_adaption" title="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.anisotropic_adaption"><code class="xref py py-obj docutils literal notranslate"><span class="pre">anisotropic_adaption</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Applies legacy anisotropic adaption to refine the boundary layers or registers.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.coarsening_criteria" title="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.coarsening_criteria"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coarsening_criteria</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Allows you to provide an expression for the coarsening criterion.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.display_adaption_cells" title="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.display_adaption_cells"><code class="xref py py-obj docutils literal notranslate"><span class="pre">display_adaption_cells</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Displays the cells that are marked for adaption in the graphics window.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.free_hierarchy" title="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.free_hierarchy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">free_hierarchy</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Deletes the defined adaption hierarchy.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.list_adaption_cells" title="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.list_adaption_cells"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list_adaption_cells</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Prints the number of cells marked for refinement, coarsening, and both to the console.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.manual_coarsening_criteria" title="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.manual_coarsening_criteria"><code class="xref py py-obj docutils literal notranslate"><span class="pre">manual_coarsening_criteria</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Set expression for manual coarsening criterion.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.manual_refinement_criteria" title="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.manual_refinement_criteria"><code class="xref py py-obj docutils literal notranslate"><span class="pre">manual_refinement_criteria</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Set expression for manual refinement criterion.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.refinement_criteria" title="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.refinement_criteria"><code class="xref py py-obj docutils literal notranslate"><span class="pre">refinement_criteria</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Allows you to provide an expression for the refinement criterion.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Classes:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.cell_registers" title="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.cell_registers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cell_registers</span></code></a>(path, service)</p></td>
+<td><p>Enters the cell registers menu.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.geometry" title="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.geometry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geometry</span></code></a>(path, service)</p></td>
+<td><p>Enters the geometry menu.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.manage_criteria" title="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.manage_criteria"><code class="xref py py-obj docutils literal notranslate"><span class="pre">manage_criteria</span></code></a>(path, service)</p></td>
+<td><p>Enters the manage criteria menu, which provides text commands for managing automatic adaption criteria.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.multi_layer_refinement" title="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.multi_layer_refinement"><code class="xref py py-obj docutils literal notranslate"><span class="pre">multi_layer_refinement</span></code></a>(path, service)</p></td>
+<td><p>Enter the multiple boundary layer refinement menu.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.profile" title="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.profile"><code class="xref py py-obj docutils literal notranslate"><span class="pre">profile</span></code></a>(path, service)</p></td>
+<td><p>Enters the profile menu.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.set" title="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.set"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set</span></code></a>(path, service)</p></td>
+<td><p>Enters the set menu.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.adapt_mesh">
+<span class="sig-name descname"><span class="pre">adapt_mesh</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.adapt_mesh" title="Permalink to this definition">#</a></dt>
+<dd><p>Performs manual adaption on the mesh according to the methods and settings that you specified.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.anisotropic_adaption">
+<span class="sig-name descname"><span class="pre">anisotropic_adaption</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.anisotropic_adaption" title="Permalink to this definition">#</a></dt>
+<dd><p>Applies legacy anisotropic adaption to refine the boundary layers or registers. Cells will be split in the normal direction to the boundary face. Note that this text command is only available for 3D cases that have the adaption method set to hanging node.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.cell_registers">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">cell_registers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">service</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.cell_registers" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Enters the cell registers menu.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.cell_registers.adapt" title="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.cell_registers.adapt"><code class="xref py py-obj docutils literal notranslate"><span class="pre">adapt</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Adapt cell register objects.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.cell_registers.add" title="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.cell_registers.add"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Add a new object.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.cell_registers.apply_poor_mesh_numerics" title="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.cell_registers.apply_poor_mesh_numerics"><code class="xref py py-obj docutils literal notranslate"><span class="pre">apply_poor_mesh_numerics</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Applies poor mesh numerics to the mesh of a cell register.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.cell_registers.coarsen" title="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.cell_registers.coarsen"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coarsen</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Coarsen the mesh based on a cell register.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.cell_registers.delete" title="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.cell_registers.delete"><code class="xref py py-obj docutils literal notranslate"><span class="pre">delete</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Deletes a cell register.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.cell_registers.display" title="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.cell_registers.display"><code class="xref py py-obj docutils literal notranslate"><span class="pre">display</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Displays a cell register.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.cell_registers.edit" title="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.cell_registers.edit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">edit</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Edit an object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.cell_registers.list" title="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.cell_registers.list"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Lists all of the currently defined cell registers.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.cell_registers.list_properties" title="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.cell_registers.list_properties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list_properties</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Lists the properties of a cell register.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.cell_registers.refine" title="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.cell_registers.refine"><code class="xref py py-obj docutils literal notranslate"><span class="pre">refine</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Refine the mesh based on a cell register.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.cell_registers.adapt">
+<span class="sig-name descname"><span class="pre">adapt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.cell_registers.adapt" title="Permalink to this definition">#</a></dt>
+<dd><p>Adapt cell register objects.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.cell_registers.add">
+<span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.cell_registers.add" title="Permalink to this definition">#</a></dt>
+<dd><p>Add a new object.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.cell_registers.apply_poor_mesh_numerics">
+<span class="sig-name descname"><span class="pre">apply_poor_mesh_numerics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.cell_registers.apply_poor_mesh_numerics" title="Permalink to this definition">#</a></dt>
+<dd><p>Applies poor mesh numerics to the mesh of a cell register.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.cell_registers.coarsen">
+<span class="sig-name descname"><span class="pre">coarsen</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.cell_registers.coarsen" title="Permalink to this definition">#</a></dt>
+<dd><p>Coarsen the mesh based on a cell register.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.cell_registers.delete">
+<span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.cell_registers.delete" title="Permalink to this definition">#</a></dt>
+<dd><p>Deletes a cell register.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.cell_registers.display">
+<span class="sig-name descname"><span class="pre">display</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.cell_registers.display" title="Permalink to this definition">#</a></dt>
+<dd><p>Displays a cell register.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.cell_registers.edit">
+<span class="sig-name descname"><span class="pre">edit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.cell_registers.edit" title="Permalink to this definition">#</a></dt>
+<dd><p>Edit an object.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.cell_registers.list">
+<span class="sig-name descname"><span class="pre">list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.cell_registers.list" title="Permalink to this definition">#</a></dt>
+<dd><p>Lists all of the currently defined cell registers.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.cell_registers.list_properties">
+<span class="sig-name descname"><span class="pre">list_properties</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.cell_registers.list_properties" title="Permalink to this definition">#</a></dt>
+<dd><p>Lists the properties of a cell register.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.cell_registers.refine">
+<span class="sig-name descname"><span class="pre">refine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.cell_registers.refine" title="Permalink to this definition">#</a></dt>
+<dd><p>Refine the mesh based on a cell register.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.coarsening_criteria">
+<span class="sig-name descname"><span class="pre">coarsening_criteria</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.coarsening_criteria" title="Permalink to this definition">#</a></dt>
+<dd><p>Allows you to provide an expression for the coarsening criterion.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.display_adaption_cells">
+<span class="sig-name descname"><span class="pre">display_adaption_cells</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.display_adaption_cells" title="Permalink to this definition">#</a></dt>
+<dd><p>Displays the cells that are marked for adaption in the graphics window.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.free_hierarchy">
+<span class="sig-name descname"><span class="pre">free_hierarchy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.free_hierarchy" title="Permalink to this definition">#</a></dt>
+<dd><p>Deletes the defined adaption hierarchy.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.geometry">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">geometry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">service</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.geometry" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Enters the geometry menu. Note that this text command menu is not available unless the adaption method is set to hanging node.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.geometry.reconstruct_geometry" title="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.geometry.reconstruct_geometry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reconstruct_geometry</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables geometry-based adaption.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.geometry.set_geometry_controls" title="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.geometry.set_geometry_controls"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_geometry_controls</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Sets geometry controls for wall zones.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.geometry.reconstruct_geometry">
+<span class="sig-name descname"><span class="pre">reconstruct_geometry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.geometry.reconstruct_geometry" title="Permalink to this definition">#</a></dt>
+<dd><p>Enables/disables geometry-based adaption.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.geometry.set_geometry_controls">
+<span class="sig-name descname"><span class="pre">set_geometry_controls</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.geometry.set_geometry_controls" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets geometry controls for wall zones.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.list_adaption_cells">
+<span class="sig-name descname"><span class="pre">list_adaption_cells</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.list_adaption_cells" title="Permalink to this definition">#</a></dt>
+<dd><p>Prints the number of cells marked for refinement, coarsening, and both to the console.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.manage_criteria">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">manage_criteria</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">service</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.manage_criteria" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Enters the manage criteria menu, which provides text commands for managing automatic adaption criteria.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.manage_criteria.add" title="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.manage_criteria.add"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Adds a new automatic adaption criterion.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.manage_criteria.delete" title="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.manage_criteria.delete"><code class="xref py py-obj docutils literal notranslate"><span class="pre">delete</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Deletes an existing automatic adaption criterion.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.manage_criteria.edit" title="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.manage_criteria.edit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">edit</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Edits an existing automatic adaption criterion.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.manage_criteria.list" title="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.manage_criteria.list"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Lists all the existing automatic adaption criteria.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.manage_criteria.list_properties" title="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.manage_criteria.list_properties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list_properties</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Lists the properties of an existing automatic adaption criterion.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.manage_criteria.add">
+<span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.manage_criteria.add" title="Permalink to this definition">#</a></dt>
+<dd><p>Adds a new automatic adaption criterion.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.manage_criteria.delete">
+<span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.manage_criteria.delete" title="Permalink to this definition">#</a></dt>
+<dd><p>Deletes an existing automatic adaption criterion.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.manage_criteria.edit">
+<span class="sig-name descname"><span class="pre">edit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.manage_criteria.edit" title="Permalink to this definition">#</a></dt>
+<dd><p>Edits an existing automatic adaption criterion.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.manage_criteria.list">
+<span class="sig-name descname"><span class="pre">list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.manage_criteria.list" title="Permalink to this definition">#</a></dt>
+<dd><p>Lists all the existing automatic adaption criteria.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.manage_criteria.list_properties">
+<span class="sig-name descname"><span class="pre">list_properties</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.manage_criteria.list_properties" title="Permalink to this definition">#</a></dt>
+<dd><p>Lists the properties of an existing automatic adaption criterion.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.manual_coarsening_criteria">
+<span class="sig-name descname"><span class="pre">manual_coarsening_criteria</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.manual_coarsening_criteria" title="Permalink to this definition">#</a></dt>
+<dd><p>Set expression for manual coarsening criterion.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.manual_refinement_criteria">
+<span class="sig-name descname"><span class="pre">manual_refinement_criteria</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.manual_refinement_criteria" title="Permalink to this definition">#</a></dt>
+<dd><p>Set expression for manual refinement criterion.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.multi_layer_refinement">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">multi_layer_refinement</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">service</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.multi_layer_refinement" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Enter the multiple boundary layer refinement menu.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.multi_layer_refinement.boundary_zones" title="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.multi_layer_refinement.boundary_zones"><code class="xref py py-obj docutils literal notranslate"><span class="pre">boundary_zones</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Specify boundary zones for refinement.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.multi_layer_refinement.layer_count" title="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.multi_layer_refinement.layer_count"><code class="xref py py-obj docutils literal notranslate"><span class="pre">layer_count</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Specify the layer count for refinement.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.multi_layer_refinement.parameters" title="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.multi_layer_refinement.parameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameters</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Specify parameters for multiple boundary layer refinement.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.multi_layer_refinement.refine_mesh" title="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.multi_layer_refinement.refine_mesh"><code class="xref py py-obj docutils literal notranslate"><span class="pre">refine_mesh</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Refine the mesh for multiple boundary layers.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.multi_layer_refinement.boundary_zones">
+<span class="sig-name descname"><span class="pre">boundary_zones</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.multi_layer_refinement.boundary_zones" title="Permalink to this definition">#</a></dt>
+<dd><p>Specify boundary zones for refinement.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.multi_layer_refinement.layer_count">
+<span class="sig-name descname"><span class="pre">layer_count</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.multi_layer_refinement.layer_count" title="Permalink to this definition">#</a></dt>
+<dd><p>Specify the layer count for refinement.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.multi_layer_refinement.parameters">
+<span class="sig-name descname"><span class="pre">parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.multi_layer_refinement.parameters" title="Permalink to this definition">#</a></dt>
+<dd><p>Specify parameters for multiple boundary layer refinement.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.multi_layer_refinement.refine_mesh">
+<span class="sig-name descname"><span class="pre">refine_mesh</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.multi_layer_refinement.refine_mesh" title="Permalink to this definition">#</a></dt>
+<dd><p>Refine the mesh for multiple boundary layers.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.profile">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">profile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">service</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.profile" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Enters the profile menu.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.profile.clear" title="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.profile.clear"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clear</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Clears the adaption profiling counters.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.profile.disable" title="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.profile.disable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">disable</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Disables adaption profiling.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.profile.enable" title="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.profile.enable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">enable</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables adaption profiling.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.profile.print" title="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.profile.print"><code class="xref py py-obj docutils literal notranslate"><span class="pre">print</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Prints adaption profiling results.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.profile.clear">
+<span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.profile.clear" title="Permalink to this definition">#</a></dt>
+<dd><p>Clears the adaption profiling counters.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.profile.disable">
+<span class="sig-name descname"><span class="pre">disable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.profile.disable" title="Permalink to this definition">#</a></dt>
+<dd><p>Disables adaption profiling.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.profile.enable">
+<span class="sig-name descname"><span class="pre">enable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.profile.enable" title="Permalink to this definition">#</a></dt>
+<dd><p>Enables adaption profiling.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.profile.print">
+<span class="sig-name descname"><span class="pre">print</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.profile.print" title="Permalink to this definition">#</a></dt>
+<dd><p>Prints adaption profiling results.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.refinement_criteria">
+<span class="sig-name descname"><span class="pre">refinement_criteria</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.refinement_criteria" title="Permalink to this definition">#</a></dt>
+<dd><p>Allows you to provide an expression for the refinement criterion.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.set">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">service</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.set" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Enters the set menu.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.set.additional_refinement_layers" title="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.set.additional_refinement_layers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">additional_refinement_layers</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Allows you to specify additional refinement layers (this is an advanced control).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.set.anisotropic_adaption" title="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.set.anisotropic_adaption"><code class="xref py py-obj docutils literal notranslate"><span class="pre">anisotropic_adaption</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables / disables anisotropic adaption for prismatic cells as part of manual adaption.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.set.anisotropic_boundary_zones" title="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.set.anisotropic_boundary_zones"><code class="xref py py-obj docutils literal notranslate"><span class="pre">anisotropic_boundary_zones</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Allows you to select the boundary zones that specify directions for anisotropic refinement with the PUMA method.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.set.anisotropic_split_ratio" title="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.set.anisotropic_split_ratio"><code class="xref py py-obj docutils literal notranslate"><span class="pre">anisotropic_split_ratio</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Sets the split ratio for the cells as part of anisotropic refinement with the PUMA method.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.set.cell_zones" title="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.set.cell_zones"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cell_zones</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Sets cell zones to be used for marking adaption.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.set.display_settings" title="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.set.display_settings"><code class="xref py py-obj docutils literal notranslate"><span class="pre">display_settings</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Sets the graphics display options for the refinement, coarsening, and common cells.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.set.dynamic_adaption" title="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.set.dynamic_adaption"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dynamic_adaption</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Adapt the mesh during solution.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.set.dynamic_adaption_frequency" title="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.set.dynamic_adaption_frequency"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dynamic_adaption_frequency</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Set frequency for dynamic adaption.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.set.encapsulate_children" title="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.set.encapsulate_children"><code class="xref py py-obj docutils literal notranslate"><span class="pre">encapsulate_children</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Encapsulate all children of parent cells on the same partition.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.set.maximum_cell_count" title="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.set.maximum_cell_count"><code class="xref py py-obj docutils literal notranslate"><span class="pre">maximum_cell_count</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Sets an approximate limit to the total cell count of the mesh during adaption.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.set.maximum_refinement_level" title="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.set.maximum_refinement_level"><code class="xref py py-obj docutils literal notranslate"><span class="pre">maximum_refinement_level</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Controls the number of levels of refinement used to split cells during the adaption.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.set.method" title="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.set.method"><code class="xref py py-obj docutils literal notranslate"><span class="pre">method</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Sets the adaption method.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.set.minimum_cell_quality" title="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.set.minimum_cell_quality"><code class="xref py py-obj docutils literal notranslate"><span class="pre">minimum_cell_quality</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Sets the minimum value allowed for the orthogonal quality of cells during adaption.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.set.minimum_edge_length" title="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.set.minimum_edge_length"><code class="xref py py-obj docutils literal notranslate"><span class="pre">minimum_edge_length</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Sets an approximate limit to the edge length for cells that are considered for refinement.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.set.overset_adapt_dead_cells" title="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.set.overset_adapt_dead_cells"><code class="xref py py-obj docutils literal notranslate"><span class="pre">overset_adapt_dead_cells</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables the adaption of dead cells in overset meshes.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.set.verbosity" title="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.set.verbosity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">verbosity</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Allows you set how much information about the adaption is printed to the console.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.set.additional_refinement_layers">
+<span class="sig-name descname"><span class="pre">additional_refinement_layers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.set.additional_refinement_layers" title="Permalink to this definition">#</a></dt>
+<dd><p>Allows you to specify additional refinement layers (this is an advanced control).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.set.anisotropic_adaption">
+<span class="sig-name descname"><span class="pre">anisotropic_adaption</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.set.anisotropic_adaption" title="Permalink to this definition">#</a></dt>
+<dd><p>Enables / disables anisotropic adaption for prismatic cells as part of manual adaption. Note that this text command requires that the adaption method is set to PUMA.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.set.anisotropic_boundary_zones">
+<span class="sig-name descname"><span class="pre">anisotropic_boundary_zones</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.set.anisotropic_boundary_zones" title="Permalink to this definition">#</a></dt>
+<dd><p>Allows you to select the boundary zones that specify directions for anisotropic refinement with the PUMA method.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.set.anisotropic_split_ratio">
+<span class="sig-name descname"><span class="pre">anisotropic_split_ratio</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.set.anisotropic_split_ratio" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the split ratio for the cells as part of anisotropic refinement with the PUMA method.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.set.cell_zones">
+<span class="sig-name descname"><span class="pre">cell_zones</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.set.cell_zones" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets cell zones to be used for marking adaption. An empty list specifies that all zones are considered for adaption.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.set.display_settings">
+<span class="sig-name descname"><span class="pre">display_settings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.set.display_settings" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the graphics display options for the refinement, coarsening, and common cells.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.set.dynamic_adaption">
+<span class="sig-name descname"><span class="pre">dynamic_adaption</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.set.dynamic_adaption" title="Permalink to this definition">#</a></dt>
+<dd><p>Adapt the mesh during solution.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.set.dynamic_adaption_frequency">
+<span class="sig-name descname"><span class="pre">dynamic_adaption_frequency</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.set.dynamic_adaption_frequency" title="Permalink to this definition">#</a></dt>
+<dd><p>Set frequency for dynamic adaption.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.set.encapsulate_children">
+<span class="sig-name descname"><span class="pre">encapsulate_children</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.set.encapsulate_children" title="Permalink to this definition">#</a></dt>
+<dd><p>Encapsulate all children of parent cells on the same partition.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.set.maximum_cell_count">
+<span class="sig-name descname"><span class="pre">maximum_cell_count</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.set.maximum_cell_count" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets an approximate limit to the total cell count of the mesh during adaption. Fluent uses this value to determine when to stop marking cells for refinement. A value of zero places no limits on the number of cells.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.set.maximum_refinement_level">
+<span class="sig-name descname"><span class="pre">maximum_refinement_level</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.set.maximum_refinement_level" title="Permalink to this definition">#</a></dt>
+<dd><p>Controls the number of levels of refinement used to split cells during the adaption.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.set.method">
+<span class="sig-name descname"><span class="pre">method</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.set.method" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the adaption method.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.set.minimum_cell_quality">
+<span class="sig-name descname"><span class="pre">minimum_cell_quality</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.set.minimum_cell_quality" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the minimum value allowed for the orthogonal quality of cells during adaption. If your solution diverges, you may find that using a higher minimum quality value resolves the issue. This text command is only available with the PUMA 3D adaption method.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.set.minimum_edge_length">
+<span class="sig-name descname"><span class="pre">minimum_edge_length</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.set.minimum_edge_length" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets an approximate limit to the edge length for cells that are considered for refinement. Even if a cell is marked for refinement, it will not be refined if (for 3D) its volume is less than the cube of this field or (for 2D) its area is less than the square of this field. The default value of zero places no limits on the size of cells that are refined.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.set.overset_adapt_dead_cells">
+<span class="sig-name descname"><span class="pre">overset_adapt_dead_cells</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.set.overset_adapt_dead_cells" title="Permalink to this definition">#</a></dt>
+<dd><p>Enables/disables the adaption of dead cells in overset meshes.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.set.verbosity">
+<span class="sig-name descname"><span class="pre">verbosity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.set.verbosity" title="Permalink to this definition">#</a></dt>
+<dd><p>Allows you set how much information about the adaption is printed to the console.</p>
+</dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+<div class="toctree-wrapper compound">
+</div>
+</section>
+
+
+                </article>
+              
+              
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt"><code class="docutils literal notranslate"><span class="pre">adapt</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.adapt_mesh"><code class="docutils literal notranslate"><span class="pre">adapt.adapt_mesh()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.anisotropic_adaption"><code class="docutils literal notranslate"><span class="pre">adapt.anisotropic_adaption()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.cell_registers"><code class="docutils literal notranslate"><span class="pre">adapt.cell_registers</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.cell_registers.adapt"><code class="docutils literal notranslate"><span class="pre">adapt.cell_registers.adapt()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.cell_registers.add"><code class="docutils literal notranslate"><span class="pre">adapt.cell_registers.add()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.cell_registers.apply_poor_mesh_numerics"><code class="docutils literal notranslate"><span class="pre">adapt.cell_registers.apply_poor_mesh_numerics()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.cell_registers.coarsen"><code class="docutils literal notranslate"><span class="pre">adapt.cell_registers.coarsen()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.cell_registers.delete"><code class="docutils literal notranslate"><span class="pre">adapt.cell_registers.delete()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.cell_registers.display"><code class="docutils literal notranslate"><span class="pre">adapt.cell_registers.display()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.cell_registers.edit"><code class="docutils literal notranslate"><span class="pre">adapt.cell_registers.edit()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.cell_registers.list"><code class="docutils literal notranslate"><span class="pre">adapt.cell_registers.list()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.cell_registers.list_properties"><code class="docutils literal notranslate"><span class="pre">adapt.cell_registers.list_properties()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.cell_registers.refine"><code class="docutils literal notranslate"><span class="pre">adapt.cell_registers.refine()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.coarsening_criteria"><code class="docutils literal notranslate"><span class="pre">adapt.coarsening_criteria()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.display_adaption_cells"><code class="docutils literal notranslate"><span class="pre">adapt.display_adaption_cells()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.free_hierarchy"><code class="docutils literal notranslate"><span class="pre">adapt.free_hierarchy()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.geometry"><code class="docutils literal notranslate"><span class="pre">adapt.geometry</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.geometry.reconstruct_geometry"><code class="docutils literal notranslate"><span class="pre">adapt.geometry.reconstruct_geometry()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.geometry.set_geometry_controls"><code class="docutils literal notranslate"><span class="pre">adapt.geometry.set_geometry_controls()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.list_adaption_cells"><code class="docutils literal notranslate"><span class="pre">adapt.list_adaption_cells()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.manage_criteria"><code class="docutils literal notranslate"><span class="pre">adapt.manage_criteria</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.manage_criteria.add"><code class="docutils literal notranslate"><span class="pre">adapt.manage_criteria.add()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.manage_criteria.delete"><code class="docutils literal notranslate"><span class="pre">adapt.manage_criteria.delete()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.manage_criteria.edit"><code class="docutils literal notranslate"><span class="pre">adapt.manage_criteria.edit()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.manage_criteria.list"><code class="docutils literal notranslate"><span class="pre">adapt.manage_criteria.list()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.manage_criteria.list_properties"><code class="docutils literal notranslate"><span class="pre">adapt.manage_criteria.list_properties()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.manual_coarsening_criteria"><code class="docutils literal notranslate"><span class="pre">adapt.manual_coarsening_criteria()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.manual_refinement_criteria"><code class="docutils literal notranslate"><span class="pre">adapt.manual_refinement_criteria()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.multi_layer_refinement"><code class="docutils literal notranslate"><span class="pre">adapt.multi_layer_refinement</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.multi_layer_refinement.boundary_zones"><code class="docutils literal notranslate"><span class="pre">adapt.multi_layer_refinement.boundary_zones()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.multi_layer_refinement.layer_count"><code class="docutils literal notranslate"><span class="pre">adapt.multi_layer_refinement.layer_count()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.multi_layer_refinement.parameters"><code class="docutils literal notranslate"><span class="pre">adapt.multi_layer_refinement.parameters()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.multi_layer_refinement.refine_mesh"><code class="docutils literal notranslate"><span class="pre">adapt.multi_layer_refinement.refine_mesh()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.profile"><code class="docutils literal notranslate"><span class="pre">adapt.profile</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.profile.clear"><code class="docutils literal notranslate"><span class="pre">adapt.profile.clear()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.profile.disable"><code class="docutils literal notranslate"><span class="pre">adapt.profile.disable()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.profile.enable"><code class="docutils literal notranslate"><span class="pre">adapt.profile.enable()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.profile.print"><code class="docutils literal notranslate"><span class="pre">adapt.profile.print()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.refinement_criteria"><code class="docutils literal notranslate"><span class="pre">adapt.refinement_criteria()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.set"><code class="docutils literal notranslate"><span class="pre">adapt.set</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.set.additional_refinement_layers"><code class="docutils literal notranslate"><span class="pre">adapt.set.additional_refinement_layers()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.set.anisotropic_adaption"><code class="docutils literal notranslate"><span class="pre">adapt.set.anisotropic_adaption()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.set.anisotropic_boundary_zones"><code class="docutils literal notranslate"><span class="pre">adapt.set.anisotropic_boundary_zones()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.set.anisotropic_split_ratio"><code class="docutils literal notranslate"><span class="pre">adapt.set.anisotropic_split_ratio()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.set.cell_zones"><code class="docutils literal notranslate"><span class="pre">adapt.set.cell_zones()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.set.display_settings"><code class="docutils literal notranslate"><span class="pre">adapt.set.display_settings()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.set.dynamic_adaption"><code class="docutils literal notranslate"><span class="pre">adapt.set.dynamic_adaption()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.set.dynamic_adaption_frequency"><code class="docutils literal notranslate"><span class="pre">adapt.set.dynamic_adaption_frequency()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.set.encapsulate_children"><code class="docutils literal notranslate"><span class="pre">adapt.set.encapsulate_children()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.set.maximum_cell_count"><code class="docutils literal notranslate"><span class="pre">adapt.set.maximum_cell_count()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.set.maximum_refinement_level"><code class="docutils literal notranslate"><span class="pre">adapt.set.maximum_refinement_level()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.set.method"><code class="docutils literal notranslate"><span class="pre">adapt.set.method()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.set.minimum_cell_quality"><code class="docutils literal notranslate"><span class="pre">adapt.set.minimum_cell_quality()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.set.minimum_edge_length"><code class="docutils literal notranslate"><span class="pre">adapt.set.minimum_edge_length()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.set.overset_adapt_dead_cells"><code class="docutils literal notranslate"><span class="pre">adapt.set.overset_adapt_dead_cells()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.mesh.adapt.set.verbosity"><code class="docutils literal notranslate"><span class="pre">adapt.set.verbosity()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  <div class="tocsection sourcelink">
+    <a href="../../../../../_sources/api/solver/tui/mesh/adapt/index.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+  <p class="copyright">
+    
+      © Copyright (c) 2023 ANSYS, Inc. All rights reserved.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.13.3.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

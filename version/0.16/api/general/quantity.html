@@ -1,0 +1,1288 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Quantity &#8212; PyFluent</title>
+    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/ansys_sphinx_theme.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    
+        <link href="../../_static/css/breadcrumbs.css" rel="stylesheet">
+    
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/thebelab-helper.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/js/table.js"></script>
+    <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/general/quantity';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://fluent.docs.pyansys.com/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.16';
+        </script>
+    <link rel="shortcut icon" href="../../_static/ansys-favicon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="rpvars" href="rpvars.html" />
+    <link rel="prev" title="mro" href="_autosummary/ansys.fluent.core.meta.PyReferenceObjectMeta.mro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <link rel="canonical" href="https://fluent.docs.pyansys.com/version/stable/api/general/quantity.html" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container"><!-- Debugging: html_theme_options =  -->
+
+  <!-- If there is no MiliSearch enabled, use the PyData search -->
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  <div class="navbar-header-items__start">
+    
+      <div class="navbar-item">
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/pyansys-logo-black-cropped.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../_static/pyansys-logo-black-cropped.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../getting_started/index.html">
+                        Getting started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../user_guide/index.html">
+                        User guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../index.html">
+                        API reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../examples/index.html">
+                        Examples
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../contributing.html">
+                        Contribute
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+        </div>
+      
+      
+        <div class="navbar-item">
+<script>
+document.write(`
+  <div class="version-switcher__container dropdown">
+    <button type="button" class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle" data-bs-toggle="dropdown">
+      0.16  <!-- this text may get changed later by javascript -->
+      <span class="caret"></span>
+    </button>
+    <div class="version-switcher__menu dropdown-menu list-group-flush py-0">
+    <!-- dropdown will be populated by javascript on page load -->
+    </div>
+  </div>
+`);
+</script></div>
+      
+        <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent/discussions" title="Support" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa fa-comment fa-fw"></i></span>
+            <label class="sr-only">Support</label></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </nav>
+  
+
+    
+    <div id="announcement_msg"></div>
+<script>
+  fetch("announcement.html")
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error: ${response.status}`);
+      }
+      return response.text();
+    })
+    .then(text => document.getElementById("announcement_msg").innerHTML = text)
+    .catch((error) => console.error(`Fetch problem: ${error.message}`));
+</script>
+    
+
+    
+    <div class="container-xl">
+    <div class="row">
+        <div class="col-12 col-md-3" id="breadcrumbs-spacer"></div>
+        <div class="col-12 col-md-11 col-xl-9" id="breadcrumbs">
+          
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+    
+        <li class="nav-item nav-item-additional-breadcrumb"><a href="https://docs.pyansys.com/">PyAnsys</a> » </li>
+    
+    
+        <li class="nav-item nav-item-0"><a href="../../index.html">PyFluent</a> » </li>
+    
+
+          <li class="nav-item nav-item-1"><a href="../index.html" >API reference</a> » </li>
+          <li class="nav-item nav-item-2"><a href="index.html" accesskey="U">General</a> » </li>
+        <li class="nav-item nav-item-this"><a href="">Quantity</a></li> 
+      </ul>
+    </div>
+        </div>
+  </div>
+</div>
+    
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../getting_started/index.html">
+                        Getting started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../user_guide/index.html">
+                        User guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../index.html">
+                        API reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../examples/index.html">
+                        Examples
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../contributing.html">
+                        Contribute
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<script>
+document.write(`
+  <div class="version-switcher__container dropdown">
+    <button type="button" class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle" data-bs-toggle="dropdown">
+      0.16  <!-- this text may get changed later by javascript -->
+      <span class="caret"></span>
+    </button>
+    <div class="version-switcher__menu dropdown-menu list-group-flush py-0">
+    <!-- dropdown will be populated by javascript on page load -->
+    </div>
+  </div>
+`);
+</script></div>
+        
+          <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent/discussions" title="Support" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa fa-comment fa-fw"></i></span>
+            <label class="sr-only">Support</label></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item"><nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">General</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="launcher/index.html">Fluent launcher</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils/index.html">Execution utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sessions/index.html">Sessions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="services/index.html">Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="streaming_services/index.html">Streaming services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post_objects/index.html">Post objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scheduler/index.html">Scheduler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="case_reader.html">CaseFile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_transfer.html">Transfer data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="journaling.html">Journaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="meta.html">Meta</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Quantity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rpvars.html">rpvars</a></li>
+<li class="toctree-l2"><a class="reference internal" href="workflow.html">Workflow</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../meshing/index.html">Meshing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../solver/index.html">Solver</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article"></div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="quantity">
+<span id="ref-quantity"></span><h1>Quantity<a class="headerlink" href="#quantity" title="Permalink to this heading">#</a></h1>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">ansys.fluent.core.quantity.quantity</span> <span class="k">as</span> <span class="nn">q</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">velocity_1</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">Quantity</span><span class="p">(</span><span class="mf">20.2</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="s2">&quot;m s^-1&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">velocity_1</span>
+<span class="go">Quantity (20.2, &quot;m s^-1&quot;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">velocity_2</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">Quantity</span><span class="p">(</span><span class="mf">30.2</span><span class="p">,</span> <span class="n">dimensions</span><span class="o">=</span><span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">velocity_2</span>
+<span class="go">Quantity (30.2, &quot;m s^-1&quot;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">velocity_3</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">Quantity</span><span class="p">(</span><span class="mf">40.2</span><span class="p">,</span> <span class="n">quantity_map</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Velocity&quot;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">velocity_3</span>
+<span class="go">Quantity (40.2, &quot;m s^-1&quot;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">velocity_1</span><span class="o">.</span><span class="n">value</span>
+<span class="go">20.2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">velocity_1</span><span class="o">.</span><span class="n">units</span>
+<span class="go">&#39;m s^-1&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">velocity_1</span><span class="o">.</span><span class="n">si_value</span>
+<span class="go">20.2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">velocity_1</span><span class="o">.</span><span class="n">si_units</span>
+<span class="go">&#39;m s^-1&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">velocity_1</span><span class="o">.</span><span class="n">type</span>
+<span class="go">&#39;Composite&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">velocity_1</span><span class="o">.</span><span class="n">is_dimensionless</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">velocity_1</span><span class="o">.</span><span class="n">dimensions</span>
+<span class="go">[0.0, 1.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">velocity_1</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s2">&quot;ft s^-1&quot;</span><span class="p">)</span>
+<span class="go">Quantity (66.2729658792651, &quot;ft s^-1&quot;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">velocity_1</span> <span class="o">**</span> <span class="mi">2</span>
+<span class="go">Quantity (408.03999999999996, &quot;m^2 s^-2&quot;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">velocity_2</span> <span class="o">+</span> <span class="n">velocity_1</span>
+<span class="go">Quantity (50.4, &quot;m s^-1&quot;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">velocity_2</span> <span class="o">-</span> <span class="n">velocity_1</span>
+<span class="go">Quantity (10.0, &quot;m s^-1&quot;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">velocity_2</span> <span class="o">*</span> <span class="n">velocity_1</span>
+<span class="go">Quantity (610.04, &quot;m^2 s^-2&quot;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">velocity_2</span> <span class="o">/</span> <span class="n">velocity_1</span>
+<span class="go">Quantity (1.495049504950495, &quot;&quot;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">velocity_3</span> <span class="o">&gt;</span> <span class="n">velocity_1</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">velocity_3</span> <span class="o">&gt;=</span> <span class="n">velocity_2</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">velocity_1</span> <span class="o">&lt;</span> <span class="n">velocity_2</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">velocity_1</span> <span class="o">&lt;=</span> <span class="n">velocity_3</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">velocity_1</span> <span class="o">==</span> <span class="n">velocity_2</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">velocity_1</span> <span class="o">!=</span> <span class="n">velocity_3</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<span class="target" id="module-ansys.fluent.core.quantity.quantity"></span><p><strong>Classes:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.quantity.quantity.Quantity" title="ansys.fluent.core.quantity.quantity.Quantity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Quantity</span></code></a>(value[, units, quantity_map, ...])</p></td>
+<td><p>Quantity instantiates physical quantities using their real values and units.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Exceptions:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.quantity.quantity.QuantityError" title="ansys.fluent.core.quantity.quantity.QuantityError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">QuantityError</span></code></a>(err)</p></td>
+<td><p>Custom quantity errors.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.quantity.quantity.Quantity">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.quantity.quantity.</span></span><span class="sig-name descname"><span class="pre">Quantity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">units</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quantity_map</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dimensions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.quantity.quantity.Quantity" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a></p>
+<p>Quantity instantiates physical quantities using their real values and
+units. All the instances of this class are converted to base SI units system to have
+consistency in arithmetic operations.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>value</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">int</span></code></a> | <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">float</span></code></a></span></dt><dd><p>Real value of quantity.</p>
+</dd>
+<dt><strong>units</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a></span></dt><dd><p>Unit string representation of quantity.</p>
+</dd>
+<dt><strong>quantity_map</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">dict</span></code></a></span></dt><dd><p>Quantity map representation of quantity.</p>
+</dd>
+<dt><strong>dimensions</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">list</span></code></a></span></dt><dd><p>Dimensions representation of quantity.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><a class="reference internal" href="#ansys.fluent.core.quantity.quantity.Quantity" title="ansys.fluent.core.quantity.quantity.Quantity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Quantity</span></code></a> instance.</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<table class="table">
+<tbody>
+<tr class="row-odd"><td><p><strong>to()</strong></p></td>
+<td><p>Converts to given unit string.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.quantity.quantity.Quantity.__init__" title="ansys.fluent.core.quantity.quantity.Quantity.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(value[, units, quantity_map, ...])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.quantity.quantity.Quantity.to" title="ansys.fluent.core.quantity.quantity.Quantity.to"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to</span></code></a>(to_units)</p></td>
+<td><p>Perform quantity conversions.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Attributes:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.quantity.quantity.Quantity.dimensions" title="ansys.fluent.core.quantity.quantity.Quantity.dimensions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dimensions</span></code></a></p></td>
+<td><p>Dimensions.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.quantity.quantity.Quantity.is_dimensionless" title="ansys.fluent.core.quantity.quantity.Quantity.is_dimensionless"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_dimensionless</span></code></a></p></td>
+<td><p>Check if quantity is dimensionless.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.quantity.quantity.Quantity.si_units" title="ansys.fluent.core.quantity.quantity.Quantity.si_units"><code class="xref py py-obj docutils literal notranslate"><span class="pre">si_units</span></code></a></p></td>
+<td><p>SI conversion unit string.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.quantity.quantity.Quantity.si_value" title="ansys.fluent.core.quantity.quantity.Quantity.si_value"><code class="xref py py-obj docutils literal notranslate"><span class="pre">si_value</span></code></a></p></td>
+<td><p>SI conversion value.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.quantity.quantity.Quantity.type" title="ansys.fluent.core.quantity.quantity.Quantity.type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code></a></p></td>
+<td><p>Type.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.quantity.quantity.Quantity.units" title="ansys.fluent.core.quantity.quantity.Quantity.units"><code class="xref py py-obj docutils literal notranslate"><span class="pre">units</span></code></a></p></td>
+<td><p>Unit string.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.quantity.quantity.Quantity.value" title="ansys.fluent.core.quantity.quantity.Quantity.value"><code class="xref py py-obj docutils literal notranslate"><span class="pre">value</span></code></a></p></td>
+<td><p>Real value.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.quantity.quantity.Quantity.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">units</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quantity_map</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dimensions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.quantity.quantity.Quantity.__init__" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ansys.fluent.core.quantity.quantity.Quantity.dimensions">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dimensions</span></span><a class="headerlink" href="#ansys.fluent.core.quantity.quantity.Quantity.dimensions" title="Permalink to this definition">#</a></dt>
+<dd><p>Dimensions.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ansys.fluent.core.quantity.quantity.Quantity.is_dimensionless">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_dimensionless</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></em><a class="headerlink" href="#ansys.fluent.core.quantity.quantity.Quantity.is_dimensionless" title="Permalink to this definition">#</a></dt>
+<dd><p>Check if quantity is dimensionless.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ansys.fluent.core.quantity.quantity.Quantity.si_units">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">si_units</span></span><a class="headerlink" href="#ansys.fluent.core.quantity.quantity.Quantity.si_units" title="Permalink to this definition">#</a></dt>
+<dd><p>SI conversion unit string.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ansys.fluent.core.quantity.quantity.Quantity.si_value">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">si_value</span></span><a class="headerlink" href="#ansys.fluent.core.quantity.quantity.Quantity.si_value" title="Permalink to this definition">#</a></dt>
+<dd><p>SI conversion value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.quantity.quantity.Quantity.to">
+<span class="sig-name descname"><span class="pre">to</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">to_units</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.quantity.quantity.Quantity.to" title="Permalink to this definition">#</a></dt>
+<dd><p>Perform quantity conversions.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>to_units</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a></span></dt><dd><p>Desired unit to be converted to.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><a class="reference internal" href="#ansys.fluent.core.quantity.quantity.Quantity" title="ansys.fluent.core.quantity.quantity.Quantity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Quantity</span></code></a></dt><dd><p>Quantity object containing desired quantity conversion.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ansys.fluent.core.quantity.quantity.Quantity.type">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">type</span></span><a class="headerlink" href="#ansys.fluent.core.quantity.quantity.Quantity.type" title="Permalink to this definition">#</a></dt>
+<dd><p>Type.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ansys.fluent.core.quantity.quantity.Quantity.units">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">units</span></span><a class="headerlink" href="#ansys.fluent.core.quantity.quantity.Quantity.units" title="Permalink to this definition">#</a></dt>
+<dd><p>Unit string.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ansys.fluent.core.quantity.quantity.Quantity.value">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">value</span></span><a class="headerlink" href="#ansys.fluent.core.quantity.quantity.Quantity.value" title="Permalink to this definition">#</a></dt>
+<dd><p>Real value.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="ansys.fluent.core.quantity.quantity.QuantityError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.quantity.quantity.</span></span><span class="sig-name descname"><span class="pre">QuantityError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">err</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.quantity.quantity.QuantityError" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ValueError</span></code></a></p>
+<p>Custom quantity errors.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.quantity.quantity.QuantityError.EXCESSIVE_PARAMETERS">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">EXCESSIVE_PARAMETERS</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.quantity.quantity.QuantityError.EXCESSIVE_PARAMETERS" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.quantity.quantity.QuantityError.INCOMPATIBLE_DIMENSIONS">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">INCOMPATIBLE_DIMENSIONS</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">from_unit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_unit</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.quantity.quantity.QuantityError.INCOMPATIBLE_DIMENSIONS" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.quantity.quantity.QuantityError.INCOMPATIBLE_VALUE">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">INCOMPATIBLE_VALUE</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.quantity.quantity.QuantityError.INCOMPATIBLE_VALUE" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.quantity.quantity.QuantityError.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">err</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.quantity.quantity.QuantityError.__init__" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-ansys.fluent.core.quantity.dimensions"></span><p><strong>Classes:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.quantity.dimensions.Dimensions" title="ansys.fluent.core.quantity.dimensions.Dimensions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Dimensions</span></code></a>([units, dimensions, unit_sys])</p></td>
+<td><p>Initialize a Dimensions object using a dimensions list or a unit string.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Exceptions:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.quantity.dimensions.DimensionsError" title="ansys.fluent.core.quantity.dimensions.DimensionsError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DimensionsError</span></code></a>(err)</p></td>
+<td><p>Custom dimensions errors.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.quantity.dimensions.Dimensions">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.quantity.dimensions.</span></span><span class="sig-name descname"><span class="pre">Dimensions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">units</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dimensions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unit_sys</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.quantity.dimensions.Dimensions" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Initialize a Dimensions object using a dimensions list or a unit string.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>units: str</strong></dt><dd><p>Unit string of quantity.</p>
+</dd>
+<dt><strong>dimensions: list</strong></dt><dd><p>List of dimensions.</p>
+</dd>
+<dt><strong>unit_sys: str</strong></dt><dd><p>Unit system used for creating units.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><a class="reference internal" href="#ansys.fluent.core.quantity.dimensions.Dimensions" title="ansys.fluent.core.quantity.dimensions.Dimensions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Dimensions</span></code></a> instance.</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.quantity.dimensions.Dimensions.__init__" title="ansys.fluent.core.quantity.dimensions.Dimensions.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>([units, dimensions, unit_sys])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.quantity.dimensions.Dimensions.max_dim_len" title="ansys.fluent.core.quantity.dimensions.Dimensions.max_dim_len"><code class="xref py py-obj docutils literal notranslate"><span class="pre">max_dim_len</span></code></a>()</p></td>
+<td><p>Maximum number of elements within a dimensions list.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Attributes:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.quantity.dimensions.Dimensions.dimensions" title="ansys.fluent.core.quantity.dimensions.Dimensions.dimensions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dimensions</span></code></a></p></td>
+<td><p>Dimensions list.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.quantity.dimensions.Dimensions.units" title="ansys.fluent.core.quantity.dimensions.Dimensions.units"><code class="xref py py-obj docutils literal notranslate"><span class="pre">units</span></code></a></p></td>
+<td><p>Unit string representation of dimensions.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.quantity.dimensions.Dimensions.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">units</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dimensions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unit_sys</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.quantity.dimensions.Dimensions.__init__" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ansys.fluent.core.quantity.dimensions.Dimensions.dimensions">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dimensions</span></span><a class="headerlink" href="#ansys.fluent.core.quantity.dimensions.Dimensions.dimensions" title="Permalink to this definition">#</a></dt>
+<dd><p>Dimensions list.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.quantity.dimensions.Dimensions.max_dim_len">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">max_dim_len</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.quantity.dimensions.Dimensions.max_dim_len" title="Permalink to this definition">#</a></dt>
+<dd><p>Maximum number of elements within a dimensions list.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ansys.fluent.core.quantity.dimensions.Dimensions.units">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">units</span></span><a class="headerlink" href="#ansys.fluent.core.quantity.dimensions.Dimensions.units" title="Permalink to this definition">#</a></dt>
+<dd><p>Unit string representation of dimensions.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="ansys.fluent.core.quantity.dimensions.DimensionsError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.quantity.dimensions.</span></span><span class="sig-name descname"><span class="pre">DimensionsError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">err</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.quantity.dimensions.DimensionsError" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ValueError</span></code></a></p>
+<p>Custom dimensions errors.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.quantity.dimensions.DimensionsError.EXCESSIVE_DIMENSIONS">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">EXCESSIVE_DIMENSIONS</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">len</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.quantity.dimensions.DimensionsError.EXCESSIVE_DIMENSIONS" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.quantity.dimensions.DimensionsError.EXCESSIVE_PARAMETERS">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">EXCESSIVE_PARAMETERS</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.quantity.dimensions.DimensionsError.EXCESSIVE_PARAMETERS" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.quantity.dimensions.DimensionsError.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">err</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.quantity.dimensions.DimensionsError.__init__" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-ansys.fluent.core.quantity.quantity_map"></span><p><strong>Classes:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.quantity.quantity_map.QuantityMap" title="ansys.fluent.core.quantity.quantity_map.QuantityMap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">QuantityMap</span></code></a>(quantity_map)</p></td>
+<td><p>Creates a Quantity Map object based on a given quantity map.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Exceptions:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.quantity.quantity_map.QuantityMapError" title="ansys.fluent.core.quantity.quantity_map.QuantityMapError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">QuantityMapError</span></code></a>(err)</p></td>
+<td><p>Custom quantity map errors.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.quantity.quantity_map.QuantityMap">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.quantity.quantity_map.</span></span><span class="sig-name descname"><span class="pre">QuantityMap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">quantity_map</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.quantity.quantity_map.QuantityMap" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Creates a Quantity Map object based on a given quantity map.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>quantity_map</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">dict</span></code></a></span></dt><dd><p>Dictionary containing quantity map units and values.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><a class="reference internal" href="#ansys.fluent.core.quantity.quantity_map.QuantityMap" title="ansys.fluent.core.quantity.quantity_map.QuantityMap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">QuantityMap</span></code></a> instance.</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.quantity.quantity_map.QuantityMap.__init__" title="ansys.fluent.core.quantity.quantity_map.QuantityMap.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(quantity_map)</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Attributes:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.quantity.quantity_map.QuantityMap.units" title="ansys.fluent.core.quantity.quantity_map.QuantityMap.units"><code class="xref py py-obj docutils literal notranslate"><span class="pre">units</span></code></a></p></td>
+<td><p>Unit string representation of quantity map.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.quantity.quantity_map.QuantityMap.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">quantity_map</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.quantity.quantity_map.QuantityMap.__init__" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ansys.fluent.core.quantity.quantity_map.QuantityMap.units">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">units</span></span><a class="headerlink" href="#ansys.fluent.core.quantity.quantity_map.QuantityMap.units" title="Permalink to this definition">#</a></dt>
+<dd><p>Unit string representation of quantity map.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="ansys.fluent.core.quantity.quantity_map.QuantityMapError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.quantity.quantity_map.</span></span><span class="sig-name descname"><span class="pre">QuantityMapError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">err</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.quantity.quantity_map.QuantityMapError" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ValueError</span></code></a></p>
+<p>Custom quantity map errors.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.quantity.quantity_map.QuantityMapError.UNKNOWN_MAP_ITEM">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">UNKNOWN_MAP_ITEM</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.quantity.quantity_map.QuantityMapError.UNKNOWN_MAP_ITEM" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.quantity.quantity_map.QuantityMapError.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">err</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.quantity.quantity_map.QuantityMapError.__init__" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-ansys.fluent.core.quantity.units_table"></span><p><strong>Classes:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.quantity.units_table.UnitsTable" title="ansys.fluent.core.quantity.units_table.UnitsTable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UnitsTable</span></code></a>()</p></td>
+<td><p>Initializes a UnitsTable object with all table values and unit string manipulation methods.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.quantity.units_table.UnitsTable">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.quantity.units_table.</span></span><span class="sig-name descname"><span class="pre">UnitsTable</span></span><a class="headerlink" href="#ansys.fluent.core.quantity.units_table.UnitsTable" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Initializes a UnitsTable object with all table values and unit string manipulation methods.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><a class="reference internal" href="#ansys.fluent.core.quantity.units_table.UnitsTable" title="ansys.fluent.core.quantity.units_table.UnitsTable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UnitsTable</span></code></a> instance.</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<table class="table">
+<tbody>
+<tr class="row-odd"><td><p><strong>filter_unit_term()</strong></p></td>
+<td><p>Separate multiplier, base, and power from a unit term.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>si_data()</strong></p></td>
+<td><p>Compute the SI unit string, SI multiplier, and SI offset from a unit string of any type.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>si_conversion()</strong></p></td>
+<td><p>Perform SI conversion based on quantity type.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>condense()</strong></p></td>
+<td><p>Condenses a unit string by collecting like-terms.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>get_type()</strong></p></td>
+<td><p>Returns the type associated with a unit string.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.quantity.units_table.UnitsTable.__init__" title="ansys.fluent.core.quantity.units_table.UnitsTable.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.quantity.units_table.UnitsTable.condense" title="ansys.fluent.core.quantity.units_table.UnitsTable.condense"><code class="xref py py-obj docutils literal notranslate"><span class="pre">condense</span></code></a>(units)</p></td>
+<td><p>Condenses a unit string by collecting like-terms.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.quantity.units_table.UnitsTable.filter_unit_term" title="ansys.fluent.core.quantity.units_table.UnitsTable.filter_unit_term"><code class="xref py py-obj docutils literal notranslate"><span class="pre">filter_unit_term</span></code></a>(unit_term)</p></td>
+<td><p>Separate multiplier, base, and power from a unit term.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.quantity.units_table.UnitsTable.get_type" title="ansys.fluent.core.quantity.units_table.UnitsTable.get_type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_type</span></code></a>(units)</p></td>
+<td><p>Returns the type associated with a unit string.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.quantity.units_table.UnitsTable.si_data" title="ansys.fluent.core.quantity.units_table.UnitsTable.si_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">si_data</span></code></a>(units[, power, si_units, ...])</p></td>
+<td><p>Compute the SI unit string, SI multiplier, and SI offset.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Attributes:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.quantity.units_table.UnitsTable.api_quantity_map" title="ansys.fluent.core.quantity.units_table.UnitsTable.api_quantity_map"><code class="xref py py-obj docutils literal notranslate"><span class="pre">api_quantity_map</span></code></a></p></td>
+<td><p>Quantity map values from settings API.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.quantity.units_table.UnitsTable.derived_units" title="ansys.fluent.core.quantity.units_table.UnitsTable.derived_units"><code class="xref py py-obj docutils literal notranslate"><span class="pre">derived_units</span></code></a></p></td>
+<td><p>Derived units and properties composed of fundamental units.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.quantity.units_table.UnitsTable.dimension_order" title="ansys.fluent.core.quantity.units_table.UnitsTable.dimension_order"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dimension_order</span></code></a></p></td>
+<td><p>Order of dimensions.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.quantity.units_table.UnitsTable.fundamental_units" title="ansys.fluent.core.quantity.units_table.UnitsTable.fundamental_units"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fundamental_units</span></code></a></p></td>
+<td><p>Fundamental units and properties representing Mass, Length, Time, Current, Chemical Amount, Light, Solid Angle, Angle, Temperature and Temperature Difference.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.quantity.units_table.UnitsTable.multipliers" title="ansys.fluent.core.quantity.units_table.UnitsTable.multipliers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">multipliers</span></code></a></p></td>
+<td><p>Multiplier prefixes and respective factors.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.quantity.units_table.UnitsTable.unit_systems" title="ansys.fluent.core.quantity.units_table.UnitsTable.unit_systems"><code class="xref py py-obj docutils literal notranslate"><span class="pre">unit_systems</span></code></a></p></td>
+<td><p>Predefined unit systems and units.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.quantity.units_table.UnitsTable.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.quantity.units_table.UnitsTable.__init__" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ansys.fluent.core.quantity.units_table.UnitsTable.api_quantity_map">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">api_quantity_map</span></span><a class="headerlink" href="#ansys.fluent.core.quantity.units_table.UnitsTable.api_quantity_map" title="Permalink to this definition">#</a></dt>
+<dd><p>Quantity map values from settings API.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.quantity.units_table.UnitsTable.condense">
+<span class="sig-name descname"><span class="pre">condense</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">units</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.quantity.units_table.UnitsTable.condense" title="Permalink to this definition">#</a></dt>
+<dd><p>Condenses a unit string by collecting like-terms.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>unitsing</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a></span></dt><dd><p>Unit string to be simplified.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a></dt><dd><p>Simplified unit string.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ansys.fluent.core.quantity.units_table.UnitsTable.derived_units">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">derived_units</span></span><a class="headerlink" href="#ansys.fluent.core.quantity.units_table.UnitsTable.derived_units" title="Permalink to this definition">#</a></dt>
+<dd><p>Derived units and properties composed of fundamental units.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ansys.fluent.core.quantity.units_table.UnitsTable.dimension_order">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dimension_order</span></span><a class="headerlink" href="#ansys.fluent.core.quantity.units_table.UnitsTable.dimension_order" title="Permalink to this definition">#</a></dt>
+<dd><p>Order of dimensions.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.quantity.units_table.UnitsTable.filter_unit_term">
+<span class="sig-name descname"><span class="pre">filter_unit_term</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">unit_term</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.quantity.units_table.UnitsTable.filter_unit_term" title="Permalink to this definition">#</a></dt>
+<dd><p>Separate multiplier, base, and power from a unit term.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>unit_term</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a></span></dt><dd><p>Unit term of a unit string.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">tuple</span></code></a></dt><dd><p>Tuple containing multiplier, base, and power of the unit term.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ansys.fluent.core.quantity.units_table.UnitsTable.fundamental_units">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">fundamental_units</span></span><a class="headerlink" href="#ansys.fluent.core.quantity.units_table.UnitsTable.fundamental_units" title="Permalink to this definition">#</a></dt>
+<dd><p>Fundamental units and properties representing Mass, Length, Time, Current, Chemical Amount, Light, Solid Angle, Angle, Temperature and Temperature Difference.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.quantity.units_table.UnitsTable.get_type">
+<span class="sig-name descname"><span class="pre">get_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">units</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.quantity.units_table.UnitsTable.get_type" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns the type associated with a unit string.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>units</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a></span></dt><dd><p>Unit string of quantity.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a></dt><dd><p>Type of quantity.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ansys.fluent.core.quantity.units_table.UnitsTable.multipliers">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">multipliers</span></span><a class="headerlink" href="#ansys.fluent.core.quantity.units_table.UnitsTable.multipliers" title="Permalink to this definition">#</a></dt>
+<dd><p>Multiplier prefixes and respective factors.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.quantity.units_table.UnitsTable.si_data">
+<span class="sig-name descname"><span class="pre">si_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">units</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">power</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">si_units</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">si_multiplier</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">si_offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.quantity.units_table.UnitsTable.si_data" title="Permalink to this definition">#</a></dt>
+<dd><p>Compute the SI unit string, SI multiplier, and SI offset.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>units</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a></span></dt><dd><p>Unit string representation of quantity.</p>
+</dd>
+<dt><strong>power</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">float</span></code></a></span></dt><dd><p>Power of unit string</p>
+</dd>
+<dt><strong>si_unitsing</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a></span></dt><dd><p>SI unit string representation of quantity.</p>
+</dd>
+<dt><strong>si_multiplier</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">float</span></code></a></span></dt><dd><p>SI multiplier of unit string.</p>
+</dd>
+<dt><strong>si_offset</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">float</span></code></a></span></dt><dd><p>SI offset of a unit string.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">tuple</span></code></a></dt><dd><p>Tuple containing si_unitsing, si_multiplier and si_offset.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ansys.fluent.core.quantity.units_table.UnitsTable.unit_systems">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">unit_systems</span></span><a class="headerlink" href="#ansys.fluent.core.quantity.units_table.UnitsTable.unit_systems" title="Permalink to this definition">#</a></dt>
+<dd><p>Predefined unit systems and units.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+                </article>
+              
+              
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.quantity.quantity.Quantity"><code class="docutils literal notranslate"><span class="pre">Quantity</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.quantity.quantity.Quantity.__init__"><code class="docutils literal notranslate"><span class="pre">Quantity.__init__()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.quantity.quantity.Quantity.dimensions"><code class="docutils literal notranslate"><span class="pre">Quantity.dimensions</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.quantity.quantity.Quantity.is_dimensionless"><code class="docutils literal notranslate"><span class="pre">Quantity.is_dimensionless</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.quantity.quantity.Quantity.si_units"><code class="docutils literal notranslate"><span class="pre">Quantity.si_units</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.quantity.quantity.Quantity.si_value"><code class="docutils literal notranslate"><span class="pre">Quantity.si_value</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.quantity.quantity.Quantity.to"><code class="docutils literal notranslate"><span class="pre">Quantity.to()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.quantity.quantity.Quantity.type"><code class="docutils literal notranslate"><span class="pre">Quantity.type</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.quantity.quantity.Quantity.units"><code class="docutils literal notranslate"><span class="pre">Quantity.units</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.quantity.quantity.Quantity.value"><code class="docutils literal notranslate"><span class="pre">Quantity.value</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.quantity.quantity.QuantityError"><code class="docutils literal notranslate"><span class="pre">QuantityError</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.quantity.quantity.QuantityError.EXCESSIVE_PARAMETERS"><code class="docutils literal notranslate"><span class="pre">QuantityError.EXCESSIVE_PARAMETERS()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.quantity.quantity.QuantityError.INCOMPATIBLE_DIMENSIONS"><code class="docutils literal notranslate"><span class="pre">QuantityError.INCOMPATIBLE_DIMENSIONS()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.quantity.quantity.QuantityError.INCOMPATIBLE_VALUE"><code class="docutils literal notranslate"><span class="pre">QuantityError.INCOMPATIBLE_VALUE()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.quantity.quantity.QuantityError.__init__"><code class="docutils literal notranslate"><span class="pre">QuantityError.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.quantity.dimensions.Dimensions"><code class="docutils literal notranslate"><span class="pre">Dimensions</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.quantity.dimensions.Dimensions.__init__"><code class="docutils literal notranslate"><span class="pre">Dimensions.__init__()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.quantity.dimensions.Dimensions.dimensions"><code class="docutils literal notranslate"><span class="pre">Dimensions.dimensions</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.quantity.dimensions.Dimensions.max_dim_len"><code class="docutils literal notranslate"><span class="pre">Dimensions.max_dim_len()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.quantity.dimensions.Dimensions.units"><code class="docutils literal notranslate"><span class="pre">Dimensions.units</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.quantity.dimensions.DimensionsError"><code class="docutils literal notranslate"><span class="pre">DimensionsError</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.quantity.dimensions.DimensionsError.EXCESSIVE_DIMENSIONS"><code class="docutils literal notranslate"><span class="pre">DimensionsError.EXCESSIVE_DIMENSIONS()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.quantity.dimensions.DimensionsError.EXCESSIVE_PARAMETERS"><code class="docutils literal notranslate"><span class="pre">DimensionsError.EXCESSIVE_PARAMETERS()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.quantity.dimensions.DimensionsError.__init__"><code class="docutils literal notranslate"><span class="pre">DimensionsError.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.quantity.quantity_map.QuantityMap"><code class="docutils literal notranslate"><span class="pre">QuantityMap</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.quantity.quantity_map.QuantityMap.__init__"><code class="docutils literal notranslate"><span class="pre">QuantityMap.__init__()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.quantity.quantity_map.QuantityMap.units"><code class="docutils literal notranslate"><span class="pre">QuantityMap.units</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.quantity.quantity_map.QuantityMapError"><code class="docutils literal notranslate"><span class="pre">QuantityMapError</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.quantity.quantity_map.QuantityMapError.UNKNOWN_MAP_ITEM"><code class="docutils literal notranslate"><span class="pre">QuantityMapError.UNKNOWN_MAP_ITEM()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.quantity.quantity_map.QuantityMapError.__init__"><code class="docutils literal notranslate"><span class="pre">QuantityMapError.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.quantity.units_table.UnitsTable"><code class="docutils literal notranslate"><span class="pre">UnitsTable</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.quantity.units_table.UnitsTable.__init__"><code class="docutils literal notranslate"><span class="pre">UnitsTable.__init__()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.quantity.units_table.UnitsTable.api_quantity_map"><code class="docutils literal notranslate"><span class="pre">UnitsTable.api_quantity_map</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.quantity.units_table.UnitsTable.condense"><code class="docutils literal notranslate"><span class="pre">UnitsTable.condense()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.quantity.units_table.UnitsTable.derived_units"><code class="docutils literal notranslate"><span class="pre">UnitsTable.derived_units</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.quantity.units_table.UnitsTable.dimension_order"><code class="docutils literal notranslate"><span class="pre">UnitsTable.dimension_order</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.quantity.units_table.UnitsTable.filter_unit_term"><code class="docutils literal notranslate"><span class="pre">UnitsTable.filter_unit_term()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.quantity.units_table.UnitsTable.fundamental_units"><code class="docutils literal notranslate"><span class="pre">UnitsTable.fundamental_units</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.quantity.units_table.UnitsTable.get_type"><code class="docutils literal notranslate"><span class="pre">UnitsTable.get_type()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.quantity.units_table.UnitsTable.multipliers"><code class="docutils literal notranslate"><span class="pre">UnitsTable.multipliers</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.quantity.units_table.UnitsTable.si_data"><code class="docutils literal notranslate"><span class="pre">UnitsTable.si_data()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.quantity.units_table.UnitsTable.unit_systems"><code class="docutils literal notranslate"><span class="pre">UnitsTable.unit_systems</span></code></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  <div class="tocsection sourcelink">
+    <a href="../../_sources/api/general/quantity.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+  <p class="copyright">
+    
+      © Copyright (c) 2023 ANSYS, Inc. All rights reserved.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.13.3.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

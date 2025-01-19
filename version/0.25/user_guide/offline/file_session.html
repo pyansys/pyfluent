@@ -1,0 +1,867 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>File Session &#8212; PyFluent</title>
+
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=d2d258e8" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/ansys_sphinx_theme.css?v=d2ac875c" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://www.nerdfonts.com/assets/css/webfont.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+ 
+<link href="../../_static/css/breadcrumbs.css" rel="stylesheet" />
+
+    <script src="../../_static/documentation_options.js?v=c0aa8791"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/thebelab-helper.js"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=49e1bf35"></script>
+    <script src="../../_static/toggleprompt.js?v=cec9bd37"></script>
+    <script src="../../_static/js/table.js?v=b64f5182"></script>
+    <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'user_guide/offline/file_session';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.15.4';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://fluent.docs.pyansys.com/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.25';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner = false;
+        </script>
+    <link rel="icon" href="../../_static/ansys-favicon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Journaling" href="../journal.html" />
+    <link rel="prev" title="DataFile" href="data_file.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <link rel="canonical" href="https://fluent.docs.pyansys.com/version/stable/user_guide/offline/file_session.html" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container"><!-- Debugging: html_theme_options =  -->
+
+  <!-- If there is no MeiliSearch enabled, use the PyData search -->
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+   
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/pyansys_logo_transparent_black.png" class="logo__image only-light" alt="PyFluent - Home"/>
+    <script>document.write(`<img src="../../_static/pyansys_logo_transparent_white.png" class="logo__image only-dark" alt="PyFluent - Home"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../getting_started/index.html">
+    Getting started
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    User guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../api/index.html">
+    API reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../contributing.html">
+    Contributing to PyFluent
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+<script>
+document.write(`
+  <div class="version-switcher__container dropdown">
+    <button id="pst-version-switcher-button-2"
+      type="button"
+      class="version-switcher__button btn btn-sm dropdown-toggle"
+      data-bs-toggle="dropdown"
+      aria-haspopup="listbox"
+      aria-controls="pst-version-switcher-list-2"
+      aria-label="Version switcher list"
+    >
+      Choose version  <!-- this text may get changed later by javascript -->
+      <span class="caret"></span>
+    </button>
+    <div id="pst-version-switcher-list-2"
+      class="version-switcher__menu dropdown-menu list-group-flush py-0"
+      role="listbox" aria-labelledby="pst-version-switcher-button-2">
+      <!-- dropdown will be populated by javascript on page load -->
+    </div>
+  </div>
+`);
+</script></div>
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent/discussions" title="Support" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa fa-comment fa-fw fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Support</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+    <div id="announcement_msg"></div>
+<script>
+  fetch("announcement.html")
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error: ${response.status}`);
+      }
+      return response.text();
+    })
+    .then(
+      (text) => (document.getElementById("announcement_msg").innerHTML = text),
+    )
+    .catch((error) => console.error(`Fetch problem: ${error.message}`));
+</script>  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../getting_started/index.html">
+    Getting started
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    User guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../api/index.html">
+    API reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../contributing.html">
+    Contributing to PyFluent
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<script>
+document.write(`
+  <div class="version-switcher__container dropdown">
+    <button id="pst-version-switcher-button-3"
+      type="button"
+      class="version-switcher__button btn btn-sm dropdown-toggle"
+      data-bs-toggle="dropdown"
+      aria-haspopup="listbox"
+      aria-controls="pst-version-switcher-list-3"
+      aria-label="Version switcher list"
+    >
+      Choose version  <!-- this text may get changed later by javascript -->
+      <span class="caret"></span>
+    </button>
+    <div id="pst-version-switcher-list-3"
+      class="version-switcher__menu dropdown-menu list-group-flush py-0"
+      role="listbox" aria-labelledby="pst-version-switcher-button-3">
+      <!-- dropdown will be populated by javascript on page load -->
+    </div>
+  </div>
+`);
+</script></div>
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent/discussions" title="Support" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa fa-comment fa-fw fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Support</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../session/index.html">Managing sessions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../solver_settings/index.html">Solver settings objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../meshing/index.html">Meshing workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fields/index.html">Fields</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../events.html">Observing events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../monitors.html">Using monitors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../transfer_data.html">Transferring session data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../units.html">Physical units</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file_transfer.html">File transfer</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Offline features</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="case_file.html">CaseFile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_file.html">DataFile</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">File Session</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../journal.html">Journaling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../log.html">Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usability.html">Usability features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../make_container_image.html">Containerization of Fluent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../legacy/index.html">Legacy interfaces</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+         
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="https://docs.pyansys.com/" class="nav-link">PyAnsys</a>
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a
+        href="../../index.html"
+        class="nav-link"
+        aria-label="Home"
+      >
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a href="../index.html" class="nav-link">User guide</a>
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a href="index.html" class="nav-link">Offline features</a>
+    </li>
+      
+    <li class="breadcrumb-item active" aria-current="page">File Session</li>
+    
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="file-session">
+<span id="ref-file-session-guide"></span><h1>File Session<a class="headerlink" href="#file-session" title="Link to this heading">#</a></h1>
+<p>The <code class="docutils literal notranslate"><span class="pre">FileSession</span></code> class mimics the functionality of live <code class="docutils literal notranslate"><span class="pre">Session</span></code> objects, allowing you
+to access field data and other relevant information without a live Fluent session.
+You command <code class="docutils literal notranslate"><span class="pre">FileSession</span></code> objects to read your input files before you access the data through
+the <code class="docutils literal notranslate"><span class="pre">FileSession</span></code> object methods.</p>
+<section id="sample-usage">
+<h2>Sample usage<a class="headerlink" href="#sample-usage" title="Link to this heading">#</a></h2>
+<p>The following examples cover both single-phase and multiphase cases. After case and data files are
+loaded, field information is accessed and some field data is extracted. Here, the extraction uses two approaches:
+a transaction-based approach where multiple data requests are bundled into each transaction and a direct approach
+where a sequence of separate requests are made.</p>
+<section id="single-phase">
+<h3>Single-phase<a class="headerlink" href="#single-phase" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">ansys.fluent.core</span> <span class="kn">import</span> <span class="n">examples</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">ansys.fluent.core.file_session</span> <span class="kn">import</span> <span class="n">FileSession</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">case_file_name</span> <span class="o">=</span> <span class="n">examples</span><span class="o">.</span><span class="n">download_file</span><span class="p">(</span><span class="s2">&quot;elbow1.cas.h5&quot;</span><span class="p">,</span> <span class="s2">&quot;pyfluent/file_session&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data_file_name</span> <span class="o">=</span> <span class="n">examples</span><span class="o">.</span><span class="n">download_file</span><span class="p">(</span><span class="s2">&quot;elbow1.dat.h5&quot;</span><span class="p">,</span> <span class="s2">&quot;pyfluent/file_session&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">file_session</span> <span class="o">=</span> <span class="n">FileSession</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">file_session</span><span class="o">.</span><span class="n">read_case</span><span class="p">(</span><span class="n">case_file_name</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">file_session</span><span class="o">.</span><span class="n">read_data</span><span class="p">(</span><span class="n">data_file_name</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">file_session</span><span class="o">.</span><span class="n">fields</span><span class="o">.</span><span class="n">field_info</span><span class="o">.</span><span class="n">get_scalar_field_range</span><span class="p">(</span><span class="s2">&quot;SV_T&quot;</span><span class="p">)</span>
+<span class="go">[293.1446694544748, 313.1515948109515]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">file_session</span><span class="o">.</span><span class="n">fields</span><span class="o">.</span><span class="n">field_info</span><span class="o">.</span><span class="n">get_surfaces_info</span><span class="p">()</span>
+<span class="go">{&#39;wall&#39;: {&#39;surface_id&#39;: [3],</span>
+<span class="go"> &#39;zone_id&#39;: -1,</span>
+<span class="go"> &#39;zone_type&#39;: &#39;wall&#39;,</span>
+<span class="go"> &#39;type&#39;: &#39;plane&#39;},</span>
+<span class="go"> &#39;symmetry&#39;: {&#39;surface_id&#39;: [4],</span>
+<span class="go"> &#39;zone_id&#39;: -1,</span>
+<span class="go"> &#39;zone_type&#39;: &#39;wall&#39;,</span>
+<span class="go"> &#39;type&#39;: &#39;plane&#39;},</span>
+<span class="go">  .....</span>
+<span class="go"> &#39;default-interior&#39;: {&#39;surface_id&#39;: [9],</span>
+<span class="go"> &#39;zone_id&#39;: -1,</span>
+<span class="go"> &#39;zone_type&#39;: &#39;wall&#39;,</span>
+<span class="go"> &#39;type&#39;: &#39;plane&#39;}}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">file_session</span><span class="o">.</span><span class="n">fields</span><span class="o">.</span><span class="n">field_info</span><span class="o">.</span><span class="n">get_scalar_fields_info</span><span class="p">()</span>
+<span class="go">{&#39;SV_ARTIFICIAL_WALL_FLAG&#39;: {&#39;display_name&#39;: &#39;SV_ARTIFICIAL_WALL_FLAG&#39;,</span>
+<span class="go"> &#39;section&#39;: &#39;field-data&#39;,</span>
+<span class="go"> &#39;domain&#39;: &#39;phase-1&#39;},</span>
+<span class="go"> &#39;SV_D&#39;: {&#39;display_name&#39;: &#39;SV_D&#39;,</span>
+<span class="go"> &#39;section&#39;: &#39;field-data&#39;,</span>
+<span class="go"> &#39;domain&#39;: &#39;phase-1&#39;},</span>
+<span class="go"> .....</span>
+<span class="go"> &#39;SV_WALL_YPLUS_UTAU&#39;: {&#39;display_name&#39;: &#39;SV_WALL_YPLUS_UTAU&#39;,</span>
+<span class="go"> &#39;section&#39;: &#39;field-data&#39;,</span>
+<span class="go"> &#39;domain&#39;: &#39;phase-1&#39;}}</span>
+<span class="go"> &gt;&gt;&gt; file_session.fields.field_info.get_vector_fields_info()</span>
+<span class="go"> {&#39;velocity&#39;: {&#39;x-component&#39;: &#39;SV_U&#39;,</span>
+<span class="go">  &#39;y-component&#39;: &#39;SV_V&#39;,</span>
+<span class="go">  &#39;z-component&#39;: &#39;SV_W&#39;}}</span>
+<span class="go"> &gt;&gt;&gt; transaction = file_session.fields.field_data.new_transaction()</span>
+<span class="go"> &gt;&gt;&gt; transaction.add_surfaces_request([3, 4])</span>
+<span class="go"> &gt;&gt;&gt; transaction.add_scalar_fields_request(&quot;SV_T&quot;, [3, 4])</span>
+<span class="go"> &gt;&gt;&gt; transaction.add_vector_fields_request(&quot;velocity&quot;, [3, 4])</span>
+<span class="go"> &gt;&gt;&gt; transaction.get_fields()</span>
+<span class="go"> {((&#39;type&#39;, &#39;scalar-field&#39;),</span>
+<span class="go">   (&#39;dataLocation&#39;, 1),</span>
+<span class="go">   (&#39;boundaryValues&#39;,</span>
+<span class="go">    False)): {3: {&#39;SV_T&#39;: array([293.14999, 293.14999, 293.14999, ..., 293.14999, 293.14999,</span>
+<span class="go">           293.14999])}, 4: {&#39;SV_T&#39;: array([293.14999, 293.14999, 293.14999, ..., 293.14999, 293.14999,</span>
+<span class="go">           293.14999])}},</span>
+<span class="go">  ((&#39;type&#39;,</span>
+<span class="go">    &#39;vector-field&#39;),): {3: {&#39;velocity&#39;: array([0., 0., 0., ..., 0., 0., 0.]), &#39;vector-scale&#39;: array([0.1])},</span>
+<span class="go">   4: {&#39;velocity&#39;: array([ 3.32643010e-01,  6.64311343e-03,  0.00000000e+00, ...,</span>
+<span class="go">            4.56052223e-01,  2.45034248e-01, -1.24726618e-15]),</span>
+<span class="go">    &#39;vector-scale&#39;: array([0.1])}},</span>
+<span class="go">  ((&#39;type&#39;,</span>
+<span class="go">    &#39;surface-data&#39;),): {3: {&#39;faces&#39;: array([   4,    3,    2, ...,  727,  694, 3809], dtype=uint32), &#39;vertices&#39;: array([ 0.        , -0.1016    ,  0.        , ...,  0.00620755,</span>
+<span class="go">           -0.19304685,  0.03033731])},</span>
+<span class="go">   4: {&#39;faces&#39;: array([   4,  295,  294, ...,  265, 1482, 2183], dtype=uint32),</span>
+<span class="go">    &#39;vertices&#39;: array([ 0.        , -0.1016    ,  0.        , ...,  0.06435075,</span>
+<span class="go">           -0.08779959,  0.        ])}}</span>
+<span class="go"> &gt;&gt;&gt; from ansys.fluent.core.services.field_data import SurfaceDataType</span>
+<span class="go"> &gt;&gt;&gt; file_session.fields.field_data.get_surface_data(SurfaceDataType.Vertices, [3, 4])[3].size</span>
+<span class="go"> 3810</span>
+<span class="go"> &gt;&gt;&gt; file_session.fields.field_data.get_surface_data(SurfaceDataType.Vertices, [3, 4])[3][1500].x</span>
+<span class="go"> 0.12405861914157867</span>
+<span class="go"> &gt;&gt;&gt; file_session.fields.field_data.get_scalar_field_data(&quot;SV_T&quot;, surface_name=&quot;wall&quot;).size</span>
+<span class="go"> 3630</span>
+<span class="go"> &gt;&gt;&gt; file_session.fields.field_data.get_scalar_field_data(&quot;SV_T&quot;, surface_name=&quot;wall&quot;)[1500].scalar_data</span>
+<span class="go"> 293.18071329432047</span>
+<span class="go"> &gt;&gt;&gt; file_session.fields.field_data.get_vector_field_data(&quot;velocity&quot;, surface_name=&quot;symmetry&quot;).size</span>
+<span class="go"> 2018</span>
+<span class="go"> &gt;&gt;&gt; file_session.fields.field_data.get_vector_field_data(&quot;velocity&quot;, surface_name=&quot;symmetry&quot;)[1000].x</span>
+<span class="go"> 0.001690600193527586</span>
+</pre></div>
+</div>
+</section>
+<section id="multiphase">
+<h3>Multiphase<a class="headerlink" href="#multiphase" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">ansys.fluent.core</span> <span class="kn">import</span> <span class="n">examples</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">ansys.fluent.core.file_session</span> <span class="kn">import</span> <span class="n">FileSession</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">case_file_name</span> <span class="o">=</span> <span class="n">examples</span><span class="o">.</span><span class="n">download_file</span><span class="p">(</span><span class="s2">&quot;mixing_elbow_mul_ph.cas.h5&quot;</span><span class="p">,</span> <span class="s2">&quot;pyfluent/file_session&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data_file_name</span> <span class="o">=</span> <span class="n">examples</span><span class="o">.</span><span class="n">download_file</span><span class="p">(</span><span class="s2">&quot;mixing_elbow_mul_ph.dat.h5&quot;</span><span class="p">,</span> <span class="s2">&quot;pyfluent/file_session&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">file_session</span> <span class="o">=</span> <span class="n">FileSession</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">file_session</span><span class="o">.</span><span class="n">read_case</span><span class="p">(</span><span class="n">case_file_name</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">file_session</span><span class="o">.</span><span class="n">read_data</span><span class="p">(</span><span class="n">data_file_name</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">file_session</span><span class="o">.</span><span class="n">fields</span><span class="o">.</span><span class="n">field_info</span><span class="o">.</span><span class="n">get_scalar_field_range</span><span class="p">(</span><span class="s2">&quot;phase-2:SV_P&quot;</span><span class="p">)</span>
+<span class="go">[0.0, 1.5435200335871788e-11]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">file_session</span><span class="o">.</span><span class="n">fields</span><span class="o">.</span><span class="n">field_info</span><span class="o">.</span><span class="n">get_scalar_fields_info</span><span class="p">()</span>
+<span class="go">{&#39;phase-1:SV_ARTIFICIAL_WALL_FLAG&#39;: {&#39;display_name&#39;: &#39;SV_ARTIFICIAL_WALL_FLAG&#39;,</span>
+<span class="go"> &#39;section&#39;: &#39;field-data&#39;,</span>
+<span class="go"> &#39;domain&#39;: &#39;phase-1&#39;},</span>
+<span class="go"> &#39;phase-1:SV_DENSITY&#39;: {&#39;display_name&#39;: &#39;SV_DENSITY&#39;,</span>
+<span class="go"> &#39;section&#39;: &#39;field-data&#39;,</span>
+<span class="go"> &#39;domain&#39;: &#39;phase-1&#39;},</span>
+<span class="go"> .....</span>
+<span class="go"> &#39;phase-4:&#39;: {&#39;display_name&#39;: &#39;&#39;,</span>
+<span class="go"> &#39;section&#39;: &#39;field-data&#39;,</span>
+<span class="go"> &#39;domain&#39;: &#39;phase-4&#39;}}</span>
+<span class="go"> &gt;&gt;&gt; file_session.fields.field_info.get_vector_fields_info()</span>
+<span class="go"> {&#39;phase-1:velocity&#39;: {&#39;x-component&#39;: &#39;phase-1: SV_U&#39;,</span>
+<span class="go">  &#39;y-component&#39;: &#39;phase-1: SV_V&#39;,</span>
+<span class="go">  &#39;z-component&#39;: &#39;phase-1: SV_W&#39;},</span>
+<span class="go">  .....</span>
+<span class="go">  &#39;phase-4:velocity&#39;: {&#39;x-component&#39;: &#39;phase-4: SV_U&#39;,</span>
+<span class="go">  &#39;y-component&#39;: &#39;phase-4: SV_V&#39;,</span>
+<span class="go">  &#39;z-component&#39;: &#39;phase-4: SV_W&#39;}}</span>
+<span class="go"> &gt;&gt;&gt; transaction = file_session.fields.field_data.new_transaction()</span>
+<span class="go"> &gt;&gt;&gt; transaction.add_scalar_fields_request(&quot;phase-1:SV_DENSITY&quot;, [30])</span>
+<span class="go"> &gt;&gt;&gt; transaction.add_vector_fields_request(&quot;phase-1:velocity&quot;, [30])</span>
+<span class="go"> &gt;&gt;&gt; transaction.get_fields()</span>
+<span class="go"> {((&#39;type&#39;, &#39;scalar-field&#39;),</span>
+<span class="go">   (&#39;dataLocation&#39;, 1),</span>
+<span class="go">   (&#39;boundaryValues&#39;,</span>
+<span class="go">    False)): {30: {&#39;phase-1:SV_DENSITY&#39;: array([1.225, .....          1.225])}},</span>
+<span class="go">  ((&#39;type&#39;,</span>
+<span class="go">    &#39;vector-field&#39;),): {30: {&#39;phase-1:velocity&#39;: array([0., ..... 0.]),</span>
+<span class="go">    &#39;vector-scale&#39;: array([0.1])}}}</span>
+<span class="go"> &gt;&gt;&gt; from ansys.fluent.core.services.field_data import SurfaceDataType</span>
+<span class="go"> &gt;&gt;&gt; file_session.fields.field_data.get_surface_data(SurfaceDataType.Vertices, [30])[30].size</span>
+<span class="go"> 79</span>
+<span class="go"> &gt;&gt;&gt; ffile_session.fields.field_data.get_surface_data(SurfaceDataType.Vertices, [30])[30][50].x</span>
+<span class="go"> 0.14896461503555408</span>
+<span class="go"> &gt;&gt;&gt; file_session.fields.field_data.get_scalar_field_data(&quot;phase-1:SV_P&quot;, surface_name=&quot;wall-elbow&quot;).size</span>
+<span class="go"> 2168</span>
+<span class="go"> &gt;&gt;&gt; file_session.fields.field_data.get_scalar_field_data(&quot;phase-1:SV_P&quot;, surface_name=&quot;wall-elbow&quot;)[1100].scalar_data</span>
+<span class="go"> 1.4444035696104466e-11</span>
+<span class="go"> &gt;&gt;&gt; file_session.fields.field_data.get_vector_field_data(&quot;phase-2:velocity&quot;, surface_name=&quot;wall-elbow&quot;).size</span>
+<span class="go"> 2168</span>
+<span class="go"> &gt;&gt;&gt; file_session.fields.field_data.get_vector_field_data(&quot;phase-2:velocity&quot;, surface_name=&quot;wall-elbow&quot;)[1000].x</span>
+<span class="go"> 0.0</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="visualization-sample-usage">
+<h2>Visualization sample usage<a class="headerlink" href="#visualization-sample-usage" title="Link to this heading">#</a></h2>
+<p>You can use the <code class="docutils literal notranslate"><span class="pre">ansys-fluent-visualization</span></code> package to display the
+mesh and to visualize results via contours, vectors and other
+post-processing objects.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">ansys.fluent.visualization</span> <span class="kn">import</span> <span class="n">set_config</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">set_config</span><span class="p">(</span><span class="n">blocking</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">set_view_on_display</span><span class="o">=</span><span class="s2">&quot;isometric&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">ansys.fluent.core</span> <span class="k">as</span> <span class="nn">pyfluent</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">ansys.fluent.core</span> <span class="kn">import</span> <span class="n">examples</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">ansys.fluent.visualization.matplotlib</span> <span class="kn">import</span> <span class="n">Plots</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">ansys.fluent.visualization.pyvista</span> <span class="kn">import</span> <span class="n">Graphics</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">ansys.fluent.core.file_session</span> <span class="kn">import</span> <span class="n">FileSession</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fileSession</span><span class="o">=</span><span class="n">FileSession</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fileSession</span><span class="o">.</span><span class="n">read_case</span><span class="p">(</span><span class="s2">&quot;elbow1.cas.h5&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fileSession</span><span class="o">.</span><span class="n">read_data</span><span class="p">(</span><span class="s2">&quot;elbow1.dat.h5&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">graphics</span> <span class="o">=</span> <span class="n">Graphics</span><span class="p">(</span><span class="n">session</span><span class="o">=</span><span class="n">fileSession</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Display mesh at wall.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mesh1</span> <span class="o">=</span> <span class="n">graphics</span><span class="o">.</span><span class="n">Meshes</span><span class="p">[</span><span class="s2">&quot;mesh-1&quot;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mesh1</span><span class="o">.</span><span class="n">show_edges</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mesh1</span><span class="o">.</span><span class="n">surfaces_list</span> <span class="o">=</span> <span class="p">[</span> <span class="s2">&quot;wall&quot;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mesh1</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="s2">&quot;w1&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Display temperature contour at symmetry.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">contour1</span> <span class="o">=</span> <span class="n">graphics</span><span class="o">.</span><span class="n">Contours</span><span class="p">[</span><span class="s2">&quot;mesh-1&quot;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">contour1</span><span class="o">.</span><span class="n">node_values</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">contour1</span><span class="o">.</span><span class="n">field</span> <span class="o">=</span> <span class="s2">&quot;SV_T&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">contour1</span><span class="o">.</span><span class="n">surfaces_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;symmetry&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">contour1</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="s1">&#39;w2&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Display velocity vector data at symmetry and wall.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">velocity_vector</span> <span class="o">=</span> <span class="n">graphics</span><span class="o">.</span><span class="n">Vectors</span><span class="p">[</span><span class="s2">&quot;velocity-vector&quot;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">velocity_vector</span><span class="o">.</span><span class="n">field</span> <span class="o">=</span> <span class="s2">&quot;SV_T&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">velocity_vector</span><span class="o">.</span><span class="n">surfaces_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;symmetry&#39;</span><span class="p">,</span> <span class="s1">&#39;wall&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">velocity_vector</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="s2">&quot;w3&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-usage">Sample usage</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#single-phase">Single-phase</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multiphase">Multiphase</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization-sample-usage">Visualization sample usage</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+<!-- If there is no fix edit button function, use the PyData edit-this-button-->
+</div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../../_sources/user_guide/offline/file_session.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright (c) 2024 ANSYS, Inc. All rights reserved.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.7.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="theme-version">
+  Built with the
+  <a href="https://sphinxdocs.ansys.com/version/stable/index.html"
+    >Ansys Sphinx Theme</a
+  >
+  1.0.7. <br />Last updated on
+  <span id="date"></span>
+</p>
+<script>
+  var options = { day: "numeric", month: "long", year: "numeric" };
+  var lastModifiedDate = new Date(document.lastModified);
+  var date = lastModifiedDate.toLocaleDateString("en-US", options);
+  document.getElementById("date").innerHTML = date;
+</script></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

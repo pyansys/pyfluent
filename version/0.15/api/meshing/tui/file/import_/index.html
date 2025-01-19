@@ -1,0 +1,1225 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>import &#8212; PyFluent</title>
+    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/css/ansys_sphinx_theme.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sg_gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sg_gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sg_gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sg_gallery-rendered-html.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    
+        <link href="../../../../../_static/css/breadcrumbs.css" rel="stylesheet">
+    
+    <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
+    <script src="../../../../../_static/jquery.js"></script>
+    <script src="../../../../../_static/underscore.js"></script>
+    <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../../../_static/doctools.js"></script>
+    <script src="../../../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../../../_static/thebelab-helper.js"></script>
+    <script src="../../../../../_static/clipboard.min.js"></script>
+    <script src="../../../../../_static/copybutton.js"></script>
+    <script src="../../../../../_static/js/table.js"></script>
+    <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/meshing/tui/file/import_/index';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://fluent.docs.pyansys.com/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.15';
+        </script>
+    <link rel="shortcut icon" href="../../../../../_static/ansys-favicon.png"/>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <link rel="next" title="cad_options" href="cad_options/index.html" />
+    <link rel="prev" title="project" href="../project/index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <link rel="canonical" href="https://fluent.docs.pyansys.com/version/stable/api/meshing/tui/file/import_/index.html" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container"><!-- Debugging: html_theme_options =  -->
+
+  <!-- If there is no MiliSearch enabled, use the PyData search -->
+<form class="bd-search d-flex align-items-center"
+      action="../../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  <div class="navbar-header-items__start">
+    
+      <div class="navbar-item">
+  
+
+<a class="navbar-brand logo" href="../../../../../index.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../getting_started/index.html">
+                        Getting started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../user_guide/index.html">
+                        User guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../../../../index.html">
+                        API reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../examples/index.html">
+                        Examples
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../contributing.html">
+                        Contribute
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+        </div>
+      
+      
+        <div class="navbar-item">
+<script>
+document.write(`
+  <div class="version-switcher__container dropdown">
+    <button type="button" class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle" data-bs-toggle="dropdown">
+      0.15  <!-- this text may get changed later by javascript -->
+      <span class="caret"></span>
+    </button>
+    <div class="version-switcher__menu dropdown-menu list-group-flush py-0">
+    <!-- dropdown will be populated by javascript on page load -->
+    </div>
+  </div>
+`);
+</script></div>
+      
+        <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent/discussions" title="Support" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa fa-comment fa-fw"></i></span>
+            <label class="sr-only">Support</label></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </nav>
+  
+
+    
+    <div id="announcement_msg"></div>
+<script>
+  fetch("announcement.html")
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error: ${response.status}`);
+      }
+      return response.text();
+    })
+    .then(text => document.getElementById("announcement_msg").innerHTML = text)
+    .catch((error) => console.error(`Fetch problem: ${error.message}`));
+</script>
+    
+
+    
+    <div class="container-xl">
+    <div class="row">
+        <div class="col-12 col-md-3" id="breadcrumbs-spacer"></div>
+        <div class="col-12 col-md-11 col-xl-9" id="breadcrumbs">
+          
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+    
+        <li class="nav-item nav-item-additional-breadcrumb"><a href="https://docs.pyansys.com/">PyAnsys</a> » </li>
+    
+    
+        <li class="nav-item nav-item-0"><a href="../../../../../index.html">PyFluent</a> » </li>
+    
+
+          <li class="nav-item nav-item-1"><a href="../../../../index.html" >API reference</a> » </li>
+          <li class="nav-item nav-item-2"><a href="../../../index.html" >Meshing</a> » </li>
+          <li class="nav-item nav-item-3"><a href="../../index.html" >meshing.tui</a> » </li>
+          <li class="nav-item nav-item-4"><a href="../index.html" accesskey="U">file</a> » </li>
+        <li class="nav-item nav-item-this"><a href="">import</a></li> 
+      </ul>
+    </div>
+        </div>
+  </div>
+</div>
+    
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../getting_started/index.html">
+                        Getting started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../user_guide/index.html">
+                        User guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../../../../index.html">
+                        API reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../examples/index.html">
+                        Examples
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../contributing.html">
+                        Contribute
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<script>
+document.write(`
+  <div class="version-switcher__container dropdown">
+    <button type="button" class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle" data-bs-toggle="dropdown">
+      0.15  <!-- this text may get changed later by javascript -->
+      <span class="caret"></span>
+    </button>
+    <div class="version-switcher__menu dropdown-menu list-group-flush py-0">
+    <!-- dropdown will be populated by javascript on page load -->
+    </div>
+  </div>
+`);
+</script></div>
+        
+          <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent/discussions" title="Support" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa fa-comment fa-fw"></i></span>
+            <label class="sr-only">Support</label></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item"><nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../../general/index.html">General</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../../../index.html">Meshing</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/ansys.fluent.core.meshing.meshing.html">meshing</a></li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="../../index.html">meshing.tui</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../mesh/index.html">mesh</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../cad_assemblies/index.html">cad_assemblies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../preferences/index.html">preferences</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../boundary/index.html">boundary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../size_functions/index.html">size_functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../openmp_controls/index.html">openmp_controls</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../report/index.html">report</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../scoped_sizing/index.html">scoped_sizing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../display/index.html">display</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../material_point/index.html">material_point</a></li>
+<li class="toctree-l3 current active has-children"><a class="reference internal" href="../index.html">file</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../project/index.html">project</a></li>
+<li class="toctree-l4 current active has-children"><a class="current reference internal" href="#">import</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l5"><a class="reference internal" href="cad_options/index.html">cad_options</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../checkpoint/index.html">checkpoint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../export/index.html">export</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../diagnostics/index.html">diagnostics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference_frames/index.html">reference_frames</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../parallel/index.html">parallel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../objects/index.html">objects</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../datamodel/index.html">meshing.datamodel</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../solver/index.html">Solver</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article"></div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="import">
+<span id="ref-meshing-tui-file-import"></span><h1><a class="reference internal" href="#import">import</a><a class="headerlink" href="#import" title="Permalink to this heading">#</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.meshing.tui_231.main_menu.file.import_">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.meshing.tui_231.main_menu.file.</span></span><span class="sig-name descname"><span class="pre">import_</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">service</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Enables you to import mesh information generated by some CAD packages (Ansys, I-deas, NASTRAN, PATRAN, and HYPERMESH), as well as mesh information in the CGNS (CFD general notation system) format.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.ansys_surf_mesh" title="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.ansys_surf_mesh"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ansys_surf_mesh</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables you to read a Ansys surface mesh file.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.ansys_vol_mesh" title="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.ansys_vol_mesh"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ansys_vol_mesh</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables you to read a Ansys volume mesh file.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad" title="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cad</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables you to import CAD files based on the options set.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_geometry" title="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_geometry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cad_geometry</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables you to import CAD files based on the options set.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cgns_surf_mesh" title="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cgns_surf_mesh"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cgns_surf_mesh</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables you to read a CGNS surface mesh file.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cgns_vol_mesh" title="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cgns_vol_mesh"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cgns_vol_mesh</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables you to read a CGNS volume mesh file.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.fidap_surf_mesh" title="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.fidap_surf_mesh"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fidap_surf_mesh</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables you to read a FIDAP surface mesh file.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.fidap_vol_mesh" title="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.fidap_vol_mesh"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fidap_vol_mesh</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables you to read a FIDAP volume mesh file.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.fl_uns2_mesh" title="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.fl_uns2_mesh"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fl_uns2_mesh</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables you to read a Fluent UNS V2 case file.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.fluent_2d_mesh" title="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.fluent_2d_mesh"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fluent_2d_mesh</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables you to read a 2D mesh into the 3D version.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.fluent_3d_mesh" title="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.fluent_3d_mesh"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fluent_3d_mesh</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Read a 3D mesh.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.gambit_surf_mesh" title="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.gambit_surf_mesh"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gambit_surf_mesh</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables you to read a GAMBIT surface mesh file.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.gambit_vol_mesh" title="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.gambit_vol_mesh"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gambit_vol_mesh</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables you to read a GAMBIT volume mesh file.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.hypermesh_surf_mesh" title="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.hypermesh_surf_mesh"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hypermesh_surf_mesh</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables you to read a HYPERMESH surface mesh file.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.hypermesh_vol_mesh" title="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.hypermesh_vol_mesh"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hypermesh_vol_mesh</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables you to read a HYPERMESH volume mesh file.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.ideas_surf_mesh" title="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.ideas_surf_mesh"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ideas_surf_mesh</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables you to read an I-deas surface mesh file.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.ideas_vol_mesh" title="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.ideas_vol_mesh"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ideas_vol_mesh</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables you to read an I-deas volume mesh file.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.nastran_surf_mesh" title="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.nastran_surf_mesh"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nastran_surf_mesh</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables you to read a NASTRAN surface mesh file.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.nastran_vol_mesh" title="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.nastran_vol_mesh"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nastran_vol_mesh</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables you to read a NASTRAN volume mesh file.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.patran_surf_mesh" title="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.patran_surf_mesh"><code class="xref py py-obj docutils literal notranslate"><span class="pre">patran_surf_mesh</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables you to read a PATRAN surface mesh file.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.patran_vol_mesh" title="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.patran_vol_mesh"><code class="xref py py-obj docutils literal notranslate"><span class="pre">patran_vol_mesh</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables you to read a PATRAN volume mesh file.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.reimport_last_with_cfd_surface_mesh" title="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.reimport_last_with_cfd_surface_mesh"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reimport_last_with_cfd_surface_mesh</span></code></a>(*args, ...)</p></td>
+<td><p>Reimport CAD using the size field.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.stl" title="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.stl"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stl</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Read a surface mesh from a stereolithography (STL) file.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Classes:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options" title="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cad_options</span></code></a>(path, service)</p></td>
+<td><p>Contains additional options for importing CAD files.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.ansys_surf_mesh">
+<span class="sig-name descname"><span class="pre">ansys_surf_mesh</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.ansys_surf_mesh" title="Permalink to this definition">#</a></dt>
+<dd><p>Enables you to read a Ansys surface mesh file.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.ansys_vol_mesh">
+<span class="sig-name descname"><span class="pre">ansys_vol_mesh</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.ansys_vol_mesh" title="Permalink to this definition">#</a></dt>
+<dd><p>Enables you to read a Ansys volume mesh file.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad">
+<span class="sig-name descname"><span class="pre">cad</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad" title="Permalink to this definition">#</a></dt>
+<dd><p>Enables you to import CAD files based on the options set.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_geometry">
+<span class="sig-name descname"><span class="pre">cad_geometry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_geometry" title="Permalink to this definition">#</a></dt>
+<dd><p>Enables you to import CAD files based on the options set.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">cad_options</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">service</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Contains additional options for importing CAD files.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.continue_on_error" title="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.continue_on_error"><code class="xref py py-obj docutils literal notranslate"><span class="pre">continue_on_error</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables you to continue the import of the CAD file(s), despite errors or problems creating the faceting on certain surfaces, or other issues.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.create_cad_assemblies" title="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.create_cad_assemblies"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_cad_assemblies</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables creating the CAD Assemblies tree on CAD import.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.create_label_per_body_during_cad_faceting" title="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.create_label_per_body_during_cad_faceting"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_label_per_body_during_cad_faceting</span></code></a>(...)</p></td>
+<td><p>Create label Per Body during cad faceting.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.derive_zone_name_from_object_scope" title="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.derive_zone_name_from_object_scope"><code class="xref py py-obj docutils literal notranslate"><span class="pre">derive_zone_name_from_object_scope</span></code></a>(*args, ...)</p></td>
+<td><p>Enables zones without Named Selections to inherit the object name on import.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.double_connected_face_label" title="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.double_connected_face_label"><code class="xref py py-obj docutils literal notranslate"><span class="pre">double_connected_face_label</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Adds the specified label to the name of double-connected face zones (face zones shared by two bodies).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.enclosure_symm_processing" title="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.enclosure_symm_processing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">enclosure_symm_processing</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables processing of enclosure and symmetry named selections during import.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.extract_features" title="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.extract_features"><code class="xref py py-obj docutils literal notranslate"><span class="pre">extract_features</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables feature extraction from the CAD model on import.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.import_body_names" title="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.import_body_names"><code class="xref py py-obj docutils literal notranslate"><span class="pre">import_body_names</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables import of Body names from the CAD files.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.import_curvature_data_from_CAD" title="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.import_curvature_data_from_CAD"><code class="xref py py-obj docutils literal notranslate"><span class="pre">import_curvature_data_from_CAD</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables importing of the curvature data from the nodes of the CAD facets.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.import_label_for_body_named_selection" title="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.import_label_for_body_named_selection"><code class="xref py py-obj docutils literal notranslate"><span class="pre">import_label_for_body_named_selection</span></code></a>(*args, ...)</p></td>
+<td><p>Import face zone labels for body named selections.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.import_part_names" title="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.import_part_names"><code class="xref py py-obj docutils literal notranslate"><span class="pre">import_part_names</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables import of Part names from the CAD file(s).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.merge_nodes" title="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.merge_nodes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">merge_nodes</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables the merging of geometry object nodes during CAD import.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.merge_objects_per_body_named_selection" title="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.merge_objects_per_body_named_selection"><code class="xref py py-obj docutils literal notranslate"><span class="pre">merge_objects_per_body_named_selection</span></code></a>(...)</p></td>
+<td><p>Merge Objects per body named selection.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.modify_all_duplicate_names" title="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.modify_all_duplicate_names"><code class="xref py py-obj docutils literal notranslate"><span class="pre">modify_all_duplicate_names</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables you to modify all duplicate object/zone names by adding incremental integers as suffix.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.name_separator_character" title="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.name_separator_character"><code class="xref py py-obj docutils literal notranslate"><span class="pre">name_separator_character</span></code></a>(*args, **kwargs)</p></td>
+<td><p>:.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.named_selection_tessellation_failure" title="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.named_selection_tessellation_failure"><code class="xref py py-obj docutils literal notranslate"><span class="pre">named_selection_tessellation_failure</span></code></a>(*args, ...)</p></td>
+<td><p>Set named selection for CFD surface mesh failures.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.named_selections" title="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.named_selections"><code class="xref py py-obj docutils literal notranslate"><span class="pre">named_selections</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables you to import Named Selections from the CAD file(s), including Named Selections from Ansys DesignModeler, publications from CATIA, and so on.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.object_type" title="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.object_type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">object_type</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables the setting of object type on import.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.one_face_zone_per" title="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.one_face_zone_per"><code class="xref py py-obj docutils literal notranslate"><span class="pre">one_face_zone_per</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables you to create one face zone per body/face/object to be imported.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.one_object_per" title="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.one_object_per"><code class="xref py py-obj docutils literal notranslate"><span class="pre">one_object_per</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables you to create one object per body/part/file/selection to be imported.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.read_all_cad_in_subdirectories" title="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.read_all_cad_in_subdirectories"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read_all_cad_in_subdirectories</span></code></a>(*args, **kwargs)</p></td>
+<td><p>When enabled, all files in the specified directory as well as in its subdirectories will be imported.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.reconstruct_topology" title="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.reconstruct_topology"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reconstruct_topology</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Reconstruct topology for STL files.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.replacement_character" title="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.replacement_character"><code class="xref py py-obj docutils literal notranslate"><span class="pre">replacement_character</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Name replacement character.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.save_PMDB" title="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.save_PMDB"><code class="xref py py-obj docutils literal notranslate"><span class="pre">save_PMDB</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Saves a PMDB (*.pmdb) file in the directory containing the CAD files imported.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.separate_features_by_type" title="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.separate_features_by_type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">separate_features_by_type</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables separation of feature edges based on angle, connectivity, and named selections on import.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.single_connected_edge_label" title="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.single_connected_edge_label"><code class="xref py py-obj docutils literal notranslate"><span class="pre">single_connected_edge_label</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Adds the specified label to the name of single-connected edge zones (edge zones referenced by a single face).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.strip_file_name_extension_from_naming" title="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.strip_file_name_extension_from_naming"><code class="xref py py-obj docutils literal notranslate"><span class="pre">strip_file_name_extension_from_naming</span></code></a>(*args, ...)</p></td>
+<td><p>Removes the extension of the CAD files from the object/face zone names on import.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.strip_path_prefix_from_names" title="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.strip_path_prefix_from_names"><code class="xref py py-obj docutils literal notranslate"><span class="pre">strip_path_prefix_from_names</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables you to remove the path prefix from the object/face zone names on import.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.tessellation" title="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.tessellation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tessellation</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables you to control the tessellation (faceting) during file import.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.use_body_names" title="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.use_body_names"><code class="xref py py-obj docutils literal notranslate"><span class="pre">use_body_names</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Use body names for CAD files.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.use_collection_names" title="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.use_collection_names"><code class="xref py py-obj docutils literal notranslate"><span class="pre">use_collection_names</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables you to use the Named Selections for the object/zone names on import.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.use_component_names" title="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.use_component_names"><code class="xref py py-obj docutils literal notranslate"><span class="pre">use_component_names</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables you to add the component (part or assembly) names to the object/zone names on import.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.use_part_names" title="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.use_part_names"><code class="xref py py-obj docutils literal notranslate"><span class="pre">use_part_names</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables you to choose whether to add the part names from the CAD file to the object and zone names on import.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.use_part_or_body_names_as_suffix_to_named_selections" title="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.use_part_or_body_names_as_suffix_to_named_selections"><code class="xref py py-obj docutils literal notranslate"><span class="pre">use_part_or_body_names_as_suffix_to_named_selections</span></code></a>(...)</p></td>
+<td><p>Part or Body names are used as suffix for named selections spanning over multiple parts or bodies.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.continue_on_error">
+<span class="sig-name descname"><span class="pre">continue_on_error</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.continue_on_error" title="Permalink to this definition">#</a></dt>
+<dd><p>Enables you to continue the import of the CAD file(s), despite errors or problems creating the faceting on certain surfaces, or other issues. This option is disabled by default.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.create_cad_assemblies">
+<span class="sig-name descname"><span class="pre">create_cad_assemblies</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.create_cad_assemblies" title="Permalink to this definition">#</a></dt>
+<dd><p>Enables creating the CAD Assemblies tree on CAD import. The CAD Assemblies tree represents the CAD tree as it is presented in the CAD package in which it was created. All sub-assembly levels from the CAD are maintained on import in Fluent Meshing.  For commands specific to the CAD assemblies, refer to cad-assemblies/.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.create_label_per_body_during_cad_faceting">
+<span class="sig-name descname"><span class="pre">create_label_per_body_during_cad_faceting</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.create_label_per_body_during_cad_faceting" title="Permalink to this definition">#</a></dt>
+<dd><p>Create label Per Body during cad faceting.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.derive_zone_name_from_object_scope">
+<span class="sig-name descname"><span class="pre">derive_zone_name_from_object_scope</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.derive_zone_name_from_object_scope" title="Permalink to this definition">#</a></dt>
+<dd><p>Enables zones without Named Selections to inherit the object name on import. This option is disabled by default.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.double_connected_face_label">
+<span class="sig-name descname"><span class="pre">double_connected_face_label</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.double_connected_face_label" title="Permalink to this definition">#</a></dt>
+<dd><p>Adds the specified label to the name of double-connected face zones (face zones shared by two bodies).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.enclosure_symm_processing">
+<span class="sig-name descname"><span class="pre">enclosure_symm_processing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.enclosure_symm_processing" title="Permalink to this definition">#</a></dt>
+<dd><p>Enables processing of enclosure and symmetry named selections during import. This option is disabled by default. This option is applicable only to Ansys DesignModeler (*.agdb) files.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.extract_features">
+<span class="sig-name descname"><span class="pre">extract_features</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.extract_features" title="Permalink to this definition">#</a></dt>
+<dd><p>Enables feature extraction from the CAD model on import. You can choose to disable this, if desired. Specify an appropriate value for feature angle. The default value is 40.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.import_body_names">
+<span class="sig-name descname"><span class="pre">import_body_names</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.import_body_names" title="Permalink to this definition">#</a></dt>
+<dd><p>Enables import of Body names from the CAD files. This option is enabled by default.  Any renaming of Body names in Ansys Mechanical/Ansys Meshing prior to the export of the mechdat/meshdat files is ignored during import. Only original Body names will be imported.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.import_curvature_data_from_CAD">
+<span class="sig-name descname"><span class="pre">import_curvature_data_from_CAD</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.import_curvature_data_from_CAD" title="Permalink to this definition">#</a></dt>
+<dd><p>Enables importing of the curvature data from the nodes of the CAD facets. You can choose to disable this, if desired.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.import_label_for_body_named_selection">
+<span class="sig-name descname"><span class="pre">import_label_for_body_named_selection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.import_label_for_body_named_selection" title="Permalink to this definition">#</a></dt>
+<dd><p>Import face zone labels for body named selections.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.import_part_names">
+<span class="sig-name descname"><span class="pre">import_part_names</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.import_part_names" title="Permalink to this definition">#</a></dt>
+<dd><p>Enables import of Part names from the CAD file(s). This option is enabled by default.  Any renaming of Part names in Ansys Mechanical/Ansys Meshing prior to the export of the mechdat/meshdat files is ignored during import. Only original Part names will be imported.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.merge_nodes">
+<span class="sig-name descname"><span class="pre">merge_nodes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.merge_nodes" title="Permalink to this definition">#</a></dt>
+<dd><p>Enables the merging of geometry object nodes during CAD import. This option is enabled by default.  This option can be optionally enabled/disabled only when geometry objects are imported using the CAD Faceting option for CAD import. Mesh object nodes will always be merged when the CFD Surface Mesh is selected for CAD import.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.merge_objects_per_body_named_selection">
+<span class="sig-name descname"><span class="pre">merge_objects_per_body_named_selection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.merge_objects_per_body_named_selection" title="Permalink to this definition">#</a></dt>
+<dd><p>Merge Objects per body named selection.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.modify_all_duplicate_names">
+<span class="sig-name descname"><span class="pre">modify_all_duplicate_names</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.modify_all_duplicate_names" title="Permalink to this definition">#</a></dt>
+<dd><p>Enables you to modify all duplicate object/zone names by adding incremental integers as suffix. This option is disabled by default.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.name_separator_character">
+<span class="sig-name descname"><span class="pre">name_separator_character</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.name_separator_character" title="Permalink to this definition">#</a></dt>
+<dd><p>:.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.named_selection_tessellation_failure">
+<span class="sig-name descname"><span class="pre">named_selection_tessellation_failure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.named_selection_tessellation_failure" title="Permalink to this definition">#</a></dt>
+<dd><p>Set named selection for CFD surface mesh failures.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.named_selections">
+<span class="sig-name descname"><span class="pre">named_selections</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.named_selections" title="Permalink to this definition">#</a></dt>
+<dd><p>Enables you to import Named Selections from the CAD file(s), including Named Selections from Ansys DesignModeler, publications from CATIA, and so on. You can additionally choose to ignore import of certain Named Selections based on the pattern specified (for example, Layer* to ignore layer Named Selections from CATIA), or by specifying multiple wild cards (for example, ^(Color|Layer|Material).* to remove color, layer, and material Named Selections from CATIA).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.object_type">
+<span class="sig-name descname"><span class="pre">object_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.object_type" title="Permalink to this definition">#</a></dt>
+<dd><p>Enables the setting of object type on import. The options available are auto, geometry, and mesh. The default setting is auto based on the tessellation method selected: geometry objects will be created when the cad-faceting  method is used, while mesh objects will be created when the cfd-surface-mesh method is used.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.one_face_zone_per">
+<span class="sig-name descname"><span class="pre">one_face_zone_per</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.one_face_zone_per" title="Permalink to this definition">#</a></dt>
+<dd><p>Enables you to create one face zone per body/face/object to be imported.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.one_object_per">
+<span class="sig-name descname"><span class="pre">one_object_per</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.one_object_per" title="Permalink to this definition">#</a></dt>
+<dd><p>Enables you to create one object per body/part/file/selection to be imported. The default program-controlled option allows the software to make the appropriate choice. This option makes a choice between per body and per part based on whether shared topology is off or on, respectively.  For Ansys ICEM CFD files (*.tin), set the object granularity to one object per selection.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.read_all_cad_in_subdirectories">
+<span class="sig-name descname"><span class="pre">read_all_cad_in_subdirectories</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.read_all_cad_in_subdirectories" title="Permalink to this definition">#</a></dt>
+<dd><p>When enabled, all files in the specified directory as well as in its subdirectories will be imported. This option is disabled by default.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.reconstruct_topology">
+<span class="sig-name descname"><span class="pre">reconstruct_topology</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.reconstruct_topology" title="Permalink to this definition">#</a></dt>
+<dd><p>Reconstruct topology for STL files.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.replacement_character">
+<span class="sig-name descname"><span class="pre">replacement_character</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.replacement_character" title="Permalink to this definition">#</a></dt>
+<dd><p>Name replacement character.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.save_PMDB">
+<span class="sig-name descname"><span class="pre">save_PMDB</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.save_PMDB" title="Permalink to this definition">#</a></dt>
+<dd><p>Saves a PMDB (*.pmdb) file in the directory containing the CAD files imported. You can use this file to import the same CAD file(s) again with different options set, for a quicker import than the full import. This option is disabled by default.  Some options will not be available any more once the model is imported from a PMDB file (for example, enclosure-symm-processing?), since they are processed before the PMDB file is created.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.separate_features_by_type">
+<span class="sig-name descname"><span class="pre">separate_features_by_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.separate_features_by_type" title="Permalink to this definition">#</a></dt>
+<dd><p>Enables separation of feature edges based on angle, connectivity, and named selections on import. Edge zone names will have suitable suffixes depending on separation criteria, order of zones, existing zone names and other import options selected.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.single_connected_edge_label">
+<span class="sig-name descname"><span class="pre">single_connected_edge_label</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.single_connected_edge_label" title="Permalink to this definition">#</a></dt>
+<dd><p>Adds the specified label to the name of single-connected edge zones (edge zones referenced by a single face).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.strip_file_name_extension_from_naming">
+<span class="sig-name descname"><span class="pre">strip_file_name_extension_from_naming</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.strip_file_name_extension_from_naming" title="Permalink to this definition">#</a></dt>
+<dd><p>Removes the extension of the CAD files from the object/face zone names on import. This option is disabled by default.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.strip_path_prefix_from_names">
+<span class="sig-name descname"><span class="pre">strip_path_prefix_from_names</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.strip_path_prefix_from_names" title="Permalink to this definition">#</a></dt>
+<dd><p>Enables you to remove the path prefix from the object/face zone names on import. The default setting is auto which removes the path prefix from object/face zone names when the object creation granularity is set to one object per file. You can also explicitly select yes or no.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.tessellation">
+<span class="sig-name descname"><span class="pre">tessellation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.tessellation" title="Permalink to this definition">#</a></dt>
+<dd><p>Enables you to control the tessellation (faceting) during file import. You can select either cad-faceting or cfd-surface-mesh.   CAD faceting enables you to control the tessellation based on the CAD faceting tolerance and maximum facet size specified.   CFD Surface Mesh enables you to use a size field file, (Use size field file?). If you enter yes, specify the size field file to be read. If you do not want to use a size field file, you can obtain conformal faceting based on the underlying curve and surface curvature (using the minimum and maximum facet sizes, and the facet curvature normal angle specified) and edge proximity (using the cells per gap specified). You can also save a size field in a file (size field is computed based on the specified parameters; that is, Min Size, Max Size, Curvature Normal Angle, Cells Per Gap).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.use_body_names">
+<span class="sig-name descname"><span class="pre">use_body_names</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.use_body_names" title="Permalink to this definition">#</a></dt>
+<dd><p>Use body names for CAD files.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.use_collection_names">
+<span class="sig-name descname"><span class="pre">use_collection_names</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.use_collection_names" title="Permalink to this definition">#</a></dt>
+<dd><p>Enables you to use the Named Selections for the object/zone names on import. Select auto, no, or yes. The default selection is auto where the Named Selection will be used as the object/zone name, except when the object creation granularity is set to one object per file.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.use_component_names">
+<span class="sig-name descname"><span class="pre">use_component_names</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.use_component_names" title="Permalink to this definition">#</a></dt>
+<dd><p>Enables you to add the component (part or assembly) names to the object/zone names on import. Select auto, no, or yes. The default selection is auto where the component name will be added to the object/zone name.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.use_part_names">
+<span class="sig-name descname"><span class="pre">use_part_names</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.use_part_names" title="Permalink to this definition">#</a></dt>
+<dd><p>Enables you to choose whether to add the part names from the CAD file to the object and zone names on import. The default setting is auto which adds the part names to both object and zone names when object creation granularity is set to body. When the object creation granularity is set to part or file, the part names are not added to the zone names, face zone labels, or the region names, by default. You can also explicitly select yes or no.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.use_part_or_body_names_as_suffix_to_named_selections">
+<span class="sig-name descname"><span class="pre">use_part_or_body_names_as_suffix_to_named_selections</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.use_part_or_body_names_as_suffix_to_named_selections" title="Permalink to this definition">#</a></dt>
+<dd><p>Part or Body names are used as suffix for named selections spanning over multiple parts or bodies.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cgns_surf_mesh">
+<span class="sig-name descname"><span class="pre">cgns_surf_mesh</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cgns_surf_mesh" title="Permalink to this definition">#</a></dt>
+<dd><p>Enables you to read a CGNS surface mesh file.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cgns_vol_mesh">
+<span class="sig-name descname"><span class="pre">cgns_vol_mesh</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cgns_vol_mesh" title="Permalink to this definition">#</a></dt>
+<dd><p>Enables you to read a CGNS volume mesh file.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.fidap_surf_mesh">
+<span class="sig-name descname"><span class="pre">fidap_surf_mesh</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.fidap_surf_mesh" title="Permalink to this definition">#</a></dt>
+<dd><p>Enables you to read a FIDAP surface mesh file.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.fidap_vol_mesh">
+<span class="sig-name descname"><span class="pre">fidap_vol_mesh</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.fidap_vol_mesh" title="Permalink to this definition">#</a></dt>
+<dd><p>Enables you to read a FIDAP volume mesh file.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.fl_uns2_mesh">
+<span class="sig-name descname"><span class="pre">fl_uns2_mesh</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.fl_uns2_mesh" title="Permalink to this definition">#</a></dt>
+<dd><p>Enables you to read a Fluent UNS V2 case file.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.fluent_2d_mesh">
+<span class="sig-name descname"><span class="pre">fluent_2d_mesh</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.fluent_2d_mesh" title="Permalink to this definition">#</a></dt>
+<dd><p>Enables you to read a 2D mesh into the 3D version.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.fluent_3d_mesh">
+<span class="sig-name descname"><span class="pre">fluent_3d_mesh</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.fluent_3d_mesh" title="Permalink to this definition">#</a></dt>
+<dd><p>Read a 3D mesh.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.gambit_surf_mesh">
+<span class="sig-name descname"><span class="pre">gambit_surf_mesh</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.gambit_surf_mesh" title="Permalink to this definition">#</a></dt>
+<dd><p>Enables you to read a GAMBIT surface mesh file.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.gambit_vol_mesh">
+<span class="sig-name descname"><span class="pre">gambit_vol_mesh</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.gambit_vol_mesh" title="Permalink to this definition">#</a></dt>
+<dd><p>Enables you to read a GAMBIT volume mesh file.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.hypermesh_surf_mesh">
+<span class="sig-name descname"><span class="pre">hypermesh_surf_mesh</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.hypermesh_surf_mesh" title="Permalink to this definition">#</a></dt>
+<dd><p>Enables you to read a HYPERMESH surface mesh file.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.hypermesh_vol_mesh">
+<span class="sig-name descname"><span class="pre">hypermesh_vol_mesh</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.hypermesh_vol_mesh" title="Permalink to this definition">#</a></dt>
+<dd><p>Enables you to read a HYPERMESH volume mesh file.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.ideas_surf_mesh">
+<span class="sig-name descname"><span class="pre">ideas_surf_mesh</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.ideas_surf_mesh" title="Permalink to this definition">#</a></dt>
+<dd><p>Enables you to read an I-deas surface mesh file.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.ideas_vol_mesh">
+<span class="sig-name descname"><span class="pre">ideas_vol_mesh</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.ideas_vol_mesh" title="Permalink to this definition">#</a></dt>
+<dd><p>Enables you to read an I-deas volume mesh file.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.nastran_surf_mesh">
+<span class="sig-name descname"><span class="pre">nastran_surf_mesh</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.nastran_surf_mesh" title="Permalink to this definition">#</a></dt>
+<dd><p>Enables you to read a NASTRAN surface mesh file.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.nastran_vol_mesh">
+<span class="sig-name descname"><span class="pre">nastran_vol_mesh</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.nastran_vol_mesh" title="Permalink to this definition">#</a></dt>
+<dd><p>Enables you to read a NASTRAN volume mesh file.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.patran_surf_mesh">
+<span class="sig-name descname"><span class="pre">patran_surf_mesh</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.patran_surf_mesh" title="Permalink to this definition">#</a></dt>
+<dd><p>Enables you to read a PATRAN surface mesh file.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.patran_vol_mesh">
+<span class="sig-name descname"><span class="pre">patran_vol_mesh</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.patran_vol_mesh" title="Permalink to this definition">#</a></dt>
+<dd><p>Enables you to read a PATRAN volume mesh file.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.reimport_last_with_cfd_surface_mesh">
+<span class="sig-name descname"><span class="pre">reimport_last_with_cfd_surface_mesh</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.reimport_last_with_cfd_surface_mesh" title="Permalink to this definition">#</a></dt>
+<dd><p>Reimport CAD using the size field.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.meshing.tui_231.main_menu.file.import_.stl">
+<span class="sig-name descname"><span class="pre">stl</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.stl" title="Permalink to this definition">#</a></dt>
+<dd><p>Read a surface mesh from a stereolithography (STL) file.</p>
+</dd></dl>
+
+</dd></dl>
+
+<div class="toctree-wrapper compound">
+</div>
+</section>
+
+
+                </article>
+              
+              
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_"><code class="docutils literal notranslate"><span class="pre">import_</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.ansys_surf_mesh"><code class="docutils literal notranslate"><span class="pre">import_.ansys_surf_mesh()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.ansys_vol_mesh"><code class="docutils literal notranslate"><span class="pre">import_.ansys_vol_mesh()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad"><code class="docutils literal notranslate"><span class="pre">import_.cad()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_geometry"><code class="docutils literal notranslate"><span class="pre">import_.cad_geometry()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options"><code class="docutils literal notranslate"><span class="pre">import_.cad_options</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.continue_on_error"><code class="docutils literal notranslate"><span class="pre">import_.cad_options.continue_on_error()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.create_cad_assemblies"><code class="docutils literal notranslate"><span class="pre">import_.cad_options.create_cad_assemblies()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.create_label_per_body_during_cad_faceting"><code class="docutils literal notranslate"><span class="pre">import_.cad_options.create_label_per_body_during_cad_faceting()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.derive_zone_name_from_object_scope"><code class="docutils literal notranslate"><span class="pre">import_.cad_options.derive_zone_name_from_object_scope()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.double_connected_face_label"><code class="docutils literal notranslate"><span class="pre">import_.cad_options.double_connected_face_label()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.enclosure_symm_processing"><code class="docutils literal notranslate"><span class="pre">import_.cad_options.enclosure_symm_processing()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.extract_features"><code class="docutils literal notranslate"><span class="pre">import_.cad_options.extract_features()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.import_body_names"><code class="docutils literal notranslate"><span class="pre">import_.cad_options.import_body_names()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.import_curvature_data_from_CAD"><code class="docutils literal notranslate"><span class="pre">import_.cad_options.import_curvature_data_from_CAD()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.import_label_for_body_named_selection"><code class="docutils literal notranslate"><span class="pre">import_.cad_options.import_label_for_body_named_selection()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.import_part_names"><code class="docutils literal notranslate"><span class="pre">import_.cad_options.import_part_names()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.merge_nodes"><code class="docutils literal notranslate"><span class="pre">import_.cad_options.merge_nodes()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.merge_objects_per_body_named_selection"><code class="docutils literal notranslate"><span class="pre">import_.cad_options.merge_objects_per_body_named_selection()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.modify_all_duplicate_names"><code class="docutils literal notranslate"><span class="pre">import_.cad_options.modify_all_duplicate_names()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.name_separator_character"><code class="docutils literal notranslate"><span class="pre">import_.cad_options.name_separator_character()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.named_selection_tessellation_failure"><code class="docutils literal notranslate"><span class="pre">import_.cad_options.named_selection_tessellation_failure()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.named_selections"><code class="docutils literal notranslate"><span class="pre">import_.cad_options.named_selections()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.object_type"><code class="docutils literal notranslate"><span class="pre">import_.cad_options.object_type()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.one_face_zone_per"><code class="docutils literal notranslate"><span class="pre">import_.cad_options.one_face_zone_per()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.one_object_per"><code class="docutils literal notranslate"><span class="pre">import_.cad_options.one_object_per()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.read_all_cad_in_subdirectories"><code class="docutils literal notranslate"><span class="pre">import_.cad_options.read_all_cad_in_subdirectories()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.reconstruct_topology"><code class="docutils literal notranslate"><span class="pre">import_.cad_options.reconstruct_topology()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.replacement_character"><code class="docutils literal notranslate"><span class="pre">import_.cad_options.replacement_character()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.save_PMDB"><code class="docutils literal notranslate"><span class="pre">import_.cad_options.save_PMDB()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.separate_features_by_type"><code class="docutils literal notranslate"><span class="pre">import_.cad_options.separate_features_by_type()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.single_connected_edge_label"><code class="docutils literal notranslate"><span class="pre">import_.cad_options.single_connected_edge_label()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.strip_file_name_extension_from_naming"><code class="docutils literal notranslate"><span class="pre">import_.cad_options.strip_file_name_extension_from_naming()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.strip_path_prefix_from_names"><code class="docutils literal notranslate"><span class="pre">import_.cad_options.strip_path_prefix_from_names()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.tessellation"><code class="docutils literal notranslate"><span class="pre">import_.cad_options.tessellation()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.use_body_names"><code class="docutils literal notranslate"><span class="pre">import_.cad_options.use_body_names()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.use_collection_names"><code class="docutils literal notranslate"><span class="pre">import_.cad_options.use_collection_names()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.use_component_names"><code class="docutils literal notranslate"><span class="pre">import_.cad_options.use_component_names()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.use_part_names"><code class="docutils literal notranslate"><span class="pre">import_.cad_options.use_part_names()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cad_options.use_part_or_body_names_as_suffix_to_named_selections"><code class="docutils literal notranslate"><span class="pre">import_.cad_options.use_part_or_body_names_as_suffix_to_named_selections()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cgns_surf_mesh"><code class="docutils literal notranslate"><span class="pre">import_.cgns_surf_mesh()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.cgns_vol_mesh"><code class="docutils literal notranslate"><span class="pre">import_.cgns_vol_mesh()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.fidap_surf_mesh"><code class="docutils literal notranslate"><span class="pre">import_.fidap_surf_mesh()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.fidap_vol_mesh"><code class="docutils literal notranslate"><span class="pre">import_.fidap_vol_mesh()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.fl_uns2_mesh"><code class="docutils literal notranslate"><span class="pre">import_.fl_uns2_mesh()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.fluent_2d_mesh"><code class="docutils literal notranslate"><span class="pre">import_.fluent_2d_mesh()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.fluent_3d_mesh"><code class="docutils literal notranslate"><span class="pre">import_.fluent_3d_mesh()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.gambit_surf_mesh"><code class="docutils literal notranslate"><span class="pre">import_.gambit_surf_mesh()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.gambit_vol_mesh"><code class="docutils literal notranslate"><span class="pre">import_.gambit_vol_mesh()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.hypermesh_surf_mesh"><code class="docutils literal notranslate"><span class="pre">import_.hypermesh_surf_mesh()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.hypermesh_vol_mesh"><code class="docutils literal notranslate"><span class="pre">import_.hypermesh_vol_mesh()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.ideas_surf_mesh"><code class="docutils literal notranslate"><span class="pre">import_.ideas_surf_mesh()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.ideas_vol_mesh"><code class="docutils literal notranslate"><span class="pre">import_.ideas_vol_mesh()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.nastran_surf_mesh"><code class="docutils literal notranslate"><span class="pre">import_.nastran_surf_mesh()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.nastran_vol_mesh"><code class="docutils literal notranslate"><span class="pre">import_.nastran_vol_mesh()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.patran_surf_mesh"><code class="docutils literal notranslate"><span class="pre">import_.patran_surf_mesh()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.patran_vol_mesh"><code class="docutils literal notranslate"><span class="pre">import_.patran_vol_mesh()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.reimport_last_with_cfd_surface_mesh"><code class="docutils literal notranslate"><span class="pre">import_.reimport_last_with_cfd_surface_mesh()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.meshing.tui_231.main_menu.file.import_.stl"><code class="docutils literal notranslate"><span class="pre">import_.stl()</span></code></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  <div class="tocsection sourcelink">
+    <a href="../../../../../_sources/api/meshing/tui/file/import_/index.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+  <p class="copyright">
+    
+      © Copyright (c) 2023 ANSYS, Inc. All rights reserved.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.13.3.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

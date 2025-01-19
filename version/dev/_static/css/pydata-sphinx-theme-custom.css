@@ -1,0 +1,784 @@
+/* Changes associated with the Ansys Sphinx Theme */
+/* for pydata-sphinx-theme */
+@import "../styles/pydata-sphinx-theme.css";
+@import "ansys-sphinx-theme-variable.css";
+
+/*
+*
+* _secondary sidebar and primary sidebars
+* _sidebar-primary.scss
+*
+*/
+.bd-sidebar-primary,
+.bd-sidebar-secondary {
+  max-height: calc(100vh - var(--pst-header-height) - 1vh);
+  line-height: var(--ast-global-line-height);
+  border: none;
+  overflow: auto;
+}
+
+.bd-sidebar-primary .sidebar-primary-items__end {
+  margin-bottom: unset;
+  margin-top: unset;
+}
+
+@media (max-width: 959.98px) {
+  .bd-sidebar-primary {
+    flex-grow: 0.75;
+    height: 100vh;
+    left: 0;
+    margin-left: -75%;
+    max-height: 100vh;
+    max-width: 350px;
+    position: fixed;
+    top: 0;
+    transition:
+      visibility 0.2s ease-out,
+      margin 0.2s ease-out;
+    visibility: hidden;
+    width: 75%;
+    z-index: 1055;
+  }
+}
+
+.sidebar-secondary-item {
+  border: none;
+}
+
+nav.bd-links p.bd-links__title,
+nav.bd-links p.caption {
+  font-size: var(--ast-font-sidebar-header);
+  color: var(--ast-sidebar-primary-text);
+}
+
+nav.bd-links li > a {
+  font-size: var(--ast-font-sidebar-header);
+  color: var(--ast-sidebar-primary-text);
+  text-decoration: none;
+  line-height: var(--ast-global-line-height);
+  padding: 4px 24px;
+}
+
+nav.bd-links li > a:hover {
+  color: var(--ast-sidebar-primary-text);
+  background: var(--ast-sidebar-hover-background);
+  box-shadow: 1px 1px 2px 0px var(--ast-sidebar-active-background);
+  border-radius: var(--ast-sphinx-design-border-radius);
+  text-decoration: none;
+}
+
+nav.bd-links li > a.active,
+nav.bd-links li > a.current {
+  color: var(--ast-color-text);
+  background: var(--ast-sidebar-active-background);
+  text-decoration: none;
+  box-shadow: 1px 1px 2px 0px var(--ast-sidebar-active-background);
+  border-radius: var(--ast-sphinx-design-border-radius);
+  font-weight: var(--ast-font-weight-bold);
+}
+
+/**
+* sidebar primary with children
+*/
+
+.bd-sidebar-primary li.has-children .caption,
+.bd-sidebar-primary li.has-children > .reference {
+  padding: 4px 24px;
+}
+
+nav.bd-links .current > a {
+  color: var(--ast-color-text);
+  background: var(--ast-sidebar-active-background);
+  text-decoration: none;
+  box-shadow: 1px 1px 2px 0px var(--ast-sidebar-active-background);
+  border-radius: var(--ast-sphinx-design-border-radius);
+  font-weight: var(--ast-font-weight-bold);
+}
+/**
+* secondary sidebar
+* _toc-inpage.scss
+*/
+.toc-entry a.nav-link {
+  color: var(--ast-sidebar-primary-text);
+  line-height: var(--ast-global-line-height);
+}
+
+.toc-entry a.nav-link.active,
+.toc-entry a.nav-link.current {
+  color: var(--ast-color-link);
+  text-decoration: none;
+  box-shadow: none;
+}
+
+.toc-entry a.nav-link.active:hover,
+.toc-entry a.nav-link.current:hover {
+  color: var(--ast-color-link-hover);
+  text-decoration: none;
+  box-shadow: none;
+  font-weight: var(--ast-font-weight-bold);
+}
+
+.toc-h2 {
+  font-size: var(--pst-table-font-size);
+  padding: 0.05em;
+}
+
+.toc-h3 {
+  font-size: var(--pst-table-font-size);
+}
+
+.toc-h4 {
+  font-size: var(--pst-table-font-size);
+}
+
+.toc-entry a.nav-link:hover {
+  color: var(--ast-color-link-hover);
+  text-decoration: none;
+}
+
+/**
+* _base.scss related changes
+*/
+
+.editthispage a {
+  color: var(--pst-color-text-base);
+}
+
+/**
+*
+* Dropdown button
+* _header.scss
+*
+*/
+
+.bd-header ul.navbar-nav > li.nav-item > .nav-link {
+  color: var(--ast-navbar-color);
+  font-weight: var(--ast-font-weight-semibold);
+}
+
+.bd-header ul.navbar-nav > li.nav-item > .nav-link:hover::before {
+  color: var(--ast-navbar-hover-color);
+  border-bottom: none;
+  filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.08));
+}
+
+.bd-header ul.navbar-nav > li.nav-item > .nav-link:hover {
+  color: var(--ast-navbar-hover-color);
+  border-color: var(--ast-navbar-hover-color);
+  filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.08));
+}
+
+.bd-header ul.navbar-nav > li.nav-item > .nav-link:active {
+  color: var(--ast-navbar-active-color);
+  border-color: var(--ast-navbar-active-border-color);
+  border-width: 2px;
+  filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.12));
+}
+
+.bd-header ul.navbar-nav > li.nav-item.current > .nav-link::before,
+.bd-header ul.navbar-nav > li.nav-item.current > .nav-link::after {
+  color: var(--ast-navbar-active-color);
+  border-bottom: 2px solid var(--ast-navbar-active-border-color);
+}
+
+.bd-header ul.navbar-nav > li.nav-item > .nav-link:focus-visible {
+  color: var(--ast-navbar-color);
+  box-shadow: var(--ast-ring-shadow-focused);
+  outline: none;
+  outline-offset: 0px;
+}
+
+html .pst-navbar-icon {
+  color: var(--ast-navbar-color);
+}
+
+html .pst-navbar-icon:hover {
+  color: var(--ast-navbar-hover-color);
+  border-color: var(--ast-navbar-hover-color);
+  filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.08));
+}
+
+a.nav-link.pst-navbar-icon {
+  color: var(--ast-navbar-color);
+  font-weight: var(--ast-font-weight-bold);
+}
+
+a.nav-link.pst-navbar-icon:hover {
+  color: var(--ast-navbar-hover-color);
+  border-color: var(--ast-navbar-hover-color);
+  filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.08));
+  font-weight: var(--ast-font-weight-bold);
+}
+
+a.nav-link.pst-navbar-icon:active {
+  color: var(--ast-navbar-active-color);
+  border-color: var(--ast-navbar-active-border-color);
+  font-weight: var(--ast-font-weight-bold);
+}
+
+ul.navbar-icon-links {
+  column-gap: 10px;
+}
+
+.bd-header .navbar-header-items__center,
+.bd-header .navbar-header-items__end {
+  column-gap: 10px;
+}
+
+.bd-header .navbar-item {
+  gap: 8px;
+}
+
+/*
+* dropdown button after 5 sections
+*/
+
+.dropdown-item:hover {
+  font-weight: var(--ast-font-weight-bold);
+  background-color: transparent;
+}
+
+/**
+* _search.scss
+* Search bar
+*/
+
+.search-button-field {
+  border-color: var(--ast-navbar-active-border-color);
+  font-size: var(--ast-nav-link-font-size);
+  background-color: transparent;
+  color: var(--ast-navbar-color);
+}
+
+.search-button-field:hover {
+  border-color: var(--ast-navbar-active-border-color);
+  color: var(--ast-navbar-hover-color);
+  font-weight: var(--ast-font-weight-bold);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+}
+
+/**
+*
+* Side column size (first and second column from left)
+*
+*/
+
+.col-md-3 {
+  flex: 0 0 20%;
+  max-width: 20%;
+}
+
+a.headerlink {
+  color: #222;
+}
+
+@media (min-width: 1200px) {
+  .container,
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container-xl {
+    max-width: 1200px;
+  }
+}
+
+@media (min-width: 1600px) {
+  .container,
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container-xl {
+    max-width: 1600px;
+  }
+}
+
+/**
+*
+* Navigation column (according to side column)
+* _header.scss
+*
+*/
+.bd-header .navbar-header-items__start {
+  width: fit-content;
+  padding-right: 2rem;
+}
+/**
+* header logo
+*/
+
+.bd-main .bd-content {
+  display: flex;
+  height: 100%;
+  justify-content: end;
+}
+
+.bd-main .bd-content .bd-article-container .bd-article {
+  padding-left: 1rem;
+  padding-top: 1rem;
+  padding-right: 1rem;
+}
+
+/**
+* Bold font weight for **code**
+*/
+
+b,
+strong {
+  font-weight: 900;
+}
+
+/**
+* _code.scss related changes
+*/
+.docutils {
+  font-family: var(--pst-font-family-monospace);
+  font-weight: 500;
+}
+
+#pst-back-to-top {
+  background: var(--ast-color-link);
+  color: var(--ast-color-text);
+}
+
+/**
+* _api.scss related changes
+*/
+
+.sig-prename.descclassname {
+  display: none;
+} /* hide the class 'descclassname' for autoapi */
+
+.sig {
+  font-family: var(--pst-font-family-monospace);
+}
+
+.sig-name.descname {
+  color: var(--pst-color-inline-code);
+}
+
+.sig-name {
+  color: var(--pst-color-sig);
+}
+
+/**
+* highlighted objects inside the api reference
+*/
+dt:target,
+span.highlighted {
+  background-color: var(--pst-color-codecell) !important;
+}
+
+/**
+* Increase empty-space around classes, methods, properties, etc. that are descendants
+* of other items
+*/
+dl.class dl.py {
+  margin-top: 2.5em;
+  margin-bottom: 2.5em;
+}
+
+/**
+* image padding before and after
+*/
+
+img {
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+html[data-theme="dark"] .bd-content img:not(.only-dark):not(.dark-light) {
+  background: transparent;
+}
+
+img.logo__image {
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+}
+
+/**
+*Nav-bar entity right side.
+*/
+
+.list-group-item.active {
+  z-index: 2;
+  color: var(--pst-color-text-base) !important;
+}
+
+/**
+* admontions
+*/
+
+div.deprecated {
+  border-color: var(--pst-color-danger);
+  background-color: #dc354514;
+}
+
+div.deprecated,
+div.versionadded,
+div.versionchanged {
+  background-color: transparent;
+}
+
+.admonition,
+div.admonition {
+  background-color: var(--pst-color-on-surface);
+}
+
+/**
+* Select only divisions that contain a dataframe, with enough specificity to override pydata css
+*/
+div.nboutput
+  div.output_area.rendered_html.docutils.container:has(table.dataframe) {
+  background-color: transparent;
+}
+
+aside.topic > p {
+  color: var(--pst-color-text-base) !important;
+}
+
+/**
+* search hide match
+*/
+
+div#searchbox p.highlight-link a {
+  background-color: var(--pst-color-search-match);
+}
+
+.header-article__inner {
+  padding: 0 1rem;
+}
+
+/**
+*
+* _links.scss
+*/
+
+/**
+* links on paragraphs
+*/
+a {
+  color: var(--ast-color-link);
+  text-decoration: none;
+}
+
+a:active {
+  color: var(--ast-color-link-active);
+}
+
+a:hover,
+a:active:hover {
+  color: var(--ast-color-link-hover);
+  text-decoration: underline;
+}
+
+a:visited:hover {
+  color: var(--ast-color-link-visited-hover);
+}
+
+a:visited {
+  color: var(--ast-color-link-visited);
+}
+
+a:focus-visible {
+  color: var(--ast-color-link);
+  box-shadow: var(--ast-ring-shadow-focused);
+}
+
+a > code {
+  color: var(--ast-color-inline-code);
+}
+
+code.literal {
+  color: var(--ast-color-inline-code);
+  font-family: var(--ast-sphinx-design-font-family);
+}
+
+nav.bd-links li > a:focus-visible,
+.nav-link:focus-visible,
+a.nav-link.pst-navbar-icon:focus-visible,
+.toc-entry a.nav-link:focus-visible,
+nav.bd-links .current > a:focus-visible {
+  box-shadow: var(--ast-ring-shadow-focused);
+  outline: none;
+}
+
+/**
+* Admonitions
+*/
+
+.admonition > .admonition-title,
+div.admonition > .admonition-title {
+  color: var(--ast-admonitions-color);
+  font-size: var(--ast-admonitions-font-size);
+  background-color: transparent !important; /* important tag because the admonition has a background color */
+  margin-left: 8px;
+}
+
+/**
+* Admonitions icons
+*/
+.admonition > .admonition-title:after,
+div.admonition > .admonition-title:after,
+span.versionmodified:before {
+  font-size: var(--ast-admonitions-icon-size);
+  height: var(--ast-admonition-icon-height);
+  width: var(--ast-admonition-icon-width);
+  left: 0px;
+  color: var(--ast-color-text);
+}
+
+span.versionmodified:before {
+  margin-right: 16px; /* separate component, to alligh with title, 8px padding + 8px padding from icon  */
+}
+
+/**
+* Admonitions title
+*/
+
+.admonition p.admonition-title ~ *,
+div.admonition p.admonition-title ~ * {
+  margin-left: 40px; /* separate component, to alligh with title, 8px padding + 24px icon + 8px padding from icon  */
+  margin-right: 8px;
+  margin-top: 0px;
+}
+
+.admonition,
+div.admonition {
+  border: 2px solid;
+  padding: var(--ast-admonitions-padding);
+  box-shadow: none !important; /* important tag because the admonition has a box-shadow  from pydata sphinx theme*/
+  border-radius: var(--ast-admonitions-border-radius);
+}
+
+/* warning attention caution important, warning */
+
+.admonition.attention > .admonition-title:after,
+div.admonition.attention > .admonition-title:after,
+.admonition.caution > .admonition-title:after,
+div.admonition.caution > .admonition-title:after,
+.admonition.important > .admonition-title:after,
+div.admonition.important > .admonition-title:after,
+.admonition.warning > .admonition-title:after,
+div.admonition.warning > .admonition-title:after {
+  color: var(--ast-admonition-warning-icon);
+}
+
+.admonition.caution,
+div.admonition.caution,
+.admonition.attention,
+div.admonition.attention,
+.admonition.important,
+div.admonition.important,
+.admonition.warning,
+div.admonition.warning {
+  border-color: var(--ast-admonition-warning-border);
+}
+
+/* danger are error, danger, depreciated */
+
+.admonition.danger > .admonition-title:after,
+div.admonition.danger > .admonition-title:after,
+.admonition.error > .admonition-title:after,
+div.admonition.error > .admonition-title:after,
+span.depreciated.changed:before {
+  color: var(--ast-admonition-danger-icon);
+}
+
+.admonition.danger,
+div.admonition.danger,
+.admonition.error,
+div.admonition.error,
+div.deprecated {
+  border-color: var(--ast-admonition-danger-border);
+}
+
+/*info are hint, note, see also, tip */
+
+.admonition.info > .admonition-title:after,
+div.admonition.info > .admonition-title:after,
+.admonition.hint > .admonition-title:after,
+div.admonition.hint > .admonition-title:after,
+.admonition.note > .admonition-title:after,
+div.admonition.note > .admonition-title:after,
+.admonition.seealso > .admonition-title:after,
+div.admonition.seealso > .admonition-title:after,
+.admonition.tip > .admonition-title:after,
+div.admonition.tip > .admonition-title:after {
+  color: var(--ast-admonition-info-icon);
+}
+
+.admonition.info,
+div.admonition.info,
+.admonition.hint,
+div.admonition.hint,
+.admonition.note,
+div.admonition.note,
+.admonition.seealso,
+div.admonition.seealso,
+.admonition.tip,
+div.admonition.tip {
+  border-color: var(--ast-admonition-info-border);
+}
+
+/* success is version-added */
+
+span.versionadded.changed:before {
+  color: var(--ast-admonition-success-icon);
+}
+
+div.versionadded {
+  border-color: var(--ast-admonition-success-border);
+}
+
+/* neutral is todo, version-change, topic */
+
+div.deprecated,
+div.versionadded,
+div.versionchanged {
+  border-width: 2px;
+  border-style: solid;
+  padding: var(--ast-admonitions-padding);
+  border-radius: var(--ast-admonitions-border-radius);
+  box-shadow: none !important; /* important tag because the admonition has a box-shadow  from pydata sphinx theme*/
+}
+
+div.deprecated > p,
+div.versionadded > p,
+div.versionchanged > p {
+  margin-left: 8px;
+}
+
+span.versionmodified.changed:before,
+.admonition.admonition-todo > .admonition-title:after,
+div.admonition.admonition-todo > .admonition-title:after {
+  color: var(--ast-admonition-neutral-icon);
+}
+
+.admonition.admonition-todo,
+div.admonition.admonition-todo,
+aside.topic,
+div.versionchanged {
+  border-color: var(--ast-admonition-neutral-border);
+}
+
+aside.topic p,
+div.topic p,
+div.topic.contents p,
+nav.contents p {
+  color: var(--ast-admonition-neutral-icon) !important;
+}
+/**
+* Dropdown _header.scss
+*/
+.bd-header ul.navbar-nav > li.nav-item.dropdown > .dropdown-toggle {
+  color: var(--ast-navbar-color);
+  font-weight: var(--ast-font-weight-semibold);
+  font-size: var(--bs-nav-link-font-size);
+  border-radius: var(--ast-sphinx-design-border-radius);
+  border-color: var(--ast-dropdown-header-border);
+}
+
+.bd-header ul.navbar-nav > li.nav-item.dropdown > .dropdown-toggle:hover {
+  color: var(--ast-navbar-hover-color);
+  border-bottom: none;
+  box-shadow: var(--ast-box-shadow-hover);
+}
+
+.bd-header ul.navbar-nav .dropdown .dropdown-menu .dropdown-item {
+  color: var(--ast-navbar-color);
+  font-size: var(--bs-nav-link-font-size);
+  font-weight: var(--ast-font-weight-semibold);
+  border-radius: var(--ast-sphinx-design-border-radius);
+  border-color: var(--ast-dropdown-header-border);
+}
+
+/**
+* Dropdown _header.scss
+*/
+
+.version-switcher__menu a.list-group-item {
+  background-color: var(--ast-color-enable-card-background);
+  width: 200px;
+  border: none;
+  filter: drop-shadow(var(--ast-box-shadow-active));
+  color: var(--ast-navbar-hover-color);
+  font-size: var(--ast-nav-link-font-size);
+  height: 40px;
+  padding: 0px 16px;
+  text-decoration: none;
+  border-radius: var(--ast-sphinx-design-border-radius);
+}
+
+button.btn.version-switcher__button {
+  background-color: transparent;
+  border-color: var(--ast-navbar-active-border-color);
+  color: var(--ast-navbar-color);
+  font-size: var(--ast-nav-link-font-size);
+}
+
+button.btn.version-switcher__button:hover {
+  border-color: var(--ast-navbar-active-border-color);
+  color: var(--ast-navbar-hover-color);
+}
+
+.version-switcher__menu a.list-group-item:hover {
+  background-color: var(--ast-color-hover-card-background);
+  border: none;
+  color: var(--ast-navbar-hover-color);
+  font-size: var(--ast-nav-link-font-size);
+  text-decoration: none;
+}
+
+.version-switcher__menu a.list-group-item:not(:last-child) {
+  border-bottom: none;
+}
+
+.version-switcher__menu a.list-group-item.active {
+  box-shadow: none;
+}
+
+.version-switcher__menu {
+  filter: box-shadow(var(--ast-box-shadow-active));
+  border: none;
+}
+
+/**
+* Article content (_article.scss)
+*/
+
+.bd-main .bd-content .bd-article-container {
+  padding: 8px;
+  width: 1000px;
+  max-width: 100%;
+}
+
+@media (min-width: 960px) {
+  .bd-sidebar-primary {
+    width: 20%;
+  }
+}
+
+@media (min-width: 960px) {
+  .col-lg-3 {
+    width: fit-content;
+  }
+}
+
+@media (min-width: 960px) {
+  .bd-page-width {
+    max-width: min(100%, 1700px) !important;
+  }
+}
+
+@media (min-width: 960px) {
+  .bd-main .bd-content .bd-article-container {
+    width: min(100%, 1070px);
+  }
+}
+
+/**
+* _math.scss
+*/
+span.math {
+  display: math;
+}

@@ -1,0 +1,1342 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>remesh &#8212; PyFluent</title>
+    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/css/ansys_sphinx_theme.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sg_gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sg_gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sg_gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sg_gallery-rendered-html.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    
+        <link href="../../../../../_static/css/breadcrumbs.css" rel="stylesheet">
+    
+    <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
+    <script src="../../../../../_static/jquery.js"></script>
+    <script src="../../../../../_static/underscore.js"></script>
+    <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../../../_static/doctools.js"></script>
+    <script src="../../../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../../../_static/thebelab-helper.js"></script>
+    <script src="../../../../../_static/clipboard.min.js"></script>
+    <script src="../../../../../_static/copybutton.js"></script>
+    <script src="../../../../../_static/js/table.js"></script>
+    <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/meshing/tui/boundary/remesh/index';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://fluent.docs.pyansys.com/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.16';
+        </script>
+    <link rel="shortcut icon" href="../../../../../_static/ansys-favicon.png"/>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <link rel="next" title="size_functions" href="size_functions/index.html" />
+    <link rel="prev" title="modify" href="../modify/index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <link rel="canonical" href="https://fluent.docs.pyansys.com/version/stable/api/meshing/tui/boundary/remesh/index.html" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container"><!-- Debugging: html_theme_options =  -->
+
+  <!-- If there is no MiliSearch enabled, use the PyData search -->
+<form class="bd-search d-flex align-items-center"
+      action="../../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  <div class="navbar-header-items__start">
+    
+      <div class="navbar-item">
+  
+
+<a class="navbar-brand logo" href="../../../../../index.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../getting_started/index.html">
+                        Getting started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../user_guide/index.html">
+                        User guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../../../../index.html">
+                        API reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../examples/index.html">
+                        Examples
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../contributing.html">
+                        Contribute
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+        </div>
+      
+      
+        <div class="navbar-item">
+<script>
+document.write(`
+  <div class="version-switcher__container dropdown">
+    <button type="button" class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle" data-bs-toggle="dropdown">
+      0.16  <!-- this text may get changed later by javascript -->
+      <span class="caret"></span>
+    </button>
+    <div class="version-switcher__menu dropdown-menu list-group-flush py-0">
+    <!-- dropdown will be populated by javascript on page load -->
+    </div>
+  </div>
+`);
+</script></div>
+      
+        <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent/discussions" title="Support" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa fa-comment fa-fw"></i></span>
+            <label class="sr-only">Support</label></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </nav>
+  
+
+    
+    <div id="announcement_msg"></div>
+<script>
+  fetch("announcement.html")
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error: ${response.status}`);
+      }
+      return response.text();
+    })
+    .then(text => document.getElementById("announcement_msg").innerHTML = text)
+    .catch((error) => console.error(`Fetch problem: ${error.message}`));
+</script>
+    
+
+    
+    <div class="container-xl">
+    <div class="row">
+        <div class="col-12 col-md-3" id="breadcrumbs-spacer"></div>
+        <div class="col-12 col-md-11 col-xl-9" id="breadcrumbs">
+          
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+    
+        <li class="nav-item nav-item-additional-breadcrumb"><a href="https://docs.pyansys.com/">PyAnsys</a> » </li>
+    
+    
+        <li class="nav-item nav-item-0"><a href="../../../../../index.html">PyFluent</a> » </li>
+    
+
+          <li class="nav-item nav-item-1"><a href="../../../../index.html" >API reference</a> » </li>
+          <li class="nav-item nav-item-2"><a href="../../../index.html" >Meshing</a> » </li>
+          <li class="nav-item nav-item-3"><a href="../../index.html" >meshing.tui</a> » </li>
+          <li class="nav-item nav-item-4"><a href="../index.html" accesskey="U">boundary</a> » </li>
+        <li class="nav-item nav-item-this"><a href="">remesh</a></li> 
+      </ul>
+    </div>
+        </div>
+  </div>
+</div>
+    
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../getting_started/index.html">
+                        Getting started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../user_guide/index.html">
+                        User guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../../../../index.html">
+                        API reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../examples/index.html">
+                        Examples
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../contributing.html">
+                        Contribute
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<script>
+document.write(`
+  <div class="version-switcher__container dropdown">
+    <button type="button" class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle" data-bs-toggle="dropdown">
+      0.16  <!-- this text may get changed later by javascript -->
+      <span class="caret"></span>
+    </button>
+    <div class="version-switcher__menu dropdown-menu list-group-flush py-0">
+    <!-- dropdown will be populated by javascript on page load -->
+    </div>
+  </div>
+`);
+</script></div>
+        
+          <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent/discussions" title="Support" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa fa-comment fa-fw"></i></span>
+            <label class="sr-only">Support</label></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item"><nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../../general/index.html">General</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../../../index.html">Meshing</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="../../index.html">meshing.tui</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../display/index.html">display</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../mesh/index.html">mesh</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../cad_assemblies/index.html">cad_assemblies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../diagnostics/index.html">diagnostics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../material_point/index.html">material_point</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../openmp_controls/index.html">openmp_controls</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../parallel/index.html">parallel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference_frames/index.html">reference_frames</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../preferences/index.html">preferences</a></li>
+<li class="toctree-l3 current active has-children"><a class="reference internal" href="../index.html">boundary</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../shell_boundary_layer/index.html">shell_boundary_layer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../improve/index.html">improve</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../feature/index.html">feature</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../modify/index.html">modify</a></li>
+<li class="toctree-l4 current active has-children"><a class="current reference internal" href="#">remesh</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l5"><a class="reference internal" href="size_functions/index.html">size_functions</a></li>
+<li class="toctree-l5"><a class="reference internal" href="controls/index.html">controls</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../separate/index.html">separate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../refine/index.html">refine</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../boundary_conditions/index.html">boundary_conditions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../manage/index.html">manage</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../scoped_sizing/index.html">scoped_sizing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../objects/index.html">objects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../file/index.html">file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../size_functions/index.html">size_functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../report/index.html">report</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../datamodel/index.html">meshing.datamodel</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../solver/index.html">Solver</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article"></div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="remesh">
+<span id="ref-meshing-tui-boundary-remesh"></span><h1>remesh<a class="headerlink" href="#remesh" title="Permalink to this heading">#</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.meshing.tui_232.main_menu.boundary.</span></span><span class="sig-name descname"><span class="pre">remesh</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">service</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Has a set of commands for remeshing the face zones.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.clear_marked_faces" title="ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.clear_marked_faces"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clear_marked_faces</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Clears the highlighting of the triangles that are marked.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.coarsen_and_refine" title="ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.coarsen_and_refine"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coarsen_and_refine</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Remeshes (coarsens/refines) the boundary face zones based on the computed size field.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.create_all_intrst_loops" title="ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.create_all_intrst_loops"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_all_intrst_loops</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Creates edge loop of intersection for all boundary zones in current domain.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.create_edge_loops" title="ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.create_edge_loops"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_edge_loops</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Creates edge loops for a specified face zone, based on feature angle.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.create_intersect_loop" title="ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.create_intersect_loop"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_intersect_loop</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Creates an interior edge loop at the intersection between two adjacent face zones.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.create_join_loop" title="ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.create_join_loop"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_join_loop</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Creates edge loop on boundary of the region of overlap of two surfaces.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.create_stitch_loop" title="ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.create_stitch_loop"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_stitch_loop</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Creates edge loops for connecting two surfaces along their free edges.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.delete_overlapped_edges" title="ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.delete_overlapped_edges"><code class="xref py py-obj docutils literal notranslate"><span class="pre">delete_overlapped_edges</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Deletes edges that overlap selected edge loops.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.faceted_stitch_zones" title="ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.faceted_stitch_zones"><code class="xref py py-obj docutils literal notranslate"><span class="pre">faceted_stitch_zones</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Performs the faceted stitching of zones.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.insert_edge_zone" title="ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.insert_edge_zone"><code class="xref py py-obj docutils literal notranslate"><span class="pre">insert_edge_zone</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Inserts an edge zone into a triangulated boundary face zone.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.intersect_all_face_zones" title="ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.intersect_all_face_zones"><code class="xref py py-obj docutils literal notranslate"><span class="pre">intersect_all_face_zones</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Remeshes all the intersecting face zones.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.intersect_face_zones" title="ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.intersect_face_zones"><code class="xref py py-obj docutils literal notranslate"><span class="pre">intersect_face_zones</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Remeshes two intersecting face zones so that they become conformal.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.join_all_face_zones" title="ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.join_all_face_zones"><code class="xref py py-obj docutils literal notranslate"><span class="pre">join_all_face_zones</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Connects all overlapping face zones using the join operation.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.join_face_zones" title="ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.join_face_zones"><code class="xref py py-obj docutils literal notranslate"><span class="pre">join_face_zones</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Connects two overlapping faces.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.mark_intersecting_faces" title="ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.mark_intersecting_faces"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mark_intersecting_faces</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Highlights the triangles in the neighborhood of the line of intersection.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.mark_join_faces" title="ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.mark_join_faces"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mark_join_faces</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Highlights the triangles in the neighborhood of the join edge loop.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.mark_stitch_faces" title="ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.mark_stitch_faces"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mark_stitch_faces</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Highlights the triangles in the neighborhood of the stitch edge loop.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.remesh_constant_size" title="ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.remesh_constant_size"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remesh_constant_size</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Remeshes the specified face zones to a constant triangle size while maintaining conformity with adjacent zones.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.remesh_face_zone" title="ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.remesh_face_zone"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remesh_face_zone</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Remeshes a specified face zone by automatically extracting edge loops.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.remesh_face_zones_conformally" title="ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.remesh_face_zones_conformally"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remesh_face_zones_conformally</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Remeshes face zones using the current size function and keeping a conformal interface between them.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.remesh_marked_faces" title="ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.remesh_marked_faces"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remesh_marked_faces</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Locally remesh marked faces.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.remesh_overlapping_zones" title="ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.remesh_overlapping_zones"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remesh_overlapping_zones</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Remeshes overlapping face zones.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.stitch_all_face_zones" title="ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.stitch_all_face_zones"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stitch_all_face_zones</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Connects (stitches) all the face zones along the free edges.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.stitch_face_zones" title="ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.stitch_face_zones"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stitch_face_zones</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Connects two surfaces along their free edges.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.stitch_with_preserve_boundary" title="ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.stitch_with_preserve_boundary"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stitch_with_preserve_boundary</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Connects (stitches) a zone to another which is connected to an existing volume mesh, while preserving the boundary of the zones connected to the volume mesh.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.triangulate" title="ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.triangulate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">triangulate</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Triangulates quad zones.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Classes:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.controls" title="ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.controls"><code class="xref py py-obj docutils literal notranslate"><span class="pre">controls</span></code></a>(path, service)</p></td>
+<td><p>Enters the edge loop tools text menu.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.size_functions" title="ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.size_functions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">size_functions</span></code></a>(path, service)</p></td>
+<td><p>Enters the size functions menu where you can define size functions for controlling mesh size distribution.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">clear_marked_faces</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Clears the highlighting of the triangles that are marked.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">coarsen_and_refine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Remeshes (coarsens/refines) the boundary face zones based on the computed size field. Specify the boundary face zones to be remeshed, the boundary edge zones, feature angle, and corner angle. Additionally, specify whether the current boundary face zones should be replaced by the remeshed face zones after the operation is complete.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">controls</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">service</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Enters the edge loop tools text menu.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.controls.delete_overlapped" title="ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.controls.delete_overlapped"><code class="xref py py-obj docutils literal notranslate"><span class="pre">delete_overlapped</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Toggles the deletion of region of overlap of the two surfaces.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.controls.direction" title="ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.controls.direction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">direction</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Specifies the direction of the edge loop projection.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.controls.project_method" title="ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.controls.project_method"><code class="xref py py-obj docutils literal notranslate"><span class="pre">project_method</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Specifies the method for projecting edge loops.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.controls.proximity_local_search" title="ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.controls.proximity_local_search"><code class="xref py py-obj docutils literal notranslate"><span class="pre">proximity_local_search</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Includes the selected face for proximity calculation.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.controls.quadratic_recon" title="ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.controls.quadratic_recon"><code class="xref py py-obj docutils literal notranslate"><span class="pre">quadratic_recon</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables quadratic reconstruction of edge loops.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.controls.remesh_method" title="ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.controls.remesh_method"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remesh_method</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Specifies the method to be used for the node distribution on the edge loop.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.controls.spacing" title="ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.controls.spacing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">spacing</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Sets the node spacing for the edge loop.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.controls.tolerance" title="ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.controls.tolerance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tolerance</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Sets the tolerance for determining if two edges intersect.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Classes:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.controls.intersect" title="ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.controls.intersect"><code class="xref py py-obj docutils literal notranslate"><span class="pre">intersect</span></code></a>(path, service)</p></td>
+<td><p>Enters the intersect control menu.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">delete_overlapped</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Toggles the deletion of region of overlap of the two surfaces.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">direction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Specifies the direction of the edge loop projection.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">intersect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">service</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Enters the intersect control menu.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.controls.intersect.absolute_tolerance" title="ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.controls.intersect.absolute_tolerance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">absolute_tolerance</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables you to switch between the use of absolute and relative tolerance.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.controls.intersect.delete_overlap" title="ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.controls.intersect.delete_overlap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">delete_overlap</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables the deletion of overlapped edges.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.controls.intersect.feature_angle" title="ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.controls.intersect.feature_angle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">feature_angle</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Specifies the minimum feature angle that should be considered while retriangulating the boundary zones.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.controls.intersect.ignore_parallel_faces" title="ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.controls.intersect.ignore_parallel_faces"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ignore_parallel_faces</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Default is yes.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.controls.intersect.join_match_angle" title="ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.controls.intersect.join_match_angle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">join_match_angle</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Specifies the allowed maximum angle between the normals of the two overlapping surfaces to be joined.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.controls.intersect.join_project_angle" title="ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.controls.intersect.join_project_angle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">join_project_angle</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Specifies the allowed maximum angle between the face normal and the project direction for the overlapping surfaces to be joined.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.controls.intersect.refine_region" title="ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.controls.intersect.refine_region"><code class="xref py py-obj docutils literal notranslate"><span class="pre">refine_region</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables you to refine the regions that are modified during the intersect operations.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.controls.intersect.remesh_post_intersection" title="ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.controls.intersect.remesh_post_intersection"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remesh_post_intersection</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Used to enable or disable automatic post-remesh operation after any connect operation (join, intersect, or stitch).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.controls.intersect.retri_improve" title="ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.controls.intersect.retri_improve"><code class="xref py py-obj docutils literal notranslate"><span class="pre">retri_improve</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables you to improve the mesh.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.controls.intersect.separate" title="ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.controls.intersect.separate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">separate</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables the automatic separation of intersected zones.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.controls.intersect.stitch_preserve" title="ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.controls.intersect.stitch_preserve"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stitch_preserve</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Indicates that shape of the first zone specified is to be preserved.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.controls.intersect.tolerance" title="ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.controls.intersect.tolerance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tolerance</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Specifies the tolerance value for the intersect operations.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.controls.intersect.within_tolerance" title="ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.controls.intersect.within_tolerance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">within_tolerance</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Performs the intersection operation only within the specified tolerance value.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">absolute_tolerance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables you to switch between the use of absolute and relative tolerance. By default, the relative tolerance value is used.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">delete_overlap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables the deletion of overlapped edges. It toggles the automatic deletion of region of overlap of the two surfaces. This option is used by while remeshing overlapping zones and retriangulating prisms. By default, this option is enabled.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">feature_angle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Specifies the minimum feature angle that should be considered while retriangulating the boundary zones. All the edges in the zone having feature angle greater than the specified feature angle are retained. This option is useful for preserving the shape of the intersecting boundary zones. The default value of feature angle is 40, however, a value in the range of 10–50 degrees is recommended. A large value may distort the shape of the intersecting boundary zones.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">ignore_parallel_faces</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Default is yes. If there are close-to-parallel faces, set to no to separate the zones and avoid creating an intersection loop.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">join_match_angle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Specifies the allowed maximum angle between the normals of the two overlapping surfaces to be joined. This parameter is used to control the size of the join region.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">join_project_angle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Specifies the allowed maximum angle between the face normal and the project direction for the overlapping surfaces to be joined. This parameter is used to control the size of the join region.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">refine_region</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables you to refine the regions that are modified during the intersect operations. It toggles the refinement of the intersecting regions after performing any of the intersection operation.   This operation improves the quality of the resulting mesh, however, this option is disabled by default.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">remesh_post_intersection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Used to enable or disable automatic post-remesh operation after any connect operation (join, intersect, or stitch).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">retri_improve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables you to improve the mesh. After performing any intersection operation, the slivers are removed along the curve of intersection, Laplace smoothing is performed, and followed by the edge swapping. Laplace smoothing is also performed for insert-edge-zone, remesh-overlapped-zones, and prism-retriangulation options. Smoothing is performed again. The smooth-swap operations can be controlled by changing the various defaults such as swapping iterations, smoothing iterations, etc.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">separate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables the automatic separation of intersected zones.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">stitch_preserve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Indicates that shape of the first zone specified is to be preserved. This option is enabled by default.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">tolerance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Specifies the tolerance value for the intersect operations.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">within_tolerance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Performs the intersection operation only within the specified tolerance value. It is useful only for the Intersect option.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">project_method</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Specifies the method for projecting edge loops.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">proximity_local_search</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Includes the selected face for proximity calculation.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">quadratic_recon</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables quadratic reconstruction of edge loops.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">remesh_method</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Specifies the method to be used for the node distribution on the edge loop.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">spacing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Sets the node spacing for the edge loop.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">tolerance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Sets the tolerance for determining if two edges intersect.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">create_all_intrst_loops</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Creates edge loop of intersection for all boundary zones in current domain.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">create_edge_loops</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Creates edge loops for a specified face zone, based on feature angle.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">create_intersect_loop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Creates an interior edge loop at the intersection between two adjacent face zones. Edges created in this way will not be remeshed by default.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">create_join_loop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Creates edge loop on boundary of the region of overlap of two surfaces.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">create_stitch_loop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Creates edge loops for connecting two surfaces along their free edges.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">delete_overlapped_edges</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Deletes edges that overlap selected edge loops.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">faceted_stitch_zones</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Performs the faceted stitching of zones.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">insert_edge_zone</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Inserts an edge zone into a triangulated boundary face zone.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">intersect_all_face_zones</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Remeshes all the intersecting face zones.   After the intersect operation, remesh is called automatically. To disable the post-remesh operation, use the text command:  /boundary/remesh/controls/intersect/remesh-post-intersection?
+no.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">intersect_face_zones</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Remeshes two intersecting face zones so that they become conformal.   After the intersect operation, remesh is called automatically. To disable the post-remesh operation, use the text command:  /boundary/remesh/controls/intersect/remesh-post-intersection?
+no.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">join_all_face_zones</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Connects all overlapping face zones using the join operation.   After the join operation, remesh is called automatically. To disable the post-remesh operation, use the text command:  /boundary/remesh/controls/intersect/remesh-post-intersection?
+no.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">join_face_zones</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Connects two overlapping faces.   After the join operation, remesh is called automatically. To disable the post-remesh operation, use the text command:  /boundary/remesh/controls/intersect/remesh-post-intersection?
+no.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">mark_intersecting_faces</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Highlights the triangles in the neighborhood of the line of intersection.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">mark_join_faces</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Highlights the triangles in the neighborhood of the join edge loop.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">mark_stitch_faces</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Highlights the triangles in the neighborhood of the stitch edge loop.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">remesh_constant_size</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Remeshes the specified face zones to a constant triangle size while maintaining conformity with adjacent zones. Specify the boundary face zones to be remeshed, the boundary edge zones, feature angle, corner angle, and the constant size. Additionally, specify whether the current boundary face zones should be replaced by the remeshed face zones after the operation is complete.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">remesh_face_zone</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Remeshes a specified face zone by automatically extracting edge loops. If edge loops are present in the current domain (for example, if they were created using the create-edge-loops command), they are used to remesh the specified face zone.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">remesh_face_zones_conformally</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Remeshes face zones using the current size function and keeping a conformal interface between them. If no size function is defined, an error message will be generated.  This command will prompt for:
+Boundary Face Zones
+Boundary Edge Zones
+feature angle – used to determine the minimum angle between features that will be preserved during remeshing
+corner angle – used to specify the minimum angle between feature edges that will be preserved
+Replace Face Zone? – (default is Yes) the remeshed face zone(s) will take the name and -id of the original zones, and the original face zone(s) will have “orig” appended to their name. If No, the remeshed face zone(s) will have “retri” added postfix.
+Periodic face zones cannot be remeshed using this command.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">remesh_marked_faces</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Locally remesh marked faces.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">remesh_overlapping_zones</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Remeshes overlapping face zones. The non-overlapping region is remeshed using the edge loops created from the overlapping face zones.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">size_functions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">service</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Enters the size functions menu where you can define size functions for controlling mesh size distribution.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.size_functions.compute" title="ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.size_functions.compute"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Computes the size field based on the defined parameters.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.size_functions.create" title="ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.size_functions.create"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Defines the size function based on the specified parameters.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.size_functions.create_defaults" title="ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.size_functions.create_defaults"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_defaults</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Creates default size functions based on face and edge curvature and proximity.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.size_functions.delete" title="ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.size_functions.delete"><code class="xref py py-obj docutils literal notranslate"><span class="pre">delete</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Deletes the specified size function or the current size field.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.size_functions.delete_all" title="ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.size_functions.delete_all"><code class="xref py py-obj docutils literal notranslate"><span class="pre">delete_all</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Deletes all the defined size functions.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.size_functions.disable_periodicity_filter" title="ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.size_functions.disable_periodicity_filter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">disable_periodicity_filter</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Removes periodicity from the size field.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.size_functions.enable_periodicity_filter" title="ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.size_functions.enable_periodicity_filter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">enable_periodicity_filter</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enable size field periodicity.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.size_functions.list" title="ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.size_functions.list"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Lists all the defined size functions and the parameter values defined.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.size_functions.list_periodicity_filter" title="ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.size_functions.list_periodicity_filter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list_periodicity_filter</span></code></a>(*args, **kwargs)</p></td>
+<td><p>List periodic in size field.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.size_functions.reset_global_controls" title="ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.size_functions.reset_global_controls"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset_global_controls</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Resets the global controls to their default values.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.size_functions.set_global_controls" title="ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.size_functions.set_global_controls"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_global_controls</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Sets the values for the global minimum and maximum size, and the growth rate.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.size_functions.set_prox_gap_tolerance" title="ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.size_functions.set_prox_gap_tolerance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_prox_gap_tolerance</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Sets the tolerance relative to minimum size to take gaps into account.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.size_functions.set_scaling_filter" title="ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.size_functions.set_scaling_filter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_scaling_filter</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Specifies the scale factor, and minimum and maximum size values to filter the size output from the size field.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.size_functions.triangulate_quad_faces" title="ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.size_functions.triangulate_quad_faces"><code class="xref py py-obj docutils literal notranslate"><span class="pre">triangulate_quad_faces</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Identifies the zones comprising non-triangular elements and uses a triangulated copy of these zones for computing the size functions.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.size_functions.use_cad_imported_curvature" title="ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.size_functions.use_cad_imported_curvature"><code class="xref py py-obj docutils literal notranslate"><span class="pre">use_cad_imported_curvature</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables curvature data from the nodes of the CAD facets.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Classes:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.size_functions.contours" title="ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.size_functions.contours"><code class="xref py py-obj docutils literal notranslate"><span class="pre">contours</span></code></a>(path, service)</p></td>
+<td><p>Contains options for displaying contours of size functions.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.size_functions.controls" title="ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.size_functions.controls"><code class="xref py py-obj docutils literal notranslate"><span class="pre">controls</span></code></a>(path, service)</p></td>
+<td><p>Menu to control different behavior of sf.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">compute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Computes the size field based on the defined parameters.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">contours</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">service</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Contains options for displaying contours of size functions.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.size_functions.contours.draw" title="ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.size_functions.contours.draw"><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Displays contours in the graphics window.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Classes:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.size_functions.contours.set" title="ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.size_functions.contours.set"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set</span></code></a>(path, service)</p></td>
+<td><p>Set contour options.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">draw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Displays contours in the graphics window. Compute the size field using /size-functions/compute or read in a size field file prior to displaying the contours of size.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">service</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Set contour options.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.size_functions.contours.set.refine_facets" title="ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.size_functions.contours.set.refine_facets"><code class="xref py py-obj docutils literal notranslate"><span class="pre">refine_facets</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables you to specify smaller facets if the original are too large.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">refine_facets</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables you to specify smaller facets if the original are too large. Default is no.</p>
+</dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">controls</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">service</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Menu to control different behavior of sf.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.size_functions.controls.curvature_method" title="ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.size_functions.controls.curvature_method"><code class="xref py py-obj docutils literal notranslate"><span class="pre">curvature_method</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Option to get facet curvature.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.size_functions.controls.meshed_sf_behavior" title="ansys.fluent.core.meshing.tui_232.main_menu.boundary.remesh.size_functions.controls.meshed_sf_behavior"><code class="xref py py-obj docutils literal notranslate"><span class="pre">meshed_sf_behavior</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Set meshed size function processing to hard.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">curvature_method</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Option to get facet curvature.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">meshed_sf_behavior</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Set meshed size function processing to hard.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Defines the size function based on the specified parameters.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">create_defaults</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Creates default size functions based on face and edge curvature and proximity.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Deletes the specified size function or the current size field.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">delete_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Deletes all the defined size functions.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">disable_periodicity_filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Removes periodicity from the size field.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">enable_periodicity_filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enable size field periodicity.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Lists all the defined size functions and the parameter values defined.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">list_periodicity_filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>List periodic in size field.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">reset_global_controls</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Resets the global controls to their default values.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">set_global_controls</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Sets the values for the global minimum and maximum size, and the growth rate.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">set_prox_gap_tolerance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Sets the tolerance relative to minimum size to take gaps into account. Gaps whose thickness is less than the global minimum size multiplied by this factor will not be regarded as a proximity gap.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">set_scaling_filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Specifies the scale factor, and minimum and maximum size values to filter the size output from the size field.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">triangulate_quad_faces</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Identifies the zones comprising non-triangular elements and uses a triangulated copy of these zones for computing the size functions.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">use_cad_imported_curvature</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables curvature data from the nodes of the CAD facets.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">stitch_all_face_zones</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Connects (stitches) all the face zones along the free edges.   After the stitch operation, remesh is called automatically. To disable the post-remesh operation, use the text command:  /boundary/remesh/controls/intersect/remesh-post-intersection?
+no.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">stitch_face_zones</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Connects two surfaces along their free edges.   After the stitch operation, remesh is called automatically. To disable the post-remesh operation, use the text command:  /boundary/remesh/controls/intersect/remesh-post-intersection?
+no.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">stitch_with_preserve_boundary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Connects (stitches) a zone to another which is connected to an existing volume mesh, while preserving the boundary of the zones connected to the volume mesh. Specify a list of boundary zones to be preserved, a list of the boundary zones to be connected to each of these zones, and the tolerance value.   After the stitch operation, remesh is called automatically. To disable the post-remesh operation, use the text command:  /boundary/remesh/controls/intersect/remesh-post-intersection?
+no  This command will not work for overlapping or partially overlapping face zones.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">triangulate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Triangulates quad zones.</p>
+</dd></dl>
+
+</dd></dl>
+
+<div class="toctree-wrapper compound">
+</div>
+</section>
+
+
+                </article>
+              
+              
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="tocsection sourcelink">
+    <a href="../../../../../_sources/api/meshing/tui/boundary/remesh/index.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+  <p class="copyright">
+    
+      © Copyright (c) 2023 ANSYS, Inc. All rights reserved.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.13.3.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

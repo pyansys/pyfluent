@@ -1,0 +1,1860 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>initialize &#8212; PyFluent</title>
+    
+<script>
+  document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+  document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
+</script>
+
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../../_static/styles/theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+<link href="../../../../../_static/styles/pydata-sphinx-theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+
+
+  <link rel="stylesheet"
+    href="../../../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/css/ansys_sphinx_theme.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sg_gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sg_gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sg_gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sg_gallery-rendered-html.css" />
+
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
+
+    
+        <link href="../../../../../_static/css/breadcrumbs.css" rel="stylesheet">
+    
+    <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
+    <script src="../../../../../_static/jquery.js"></script>
+    <script src="../../../../../_static/underscore.js"></script>
+    <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../../../_static/doctools.js"></script>
+    <script src="../../../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../../../_static/thebelab-helper.js"></script>
+    <script src="../../../../../_static/clipboard.min.js"></script>
+    <script src="../../../../../_static/copybutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <link rel="shortcut icon" href="../../../../../_static/ansys-favicon.png"/>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <link rel="next" title="set_fmg_options" href="set_fmg_options/index.html" />
+    <link rel="prev" title="report_files" href="../monitors/report_files/index.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="docsearch:language" content="en">
+  <link rel="canonical" href="https://fluent.docs.pyansys.com/version/stable/api/solver/tui/solution/initialize/index.html" />
+  </head>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+    <div class="bd-header-announcement container-fluid" id="banner">
+      
+
+    </div>
+
+    
+    
+    <nav class="bd-header navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="bd-header__inner container-xl">
+
+  <div id="navbar-start">
+    
+    
+  
+
+
+<a class="navbar-brand logo" href="../../../../../index.html">
+  
+  
+  
+  
+    <img src="../../../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-light" alt="Logo image">
+    <img src="../../../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="fas fa-bars"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../../../getting_started/index.html">
+  Getting started
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../../../user_guide/index.html">
+  User guide
+ </a>
+</li>
+
+<li class="toctree-l1 current active nav-item">
+ <a class="reference internal nav-link" href="../../../../index.html">
+  API reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../../../examples/index.html">
+  Examples
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../../../contributing.html">
+  Contribute
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <div class="dropdown" id="version_switcher">
+    <button type="button" class="btn btn-sm navbar-btn dropdown-toggle" id="version_switcher_button" data-toggle="dropdown">
+        0.13  <!-- this text may get changed later by javascript -->
+        <span class="caret"></span>
+    </button>
+    <div id="version_switcher_menu" class="dropdown-menu list-group-flush py-0" aria-labelledby="version_switcher_button">
+    <!-- dropdown will be populated by javascript on page load -->
+    </div>
+</div>
+
+<!-- NOTE: this JS must live here (not in our global JS file) because it relies
+     on being processed by Jinja before it is run (specifically for replacing
+     variables api/solver/tui/solution/initialize/index and {'json_url': 'https://fluent.docs.pyansys.com/versions.json', 'version_match': '0.13'}.
+-->
+
+<script type="text/javascript">
+// Check if corresponding page path exists in other version of docs
+// and, if so, go there instead of the homepage of the other docs version
+function checkPageExistsAndRedirect(event) {
+    const currentFilePath = "api/solver/tui/solution/initialize/index.html",
+          tryUrl = event.target.getAttribute("href");
+    let otherDocsHomepage = tryUrl.replace(currentFilePath, "");
+    $.ajax({
+        type: 'HEAD',
+        url: tryUrl,
+        // if the page exists, go there
+        success: function() {
+            location.href = tryUrl;
+        }
+    }).fail(function() {
+        location.href = otherDocsHomepage;
+    });
+    // this prevents the browser from following the href of the clicked node
+    // (which is fine because this function takes care of redirecting)
+    return false;
+}
+
+// Populate the version switcher from the JSON config file
+(function () {
+    $.getJSON("https://fluent.docs.pyansys.com/versions.json", function(data, textStatus, jqXHR) {
+        const currentFilePath = "api/solver/tui/solution/initialize/index.html";
+        let btn = document.getElementById("version_switcher_button");
+        // Set empty strings by default so that these attributes exist and can be used in CSS selectors
+        btn.dataset["activeVersionName"] = "";
+        btn.dataset["activeVersion"] = "";
+        // create links to the corresponding page in the other docs versions
+        $.each(data, function(index, entry) {
+            // if no custom name specified (e.g., "latest"), use version string
+            if (!("name" in entry)) {
+                entry.name = entry.version;
+            }
+            // create the node
+            const node = document.createElement("a");
+            node.setAttribute("class", "list-group-item list-group-item-action py-1");
+            node.textContent = `${entry.name}`;
+            node.setAttribute("href", `${entry.url}${currentFilePath}`);
+            // on click, AJAX calls will check if the linked page exists before
+            // trying to redirect, and if not, will redirect to the homepage
+            // for that version of the docs.
+            node.onclick = checkPageExistsAndRedirect;
+            // Add dataset values for the version and name in case people want
+            // to apply CSS styling based on this information.
+            node.dataset["versionName"] = entry.name;
+            node.dataset["version"] = entry.version;
+
+            $("#version_switcher_menu").append(node);
+            // replace dropdown button text with the preferred display name of
+            // this version, rather than using sphinx's 0.13.1 variable.
+            // also highlight the dropdown entry for the currently-viewed
+            // version's entry
+            if (entry.version == "0.13") {
+                node.classList.add("active");
+                btn.innerText = btn.dataset["activeVersionName"] = entry.name;
+                btn.dataset["activeVersion"] = entry.version;
+            }
+        });
+    });
+})();
+</script>
+      </div>
+      
+      <div class="navbar-end-item">
+        <span id="theme-switch" class="btn btn-sm btn-outline-primary navbar-btn rounded-circle">
+    <a class="theme-switch" data-mode="light"><i class="fas fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="far fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fas fa-adjust"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/pyansys/pyfluent" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/pyansys/pyfluent/discussions" rel="noopener" target="_blank" title="Support"><span><i class="fa fa-comment fa-fw"></i></span>
+            <label class="sr-only">Support</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+     
+<div id="announcement_msg"></div>
+<script>
+  fetch("announcement.html")
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error: ${response.status}`);
+      }
+      return response.text();
+    })
+    .then(text => document.getElementById("announcement_msg").innerHTML = text)
+    .catch((error) => console.error(`Fetch problem: ${error.message}`));
+</script>
+
+    
+        <div class="container-xl">
+    <div class="row">
+        <div class="col-12 col-md-3" id="breadcrumbs-spacer"></div>
+        <div class="col-12 col-md-11 col-xl-9" id="breadcrumbs">
+          
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+    
+        <li class="nav-item nav-item-additional-breadcrumb"><a href="https://docs.pyansys.com/">PyAnsys</a> » </li>
+    
+    
+        <li class="nav-item nav-item-0"><a href="../../../../../index.html">PyFluent</a> » </li>
+    
+
+          <li class="nav-item nav-item-1"><a href="../../../../index.html" >API reference</a> » </li>
+          <li class="nav-item nav-item-2"><a href="../../../index.html" >Solver</a> » </li>
+          <li class="nav-item nav-item-3"><a href="../../../tuicommands.html" >Solver TUI commands</a> » </li>
+          <li class="nav-item nav-item-4"><a href="../../index.html" >solver.tui</a> » </li>
+          <li class="nav-item nav-item-5"><a href="../index.html" accesskey="U">solution</a> » </li>
+        <li class="nav-item nav-item-this"><a href="">initialize</a></li> 
+      </ul>
+    </div>
+        </div>
+  </div>
+</div>
+    
+
+
+    <div class="bd-container container-xl">
+      <div class="bd-container__inner row">
+          
+
+<!-- Only show if we have sidebars configured, else just a small margin  -->
+<div class="bd-sidebar-primary col-12 col-md-3 bd-sidebar">
+  <div class="sidebar-start-items"><form class="bd-search d-flex align-items-center" action="../../../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../general/index.html">
+   General
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../meshing/index.html">
+   Meshing
+  </a>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../../../index.html">
+   Solver
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../settings.html">
+     Solver settings objects
+    </a>
+   </li>
+   <li class="toctree-l2 current active has-children">
+    <a class="reference internal" href="../../../tuicommands.html">
+     Solver TUI commands
+    </a>
+    <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+    <label for="toctree-checkbox-2">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul class="current">
+     <li class="toctree-l3 current active has-children">
+      <a class="reference internal" href="../../index.html">
+       solver.tui
+      </a>
+      <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+      <label for="toctree-checkbox-3">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul class="current">
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../icing/index.html">
+         icing
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../views/index.html">
+         views
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../setup/index.html">
+         setup
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../report/index.html">
+         report
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../preferences/index.html">
+         preferences
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../results/index.html">
+         results
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../mesh/index.html">
+         mesh
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../display/index.html">
+         display
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../file/index.html">
+         file
+        </a>
+       </li>
+       <li class="toctree-l4 current active has-children">
+        <a class="reference internal" href="../index.html">
+         solution
+        </a>
+        <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+        <label for="toctree-checkbox-4">
+         <i class="fas fa-chevron-down">
+         </i>
+        </label>
+        <ul class="current">
+         <li class="toctree-l5">
+          <a class="reference internal" href="../controls/index.html">
+           controls
+          </a>
+         </li>
+         <li class="toctree-l5">
+          <a class="reference internal" href="../run_calculation/index.html">
+           run_calculation
+          </a>
+         </li>
+         <li class="toctree-l5">
+          <a class="reference internal" href="../methods/index.html">
+           methods
+          </a>
+         </li>
+         <li class="toctree-l5">
+          <a class="reference internal" href="../report_definitions/index.html">
+           report_definitions
+          </a>
+         </li>
+         <li class="toctree-l5">
+          <a class="reference internal" href="../calculation_activities/index.html">
+           calculation_activities
+          </a>
+         </li>
+         <li class="toctree-l5">
+          <a class="reference internal" href="../cell_registers/index.html">
+           cell_registers
+          </a>
+         </li>
+         <li class="toctree-l5">
+          <a class="reference internal" href="../monitors/index.html">
+           monitors
+          </a>
+         </li>
+         <li class="toctree-l5 current active has-children">
+          <a class="current reference internal" href="#">
+           initialize
+          </a>
+          <input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+          <label for="toctree-checkbox-5">
+           <i class="fas fa-chevron-down">
+           </i>
+          </label>
+          <ul>
+           <li class="toctree-l6">
+            <a class="reference internal" href="set_fmg_options/index.html">
+             set_fmg_options
+            </a>
+           </li>
+           <li class="toctree-l6">
+            <a class="reference internal" href="mp_localized_turb_init/index.html">
+             mp_localized_turb_init
+            </a>
+           </li>
+           <li class="toctree-l6">
+            <a class="reference internal" href="vof_patch_smooth_options/index.html">
+             vof_patch_smooth_options
+            </a>
+           </li>
+           <li class="toctree-l6">
+            <a class="reference internal" href="compute_defaults/index.html">
+             compute_defaults
+            </a>
+           </li>
+          </ul>
+         </li>
+         <li class="toctree-l5">
+          <a class="reference internal" href="../expert/index.html">
+           expert
+          </a>
+         </li>
+        </ul>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../adjoint/index.html">
+         adjoint
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../surface/index.html">
+         surface
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../parameters__and__customization/index.html">
+         parameters__and__customization
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../turbo_workflow/index.html">
+         turbo_workflow
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../parametric_study/index.html">
+         parametric_study
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../parallel/index.html">
+         parallel
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../solve/index.html">
+         solve
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../define/index.html">
+         define
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../turbo_post/index.html">
+         turbo_post
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../simulation_reports/index.html">
+         simulation_reports
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../server/index.html">
+         server
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../plot/index.html">
+         plot
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../datamodel/index.html">
+     solver.datamodel
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../schemeeval.html">
+     Scheme code evaluation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../fielddata.html">
+     Field data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../fieldinfo.html">
+     Field info
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../events.html">
+     EventsManager
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../monitors.html">
+     MonitorsManager
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../reduction.html">
+     Reduction
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+  </div>
+</nav>
+  </div>
+  <div class="sidebar-end-items">
+  </div>
+</div>
+
+
+          
+
+
+<div class="bd-sidebar-secondary d-none d-xl-block col-xl-2 bd-toc">
+  
+    
+    <div class="toc-item">
+      
+<div class="tocsection onthispage mt-5 pt-1 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     initialize
+    </span>
+   </code>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       initialize.compute_defaults
+      </span>
+     </code>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.all_zones">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         initialize.compute_defaults.all_zones()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.axis">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         initialize.compute_defaults.axis()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.degassing">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         initialize.compute_defaults.degassing()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.dummy_entry">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         initialize.compute_defaults.dummy_entry()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.exhaust_fan">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         initialize.compute_defaults.exhaust_fan()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.fan">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         initialize.compute_defaults.fan()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.fluid">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         initialize.compute_defaults.fluid()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.geometry">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         initialize.compute_defaults.geometry()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.inlet_vent">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         initialize.compute_defaults.inlet_vent()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.intake_fan">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         initialize.compute_defaults.intake_fan()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.interface">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         initialize.compute_defaults.interface()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.interior">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         initialize.compute_defaults.interior()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.mass_flow_inlet">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         initialize.compute_defaults.mass_flow_inlet()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.mass_flow_outlet">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         initialize.compute_defaults.mass_flow_outlet()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.network">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         initialize.compute_defaults.network()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.network_end">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         initialize.compute_defaults.network_end()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.outflow">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         initialize.compute_defaults.outflow()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.outlet_vent">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         initialize.compute_defaults.outlet_vent()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.overset">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         initialize.compute_defaults.overset()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.periodic">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         initialize.compute_defaults.periodic()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.porous_jump">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         initialize.compute_defaults.porous_jump()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.pressure_far_field">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         initialize.compute_defaults.pressure_far_field()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.pressure_inlet">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         initialize.compute_defaults.pressure_inlet()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.pressure_outlet">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         initialize.compute_defaults.pressure_outlet()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.radiator">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         initialize.compute_defaults.radiator()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.rans_les_interface">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         initialize.compute_defaults.rans_les_interface()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.recirculation_inlet">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         initialize.compute_defaults.recirculation_inlet()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.recirculation_outlet">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         initialize.compute_defaults.recirculation_outlet()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.shadow">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         initialize.compute_defaults.shadow()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.solid">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         initialize.compute_defaults.solid()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.symmetry">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         initialize.compute_defaults.symmetry()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.velocity_inlet">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         initialize.compute_defaults.velocity_inlet()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.wall">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         initialize.compute_defaults.wall()
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.dpm_reset">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       initialize.dpm_reset()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.fmg_initialization">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       initialize.fmg_initialization()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.hyb_initialization">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       initialize.hyb_initialization()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.init_acoustics_options">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       initialize.init_acoustics_options()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.init_flow_statistics">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       initialize.init_flow_statistics()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.init_turb_vel_fluctuations">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       initialize.init_turb_vel_fluctuations()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.initialize_flow">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       initialize.initialize_flow()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.levelset_auto_init">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       initialize.levelset_auto_init()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.list_defaults">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       initialize.list_defaults()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.lwf_initialization">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       initialize.lwf_initialization()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.mp_localized_turb_init">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       initialize.mp_localized_turb_init
+      </span>
+     </code>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.mp_localized_turb_init.enable">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         initialize.mp_localized_turb_init.enable()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.mp_localized_turb_init.turb_init_parameters">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         initialize.mp_localized_turb_init.turb_init_parameters()
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.open_channel_auto_init">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       initialize.open_channel_auto_init()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.patch">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       initialize.patch()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.reference_frame">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       initialize.reference_frame()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.repair_wall_distance">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       initialize.repair_wall_distance()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.set_defaults">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       initialize.set_defaults()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.set_fmg_initialization">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       initialize.set_fmg_initialization()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.set_fmg_options">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       initialize.set_fmg_options
+      </span>
+     </code>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.set_fmg_options.set_turbulent_viscosity_ratio">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         initialize.set_fmg_options.set_turbulent_viscosity_ratio()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.set_fmg_options.species_reactions">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         initialize.set_fmg_options.species_reactions()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.set_fmg_options.viscous_terms">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         initialize.set_fmg_options.viscous_terms()
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.set_hyb_initialization">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       initialize.set_hyb_initialization()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.show_iterations_sampled">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       initialize.show_iterations_sampled()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.show_time_sampled">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       initialize.show_time_sampled()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.vof_patch_smooth_options">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       initialize.vof_patch_smooth_options
+      </span>
+     </code>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.vof_patch_smooth_options.execute_smoothing">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         initialize.vof_patch_smooth_options.execute_smoothing()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.vof_patch_smooth_options.set_options">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         initialize.vof_patch_smooth_options.set_options()
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+</nav>
+    </div>
+    
+    <div class="toc-item">
+      
+    </div>
+    
+  
+</div>
+
+
+          
+          
+          <div class="bd-content col-12 col-md-9 col-xl-7">
+              
+              <article class="bd-article" role="main">
+                
+  <section id="initialize">
+<span id="ref-solver-tui-solution-initialize"></span><h1>initialize<a class="headerlink" href="#initialize" title="Permalink to this heading">#</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.solver.tui_231.main_menu.solution.</span></span><span class="sig-name descname"><span class="pre">initialize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">service</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Enter the flow initialization menu.</p>
+<p><strong>Classes:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults" title="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute_defaults</span></code></a>(path, service)</p></td>
+<td><p>Enter the compute defaults menu.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.mp_localized_turb_init" title="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.mp_localized_turb_init"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mp_localized_turb_init</span></code></a>(path, service)</p></td>
+<td><p>Localized initialization of turbulent flow variables for VOF/Mixture multiphase flow models.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.set_fmg_options" title="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.set_fmg_options"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_fmg_options</span></code></a>(path, service)</p></td>
+<td><p>Enter the full-multigrid option menu.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.vof_patch_smooth_options" title="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.vof_patch_smooth_options"><code class="xref py py-obj docutils literal notranslate"><span class="pre">vof_patch_smooth_options</span></code></a>(path, service)</p></td>
+<td><p>Enter the vof patch/smooth options menu.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.dpm_reset" title="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.dpm_reset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dpm_reset</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Reset discrete phase source terms to zero.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.fmg_initialization" title="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.fmg_initialization"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fmg_initialization</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Initialize using the full-multigrid initialization (FMG).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.hyb_initialization" title="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.hyb_initialization"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hyb_initialization</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Initialize using the hybrid initialization method.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.init_acoustics_options" title="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.init_acoustics_options"><code class="xref py py-obj docutils literal notranslate"><span class="pre">init_acoustics_options</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Specify number of timesteps for ramping of sources and initialize acoustics model variables.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.init_flow_statistics" title="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.init_flow_statistics"><code class="xref py py-obj docutils literal notranslate"><span class="pre">init_flow_statistics</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Initialize statistics.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.init_turb_vel_fluctuations" title="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.init_turb_vel_fluctuations"><code class="xref py py-obj docutils literal notranslate"><span class="pre">init_turb_vel_fluctuations</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Initialize turbulent velocity fluctuations.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.initialize_flow" title="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.initialize_flow"><code class="xref py py-obj docutils literal notranslate"><span class="pre">initialize_flow</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Initialize the flow field with the current default values.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.levelset_auto_init" title="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.levelset_auto_init"><code class="xref py py-obj docutils literal notranslate"><span class="pre">levelset_auto_init</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Levelset function automatic initialization.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.list_defaults" title="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.list_defaults"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list_defaults</span></code></a>(*args, **kwargs)</p></td>
+<td><p>List default values.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.lwf_initialization" title="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.lwf_initialization"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lwf_initialization</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Delete wall film particles and initialize wall film variables to zero.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.open_channel_auto_init" title="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.open_channel_auto_init"><code class="xref py py-obj docutils literal notranslate"><span class="pre">open_channel_auto_init</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Open channel automatic initialization.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.patch" title="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.patch"><code class="xref py py-obj docutils literal notranslate"><span class="pre">patch</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Patch a value for a flow variable in the domain.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.reference_frame" title="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.reference_frame"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reference_frame</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Set reference frame absolute or relative.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.repair_wall_distance" title="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.repair_wall_distance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">repair_wall_distance</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Correct wall distance at very high aspect ratio hexahedral/polyhedral cells.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.set_defaults" title="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.set_defaults"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_defaults</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enter the set defaults menu.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.set_fmg_initialization" title="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.set_fmg_initialization"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_fmg_initialization</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enter the set full-multigrid for initialization menu.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.set_hyb_initialization" title="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.set_hyb_initialization"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_hyb_initialization</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enter the settings for hybrid initialization method.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.show_iterations_sampled" title="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.show_iterations_sampled"><code class="xref py py-obj docutils literal notranslate"><span class="pre">show_iterations_sampled</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Display the amount of simulated iterations covered by the data sampled for steady statistics.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.show_time_sampled" title="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.show_time_sampled"><code class="xref py py-obj docutils literal notranslate"><span class="pre">show_time_sampled</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Display the amount of simulated time covered by the data sampled for unsteady statistics.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">compute_defaults</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">service</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Enter the compute defaults menu.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.all_zones" title="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.all_zones"><code class="xref py py-obj docutils literal notranslate"><span class="pre">all_zones</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Initialize the flow field with the default values.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.axis" title="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.axis"><code class="xref py py-obj docutils literal notranslate"><span class="pre">axis</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Compute flow-initialization defaults from a zone of this type.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.degassing" title="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.degassing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">degassing</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Compute flow-initialization defaults from a zone of this type.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.dummy_entry" title="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.dummy_entry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dummy_entry</span></code></a>(*args, **kwargs)</p></td>
+<td><p><p>.</p>
+</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.exhaust_fan" title="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.exhaust_fan"><code class="xref py py-obj docutils literal notranslate"><span class="pre">exhaust_fan</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Compute flow-initialization defaults from a zone of this type.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.fan" title="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.fan"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fan</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Compute flow-initialization defaults from a zone of this type.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.fluid" title="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.fluid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fluid</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Compute flow-initialization defaults from a zone of this type.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.geometry" title="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.geometry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geometry</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Compute flow-initialization defaults from a zone of this type.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.inlet_vent" title="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.inlet_vent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">inlet_vent</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Compute flow-initialization defaults from a zone of this type.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.intake_fan" title="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.intake_fan"><code class="xref py py-obj docutils literal notranslate"><span class="pre">intake_fan</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Compute flow-initialization defaults from a zone of this type.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.interface" title="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.interface"><code class="xref py py-obj docutils literal notranslate"><span class="pre">interface</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Compute flow-initialization defaults from a zone of this type.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.interior" title="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.interior"><code class="xref py py-obj docutils literal notranslate"><span class="pre">interior</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Compute flow-initialization defaults from a zone of this type.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.mass_flow_inlet" title="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.mass_flow_inlet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mass_flow_inlet</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Compute flow-initialization defaults from a zone of this type.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.mass_flow_outlet" title="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.mass_flow_outlet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mass_flow_outlet</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Compute flow-initialization defaults from a zone of this type.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.network" title="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.network"><code class="xref py py-obj docutils literal notranslate"><span class="pre">network</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Compute flow-initialization defaults from a zone of this type.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.network_end" title="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.network_end"><code class="xref py py-obj docutils literal notranslate"><span class="pre">network_end</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Compute flow-initialization defaults from a zone of this type.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.outflow" title="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.outflow"><code class="xref py py-obj docutils literal notranslate"><span class="pre">outflow</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Compute flow-initialization defaults from a zone of this type.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.outlet_vent" title="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.outlet_vent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">outlet_vent</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Compute flow-initialization defaults from a zone of this type.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.overset" title="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.overset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">overset</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Compute flow-initialization defaults from a zone of this type.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.periodic" title="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.periodic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">periodic</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Compute flow-initialization defaults from a zone of this type.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.porous_jump" title="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.porous_jump"><code class="xref py py-obj docutils literal notranslate"><span class="pre">porous_jump</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Compute flow-initialization defaults from a zone of this type.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.pressure_far_field" title="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.pressure_far_field"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pressure_far_field</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Compute flow-initialization defaults from a zone of this type.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.pressure_inlet" title="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.pressure_inlet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pressure_inlet</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Compute flow-initialization defaults from a zone of this type.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.pressure_outlet" title="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.pressure_outlet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pressure_outlet</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Compute flow-initialization defaults from a zone of this type.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.radiator" title="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.radiator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">radiator</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Compute flow-initialization defaults from a zone of this type.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.rans_les_interface" title="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.rans_les_interface"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rans_les_interface</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Compute flow-initialization defaults from a zone of this type.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.recirculation_inlet" title="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.recirculation_inlet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">recirculation_inlet</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Compute flow-initialization defaults from a zone of this type.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.recirculation_outlet" title="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.recirculation_outlet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">recirculation_outlet</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Compute flow-initialization defaults from a zone of this type.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.shadow" title="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.shadow"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shadow</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Compute flow-initialization defaults from a zone of this type.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.solid" title="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.solid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">solid</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Compute flow-initialization defaults from a zone of this type.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.symmetry" title="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.symmetry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">symmetry</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Compute flow-initialization defaults from a zone of this type.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.velocity_inlet" title="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.velocity_inlet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">velocity_inlet</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Compute flow-initialization defaults from a zone of this type.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.wall" title="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.wall"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wall</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Compute flow-initialization defaults from a zone of this type.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.all_zones">
+<span class="sig-name descname"><span class="pre">all_zones</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.all_zones" title="Permalink to this definition">#</a></dt>
+<dd><p>Initialize the flow field with the default values.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.axis">
+<span class="sig-name descname"><span class="pre">axis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.axis" title="Permalink to this definition">#</a></dt>
+<dd><p>Compute flow-initialization defaults from a zone of this type.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.degassing">
+<span class="sig-name descname"><span class="pre">degassing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.degassing" title="Permalink to this definition">#</a></dt>
+<dd><p>Compute flow-initialization defaults from a zone of this type.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.dummy_entry">
+<span class="sig-name descname"><span class="pre">dummy_entry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.dummy_entry" title="Permalink to this definition">#</a></dt>
+<dd><p>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.exhaust_fan">
+<span class="sig-name descname"><span class="pre">exhaust_fan</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.exhaust_fan" title="Permalink to this definition">#</a></dt>
+<dd><p>Compute flow-initialization defaults from a zone of this type.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.fan">
+<span class="sig-name descname"><span class="pre">fan</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.fan" title="Permalink to this definition">#</a></dt>
+<dd><p>Compute flow-initialization defaults from a zone of this type.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.fluid">
+<span class="sig-name descname"><span class="pre">fluid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.fluid" title="Permalink to this definition">#</a></dt>
+<dd><p>Compute flow-initialization defaults from a zone of this type.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.geometry">
+<span class="sig-name descname"><span class="pre">geometry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.geometry" title="Permalink to this definition">#</a></dt>
+<dd><p>Compute flow-initialization defaults from a zone of this type.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.inlet_vent">
+<span class="sig-name descname"><span class="pre">inlet_vent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.inlet_vent" title="Permalink to this definition">#</a></dt>
+<dd><p>Compute flow-initialization defaults from a zone of this type.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.intake_fan">
+<span class="sig-name descname"><span class="pre">intake_fan</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.intake_fan" title="Permalink to this definition">#</a></dt>
+<dd><p>Compute flow-initialization defaults from a zone of this type.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.interface">
+<span class="sig-name descname"><span class="pre">interface</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.interface" title="Permalink to this definition">#</a></dt>
+<dd><p>Compute flow-initialization defaults from a zone of this type.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.interior">
+<span class="sig-name descname"><span class="pre">interior</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.interior" title="Permalink to this definition">#</a></dt>
+<dd><p>Compute flow-initialization defaults from a zone of this type.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.mass_flow_inlet">
+<span class="sig-name descname"><span class="pre">mass_flow_inlet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.mass_flow_inlet" title="Permalink to this definition">#</a></dt>
+<dd><p>Compute flow-initialization defaults from a zone of this type.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.mass_flow_outlet">
+<span class="sig-name descname"><span class="pre">mass_flow_outlet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.mass_flow_outlet" title="Permalink to this definition">#</a></dt>
+<dd><p>Compute flow-initialization defaults from a zone of this type.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.network">
+<span class="sig-name descname"><span class="pre">network</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.network" title="Permalink to this definition">#</a></dt>
+<dd><p>Compute flow-initialization defaults from a zone of this type.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.network_end">
+<span class="sig-name descname"><span class="pre">network_end</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.network_end" title="Permalink to this definition">#</a></dt>
+<dd><p>Compute flow-initialization defaults from a zone of this type.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.outflow">
+<span class="sig-name descname"><span class="pre">outflow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.outflow" title="Permalink to this definition">#</a></dt>
+<dd><p>Compute flow-initialization defaults from a zone of this type.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.outlet_vent">
+<span class="sig-name descname"><span class="pre">outlet_vent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.outlet_vent" title="Permalink to this definition">#</a></dt>
+<dd><p>Compute flow-initialization defaults from a zone of this type.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.overset">
+<span class="sig-name descname"><span class="pre">overset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.overset" title="Permalink to this definition">#</a></dt>
+<dd><p>Compute flow-initialization defaults from a zone of this type.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.periodic">
+<span class="sig-name descname"><span class="pre">periodic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.periodic" title="Permalink to this definition">#</a></dt>
+<dd><p>Compute flow-initialization defaults from a zone of this type.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.porous_jump">
+<span class="sig-name descname"><span class="pre">porous_jump</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.porous_jump" title="Permalink to this definition">#</a></dt>
+<dd><p>Compute flow-initialization defaults from a zone of this type.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.pressure_far_field">
+<span class="sig-name descname"><span class="pre">pressure_far_field</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.pressure_far_field" title="Permalink to this definition">#</a></dt>
+<dd><p>Compute flow-initialization defaults from a zone of this type.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.pressure_inlet">
+<span class="sig-name descname"><span class="pre">pressure_inlet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.pressure_inlet" title="Permalink to this definition">#</a></dt>
+<dd><p>Compute flow-initialization defaults from a zone of this type.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.pressure_outlet">
+<span class="sig-name descname"><span class="pre">pressure_outlet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.pressure_outlet" title="Permalink to this definition">#</a></dt>
+<dd><p>Compute flow-initialization defaults from a zone of this type.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.radiator">
+<span class="sig-name descname"><span class="pre">radiator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.radiator" title="Permalink to this definition">#</a></dt>
+<dd><p>Compute flow-initialization defaults from a zone of this type.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.rans_les_interface">
+<span class="sig-name descname"><span class="pre">rans_les_interface</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.rans_les_interface" title="Permalink to this definition">#</a></dt>
+<dd><p>Compute flow-initialization defaults from a zone of this type.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.recirculation_inlet">
+<span class="sig-name descname"><span class="pre">recirculation_inlet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.recirculation_inlet" title="Permalink to this definition">#</a></dt>
+<dd><p>Compute flow-initialization defaults from a zone of this type.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.recirculation_outlet">
+<span class="sig-name descname"><span class="pre">recirculation_outlet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.recirculation_outlet" title="Permalink to this definition">#</a></dt>
+<dd><p>Compute flow-initialization defaults from a zone of this type.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.shadow">
+<span class="sig-name descname"><span class="pre">shadow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.shadow" title="Permalink to this definition">#</a></dt>
+<dd><p>Compute flow-initialization defaults from a zone of this type.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.solid">
+<span class="sig-name descname"><span class="pre">solid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.solid" title="Permalink to this definition">#</a></dt>
+<dd><p>Compute flow-initialization defaults from a zone of this type.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.symmetry">
+<span class="sig-name descname"><span class="pre">symmetry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.symmetry" title="Permalink to this definition">#</a></dt>
+<dd><p>Compute flow-initialization defaults from a zone of this type.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.velocity_inlet">
+<span class="sig-name descname"><span class="pre">velocity_inlet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.velocity_inlet" title="Permalink to this definition">#</a></dt>
+<dd><p>Compute flow-initialization defaults from a zone of this type.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.wall">
+<span class="sig-name descname"><span class="pre">wall</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.compute_defaults.wall" title="Permalink to this definition">#</a></dt>
+<dd><p>Compute flow-initialization defaults from a zone of this type.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.dpm_reset">
+<span class="sig-name descname"><span class="pre">dpm_reset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.dpm_reset" title="Permalink to this definition">#</a></dt>
+<dd><p>Reset discrete phase source terms to zero.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.fmg_initialization">
+<span class="sig-name descname"><span class="pre">fmg_initialization</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.fmg_initialization" title="Permalink to this definition">#</a></dt>
+<dd><p>Initialize using the full-multigrid initialization (FMG).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.hyb_initialization">
+<span class="sig-name descname"><span class="pre">hyb_initialization</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.hyb_initialization" title="Permalink to this definition">#</a></dt>
+<dd><p>Initialize using the hybrid initialization method.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.init_acoustics_options">
+<span class="sig-name descname"><span class="pre">init_acoustics_options</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.init_acoustics_options" title="Permalink to this definition">#</a></dt>
+<dd><p>Specify number of timesteps for ramping of sources
+and initialize acoustics model variables.
+During ramping the sound sources are multiplied by a factor smoothly growing from 0 to 1.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.init_flow_statistics">
+<span class="sig-name descname"><span class="pre">init_flow_statistics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.init_flow_statistics" title="Permalink to this definition">#</a></dt>
+<dd><p>Initialize statistics.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.init_turb_vel_fluctuations">
+<span class="sig-name descname"><span class="pre">init_turb_vel_fluctuations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.init_turb_vel_fluctuations" title="Permalink to this definition">#</a></dt>
+<dd><p>Initialize turbulent velocity fluctuations.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.initialize_flow">
+<span class="sig-name descname"><span class="pre">initialize_flow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.initialize_flow" title="Permalink to this definition">#</a></dt>
+<dd><p>Initialize the flow field with the current default values.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.levelset_auto_init">
+<span class="sig-name descname"><span class="pre">levelset_auto_init</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.levelset_auto_init" title="Permalink to this definition">#</a></dt>
+<dd><p>Levelset function automatic initialization.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.list_defaults">
+<span class="sig-name descname"><span class="pre">list_defaults</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.list_defaults" title="Permalink to this definition">#</a></dt>
+<dd><p>List default values.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.lwf_initialization">
+<span class="sig-name descname"><span class="pre">lwf_initialization</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.lwf_initialization" title="Permalink to this definition">#</a></dt>
+<dd><p>Delete wall film particles and initialize wall film variables to zero.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.mp_localized_turb_init">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">mp_localized_turb_init</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">service</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.mp_localized_turb_init" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Localized initialization of turbulent flow variables for VOF/Mixture multiphase flow models.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.mp_localized_turb_init.enable" title="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.mp_localized_turb_init.enable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">enable</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Localized initialization of turbulent flow variables for VOF/Mixture multiphase flow models.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.mp_localized_turb_init.turb_init_parameters" title="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.mp_localized_turb_init.turb_init_parameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">turb_init_parameters</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Turbulent flow parameters for localized initialization.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.mp_localized_turb_init.enable">
+<span class="sig-name descname"><span class="pre">enable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.mp_localized_turb_init.enable" title="Permalink to this definition">#</a></dt>
+<dd><p>Localized initialization of turbulent flow variables for VOF/Mixture multiphase flow models.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.mp_localized_turb_init.turb_init_parameters">
+<span class="sig-name descname"><span class="pre">turb_init_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.mp_localized_turb_init.turb_init_parameters" title="Permalink to this definition">#</a></dt>
+<dd><p>Turbulent flow parameters for localized initialization.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.open_channel_auto_init">
+<span class="sig-name descname"><span class="pre">open_channel_auto_init</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.open_channel_auto_init" title="Permalink to this definition">#</a></dt>
+<dd><p>Open channel automatic initialization.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.patch">
+<span class="sig-name descname"><span class="pre">patch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.patch" title="Permalink to this definition">#</a></dt>
+<dd><p>Patch a value for a flow variable in the domain.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.reference_frame">
+<span class="sig-name descname"><span class="pre">reference_frame</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.reference_frame" title="Permalink to this definition">#</a></dt>
+<dd><p>Set reference frame absolute or relative.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.repair_wall_distance">
+<span class="sig-name descname"><span class="pre">repair_wall_distance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.repair_wall_distance" title="Permalink to this definition">#</a></dt>
+<dd><p>Correct wall distance at very high aspect ratio hexahedral/polyhedral cells.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.set_defaults">
+<span class="sig-name descname"><span class="pre">set_defaults</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.set_defaults" title="Permalink to this definition">#</a></dt>
+<dd><p>Enter the set defaults menu.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.set_fmg_initialization">
+<span class="sig-name descname"><span class="pre">set_fmg_initialization</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.set_fmg_initialization" title="Permalink to this definition">#</a></dt>
+<dd><p>Enter the set full-multigrid for initialization menu.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.set_fmg_options">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">set_fmg_options</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">service</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.set_fmg_options" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Enter the full-multigrid option menu.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.set_fmg_options.set_turbulent_viscosity_ratio" title="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.set_fmg_options.set_turbulent_viscosity_ratio"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_turbulent_viscosity_ratio</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Set turbulent viscosity ratio used during FMG initialization.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.set_fmg_options.species_reactions" title="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.set_fmg_options.species_reactions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">species_reactions</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enable/disable species volumetric reactions during FMG initialization.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.set_fmg_options.viscous_terms" title="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.set_fmg_options.viscous_terms"><code class="xref py py-obj docutils literal notranslate"><span class="pre">viscous_terms</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enable/disable viscous terms during FMG initialization.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.set_fmg_options.set_turbulent_viscosity_ratio">
+<span class="sig-name descname"><span class="pre">set_turbulent_viscosity_ratio</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.set_fmg_options.set_turbulent_viscosity_ratio" title="Permalink to this definition">#</a></dt>
+<dd><p>Set turbulent viscosity ratio used during FMG initialization.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.set_fmg_options.species_reactions">
+<span class="sig-name descname"><span class="pre">species_reactions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.set_fmg_options.species_reactions" title="Permalink to this definition">#</a></dt>
+<dd><p>Enable/disable species volumetric reactions during FMG initialization.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.set_fmg_options.viscous_terms">
+<span class="sig-name descname"><span class="pre">viscous_terms</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.set_fmg_options.viscous_terms" title="Permalink to this definition">#</a></dt>
+<dd><p>Enable/disable viscous terms during FMG initialization.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.set_hyb_initialization">
+<span class="sig-name descname"><span class="pre">set_hyb_initialization</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.set_hyb_initialization" title="Permalink to this definition">#</a></dt>
+<dd><p>Enter the settings for hybrid initialization method.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.show_iterations_sampled">
+<span class="sig-name descname"><span class="pre">show_iterations_sampled</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.show_iterations_sampled" title="Permalink to this definition">#</a></dt>
+<dd><p>Display the amount of simulated iterations covered by the data sampled for steady statistics.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.show_time_sampled">
+<span class="sig-name descname"><span class="pre">show_time_sampled</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.show_time_sampled" title="Permalink to this definition">#</a></dt>
+<dd><p>Display the amount of simulated time covered by the data sampled for unsteady statistics.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.vof_patch_smooth_options">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">vof_patch_smooth_options</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">service</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.vof_patch_smooth_options" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Enter the vof patch/smooth options menu.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.vof_patch_smooth_options.execute_smoothing" title="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.vof_patch_smooth_options.execute_smoothing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">execute_smoothing</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Execute volumetric smoothing for volume fraction.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.vof_patch_smooth_options.set_options" title="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.vof_patch_smooth_options.set_options"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_options</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Patch and smoothing options for volume fraction.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.vof_patch_smooth_options.execute_smoothing">
+<span class="sig-name descname"><span class="pre">execute_smoothing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.vof_patch_smooth_options.execute_smoothing" title="Permalink to this definition">#</a></dt>
+<dd><p>Execute volumetric smoothing for volume fraction.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.vof_patch_smooth_options.set_options">
+<span class="sig-name descname"><span class="pre">set_options</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.solution.initialize.vof_patch_smooth_options.set_options" title="Permalink to this definition">#</a></dt>
+<dd><p>Patch and smoothing options for volume fraction.</p>
+</dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+<div class="toctree-wrapper compound">
+</div>
+</section>
+
+
+              </article>
+              
+
+              
+          </div>
+          
+      </div>
+    </div>
+
+  
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695"></script>
+
+<footer class="bd-footer"><div class="bd-footer__inner container">
+  
+  <div class="footer-item">
+    <p class="copyright">
+    &copy; Copyright (c) 2023 ANSYS, Inc. All rights reserved.<br>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br>
+</p>
+  </div>
+  
+</div>
+</footer>
+  </body>
+</html>

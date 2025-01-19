@@ -1,0 +1,1414 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>overset_interfaces &#8212; PyFluent</title>
+    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/css/ansys_sphinx_theme.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sg_gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sg_gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sg_gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sg_gallery-rendered-html.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    
+        <link href="../../../../../_static/css/breadcrumbs.css" rel="stylesheet">
+    
+    <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
+    <script src="../../../../../_static/jquery.js"></script>
+    <script src="../../../../../_static/underscore.js"></script>
+    <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../../../_static/doctools.js"></script>
+    <script src="../../../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../../../_static/thebelab-helper.js"></script>
+    <script src="../../../../../_static/clipboard.min.js"></script>
+    <script src="../../../../../_static/copybutton.js"></script>
+    <script src="../../../../../_static/js/table.js"></script>
+    <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/solver/tui/define/overset_interfaces/index';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://fluent.docs.pyansys.com/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.14';
+        </script>
+    <link rel="shortcut icon" href="../../../../../_static/ansys-favicon.png"/>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <link rel="next" title="options" href="options/index.html" />
+    <link rel="prev" title="events" href="../dynamic_mesh/events/index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <link rel="canonical" href="https://fluent.docs.pyansys.com/version/stable/api/solver/tui/define/overset_interfaces/index.html" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container"><!-- Debugging: html_theme_options =  -->
+
+  <!-- If there is no MiliSearch enabled, use the PyData search -->
+<form class="bd-search d-flex align-items-center"
+      action="../../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  <div class="navbar-header-items__start">
+    
+      <div class="navbar-item">
+  
+
+<a class="navbar-brand logo" href="../../../../../index.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../getting_started/index.html">
+                        Getting started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../user_guide/index.html">
+                        User guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../../../../index.html">
+                        API reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../examples/index.html">
+                        Examples
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../contributing.html">
+                        Contribute
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+        </div>
+      
+      
+        <div class="navbar-item">
+<script>
+document.write(`
+  <div class="version-switcher__container dropdown">
+    <button type="button" class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle" data-bs-toggle="dropdown">
+      0.14  <!-- this text may get changed later by javascript -->
+      <span class="caret"></span>
+    </button>
+    <div class="version-switcher__menu dropdown-menu list-group-flush py-0">
+    <!-- dropdown will be populated by javascript on page load -->
+    </div>
+  </div>
+`);
+</script></div>
+      
+        <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent/discussions" title="Support" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa fa-comment fa-fw"></i></span>
+            <label class="sr-only">Support</label></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </nav>
+  
+
+    
+    <div id="announcement_msg"></div>
+<script>
+  fetch("announcement.html")
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error: ${response.status}`);
+      }
+      return response.text();
+    })
+    .then(text => document.getElementById("announcement_msg").innerHTML = text)
+    .catch((error) => console.error(`Fetch problem: ${error.message}`));
+</script>
+    
+
+    
+    <div class="container-xl">
+    <div class="row">
+        <div class="col-12 col-md-3" id="breadcrumbs-spacer"></div>
+        <div class="col-12 col-md-11 col-xl-9" id="breadcrumbs">
+          
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+    
+        <li class="nav-item nav-item-additional-breadcrumb"><a href="https://docs.pyansys.com/">PyAnsys</a> » </li>
+    
+    
+        <li class="nav-item nav-item-0"><a href="../../../../../index.html">PyFluent</a> » </li>
+    
+
+          <li class="nav-item nav-item-1"><a href="../../../../index.html" >API reference</a> » </li>
+          <li class="nav-item nav-item-2"><a href="../../../index.html" >Solver</a> » </li>
+          <li class="nav-item nav-item-3"><a href="../../../tuicommands.html" >Solver TUI commands</a> » </li>
+          <li class="nav-item nav-item-4"><a href="../../index.html" >solver.tui</a> » </li>
+          <li class="nav-item nav-item-5"><a href="../index.html" accesskey="U">define</a> » </li>
+        <li class="nav-item nav-item-this"><a href="">overset_interfaces</a></li> 
+      </ul>
+    </div>
+        </div>
+  </div>
+</div>
+    
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../getting_started/index.html">
+                        Getting started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../user_guide/index.html">
+                        User guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../../../../index.html">
+                        API reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../examples/index.html">
+                        Examples
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../contributing.html">
+                        Contribute
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<script>
+document.write(`
+  <div class="version-switcher__container dropdown">
+    <button type="button" class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle" data-bs-toggle="dropdown">
+      0.14  <!-- this text may get changed later by javascript -->
+      <span class="caret"></span>
+    </button>
+    <div class="version-switcher__menu dropdown-menu list-group-flush py-0">
+    <!-- dropdown will be populated by javascript on page load -->
+    </div>
+  </div>
+`);
+</script></div>
+        
+          <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent/discussions" title="Support" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa fa-comment fa-fw"></i></span>
+            <label class="sr-only">Support</label></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item"><nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../../general/index.html">General</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../meshing/index.html">Meshing</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../../../index.html">Solver</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../settings.html">Solver settings objects</a></li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="../../../tuicommands.html">Solver TUI commands</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l3 current active has-children"><a class="reference internal" href="../../index.html">solver.tui</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../../adjoint/index.html">adjoint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../surface/index.html">surface</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../simulation_reports/index.html">simulation_reports</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../parametric_study/index.html">parametric_study</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../report/index.html">report</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../turbo_post/index.html">turbo_post</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../parameters__and__customization/index.html">parameters__and__customization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../setup/index.html">setup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../server/index.html">server</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../views/index.html">views</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../preferences/index.html">preferences</a></li>
+<li class="toctree-l4 current active has-children"><a class="reference internal" href="../index.html">define</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l5"><a class="reference internal" href="../mixing_planes/index.html">mixing_planes</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../custom_field_functions/index.html">custom_field_functions</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../boundary_conditions/index.html">boundary_conditions</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../periodic_conditions/index.html">periodic_conditions</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../materials/index.html">materials</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../operating_conditions/index.html">operating_conditions</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../gap_model/index.html">gap_model</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../reference_frames/index.html">reference_frames</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../mesh_interfaces/index.html">mesh_interfaces</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../turbo_model/index.html">turbo_model</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../solution_strategy/index.html">solution_strategy</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../named_expressions/index.html">named_expressions</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../spectral/index.html">spectral</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../parameters/index.html">parameters</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../profiles/index.html">profiles</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../dynamic_mesh/index.html">dynamic_mesh</a></li>
+<li class="toctree-l5 current active has-children"><a class="current reference internal" href="#">overset_interfaces</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l6"><a class="reference internal" href="options/index.html">options</a></li>
+<li class="toctree-l6"><a class="reference internal" href="adapt/index.html">adapt</a></li>
+<li class="toctree-l6"><a class="reference internal" href="cut_control/index.html">cut_control</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../models/index.html">models</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../user_defined/index.html">user_defined</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../curvilinear_coordinate_system/index.html">curvilinear_coordinate_system</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../virtual_boundary/index.html">virtual_boundary</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../phases/index.html">phases</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../../plot/index.html">plot</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../parallel/index.html">parallel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../display/index.html">display</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../results/index.html">results</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../solve/index.html">solve</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../solution/index.html">solution</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../icing/index.html">icing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../mesh/index.html">mesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../turbo_workflow/index.html">turbo_workflow</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../file/index.html">file</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../datamodel/index.html">solver.datamodel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../schemeeval.html">Scheme code evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../fielddata.html">Field data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../fieldinfo.html">Field info</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../events.html">EventsManager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../monitors.html">MonitorsManager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reduction.html">Reduction</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article"></div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="overset-interfaces">
+<span id="ref-solver-tui-define-overset-interfaces"></span><h1>overset_interfaces<a class="headerlink" href="#overset-interfaces" title="Permalink to this heading">#</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.solver.tui_231.main_menu.define.</span></span><span class="sig-name descname"><span class="pre">overset_interfaces</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">service</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Enters the overset interfaces menu.</p>
+<p><strong>Classes:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.adapt" title="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.adapt"><code class="xref py py-obj docutils literal notranslate"><span class="pre">adapt</span></code></a>(path, service)</p></td>
+<td><p>Enters the overset adaption menu.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.cut_control" title="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.cut_control"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cut_control</span></code></a>(path, service)</p></td>
+<td><p>Enters the overset hole cut control menu.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.options" title="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.options"><code class="xref py py-obj docutils literal notranslate"><span class="pre">options</span></code></a>(path, service)</p></td>
+<td><p>Enters the overset interface options menu.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.check" title="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.check"><code class="xref py py-obj docutils literal notranslate"><span class="pre">check</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Checks the integrity of the overset interfaces.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.clear" title="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.clear"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clear</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Clears the domain connectivity of an overset interface.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.clear_all" title="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.clear_all"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clear_all</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Clears the domain connectivity of all overset interfaces.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.create" title="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.create"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Creates an overset interface.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.debug_hole_cut" title="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.debug_hole_cut"><code class="xref py py-obj docutils literal notranslate"><span class="pre">debug_hole_cut</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Debugging tool to troubleshoot hole cutting of overset interfaces.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.delete" title="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.delete"><code class="xref py py-obj docutils literal notranslate"><span class="pre">delete</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Deletes an overset interface.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.delete_all" title="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.delete_all"><code class="xref py py-obj docutils literal notranslate"><span class="pre">delete_all</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Deletes all overset interfaces in the domain.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.display_cells" title="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.display_cells"><code class="xref py py-obj docutils literal notranslate"><span class="pre">display_cells</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Displays the overset cells marked using the text command define/overset-interfaces/mark-cells.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.fill_dci" title="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.fill_dci"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fill_dci</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Fill overset domain connectivity information (DCI).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.find_all_bounding_cells" title="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.find_all_bounding_cells"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_all_bounding_cells</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Find bounding cells for all cell centroids.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.find_bounding_cell" title="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.find_bounding_cell"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_bounding_cell</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Find bounding cell for given cell or search point.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.free_dci" title="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.free_dci"><code class="xref py py-obj docutils literal notranslate"><span class="pre">free_dci</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Free overset domain connectivity information (DCI).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.grid_priorities" title="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.grid_priorities"><code class="xref py py-obj docutils literal notranslate"><span class="pre">grid_priorities</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Allows you to specify grid priorities on background and component meshes, used in the overlap minimization of an overset interface.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.intersect" title="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.intersect"><code class="xref py py-obj docutils literal notranslate"><span class="pre">intersect</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Executes the hole cutting of an overset interface and establishes the domain connectivity.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.intersect_all" title="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.intersect_all"><code class="xref py py-obj docutils literal notranslate"><span class="pre">intersect_all</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Executes hole cutting for all overset interfaces in the domain.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.list" title="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.list"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Lists information about the overset interfaces.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.mark_cell_change" title="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.mark_cell_change"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mark_cell_change</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Marks cells that have undergone a specified overset cell type change (from solve,receptor, or dead to any other type) in the last time step.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.mark_cells" title="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.mark_cells"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mark_cells</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Marks the specified overset cells (solve, receptor, donor, orphan, or dead) and fills registers based on the markings.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.read_dci_from_case" title="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.read_dci_from_case"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read_dci_from_case</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Read domain connectivity information (DCI) from case file.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.set_mark_bounds" title="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.set_mark_bounds"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_mark_bounds</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Allows you to set bounds so that any marking of cells is performed within a spherical region based on a specified origin and radius.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.update_from_dci" title="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.update_from_dci"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update_from_dci</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Update all overset intrfaces from stored domain connectivity information (DCI).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.write_cell_types" title="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.write_cell_types"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write_cell_types</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Write overset cell types into file.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.write_dci" title="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.write_dci"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write_dci</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Save domain connectivity information (DCI) to a text file.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.write_dci_to_case" title="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.write_dci_to_case"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write_dci_to_case</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Save domain connectivity information (DCI) to case file.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.adapt">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">adapt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">service</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.adapt" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Enters the overset adaption menu.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.adapt.adapt_mesh" title="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.adapt.adapt_mesh"><code class="xref py py-obj docutils literal notranslate"><span class="pre">adapt_mesh</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Marks and adapts the mesh to improve your overset   mesh.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.adapt.mark_adaption" title="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.adapt.mark_adaption"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mark_adaption</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Marks cells to identify those that can be adapted in        order to improve your overset mesh.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Classes:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.adapt.set" title="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.adapt.set"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set</span></code></a>(path, service)</p></td>
+<td><p>Enters the overset adaption set menu.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.adapt.adapt_mesh">
+<span class="sig-name descname"><span class="pre">adapt_mesh</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.adapt.adapt_mesh" title="Permalink to this definition">#</a></dt>
+<dd><p>Marks and adapts the mesh to improve your overset   mesh.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.adapt.mark_adaption">
+<span class="sig-name descname"><span class="pre">mark_adaption</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.adapt.mark_adaption" title="Permalink to this definition">#</a></dt>
+<dd><p>Marks cells to identify those that can be adapted in        order to improve your overset mesh.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.adapt.set">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">service</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.adapt.set" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Enters the overset adaption set menu.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.adapt.set.adaption_sweeps" title="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.adapt.set.adaption_sweeps"><code class="xref py py-obj docutils literal notranslate"><span class="pre">adaption_sweeps</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Sets the number of rounds of adaption applied during each adaption cycle.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.adapt.set.anisotropic" title="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.adapt.set.anisotropic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">anisotropic</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enable the option to use anisotropic adaption in prismatic cells.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.adapt.set.automatic" title="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.adapt.set.automatic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">automatic</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enable the option to automatically adapt overset meshes during solution update.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.adapt.set.buffer_layers" title="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.adapt.set.buffer_layers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">buffer_layers</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Sets the number of cell layers marked in addition to the cells marked for orphan adaption.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.adapt.set.gap_resolution" title="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.adapt.set.gap_resolution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gap_resolution</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Set the target (minimum) gap resolution used when marking cells for gap adaption.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.adapt.set.length_ratio_max" title="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.adapt.set.length_ratio_max"><code class="xref py py-obj docutils literal notranslate"><span class="pre">length_ratio_max</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Sets the length scale ratio threshold used to determine which cells are marked for adaption based on donor-receptor cell size differences.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.adapt.set.mark_coarsening" title="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.adapt.set.mark_coarsening"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mark_coarsening</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables the option to coarsen the mesh if mesh refinement is no longer needed.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.adapt.set.mark_fixed_orphans" title="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.adapt.set.mark_fixed_orphans"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mark_fixed_orphans</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables the option to also adapt based on cells that are not actual orphans because they were fixed by accepting neighbor donors.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.adapt.set.mark_gaps" title="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.adapt.set.mark_gaps"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mark_gaps</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enable the option to adapt underresolved gaps.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.adapt.set.mark_orphans" title="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.adapt.set.mark_orphans"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mark_orphans</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables the option to adapt for orphan reduction.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.adapt.set.mark_size" title="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.adapt.set.mark_size"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mark_size</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables the option to adapt based on donor-receptor cell size differences.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.adapt.set.maximum_refinement_level" title="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.adapt.set.maximum_refinement_level"><code class="xref py py-obj docutils literal notranslate"><span class="pre">maximum_refinement_level</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Sets the maximum level of refinement during overset adaption, in conjunction with the value set using the mesh/adapt/set/maximum-refinement-level text command (the larger of the two values is used).</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.adapt.set.adaption_sweeps">
+<span class="sig-name descname"><span class="pre">adaption_sweeps</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.adapt.set.adaption_sweeps" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the number of rounds of adaption applied during each adaption cycle.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.adapt.set.anisotropic">
+<span class="sig-name descname"><span class="pre">anisotropic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.adapt.set.anisotropic" title="Permalink to this definition">#</a></dt>
+<dd><p>Enable the option to use anisotropic adaption in prismatic cells.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.adapt.set.automatic">
+<span class="sig-name descname"><span class="pre">automatic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.adapt.set.automatic" title="Permalink to this definition">#</a></dt>
+<dd><p>Enable the option to automatically adapt overset meshes during solution update.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.adapt.set.buffer_layers">
+<span class="sig-name descname"><span class="pre">buffer_layers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.adapt.set.buffer_layers" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the number of cell layers marked in addition to the cells marked for orphan adaption.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.adapt.set.gap_resolution">
+<span class="sig-name descname"><span class="pre">gap_resolution</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.adapt.set.gap_resolution" title="Permalink to this definition">#</a></dt>
+<dd><p>Set the target (minimum) gap resolution used when marking cells for gap adaption.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.adapt.set.length_ratio_max">
+<span class="sig-name descname"><span class="pre">length_ratio_max</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.adapt.set.length_ratio_max" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the length scale ratio threshold used to determine which cells are marked for adaption based on donor-receptor cell size differences.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.adapt.set.mark_coarsening">
+<span class="sig-name descname"><span class="pre">mark_coarsening</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.adapt.set.mark_coarsening" title="Permalink to this definition">#</a></dt>
+<dd><p>Enables/disables the option to coarsen the mesh if mesh refinement is no longer needed. This option is enabled by default.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.adapt.set.mark_fixed_orphans">
+<span class="sig-name descname"><span class="pre">mark_fixed_orphans</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.adapt.set.mark_fixed_orphans" title="Permalink to this definition">#</a></dt>
+<dd><p>Enables/disables the option to also adapt based on cells that are not actual orphans because they were fixed by accepting neighbor donors. This option is only applied if define/overset-interfaces/adapt/set/mark-orphans? is enabled.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.adapt.set.mark_gaps">
+<span class="sig-name descname"><span class="pre">mark_gaps</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.adapt.set.mark_gaps" title="Permalink to this definition">#</a></dt>
+<dd><p>Enable the option to adapt underresolved gaps.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.adapt.set.mark_orphans">
+<span class="sig-name descname"><span class="pre">mark_orphans</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.adapt.set.mark_orphans" title="Permalink to this definition">#</a></dt>
+<dd><p>Enables/disables the option to adapt for orphan reduction.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.adapt.set.mark_size">
+<span class="sig-name descname"><span class="pre">mark_size</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.adapt.set.mark_size" title="Permalink to this definition">#</a></dt>
+<dd><p>Enables/disables the option to adapt based on donor-receptor cell size differences.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.adapt.set.maximum_refinement_level">
+<span class="sig-name descname"><span class="pre">maximum_refinement_level</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.adapt.set.maximum_refinement_level" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the maximum level of refinement during overset adaption, in conjunction with the value set using the mesh/adapt/set/maximum-refinement-level text command (the larger of the two values is used).</p>
+</dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.check">
+<span class="sig-name descname"><span class="pre">check</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.check" title="Permalink to this definition">#</a></dt>
+<dd><p>Checks the integrity of the overset interfaces. Reports orphan cells and errors in the domain connectivity.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.clear">
+<span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.clear" title="Permalink to this definition">#</a></dt>
+<dd><p>Clears the domain connectivity of an overset interface. This text command is only available when define/overset-interfaces/options/expert? is set to yes.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.clear_all">
+<span class="sig-name descname"><span class="pre">clear_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.clear_all" title="Permalink to this definition">#</a></dt>
+<dd><p>Clears the domain connectivity of all overset interfaces. This text command is only available when define/overset-interfaces/options/expert? is set to yes.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.create">
+<span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.create" title="Permalink to this definition">#</a></dt>
+<dd><p>Creates an overset interface.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.cut_control">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">cut_control</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">service</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.cut_control" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Enters the overset hole cut control menu.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.cut_control.add" title="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.cut_control.add"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Adds a hole cut control, so that a boundary zone does       not cut specified cell zones.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.cut_control.delete" title="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.cut_control.delete"><code class="xref py py-obj docutils literal notranslate"><span class="pre">delete</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Deletes the hole cut control for a boundary         zone.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.cut_control.delete_all" title="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.cut_control.delete_all"><code class="xref py py-obj docutils literal notranslate"><span class="pre">delete_all</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Deletes the hole cut controls for all boundary      zones.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.cut_control.list" title="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.cut_control.list"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Lists the defined hole cut controls.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Classes:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.cut_control.cut_seeds" title="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.cut_control.cut_seeds"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cut_seeds</span></code></a>(path, service)</p></td>
+<td><p>Enters the overset hole cut seeds menu.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.cut_control.add">
+<span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.cut_control.add" title="Permalink to this definition">#</a></dt>
+<dd><p>Adds a hole cut control, so that a boundary zone does       not cut specified cell zones.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.cut_control.cut_seeds">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">cut_seeds</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">service</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.cut_control.cut_seeds" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Enters the overset hole cut seeds menu.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.cut_control.cut_seeds.add" title="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.cut_control.cut_seeds.add"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Add a hole cut seed.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.cut_control.cut_seeds.cut_seeds_for_all_component_zones" title="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.cut_control.cut_seeds.cut_seeds_for_all_component_zones"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cut_seeds_for_all_component_zones</span></code></a>(*args, ...)</p></td>
+<td><p>Specifies whether all component zones get cut seeds, which cut pilot holes into the overlapping meshes that will then be enlarged during overlap minimization.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.cut_control.cut_seeds.delete" title="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.cut_control.cut_seeds.delete"><code class="xref py py-obj docutils literal notranslate"><span class="pre">delete</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Delete a hole cut seed.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.cut_control.cut_seeds.delete_all" title="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.cut_control.cut_seeds.delete_all"><code class="xref py py-obj docutils literal notranslate"><span class="pre">delete_all</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Delete all hole cut seeds.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.cut_control.cut_seeds.list" title="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.cut_control.cut_seeds.list"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code></a>(*args, **kwargs)</p></td>
+<td><p>List the defined hole cut seeds.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.cut_control.cut_seeds.add">
+<span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.cut_control.cut_seeds.add" title="Permalink to this definition">#</a></dt>
+<dd><p>Add a hole cut seed.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.cut_control.cut_seeds.cut_seeds_for_all_component_zones">
+<span class="sig-name descname"><span class="pre">cut_seeds_for_all_component_zones</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.cut_control.cut_seeds.cut_seeds_for_all_component_zones" title="Permalink to this definition">#</a></dt>
+<dd><p>Specifies whether all component zones get cut seeds, which cut pilot holes into the overlapping meshes that will then be enlarged during overlap minimization.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.cut_control.cut_seeds.delete">
+<span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.cut_control.cut_seeds.delete" title="Permalink to this definition">#</a></dt>
+<dd><p>Delete a hole cut seed.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.cut_control.cut_seeds.delete_all">
+<span class="sig-name descname"><span class="pre">delete_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.cut_control.cut_seeds.delete_all" title="Permalink to this definition">#</a></dt>
+<dd><p>Delete all hole cut seeds.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.cut_control.cut_seeds.list">
+<span class="sig-name descname"><span class="pre">list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.cut_control.cut_seeds.list" title="Permalink to this definition">#</a></dt>
+<dd><p>List the defined hole cut seeds.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.cut_control.delete">
+<span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.cut_control.delete" title="Permalink to this definition">#</a></dt>
+<dd><p>Deletes the hole cut control for a boundary         zone.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.cut_control.delete_all">
+<span class="sig-name descname"><span class="pre">delete_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.cut_control.delete_all" title="Permalink to this definition">#</a></dt>
+<dd><p>Deletes the hole cut controls for all boundary      zones.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.cut_control.list">
+<span class="sig-name descname"><span class="pre">list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.cut_control.list" title="Permalink to this definition">#</a></dt>
+<dd><p>Lists the defined hole cut controls.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.debug_hole_cut">
+<span class="sig-name descname"><span class="pre">debug_hole_cut</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.debug_hole_cut" title="Permalink to this definition">#</a></dt>
+<dd><p>Debugging tool to troubleshoot hole cutting of overset interfaces. This text command is only available when define/overset-interfaces/options/expert? is set to yes.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.delete">
+<span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.delete" title="Permalink to this definition">#</a></dt>
+<dd><p>Deletes an overset interface.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.delete_all">
+<span class="sig-name descname"><span class="pre">delete_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.delete_all" title="Permalink to this definition">#</a></dt>
+<dd><p>Deletes all overset interfaces in the domain.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.display_cells">
+<span class="sig-name descname"><span class="pre">display_cells</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.display_cells" title="Permalink to this definition">#</a></dt>
+<dd><p>Displays the overset cells marked using the text command define/overset-interfaces/mark-cells.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.fill_dci">
+<span class="sig-name descname"><span class="pre">fill_dci</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.fill_dci" title="Permalink to this definition">#</a></dt>
+<dd><p>Fill overset domain connectivity information (DCI).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.find_all_bounding_cells">
+<span class="sig-name descname"><span class="pre">find_all_bounding_cells</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.find_all_bounding_cells" title="Permalink to this definition">#</a></dt>
+<dd><p>Find bounding cells for all cell centroids.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.find_bounding_cell">
+<span class="sig-name descname"><span class="pre">find_bounding_cell</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.find_bounding_cell" title="Permalink to this definition">#</a></dt>
+<dd><p>Find bounding cell for given cell or search point.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.free_dci">
+<span class="sig-name descname"><span class="pre">free_dci</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.free_dci" title="Permalink to this definition">#</a></dt>
+<dd><p>Free overset domain connectivity information (DCI).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.grid_priorities">
+<span class="sig-name descname"><span class="pre">grid_priorities</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.grid_priorities" title="Permalink to this definition">#</a></dt>
+<dd><p>Allows you to specify grid priorities on background and component meshes, used in the overlap minimization of an overset interface.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.intersect">
+<span class="sig-name descname"><span class="pre">intersect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.intersect" title="Permalink to this definition">#</a></dt>
+<dd><p>Executes the hole cutting of an overset interface and establishes the domain connectivity. This text command is only available when define/overset-interfaces/options/expert? is set to yes.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.intersect_all">
+<span class="sig-name descname"><span class="pre">intersect_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.intersect_all" title="Permalink to this definition">#</a></dt>
+<dd><p>Executes hole cutting for all overset interfaces in the domain. This text command is only available when define/overset-interfaces/options/expert? is set to yes.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.list">
+<span class="sig-name descname"><span class="pre">list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.list" title="Permalink to this definition">#</a></dt>
+<dd><p>Lists information about the overset interfaces. The output depends on the overset verbosity setting.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.mark_cell_change">
+<span class="sig-name descname"><span class="pre">mark_cell_change</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.mark_cell_change" title="Permalink to this definition">#</a></dt>
+<dd><p>Marks cells that have undergone a specified overset cell type change (from solve,receptor, or dead to any other type) in the last time step. Adaption registers are automatically filled based on these markings. This text command is only available for unsteady simulations and if define/overset-interfaces/options/expert? is set to yes.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.mark_cells">
+<span class="sig-name descname"><span class="pre">mark_cells</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.mark_cells" title="Permalink to this definition">#</a></dt>
+<dd><p>Marks the specified overset cells (solve, receptor, donor, orphan, or dead) and fills registers based on the markings. Display the marked cells via the text command define/overset-interfaces/display-cells.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.options">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">options</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">service</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.options" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Enters the overset interface options menu.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.options.auto_create" title="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.options.auto_create"><code class="xref py py-obj docutils literal notranslate"><span class="pre">auto_create</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables the automatic creation of a default overset interface during        initialization or mesh motion update.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.options.dead_cell_update" title="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.options.dead_cell_update"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dead_cell_update</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables the updating of dead cells during the solution process, which may  be helpful for some moving and dynamic mesh simulations         (though at the cost of solver performance).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.options.donor_priority_method" title="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.options.donor_priority_method"><code class="xref py py-obj docutils literal notranslate"><span class="pre">donor_priority_method</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Allows you to specify whether the cell donor priority used in the overlap   minimization of an overset interface is inversely proportional to either the    cell size or the distance to the nearest boundary.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.options.expert" title="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.options.expert"><code class="xref py py-obj docutils literal notranslate"><span class="pre">expert</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables / disables overset-related expert tools.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.options.mesh_interfaces" title="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.options.mesh_interfaces"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mesh_interfaces</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Allows the inclusion of non-conformal mesh interfaces       inside overset cell zones, as long as the mesh  interfaces do not spatially overlap with the cells where        the overset interfaces lie.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.options.minimize_overlap" title="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.options.minimize_overlap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">minimize_overlap</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Allows you to disable overlap minimization during hole cutting.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.options.modified_donor_search" title="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.options.modified_donor_search"><code class="xref py py-obj docutils literal notranslate"><span class="pre">modified_donor_search</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables / disables modified donor search parameters.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.options.modified_hole_cutting" title="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.options.modified_hole_cutting"><code class="xref py py-obj docutils literal notranslate"><span class="pre">modified_hole_cutting</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables / disables modified hole cutting parameters.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.options.node_connected_donors" title="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.options.node_connected_donors"><code class="xref py py-obj docutils literal notranslate"><span class="pre">node_connected_donors</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Allows you to switch between face or node connected donor cells.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.options.overlap_boundaries" title="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.options.overlap_boundaries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">overlap_boundaries</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Allows you to disable the detection of overlapping boundaries during hole cutting,  in order to reduce the computational expense for cases  that do not include such boundaries.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.options.parallel" title="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.options.parallel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parallel</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Allows you to select the algorithm used for overset parallel processing.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.options.partial_cut_faces" title="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.options.partial_cut_faces"><code class="xref py py-obj docutils literal notranslate"><span class="pre">partial_cut_faces</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables enhanced hole cutting, where partially overlapping cut faces are   decomposed into overlapping and non-overlapping         fractions, and only the non-overlapping fractions       participate in the hole cutting.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.options.render_receptor_cells" title="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.options.render_receptor_cells"><code class="xref py py-obj docutils literal notranslate"><span class="pre">render_receptor_cells</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Allows you to enable visualization of receptor cells in contour and mesh    displays.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.options.solve_island_removal" title="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.options.solve_island_removal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">solve_island_removal</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Sets the method used to control the removal of isolated patches of solve cells.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.options.transient_caching" title="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.options.transient_caching"><code class="xref py py-obj docutils literal notranslate"><span class="pre">transient_caching</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Sets the options to control caching of entities in transient overset simulations.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.options.update_before_case_write" title="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.options.update_before_case_write"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update_before_case_write</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables the updating of the overset interfaces before writing a case file in the   Common Fluids Format (CFF).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../index.html#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.options.verbosity" title="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.options.verbosity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">verbosity</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Specifies the level of detail printed in the console about overset  interfaces.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.options.auto_create">
+<span class="sig-name descname"><span class="pre">auto_create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.options.auto_create" title="Permalink to this definition">#</a></dt>
+<dd><p>Enables the automatic creation of a default overset interface during        initialization or mesh motion update.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.options.dead_cell_update">
+<span class="sig-name descname"><span class="pre">dead_cell_update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.options.dead_cell_update" title="Permalink to this definition">#</a></dt>
+<dd><p>Enables/disables the updating of dead cells during the solution process, which may  be helpful for some moving and dynamic mesh simulations         (though at the cost of solver performance). You can     enter the number of layers of dead cells adjacent to the        receptor cells that you want updated, or enter -1 to request that all dead      cells are updated. This text command is only available  for transient simulations when define/overset-interfaces/options/expert?        is set to yes.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.options.donor_priority_method">
+<span class="sig-name descname"><span class="pre">donor_priority_method</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.options.donor_priority_method" title="Permalink to this definition">#</a></dt>
+<dd><p>Allows you to specify whether the cell donor priority used in the overlap   minimization of an overset interface is inversely proportional to either the    cell size or the distance to the nearest boundary.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.options.expert">
+<span class="sig-name descname"><span class="pre">expert</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.options.expert" title="Permalink to this definition">#</a></dt>
+<dd><p>Enables / disables overset-related expert tools.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.options.mesh_interfaces">
+<span class="sig-name descname"><span class="pre">mesh_interfaces</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.options.mesh_interfaces" title="Permalink to this definition">#</a></dt>
+<dd><p>Allows the inclusion of non-conformal mesh interfaces       inside overset cell zones, as long as the mesh  interfaces do not spatially overlap with the cells where        the overset interfaces lie.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.options.minimize_overlap">
+<span class="sig-name descname"><span class="pre">minimize_overlap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.options.minimize_overlap" title="Permalink to this definition">#</a></dt>
+<dd><p>Allows you to disable overlap minimization during hole cutting.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.options.modified_donor_search">
+<span class="sig-name descname"><span class="pre">modified_donor_search</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.options.modified_donor_search" title="Permalink to this definition">#</a></dt>
+<dd><p>Enables / disables modified donor search parameters. When enabled, these parameters result in       a more extended donor search, which can be helpful for  meshes with orphans. This text command is only available        when define/overset-interfaces/options/expert?  is set to yes.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.options.modified_hole_cutting">
+<span class="sig-name descname"><span class="pre">modified_hole_cutting</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.options.modified_hole_cutting" title="Permalink to this definition">#</a></dt>
+<dd><p>Enables / disables modified hole cutting parameters. When enabled, the parameters used can  help avoid dead cell zones that result from a hole      cutting failure. This text command is only available    when define/overset-interfaces/options/expert?  is set to yes.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.options.node_connected_donors">
+<span class="sig-name descname"><span class="pre">node_connected_donors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.options.node_connected_donors" title="Permalink to this definition">#</a></dt>
+<dd><p>Allows you to switch between face or node connected donor cells. This text command is only  available when define/overset-interfaces/options/expert?        is set to yes.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.options.overlap_boundaries">
+<span class="sig-name descname"><span class="pre">overlap_boundaries</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.options.overlap_boundaries" title="Permalink to this definition">#</a></dt>
+<dd><p>Allows you to disable the detection of overlapping boundaries during hole cutting,  in order to reduce the computational expense for cases  that do not include such boundaries. When enabled, this         text command also allows you to specify which boundary  zones should be considered when detecting overlapping   boundaries; this can be helpful when the default hole   cutting process fails.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.options.parallel">
+<span class="sig-name descname"><span class="pre">parallel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.options.parallel" title="Permalink to this definition">#</a></dt>
+<dd><p>Allows you to select the algorithm used for overset parallel processing. You can    select from the default cell exchange model or the local        cell zone replication model; the cell exchange model    should require less memory and may result in faster     calculations.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.options.partial_cut_faces">
+<span class="sig-name descname"><span class="pre">partial_cut_faces</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.options.partial_cut_faces" title="Permalink to this definition">#</a></dt>
+<dd><p>Enables/disables enhanced hole cutting, where partially overlapping cut faces are   decomposed into overlapping and non-overlapping         fractions, and only the non-overlapping fractions       participate in the hole cutting. This can help avoid the        situation where a region or cell zone is erroneously    identified as dead because of leakage during flood      filling, even though it has overlapping boundaries that         match well. When this text command is disabled, the     partially overlapping faces are entirely protected from         cutting.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.options.render_receptor_cells">
+<span class="sig-name descname"><span class="pre">render_receptor_cells</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.options.render_receptor_cells" title="Permalink to this definition">#</a></dt>
+<dd><p>Allows you to enable visualization of receptor cells in contour and mesh    displays.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.options.solve_island_removal">
+<span class="sig-name descname"><span class="pre">solve_island_removal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.options.solve_island_removal" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the method used to control the removal of isolated patches of solve cells. This text   command is only available when define/overset-interfaces/options/expert?        is set to yes.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.options.transient_caching">
+<span class="sig-name descname"><span class="pre">transient_caching</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.options.transient_caching" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the options to control caching of entities in transient overset simulations. This text         command is only available when define/overset-interfaces/options/expert?        is set to yes.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.options.update_before_case_write">
+<span class="sig-name descname"><span class="pre">update_before_case_write</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.options.update_before_case_write" title="Permalink to this definition">#</a></dt>
+<dd><p>Enables/disables the updating of the overset interfaces before writing a case file in the   Common Fluids Format (CFF). This text command is only   available when define/overset-interfaces/options/expert?        is set to yes.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.options.verbosity">
+<span class="sig-name descname"><span class="pre">verbosity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.options.verbosity" title="Permalink to this definition">#</a></dt>
+<dd><p>Specifies the level of detail printed in the console about overset  interfaces.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.read_dci_from_case">
+<span class="sig-name descname"><span class="pre">read_dci_from_case</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.read_dci_from_case" title="Permalink to this definition">#</a></dt>
+<dd><p>Read domain connectivity information (DCI) from case file.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.set_mark_bounds">
+<span class="sig-name descname"><span class="pre">set_mark_bounds</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.set_mark_bounds" title="Permalink to this definition">#</a></dt>
+<dd><p>Allows you to set bounds so that any marking of cells is performed within a spherical region based on a specified origin and radius. This can be useful when diagnosing a local problem on a large mesh. This text command is only available if define/overset-interfaces/options/expert? is set to yes. After defining the bounds, you can then mark the cells using the define/overset-interfaces/mark-cell-change or define/overset-interfaces/mark-cells text command. To disable the bounds, enter a radius of 0.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.update_from_dci">
+<span class="sig-name descname"><span class="pre">update_from_dci</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.update_from_dci" title="Permalink to this definition">#</a></dt>
+<dd><p>Update all overset intrfaces from stored domain connectivity information (DCI).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.write_cell_types">
+<span class="sig-name descname"><span class="pre">write_cell_types</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.write_cell_types" title="Permalink to this definition">#</a></dt>
+<dd><p>Write overset cell types into file.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.write_dci">
+<span class="sig-name descname"><span class="pre">write_dci</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.write_dci" title="Permalink to this definition">#</a></dt>
+<dd><p>Save domain connectivity information (DCI) to a text file.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.write_dci_to_case">
+<span class="sig-name descname"><span class="pre">write_dci_to_case</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.write_dci_to_case" title="Permalink to this definition">#</a></dt>
+<dd><p>Save domain connectivity information (DCI) to case file.</p>
+</dd></dl>
+
+</dd></dl>
+
+<div class="toctree-wrapper compound">
+</div>
+</section>
+
+
+                </article>
+              
+              
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces"><code class="docutils literal notranslate"><span class="pre">overset_interfaces</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.adapt"><code class="docutils literal notranslate"><span class="pre">overset_interfaces.adapt</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.adapt.adapt_mesh"><code class="docutils literal notranslate"><span class="pre">overset_interfaces.adapt.adapt_mesh()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.adapt.mark_adaption"><code class="docutils literal notranslate"><span class="pre">overset_interfaces.adapt.mark_adaption()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.adapt.set"><code class="docutils literal notranslate"><span class="pre">overset_interfaces.adapt.set</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.adapt.set.adaption_sweeps"><code class="docutils literal notranslate"><span class="pre">overset_interfaces.adapt.set.adaption_sweeps()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.adapt.set.anisotropic"><code class="docutils literal notranslate"><span class="pre">overset_interfaces.adapt.set.anisotropic()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.adapt.set.automatic"><code class="docutils literal notranslate"><span class="pre">overset_interfaces.adapt.set.automatic()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.adapt.set.buffer_layers"><code class="docutils literal notranslate"><span class="pre">overset_interfaces.adapt.set.buffer_layers()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.adapt.set.gap_resolution"><code class="docutils literal notranslate"><span class="pre">overset_interfaces.adapt.set.gap_resolution()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.adapt.set.length_ratio_max"><code class="docutils literal notranslate"><span class="pre">overset_interfaces.adapt.set.length_ratio_max()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.adapt.set.mark_coarsening"><code class="docutils literal notranslate"><span class="pre">overset_interfaces.adapt.set.mark_coarsening()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.adapt.set.mark_fixed_orphans"><code class="docutils literal notranslate"><span class="pre">overset_interfaces.adapt.set.mark_fixed_orphans()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.adapt.set.mark_gaps"><code class="docutils literal notranslate"><span class="pre">overset_interfaces.adapt.set.mark_gaps()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.adapt.set.mark_orphans"><code class="docutils literal notranslate"><span class="pre">overset_interfaces.adapt.set.mark_orphans()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.adapt.set.mark_size"><code class="docutils literal notranslate"><span class="pre">overset_interfaces.adapt.set.mark_size()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.adapt.set.maximum_refinement_level"><code class="docutils literal notranslate"><span class="pre">overset_interfaces.adapt.set.maximum_refinement_level()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.check"><code class="docutils literal notranslate"><span class="pre">overset_interfaces.check()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.clear"><code class="docutils literal notranslate"><span class="pre">overset_interfaces.clear()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.clear_all"><code class="docutils literal notranslate"><span class="pre">overset_interfaces.clear_all()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.create"><code class="docutils literal notranslate"><span class="pre">overset_interfaces.create()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.cut_control"><code class="docutils literal notranslate"><span class="pre">overset_interfaces.cut_control</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.cut_control.add"><code class="docutils literal notranslate"><span class="pre">overset_interfaces.cut_control.add()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.cut_control.cut_seeds"><code class="docutils literal notranslate"><span class="pre">overset_interfaces.cut_control.cut_seeds</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.cut_control.cut_seeds.add"><code class="docutils literal notranslate"><span class="pre">overset_interfaces.cut_control.cut_seeds.add()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.cut_control.cut_seeds.cut_seeds_for_all_component_zones"><code class="docutils literal notranslate"><span class="pre">overset_interfaces.cut_control.cut_seeds.cut_seeds_for_all_component_zones()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.cut_control.cut_seeds.delete"><code class="docutils literal notranslate"><span class="pre">overset_interfaces.cut_control.cut_seeds.delete()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.cut_control.cut_seeds.delete_all"><code class="docutils literal notranslate"><span class="pre">overset_interfaces.cut_control.cut_seeds.delete_all()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.cut_control.cut_seeds.list"><code class="docutils literal notranslate"><span class="pre">overset_interfaces.cut_control.cut_seeds.list()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.cut_control.delete"><code class="docutils literal notranslate"><span class="pre">overset_interfaces.cut_control.delete()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.cut_control.delete_all"><code class="docutils literal notranslate"><span class="pre">overset_interfaces.cut_control.delete_all()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.cut_control.list"><code class="docutils literal notranslate"><span class="pre">overset_interfaces.cut_control.list()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.debug_hole_cut"><code class="docutils literal notranslate"><span class="pre">overset_interfaces.debug_hole_cut()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.delete"><code class="docutils literal notranslate"><span class="pre">overset_interfaces.delete()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.delete_all"><code class="docutils literal notranslate"><span class="pre">overset_interfaces.delete_all()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.display_cells"><code class="docutils literal notranslate"><span class="pre">overset_interfaces.display_cells()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.fill_dci"><code class="docutils literal notranslate"><span class="pre">overset_interfaces.fill_dci()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.find_all_bounding_cells"><code class="docutils literal notranslate"><span class="pre">overset_interfaces.find_all_bounding_cells()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.find_bounding_cell"><code class="docutils literal notranslate"><span class="pre">overset_interfaces.find_bounding_cell()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.free_dci"><code class="docutils literal notranslate"><span class="pre">overset_interfaces.free_dci()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.grid_priorities"><code class="docutils literal notranslate"><span class="pre">overset_interfaces.grid_priorities()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.intersect"><code class="docutils literal notranslate"><span class="pre">overset_interfaces.intersect()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.intersect_all"><code class="docutils literal notranslate"><span class="pre">overset_interfaces.intersect_all()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.list"><code class="docutils literal notranslate"><span class="pre">overset_interfaces.list()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.mark_cell_change"><code class="docutils literal notranslate"><span class="pre">overset_interfaces.mark_cell_change()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.mark_cells"><code class="docutils literal notranslate"><span class="pre">overset_interfaces.mark_cells()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.options"><code class="docutils literal notranslate"><span class="pre">overset_interfaces.options</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.options.auto_create"><code class="docutils literal notranslate"><span class="pre">overset_interfaces.options.auto_create()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.options.dead_cell_update"><code class="docutils literal notranslate"><span class="pre">overset_interfaces.options.dead_cell_update()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.options.donor_priority_method"><code class="docutils literal notranslate"><span class="pre">overset_interfaces.options.donor_priority_method()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.options.expert"><code class="docutils literal notranslate"><span class="pre">overset_interfaces.options.expert()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.options.mesh_interfaces"><code class="docutils literal notranslate"><span class="pre">overset_interfaces.options.mesh_interfaces()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.options.minimize_overlap"><code class="docutils literal notranslate"><span class="pre">overset_interfaces.options.minimize_overlap()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.options.modified_donor_search"><code class="docutils literal notranslate"><span class="pre">overset_interfaces.options.modified_donor_search()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.options.modified_hole_cutting"><code class="docutils literal notranslate"><span class="pre">overset_interfaces.options.modified_hole_cutting()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.options.node_connected_donors"><code class="docutils literal notranslate"><span class="pre">overset_interfaces.options.node_connected_donors()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.options.overlap_boundaries"><code class="docutils literal notranslate"><span class="pre">overset_interfaces.options.overlap_boundaries()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.options.parallel"><code class="docutils literal notranslate"><span class="pre">overset_interfaces.options.parallel()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.options.partial_cut_faces"><code class="docutils literal notranslate"><span class="pre">overset_interfaces.options.partial_cut_faces()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.options.render_receptor_cells"><code class="docutils literal notranslate"><span class="pre">overset_interfaces.options.render_receptor_cells()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.options.solve_island_removal"><code class="docutils literal notranslate"><span class="pre">overset_interfaces.options.solve_island_removal()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.options.transient_caching"><code class="docutils literal notranslate"><span class="pre">overset_interfaces.options.transient_caching()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.options.update_before_case_write"><code class="docutils literal notranslate"><span class="pre">overset_interfaces.options.update_before_case_write()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.options.verbosity"><code class="docutils literal notranslate"><span class="pre">overset_interfaces.options.verbosity()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.read_dci_from_case"><code class="docutils literal notranslate"><span class="pre">overset_interfaces.read_dci_from_case()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.set_mark_bounds"><code class="docutils literal notranslate"><span class="pre">overset_interfaces.set_mark_bounds()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.update_from_dci"><code class="docutils literal notranslate"><span class="pre">overset_interfaces.update_from_dci()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.write_cell_types"><code class="docutils literal notranslate"><span class="pre">overset_interfaces.write_cell_types()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.write_dci"><code class="docutils literal notranslate"><span class="pre">overset_interfaces.write_dci()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.solver.tui_231.main_menu.define.overset_interfaces.write_dci_to_case"><code class="docutils literal notranslate"><span class="pre">overset_interfaces.write_dci_to_case()</span></code></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  <div class="tocsection sourcelink">
+    <a href="../../../../../_sources/api/solver/tui/define/overset_interfaces/index.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+  <p class="copyright">
+    
+      © Copyright (c) 2023 ANSYS, Inc. All rights reserved.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.13.3.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

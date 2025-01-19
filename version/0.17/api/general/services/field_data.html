@@ -1,0 +1,2004 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>field_data &#8212; PyFluent</title>
+
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery.css?v=61a4c737" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-dataframe.css?v=e5fbc548" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/ansys_sphinx_theme.css?v=068850c2" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+ 
+<link href="../../../_static/css/breadcrumbs.css" rel="stylesheet" />
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js?v=10705bdc"></script>
+    <script src="../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../../../_static/thebelab-helper.js"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=49e1bf35"></script>
+    <script src="../../../_static/js/table.js?v=b64f5182"></script>
+    <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/general/services/field_data';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://fluent.docs.pyansys.com/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.17';
+        </script>
+    <link rel="icon" href="../../../_static/ansys-favicon.png"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="health_check" href="health_check.html" />
+    <link rel="prev" title="events" href="events.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <link rel="canonical" href="https://fluent.docs.pyansys.com/version/stable/api/general/services/field_data.html" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container"><!-- Debugging: html_theme_options =  -->
+
+<!-- If there is no MiliSearch enabled, use the PyData search -->
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+   
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  <div class="navbar-header-items__start">
+    
+      <div class="navbar-item">
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../getting_started/index.html">
+                        Getting started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../user_guide/index.html">
+                        User guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../../index.html">
+                        API reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../examples/index.html">
+                        Examples
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../contributing.html">
+                        Contribute
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+        </div>
+      
+      
+        <div class="navbar-item">
+<script>
+document.write(`
+  <div class="version-switcher__container dropdown">
+    <button type="button" class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle" data-bs-toggle="dropdown">
+      0.17  <!-- this text may get changed later by javascript -->
+      <span class="caret"></span>
+    </button>
+    <div class="version-switcher__menu dropdown-menu list-group-flush py-0">
+    <!-- dropdown will be populated by javascript on page load -->
+    </div>
+  </div>
+`);
+</script></div>
+      
+        <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent/discussions" title="Support" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa fa-comment fa-fw"></i></span>
+            <label class="sr-only">Support</label></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </nav>
+    <div id="announcement_msg"></div>
+<script>
+  fetch("announcement.html")
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error: ${response.status}`);
+      }
+      return response.text();
+    })
+    .then(
+      (text) => (document.getElementById("announcement_msg").innerHTML = text),
+    )
+    .catch((error) => console.error(`Fetch problem: ${error.message}`));
+</script>   <div class="container-xl">
+  <div class="row">
+    <div class="col-12 col-md-3" id="breadcrumbs-spacer"></div>
+    <div class="col-12 col-md-11 col-xl-9" id="breadcrumbs">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul> 
+<li class="nav-item nav-item-additional-breadcrumb">
+  <a href="https://docs.pyansys.com/">PyAnsys</a> » 
+</li>
+ 
+<li class="nav-item nav-item-0">
+  <a href="../../../index.html">PyFluent</a> » 
+</li>
+ 
+          <li class="nav-item nav-item-1"><a href="../../index.html" >API reference</a> » </li>
+          <li class="nav-item nav-item-2"><a href="../index.html" >General</a> » </li>
+          <li class="nav-item nav-item-3"><a href="index.html" accesskey="U">Services</a> » </li>
+        <li class="nav-item nav-item-this"><a href="">field_data</a></li> 
+      </ul>
+    </div></div>
+  </div>
+</div>
+ 
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../getting_started/index.html">
+                        Getting started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../user_guide/index.html">
+                        User guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../../index.html">
+                        API reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../examples/index.html">
+                        Examples
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../contributing.html">
+                        Contribute
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<script>
+document.write(`
+  <div class="version-switcher__container dropdown">
+    <button type="button" class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle" data-bs-toggle="dropdown">
+      0.17  <!-- this text may get changed later by javascript -->
+      <span class="caret"></span>
+    </button>
+    <div class="version-switcher__menu dropdown-menu list-group-flush py-0">
+    <!-- dropdown will be populated by javascript on page load -->
+    </div>
+  </div>
+`);
+</script></div>
+        
+          <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent/discussions" title="Support" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa fa-comment fa-fw"></i></span>
+            <label class="sr-only">Support</label></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item"><nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">General</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../launcher/index.html">Fluent launcher</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../execution_utils.html">Execution utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../search.html">Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sessions/index.html">Sessions</a></li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="index.html">Services</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="batch_ops.html">batch_ops</a></li>
+<li class="toctree-l3"><a class="reference internal" href="error_handler.html">error_handler</a></li>
+<li class="toctree-l3"><a class="reference internal" href="events.html">events</a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">field_data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="health_check.html">health_check</a></li>
+<li class="toctree-l3"><a class="reference internal" href="interceptors.html">interceptors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="meshing_queries.html">meshing_queries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="monitor.html">monitor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="scheme_eval.html">scheme_eval</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings.html">settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="streaming.html">streaming</a></li>
+<li class="toctree-l3"><a class="reference internal" href="transcript.html">transcript</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../streaming_services/index.html">Streaming services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../post_objects/index.html">Post objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../scheduler/index.html">Scheduler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../case_reader.html">CaseFile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data_transfer.html">Transfer data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../journaling.html">Journaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../meta.html">Meta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quantity.html">Quantity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rpvars.html">rpvars</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../workflow.html">Workflow</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../meshing/index.html">Meshing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solver/index.html">Solver</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article"></div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="module-ansys.fluent.core.services.field_data">
+<span id="field-data"></span><span id="ref-field-data-code"></span><h1>field_data<a class="headerlink" href="#module-ansys.fluent.core.services.field_data" title="Permalink to this heading">#</a></h1>
+<p>Wrappers over FieldData gRPC service of Fluent.</p>
+<p><strong>Classes:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.services.field_data.BaseFieldData" title="ansys.fluent.core.services.field_data.BaseFieldData"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BaseFieldData</span></code></a>(i_d, data)</p></td>
+<td><p>Contains common properties required by all field data types.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.services.field_data.ChunkParser" title="ansys.fluent.core.services.field_data.ChunkParser"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ChunkParser</span></code></a>([callbacks_provider])</p></td>
+<td><p>Class for parsing field data stream received from Fluent.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.services.field_data.FacesCentroid" title="ansys.fluent.core.services.field_data.FacesCentroid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FacesCentroid</span></code></a>(i_d, data)</p></td>
+<td><p>Provides the container for the face centroid data.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.services.field_data.FacesConnectivity" title="ansys.fluent.core.services.field_data.FacesConnectivity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FacesConnectivity</span></code></a>(i_d, data)</p></td>
+<td><p>Provides the container for the face connectivity data.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.services.field_data.FacesNormal" title="ansys.fluent.core.services.field_data.FacesNormal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FacesNormal</span></code></a>(i_d, data)</p></td>
+<td><p>Provides the container for the face normal data.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.services.field_data.FieldData" title="ansys.fluent.core.services.field_data.FieldData"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FieldData</span></code></a>(service, field_info, is_data_valid)</p></td>
+<td><p>Provides access to Fluent field data on surfaces.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.services.field_data.FieldDataService" title="ansys.fluent.core.services.field_data.FieldDataService"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FieldDataService</span></code></a>(channel, metadata, ...)</p></td>
+<td><p>FieldData service of Fluent.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.services.field_data.FieldInfo" title="ansys.fluent.core.services.field_data.FieldInfo"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FieldInfo</span></code></a>(service, is_data_valid)</p></td>
+<td><p>Provides access to Fluent field information.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.services.field_data.FieldTransaction" title="ansys.fluent.core.services.field_data.FieldTransaction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FieldTransaction</span></code></a>(service, field_info, ...)</p></td>
+<td><p>Populates Fluent field data on surfaces.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.services.field_data.ScalarFieldData" title="ansys.fluent.core.services.field_data.ScalarFieldData"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ScalarFieldData</span></code></a>(i_d, data)</p></td>
+<td><p>Contains scalar field data.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.services.field_data.SurfaceDataType" title="ansys.fluent.core.services.field_data.SurfaceDataType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SurfaceDataType</span></code></a>(value)</p></td>
+<td><p>Provides surface data types.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.services.field_data.Vector" title="ansys.fluent.core.services.field_data.Vector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Vector</span></code></a>(x, y, z)</p></td>
+<td><p>Stores the data as a vector <code class="docutils literal notranslate"><span class="pre">(x,</span> <span class="pre">y,</span> <span class="pre">z)</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.services.field_data.VectorFieldData" title="ansys.fluent.core.services.field_data.VectorFieldData"><code class="xref py py-obj docutils literal notranslate"><span class="pre">VectorFieldData</span></code></a>(i_d, data, scale)</p></td>
+<td><p>Provides a container for vector field data.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.services.field_data.Vertices" title="ansys.fluent.core.services.field_data.Vertices"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Vertices</span></code></a>(i_d, data)</p></td>
+<td><p>Provides a container for the vertex data.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Exceptions:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.services.field_data.FieldNameError" title="ansys.fluent.core.services.field_data.FieldNameError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FieldNameError</span></code></a></p></td>
+<td><p>Exception class for errors in field name.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.services.field_data.FieldUnavailable" title="ansys.fluent.core.services.field_data.FieldUnavailable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FieldUnavailable</span></code></a></p></td>
+<td><p>Exception class for when field is unavailable.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.services.field_data.ScalarFieldNameError" title="ansys.fluent.core.services.field_data.ScalarFieldNameError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ScalarFieldNameError</span></code></a>(field_name, allowed_values)</p></td>
+<td><p>Exception class for errors in scalar field name.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.services.field_data.ScalarFieldUnavailable" title="ansys.fluent.core.services.field_data.ScalarFieldUnavailable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ScalarFieldUnavailable</span></code></a>(field_name)</p></td>
+<td><p>Exception class for when scalar field is unavailable.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.services.field_data.SurfaceNameError" title="ansys.fluent.core.services.field_data.SurfaceNameError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SurfaceNameError</span></code></a>(surface_name, allowed_values)</p></td>
+<td><p>Exception class for errors in surface name.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.services.field_data.VectorFieldNameError" title="ansys.fluent.core.services.field_data.VectorFieldNameError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">VectorFieldNameError</span></code></a>(field_name, allowed_values)</p></td>
+<td><p>Exception class for errors in vector field name.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.services.field_data.VectorFieldUnavailable" title="ansys.fluent.core.services.field_data.VectorFieldUnavailable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">VectorFieldUnavailable</span></code></a>(field_name)</p></td>
+<td><p>Exception class for when vector field is unavailable.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Functions:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.services.field_data.get_fields_request" title="ansys.fluent.core.services.field_data.get_fields_request"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_fields_request</span></code></a>()</p></td>
+<td><p>Populates a new field request.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.services.field_data.override_help_text" title="ansys.fluent.core.services.field_data.override_help_text"><code class="xref py py-obj docutils literal notranslate"><span class="pre">override_help_text</span></code></a>(func, func_to_be_wrapped)</p></td>
+<td><p>Override function help text.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.services.field_data.unavailable_field_error_message" title="ansys.fluent.core.services.field_data.unavailable_field_error_message"><code class="xref py py-obj docutils literal notranslate"><span class="pre">unavailable_field_error_message</span></code></a>(context, ...)</p></td>
+<td><p>Error message for unavailable fields.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.services.field_data.BaseFieldData">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.services.field_data.</span></span><span class="sig-name descname"><span class="pre">BaseFieldData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i_d</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.services.field_data.BaseFieldData" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Contains common properties required by all field data types.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.services.field_data.BaseFieldData.__init__" title="ansys.fluent.core.services.field_data.BaseFieldData.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(i_d, data)</p></td>
+<td><p>__init__ method of BaseFieldData class.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Attributes:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.services.field_data.BaseFieldData.data" title="ansys.fluent.core.services.field_data.BaseFieldData.data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">data</span></code></a></p></td>
+<td><p>Returns data.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.services.field_data.BaseFieldData.size" title="ansys.fluent.core.services.field_data.BaseFieldData.size"><code class="xref py py-obj docutils literal notranslate"><span class="pre">size</span></code></a></p></td>
+<td><p>Returns size of data.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.services.field_data.BaseFieldData.surface_id" title="ansys.fluent.core.services.field_data.BaseFieldData.surface_id"><code class="xref py py-obj docutils literal notranslate"><span class="pre">surface_id</span></code></a></p></td>
+<td><p>Returns surface id.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.services.field_data.BaseFieldData.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i_d</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.services.field_data.BaseFieldData.__init__" title="Permalink to this definition">#</a></dt>
+<dd><p>__init__ method of BaseFieldData class.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ansys.fluent.core.services.field_data.BaseFieldData.data">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">data</span></span><a class="headerlink" href="#ansys.fluent.core.services.field_data.BaseFieldData.data" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns data.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ansys.fluent.core.services.field_data.BaseFieldData.size">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">size</span></span><a class="headerlink" href="#ansys.fluent.core.services.field_data.BaseFieldData.size" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns size of data.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ansys.fluent.core.services.field_data.BaseFieldData.surface_id">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">surface_id</span></span><a class="headerlink" href="#ansys.fluent.core.services.field_data.BaseFieldData.surface_id" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns surface id.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.services.field_data.ChunkParser">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.services.field_data.</span></span><span class="sig-name descname"><span class="pre">ChunkParser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">callbacks_provider</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.services.field_data.ChunkParser" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Class for parsing field data stream received from Fluent.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>callbacks_provider</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">object</span></code></a></span></dt><dd></dd>
+<dt><strong>The object which can register and unregister callbacks.</strong></dt><dd></dd>
+<dt><strong>It provides callbacks, which are triggered with following arguments:</strong></dt><dd><p>zone_id : int
+field_name : str
+field : numpy array</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.services.field_data.ChunkParser.__init__" title="ansys.fluent.core.services.field_data.ChunkParser.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>([callbacks_provider])</p></td>
+<td><p>__init__ method of ChunkParser class.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.services.field_data.ChunkParser.extract_fields" title="ansys.fluent.core.services.field_data.ChunkParser.extract_fields"><code class="xref py py-obj docutils literal notranslate"><span class="pre">extract_fields</span></code></a>(chunk_iterator)</p></td>
+<td><p>Extracts field data received from Fluent.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.services.field_data.ChunkParser.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">callbacks_provider</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.services.field_data.ChunkParser.__init__" title="Permalink to this definition">#</a></dt>
+<dd><p>__init__ method of ChunkParser class.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.services.field_data.ChunkParser.extract_fields">
+<span class="sig-name descname"><span class="pre">extract_fields</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">chunk_iterator</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.services.field_data.ChunkParser.extract_fields" title="Permalink to this definition">#</a></dt>
+<dd><p>Extracts field data received from Fluent. if callbacks_provider is set
+then callbacks are triggered with extracted data.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.services.field_data.FacesCentroid">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.services.field_data.</span></span><span class="sig-name descname"><span class="pre">FacesCentroid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i_d</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.services.field_data.FacesCentroid" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ansys.fluent.core.services.field_data.BaseFieldData" title="ansys.fluent.core.services.field_data.BaseFieldData"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseFieldData</span></code></a></p>
+<p>Provides the container for the face centroid data.</p>
+<p><strong>Classes:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.services.field_data.FacesCentroid.Centroid" title="ansys.fluent.core.services.field_data.FacesCentroid.Centroid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Centroid</span></code></a>(x, y, z)</p></td>
+<td><p>Stores and provides the face centroid data as a vector.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.services.field_data.FacesCentroid.__init__" title="ansys.fluent.core.services.field_data.FacesCentroid.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(i_d, data)</p></td>
+<td><p>__init__ method of FacesCentroid class.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.services.field_data.FacesCentroid.Centroid">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Centroid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.services.field_data.FacesCentroid.Centroid" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ansys.fluent.core.services.field_data.Vector" title="ansys.fluent.core.services.field_data.Vector"><code class="xref py py-class docutils literal notranslate"><span class="pre">Vector</span></code></a></p>
+<p>Stores and provides the face centroid data as a vector.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.services.field_data.FacesCentroid.Centroid.__init__" title="ansys.fluent.core.services.field_data.FacesCentroid.Centroid.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(x, y, z)</p></td>
+<td><p>__init__ method of Centroid class.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.services.field_data.FacesCentroid.Centroid.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.services.field_data.FacesCentroid.Centroid.__init__" title="Permalink to this definition">#</a></dt>
+<dd><p>__init__ method of Centroid class.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.services.field_data.FacesCentroid.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i_d</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.services.field_data.FacesCentroid.__init__" title="Permalink to this definition">#</a></dt>
+<dd><p>__init__ method of FacesCentroid class.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.services.field_data.FacesConnectivity">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.services.field_data.</span></span><span class="sig-name descname"><span class="pre">FacesConnectivity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i_d</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.services.field_data.FacesConnectivity" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ansys.fluent.core.services.field_data.BaseFieldData" title="ansys.fluent.core.services.field_data.BaseFieldData"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseFieldData</span></code></a></p>
+<p>Provides the container for the face connectivity data.</p>
+<p><strong>Classes:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.services.field_data.FacesConnectivity.Faces" title="ansys.fluent.core.services.field_data.FacesConnectivity.Faces"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Faces</span></code></a>(node_count, node_indices)</p></td>
+<td><p>Stores and provides the face connectivity data as an array.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.services.field_data.FacesConnectivity.__init__" title="ansys.fluent.core.services.field_data.FacesConnectivity.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(i_d, data)</p></td>
+<td><p>__init__ method of FacesConnectivity class.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.services.field_data.FacesConnectivity.Faces">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Faces</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node_count</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node_indices</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.services.field_data.FacesConnectivity.Faces" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Stores and provides the face connectivity data as an array.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.services.field_data.FacesConnectivity.Faces.__init__" title="ansys.fluent.core.services.field_data.FacesConnectivity.Faces.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(node_count, node_indices)</p></td>
+<td><p>__init__ method of Faces class.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.services.field_data.FacesConnectivity.Faces.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node_count</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node_indices</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.services.field_data.FacesConnectivity.Faces.__init__" title="Permalink to this definition">#</a></dt>
+<dd><p>__init__ method of Faces class.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.services.field_data.FacesConnectivity.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i_d</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.services.field_data.FacesConnectivity.__init__" title="Permalink to this definition">#</a></dt>
+<dd><p>__init__ method of FacesConnectivity class.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.services.field_data.FacesNormal">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.services.field_data.</span></span><span class="sig-name descname"><span class="pre">FacesNormal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i_d</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.services.field_data.FacesNormal" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ansys.fluent.core.services.field_data.BaseFieldData" title="ansys.fluent.core.services.field_data.BaseFieldData"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseFieldData</span></code></a></p>
+<p>Provides the container for the face normal data.</p>
+<p><strong>Classes:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.services.field_data.FacesNormal.Normal" title="ansys.fluent.core.services.field_data.FacesNormal.Normal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Normal</span></code></a>(x, y, z)</p></td>
+<td><p>Stores and provides the face normal data as a vector.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.services.field_data.FacesNormal.__init__" title="ansys.fluent.core.services.field_data.FacesNormal.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(i_d, data)</p></td>
+<td><p>__init__ method of FacesNormal class.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.services.field_data.FacesNormal.Normal">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Normal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.services.field_data.FacesNormal.Normal" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ansys.fluent.core.services.field_data.Vector" title="ansys.fluent.core.services.field_data.Vector"><code class="xref py py-class docutils literal notranslate"><span class="pre">Vector</span></code></a></p>
+<p>Stores and provides the face normal data as a vector.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.services.field_data.FacesNormal.Normal.__init__" title="ansys.fluent.core.services.field_data.FacesNormal.Normal.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(x, y, z)</p></td>
+<td><p>__init__ method of Normal class.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.services.field_data.FacesNormal.Normal.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.services.field_data.FacesNormal.Normal.__init__" title="Permalink to this definition">#</a></dt>
+<dd><p>__init__ method of Normal class.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.services.field_data.FacesNormal.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i_d</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.services.field_data.FacesNormal.__init__" title="Permalink to this definition">#</a></dt>
+<dd><p>__init__ method of FacesNormal class.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.services.field_data.FieldData">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.services.field_data.</span></span><span class="sig-name descname"><span class="pre">FieldData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">service</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field_info</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_data_valid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scheme_eval</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.services.field_data.FieldData" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Provides access to Fluent field data on surfaces.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.services.field_data.FieldData.__init__" title="ansys.fluent.core.services.field_data.FieldData.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(service, field_info, is_data_valid)</p></td>
+<td><p>__init__ method of FieldData class.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.services.field_data.FieldData.get_pathlines_field_data" title="ansys.fluent.core.services.field_data.FieldData.get_pathlines_field_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_pathlines_field_data</span></code></a>(field_name[, ...])</p></td>
+<td><p>Get the pathlines field data on a surface.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.services.field_data.FieldData.get_scalar_field_data" title="ansys.fluent.core.services.field_data.FieldData.get_scalar_field_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_scalar_field_data</span></code></a>(field_name[, ...])</p></td>
+<td><p>Get scalar field data on a surface.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.services.field_data.FieldData.get_surface_data" title="ansys.fluent.core.services.field_data.FieldData.get_surface_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_surface_data</span></code></a>(data_type[, surface_ids, ...])</p></td>
+<td><p>Get surface data (vertices, faces connectivity, centroids, and normals).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.services.field_data.FieldData.get_vector_field_data" title="ansys.fluent.core.services.field_data.FieldData.get_vector_field_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_vector_field_data</span></code></a>(field_name[, ...])</p></td>
+<td><p>Get vector field data on a surface.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.services.field_data.FieldData.new_transaction" title="ansys.fluent.core.services.field_data.FieldData.new_transaction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">new_transaction</span></code></a>()</p></td>
+<td><p>Create a new field transaction.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.services.field_data.FieldData.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">service</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field_info</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_data_valid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scheme_eval</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.services.field_data.FieldData.__init__" title="Permalink to this definition">#</a></dt>
+<dd><p>__init__ method of FieldData class.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.services.field_data.FieldData.get_pathlines_field_data">
+<span class="sig-name descname"><span class="pre">get_pathlines_field_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">field_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">surface_ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">surface_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">additional_field_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">provide_particle_time_field</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">steps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">500</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.01</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skip</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reverse</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">accuracy_control_on</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tolerance</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coarsen</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">velocity_domain</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'all-phases'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zones</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.services.field_data.FieldData.get_pathlines_field_data" title="Permalink to this definition">#</a></dt>
+<dd><p>Get the pathlines field data on a surface.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>field_name</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a></span></dt><dd><p>Name of the scalar field to color pathlines.</p>
+</dd>
+<dt><strong>surface_ids</strong><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">List</span></code>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">int</span></code></a>], <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>List of surface IDs for pathlines field data.</p>
+</dd>
+<dt><strong>surface_name</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Surface name for pathlines field data.</p>
+</dd>
+<dt><strong>additional_field_name</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Additional field if required.</p>
+</dd>
+<dt><strong>provide_particle_time_field: bool, optional</strong></dt><dd><p>Whether to provide the particle time. The default is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+</dd>
+<dt><strong>node_value</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values" title="(in Python v3.11)"><span class="xref std std-ref">bool</span></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Whether to provide the nodal values. The default is <code class="docutils literal notranslate"><span class="pre">True</span></code>. If
+<code class="docutils literal notranslate"><span class="pre">False</span></code>, element values are provided.</p>
+</dd>
+<dt><strong>steps: int, optional</strong></dt><dd><p>Pathlines steps. The default is <code class="docutils literal notranslate"><span class="pre">500</span></code></p>
+</dd>
+<dt><strong>step_size: float, optional</strong></dt><dd><p>Pathlines step size. The default is <code class="docutils literal notranslate"><span class="pre">0.01</span></code>.</p>
+</dd>
+<dt><strong>skip: int, optional</strong></dt><dd><p>Pathlines to skip. The default is <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p>
+</dd>
+<dt><strong>reverse: bool, optional</strong></dt><dd><p>Whether to draw pathlines in reverse direction. The default is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+</dd>
+<dt><strong>tolerance: float, optional</strong></dt><dd><p>Pathlines tolerance. The default is <code class="docutils literal notranslate"><span class="pre">0.001</span></code>.</p>
+</dd>
+<dt><strong>coarsen: int, optional</strong></dt><dd><p>Pathlines coarsen. The default is <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p>
+</dd>
+<dt><strong>velocity_domain: str, optional</strong></dt><dd><p>Domain for pathlines. The default is <code class="docutils literal notranslate"><span class="pre">&quot;all-phases&quot;</span></code>.</p>
+</dd>
+<dt><strong>zones: list, optional</strong></dt><dd><p>Zones for pathlines. The default is <code class="docutils literal notranslate"><span class="pre">[]</span></code>.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">Dict</span></code></dt><dd><p>Dictionary containing a map of surface IDs to the pathline data.
+For example, pathlines connectivity, vertices, and field.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.services.field_data.FieldData.get_scalar_field_data">
+<span class="sig-name descname"><span class="pre">get_scalar_field_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">field_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">surface_ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">surface_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">boundary_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.services.field_data.FieldData.get_scalar_field_data" title="Permalink to this definition">#</a></dt>
+<dd><p>Get scalar field data on a surface.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>field_name</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a></span></dt><dd><p>Name of the scalar field.</p>
+</dd>
+<dt><strong>surface_ids</strong><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">List</span></code>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">int</span></code></a>], <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>List of surface IDs for scalar field data.</p>
+</dd>
+<dt><strong>surface_name: str, optional</strong></dt><dd><p>Surface Name for scalar field data.</p>
+</dd>
+<dt><strong>node_value</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values" title="(in Python v3.11)"><span class="xref std std-ref">bool</span></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Whether to provide data for the nodal location. The default is <code class="docutils literal notranslate"><span class="pre">True</span></code>.
+When <code class="docutils literal notranslate"><span class="pre">False</span></code>, data is provided for the element location.</p>
+</dd>
+<dt><strong>boundary_value</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values" title="(in Python v3.11)"><span class="xref std std-ref">bool</span></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Whether to provide slip velocity at the wall boundaries. The default is
+<code class="docutils literal notranslate"><span class="pre">False</span></code>. When <code class="docutils literal notranslate"><span class="pre">True</span></code>, no slip velocity is provided.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">Union</span></code>[<a class="reference internal" href="#ansys.fluent.core.services.field_data.ScalarFieldData" title="ansys.fluent.core.services.field_data.ScalarFieldData"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ScalarFieldData</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">Dict</span></code>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">int</span></code></a>, <a class="reference internal" href="#ansys.fluent.core.services.field_data.ScalarFieldData" title="ansys.fluent.core.services.field_data.ScalarFieldData"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ScalarFieldData</span></code></a>]]</dt><dd><p>If a surface name is provided as input, scalar field data is returned. If surface
+IDs are provided as input, a dictionary containing a map of surface IDs to scalar
+field data.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.services.field_data.FieldData.get_surface_data">
+<span class="sig-name descname"><span class="pre">get_surface_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">surface_ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">surface_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overset_mesh</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.services.field_data.FieldData.get_surface_data" title="Permalink to this definition">#</a></dt>
+<dd><p>Get surface data (vertices, faces connectivity, centroids, and
+normals).</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>data_type</strong><span class="classifier"><a class="reference internal" href="#ansys.fluent.core.services.field_data.SurfaceDataType" title="ansys.fluent.core.services.field_data.SurfaceDataType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SurfaceDataType</span></code></a></span></dt><dd><p>SurfaceDataType Enum member.</p>
+</dd>
+<dt><strong>surface_ids</strong><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">List</span></code>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">int</span></code></a>], <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>List of surface IDs for the surface data.</p>
+</dd>
+<dt><strong>surface_name</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Surface name for the surface data.</p>
+</dd>
+<dt><strong>overset_mesh</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values" title="(in Python v3.11)"><span class="xref std std-ref">bool</span></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Whether to provide the overset method. The default is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">Union</span></code>[<a class="reference internal" href="#ansys.fluent.core.services.field_data.Vertices" title="ansys.fluent.core.services.field_data.Vertices"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Vertices</span></code></a>, <a class="reference internal" href="#ansys.fluent.core.services.field_data.FacesConnectivity" title="ansys.fluent.core.services.field_data.FacesConnectivity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FacesConnectivity</span></code></a>, <a class="reference internal" href="#ansys.fluent.core.services.field_data.FacesNormal" title="ansys.fluent.core.services.field_data.FacesNormal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FacesNormal</span></code></a>, FacesCentroid,</dt><dd></dd>
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">Dict</span></code>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">int</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">Union</span></code>[<a class="reference internal" href="#ansys.fluent.core.services.field_data.Vertices" title="ansys.fluent.core.services.field_data.Vertices"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Vertices</span></code></a>, <a class="reference internal" href="#ansys.fluent.core.services.field_data.FacesConnectivity" title="ansys.fluent.core.services.field_data.FacesConnectivity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FacesConnectivity</span></code></a>, <a class="reference internal" href="#ansys.fluent.core.services.field_data.FacesNormal" title="ansys.fluent.core.services.field_data.FacesNormal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FacesNormal</span></code></a>, <a class="reference internal" href="#ansys.fluent.core.services.field_data.FacesCentroid" title="ansys.fluent.core.services.field_data.FacesCentroid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FacesCentroid</span></code></a>]]]</dt><dd><p>If a surface name is provided as input, face vertices, connectivity data, and normal or centroid data are returned.
+If surface IDs are provided as input, a dictionary containing a map of surface IDs to face
+vertices, connectivity data, and normal or centroid data is returned.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.services.field_data.FieldData.get_vector_field_data">
+<span class="sig-name descname"><span class="pre">get_vector_field_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">field_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">surface_ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">surface_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.services.field_data.FieldData.get_vector_field_data" title="Permalink to this definition">#</a></dt>
+<dd><p>Get vector field data on a surface.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>field_name</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a></span></dt><dd><p>Name of the vector field.</p>
+</dd>
+<dt><strong>surface_ids</strong><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">List</span></code>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">int</span></code></a>], <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>List of surface IDs for vector field data.</p>
+</dd>
+<dt><strong>surface_name: str, optional</strong></dt><dd><p>Surface Name for vector field data.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">Union</span></code>[<a class="reference internal" href="#ansys.fluent.core.services.field_data.VectorFieldData" title="ansys.fluent.core.services.field_data.VectorFieldData"><code class="xref py py-obj docutils literal notranslate"><span class="pre">VectorFieldData</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">Dict</span></code>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">int</span></code></a>, <a class="reference internal" href="#ansys.fluent.core.services.field_data.VectorFieldData" title="ansys.fluent.core.services.field_data.VectorFieldData"><code class="xref py py-obj docutils literal notranslate"><span class="pre">VectorFieldData</span></code></a>]]</dt><dd><p>If a surface name is provided as input, vector field data is returned.
+If surface IDs are provided as input, a dictionary containing a map of
+surface IDs to vector field data is returned.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.services.field_data.FieldData.new_transaction">
+<span class="sig-name descname"><span class="pre">new_transaction</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.services.field_data.FieldData.new_transaction" title="Permalink to this definition">#</a></dt>
+<dd><p>Create a new field transaction.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.services.field_data.FieldDataService">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.services.field_data.</span></span><span class="sig-name descname"><span class="pre">FieldDataService</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">channel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fluent_error_state</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.services.field_data.FieldDataService" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="streaming.html#ansys.fluent.core.services.streaming.StreamingService" title="ansys.fluent.core.services.streaming.StreamingService"><code class="xref py py-class docutils literal notranslate"><span class="pre">StreamingService</span></code></a></p>
+<p>FieldData service of Fluent.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.services.field_data.FieldDataService.__init__" title="ansys.fluent.core.services.field_data.FieldDataService.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(channel, metadata, fluent_error_state)</p></td>
+<td><p>__init__ method of FieldDataService class.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.services.field_data.FieldDataService.get_fields" title="ansys.fluent.core.services.field_data.FieldDataService.get_fields"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_fields</span></code></a>(request)</p></td>
+<td><p>GetFields rpc of FieldData service.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.services.field_data.FieldDataService.get_scalar_field_range" title="ansys.fluent.core.services.field_data.FieldDataService.get_scalar_field_range"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_scalar_field_range</span></code></a>(request)</p></td>
+<td><p>GetRange rpc of FieldData service.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.services.field_data.FieldDataService.get_scalar_fields_info" title="ansys.fluent.core.services.field_data.FieldDataService.get_scalar_fields_info"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_scalar_fields_info</span></code></a>(request)</p></td>
+<td><p>GetFieldsInfo rpc of FieldData service.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.services.field_data.FieldDataService.get_surfaces_info" title="ansys.fluent.core.services.field_data.FieldDataService.get_surfaces_info"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_surfaces_info</span></code></a>(request)</p></td>
+<td><p>GetSurfacesInfo rpc of FieldData service.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.services.field_data.FieldDataService.get_vector_fields_info" title="ansys.fluent.core.services.field_data.FieldDataService.get_vector_fields_info"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_vector_fields_info</span></code></a>(request)</p></td>
+<td><p>GetVectorFieldsInfo rpc of FieldData service.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.services.field_data.FieldDataService.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">channel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fluent_error_state</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.services.field_data.FieldDataService.__init__" title="Permalink to this definition">#</a></dt>
+<dd><p>__init__ method of FieldDataService class.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.services.field_data.FieldDataService.get_fields">
+<span class="sig-name descname"><span class="pre">get_fields</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.services.field_data.FieldDataService.get_fields" title="Permalink to this definition">#</a></dt>
+<dd><p>GetFields rpc of FieldData service.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.services.field_data.FieldDataService.get_scalar_field_range">
+<span class="sig-name descname"><span class="pre">get_scalar_field_range</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.services.field_data.FieldDataService.get_scalar_field_range" title="Permalink to this definition">#</a></dt>
+<dd><p>GetRange rpc of FieldData service.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.services.field_data.FieldDataService.get_scalar_fields_info">
+<span class="sig-name descname"><span class="pre">get_scalar_fields_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.services.field_data.FieldDataService.get_scalar_fields_info" title="Permalink to this definition">#</a></dt>
+<dd><p>GetFieldsInfo rpc of FieldData service.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.services.field_data.FieldDataService.get_surfaces_info">
+<span class="sig-name descname"><span class="pre">get_surfaces_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.services.field_data.FieldDataService.get_surfaces_info" title="Permalink to this definition">#</a></dt>
+<dd><p>GetSurfacesInfo rpc of FieldData service.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.services.field_data.FieldDataService.get_vector_fields_info">
+<span class="sig-name descname"><span class="pre">get_vector_fields_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.services.field_data.FieldDataService.get_vector_fields_info" title="Permalink to this definition">#</a></dt>
+<dd><p>GetVectorFieldsInfo rpc of FieldData service.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.services.field_data.FieldInfo">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.services.field_data.</span></span><span class="sig-name descname"><span class="pre">FieldInfo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">service</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_data_valid</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.services.field_data.FieldInfo" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Provides access to Fluent field information.</p>
+<p class="rubric">Methods</p>
+<table class="table">
+<tbody>
+<tr class="row-odd"><td><p><strong>get_scalar_field_range(field: str, node_value: bool, surface_ids: List[int])</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>-&gt; List[float]</strong></p></td>
+<td><p>Get the range (minimum and maximum values) of the field.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>get_scalar_fields_info(self) -&gt; dict</strong></p></td>
+<td><p>Get fields information (field name, domain, and section).</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>get_vector_fields_info(self) -&gt; dict</strong></p></td>
+<td><p>Get vector fields information.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>get_surfaces_info(self) -&gt; dict</strong></p></td>
+<td><p>Get surfaces information (surface name, ID, and type).</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.services.field_data.FieldInfo.__init__" title="ansys.fluent.core.services.field_data.FieldInfo.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(service, is_data_valid)</p></td>
+<td><p>__init__ method of FieldInfo class.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.services.field_data.FieldInfo.get_scalar_field_range" title="ansys.fluent.core.services.field_data.FieldInfo.get_scalar_field_range"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_scalar_field_range</span></code></a>(field[, node_value, ...])</p></td>
+<td><p>Get the range (minimum and maximum values) of the field.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.services.field_data.FieldInfo.get_scalar_fields_info" title="ansys.fluent.core.services.field_data.FieldInfo.get_scalar_fields_info"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_scalar_fields_info</span></code></a>()</p></td>
+<td><p>Get fields information (field name, domain, and section).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.services.field_data.FieldInfo.get_surfaces_info" title="ansys.fluent.core.services.field_data.FieldInfo.get_surfaces_info"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_surfaces_info</span></code></a>()</p></td>
+<td><p>Get surfaces information (surface name, ID, and type).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.services.field_data.FieldInfo.get_vector_fields_info" title="ansys.fluent.core.services.field_data.FieldInfo.get_vector_fields_info"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_vector_fields_info</span></code></a>()</p></td>
+<td><p>Get vector fields information (vector components).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.services.field_data.FieldInfo.validate_scalar_fields" title="ansys.fluent.core.services.field_data.FieldInfo.validate_scalar_fields"><code class="xref py py-obj docutils literal notranslate"><span class="pre">validate_scalar_fields</span></code></a>(field_name)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.services.field_data.FieldInfo.validate_surfaces" title="ansys.fluent.core.services.field_data.FieldInfo.validate_surfaces"><code class="xref py py-obj docutils literal notranslate"><span class="pre">validate_surfaces</span></code></a>(surfaces)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.services.field_data.FieldInfo.validate_vector_fields" title="ansys.fluent.core.services.field_data.FieldInfo.validate_vector_fields"><code class="xref py py-obj docutils literal notranslate"><span class="pre">validate_vector_fields</span></code></a>(field_name)</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.services.field_data.FieldInfo.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">service</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_data_valid</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.services.field_data.FieldInfo.__init__" title="Permalink to this definition">#</a></dt>
+<dd><p>__init__ method of FieldInfo class.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.services.field_data.FieldInfo.get_scalar_field_range">
+<span class="sig-name descname"><span class="pre">get_scalar_field_range</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">field</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">surface_ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.services.field_data.FieldInfo.get_scalar_field_range" title="Permalink to this definition">#</a></dt>
+<dd><p>Get the range (minimum and maximum values) of the field.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>field: str</strong></dt><dd><p>Field name</p>
+</dd>
+<dt><strong>node_value: bool</strong></dt><dd></dd>
+<dt><strong>surface_ids</strong><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">List</span></code>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">int</span></code></a>], <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>List of surface IDS for the surface data.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">List</span></code>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">float</span></code></a>]</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.services.field_data.FieldInfo.get_scalar_fields_info">
+<span class="sig-name descname"><span class="pre">get_scalar_fields_info</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.services.field_data.FieldInfo.get_scalar_fields_info" title="Permalink to this definition">#</a></dt>
+<dd><p>Get fields information (field name, domain, and section).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">Dict</span></code></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.services.field_data.FieldInfo.get_surfaces_info">
+<span class="sig-name descname"><span class="pre">get_surfaces_info</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.services.field_data.FieldInfo.get_surfaces_info" title="Permalink to this definition">#</a></dt>
+<dd><p>Get surfaces information (surface name, ID, and type).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">Dict</span></code></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.services.field_data.FieldInfo.get_vector_fields_info">
+<span class="sig-name descname"><span class="pre">get_vector_fields_info</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.services.field_data.FieldInfo.get_vector_fields_info" title="Permalink to this definition">#</a></dt>
+<dd><p>Get vector fields information (vector components).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">Dict</span></code></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.services.field_data.FieldInfo.validate_scalar_fields">
+<span class="sig-name descname"><span class="pre">validate_scalar_fields</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">field_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.services.field_data.FieldInfo.validate_scalar_fields" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.services.field_data.FieldInfo.validate_surfaces">
+<span class="sig-name descname"><span class="pre">validate_surfaces</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">surfaces</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.services.field_data.FieldInfo.validate_surfaces" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.services.field_data.FieldInfo.validate_vector_fields">
+<span class="sig-name descname"><span class="pre">validate_vector_fields</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">field_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.services.field_data.FieldInfo.validate_vector_fields" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="ansys.fluent.core.services.field_data.FieldNameError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.services.field_data.</span></span><span class="sig-name descname"><span class="pre">FieldNameError</span></span><a class="headerlink" href="#ansys.fluent.core.services.field_data.FieldNameError" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ValueError</span></code></a></p>
+<p>Exception class for errors in field name.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.services.field_data.FieldTransaction">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.services.field_data.</span></span><span class="sig-name descname"><span class="pre">FieldTransaction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">service</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field_info</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allowed_surface_ids</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allowed_surface_names</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allowed_scalar_field_names</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allowed_vector_field_names</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.services.field_data.FieldTransaction" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Populates Fluent field data on surfaces.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.services.field_data.FieldTransaction.__init__" title="ansys.fluent.core.services.field_data.FieldTransaction.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(service, field_info, ...)</p></td>
+<td><p>__init__ method of FieldTransaction class.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.services.field_data.FieldTransaction.add_pathlines_fields_request" title="ansys.fluent.core.services.field_data.FieldTransaction.add_pathlines_fields_request"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_pathlines_fields_request</span></code></a>(field_name[, ...])</p></td>
+<td><p>Add request to get pathlines field on surfaces.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.services.field_data.FieldTransaction.add_scalar_fields_request" title="ansys.fluent.core.services.field_data.FieldTransaction.add_scalar_fields_request"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_scalar_fields_request</span></code></a>(field_name[, ...])</p></td>
+<td><p>Add request to get scalar field data on surfaces.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.services.field_data.FieldTransaction.add_surfaces_request" title="ansys.fluent.core.services.field_data.FieldTransaction.add_surfaces_request"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_surfaces_request</span></code></a>([surface_ids, ...])</p></td>
+<td><p>Add request to get surface data (vertices, face connectivity, centroids, and normals).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.services.field_data.FieldTransaction.add_vector_fields_request" title="ansys.fluent.core.services.field_data.FieldTransaction.add_vector_fields_request"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_vector_fields_request</span></code></a>(field_name[, ...])</p></td>
+<td><p>Add request to get vector field data on surfaces.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.services.field_data.FieldTransaction.get_fields" title="ansys.fluent.core.services.field_data.FieldTransaction.get_fields"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_fields</span></code></a>()</p></td>
+<td><p>Get data for previously added requests and then clear all requests.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.services.field_data.FieldTransaction.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">service</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field_info</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allowed_surface_ids</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allowed_surface_names</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allowed_scalar_field_names</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allowed_vector_field_names</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.services.field_data.FieldTransaction.__init__" title="Permalink to this definition">#</a></dt>
+<dd><p>__init__ method of FieldTransaction class.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.services.field_data.FieldTransaction.add_pathlines_fields_request">
+<span class="sig-name descname"><span class="pre">add_pathlines_fields_request</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">field_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">surface_ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">surface_names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">additional_field_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">provide_particle_time_field</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">steps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">500</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.01</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skip</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reverse</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">accuracy_control_on</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tolerance</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coarsen</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">velocity_domain</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'all-phases'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zones</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.services.field_data.FieldTransaction.add_pathlines_fields_request" title="Permalink to this definition">#</a></dt>
+<dd><p>Add request to get pathlines field on surfaces.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>field_name</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a></span></dt><dd><p>Name of the scalar field to color pathlines.</p>
+</dd>
+<dt><strong>surface_ids</strong><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">List</span></code>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">int</span></code></a>], <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>List of surface IDs for pathlines field data.</p>
+</dd>
+<dt><strong>surface_names</strong><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">List</span></code>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a>], <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>List of surface names for pathlines field data.</p>
+</dd>
+<dt><strong>additional_field_name</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Additional field if required.</p>
+</dd>
+<dt><strong>provide_particle_time_field: bool, optional</strong></dt><dd><p>Whether to provide the particle time. The default is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+</dd>
+<dt><strong>node_value</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values" title="(in Python v3.11)"><span class="xref std std-ref">bool</span></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Whether to provide the nodal values. The default is <code class="docutils literal notranslate"><span class="pre">True</span></code>. If
+<code class="docutils literal notranslate"><span class="pre">False</span></code>, element values are provided.</p>
+</dd>
+<dt><strong>steps: int, optional</strong></dt><dd><p>Pathlines steps. The default is <code class="docutils literal notranslate"><span class="pre">500</span></code></p>
+</dd>
+<dt><strong>step_size: float, optional</strong></dt><dd><p>Pathlines step size. The default is <code class="docutils literal notranslate"><span class="pre">0.01</span></code>.</p>
+</dd>
+<dt><strong>skip: int, optional</strong></dt><dd><p>Pathlines to skip. The default is <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p>
+</dd>
+<dt><strong>reverse: bool, optional</strong></dt><dd><p>Whether to draw pathlines in reverse direction. The default is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+</dd>
+<dt><strong>tolerance: float, optional</strong></dt><dd><p>Pathlines tolerance. The default is <code class="docutils literal notranslate"><span class="pre">0.001</span></code>.</p>
+</dd>
+<dt><strong>coarsen: int, optional</strong></dt><dd><p>Pathlines coarsen. The default is <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p>
+</dd>
+<dt><strong>velocity_domain: str, optional</strong></dt><dd><p>Domain for pathlines. The default is <code class="docutils literal notranslate"><span class="pre">&quot;all-phases&quot;</span></code>.</p>
+</dd>
+<dt><strong>zones: list, optional</strong></dt><dd><p>Zones for pathlines. The default is <code class="docutils literal notranslate"><span class="pre">[]</span></code>.</p>
+</dd>
+<dt><strong>Returns</strong></dt><dd></dd>
+<dt><strong>——-</strong></dt><dd></dd>
+<dt><strong>None</strong></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.services.field_data.FieldTransaction.add_scalar_fields_request">
+<span class="sig-name descname"><span class="pre">add_scalar_fields_request</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">field_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">surface_ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">surface_names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">boundary_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.services.field_data.FieldTransaction.add_scalar_fields_request" title="Permalink to this definition">#</a></dt>
+<dd><p>Add request to get scalar field data on surfaces.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>field_name</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a></span></dt><dd><p>Name of the scalar field.</p>
+</dd>
+<dt><strong>surface_ids</strong><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">List</span></code>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">int</span></code></a>], <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>List of surface IDs for scalar field data.</p>
+</dd>
+<dt><strong>surface_names: List[str], optional</strong></dt><dd><p>List of surface names for scalar field data.</p>
+</dd>
+<dt><strong>node_value</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values" title="(in Python v3.11)"><span class="xref std std-ref">bool</span></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Whether to provide the nodal location. The default is <code class="docutils literal notranslate"><span class="pre">True</span></code>. If
+<code class="docutils literal notranslate"><span class="pre">False</span></code>, the element location is provided.</p>
+</dd>
+<dt><strong>boundary_value</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values" title="(in Python v3.11)"><span class="xref std std-ref">bool</span></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Whether to provide the slip velocity at the wall boundaries. The default
+is <code class="docutils literal notranslate"><span class="pre">False</span></code>. When <code class="docutils literal notranslate"><span class="pre">True</span></code>, no slip velocity is provided.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">None</span></code></a></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.services.field_data.FieldTransaction.add_surfaces_request">
+<span class="sig-name descname"><span class="pre">add_surfaces_request</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">surface_ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">surface_names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overset_mesh</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">provide_vertices</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">provide_faces</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">provide_faces_centroid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">provide_faces_normal</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.services.field_data.FieldTransaction.add_surfaces_request" title="Permalink to this definition">#</a></dt>
+<dd><p>Add request to get surface data (vertices, face connectivity,
+centroids, and normals).</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>surface_ids</strong><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">List</span></code>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">int</span></code></a>], <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>List of surface IDS for the surface data.</p>
+</dd>
+<dt><strong>surface_names: List[str], optional</strong></dt><dd><p>List of surface names for the surface data.</p>
+</dd>
+<dt><strong>overset_mesh</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values" title="(in Python v3.11)"><span class="xref std std-ref">bool</span></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Whether to get the overset met. The default is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+</dd>
+<dt><strong>provide_vertices</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values" title="(in Python v3.11)"><span class="xref std std-ref">bool</span></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Whether to get node coordinates. The default is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
+</dd>
+<dt><strong>provide_faces</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values" title="(in Python v3.11)"><span class="xref std std-ref">bool</span></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Whether to get face connectivity. The default is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
+</dd>
+<dt><strong>provide_faces_centroid</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values" title="(in Python v3.11)"><span class="xref std std-ref">bool</span></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Whether to get face centroids. The default is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+</dd>
+<dt><strong>provide_faces_normal</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values" title="(in Python v3.11)"><span class="xref std std-ref">bool</span></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Whether to get faces normal. The default is <code class="docutils literal notranslate"><span class="pre">False</span></code></p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">None</span></code></a></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.services.field_data.FieldTransaction.add_vector_fields_request">
+<span class="sig-name descname"><span class="pre">add_vector_fields_request</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">field_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">surface_ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">surface_names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.services.field_data.FieldTransaction.add_vector_fields_request" title="Permalink to this definition">#</a></dt>
+<dd><p>Add request to get vector field data on surfaces.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>field_name</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a></span></dt><dd><p>Name of the vector field.</p>
+</dd>
+<dt><strong>surface_ids</strong><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">List</span></code>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">int</span></code></a>], <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>List of surface IDs for vector field data.</p>
+</dd>
+<dt><strong>surface_names: List[str], optional</strong></dt><dd><p>List of surface names for vector field data.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">None</span></code></a></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.services.field_data.FieldTransaction.get_fields">
+<span class="sig-name descname"><span class="pre">get_fields</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.services.field_data.FieldTransaction.get_fields" title="Permalink to this definition">#</a></dt>
+<dd><p>Get data for previously added requests and then clear all requests.</p>
+<dl class="field-list">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">Dict</span></code>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">int</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">Dict</span></code>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">int</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">Dict</span></code>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">np.array</span></code>]]]</dt><dd><p>Data is returned as dictionary of dictionaries in the following structure:
+tag Union[int, Tuple]-&gt; surface_id [int] -&gt; field_name [str] -&gt; field_data[np.array]</p>
+<p>The tag is a tuple for Fluent 2023 R1 or later.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="ansys.fluent.core.services.field_data.FieldUnavailable">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.services.field_data.</span></span><span class="sig-name descname"><span class="pre">FieldUnavailable</span></span><a class="headerlink" href="#ansys.fluent.core.services.field_data.FieldUnavailable" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">RuntimeError</span></code></a></p>
+<p>Exception class for when field is unavailable.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.services.field_data.ScalarFieldData">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.services.field_data.</span></span><span class="sig-name descname"><span class="pre">ScalarFieldData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i_d</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.services.field_data.ScalarFieldData" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ansys.fluent.core.services.field_data.BaseFieldData" title="ansys.fluent.core.services.field_data.BaseFieldData"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseFieldData</span></code></a></p>
+<p>Contains scalar field data.</p>
+<p><strong>Classes:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.services.field_data.ScalarFieldData.ScalarData" title="ansys.fluent.core.services.field_data.ScalarFieldData.ScalarData"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ScalarData</span></code></a>(data)</p></td>
+<td><p>Stores and provides the data as a scalar.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.services.field_data.ScalarFieldData.__init__" title="ansys.fluent.core.services.field_data.ScalarFieldData.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(i_d, data)</p></td>
+<td><p>__init__ method of ScalarFieldData class.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.services.field_data.ScalarFieldData.ScalarData">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ScalarData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.services.field_data.ScalarFieldData.ScalarData" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Stores and provides the data as a scalar.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.services.field_data.ScalarFieldData.ScalarData.__init__" title="ansys.fluent.core.services.field_data.ScalarFieldData.ScalarData.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(data)</p></td>
+<td><p>__init__ method of ScalarData class.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.services.field_data.ScalarFieldData.ScalarData.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.services.field_data.ScalarFieldData.ScalarData.__init__" title="Permalink to this definition">#</a></dt>
+<dd><p>__init__ method of ScalarData class.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.services.field_data.ScalarFieldData.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i_d</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.services.field_data.ScalarFieldData.__init__" title="Permalink to this definition">#</a></dt>
+<dd><p>__init__ method of ScalarFieldData class.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="ansys.fluent.core.services.field_data.ScalarFieldNameError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.services.field_data.</span></span><span class="sig-name descname"><span class="pre">ScalarFieldNameError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">field_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allowed_values</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.services.field_data.ScalarFieldNameError" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ansys.fluent.core.services.field_data.FieldNameError" title="ansys.fluent.core.services.field_data.FieldNameError"><code class="xref py py-class docutils literal notranslate"><span class="pre">FieldNameError</span></code></a></p>
+<p>Exception class for errors in scalar field name.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.services.field_data.ScalarFieldNameError.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">field_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allowed_values</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.services.field_data.ScalarFieldNameError.__init__" title="Permalink to this definition">#</a></dt>
+<dd><p>__init__ method of ScalarFieldNameError class.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="ansys.fluent.core.services.field_data.ScalarFieldUnavailable">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.services.field_data.</span></span><span class="sig-name descname"><span class="pre">ScalarFieldUnavailable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">field_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.services.field_data.ScalarFieldUnavailable" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ansys.fluent.core.services.field_data.FieldUnavailable" title="ansys.fluent.core.services.field_data.FieldUnavailable"><code class="xref py py-class docutils literal notranslate"><span class="pre">FieldUnavailable</span></code></a></p>
+<p>Exception class for when scalar field is unavailable.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.services.field_data.ScalarFieldUnavailable.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">field_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.services.field_data.ScalarFieldUnavailable.__init__" title="Permalink to this definition">#</a></dt>
+<dd><p>__init__ method of ScalarFieldUnavailable class.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.services.field_data.SurfaceDataType">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.services.field_data.</span></span><span class="sig-name descname"><span class="pre">SurfaceDataType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.services.field_data.SurfaceDataType" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/enum.html#enum.IntEnum" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">IntEnum</span></code></a></p>
+<p>Provides surface data types.</p>
+<p><strong>Attributes:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.services.field_data.SurfaceDataType.FacesCentroid" title="ansys.fluent.core.services.field_data.SurfaceDataType.FacesCentroid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FacesCentroid</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.services.field_data.SurfaceDataType.FacesConnectivity" title="ansys.fluent.core.services.field_data.SurfaceDataType.FacesConnectivity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FacesConnectivity</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.services.field_data.SurfaceDataType.FacesNormal" title="ansys.fluent.core.services.field_data.SurfaceDataType.FacesNormal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FacesNormal</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.services.field_data.SurfaceDataType.Vertices" title="ansys.fluent.core.services.field_data.SurfaceDataType.Vertices"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Vertices</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ansys.fluent.core.services.field_data.SurfaceDataType.FacesCentroid">
+<span class="sig-name descname"><span class="pre">FacesCentroid</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">4</span></em><a class="headerlink" href="#ansys.fluent.core.services.field_data.SurfaceDataType.FacesCentroid" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ansys.fluent.core.services.field_data.SurfaceDataType.FacesConnectivity">
+<span class="sig-name descname"><span class="pre">FacesConnectivity</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#ansys.fluent.core.services.field_data.SurfaceDataType.FacesConnectivity" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ansys.fluent.core.services.field_data.SurfaceDataType.FacesNormal">
+<span class="sig-name descname"><span class="pre">FacesNormal</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3</span></em><a class="headerlink" href="#ansys.fluent.core.services.field_data.SurfaceDataType.FacesNormal" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ansys.fluent.core.services.field_data.SurfaceDataType.Vertices">
+<span class="sig-name descname"><span class="pre">Vertices</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#ansys.fluent.core.services.field_data.SurfaceDataType.Vertices" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="ansys.fluent.core.services.field_data.SurfaceNameError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.services.field_data.</span></span><span class="sig-name descname"><span class="pre">SurfaceNameError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">surface_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allowed_values</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.services.field_data.SurfaceNameError" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ValueError</span></code></a></p>
+<p>Exception class for errors in surface name.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.services.field_data.SurfaceNameError.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">surface_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allowed_values</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.services.field_data.SurfaceNameError.__init__" title="Permalink to this definition">#</a></dt>
+<dd><p>__init__ method of SurfaceNameError class.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.services.field_data.Vector">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.services.field_data.</span></span><span class="sig-name descname"><span class="pre">Vector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.services.field_data.Vector" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Stores the data as a vector <code class="docutils literal notranslate"><span class="pre">(x,</span> <span class="pre">y,</span> <span class="pre">z)</span></code>.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.services.field_data.Vector.__init__" title="ansys.fluent.core.services.field_data.Vector.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(x, y, z)</p></td>
+<td><p>__init__ method of Vector class.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Attributes:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.services.field_data.Vector.x" title="ansys.fluent.core.services.field_data.Vector.x"><code class="xref py py-obj docutils literal notranslate"><span class="pre">x</span></code></a></p></td>
+<td><p>Returns vector point x.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.fluent.core.services.field_data.Vector.y" title="ansys.fluent.core.services.field_data.Vector.y"><code class="xref py py-obj docutils literal notranslate"><span class="pre">y</span></code></a></p></td>
+<td><p>Returns vector point y.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.services.field_data.Vector.z" title="ansys.fluent.core.services.field_data.Vector.z"><code class="xref py py-obj docutils literal notranslate"><span class="pre">z</span></code></a></p></td>
+<td><p>Returns vector point z.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.services.field_data.Vector.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.services.field_data.Vector.__init__" title="Permalink to this definition">#</a></dt>
+<dd><p>__init__ method of Vector class.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ansys.fluent.core.services.field_data.Vector.x">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">x</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></em><a class="headerlink" href="#ansys.fluent.core.services.field_data.Vector.x" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns vector point x.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ansys.fluent.core.services.field_data.Vector.y">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">y</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></em><a class="headerlink" href="#ansys.fluent.core.services.field_data.Vector.y" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns vector point y.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ansys.fluent.core.services.field_data.Vector.z">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">z</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></em><a class="headerlink" href="#ansys.fluent.core.services.field_data.Vector.z" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns vector point z.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.services.field_data.VectorFieldData">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.services.field_data.</span></span><span class="sig-name descname"><span class="pre">VectorFieldData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i_d</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.services.field_data.VectorFieldData" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ansys.fluent.core.services.field_data.BaseFieldData" title="ansys.fluent.core.services.field_data.BaseFieldData"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseFieldData</span></code></a></p>
+<p>Provides a container for vector field data.</p>
+<p><strong>Classes:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.services.field_data.VectorFieldData.VectorData" title="ansys.fluent.core.services.field_data.VectorFieldData.VectorData"><code class="xref py py-obj docutils literal notranslate"><span class="pre">VectorData</span></code></a>(x, y, z)</p></td>
+<td><p>Stores and provides the data as a vector.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.services.field_data.VectorFieldData.__init__" title="ansys.fluent.core.services.field_data.VectorFieldData.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(i_d, data, scale)</p></td>
+<td><p>__init__ method of VectorFieldData class.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Attributes:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.services.field_data.VectorFieldData.scale" title="ansys.fluent.core.services.field_data.VectorFieldData.scale"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale</span></code></a></p></td>
+<td><p>Returns scale of the vector field.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.services.field_data.VectorFieldData.VectorData">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">VectorData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.services.field_data.VectorFieldData.VectorData" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ansys.fluent.core.services.field_data.Vector" title="ansys.fluent.core.services.field_data.Vector"><code class="xref py py-class docutils literal notranslate"><span class="pre">Vector</span></code></a></p>
+<p>Stores and provides the data as a vector.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.services.field_data.VectorFieldData.VectorData.__init__" title="ansys.fluent.core.services.field_data.VectorFieldData.VectorData.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(x, y, z)</p></td>
+<td><p>__init__ method of VectorData class.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.services.field_data.VectorFieldData.VectorData.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.services.field_data.VectorFieldData.VectorData.__init__" title="Permalink to this definition">#</a></dt>
+<dd><p>__init__ method of VectorData class.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.services.field_data.VectorFieldData.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i_d</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.services.field_data.VectorFieldData.__init__" title="Permalink to this definition">#</a></dt>
+<dd><p>__init__ method of VectorFieldData class.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ansys.fluent.core.services.field_data.VectorFieldData.scale">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">scale</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></em><a class="headerlink" href="#ansys.fluent.core.services.field_data.VectorFieldData.scale" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns scale of the vector field.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="ansys.fluent.core.services.field_data.VectorFieldNameError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.services.field_data.</span></span><span class="sig-name descname"><span class="pre">VectorFieldNameError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">field_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allowed_values</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.services.field_data.VectorFieldNameError" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ansys.fluent.core.services.field_data.FieldNameError" title="ansys.fluent.core.services.field_data.FieldNameError"><code class="xref py py-class docutils literal notranslate"><span class="pre">FieldNameError</span></code></a></p>
+<p>Exception class for errors in vector field name.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.services.field_data.VectorFieldNameError.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">field_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allowed_values</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.services.field_data.VectorFieldNameError.__init__" title="Permalink to this definition">#</a></dt>
+<dd><p>__init__ method of VectorFieldNameError class.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="ansys.fluent.core.services.field_data.VectorFieldUnavailable">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.services.field_data.</span></span><span class="sig-name descname"><span class="pre">VectorFieldUnavailable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">field_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.services.field_data.VectorFieldUnavailable" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ansys.fluent.core.services.field_data.FieldUnavailable" title="ansys.fluent.core.services.field_data.FieldUnavailable"><code class="xref py py-class docutils literal notranslate"><span class="pre">FieldUnavailable</span></code></a></p>
+<p>Exception class for when vector field is unavailable.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.services.field_data.VectorFieldUnavailable.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">field_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.services.field_data.VectorFieldUnavailable.__init__" title="Permalink to this definition">#</a></dt>
+<dd><p>__init__ method of VectorFieldUnavailable class.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.services.field_data.Vertices">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.services.field_data.</span></span><span class="sig-name descname"><span class="pre">Vertices</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i_d</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.services.field_data.Vertices" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ansys.fluent.core.services.field_data.BaseFieldData" title="ansys.fluent.core.services.field_data.BaseFieldData"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseFieldData</span></code></a></p>
+<p>Provides a container for the vertex data.</p>
+<p><strong>Classes:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.services.field_data.Vertices.Vertex" title="ansys.fluent.core.services.field_data.Vertices.Vertex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Vertex</span></code></a>(x, y, z)</p></td>
+<td><p>Stores and provides the data as a vector of a vertex.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.services.field_data.Vertices.__init__" title="ansys.fluent.core.services.field_data.Vertices.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(i_d, data)</p></td>
+<td><p>__init__ method of Vertices class.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.fluent.core.services.field_data.Vertices.Vertex">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Vertex</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.services.field_data.Vertices.Vertex" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ansys.fluent.core.services.field_data.Vector" title="ansys.fluent.core.services.field_data.Vector"><code class="xref py py-class docutils literal notranslate"><span class="pre">Vector</span></code></a></p>
+<p>Stores and provides the data as a vector of a vertex.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.fluent.core.services.field_data.Vertices.Vertex.__init__" title="ansys.fluent.core.services.field_data.Vertices.Vertex.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(x, y, z)</p></td>
+<td><p>__init__ method of Vertex class.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.services.field_data.Vertices.Vertex.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.services.field_data.Vertices.Vertex.__init__" title="Permalink to this definition">#</a></dt>
+<dd><p>__init__ method of Vertex class.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.fluent.core.services.field_data.Vertices.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i_d</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.services.field_data.Vertices.__init__" title="Permalink to this definition">#</a></dt>
+<dd><p>__init__ method of Vertices class.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ansys.fluent.core.services.field_data.get_fields_request">
+<span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.services.field_data.</span></span><span class="sig-name descname"><span class="pre">get_fields_request</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.services.field_data.get_fields_request" title="Permalink to this definition">#</a></dt>
+<dd><p>Populates a new field request.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ansys.fluent.core.services.field_data.override_help_text">
+<span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.services.field_data.</span></span><span class="sig-name descname"><span class="pre">override_help_text</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">func_to_be_wrapped</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.services.field_data.override_help_text" title="Permalink to this definition">#</a></dt>
+<dd><p>Override function help text.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ansys.fluent.core.services.field_data.unavailable_field_error_message">
+<span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.services.field_data.</span></span><span class="sig-name descname"><span class="pre">unavailable_field_error_message</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.fluent.core.services.field_data.unavailable_field_error_message" title="Permalink to this definition">#</a></dt>
+<dd><p>Error message for unavailable fields.</p>
+</dd></dl>
+
+</section>
+
+
+                </article>
+              
+              
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.services.field_data.BaseFieldData"><code class="docutils literal notranslate"><span class="pre">BaseFieldData</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.services.field_data.BaseFieldData.__init__"><code class="docutils literal notranslate"><span class="pre">BaseFieldData.__init__()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.services.field_data.BaseFieldData.data"><code class="docutils literal notranslate"><span class="pre">BaseFieldData.data</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.services.field_data.BaseFieldData.size"><code class="docutils literal notranslate"><span class="pre">BaseFieldData.size</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.services.field_data.BaseFieldData.surface_id"><code class="docutils literal notranslate"><span class="pre">BaseFieldData.surface_id</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.services.field_data.ChunkParser"><code class="docutils literal notranslate"><span class="pre">ChunkParser</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.services.field_data.ChunkParser.__init__"><code class="docutils literal notranslate"><span class="pre">ChunkParser.__init__()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.services.field_data.ChunkParser.extract_fields"><code class="docutils literal notranslate"><span class="pre">ChunkParser.extract_fields()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.services.field_data.FacesCentroid"><code class="docutils literal notranslate"><span class="pre">FacesCentroid</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.services.field_data.FacesCentroid.Centroid"><code class="docutils literal notranslate"><span class="pre">FacesCentroid.Centroid</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.services.field_data.FacesCentroid.Centroid.__init__"><code class="docutils literal notranslate"><span class="pre">FacesCentroid.Centroid.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.services.field_data.FacesCentroid.__init__"><code class="docutils literal notranslate"><span class="pre">FacesCentroid.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.services.field_data.FacesConnectivity"><code class="docutils literal notranslate"><span class="pre">FacesConnectivity</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.services.field_data.FacesConnectivity.Faces"><code class="docutils literal notranslate"><span class="pre">FacesConnectivity.Faces</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.services.field_data.FacesConnectivity.Faces.__init__"><code class="docutils literal notranslate"><span class="pre">FacesConnectivity.Faces.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.services.field_data.FacesConnectivity.__init__"><code class="docutils literal notranslate"><span class="pre">FacesConnectivity.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.services.field_data.FacesNormal"><code class="docutils literal notranslate"><span class="pre">FacesNormal</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.services.field_data.FacesNormal.Normal"><code class="docutils literal notranslate"><span class="pre">FacesNormal.Normal</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.services.field_data.FacesNormal.Normal.__init__"><code class="docutils literal notranslate"><span class="pre">FacesNormal.Normal.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.services.field_data.FacesNormal.__init__"><code class="docutils literal notranslate"><span class="pre">FacesNormal.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.services.field_data.FieldData"><code class="docutils literal notranslate"><span class="pre">FieldData</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.services.field_data.FieldData.__init__"><code class="docutils literal notranslate"><span class="pre">FieldData.__init__()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.services.field_data.FieldData.get_pathlines_field_data"><code class="docutils literal notranslate"><span class="pre">FieldData.get_pathlines_field_data()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.services.field_data.FieldData.get_scalar_field_data"><code class="docutils literal notranslate"><span class="pre">FieldData.get_scalar_field_data()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.services.field_data.FieldData.get_surface_data"><code class="docutils literal notranslate"><span class="pre">FieldData.get_surface_data()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.services.field_data.FieldData.get_vector_field_data"><code class="docutils literal notranslate"><span class="pre">FieldData.get_vector_field_data()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.services.field_data.FieldData.new_transaction"><code class="docutils literal notranslate"><span class="pre">FieldData.new_transaction()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.services.field_data.FieldDataService"><code class="docutils literal notranslate"><span class="pre">FieldDataService</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.services.field_data.FieldDataService.__init__"><code class="docutils literal notranslate"><span class="pre">FieldDataService.__init__()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.services.field_data.FieldDataService.get_fields"><code class="docutils literal notranslate"><span class="pre">FieldDataService.get_fields()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.services.field_data.FieldDataService.get_scalar_field_range"><code class="docutils literal notranslate"><span class="pre">FieldDataService.get_scalar_field_range()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.services.field_data.FieldDataService.get_scalar_fields_info"><code class="docutils literal notranslate"><span class="pre">FieldDataService.get_scalar_fields_info()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.services.field_data.FieldDataService.get_surfaces_info"><code class="docutils literal notranslate"><span class="pre">FieldDataService.get_surfaces_info()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.services.field_data.FieldDataService.get_vector_fields_info"><code class="docutils literal notranslate"><span class="pre">FieldDataService.get_vector_fields_info()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.services.field_data.FieldInfo"><code class="docutils literal notranslate"><span class="pre">FieldInfo</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.services.field_data.FieldInfo.__init__"><code class="docutils literal notranslate"><span class="pre">FieldInfo.__init__()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.services.field_data.FieldInfo.get_scalar_field_range"><code class="docutils literal notranslate"><span class="pre">FieldInfo.get_scalar_field_range()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.services.field_data.FieldInfo.get_scalar_fields_info"><code class="docutils literal notranslate"><span class="pre">FieldInfo.get_scalar_fields_info()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.services.field_data.FieldInfo.get_surfaces_info"><code class="docutils literal notranslate"><span class="pre">FieldInfo.get_surfaces_info()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.services.field_data.FieldInfo.get_vector_fields_info"><code class="docutils literal notranslate"><span class="pre">FieldInfo.get_vector_fields_info()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.services.field_data.FieldInfo.validate_scalar_fields"><code class="docutils literal notranslate"><span class="pre">FieldInfo.validate_scalar_fields()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.services.field_data.FieldInfo.validate_surfaces"><code class="docutils literal notranslate"><span class="pre">FieldInfo.validate_surfaces()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.services.field_data.FieldInfo.validate_vector_fields"><code class="docutils literal notranslate"><span class="pre">FieldInfo.validate_vector_fields()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.services.field_data.FieldNameError"><code class="docutils literal notranslate"><span class="pre">FieldNameError</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.services.field_data.FieldTransaction"><code class="docutils literal notranslate"><span class="pre">FieldTransaction</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.services.field_data.FieldTransaction.__init__"><code class="docutils literal notranslate"><span class="pre">FieldTransaction.__init__()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.services.field_data.FieldTransaction.add_pathlines_fields_request"><code class="docutils literal notranslate"><span class="pre">FieldTransaction.add_pathlines_fields_request()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.services.field_data.FieldTransaction.add_scalar_fields_request"><code class="docutils literal notranslate"><span class="pre">FieldTransaction.add_scalar_fields_request()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.services.field_data.FieldTransaction.add_surfaces_request"><code class="docutils literal notranslate"><span class="pre">FieldTransaction.add_surfaces_request()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.services.field_data.FieldTransaction.add_vector_fields_request"><code class="docutils literal notranslate"><span class="pre">FieldTransaction.add_vector_fields_request()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.services.field_data.FieldTransaction.get_fields"><code class="docutils literal notranslate"><span class="pre">FieldTransaction.get_fields()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.services.field_data.FieldUnavailable"><code class="docutils literal notranslate"><span class="pre">FieldUnavailable</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.services.field_data.ScalarFieldData"><code class="docutils literal notranslate"><span class="pre">ScalarFieldData</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.services.field_data.ScalarFieldData.ScalarData"><code class="docutils literal notranslate"><span class="pre">ScalarFieldData.ScalarData</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.services.field_data.ScalarFieldData.ScalarData.__init__"><code class="docutils literal notranslate"><span class="pre">ScalarFieldData.ScalarData.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.services.field_data.ScalarFieldData.__init__"><code class="docutils literal notranslate"><span class="pre">ScalarFieldData.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.services.field_data.ScalarFieldNameError"><code class="docutils literal notranslate"><span class="pre">ScalarFieldNameError</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.services.field_data.ScalarFieldNameError.__init__"><code class="docutils literal notranslate"><span class="pre">ScalarFieldNameError.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.services.field_data.ScalarFieldUnavailable"><code class="docutils literal notranslate"><span class="pre">ScalarFieldUnavailable</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.services.field_data.ScalarFieldUnavailable.__init__"><code class="docutils literal notranslate"><span class="pre">ScalarFieldUnavailable.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.services.field_data.SurfaceDataType"><code class="docutils literal notranslate"><span class="pre">SurfaceDataType</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.services.field_data.SurfaceDataType.FacesCentroid"><code class="docutils literal notranslate"><span class="pre">SurfaceDataType.FacesCentroid</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.services.field_data.SurfaceDataType.FacesConnectivity"><code class="docutils literal notranslate"><span class="pre">SurfaceDataType.FacesConnectivity</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.services.field_data.SurfaceDataType.FacesNormal"><code class="docutils literal notranslate"><span class="pre">SurfaceDataType.FacesNormal</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.services.field_data.SurfaceDataType.Vertices"><code class="docutils literal notranslate"><span class="pre">SurfaceDataType.Vertices</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.services.field_data.SurfaceNameError"><code class="docutils literal notranslate"><span class="pre">SurfaceNameError</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.services.field_data.SurfaceNameError.__init__"><code class="docutils literal notranslate"><span class="pre">SurfaceNameError.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.services.field_data.Vector"><code class="docutils literal notranslate"><span class="pre">Vector</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.services.field_data.Vector.__init__"><code class="docutils literal notranslate"><span class="pre">Vector.__init__()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.services.field_data.Vector.x"><code class="docutils literal notranslate"><span class="pre">Vector.x</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.services.field_data.Vector.y"><code class="docutils literal notranslate"><span class="pre">Vector.y</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.services.field_data.Vector.z"><code class="docutils literal notranslate"><span class="pre">Vector.z</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.services.field_data.VectorFieldData"><code class="docutils literal notranslate"><span class="pre">VectorFieldData</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.services.field_data.VectorFieldData.VectorData"><code class="docutils literal notranslate"><span class="pre">VectorFieldData.VectorData</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.services.field_data.VectorFieldData.VectorData.__init__"><code class="docutils literal notranslate"><span class="pre">VectorFieldData.VectorData.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.services.field_data.VectorFieldData.__init__"><code class="docutils literal notranslate"><span class="pre">VectorFieldData.__init__()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.services.field_data.VectorFieldData.scale"><code class="docutils literal notranslate"><span class="pre">VectorFieldData.scale</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.services.field_data.VectorFieldNameError"><code class="docutils literal notranslate"><span class="pre">VectorFieldNameError</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.services.field_data.VectorFieldNameError.__init__"><code class="docutils literal notranslate"><span class="pre">VectorFieldNameError.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.services.field_data.VectorFieldUnavailable"><code class="docutils literal notranslate"><span class="pre">VectorFieldUnavailable</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.services.field_data.VectorFieldUnavailable.__init__"><code class="docutils literal notranslate"><span class="pre">VectorFieldUnavailable.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.services.field_data.Vertices"><code class="docutils literal notranslate"><span class="pre">Vertices</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.services.field_data.Vertices.Vertex"><code class="docutils literal notranslate"><span class="pre">Vertices.Vertex</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.services.field_data.Vertices.Vertex.__init__"><code class="docutils literal notranslate"><span class="pre">Vertices.Vertex.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.services.field_data.Vertices.__init__"><code class="docutils literal notranslate"><span class="pre">Vertices.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.services.field_data.get_fields_request"><code class="docutils literal notranslate"><span class="pre">get_fields_request()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.services.field_data.override_help_text"><code class="docutils literal notranslate"><span class="pre">override_help_text()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.fluent.core.services.field_data.unavailable_field_error_message"><code class="docutils literal notranslate"><span class="pre">unavailable_field_error_message()</span></code></a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  <div class="tocsection sourcelink">
+    <a href="../../../_sources/api/general/services/field_data.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+  <p class="copyright">
+    
+      © Copyright (c) 2023 ANSYS, Inc. All rights reserved.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.1.2.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="theme-version">
+  Built with the
+  <a href="https://sphinxdocs.ansys.com/version/stable/index.html"
+    >Ansys Sphinx Theme</a
+  >
+  0.10.2. <br />Last updated on
+  <span id="date"></span>
+</p>
+<script>
+  var options = { day: "numeric", month: "long", year: "numeric" };
+  var lastModifiedDate = new Date(document.lastModified);
+  var date = lastModifiedDate.toLocaleDateString("en-US", options);
+  document.getElementById("date").innerHTML = date;
+</script></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

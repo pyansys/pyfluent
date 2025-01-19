@@ -1,0 +1,2235 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>report &#8212; PyFluent</title>
+    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/css/ansys_sphinx_theme.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-rendered-html.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    
+        <link href="../../../../_static/css/breadcrumbs.css" rel="stylesheet">
+    
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../../_static/thebelab-helper.js"></script>
+    <script src="../../../../_static/clipboard.min.js"></script>
+    <script src="../../../../_static/copybutton.js"></script>
+    <script src="../../../../_static/js/table.js"></script>
+    <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/solver/tui/report/index';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://fluent.docs.pyansys.com/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.16';
+        </script>
+    <link rel="shortcut icon" href="../../../../_static/ansys-favicon.png"/>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="icing" href="icing/index.html" />
+    <link rel="prev" title="periodic_conditions" href="../define/periodic_conditions/index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <link rel="canonical" href="https://fluent.docs.pyansys.com/version/stable/api/solver/tui/report/index.html" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container"><!-- Debugging: html_theme_options =  -->
+
+  <!-- If there is no MiliSearch enabled, use the PyData search -->
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  <div class="navbar-header-items__start">
+    
+      <div class="navbar-item">
+  
+
+<a class="navbar-brand logo" href="../../../../index.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../getting_started/index.html">
+                        Getting started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../user_guide/index.html">
+                        User guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../../../index.html">
+                        API reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../examples/index.html">
+                        Examples
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../contributing.html">
+                        Contribute
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+        </div>
+      
+      
+        <div class="navbar-item">
+<script>
+document.write(`
+  <div class="version-switcher__container dropdown">
+    <button type="button" class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle" data-bs-toggle="dropdown">
+      0.16  <!-- this text may get changed later by javascript -->
+      <span class="caret"></span>
+    </button>
+    <div class="version-switcher__menu dropdown-menu list-group-flush py-0">
+    <!-- dropdown will be populated by javascript on page load -->
+    </div>
+  </div>
+`);
+</script></div>
+      
+        <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent/discussions" title="Support" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa fa-comment fa-fw"></i></span>
+            <label class="sr-only">Support</label></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </nav>
+  
+
+    
+    <div id="announcement_msg"></div>
+<script>
+  fetch("announcement.html")
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error: ${response.status}`);
+      }
+      return response.text();
+    })
+    .then(text => document.getElementById("announcement_msg").innerHTML = text)
+    .catch((error) => console.error(`Fetch problem: ${error.message}`));
+</script>
+    
+
+    
+    <div class="container-xl">
+    <div class="row">
+        <div class="col-12 col-md-3" id="breadcrumbs-spacer"></div>
+        <div class="col-12 col-md-11 col-xl-9" id="breadcrumbs">
+          
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+    
+        <li class="nav-item nav-item-additional-breadcrumb"><a href="https://docs.pyansys.com/">PyAnsys</a> » </li>
+    
+    
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">PyFluent</a> » </li>
+    
+
+          <li class="nav-item nav-item-1"><a href="../../../index.html" >API reference</a> » </li>
+          <li class="nav-item nav-item-2"><a href="../../index.html" >Solver</a> » </li>
+          <li class="nav-item nav-item-3"><a href="../../tuicommands.html" >Solver TUI commands</a> » </li>
+          <li class="nav-item nav-item-4"><a href="../index.html" accesskey="U">solver.tui</a> » </li>
+        <li class="nav-item nav-item-this"><a href="">report</a></li> 
+      </ul>
+    </div>
+        </div>
+  </div>
+</div>
+    
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../getting_started/index.html">
+                        Getting started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../user_guide/index.html">
+                        User guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../../../index.html">
+                        API reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../examples/index.html">
+                        Examples
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../contributing.html">
+                        Contribute
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<script>
+document.write(`
+  <div class="version-switcher__container dropdown">
+    <button type="button" class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle" data-bs-toggle="dropdown">
+      0.16  <!-- this text may get changed later by javascript -->
+      <span class="caret"></span>
+    </button>
+    <div class="version-switcher__menu dropdown-menu list-group-flush py-0">
+    <!-- dropdown will be populated by javascript on page load -->
+    </div>
+  </div>
+`);
+</script></div>
+        
+          <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent/discussions" title="Support" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa fa-comment fa-fw"></i></span>
+            <label class="sr-only">Support</label></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item"><nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../general/index.html">General</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../meshing/index.html">Meshing</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../../index.html">Solver</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../settings.html">Solver settings objects</a></li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="../../tuicommands.html">Solver TUI commands</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l3 current active has-children"><a class="reference internal" href="../index.html">solver.tui</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../surface/index.html">surface</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../mesh/index.html">mesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../server/index.html">server</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../setup/index.html">setup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../parametric_study/index.html">parametric_study</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../views/index.html">views</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../solve/index.html">solve</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../parallel/index.html">parallel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../plot/index.html">plot</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../solution/index.html">solution</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../turbo_post/index.html">turbo_post</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../define/index.html">define</a></li>
+<li class="toctree-l4 current active has-children"><a class="current reference internal" href="#">report</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l5"><a class="reference internal" href="icing/index.html">icing</a></li>
+<li class="toctree-l5"><a class="reference internal" href="virtual_blade_model/index.html">virtual_blade_model</a></li>
+<li class="toctree-l5"><a class="reference internal" href="modified_setting/index.html">modified_setting</a></li>
+<li class="toctree-l5"><a class="reference internal" href="forces/index.html">forces</a></li>
+<li class="toctree-l5"><a class="reference internal" href="reference_values/index.html">reference_values</a></li>
+<li class="toctree-l5"><a class="reference internal" href="fluxes/index.html">fluxes</a></li>
+<li class="toctree-l5"><a class="reference internal" href="efficiency/index.html">efficiency</a></li>
+<li class="toctree-l5"><a class="reference internal" href="population_balance/index.html">population_balance</a></li>
+<li class="toctree-l5"><a class="reference internal" href="heat_exchanger/index.html">heat_exchanger</a></li>
+<li class="toctree-l5"><a class="reference internal" href="simulation_reports/index.html">simulation_reports</a></li>
+<li class="toctree-l5"><a class="reference internal" href="system/index.html">system</a></li>
+<li class="toctree-l5"><a class="reference internal" href="dpm_histogram/index.html">dpm_histogram</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../file/index.html">file</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../adjoint/index.html">adjoint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../turbo_workflow/index.html">turbo_workflow</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../preferences/index.html">preferences</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../icing/index.html">icing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../display/index.html">display</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../results/index.html">results</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../datamodel/index.html">solver.datamodel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../schemeeval.html">Scheme code evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../fielddata.html">Field data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../fieldinfo.html">Field info</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../events.html">EventsManager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../monitors.html">MonitorsManager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reduction.html">Reduction</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article"></div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="report">
+<span id="ref-solver-tui-report"></span><h1>report<a class="headerlink" href="#report" title="Permalink to this heading">#</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.solver.tui_232.main_menu.</span></span><span class="sig-name descname"><span class="pre">report</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">service</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Enter the report menu.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.aero_optical_distortions" title="ansys.fluent.core.solver.tui_232.main_menu.report.aero_optical_distortions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">aero_optical_distortions</span></code></a>(*args, **kwargs)</p></td>
+<td><p><p>.</p>
+</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.dpm_extended_summary" title="ansys.fluent.core.solver.tui_232.main_menu.report.dpm_extended_summary"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dpm_extended_summary</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Create an extended discrete phase summary report of the discrete phase injection(s).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.dpm_sample" title="ansys.fluent.core.solver.tui_232.main_menu.report.dpm_sample"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dpm_sample</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Samples trajectories at boundaries and lines/planes.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.dpm_sample_output_udf" title="ansys.fluent.core.solver.tui_232.main_menu.report.dpm_sample_output_udf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dpm_sample_output_udf</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Allows you to hook a previously loaded DEFINE_DPM_OUTPUT UDF for file format specification for sampling of trajectories and VOF-to-DPM lump conversion transcripts.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.dpm_sample_sort_file" title="ansys.fluent.core.solver.tui_232.main_menu.report.dpm_sample_sort_file"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dpm_sample_sort_file</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables writing of sorted DPM sample files.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.dpm_summary" title="ansys.fluent.core.solver.tui_232.main_menu.report.dpm_summary"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dpm_summary</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Prints discrete phase summary report.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.dpm_zone_summaries_per_injection" title="ansys.fluent.core.solver.tui_232.main_menu.report.dpm_zone_summaries_per_injection"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dpm_zone_summaries_per_injection</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables calculation of the escaped mass per injection.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.element_mass_flow" title="ansys.fluent.core.solver.tui_232.main_menu.report.element_mass_flow"><code class="xref py py-obj docutils literal notranslate"><span class="pre">element_mass_flow</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Prints list of element flow rate at inlets and outlets.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.mphase_summary" title="ansys.fluent.core.solver.tui_232.main_menu.report.mphase_summary"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mphase_summary</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Prints summary report for a multiphase case setup.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.particle_summary" title="ansys.fluent.core.solver.tui_232.main_menu.report.particle_summary"><code class="xref py py-obj docutils literal notranslate"><span class="pre">particle_summary</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Prints summary report for all current particles.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.path_line_summary" title="ansys.fluent.core.solver.tui_232.main_menu.report.path_line_summary"><code class="xref py py-obj docutils literal notranslate"><span class="pre">path_line_summary</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Prints pathline summary report.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.print_histogram" title="ansys.fluent.core.solver.tui_232.main_menu.report.print_histogram"><code class="xref py py-obj docutils literal notranslate"><span class="pre">print_histogram</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Prints a histogram of a scalar quantity.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.projected_surface_area" title="ansys.fluent.core.solver.tui_232.main_menu.report.projected_surface_area"><code class="xref py py-obj docutils literal notranslate"><span class="pre">projected_surface_area</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Computes the area of the projection of selected surfaces along the  ,  , or   axis.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.species_mass_flow" title="ansys.fluent.core.solver.tui_232.main_menu.report.species_mass_flow"><code class="xref py py-obj docutils literal notranslate"><span class="pre">species_mass_flow</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Prints list of species mass flow rate at inlets and outlets.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.summary" title="ansys.fluent.core.solver.tui_232.main_menu.report.summary"><code class="xref py py-obj docutils literal notranslate"><span class="pre">summary</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Prints the current settings for physical models, boundary conditions, material properties, and solution parameters.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.surface_integrals" title="ansys.fluent.core.solver.tui_232.main_menu.report.surface_integrals"><code class="xref py py-obj docutils literal notranslate"><span class="pre">surface_integrals</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enters the surface integral menu.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.uds_flow" title="ansys.fluent.core.solver.tui_232.main_menu.report.uds_flow"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uds_flow</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Prints list of user-defined scalar flow rate at boundaries.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.volume_integrals" title="ansys.fluent.core.solver.tui_232.main_menu.report.volume_integrals"><code class="xref py py-obj docutils literal notranslate"><span class="pre">volume_integrals</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enters the volume integral menu.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Classes:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.dpm_histogram" title="ansys.fluent.core.solver.tui_232.main_menu.report.dpm_histogram"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dpm_histogram</span></code></a>(path, service)</p></td>
+<td><p>Enters the DPM histogram menu.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.efficiency" title="ansys.fluent.core.solver.tui_232.main_menu.report.efficiency"><code class="xref py py-obj docutils literal notranslate"><span class="pre">efficiency</span></code></a>(path, service)</p></td>
+<td><p>Enter the menu for efficiency computations.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.fluxes" title="ansys.fluent.core.solver.tui_232.main_menu.report.fluxes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fluxes</span></code></a>(path, service)</p></td>
+<td><p>Enters the fluxes menu.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.forces" title="ansys.fluent.core.solver.tui_232.main_menu.report.forces"><code class="xref py py-obj docutils literal notranslate"><span class="pre">forces</span></code></a>(path, service)</p></td>
+<td><p>Enters the forces menu.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.heat_exchanger" title="ansys.fluent.core.solver.tui_232.main_menu.report.heat_exchanger"><code class="xref py py-obj docutils literal notranslate"><span class="pre">heat_exchanger</span></code></a>(path, service)</p></td>
+<td><p>Enters the heat exchanger menu.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.icing" title="ansys.fluent.core.solver.tui_232.main_menu.report.icing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">icing</span></code></a>(path, service)</p></td>
+<td><p>Icing reports menu.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.modified_setting" title="ansys.fluent.core.solver.tui_232.main_menu.report.modified_setting"><code class="xref py py-obj docutils literal notranslate"><span class="pre">modified_setting</span></code></a>(path, service)</p></td>
+<td><p>Enter the modified settings menu.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.population_balance" title="ansys.fluent.core.solver.tui_232.main_menu.report.population_balance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">population_balance</span></code></a>(path, service)</p></td>
+<td><p>Population Balance menu.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.reference_values" title="ansys.fluent.core.solver.tui_232.main_menu.report.reference_values"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reference_values</span></code></a>(path, service)</p></td>
+<td><p>Enters the reference value menu.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.simulation_reports" title="ansys.fluent.core.solver.tui_232.main_menu.report.simulation_reports"><code class="xref py py-obj docutils literal notranslate"><span class="pre">simulation_reports</span></code></a>(path, service)</p></td>
+<td><p>Enter the simulation reports menu.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.system" title="ansys.fluent.core.solver.tui_232.main_menu.report.system"><code class="xref py py-obj docutils literal notranslate"><span class="pre">system</span></code></a>(path, service)</p></td>
+<td><p>Enters the system menu.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.virtual_blade_model" title="ansys.fluent.core.solver.tui_232.main_menu.report.virtual_blade_model"><code class="xref py py-obj docutils literal notranslate"><span class="pre">virtual_blade_model</span></code></a>(path, service)</p></td>
+<td><p>VBM reports menu.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">aero_optical_distortions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">dpm_extended_summary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Create an extended discrete phase summary report of the discrete phase injection(s). You can choose whether you want to save the extended report to a file or print it in the console window. For unsteady tracking, you will be asked whether you want to include in-domain particle/tracks in the report. You will be also prompted whether you want to select a single injection for the summary report. By default, all injections are included. The output depends on whether you have enabled the report/dpm-zone-summaries-per-injection? text command, in which case additional information is printed for escaped particles, such as per-injection data. Note that, for unsteady particle tracking, it is necessary to enable the report/dpm-zone-summaries-per-injection? text command before any particle parcels are injected into the domain.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dpm_histogram</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">service</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Enters the DPM histogram menu.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.dpm_histogram.compute_sample" title="ansys.fluent.core.solver.tui_232.main_menu.report.dpm_histogram.compute_sample"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute_sample</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Computes the minimum/maximum of a sample variable.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.dpm_histogram.delete_sample" title="ansys.fluent.core.solver.tui_232.main_menu.report.dpm_histogram.delete_sample"><code class="xref py py-obj docutils literal notranslate"><span class="pre">delete_sample</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Deletes a sample from the loaded sample list.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.dpm_histogram.list_samples" title="ansys.fluent.core.solver.tui_232.main_menu.report.dpm_histogram.list_samples"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list_samples</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Shows all samples in a loaded sample list.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.dpm_histogram.pick_sample_to_reduce" title="ansys.fluent.core.solver.tui_232.main_menu.report.dpm_histogram.pick_sample_to_reduce"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pick_sample_to_reduce</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Select a sample to be reduced.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.dpm_histogram.plot_sample" title="ansys.fluent.core.solver.tui_232.main_menu.report.dpm_histogram.plot_sample"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_sample</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Plots a histogram of a loaded sample.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.dpm_histogram.prep_dpm_sample_cont_plot_exprs" title="ansys.fluent.core.solver.tui_232.main_menu.report.dpm_histogram.prep_dpm_sample_cont_plot_exprs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">prep_dpm_sample_cont_plot_exprs</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Prepare named expressions from data in a DPM sample file (collected at a cut plane surface) for contour plotting.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.dpm_histogram.read_sample" title="ansys.fluent.core.solver.tui_232.main_menu.report.dpm_histogram.read_sample"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read_sample</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Reads a sample file and adds it to the sample list.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.dpm_histogram.reduce_picked_sample" title="ansys.fluent.core.solver.tui_232.main_menu.report.dpm_histogram.reduce_picked_sample"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reduce_picked_sample</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Reduce a sample as specified by the data reduction parameters.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.dpm_histogram.write_sample" title="ansys.fluent.core.solver.tui_232.main_menu.report.dpm_histogram.write_sample"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write_sample</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Write a histogram of a loaded sample into a file.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Classes:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.dpm_histogram.set" title="ansys.fluent.core.solver.tui_232.main_menu.report.dpm_histogram.set"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set</span></code></a>(path, service)</p></td>
+<td><p>Enters the settings menu for the histogram.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.dpm_histogram.setup_reduction" title="ansys.fluent.core.solver.tui_232.main_menu.report.dpm_histogram.setup_reduction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setup_reduction</span></code></a>(path, service)</p></td>
+<td><p>Set up the sample data reduction by specifying all relevant options and setting parameters as desired.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">compute_sample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Computes the minimum/maximum of a sample variable.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">delete_sample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Deletes a sample from the loaded sample list.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">list_samples</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Shows all samples in a loaded sample list.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">pick_sample_to_reduce</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Select a sample to be reduced.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">plot_sample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Plots a histogram of a loaded sample.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">prep_dpm_sample_cont_plot_exprs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Prepare named expressions from data in a DPM sample file (collected at a cut plane surface) for contour plotting.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">read_sample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Reads a sample file and adds it to the sample list.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">reduce_picked_sample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Reduce a sample as specified by the data reduction parameters. This command is available only after you selected the sample using the pick-sample-to-reduce text command.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">service</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Enters the settings menu for the histogram.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.dpm_histogram.set.auto_range" title="ansys.fluent.core.solver.tui_232.main_menu.report.dpm_histogram.set.auto_range"><code class="xref py py-obj docutils literal notranslate"><span class="pre">auto_range</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Automatically computes the range of the sampling variable for histogram plots.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.dpm_histogram.set.correlation" title="ansys.fluent.core.solver.tui_232.main_menu.report.dpm_histogram.set.correlation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">correlation</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Computes the correlation of the sampling variable with another variable.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.dpm_histogram.set.cumulation_curve" title="ansys.fluent.core.solver.tui_232.main_menu.report.dpm_histogram.set.cumulation_curve"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cumulation_curve</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Computes a cumulative curve for the sampling variable or correlation variable when correlation? is specified.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.dpm_histogram.set.diameter_statistics" title="ansys.fluent.core.solver.tui_232.main_menu.report.dpm_histogram.set.diameter_statistics"><code class="xref py py-obj docutils literal notranslate"><span class="pre">diameter_statistics</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Computes the Rosin Rammler parameters, Sauter, and other mean diameters.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.dpm_histogram.set.histogram_mode" title="ansys.fluent.core.solver.tui_232.main_menu.report.dpm_histogram.set.histogram_mode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">histogram_mode</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Uses bars for the histogram plot or xy-style.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.dpm_histogram.set.logarithmic" title="ansys.fluent.core.solver.tui_232.main_menu.report.dpm_histogram.set.logarithmic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">logarithmic</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables the use of logarithmic scaling on the abscissa of the histogram.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.dpm_histogram.set.maximum" title="ansys.fluent.core.solver.tui_232.main_menu.report.dpm_histogram.set.maximum"><code class="xref py py-obj docutils literal notranslate"><span class="pre">maximum</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Specifies the maximum value of the x-axis variable for histogram plots.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.dpm_histogram.set.minimum" title="ansys.fluent.core.solver.tui_232.main_menu.report.dpm_histogram.set.minimum"><code class="xref py py-obj docutils literal notranslate"><span class="pre">minimum</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Specifies the minimum value of the x-axis variable for histogram plots.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.dpm_histogram.set.number_of_bins" title="ansys.fluent.core.solver.tui_232.main_menu.report.dpm_histogram.set.number_of_bins"><code class="xref py py-obj docutils literal notranslate"><span class="pre">number_of_bins</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Specifies the number of bins.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.dpm_histogram.set.percentage" title="ansys.fluent.core.solver.tui_232.main_menu.report.dpm_histogram.set.percentage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">percentage</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Uses percentages of bins to be computed.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.dpm_histogram.set.variable_power_3" title="ansys.fluent.core.solver.tui_232.main_menu.report.dpm_histogram.set.variable_power_3"><code class="xref py py-obj docutils literal notranslate"><span class="pre">variable_power_3</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Use the cubic of the cumulation variable during computation of the cumulative curve.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.dpm_histogram.set.weighting" title="ansys.fluent.core.solver.tui_232.main_menu.report.dpm_histogram.set.weighting"><code class="xref py py-obj docutils literal notranslate"><span class="pre">weighting</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Uses weighting with additional variables when sorting data into samples.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">auto_range</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Automatically computes the range of the sampling variable for histogram plots.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">correlation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Computes the correlation of the sampling variable with another variable.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">cumulation_curve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Computes a cumulative curve for the sampling variable or correlation variable when correlation? is specified.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">diameter_statistics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Computes the Rosin Rammler parameters, Sauter, and other mean diameters.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">histogram_mode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Uses bars for the histogram plot or xy-style.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">logarithmic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables the use of logarithmic scaling on the abscissa of the histogram.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">maximum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Specifies the maximum value of the x-axis variable for histogram plots.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">minimum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Specifies the minimum value of the x-axis variable for histogram plots.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">number_of_bins</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Specifies the number of bins.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">percentage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Uses percentages of bins to be computed.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">variable_power_3</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Use the cubic of the cumulation variable during computation of the cumulative curve.
+When the particle mass was not sampled, the diameter can be used instead.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">weighting</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Uses weighting with additional variables when sorting data into samples.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">setup_reduction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">service</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Set up the sample data reduction by specifying all relevant options and setting parameters as desired.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.dpm_histogram.setup_reduction.all_variables_number_of_bins" title="ansys.fluent.core.solver.tui_232.main_menu.report.dpm_histogram.setup_reduction.all_variables_number_of_bins"><code class="xref py py-obj docutils literal notranslate"><span class="pre">all_variables_number_of_bins</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Set the number of bins to be used for ALL variables in the data reduction.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.dpm_histogram.setup_reduction.list_settings" title="ansys.fluent.core.solver.tui_232.main_menu.report.dpm_histogram.setup_reduction.list_settings"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list_settings</span></code></a>(*args, **kwargs)</p></td>
+<td><p>List all user inputs for the sample picked for data reduction.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.dpm_histogram.setup_reduction.logarithmic" title="ansys.fluent.core.solver.tui_232.main_menu.report.dpm_histogram.setup_reduction.logarithmic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">logarithmic</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Switch on or off logarithmic scaling to be used for a specific variable in the data reduction.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.dpm_histogram.setup_reduction.make_steady_from_unsteady_file" title="ansys.fluent.core.solver.tui_232.main_menu.report.dpm_histogram.setup_reduction.make_steady_from_unsteady_file"><code class="xref py py-obj docutils literal notranslate"><span class="pre">make_steady_from_unsteady_file</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Specify whether the unsteady sample is to be reduced into a steady-state injection file.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.dpm_histogram.setup_reduction.maximum" title="ansys.fluent.core.solver.tui_232.main_menu.report.dpm_histogram.setup_reduction.maximum"><code class="xref py py-obj docutils literal notranslate"><span class="pre">maximum</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Set the maximum value of the range to be considered for a specific variable in the data reduction.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.dpm_histogram.setup_reduction.minimum" title="ansys.fluent.core.solver.tui_232.main_menu.report.dpm_histogram.setup_reduction.minimum"><code class="xref py py-obj docutils literal notranslate"><span class="pre">minimum</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Set the minimum value of the range to be considered for a specific variable in the data reduction.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.dpm_histogram.setup_reduction.number_of_bins" title="ansys.fluent.core.solver.tui_232.main_menu.report.dpm_histogram.setup_reduction.number_of_bins"><code class="xref py py-obj docutils literal notranslate"><span class="pre">number_of_bins</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Set the number of bins to be used for a specific variable in the data reduction.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.dpm_histogram.setup_reduction.reset_min_and_max" title="ansys.fluent.core.solver.tui_232.main_menu.report.dpm_histogram.setup_reduction.reset_min_and_max"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset_min_and_max</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Reset the min and max values of the range to be considered for a specific variable in the data reduction.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.dpm_histogram.setup_reduction.use_weighting" title="ansys.fluent.core.solver.tui_232.main_menu.report.dpm_histogram.setup_reduction.use_weighting"><code class="xref py py-obj docutils literal notranslate"><span class="pre">use_weighting</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Specify whether to use any weighting in the averaging that is done in each bin in the data reduction.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.dpm_histogram.setup_reduction.weighting_variable" title="ansys.fluent.core.solver.tui_232.main_menu.report.dpm_histogram.setup_reduction.weighting_variable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">weighting_variable</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Choose the weighting variable for the averaging in each bin in the data reduction.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">all_variables_number_of_bins</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Set the number of bins to be used for ALL variables in the data reduction.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">list_settings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>List all user inputs for the sample picked for data reduction.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">logarithmic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Switch on or off logarithmic scaling to be used for a specific variable in the data reduction.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">make_steady_from_unsteady_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Specify whether the unsteady sample is to be reduced into a steady-state injection file.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">maximum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Set the maximum value of the range to be considered for a specific variable in the data reduction.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">minimum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Set the minimum value of the range to be considered for a specific variable in the data reduction.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">number_of_bins</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Set the number of bins to be used for a specific variable in the data reduction.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">reset_min_and_max</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Reset the min and max values of the range to be considered for a specific variable in the data reduction.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">use_weighting</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Specify whether to use any weighting in the averaging that is done in each bin in the data reduction.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">weighting_variable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Choose the weighting variable for the averaging in each bin in the data reduction.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">write_sample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Write a histogram of a loaded sample into a file.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">dpm_sample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Samples trajectories at boundaries and lines/planes.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">dpm_sample_output_udf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Allows you to hook a previously loaded DEFINE_DPM_OUTPUT UDF for file format specification for sampling of trajectories and VOF-to-DPM lump conversion transcripts.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">dpm_sample_sort_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables writing of sorted DPM sample files.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">dpm_summary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Prints discrete phase summary report.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">dpm_zone_summaries_per_injection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables calculation of the escaped mass per injection. Note that for unsteady particle tracking, if you want to report the mass of escaped particles per injection, this text command must be enabled before any particles are injected into the domain.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">efficiency</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">service</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Enter the menu for efficiency computations.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.efficiency.isentropic" title="ansys.fluent.core.solver.tui_232.main_menu.report.efficiency.isentropic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isentropic</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Calculate isentropic efficiency.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.efficiency.polytropic" title="ansys.fluent.core.solver.tui_232.main_menu.report.efficiency.polytropic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">polytropic</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Calculate polytropic efficiency.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.efficiency.use_in_turbo_report" title="ansys.fluent.core.solver.tui_232.main_menu.report.efficiency.use_in_turbo_report"><code class="xref py py-obj docutils literal notranslate"><span class="pre">use_in_turbo_report</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Use this general method instead of constant Cp-based to compute efficiency with Turbo Report tool.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">isentropic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Calculate isentropic efficiency.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">polytropic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Calculate polytropic efficiency.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">use_in_turbo_report</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Use this general method instead of constant Cp-based to compute efficiency with Turbo Report tool.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">element_mass_flow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Prints list of element flow rate at inlets and outlets. This reports the mass flow rates of all chemical elements (in kg/s) flowing through the simulation boundaries.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">fluxes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">service</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Enters the fluxes menu.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.fluxes.electric_current" title="ansys.fluent.core.solver.tui_232.main_menu.report.fluxes.electric_current"><code class="xref py py-obj docutils literal notranslate"><span class="pre">electric_current</span></code></a>(*args, **kwargs)</p></td>
+<td><p><p>.</p>
+</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.fluxes.film_heat_transfer" title="ansys.fluent.core.solver.tui_232.main_menu.report.fluxes.film_heat_transfer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">film_heat_transfer</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Prints wall film heat transfer rate at boundaries.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.fluxes.film_mass_flow" title="ansys.fluent.core.solver.tui_232.main_menu.report.fluxes.film_mass_flow"><code class="xref py py-obj docutils literal notranslate"><span class="pre">film_mass_flow</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Prints wall film mass flow rate at boundaries.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.fluxes.heat_transfer" title="ansys.fluent.core.solver.tui_232.main_menu.report.fluxes.heat_transfer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">heat_transfer</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Prints heat transfer rate at boundaries.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.fluxes.heat_transfer_sensible" title="ansys.fluent.core.solver.tui_232.main_menu.report.fluxes.heat_transfer_sensible"><code class="xref py py-obj docutils literal notranslate"><span class="pre">heat_transfer_sensible</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Prints the sensible heat transfer rate at the boundaries.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.fluxes.mass_flow" title="ansys.fluent.core.solver.tui_232.main_menu.report.fluxes.mass_flow"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mass_flow</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Prints mass flow rate at inlets and outlets.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.fluxes.pressure_work" title="ansys.fluent.core.solver.tui_232.main_menu.report.fluxes.pressure_work"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pressure_work</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Prints the pressure work rate at the boundaries.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.fluxes.rad_heat_trans" title="ansys.fluent.core.solver.tui_232.main_menu.report.fluxes.rad_heat_trans"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rad_heat_trans</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Prints radiation heat transfer rate at boundaries.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.fluxes.viscous_work" title="ansys.fluent.core.solver.tui_232.main_menu.report.fluxes.viscous_work"><code class="xref py py-obj docutils literal notranslate"><span class="pre">viscous_work</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Prints the viscous work rate at the boundaries.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">electric_current</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">film_heat_transfer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Prints wall film heat transfer rate at boundaries. This text command is only available when you enable the Eulerian wall film model.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">film_mass_flow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Prints wall film mass flow rate at boundaries. This text command is only available when you enable the Eulerian wall film model.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">heat_transfer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Prints heat transfer rate at boundaries.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">heat_transfer_sensible</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Prints the sensible heat transfer rate at the boundaries.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">mass_flow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Prints mass flow rate at inlets and outlets.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">pressure_work</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Prints the pressure work rate at the boundaries. This text command is only available when the energy equation is enabled, the absolute velocity formulation is selected, and zone motion is enabled for a fluid cell zone.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">rad_heat_trans</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Prints radiation heat transfer rate at boundaries.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">viscous_work</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Prints the viscous work rate at the boundaries. This text command is only available when the energy equation is enabled and the pressure-based solver is selected.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">forces</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">service</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Enters the forces menu.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.forces.pressure_center" title="ansys.fluent.core.solver.tui_232.main_menu.report.forces.pressure_center"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pressure_center</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Prints the center of pressure on wall zones.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.forces.wall_forces" title="ansys.fluent.core.solver.tui_232.main_menu.report.forces.wall_forces"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wall_forces</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Computes the forces along the specified force vector for all wall zones.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.forces.wall_moments" title="ansys.fluent.core.solver.tui_232.main_menu.report.forces.wall_moments"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wall_moments</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Computes the moments about the specified moment center for all wall zones.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">pressure_center</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Prints the center of pressure on wall zones.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">wall_forces</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Computes the forces along the specified force vector for all wall zones.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">wall_moments</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Computes the moments about the specified moment center for all wall zones.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">heat_exchanger</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">service</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Enters the heat exchanger menu.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.heat_exchanger.computed_heat_rejection" title="ansys.fluent.core.solver.tui_232.main_menu.report.heat_exchanger.computed_heat_rejection"><code class="xref py py-obj docutils literal notranslate"><span class="pre">computed_heat_rejection</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Prints total heat rejection.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.heat_exchanger.inlet_temperature" title="ansys.fluent.core.solver.tui_232.main_menu.report.heat_exchanger.inlet_temperature"><code class="xref py py-obj docutils literal notranslate"><span class="pre">inlet_temperature</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Prints inlet temperature.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.heat_exchanger.mass_flow_rate" title="ansys.fluent.core.solver.tui_232.main_menu.report.heat_exchanger.mass_flow_rate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mass_flow_rate</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Prints mass flow rate.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.heat_exchanger.outlet_temperature" title="ansys.fluent.core.solver.tui_232.main_menu.report.heat_exchanger.outlet_temperature"><code class="xref py py-obj docutils literal notranslate"><span class="pre">outlet_temperature</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Prints outlet temperature.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.heat_exchanger.specific_heat" title="ansys.fluent.core.solver.tui_232.main_menu.report.heat_exchanger.specific_heat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">specific_heat</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Prints fluid’s specific heat.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">computed_heat_rejection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Prints total heat rejection.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">inlet_temperature</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Prints inlet temperature.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">mass_flow_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Prints mass flow rate.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">outlet_temperature</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Prints outlet temperature.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">specific_heat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Prints fluid’s specific heat.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">icing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">service</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Icing reports menu.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.icing.energy_of_ice_formation" title="ansys.fluent.core.solver.tui_232.main_menu.report.icing.energy_of_ice_formation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">energy_of_ice_formation</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Print Energy of Ice Formation.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.icing.energy_of_water_impinged" title="ansys.fluent.core.solver.tui_232.main_menu.report.icing.energy_of_water_impinged"><code class="xref py py-obj docutils literal notranslate"><span class="pre">energy_of_water_impinged</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Print Energy of Water Impingement.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.icing.icing_energy_of_conduction" title="ansys.fluent.core.solver.tui_232.main_menu.report.icing.icing_energy_of_conduction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">icing_energy_of_conduction</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Print Energy of Conduction.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.icing.mass_of_ice" title="ansys.fluent.core.solver.tui_232.main_menu.report.icing.mass_of_ice"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mass_of_ice</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Print Mass of Ice Accretion.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.icing.mass_of_water_impinged" title="ansys.fluent.core.solver.tui_232.main_menu.report.icing.mass_of_water_impinged"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mass_of_water_impinged</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Print Mass of Water Impingement.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.icing.particles_crystals_collection_eff" title="ansys.fluent.core.solver.tui_232.main_menu.report.icing.particles_crystals_collection_eff"><code class="xref py py-obj docutils literal notranslate"><span class="pre">particles_crystals_collection_eff</span></code></a>(*args, ...)</p></td>
+<td><p>Print Crystals Collection Efficiency.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.icing.particles_droplets_collection_eff" title="ansys.fluent.core.solver.tui_232.main_menu.report.icing.particles_droplets_collection_eff"><code class="xref py py-obj docutils literal notranslate"><span class="pre">particles_droplets_collection_eff</span></code></a>(*args, ...)</p></td>
+<td><p>Print Droplets Collection Efficiency.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">energy_of_ice_formation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Print Energy of Ice Formation.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">energy_of_water_impinged</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Print Energy of Water Impingement.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">icing_energy_of_conduction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Print Energy of Conduction.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">mass_of_ice</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Print Mass of Ice Accretion.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">mass_of_water_impinged</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Print Mass of Water Impingement.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">particles_crystals_collection_eff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Print Crystals Collection Efficiency.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">particles_droplets_collection_eff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Print Droplets Collection Efficiency.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">modified_setting</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">service</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Enter the modified settings menu.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.modified_setting.modified_setting" title="ansys.fluent.core.solver.tui_232.main_menu.report.modified_setting.modified_setting"><code class="xref py py-obj docutils literal notranslate"><span class="pre">modified_setting</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Specify which areas of setup will be checked for non-default settings for generating the Modified Settings Summary table.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.modified_setting.write_user_setting" title="ansys.fluent.core.solver.tui_232.main_menu.report.modified_setting.write_user_setting"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write_user_setting</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Write the contents of the Modified Settings Summary table to a file.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">modified_setting</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Specify which areas of setup will be checked for non-default settings for generating the Modified Settings Summary table. The table is displayed tabbed with the graphics window.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">write_user_setting</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Write the contents of the Modified Settings Summary table to a file.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">mphase_summary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Prints summary report for a multiphase case setup.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">particle_summary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Prints summary report for all current particles.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">path_line_summary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Prints pathline summary report.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">population_balance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">service</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Population Balance menu.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.population_balance.moments" title="ansys.fluent.core.solver.tui_232.main_menu.report.population_balance.moments"><code class="xref py py-obj docutils literal notranslate"><span class="pre">moments</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Set moments for population balance.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.population_balance.number_density" title="ansys.fluent.core.solver.tui_232.main_menu.report.population_balance.number_density"><code class="xref py py-obj docutils literal notranslate"><span class="pre">number_density</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Set number density functions.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">moments</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Set moments for population balance.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">number_density</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Set number density functions.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">print_histogram</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Prints a histogram of a scalar quantity.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">projected_surface_area</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Computes the area of the projection of selected surfaces along the  ,  , or   axis.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">reference_values</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">service</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Enters the reference value menu.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.reference_values.area" title="ansys.fluent.core.solver.tui_232.main_menu.report.reference_values.area"><code class="xref py py-obj docutils literal notranslate"><span class="pre">area</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Sets reference area for normalization.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.reference_values.density" title="ansys.fluent.core.solver.tui_232.main_menu.report.reference_values.density"><code class="xref py py-obj docutils literal notranslate"><span class="pre">density</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Sets reference density for normalization.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.reference_values.depth" title="ansys.fluent.core.solver.tui_232.main_menu.report.reference_values.depth"><code class="xref py py-obj docutils literal notranslate"><span class="pre">depth</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Sets reference depth for volume calculation.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.reference_values.enthalpy" title="ansys.fluent.core.solver.tui_232.main_menu.report.reference_values.enthalpy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">enthalpy</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Sets reference enthalpy for enthalpy damping and normalization.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.reference_values.length" title="ansys.fluent.core.solver.tui_232.main_menu.report.reference_values.length"><code class="xref py py-obj docutils literal notranslate"><span class="pre">length</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Sets reference length for normalization.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.reference_values.list" title="ansys.fluent.core.solver.tui_232.main_menu.report.reference_values.list"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Lists current reference values.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.reference_values.pressure" title="ansys.fluent.core.solver.tui_232.main_menu.report.reference_values.pressure"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pressure</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Sets reference pressure for normalization.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.reference_values.temperature" title="ansys.fluent.core.solver.tui_232.main_menu.report.reference_values.temperature"><code class="xref py py-obj docutils literal notranslate"><span class="pre">temperature</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Sets reference temperature for normalization.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.reference_values.velocity" title="ansys.fluent.core.solver.tui_232.main_menu.report.reference_values.velocity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">velocity</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Sets reference velocity for normalization.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.reference_values.viscosity" title="ansys.fluent.core.solver.tui_232.main_menu.report.reference_values.viscosity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">viscosity</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Sets reference viscosity for normalization.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.reference_values.yplus" title="ansys.fluent.core.solver.tui_232.main_menu.report.reference_values.yplus"><code class="xref py py-obj docutils literal notranslate"><span class="pre">yplus</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Sets reference yplus for calculation of Yplus Based Heat Transfer Coefficient.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.reference_values.zone" title="ansys.fluent.core.solver.tui_232.main_menu.report.reference_values.zone"><code class="xref py py-obj docutils literal notranslate"><span class="pre">zone</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Sets reference zone.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Classes:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.reference_values.compute" title="ansys.fluent.core.solver.tui_232.main_menu.report.reference_values.compute"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute</span></code></a>(path, service)</p></td>
+<td><p>Computes reference values from zone boundary conditions.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">area</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Sets reference area for normalization.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">compute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">service</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Computes reference values from zone boundary conditions.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.reference_values.compute.axis" title="ansys.fluent.core.solver.tui_232.main_menu.report.reference_values.compute.axis"><code class="xref py py-obj docutils literal notranslate"><span class="pre">axis</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Compute reference values from a zone of this type.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.reference_values.compute.degassing" title="ansys.fluent.core.solver.tui_232.main_menu.report.reference_values.compute.degassing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">degassing</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Compute reference values from a zone of this type.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.reference_values.compute.dummy_entry" title="ansys.fluent.core.solver.tui_232.main_menu.report.reference_values.compute.dummy_entry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dummy_entry</span></code></a>(*args, **kwargs)</p></td>
+<td><p><p>.</p>
+</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.reference_values.compute.exhaust_fan" title="ansys.fluent.core.solver.tui_232.main_menu.report.reference_values.compute.exhaust_fan"><code class="xref py py-obj docutils literal notranslate"><span class="pre">exhaust_fan</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Compute reference values from a zone of this type.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.reference_values.compute.fan" title="ansys.fluent.core.solver.tui_232.main_menu.report.reference_values.compute.fan"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fan</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Compute reference values from a zone of this type.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.reference_values.compute.fluid" title="ansys.fluent.core.solver.tui_232.main_menu.report.reference_values.compute.fluid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fluid</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Compute reference values from a zone of this type.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.reference_values.compute.geometry" title="ansys.fluent.core.solver.tui_232.main_menu.report.reference_values.compute.geometry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geometry</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Compute reference values from a zone of this type.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.reference_values.compute.inlet_vent" title="ansys.fluent.core.solver.tui_232.main_menu.report.reference_values.compute.inlet_vent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">inlet_vent</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Compute reference values from a zone of this type.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.reference_values.compute.intake_fan" title="ansys.fluent.core.solver.tui_232.main_menu.report.reference_values.compute.intake_fan"><code class="xref py py-obj docutils literal notranslate"><span class="pre">intake_fan</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Compute reference values from a zone of this type.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.reference_values.compute.interface" title="ansys.fluent.core.solver.tui_232.main_menu.report.reference_values.compute.interface"><code class="xref py py-obj docutils literal notranslate"><span class="pre">interface</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Compute reference values from a zone of this type.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.reference_values.compute.interior" title="ansys.fluent.core.solver.tui_232.main_menu.report.reference_values.compute.interior"><code class="xref py py-obj docutils literal notranslate"><span class="pre">interior</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Compute reference values from a zone of this type.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.reference_values.compute.mass_flow_inlet" title="ansys.fluent.core.solver.tui_232.main_menu.report.reference_values.compute.mass_flow_inlet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mass_flow_inlet</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Compute reference values from a zone of this type.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.reference_values.compute.mass_flow_outlet" title="ansys.fluent.core.solver.tui_232.main_menu.report.reference_values.compute.mass_flow_outlet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mass_flow_outlet</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Compute reference values from a zone of this type.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.reference_values.compute.network" title="ansys.fluent.core.solver.tui_232.main_menu.report.reference_values.compute.network"><code class="xref py py-obj docutils literal notranslate"><span class="pre">network</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Compute reference values from a zone of this type.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.reference_values.compute.network_end" title="ansys.fluent.core.solver.tui_232.main_menu.report.reference_values.compute.network_end"><code class="xref py py-obj docutils literal notranslate"><span class="pre">network_end</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Compute reference values from a zone of this type.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.reference_values.compute.outflow" title="ansys.fluent.core.solver.tui_232.main_menu.report.reference_values.compute.outflow"><code class="xref py py-obj docutils literal notranslate"><span class="pre">outflow</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Compute reference values from a zone of this type.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.reference_values.compute.outlet_vent" title="ansys.fluent.core.solver.tui_232.main_menu.report.reference_values.compute.outlet_vent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">outlet_vent</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Compute reference values from a zone of this type.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.reference_values.compute.overset" title="ansys.fluent.core.solver.tui_232.main_menu.report.reference_values.compute.overset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">overset</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Compute reference values from a zone of this type.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.reference_values.compute.periodic" title="ansys.fluent.core.solver.tui_232.main_menu.report.reference_values.compute.periodic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">periodic</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Compute reference values from a zone of this type.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.reference_values.compute.porous_jump" title="ansys.fluent.core.solver.tui_232.main_menu.report.reference_values.compute.porous_jump"><code class="xref py py-obj docutils literal notranslate"><span class="pre">porous_jump</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Compute reference values from a zone of this type.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.reference_values.compute.pressure_far_field" title="ansys.fluent.core.solver.tui_232.main_menu.report.reference_values.compute.pressure_far_field"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pressure_far_field</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Compute reference values from a zone of this type.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.reference_values.compute.pressure_inlet" title="ansys.fluent.core.solver.tui_232.main_menu.report.reference_values.compute.pressure_inlet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pressure_inlet</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Compute reference values from a zone of this type.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.reference_values.compute.pressure_outlet" title="ansys.fluent.core.solver.tui_232.main_menu.report.reference_values.compute.pressure_outlet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pressure_outlet</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Compute reference values from a zone of this type.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.reference_values.compute.radiator" title="ansys.fluent.core.solver.tui_232.main_menu.report.reference_values.compute.radiator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">radiator</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Compute reference values from a zone of this type.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.reference_values.compute.rans_les_interface" title="ansys.fluent.core.solver.tui_232.main_menu.report.reference_values.compute.rans_les_interface"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rans_les_interface</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Compute reference values from a zone of this type.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.reference_values.compute.recirculation_inlet" title="ansys.fluent.core.solver.tui_232.main_menu.report.reference_values.compute.recirculation_inlet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">recirculation_inlet</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Compute reference values from a zone of this type.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.reference_values.compute.recirculation_outlet" title="ansys.fluent.core.solver.tui_232.main_menu.report.reference_values.compute.recirculation_outlet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">recirculation_outlet</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Compute reference values from a zone of this type.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.reference_values.compute.shadow" title="ansys.fluent.core.solver.tui_232.main_menu.report.reference_values.compute.shadow"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shadow</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Compute reference values from a zone of this type.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.reference_values.compute.solid" title="ansys.fluent.core.solver.tui_232.main_menu.report.reference_values.compute.solid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">solid</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Compute reference values from a zone of this type.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.reference_values.compute.symmetry" title="ansys.fluent.core.solver.tui_232.main_menu.report.reference_values.compute.symmetry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">symmetry</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Compute reference values from a zone of this type.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.reference_values.compute.velocity_inlet" title="ansys.fluent.core.solver.tui_232.main_menu.report.reference_values.compute.velocity_inlet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">velocity_inlet</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Compute reference values from a zone of this type.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.reference_values.compute.wall" title="ansys.fluent.core.solver.tui_232.main_menu.report.reference_values.compute.wall"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wall</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Compute reference values from a zone of this type.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">axis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Compute reference values from a zone of this type.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">degassing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Compute reference values from a zone of this type.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">dummy_entry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">exhaust_fan</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Compute reference values from a zone of this type.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">fan</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Compute reference values from a zone of this type.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">fluid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Compute reference values from a zone of this type.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">geometry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Compute reference values from a zone of this type.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">inlet_vent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Compute reference values from a zone of this type.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">intake_fan</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Compute reference values from a zone of this type.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">interface</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Compute reference values from a zone of this type.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">interior</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Compute reference values from a zone of this type.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">mass_flow_inlet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Compute reference values from a zone of this type.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">mass_flow_outlet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Compute reference values from a zone of this type.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">network</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Compute reference values from a zone of this type.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">network_end</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Compute reference values from a zone of this type.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">outflow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Compute reference values from a zone of this type.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">outlet_vent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Compute reference values from a zone of this type.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">overset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Compute reference values from a zone of this type.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">periodic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Compute reference values from a zone of this type.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">porous_jump</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Compute reference values from a zone of this type.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">pressure_far_field</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Compute reference values from a zone of this type.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">pressure_inlet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Compute reference values from a zone of this type.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">pressure_outlet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Compute reference values from a zone of this type.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">radiator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Compute reference values from a zone of this type.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">rans_les_interface</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Compute reference values from a zone of this type.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">recirculation_inlet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Compute reference values from a zone of this type.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">recirculation_outlet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Compute reference values from a zone of this type.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">shadow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Compute reference values from a zone of this type.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">solid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Compute reference values from a zone of this type.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">symmetry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Compute reference values from a zone of this type.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">velocity_inlet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Compute reference values from a zone of this type.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">wall</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Compute reference values from a zone of this type.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">density</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Sets reference density for normalization.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">depth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Sets reference depth for volume calculation.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">enthalpy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Sets reference enthalpy for enthalpy damping and normalization.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">length</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Sets reference length for normalization.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Lists current reference values.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">pressure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Sets reference pressure for normalization.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">temperature</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Sets reference temperature for normalization.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">velocity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Sets reference velocity for normalization.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">viscosity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Sets reference viscosity for normalization.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">yplus</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Sets reference yplus for calculation of Yplus Based Heat Transfer Coefficient.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">zone</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Sets reference zone.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">simulation_reports</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">service</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Enter the simulation reports menu.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.simulation_reports.delete_simulation_report" title="ansys.fluent.core.solver.tui_232.main_menu.report.simulation_reports.delete_simulation_report"><code class="xref py py-obj docutils literal notranslate"><span class="pre">delete_simulation_report</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Delete the provided simulation report.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.simulation_reports.duplicate_simulation_report" title="ansys.fluent.core.solver.tui_232.main_menu.report.simulation_reports.duplicate_simulation_report"><code class="xref py py-obj docutils literal notranslate"><span class="pre">duplicate_simulation_report</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Duplicate a report and all of its settings to a new report.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.simulation_reports.export_simulation_report_as_html" title="ansys.fluent.core.solver.tui_232.main_menu.report.simulation_reports.export_simulation_report_as_html"><code class="xref py py-obj docutils literal notranslate"><span class="pre">export_simulation_report_as_html</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Export the provided simulation report as HTML.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.simulation_reports.export_simulation_report_as_pdf" title="ansys.fluent.core.solver.tui_232.main_menu.report.simulation_reports.export_simulation_report_as_pdf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">export_simulation_report_as_pdf</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Export the provided simulation report as a PDF file.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.simulation_reports.export_simulation_report_as_pptx" title="ansys.fluent.core.solver.tui_232.main_menu.report.simulation_reports.export_simulation_report_as_pptx"><code class="xref py py-obj docutils literal notranslate"><span class="pre">export_simulation_report_as_pptx</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Export the provided simulation report as a PPT file.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.simulation_reports.generate_simulation_report" title="ansys.fluent.core.solver.tui_232.main_menu.report.simulation_reports.generate_simulation_report"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_simulation_report</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Generate a new simulation report or regenerate an existing simulation report with the provided name.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.simulation_reports.list_simulation_reports" title="ansys.fluent.core.solver.tui_232.main_menu.report.simulation_reports.list_simulation_reports"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list_simulation_reports</span></code></a>(*args, **kwargs)</p></td>
+<td><p>List all report names.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.simulation_reports.read_simulation_report_template_file" title="ansys.fluent.core.solver.tui_232.main_menu.report.simulation_reports.read_simulation_report_template_file"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read_simulation_report_template_file</span></code></a>(*args, ...)</p></td>
+<td><p>Read a JSON template file with existing Simulation Report settings.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.simulation_reports.rename_simulation_report" title="ansys.fluent.core.solver.tui_232.main_menu.report.simulation_reports.rename_simulation_report"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rename_simulation_report</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Rename a report which has already been generated.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.simulation_reports.reset_report_to_defaults" title="ansys.fluent.core.solver.tui_232.main_menu.report.simulation_reports.reset_report_to_defaults"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset_report_to_defaults</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Reset all report settings to default for the provided simulation report.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.simulation_reports.view_simulation_report" title="ansys.fluent.core.solver.tui_232.main_menu.report.simulation_reports.view_simulation_report"><code class="xref py py-obj docutils literal notranslate"><span class="pre">view_simulation_report</span></code></a>(*args, **kwargs)</p></td>
+<td><p>View a simulation report that has already been generated.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.simulation_reports.write_report_names_to_file" title="ansys.fluent.core.solver.tui_232.main_menu.report.simulation_reports.write_report_names_to_file"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write_report_names_to_file</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Write the list of currently generated report names to a txt file.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.simulation_reports.write_simulation_report_template_file" title="ansys.fluent.core.solver.tui_232.main_menu.report.simulation_reports.write_simulation_report_template_file"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write_simulation_report_template_file</span></code></a>(*args, ...)</p></td>
+<td><p>Write a JSON template file with this case's Simulation Report settings.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Classes:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.simulation_reports.parametric_study" title="ansys.fluent.core.solver.tui_232.main_menu.report.simulation_reports.parametric_study"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parametric_study</span></code></a>(path, service)</p></td>
+<td><p>Enter the parametric study menu.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">delete_simulation_report</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Delete the provided simulation report.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">duplicate_simulation_report</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Duplicate a report and all of its settings to a new report.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">export_simulation_report_as_html</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Export the provided simulation report as HTML.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">export_simulation_report_as_pdf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Export the provided simulation report as a PDF file.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">export_simulation_report_as_pptx</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Export the provided simulation report as a PPT file.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">generate_simulation_report</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Generate a new simulation report or regenerate an existing simulation report with the provided name.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">list_simulation_reports</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>List all report names.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">parametric_study</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">service</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Enter the parametric study menu.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.simulation_reports.parametric_study.generate_design_point_report" title="ansys.fluent.core.solver.tui_232.main_menu.report.simulation_reports.parametric_study.generate_design_point_report"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_design_point_report</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Generate a simulation report for an updated design point.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.simulation_reports.parametric_study.generate_parametric_report" title="ansys.fluent.core.solver.tui_232.main_menu.report.simulation_reports.parametric_study.generate_parametric_report"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_parametric_report</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Generate a parametric report for your study.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">generate_design_point_report</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Generate a simulation report for an updated design point.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">generate_parametric_report</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Generate a parametric report for your study.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">read_simulation_report_template_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Read a JSON template file with existing Simulation Report settings.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">rename_simulation_report</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Rename a report which has already been generated.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">reset_report_to_defaults</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Reset all report settings to default for the provided simulation report.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">view_simulation_report</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>View a simulation report that has already been generated. In batch mode this will print the report’s URL.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">write_report_names_to_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Write the list of currently generated report names to a txt file.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">write_simulation_report_template_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Write a JSON template file with this case’s Simulation Report settings.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">species_mass_flow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Prints list of species mass flow rate at inlets and outlets. This reports the mass flow rates of all species (in kg/s) flowing through the simulation boundaries.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">summary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Prints the current settings for physical models, boundary conditions, material properties, and solution parameters.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">surface_integrals</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enters the surface integral menu.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">system</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">service</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Enters the system menu.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.system.gpgpu_stats" title="ansys.fluent.core.solver.tui_232.main_menu.report.system.gpgpu_stats"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gpgpu_stats</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Prints information about installed general purpose graphical processing units.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.system.proc_stats" title="ansys.fluent.core.solver.tui_232.main_menu.report.system.proc_stats"><code class="xref py py-obj docutils literal notranslate"><span class="pre">proc_stats</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Prints ANSYS Fluent process information.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.system.sys_stats" title="ansys.fluent.core.solver.tui_232.main_menu.report.system.sys_stats"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sys_stats</span></code></a>(*args, **kwargs)</p></td>
+<td><p>System information.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.system.time_stats" title="ansys.fluent.core.solver.tui_232.main_menu.report.system.time_stats"><code class="xref py py-obj docutils literal notranslate"><span class="pre">time_stats</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Timer information.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">gpgpu_stats</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Prints information about installed general purpose graphical processing units.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">proc_stats</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Prints ANSYS Fluent process information. This is used to report the memory usage of each of the ANSYS Fluent processes.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">sys_stats</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>System information. This is used to report the CPU configuration of the machines where ANSYS Fluent processes have been spawned.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">time_stats</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Timer information. This is used to report CPU timings for user and kernel processes and detailed solver timings.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">uds_flow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Prints list of user-defined scalar flow rate at boundaries.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">virtual_blade_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">service</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>VBM reports menu.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.virtual_blade_model.rotor_pitch_moment" title="ansys.fluent.core.solver.tui_232.main_menu.report.virtual_blade_model.rotor_pitch_moment"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rotor_pitch_moment</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Print Rotor Pitch-Moment.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.virtual_blade_model.rotor_power" title="ansys.fluent.core.solver.tui_232.main_menu.report.virtual_blade_model.rotor_power"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rotor_power</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Print Rotor Power.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.virtual_blade_model.rotor_roll_moment" title="ansys.fluent.core.solver.tui_232.main_menu.report.virtual_blade_model.rotor_roll_moment"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rotor_roll_moment</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Print Rotor Roll-Moment.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.virtual_blade_model.rotor_thrust" title="ansys.fluent.core.solver.tui_232.main_menu.report.virtual_blade_model.rotor_thrust"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rotor_thrust</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Print Rotor Thrust.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../index.html#ansys.fluent.core.solver.tui_232.main_menu.report.virtual_blade_model.rotor_torque" title="ansys.fluent.core.solver.tui_232.main_menu.report.virtual_blade_model.rotor_torque"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rotor_torque</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Print Rotor Torque.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">rotor_pitch_moment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Print Rotor Pitch-Moment.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">rotor_power</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Print Rotor Power.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">rotor_roll_moment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Print Rotor Roll-Moment.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">rotor_thrust</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Print Rotor Thrust.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">rotor_torque</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Print Rotor Torque.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">volume_integrals</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enters the volume integral menu.</p>
+</dd></dl>
+
+</dd></dl>
+
+<div class="toctree-wrapper compound">
+</div>
+</section>
+
+
+                </article>
+              
+              
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="tocsection sourcelink">
+    <a href="../../../../_sources/api/solver/tui/report/index.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+  <p class="copyright">
+    
+      © Copyright (c) 2023 ANSYS, Inc. All rights reserved.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.13.3.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

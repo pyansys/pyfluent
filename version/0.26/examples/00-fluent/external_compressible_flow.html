@@ -1,0 +1,1662 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Modeling External Compressible Flow &#8212; PyFluent</title>
+
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=d2d258e8" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/ansys_sphinx_theme.css?v=d2ac875c" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://www.nerdfonts.com/assets/css/webfont.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+ 
+<link href="../../_static/css/breadcrumbs.css" rel="stylesheet" />
+
+    <script src="../../_static/documentation_options.js?v=c4ba833b"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/thebelab-helper.js"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=49e1bf35"></script>
+    <script src="../../_static/toggleprompt.js?v=cec9bd37"></script>
+    <script src="../../_static/js/table.js?v=b64f5182"></script>
+    <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'examples/00-fluent/external_compressible_flow';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.15.4';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://fluent.docs.pyansys.com/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.26';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner = false;
+        </script>
+    <link rel="icon" href="../../_static/ansys-favicon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Fluent setup and solution using settings objects" href="mixing_elbow_settings_api.html" />
+    <link rel="prev" title="Fault-tolerant meshing workflow using settings objects" href="exhaust_system_settings_api.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <link rel="canonical" href="https://fluent.docs.pyansys.com/version/stable/examples/00-fluent/external_compressible_flow.html" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container"><!-- Debugging: html_theme_options =  -->
+
+  <!-- If there is no MeiliSearch enabled, use the PyData search -->
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+   
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/pyansys_logo_transparent_black.png" class="logo__image only-light" alt="PyFluent - Home"/>
+    <script>document.write(`<img src="../../_static/pyansys_logo_transparent_white.png" class="logo__image only-dark" alt="PyFluent - Home"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../getting_started/index.html">
+    Getting started
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../user_guide/index.html">
+    User guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../api/index.html">
+    API reference
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../contributing.html">
+    Contributing to PyFluent
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+<script>
+document.write(`
+  <div class="version-switcher__container dropdown">
+    <button id="pst-version-switcher-button-2"
+      type="button"
+      class="version-switcher__button btn btn-sm dropdown-toggle"
+      data-bs-toggle="dropdown"
+      aria-haspopup="listbox"
+      aria-controls="pst-version-switcher-list-2"
+      aria-label="Version switcher list"
+    >
+      Choose version  <!-- this text may get changed later by javascript -->
+      <span class="caret"></span>
+    </button>
+    <div id="pst-version-switcher-list-2"
+      class="version-switcher__menu dropdown-menu list-group-flush py-0"
+      role="listbox" aria-labelledby="pst-version-switcher-button-2">
+      <!-- dropdown will be populated by javascript on page load -->
+    </div>
+  </div>
+`);
+</script></div>
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent/discussions" title="Support" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa fa-comment fa-fw fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Support</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+    <div id="announcement_msg"></div>
+<script>
+  fetch("announcement.html")
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error: ${response.status}`);
+      }
+      return response.text();
+    })
+    .then(
+      (text) => (document.getElementById("announcement_msg").innerHTML = text),
+    )
+    .catch((error) => console.error(`Fetch problem: ${error.message}`));
+</script>  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../getting_started/index.html">
+    Getting started
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../user_guide/index.html">
+    User guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../api/index.html">
+    API reference
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../contributing.html">
+    Contributing to PyFluent
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<script>
+document.write(`
+  <div class="version-switcher__container dropdown">
+    <button id="pst-version-switcher-button-3"
+      type="button"
+      class="version-switcher__button btn btn-sm dropdown-toggle"
+      data-bs-toggle="dropdown"
+      aria-haspopup="listbox"
+      aria-controls="pst-version-switcher-list-3"
+      aria-label="Version switcher list"
+    >
+      Choose version  <!-- this text may get changed later by javascript -->
+      <span class="caret"></span>
+    </button>
+    <div id="pst-version-switcher-list-3"
+      class="version-switcher__menu dropdown-menu list-group-flush py-0"
+      role="listbox" aria-labelledby="pst-version-switcher-button-3">
+      <!-- dropdown will be populated by javascript on page load -->
+    </div>
+  </div>
+`);
+</script></div>
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent/discussions" title="Support" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa fa-comment fa-fw fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Support</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Simulation Examples</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="DOE_ML.html">Design of Experiments and Machine Learning model building</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ahmed_body_workflow.html">Ahmed Body External Aerodynamics Simulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="brake.html">Automotive Brake Thermal Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exhaust_system_settings_api.html">Fault-tolerant meshing workflow using settings objects</a></li>
+
+
+
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Modeling External Compressible Flow</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="mixing_elbow_settings_api.html">Fluent setup and solution using settings objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modeling_cavitation.html">Modeling Cavitation</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="parametric_static_mixer_1.html">Parametric study workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="radiation_headlamp.html">Modeling Radiation in a Headlamp Using the Monte Carlo Method</a></li>
+
+
+
+</ul>
+</details></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+         
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="https://docs.pyansys.com/" class="nav-link">PyAnsys</a>
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a
+        href="../../index.html"
+        class="nav-link"
+        aria-label="Home"
+      >
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a href="../index.html" class="nav-link">Examples</a>
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a href="index.html" class="nav-link">Simulation Examples</a>
+    </li>
+      
+    <li class="breadcrumb-item active" aria-current="page">Modeling External Compressible Flow</li>
+    
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="sphx-glr-download-link-note admonition note">
+<p class="admonition-title">Note</p>
+<p><a class="reference internal" href="#sphx-glr-download-examples-00-fluent-external-compressible-flow-py"><span class="std std-ref">Go to the end</span></a>
+to download the full example code.</p>
+</div>
+<section class="sphx-glr-example-title" id="modeling-external-compressible-flow">
+<span id="ref-external-compressible-flow-settings-api"></span><span id="sphx-glr-examples-00-fluent-external-compressible-flow-py"></span><h1>Modeling External Compressible Flow<a class="headerlink" href="#modeling-external-compressible-flow" title="Link to this heading">#</a></h1>
+<p>The purpose of this tutorial is to compute the turbulent flow past a transonic
+wing at a nonzero angle of attack using the k-w SST turbulence model.</p>
+<p>This example uses the guided workflow for watertight geometry meshing
+because it is appropriate for geometries that can have no imperfections,
+such as gaps and leakages.</p>
+<p><strong>Workflow tasks</strong></p>
+<p>The Modeling External Compressible Flow Using the Meshing Workflow guides you through these tasks:</p>
+<ul class="simple">
+<li><p>Creation of capsule mesh using Watertight Geometry workflow.</p></li>
+<li><p>Model compressible flow (using the ideal gas law for density).</p></li>
+<li><p>Set boundary conditions for external aerodynamics.</p></li>
+<li><p>Use the k-w SST turbulence model.</p></li>
+<li><p>Calculate a solution using the pressure-based coupled solver with global time step selected for the pseudo time method.</p></li>
+<li><p>Check the near-wall mesh resolution by plotting the distribution of .</p></li>
+</ul>
+<p><strong>Problem description</strong></p>
+<p>The problem considers the flow around a wing at an angle of attack a=3.06° and a free stream Mach
+number of 0.8395 (M=0.8395). The flow is transonic, and has a shock near the mid-chord (x/c≃0.20)
+on the upper (suction) side. The wing has a mean aerodynamic chord length of 0.64607 m, a span of 1.1963 m,
+an aspect ratio of 3.8, and a taper ratio of 0.562.</p>
+<a class="reference internal image-reference" href="../../_images/external_compressible_flow_011.png"><img alt="../../_images/external_compressible_flow_011.png" class="align-center" src="../../_images/external_compressible_flow_011.png" style="width: 500pt;" />
+</a>
+</section>
+<section id="example-setup">
+<h1>Example Setup<a class="headerlink" href="#example-setup" title="Link to this heading">#</a></h1>
+<p>Before you can use the meshing workflow, you must set up the
+example and initialize this workflow.</p>
+<section id="perform-required-imports">
+<h2>Perform required imports<a class="headerlink" href="#perform-required-imports" title="Link to this heading">#</a></h2>
+<p>Perform required imports, which includes downloading and importing
+the geometry files.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ansys.fluent.core</span> <span class="k">as</span> <span class="nn">pyfluent</span>
+<span class="kn">from</span> <span class="nn">ansys.fluent.core</span> <span class="kn">import</span> <span class="n">examples</span>
+
+<a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">wing_spaceclaim_file</span></a><span class="p">,</span> <a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">wing_intermediary_file</span></a> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">examples</span><span class="o">.</span><span class="n">download_file</span><span class="p">(</span><span class="n">CAD_file</span><span class="p">,</span> <span class="s2">&quot;pyfluent/external_compressible&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">CAD_file</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;wing.scdoc&quot;</span><span class="p">,</span> <span class="s2">&quot;wing.pmdb&quot;</span><span class="p">]</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</section>
+<section id="launch-fluent">
+<h2>Launch Fluent<a class="headerlink" href="#launch-fluent" title="Link to this heading">#</a></h2>
+<p>Launch Fluent as a service in meshing mode with double precision running on
+four processors.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">meshing</span> <span class="o">=</span> <span class="n">pyfluent</span><span class="o">.</span><span class="n">launch_fluent</span><span class="p">(</span>
+    <span class="n">precision</span><span class="o">=</span><span class="s2">&quot;double&quot;</span><span class="p">,</span>
+    <span class="n">processor_count</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+    <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;meshing&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="initialize-workflow">
+<h2>Initialize workflow<a class="headerlink" href="#initialize-workflow" title="Link to this heading">#</a></h2>
+<p>Initialize the watertight geometry meshing workflow.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">meshing</span><span class="o">.</span><span class="n">workflow</span><span class="o">.</span><span class="n">InitializeWorkflow</span><span class="p">(</span><span class="n">WorkflowType</span><span class="o">=</span><span class="s2">&quot;Watertight Geometry&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="watertight-geometry-meshing-workflow">
+<h1>Watertight geometry meshing workflow<a class="headerlink" href="#watertight-geometry-meshing-workflow" title="Link to this heading">#</a></h1>
+<p>The fault-tolerant meshing workflow guides you through the several tasks that
+follow.</p>
+<section id="import-cad-and-set-length-units">
+<h2>Import CAD and set length units<a class="headerlink" href="#import-cad-and-set-length-units" title="Link to this heading">#</a></h2>
+<p>Import the CAD geometry and set the length units to inches.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">geo_import</span> <span class="o">=</span> <span class="n">meshing</span><span class="o">.</span><span class="n">workflow</span><span class="o">.</span><span class="n">TaskObject</span><span class="p">[</span><span class="s2">&quot;Import Geometry&quot;</span><span class="p">]</span>
+<span class="n">geo_import</span><span class="o">.</span><span class="n">Arguments</span><span class="o">.</span><span class="n">set_state</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;FileName&quot;</span><span class="p">:</span> <a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">wing_intermediary_file</span></a><span class="p">,</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+
+<span class="n">meshing</span><span class="o">.</span><span class="n">upload</span><span class="p">(</span><a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">wing_intermediary_file</span></a><span class="p">)</span>
+<span class="n">geo_import</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/ansys/actions-runner/_work/pyfluent/pyfluent/src/ansys/fluent/core/session.py:357: PyFluentUserWarning: You have directly called the upload() method of the session.         Please be advised that for the current version of Fluent, many API methods         automatically handle file uploads and downloads internally. You may not         need to explicitly call upload() in most cases.         However, there are exceptions, particularly in PMFileManagement, where complex         file interactions require explicit use of upload()  method         for relevant files.
+  warnings.warn(self._file_transfer_api_warning(&quot;upload()&quot;), PyFluentUserWarning)
+
+Warning: PMDB file will not be saved as the same is being imported.
+
+Importing one geom object per program-controlled and one zone per body ...
+Initializing ANSYS component system ...
+running Ansys.Meshing.FieldMesher.exe ...
+creating FMComponent instance ...
+querying IFieldMesher interface ...
+AnsysFieldMesher build date: May 13 2024 15:08:00
+
+argv[0] = /ansys_inc/v242/aisol/CommonFiles/linx64/ansys.meshing.fieldmesher.exe
+argv[1] = -B
+argv[2] = /ansys_inc/v242/commonfiles/CPython/3_10/linx64/Release/python/../Ansys/TGrid/CADReaders.py
+argv[3] = -a
+argv[4] = /mnt/pyfluent/FM_e6efa6a1ffbf_152/options1728488949.040747152.xml
+argv[5] = -a
+argv[6] = /mnt/pyfluent/FM_e6efa6a1ffbf_152/options1728488949.040747152.xml
+    /ansys_inc/v242/aisol/CommonFiles/linx64/ansys.meshing.fieldmesher.exe started by root on e6efa6a1ffbf linx64 on Wed Oct  9 15:49:09 2024
+    using Python 3.10.12 (main, Mar 26 2024, 02:17:48) [GCC 8.2.0]
+
+    using Ansys.Meshing.FieldMesher build May 13 2024 15:04:53
+
+    running ANSYS TGrid CADToTGridConverter ...
+    setting up parameters ...
+    setting up parameters done.
+    running conversion ...
+    converting 1 file(s) from Workbench to FLTG using output path &#39;/mnt/pyfluent/FM_e6efa6a1ffbf_152/out1728488949.040747152.tgf&#39;
+    converting file &#39;wing.pmdb&#39; (1 of 1) from Workbench to FLTG using output path &#39;/mnt/pyfluent/FM_e6efa6a1ffbf_152&#39;
+    importing data ...
+    importing meshing model from PartMgr from file &#39;/mnt/pyfluent/wing.pmdb&#39; ...
+    setting enclosure and symmetry processing to False
+    setting transfer named selections to True
+    setting named selection prefixes to &#39;&#39;
+    setting mixed import resolution type to &#39;SolidAndSurface&#39;
+    setting target application to &#39;FluentMeshing&#39;
+    initializing part manager from file ...
+    processing assembly &#39;V:\v20.2\ajamwal\tutorial\onera_wing_tui_fltg\std\wing.scdoc&#39; with ID 1 and reference key &#39;&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;
+    &lt;IdTable xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&gt;
+      &lt;Table&gt;
+        &lt;Entry&gt;
+          &lt;Text&gt;&amp;lt;SnippetV1 sctype=&quot;SpaceClaim.BasicMoniker`1[[SpaceClaim.IEvaluation, Core]], Core&quot; refId=&quot;96eb1453-b93e-47b3-ac40-b839719e0f23:2&quot; /&amp;gt;&lt;/Text&gt;
+          &lt;ExplodedBodyText&gt;&amp;lt;SnippetV1 sctype=&quot;SpaceClaim.BasicMoniker`1[[SpaceClaim.IEvaluation, Core]], Core&quot; refId=&quot;3b3e1be1-19e3-426a-b9be-57a5d102de0c:359&quot; /&amp;gt;&lt;/ExplodedBodyText&gt;
+          &lt;Id&gt;10000&lt;/Id&gt;
+          &lt;IsExploded&gt;true&lt;/IsExploded&gt;
+        &lt;/Entry&gt;
+        &lt;Entry&gt;
+          &lt;Text&gt;&amp;lt;SnippetV1 sctype=&quot;SpaceClaim.BasicMoniker`1[[SpaceClaim.IEvaluation, Core]], Core&quot; refId=&quot;96eb1453-b93e-47b3-ac40-b839719e0f23:2&quot; /&amp;gt;&lt;/Text&gt;
+          &lt;ExplodedBodyText&gt;&amp;lt;SnippetV1 sctype=&quot;SpaceClaim.BasicMoniker`1[[SpaceClaim.IEvaluation, Core]], Core&quot; refId=&quot;6913b575-3023-4a96-8ca3-797ab1ec6f00:31674&quot; /&amp;gt;&lt;/ExplodedBodyText&gt;
+          &lt;Id&gt;10001&lt;/Id&gt;
+          &lt;IsExploded&gt;true&lt;/IsExploded&gt;
+        &lt;/Entry&gt;
+      &lt;/Table&gt;
+    &lt;/IdTable&gt;&#39;
+    length unit = [m]
+    processing part &#39;wing&#39; with ID 3
+    processing part &#39;wing&#39; with ID 5
+    processing named selection &#39;fluid_symmetry&#39;
+    processing named selection &#39;pressure_farfield&#39;
+    processing named selection &#39;wing_bottom&#39;
+    processing named selection &#39;wing_top&#39;
+    processing named selection &#39;wing_edge&#39;
+    processing data ...
+    removing named collections of entities ...
+    removing named collections of entities stopped, no named collections selected.
+    analyzing feature edges ...
+    detecting feature edges, feature angle = 40 [deg] ...
+        Data information
+            Meshing model
+                Attributes:
+                    &#39;LengthUnit&#39;: &#39;[mm]&#39;
+                Entity summary:
+                    Collection: 5
+                    Component : 3
+                    Body      : 2
+                    Shell     : 2
+                    Face      : 19
+                    Loop      : 20
+                    Edge      : 38
+                    Vertex    : 24
+                    Surface   : 19
+                    Curve     : 38
+                Tessellation summary:
+                    Face facets  : 2691
+                    Edge segments: 426
+                Bounding box:
+                    (-25039.427734375, -9.623148855553154e-08, -25039.421875) x (26144.078125, 25039.427734375, 25039.43223878741)
+                Assembly component hierarchy:
+                    &#39;V:\v20.2\ajamwal\tutorial\onera_wing_tui_fltg\std\wing.scdoc&#39;
+                      &#39;wing&#39;
+                      &#39;wing&#39;
+                NamedCollections:
+                    &#39;fluid_symmetry&#39;
+                    &#39;pressure_farfield&#39;
+                    &#39;wing_bottom&#39;
+                    &#39;wing_top&#39;
+                    &#39;wing_edge&#39;
+
+
+    exporting FLTG data to file &#39;/mnt/pyfluent/FM_e6efa6a1ffbf_152/out1728488949.040747152.tgf&#39; ...
+    writing face-based mesh file &#39;/mnt/pyfluent/FM_e6efa6a1ffbf_152/out1728488949.040747152.tgf&#39; ...
+    ======== Exported Data ========
+    Entity summary:
+        Object       : 2
+        Object region: 7
+        Zone         : 16
+
+    running conversion done.
+    running ANSYS TGrid CADToTGridConverter done.
+    ran ANSYS TGrid CADToTGridConverter in 0.123 [s]
+        ======== Command Execution Log Manager ========
+        Number of execution logs: 0
+
+
+Reading &quot;/mnt/pyfluent/FM_e6efa6a1ffbf_152/out1728488949.040747152.tgf&quot;...
+
+nodes: 1603
+edges: 267
+faces: 2649
+cells: 0
+generating pointers...done.
+extracting boundary entities...
+ 1603 boundary nodes.
+ 2649 boundary faces.
+ 6 boundary face zones.
+done.
+analyzing boundary connectivity...done.
+
+
+---------------- Import of wing, consisting of 2 parts/objects, complete.
+</pre></div>
+</div>
+</section>
+<section id="add-local-sizing">
+<h2>Add local sizing<a class="headerlink" href="#add-local-sizing" title="Link to this heading">#</a></h2>
+<p>Add local sizing controls to the faceted geometry.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">local_sizing</span> <span class="o">=</span> <span class="n">meshing</span><span class="o">.</span><span class="n">workflow</span><span class="o">.</span><span class="n">TaskObject</span><span class="p">[</span><span class="s2">&quot;Add Local Sizing&quot;</span><span class="p">]</span>
+<span class="n">local_sizing</span><span class="o">.</span><span class="n">Arguments</span><span class="o">.</span><span class="n">set_state</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;AddChild&quot;</span><span class="p">:</span> <span class="s2">&quot;yes&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;BOIControlName&quot;</span><span class="p">:</span> <span class="s2">&quot;wing-facesize&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;BOIFaceLabelList&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;wing_bottom&quot;</span><span class="p">,</span> <span class="s2">&quot;wing_top&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;BOISize&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+
+<span class="n">local_sizing</span><span class="o">.</span><span class="n">AddChildAndUpdate</span><span class="p">()</span>
+
+<span class="n">local_sizing</span><span class="o">.</span><span class="n">Arguments</span><span class="o">.</span><span class="n">set_state</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;AddChild&quot;</span><span class="p">:</span> <span class="s2">&quot;yes&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;BOIControlName&quot;</span><span class="p">:</span> <span class="s2">&quot;wing-ege-facesize&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;BOIFaceLabelList&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;wing_edge&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;BOISize&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+
+<span class="n">local_sizing</span><span class="o">.</span><span class="n">AddChildAndUpdate</span><span class="p">()</span>
+
+<span class="n">local_sizing</span><span class="o">.</span><span class="n">Arguments</span><span class="o">.</span><span class="n">set_state</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;AddChild&quot;</span><span class="p">:</span> <span class="s2">&quot;yes&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;BOIControlName&quot;</span><span class="p">:</span> <span class="s2">&quot;boi_1&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;BOIExecution&quot;</span><span class="p">:</span> <span class="s2">&quot;Body Of Influence&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;BOIFaceLabelList&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;wing-boi&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;BOISize&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+
+<span class="n">local_sizing</span><span class="o">.</span><span class="n">AddChildAndUpdate</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>---------------- A local size of 10 was added to wing-facesize
+
+---------------- The Global Min size was adjusted to 2
+
+---------------- A local size of 2 was added to wing-ege-facesize
+
+---------------- A Body of Influence with a target size of 5 was added to: wing-boi
+</pre></div>
+</div>
+</section>
+<section id="generate-surface-mesh">
+<h2>Generate surface mesh<a class="headerlink" href="#generate-surface-mesh" title="Link to this heading">#</a></h2>
+<p>Generate the surface mash.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">surface_mesh_gen</span> <span class="o">=</span> <span class="n">meshing</span><span class="o">.</span><span class="n">workflow</span><span class="o">.</span><span class="n">TaskObject</span><span class="p">[</span><span class="s2">&quot;Generate the Surface Mesh&quot;</span><span class="p">]</span>
+<span class="n">surface_mesh_gen</span><span class="o">.</span><span class="n">Arguments</span><span class="o">.</span><span class="n">set_state</span><span class="p">(</span>
+    <span class="p">{</span><span class="s2">&quot;CFDSurfaceMeshControls&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;MaxSize&quot;</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span> <span class="s2">&quot;MinSize&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}}</span>
+<span class="p">)</span>
+
+<span class="n">surface_mesh_gen</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Writing &quot;/mnt/pyfluent/FM_e6efa6a1ffbf_152/TaskObject3.msh.h5&quot; ...
+writing 1 node zones
+writing 10 edge zones
+writing 6 face zones
+writing node curvature data...
+done.    processing size functions/scoped sizing to create Size Field...
+
+Writing &quot;/mnt/pyfluent/FM_e6efa6a1ffbf_152/wing.sf&quot;...
+
+Done.
+
+
+Importing one mesh object per program-controlled and one zone per body ...
+Initializing ANSYS component system ...
+running Ansys.Meshing.FieldMesher.exe ...
+creating FMComponent instance ...
+querying IFieldMesher interface ...
+AnsysFieldMesher build date: May 13 2024 15:08:00
+
+argv[0] = /ansys_inc/v242/aisol/CommonFiles/linx64/ansys.meshing.fieldmesher.exe
+argv[1] = -B
+argv[2] = /ansys_inc/v242/commonfiles/CPython/3_10/linx64/Release/python/../Ansys/TGrid/CADReaders.py
+argv[3] = -a
+argv[4] = /mnt/pyfluent/FM_e6efa6a1ffbf_152/options1728488955.702896152.xml
+argv[5] = -a
+argv[6] = /mnt/pyfluent/FM_e6efa6a1ffbf_152/options1728488955.702896152.xml
+    /ansys_inc/v242/aisol/CommonFiles/linx64/ansys.meshing.fieldmesher.exe started by root on e6efa6a1ffbf linx64 on Wed Oct  9 15:49:16 2024
+    using Python 3.10.12 (main, Mar 26 2024, 02:17:48) [GCC 8.2.0]
+
+    using Ansys.Meshing.FieldMesher build May 13 2024 15:04:53
+
+    running ANSYS TGrid CADToTGridConverter ...
+    setting up parameters ...
+    setting up parameters done.
+    running conversion ...
+    converting 1 file(s) from Workbench to FLTG using output path &#39;/mnt/pyfluent/FM_e6efa6a1ffbf_152/out1728488955.702896152.tgf&#39;
+    converting file &#39;wing.pmdb&#39; (1 of 1) from Workbench to FLTG using output path &#39;/mnt/pyfluent/FM_e6efa6a1ffbf_152&#39;
+    importing data ...
+    importing meshing model from PartMgr from file &#39;/mnt/pyfluent/wing.pmdb&#39; ...
+    setting enclosure and symmetry processing to False
+    setting transfer named selections to True
+    setting named selection prefixes to &#39;&#39;
+    setting mixed import resolution type to &#39;SolidAndSurface&#39;
+    setting target application to &#39;FluentMeshing&#39;
+    initializing part manager from file ...
+    processing assembly &#39;V:\v20.2\ajamwal\tutorial\onera_wing_tui_fltg\std\wing.scdoc&#39; with ID 1 and reference key &#39;&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;
+    &lt;IdTable xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&gt;
+      &lt;Table&gt;
+        &lt;Entry&gt;
+          &lt;Text&gt;&amp;lt;SnippetV1 sctype=&quot;SpaceClaim.BasicMoniker`1[[SpaceClaim.IEvaluation, Core]], Core&quot; refId=&quot;96eb1453-b93e-47b3-ac40-b839719e0f23:2&quot; /&amp;gt;&lt;/Text&gt;
+          &lt;ExplodedBodyText&gt;&amp;lt;SnippetV1 sctype=&quot;SpaceClaim.BasicMoniker`1[[SpaceClaim.IEvaluation, Core]], Core&quot; refId=&quot;3b3e1be1-19e3-426a-b9be-57a5d102de0c:359&quot; /&amp;gt;&lt;/ExplodedBodyText&gt;
+          &lt;Id&gt;10000&lt;/Id&gt;
+          &lt;IsExploded&gt;true&lt;/IsExploded&gt;
+        &lt;/Entry&gt;
+        &lt;Entry&gt;
+          &lt;Text&gt;&amp;lt;SnippetV1 sctype=&quot;SpaceClaim.BasicMoniker`1[[SpaceClaim.IEvaluation, Core]], Core&quot; refId=&quot;96eb1453-b93e-47b3-ac40-b839719e0f23:2&quot; /&amp;gt;&lt;/Text&gt;
+          &lt;ExplodedBodyText&gt;&amp;lt;SnippetV1 sctype=&quot;SpaceClaim.BasicMoniker`1[[SpaceClaim.IEvaluation, Core]], Core&quot; refId=&quot;6913b575-3023-4a96-8ca3-797ab1ec6f00:31674&quot; /&amp;gt;&lt;/ExplodedBodyText&gt;
+          &lt;Id&gt;10001&lt;/Id&gt;
+          &lt;IsExploded&gt;true&lt;/IsExploded&gt;
+        &lt;/Entry&gt;
+      &lt;/Table&gt;
+    &lt;/IdTable&gt;&#39;
+    length unit = [m]
+    processing part &#39;wing&#39; with ID 3
+    processing part &#39;wing&#39; with ID 5
+    processing named selection &#39;fluid_symmetry&#39;
+    processing named selection &#39;pressure_farfield&#39;
+    processing named selection &#39;wing_bottom&#39;
+    processing named selection &#39;wing_top&#39;
+    processing named selection &#39;wing_edge&#39;
+    processing data ...
+    loading size function background grid from file &#39;/mnt/pyfluent/FM_e6efa6a1ffbf_152//wing.sf&#39; ...
+    reading size function background grid file &#39;/mnt/pyfluent/FM_e6efa6a1ffbf_152//wing.sf&#39; ...
+     Read 379882 vertices
+    initializing size function background grid done in 0.22 [s]
+    tessellating 19 faces done in 22.48 [s]
+    removing named collections of entities ...
+    removing named collections of entities stopped, no named collections selected.
+    analyzing feature edges ...
+    detecting feature edges, feature angle = 40 [deg] ...
+        Data information
+            Meshing model
+                Attributes:
+                    &#39;LengthUnit&#39;: &#39;[mm]&#39;
+                Entity summary:
+                    Collection: 5
+                    Component : 3
+                    Body      : 2
+                    Shell     : 2
+                    Face      : 19
+                    Loop      : 20
+                    Edge      : 38
+                    Vertex    : 24
+                    Surface   : 19
+                    Curve     : 38
+                Tessellation summary:
+                    Face facets  : 146550
+                    Edge segments: 4352
+                Bounding box:
+                    (-25035.203125, -9.623148855553154e-08, -25039.421875) x (26144.078125, 25039.42578125, 25039.431640625)
+                Assembly component hierarchy:
+                    &#39;V:\v20.2\ajamwal\tutorial\onera_wing_tui_fltg\std\wing.scdoc&#39;
+                      &#39;wing&#39;
+                      &#39;wing&#39;
+                NamedCollections:
+                    &#39;fluid_symmetry&#39;
+                    &#39;pressure_farfield&#39;
+                    &#39;wing_bottom&#39;
+                    &#39;wing_top&#39;
+                    &#39;wing_edge&#39;
+
+
+    exporting FLTG data to file &#39;/mnt/pyfluent/FM_e6efa6a1ffbf_152/out1728488955.702896152.tgf&#39; ...
+    writing face-based mesh file &#39;/mnt/pyfluent/FM_e6efa6a1ffbf_152/out1728488955.702896152.tgf&#39; ...
+    ======== Exported Data ========
+    Entity summary:
+        Object       : 2
+        Object region: 7
+        Zone         : 16
+
+    running conversion done.
+    running ANSYS TGrid CADToTGridConverter done.
+    ran ANSYS TGrid CADToTGridConverter in 23.191 [s]
+        ======== Command Execution Log Manager ========
+        Number of execution logs: 0
+
+
+Reading &quot;/mnt/pyfluent/FM_e6efa6a1ffbf_152/out1728488955.702896152.tgf&quot;...
+
+nodes: 77268
+edges: 3995
+faces: 146550
+cells: 0
+appending mesh...
+done.
+generating pointers...done.
+extracting boundary entities...
+ 78871 boundary nodes.
+ 149199 boundary faces.
+ 12 boundary face zones.
+done.
+
+Reading &quot;/mnt/pyfluent/FM_e6efa6a1ffbf_152//wing.sf&quot;...
+
+ Read 379882 vertices
+Warning: Deleting empty objects (wing-boi)
+
+removed 54012 faces.
+0 faces marked.
+
+    computing regions...done
+Deleting import_curvature_0
+Deleting import_proximity_0
+    processing size functions/scoped sizing to create Size Field...
+
+Writing &quot;/mnt/pyfluent/FM_e6efa6a1ffbf_152/wing.sf&quot;...
+
+Done.
+
+
+remeshing...
+
+
+------------------------- --------------------- -------------------- ---------------- ----------
+                     name skewed-cells (&gt; 0.80)    averaged-skewness maximum-skewness face count
+------------------------- --------------------- -------------------- ---------------- ----------
+
+                    fluid                     0          0.027823784       0.65385375      79840
+------------------------- --------------------- -------------------- ---------------- ----------
+                     name skewed-cells (&gt; 0.80)    averaged-skewness maximum-skewness face count
+------------------------- --------------------- -------------------- ---------------- ----------
+
+               wing-fluid                     0          0.027823784       0.65385375      79840
+
+---------------- After Surface mesh, the model consists of 1 fluid/solid regions and 0 voids.
+
+---------------- Surface Meshing of wing complete in  0.53 minutes, with a maximum skewness of  0.65.
+</pre></div>
+</div>
+</section>
+<section id="describe-geometry">
+<h2>Describe geometry<a class="headerlink" href="#describe-geometry" title="Link to this heading">#</a></h2>
+<p>Describe geometry and define the fluid region.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">describe_geo</span> <span class="o">=</span> <span class="n">meshing</span><span class="o">.</span><span class="n">workflow</span><span class="o">.</span><span class="n">TaskObject</span><span class="p">[</span><span class="s2">&quot;Describe Geometry&quot;</span><span class="p">]</span>
+<span class="n">describe_geo</span><span class="o">.</span><span class="n">UpdateChildTasks</span><span class="p">(</span><span class="n">SetupTypeChanged</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">describe_geo</span><span class="o">.</span><span class="n">Arguments</span><span class="o">.</span><span class="n">set_state</span><span class="p">(</span>
+    <span class="p">{</span><span class="s2">&quot;SetupType&quot;</span><span class="p">:</span> <span class="s2">&quot;The geometry consists of only fluid regions with no voids&quot;</span><span class="p">}</span>
+<span class="p">)</span>
+
+<span class="n">describe_geo</span><span class="o">.</span><span class="n">UpdateChildTasks</span><span class="p">(</span><span class="n">SetupTypeChanged</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">describe_geo</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>---------------- Symmetry zone type was automatically assigned to zones containing the string &#39;*symmetry*&#39;.
+
+---------------- Pressure-far-field zone type was automatically assigned to zones containing the string &#39;*far*field*&#39;.
+
+---------------- Describe Geometry task complete in  0.00 minutes.
+</pre></div>
+</div>
+</section>
+<section id="update-boundaries">
+<h2>Update boundaries<a class="headerlink" href="#update-boundaries" title="Link to this heading">#</a></h2>
+<p>Update the boundaries.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">meshing</span><span class="o">.</span><span class="n">workflow</span><span class="o">.</span><span class="n">TaskObject</span><span class="p">[</span><span class="s2">&quot;Update Boundaries&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>---------------- Boundary Conditions Updated
+</pre></div>
+</div>
+</section>
+<section id="update-regions">
+<h2>Update regions<a class="headerlink" href="#update-regions" title="Link to this heading">#</a></h2>
+<p>Update the regions.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">meshing</span><span class="o">.</span><span class="n">workflow</span><span class="o">.</span><span class="n">TaskObject</span><span class="p">[</span><span class="s2">&quot;Update Regions&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>---------------- Regions Updated
+</pre></div>
+</div>
+</section>
+<section id="add-boundary-layers">
+<h2>Add boundary layers<a class="headerlink" href="#add-boundary-layers" title="Link to this heading">#</a></h2>
+<p>Add boundary layers, which consist of setting properties for the
+boundary layer mesh.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">add_boundary_layer</span> <span class="o">=</span> <span class="n">meshing</span><span class="o">.</span><span class="n">workflow</span><span class="o">.</span><span class="n">TaskObject</span><span class="p">[</span><span class="s2">&quot;Add Boundary Layers&quot;</span><span class="p">]</span>
+<span class="n">add_boundary_layer</span><span class="o">.</span><span class="n">Arguments</span><span class="o">.</span><span class="n">set_state</span><span class="p">({</span><span class="s2">&quot;NumberOfLayers&quot;</span><span class="p">:</span> <span class="mi">12</span><span class="p">})</span>
+
+<span class="n">add_boundary_layer</span><span class="o">.</span><span class="n">AddChildAndUpdate</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Created Scoped Prism: smooth-transition_1
+
+---------------- Inflation control added to wing-fluid
+</pre></div>
+</div>
+</section>
+<section id="generate-volume-mesh">
+<h2>Generate volume mesh<a class="headerlink" href="#generate-volume-mesh" title="Link to this heading">#</a></h2>
+<p>Generate the volume mesh, which consists of setting properties for the
+volume mesh.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">volume_mesh_gen</span> <span class="o">=</span> <span class="n">meshing</span><span class="o">.</span><span class="n">workflow</span><span class="o">.</span><span class="n">TaskObject</span><span class="p">[</span><span class="s2">&quot;Generate the Volume Mesh&quot;</span><span class="p">]</span>
+<span class="n">volume_mesh_gen</span><span class="o">.</span><span class="n">Arguments</span><span class="o">.</span><span class="n">set_state</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;VolumeFill&quot;</span><span class="p">:</span> <span class="s2">&quot;poly-hexcore&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;VolumeFillControls&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;HexMaxCellLength&quot;</span><span class="p">:</span> <span class="mi">512</span><span class="p">},</span>
+        <span class="s2">&quot;VolumeMeshPreferences&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;CheckSelfProximity&quot;</span><span class="p">:</span> <span class="s2">&quot;yes&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;ShowVolumeMeshPreferences&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="p">},</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+
+<span class="n">volume_mesh_gen</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Writing &quot;/mnt/pyfluent/FM_e6efa6a1ffbf_152/TaskObject11.msh.h5&quot; ...
+writing 3 node zones
+writing 20 edge zones
+writing 11 face zones
+writing node curvature data...
+done.    processing size functions/scoped sizing to create Size Field...
+
+Writing &quot;/mnt/pyfluent/FM_e6efa6a1ffbf_152/wing.sf&quot;...
+
+Done.
+
+
+    updating regions...
+    done.
+checking object &quot;wing-fluid&quot;...
+    skipping validating regions of mesh object &quot;wing-fluid&quot;...done.
+auto meshing object wing-fluid...
+
+processing scoped prisms...
+    starting orientation...
+done.
+    setting prism growth...done.
+done.
+Identifying Topology...
+
+The octree hexcore cells will be refined using the computed Size Field.
+Generating Prisms...
+
+Generating initial mesh...
+
+Refining mesh...
+
+Create polyhedra ...
+
+delete virtual and dead zones.
+
+Merging zones...
+
+Cleaning up dead entities...
+
+
+Merging Domains...
+done.
+
+                     name       id cells (quality &lt; 0.05)  minimum quality cell count
+------------------------- -------- ---------------------- ---------------- ----------
+                    fluid      660                      0      0.060917203    1010403
+
+                     name       id cells (quality &lt; 0.05)  minimum quality cell count
+------------------------- -------- ---------------------- ---------------- ----------
+          Overall Summary     none                      0      0.060917203    1010403
+
+Total Number of Cell Zones : 1
+
+[Quality Measure : Orthogonal Quality]
+
+---------------- Volume mesh creation completed in :  0.71 minutes
+
+---------------- 1010403 cells were created in :  0.74 minutes
+
+---------------- The mesh has a minimum Orthogonal Quality of:  0.06
+
+---------------- The volume meshing of wing-fluid is complete.
+</pre></div>
+</div>
+</section>
+<section id="check-mesh-in-meshing-mode">
+<h2>Check mesh in meshing mode<a class="headerlink" href="#check-mesh-in-meshing-mode" title="Link to this heading">#</a></h2>
+<p>Check the mesh in meshing mode.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">meshing</span><span class="o">.</span><span class="n">tui</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">check_mesh</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Domain extents.
+  x-coordinate: min = -2.503520e+04, max = 2.614408e+04.
+  y-coordinate: min = -9.623149e-08, max = 2.503895e+04.
+  z-coordinate: min = -2.503942e+04, max = 2.503943e+04.
+Volume statistics.
+  minimum volume: 6.586764e-04.
+  maximum volume: 4.131039e+08.
+    total volume: 4.214428e+13.
+Face area statistics.
+   minimum face area: 3.599234e-03.
+   maximum face area: 1.203898e+06.
+   average face area: 6.202794e+04.
+Checking number of nodes per edge.
+Checking number of nodes per face.
+Checking number of nodes per cell.
+Checking number of faces/neighbors per cell.
+Checking cell faces/neighbors.
+Checking isolated cells.
+Checking face handedness.
+Checking periodic face pairs.
+Checking face children.
+Checking face zone boundary conditions.
+Checking for invalid node coordinates.
+Checking poly cells.
+Checking zones.
+Checking neighborhood.
+Checking modified centroid.
+Checking non-positive or too small area.
+Checking face zones thread type.
+</pre></div>
+</div>
+</section>
+<section id="save-mesh-file">
+<h2>Save mesh file<a class="headerlink" href="#save-mesh-file" title="Link to this heading">#</a></h2>
+<p>Save the mesh file (<code class="docutils literal notranslate"><span class="pre">wing.msh.h5</span></code>).</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">meshing</span><span class="o">.</span><span class="n">meshing</span><span class="o">.</span><span class="n">File</span><span class="o">.</span><span class="n">WriteMesh</span><span class="p">(</span><span class="n">FileName</span><span class="o">=</span><span class="s2">&quot;wing.msh.h5&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Done.Writing &quot;wing.msh.h5&quot; ...
+writing 3 node zones
+writing 10 edge zones
+writing 6 face zones
+writing 1 cell zones
+writing boundary layer flags
+writing node curvature data...
+done.Copying the required intermediate mesh files into wing_workflow_files
+Done.
+</pre></div>
+</div>
+</section>
+</section>
+<section id="solve-and-postprocess">
+<h1>Solve and postprocess<a class="headerlink" href="#solve-and-postprocess" title="Link to this heading">#</a></h1>
+<p>Once you have completed the watertight geometry meshing workflow, you can
+solve and postprcess the results.</p>
+<section id="switch-to-solution-mode">
+<h2>Switch to solution mode<a class="headerlink" href="#switch-to-solution-mode" title="Link to this heading">#</a></h2>
+<p>Switch to solution mode. Now that a high-quality mesh has been generated
+using Fluent in meshing mode, you can switch to solver mode to complete the
+setup of the simulation.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">solver</span> <span class="o">=</span> <span class="n">meshing</span><span class="o">.</span><span class="n">switch_to_solver</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Preparing...
+</pre></div>
+</div>
+</section>
+<section id="check-mesh-in-solver-mode">
+<h2>Check mesh in solver mode<a class="headerlink" href="#check-mesh-in-solver-mode" title="Link to this heading">#</a></h2>
+<p>Check the mesh in solver mode. The mesh check lists the minimum and maximum
+x, y, and z values from the mesh in the default SI units of meters. It also
+reports a number of other mesh features that are checked. Any errors in the
+mesh are reported.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">solver</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">check</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>unused zone boundary-node-20 removed
+
+Transferring mesh
+        creating threads... done
+        transferring nodes... done
+        transferring cells... done
+        transferring faces... done
+        post mesh transfer operations... done
+done
+
+Building...
+     mesh
+        auto partitioning mesh by Metis (fast),
+        distributing mesh
+                parts....,
+                faces....,
+                nodes....,
+                cells....,
+        bandwidth reduction using Reverse Cuthill-McKee: 254558/11371 = 22.3866
+     materials,
+     interface,
+     domains,
+     zones,
+        interior--fluid
+        fluid_symmetry
+        pressure_farfield
+        wing_edge
+        wing_bottom
+        wing_top
+        fluid
+     surfaces,
+     parallel,
+Done.
+Mesh is now scaled to meters.
+Warning: Pressure far-field boundary condition can only be used with ideal gas law.
+  Please change either the boundary condition type or enable ideal gas law.
+  Solver cannot proceed until this is fixed.
+        Warning: Pressure far-field boundary condition can only be used with ideal gas law.
+  Please change either the boundary condition type or enable ideal gas law.
+  Solver cannot proceed until this is fixed.
+
+ Domain Extents:
+   x-coordinate: min (m) = -2.502407e+01, max (m) = 2.614408e+01
+   y-coordinate: min (m) = -9.623149e-11, max (m) = 2.503569e+01
+   z-coordinate: min (m) = -2.503942e+01, max (m) = 2.503943e+01
+ Volume statistics:
+   minimum volume (m3): 6.586764e-13
+   maximum volume (m3): 4.131039e-01
+     total volume (m3): 4.214428e+04
+ Face area statistics:
+   minimum face area (m2): 3.599234e-09
+   maximum face area (m2): 1.203898e+00
+ Checking mesh.....................................
+Done.
+
+Note: Settings to improve the robustness of pathline and
+      particle tracking have been automatically enabled.
+</pre></div>
+</div>
+</section>
+<section id="define-model">
+<h2>Define model<a class="headerlink" href="#define-model" title="Link to this heading">#</a></h2>
+<p>Set the k-w sst turbulence model.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># model : k-omega</span>
+<span class="c1"># k-omega model : sst</span>
+
+<span class="n">viscous</span> <span class="o">=</span> <span class="n">solver</span><span class="o">.</span><span class="n">setup</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">viscous</span>
+
+<span class="n">viscous</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="s2">&quot;k-omega&quot;</span>
+<span class="n">viscous</span><span class="o">.</span><span class="n">k_omega_model</span> <span class="o">=</span> <span class="s2">&quot;sst&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="define-materials">
+<h2>Define materials<a class="headerlink" href="#define-materials" title="Link to this heading">#</a></h2>
+<p>Modify the default material <code class="docutils literal notranslate"><span class="pre">air</span></code> to account for compressibility and variations of the thermophysical properties with temperature.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># density : ideal-gas</span>
+<span class="c1"># viscosity : sutherland</span>
+<span class="c1"># viscosity method : three-coefficient-method</span>
+<span class="c1"># reference viscosity : 1.716e-05 [kg/(m s)]</span>
+<span class="c1"># reference temperature : 273.11 [K]</span>
+<span class="c1"># effective temperature : 110.56 [K]</span>
+
+<span class="n">air</span> <span class="o">=</span> <span class="n">solver</span><span class="o">.</span><span class="n">setup</span><span class="o">.</span><span class="n">materials</span><span class="o">.</span><span class="n">fluid</span><span class="p">[</span><span class="s2">&quot;air&quot;</span><span class="p">]</span>
+
+<span class="n">air</span><span class="o">.</span><span class="n">density</span><span class="o">.</span><span class="n">option</span> <span class="o">=</span> <span class="s2">&quot;ideal-gas&quot;</span>
+
+<span class="n">air</span><span class="o">.</span><span class="n">viscosity</span><span class="o">.</span><span class="n">option</span> <span class="o">=</span> <span class="s2">&quot;sutherland&quot;</span>
+
+<span class="n">air</span><span class="o">.</span><span class="n">viscosity</span><span class="o">.</span><span class="n">sutherland</span><span class="o">.</span><span class="n">option</span> <span class="o">=</span> <span class="s2">&quot;three-coefficient-method&quot;</span>
+
+<span class="n">air</span><span class="o">.</span><span class="n">viscosity</span><span class="o">.</span><span class="n">sutherland</span><span class="o">.</span><span class="n">reference_viscosity</span> <span class="o">=</span> <span class="mf">1.716e-05</span>
+
+<span class="n">air</span><span class="o">.</span><span class="n">viscosity</span><span class="o">.</span><span class="n">sutherland</span><span class="o">.</span><span class="n">reference_temperature</span> <span class="o">=</span> <span class="mf">273.11</span>
+
+<span class="n">air</span><span class="o">.</span><span class="n">viscosity</span><span class="o">.</span><span class="n">sutherland</span><span class="o">.</span><span class="n">effective_temperature</span> <span class="o">=</span> <span class="mf">110.56</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Note: Enabling energy equation as required by material density method.
+</pre></div>
+</div>
+</section>
+<section id="boundary-conditions">
+<h2>Boundary Conditions<a class="headerlink" href="#boundary-conditions" title="Link to this heading">#</a></h2>
+<p>Set the boundary conditions for <code class="docutils literal notranslate"><span class="pre">pressure_farfield</span></code>.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># gauge pressure : 0 [Pa]</span>
+<span class="c1"># mach number : 0.8395</span>
+<span class="c1"># temperature : 255.56 [K]</span>
+<span class="c1"># x-component of flow direction : 0.998574</span>
+<span class="c1"># z-component of flow direction : 0.053382</span>
+<span class="c1"># turbulent intensity : 5 [%]</span>
+<span class="c1"># turbulent viscosity ratio : 10</span>
+
+<span class="n">pressure_farfield</span> <span class="o">=</span> <span class="n">solver</span><span class="o">.</span><span class="n">setup</span><span class="o">.</span><span class="n">boundary_conditions</span><span class="o">.</span><span class="n">pressure_far_field</span><span class="p">[</span>
+    <span class="s2">&quot;pressure_farfield&quot;</span>
+<span class="p">]</span>
+
+<span class="n">pressure_farfield</span><span class="o">.</span><span class="n">momentum</span><span class="o">.</span><span class="n">gauge_pressure</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="n">pressure_farfield</span><span class="o">.</span><span class="n">momentum</span><span class="o">.</span><span class="n">mach_number</span> <span class="o">=</span> <span class="mf">0.8395</span>
+
+<span class="n">pressure_farfield</span><span class="o">.</span><span class="n">thermal</span><span class="o">.</span><span class="n">temperature</span> <span class="o">=</span> <span class="mf">255.56</span>
+
+<span class="n">pressure_farfield</span><span class="o">.</span><span class="n">momentum</span><span class="o">.</span><span class="n">flow_direction</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.998574</span>
+
+<span class="n">pressure_farfield</span><span class="o">.</span><span class="n">momentum</span><span class="o">.</span><span class="n">flow_direction</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.053382</span>
+
+<span class="n">pressure_farfield</span><span class="o">.</span><span class="n">turbulence</span><span class="o">.</span><span class="n">turbulent_intensity</span> <span class="o">=</span> <span class="mf">0.05</span>
+
+<span class="n">pressure_farfield</span><span class="o">.</span><span class="n">turbulence</span><span class="o">.</span><span class="n">turbulent_viscosity_ratio</span> <span class="o">=</span> <span class="mi">10</span>
+</pre></div>
+</div>
+</section>
+<section id="operating-conditions">
+<h2>Operating Conditions<a class="headerlink" href="#operating-conditions" title="Link to this heading">#</a></h2>
+<p>Set the operating conditions.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># operating pressure : 80600 [Pa]</span>
+
+<span class="n">solver</span><span class="o">.</span><span class="n">setup</span><span class="o">.</span><span class="n">general</span><span class="o">.</span><span class="n">operating_conditions</span><span class="o">.</span><span class="n">operating_pressure</span> <span class="o">=</span> <span class="mi">80600</span>
+</pre></div>
+</div>
+</section>
+<section id="initialize-flow-field">
+<h2>Initialize flow field<a class="headerlink" href="#initialize-flow-field" title="Link to this heading">#</a></h2>
+<p>Initialize the flow field using hybrid initialization.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">solver</span><span class="o">.</span><span class="n">solution</span><span class="o">.</span><span class="n">initialization</span><span class="o">.</span><span class="n">hybrid_initialize</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Initialize using the hybrid initialization method.
+
+Checking case topology...
+-This case has a single farfield bc
+-Case will be initialized with constant pressure
+
+        iter            scalar-0
+
+        1               1.000000e+00
+        2               4.433467e-04
+        3               9.199689e-05
+        4               1.500116e-05
+        5               3.983735e-06
+        6               6.922224e-07
+        7               1.628843e-07
+        8               2.762818e-08
+        9               6.616204e-09
+        10              1.414052e-09
+
+Hybrid initialization is done.
+</pre></div>
+</div>
+</section>
+<section id="save-case-file">
+<h2>Save case file<a class="headerlink" href="#save-case-file" title="Link to this heading">#</a></h2>
+<p>Save the case file <code class="docutils literal notranslate"><span class="pre">external_compressible1.cas.h5</span></code>.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">solver</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">file_name</span><span class="o">=</span><span class="s2">&quot;external_compressible.cas.h5&quot;</span><span class="p">,</span> <span class="n">file_type</span><span class="o">=</span><span class="s2">&quot;case&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Fast-loading &quot;/ansys_inc/v242/fluent/fluent24.2.0/addons/afd/lib/hdfio.bin&quot;
+Done.
+
+Writing to e6efa6a1ffbf:&quot;/mnt/pyfluent/external_compressible.cas.h5&quot; in NODE0 mode and compression level 1 ...
+Grouping cells for Laplace smoothing ...
+     1010403 cells,     1 zone  ...
+     3952199 faces,     6 zones ...
+     2018208 nodes,     1 zone  ...
+  Done.
+
+  Writing boundary layer flags ...
+  Done.
+Done.
+</pre></div>
+</div>
+</section>
+<section id="solve-for-25-iterations">
+<h2>Solve for 25 iterations<a class="headerlink" href="#solve-for-25-iterations" title="Link to this heading">#</a></h2>
+<p>Solve for 25 iterations (100 iterations is recommended, however for this example 25 is sufficient).</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">solver</span><span class="o">.</span><span class="n">solution</span><span class="o">.</span><span class="n">run_calculation</span><span class="o">.</span><span class="n">iterate</span><span class="p">(</span><span class="n">iter_count</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega     time/iter
+   1  1.0000e+00  3.9881e-07  3.7960e-07  8.0695e-07  9.2198e-07  9.9599e-01  4.9891e-01  0:03:58   24
+   2  1.0000e+00  3.6050e-07  3.4643e-07  6.0292e-07  8.6895e-07  9.9339e-01  4.9823e-01  0:03:44   23
+   3  1.0000e+00  3.3924e-07  3.6989e-07  5.3014e-07  8.0775e-07  9.8814e-01  4.9710e-01  0:03:29   22
+   4  1.0000e+00  3.1999e-07  3.9791e-07  5.0728e-07  7.3524e-07  9.7272e-01  4.9522e-01  0:03:15   21
+   5  1.0000e+00  3.0000e-07  4.1918e-07  5.0119e-07  6.6902e-07  9.3890e-01  4.9198e-01  0:02:59   20
+   6  1.0344e+00  2.8263e-07  4.2705e-07  4.9595e-07  6.0770e-07  8.4099e-01  4.8625e-01  0:02:45   19
+   7  1.0446e+00  2.6757e-07  4.2317e-07  4.8896e-07  5.5606e-07  5.5886e-01  4.7576e-01  0:02:32   18
+   8  1.0332e+00  2.5742e-07  4.0998e-07  4.7665e-07  5.1545e-07  2.7783e-01  4.5612e-01  0:02:22   17
+   9  1.0133e+00  2.5326e-07  3.9011e-07  4.6033e-07  4.8806e-07  1.3178e-01  4.1958e-01  0:02:12   16
+  10  9.9203e-01  2.5191e-07  3.6668e-07  4.4215e-07  4.6922e-07  6.3681e-02  3.5648e-01  0:02:03   15
+  11  9.6230e-01  2.5078e-07  3.4195e-07  4.2189e-07  4.5708e-07  3.2872e-02  2.6504e-01  0:01:53   14
+
+iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega     time/iter
+  12  9.2893e-01  2.4992e-07  3.1642e-07  3.9973e-07  4.4596e-07  1.8927e-02  1.6508e-01  0:01:45   13
+  13  8.9369e-01  2.4907e-07  2.8977e-07  3.7459e-07  4.3206e-07  1.2729e-02  8.6925e-02  0:01:37   12
+  14  8.5485e-01  2.4841e-07  2.6173e-07  3.4653e-07  4.1726e-07  9.5712e-03  4.1018e-02  0:01:29   11
+  15  8.1897e-01  2.5034e-07  2.3272e-07  3.1765e-07  4.0414e-07  7.5092e-03  1.8473e-02  0:01:21   10
+  16  7.9422e-01  2.5416e-07  2.0463e-07  2.9139e-07  3.9441e-07  6.0726e-03  8.3204e-03  0:01:13    9
+  17  7.7353e-01  2.5533e-07  1.8032e-07  2.6870e-07  3.9183e-07  5.0630e-03  3.8719e-03  0:01:05    8
+  18  7.6246e-01  2.5714e-07  1.6365e-07  2.5228e-07  3.9510e-07  4.3283e-03  1.9102e-03  0:00:57    7
+  19  7.5012e-01  2.5693e-07  1.5338e-07  2.4140e-07  3.9246e-07  3.7566e-03  1.0174e-03  0:00:48    6
+  20  7.3439e-01  2.4704e-07  1.4348e-07  2.2684e-07  3.7844e-07  3.3013e-03  5.8934e-04  0:00:40    5
+  21  7.0619e-01  2.3444e-07  1.3280e-07  2.0899e-07  3.5983e-07  2.9263e-03  3.6995e-04  0:00:32    4
+  22  6.6852e-01  2.2045e-07  1.2219e-07  1.9088e-07  3.4148e-07  2.6107e-03  2.4877e-04  0:00:24    3
+
+iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega     time/iter
+  23  6.2377e-01  2.0719e-07  1.1342e-07  1.7319e-07  3.2884e-07  2.3293e-03  1.7679e-04  0:00:16    2
+  24  5.7480e-01  2.0173e-07  1.0477e-07  1.5496e-07  3.1791e-07  2.0729e-03  1.3122e-04  0:00:08    1
+  25  5.3764e-01  1.9155e-07  9.9063e-08  1.4235e-07  3.0146e-07  1.8089e-03  1.0081e-04  0:00:00    0
+</pre></div>
+</div>
+</section>
+<section id="write-final-case-file-and-data">
+<h2>Write final case file and data<a class="headerlink" href="#write-final-case-file-and-data" title="Link to this heading">#</a></h2>
+<p>Write the final case file and the data.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">solver</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">file_name</span><span class="o">=</span><span class="s2">&quot;external_compressible1.cas.h5&quot;</span><span class="p">,</span> <span class="n">file_type</span><span class="o">=</span><span class="s2">&quot;case&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Writing to e6efa6a1ffbf:&quot;/mnt/pyfluent/external_compressible1.cas.h5&quot; in NODE0 mode and compression level 1 ...
+Grouping cells for Laplace smoothing ...
+     1010403 cells,     1 zone  ...
+     3952199 faces,     6 zones ...
+     2018208 nodes,     1 zone  ...
+  Done.
+
+  Writing boundary layer flags ...
+  Done.
+Done.
+</pre></div>
+</div>
+</section>
+<section id="close-fluent">
+<h2>Close Fluent<a class="headerlink" href="#close-fluent" title="Link to this heading">#</a></h2>
+<p>Close Fluent.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">solver</span><span class="o">.</span><span class="n">exit</span><span class="p">()</span>
+</pre></div>
+</div>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (6 minutes 9.178 seconds)</p>
+<div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-00-fluent-external-compressible-flow-py">
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/2aa8ef879375394ab2f358338f75d7a9/external_compressible_flow.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">external_compressible_flow.ipynb</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/b8aa6db4291033ee466dd4c2737e1e8d/external_compressible_flow.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">external_compressible_flow.py</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-zip docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/bc2c14b763ec6769d6d6540e93e75cc2/external_compressible_flow.zip"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">zipped:</span> <span class="pre">external_compressible_flow.zip</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Modeling External Compressible Flow</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#example-setup">Example Setup</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perform-required-imports">Perform required imports</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#launch-fluent">Launch Fluent</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initialize-workflow">Initialize workflow</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#watertight-geometry-meshing-workflow">Watertight geometry meshing workflow</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-cad-and-set-length-units">Import CAD and set length units</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-local-sizing">Add local sizing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-surface-mesh">Generate surface mesh</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#describe-geometry">Describe geometry</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#update-boundaries">Update boundaries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#update-regions">Update regions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-boundary-layers">Add boundary layers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-volume-mesh">Generate volume mesh</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#check-mesh-in-meshing-mode">Check mesh in meshing mode</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#save-mesh-file">Save mesh file</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#solve-and-postprocess">Solve and postprocess</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#switch-to-solution-mode">Switch to solution mode</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#check-mesh-in-solver-mode">Check mesh in solver mode</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#define-model">Define model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#define-materials">Define materials</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#boundary-conditions">Boundary Conditions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operating-conditions">Operating Conditions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initialize-flow-field">Initialize flow field</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#save-case-file">Save case file</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solve-for-25-iterations">Solve for 25 iterations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#write-final-case-file-and-data">Write final case file and data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#close-fluent">Close Fluent</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+<!-- If there is no fix edit button function, use the PyData edit-this-button-->
+</div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../../_sources/examples/00-fluent/external_compressible_flow.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright (c) 2024 ANSYS, Inc. All rights reserved.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.7.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="theme-version">
+  Built with the
+  <a href="https://sphinxdocs.ansys.com/version/stable/index.html"
+    >Ansys Sphinx Theme</a
+  >
+  1.0.7. <br />Last updated on
+  <span id="date"></span>
+</p>
+<script>
+  var options = { day: "numeric", month: "long", year: "numeric" };
+  var lastModifiedDate = new Date(document.lastModified);
+  var date = lastModifiedDate.toLocaleDateString("en-US", options);
+  document.getElementById("date").innerHTML = date;
+</script></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

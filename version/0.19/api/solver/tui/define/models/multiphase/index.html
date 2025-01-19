@@ -1,0 +1,1606 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>multiphase &#8212; PyFluent</title>
+
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../../../../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../../../../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../../../../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/sg_gallery.css?v=61a4c737" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/css/ansys_sphinx_theme.css?v=450015ff" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../../../../../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../../../../../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+ 
+<link href="../../../../../../_static/css/breadcrumbs.css" rel="stylesheet" />
+
+    <script src="../../../../../../_static/documentation_options.js?v=03f67e04"></script>
+    <script src="../../../../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../../../_static/thebelab-helper.js"></script>
+    <script src="../../../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../../../_static/copybutton.js?v=49e1bf35"></script>
+    <script src="../../../../../../_static/js/table.js?v=b64f5182"></script>
+    <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/solver/tui/define/models/multiphase/index';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.14.4';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://fluent.docs.pyansys.com/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.19';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner = false;
+        </script>
+    <link rel="icon" href="../../../../../../_static/ansys-favicon.png"/>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+    <link rel="next" title="explicit_expert_options" href="explicit_expert_options/index.html" />
+    <link rel="prev" title="turbulence_expert" href="../viscous/turbulence_expert/index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <link rel="canonical" href="https://fluent.docs.pyansys.com/version/stable/api/solver/tui/define/models/multiphase/index.html" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container"><!-- Debugging: html_theme_options =  -->
+
+<!-- If there is no MiliSearch enabled, use the PyData search -->
+<form class="bd-search d-flex align-items-center"
+      action="../../../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+   
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+
+<a class="navbar-brand logo" href="../../../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-light" alt="PyFluent - Home"/>
+    <script>document.write(`<img src="../../../../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-dark" alt="PyFluent - Home"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../../getting_started/index.html">
+                        Getting started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../../user_guide/index.html">
+                        User guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../../../../../index.html">
+                        API reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../../examples/index.html">
+                        Examples
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../../contributing.html">
+                        Contribute
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+<script>
+document.write(`
+  <div class="version-switcher__container dropdown">
+    <button id="pst-version-switcher-button-2"
+      type="button"
+      class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle"
+      data-bs-toggle="dropdown"
+      aria-haspopup="listbox"
+      aria-controls="pst-version-switcher-list-2"
+      aria-label="Version switcher list"
+    >
+      Choose version  <!-- this text may get changed later by javascript -->
+      <span class="caret"></span>
+    </button>
+    <div id="pst-version-switcher-list-2"
+      class="version-switcher__menu dropdown-menu list-group-flush py-0"
+      role="listbox" aria-labelledby="pst-version-switcher-button-2">
+      <!-- dropdown will be populated by javascript on page load -->
+    </div>
+  </div>
+`);
+</script></div>
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent/discussions" title="Support" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa fa-comment fa-fw fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Support</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </nav>
+    <div id="announcement_msg"></div>
+<script>
+  fetch("announcement.html")
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error: ${response.status}`);
+      }
+      return response.text();
+    })
+    .then(
+      (text) => (document.getElementById("announcement_msg").innerHTML = text),
+    )
+    .catch((error) => console.error(`Fetch problem: ${error.message}`));
+</script>  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item">
+<nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../../getting_started/index.html">
+                        Getting started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../../user_guide/index.html">
+                        User guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../../../../../index.html">
+                        API reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../../examples/index.html">
+                        Examples
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../../contributing.html">
+                        Contribute
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<script>
+document.write(`
+  <div class="version-switcher__container dropdown">
+    <button id="pst-version-switcher-button-3"
+      type="button"
+      class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle"
+      data-bs-toggle="dropdown"
+      aria-haspopup="listbox"
+      aria-controls="pst-version-switcher-list-3"
+      aria-label="Version switcher list"
+    >
+      Choose version  <!-- this text may get changed later by javascript -->
+      <span class="caret"></span>
+    </button>
+    <div id="pst-version-switcher-list-3"
+      class="version-switcher__menu dropdown-menu list-group-flush py-0"
+      role="listbox" aria-labelledby="pst-version-switcher-button-3">
+      <!-- dropdown will be populated by javascript on page load -->
+    </div>
+  </div>
+`);
+</script></div>
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent/discussions" title="Support" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa fa-comment fa-fw fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Support</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../../../general/index.html">General</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../meshing/index.html">Meshing</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../../../../index.html">Solver</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../../settings.html">Solver settings objects</a></li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="../../../../tuicommands.html">Solver TUI commands</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l3 current active has-children"><a class="reference internal" href="../../../index.html">solver.tui</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../../../turbo_workflow/index.html">turbo_workflow</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../turbo_post/index.html">turbo_post</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../views/index.html">views</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../server/index.html">server</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../display/index.html">display</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../parameters/index.html">parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../results/index.html">results</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../setup/index.html">setup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../adjoint/index.html">adjoint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../solution/index.html">solution</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../report/index.html">report</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../mesh/index.html">mesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../plot/index.html">plot</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../parametric_study/index.html">parametric_study</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../surface/index.html">surface</a></li>
+<li class="toctree-l4 current active has-children"><a class="reference internal" href="../../index.html">define</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l5"><a class="reference internal" href="../../mesh_interfaces/index.html">mesh_interfaces</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../user_defined/index.html">user_defined</a></li>
+<li class="toctree-l5 current active has-children"><a class="reference internal" href="../index.html">models</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l6"><a class="reference internal" href="../dpm/index.html">dpm</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../viscous/index.html">viscous</a></li>
+<li class="toctree-l6 current active has-children"><a class="current reference internal" href="#">multiphase</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l7"><a class="reference internal" href="explicit_expert_options/index.html">explicit_expert_options</a></li>
+<li class="toctree-l7"><a class="reference internal" href="sub_models/index.html">sub_models</a></li>
+<li class="toctree-l7"><a class="reference internal" href="flow_regime_modeling/index.html">flow_regime_modeling</a></li>
+<li class="toctree-l7"><a class="reference internal" href="population_balance/index.html">population_balance</a></li>
+<li class="toctree-l7"><a class="reference internal" href="hybrid_models/index.html">hybrid_models</a></li>
+<li class="toctree-l7"><a class="reference internal" href="wet_steam/index.html">wet_steam</a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="../virtual_blade_model/index.html">virtual_blade_model</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../structure/index.html">structure</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../heat_exchanger/index.html">heat_exchanger</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../species/index.html">species</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../radiation/index.html">radiation</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../cht/index.html">cht</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../system_coupling_settings/index.html">system_coupling_settings</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../eulerian_wallfilm/index.html">eulerian_wallfilm</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../acoustics/index.html">acoustics</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../nox_parameters/index.html">nox_parameters</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../shell_conduction/index.html">shell_conduction</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../optics/index.html">optics</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../electrolysis_setup/index.html">electrolysis_setup</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../two_temperature/index.html">two_temperature</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../soot_parameters/index.html">soot_parameters</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../solver/index.html">solver</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../../reference_frames/index.html">reference_frames</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../mixing_planes/index.html">mixing_planes</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../solution_strategy/index.html">solution_strategy</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../custom_field_functions/index.html">custom_field_functions</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../dynamic_mesh/index.html">dynamic_mesh</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../materials/index.html">materials</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../phases/index.html">phases</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../operating_conditions/index.html">operating_conditions</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../spectral/index.html">spectral</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../parameters/index.html">parameters</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../overset_interfaces/index.html">overset_interfaces</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../profiles/index.html">profiles</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../periodic_conditions/index.html">periodic_conditions</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../named_expressions/index.html">named_expressions</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../curvilinear_coordinate_system/index.html">curvilinear_coordinate_system</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../gap_model/index.html">gap_model</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../turbo_model/index.html">turbo_model</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../virtual_boundary/index.html">virtual_boundary</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../motion_definitions/index.html">motion_definitions</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../../../parallel/index.html">parallel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../icing/index.html">icing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../file/index.html">file</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../preferences/index.html">preferences</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../solve/index.html">solve</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../datamodel/index.html">solver.datamodel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../schemeeval.html">Scheme code evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../events.html">EventsManager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../monitors.html">MonitorsManager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../reduction.html">Reduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../svar.html">SVAR data</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+      
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="https://docs.pyansys.com/" class="nav-link">PyAnsys</a>
+    </li>
+      
+    <li class="breadcrumb-item">
+      <a
+        href="../../../../../../index.html"
+        class="nav-link"
+        aria-label="Home"
+      >
+        <i class="fa-solid fa-home"></i
+      ></a>
+    </li> 
+    <li class="breadcrumb-item">
+      <a href="../../../../../index.html" class="nav-link">API reference</a>
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a href="../../../../index.html" class="nav-link">Solver</a>
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a href="../../../../tuicommands.html" class="nav-link">Solver TUI commands</a>
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a href="../../../index.html" class="nav-link">solver.tui</a>
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a href="../../index.html" class="nav-link">define</a>
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a href="../index.html" class="nav-link">models</a>
+    </li>
+      
+    <li class="breadcrumb-item active" aria-current="page">multiphase</li>
+    
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="multiphase">
+<span id="ref-solver-tui-define-models-multiphase"></span><h1>multiphase<a class="headerlink" href="#multiphase" title="Link to this heading">#</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.solver.tui_241.main_menu.define.models.</span></span><span class="sig-name descname"><span class="pre">multiphase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">service</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Enters the multiphase model menu.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.body_force_formulation" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.body_force_formulation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">body_force_formulation</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Specifies body force formulation.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.boiling_model_options" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.boiling_model_options"><code class="xref py py-obj docutils literal notranslate"><span class="pre">boiling_model_options</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Specifies the boiling model options.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.coupled_level_set" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.coupled_level_set"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coupled_level_set</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables coupled level set interface tracking method.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.eulerian_parameters" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.eulerian_parameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">eulerian_parameters</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Specifies Eulerian parameters.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.expert_options" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.expert_options"><code class="xref py py-obj docutils literal notranslate"><span class="pre">expert_options</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Expert Options.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.interface_modeling_options" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.interface_modeling_options"><code class="xref py py-obj docutils literal notranslate"><span class="pre">interface_modeling_options</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Specifies interface modeling options.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.mixture_parameters" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.mixture_parameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mixture_parameters</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Specifies mixture parameters.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.model" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.model"><code class="xref py py-obj docutils literal notranslate"><span class="pre">model</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Specifies multiphase model.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.number_of_phases" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.number_of_phases"><code class="xref py py-obj docutils literal notranslate"><span class="pre">number_of_phases</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Specifies the number of phases.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.regime_transition_modeling" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.regime_transition_modeling"><code class="xref py py-obj docutils literal notranslate"><span class="pre">regime_transition_modeling</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables the Algebraic Interfacial Area Density (AIAD)       model and sets the AIAD secondary continuous phase and  the secondary entrained phase.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.vof_sub_models" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.vof_sub_models"><code class="xref py py-obj docutils literal notranslate"><span class="pre">vof_sub_models</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables the Open Channel sub-model and/or the Open Channel Wave Boundary Condition  sub-model.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.volume_fraction_parameters" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.volume_fraction_parameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">volume_fraction_parameters</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Volume fraction parameters.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Classes:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.explicit_expert_options" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.explicit_expert_options"><code class="xref py py-obj docutils literal notranslate"><span class="pre">explicit_expert_options</span></code></a>(service, version, ...)</p></td>
+<td><p>Enters the menu to set explicit VOF expert  options.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.flow_regime_modeling" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.flow_regime_modeling"><code class="xref py py-obj docutils literal notranslate"><span class="pre">flow_regime_modeling</span></code></a>(service, version, mode, ...)</p></td>
+<td><p>Flow Regime Modeling.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.hybrid_models" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.hybrid_models"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hybrid_models</span></code></a>(service, version, mode, path)</p></td>
+<td><p>Enter the menu to select hybrid models.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.population_balance" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.population_balance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">population_balance</span></code></a>(service, version, mode, path)</p></td>
+<td><p>Enters the population balance models menu.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.sub_models" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.sub_models"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sub_models</span></code></a>(service, version, mode, path)</p></td>
+<td><p>Enter the menu to select sub-models.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.wet_steam" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.wet_steam"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wet_steam</span></code></a>(service, version, mode, path)</p></td>
+<td><p>Enters the wet steam model menu.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">body_force_formulation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Specifies body force formulation.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">boiling_model_options</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Specifies the boiling model options. You can choose theRPI boiling model,Non-equilibrium boiling, orCritical heat flux.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">coupled_level_set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables coupled level set interface tracking method.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">eulerian_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Specifies Eulerian parameters.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">expert_options</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Expert Options.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">explicit_expert_options</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">service</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Enters the menu to set explicit VOF expert  options.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.explicit_expert_options.solve_vof_every_iter" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.explicit_expert_options.solve_vof_every_iter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">solve_vof_every_iter</span></code></a>(*args, **kwargs)</p></td>
+<td><p>If you enter yes, the volume fraction equations will be solved every iteration.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.explicit_expert_options.sub_time_step_method" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.explicit_expert_options.sub_time_step_method"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sub_time_step_method</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Selects the sub-time step method.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Classes:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.explicit_expert_options.volume_fraction_filtering" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.explicit_expert_options.volume_fraction_filtering"><code class="xref py py-obj docutils literal notranslate"><span class="pre">volume_fraction_filtering</span></code></a>(service, version, ...)</p></td>
+<td><p>Enters the volume fraction filtering menu.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">solve_vof_every_iter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>If you enter yes, the volume fraction equations will be solved every iteration. By default, the volume fraction equations will be solved only once per time step.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">sub_time_step_method</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Selects the sub-time step method.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">volume_fraction_filtering</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">service</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Enters the volume fraction filtering menu.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.explicit_expert_options.volume_fraction_filtering.enable" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.explicit_expert_options.volume_fraction_filtering.enable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">enable</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables the volume fraction filtering treatment.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.explicit_expert_options.volume_fraction_filtering.filtering_options" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.explicit_expert_options.volume_fraction_filtering.filtering_options"><code class="xref py py-obj docutils literal notranslate"><span class="pre">filtering_options</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Selects the volume fraction filtering method.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.explicit_expert_options.volume_fraction_filtering.vol_frac_cutoff" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.explicit_expert_options.volume_fraction_filtering.vol_frac_cutoff"><code class="xref py py-obj docutils literal notranslate"><span class="pre">vol_frac_cutoff</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Specifies a cut-off value for the volume fraction filtering.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">enable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables the volume fraction filtering treatment.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">filtering_options</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Selects the volume fraction filtering method. This command becomes available once the define/models/multiphase/explicit-expert-options/volume-fraction-filtering/enable? text option has been set to yes.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">vol_frac_cutoff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Specifies a cut-off value for the volume fraction filtering. This command becomes available after you select the node averaged cutoff method using the define/models/multiphase/explicit-expert-options/volume-fraction-filtering/filtering-options text command.</p>
+</dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">flow_regime_modeling</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">service</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Flow Regime Modeling.</p>
+<p><strong>Classes:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.flow_regime_modeling.aiad_parameters" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.flow_regime_modeling.aiad_parameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">aiad_parameters</span></code></a>(service, version, mode, path)</p></td>
+<td><p>AIAD parameters.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.flow_regime_modeling.enable" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.flow_regime_modeling.enable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">enable</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enable flow regime modeling framework including phase state and morphology.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">aiad_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">service</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>AIAD parameters.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.flow_regime_modeling.aiad_parameters.critical_vf" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.flow_regime_modeling.aiad_parameters.critical_vf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">critical_vf</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Critical volume fraction for bubbly and droplet flow blending factors.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.flow_regime_modeling.aiad_parameters.delta_grad" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.flow_regime_modeling.aiad_parameters.delta_grad"><code class="xref py py-obj docutils literal notranslate"><span class="pre">delta_grad</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Parameter for determining transition width for free surface blending factor.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.flow_regime_modeling.aiad_parameters.delta_vf" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.flow_regime_modeling.aiad_parameters.delta_vf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">delta_vf</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Parameter for transition width for bubbly and droplet flow blending factors.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.flow_regime_modeling.aiad_parameters.ncells_fs" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.flow_regime_modeling.aiad_parameters.ncells_fs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ncells_fs</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Parameter for determining interfacial width.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">critical_vf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Critical volume fraction for bubbly and droplet flow blending factors.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">delta_grad</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Parameter for determining transition width for free surface blending factor.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">delta_vf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Parameter for transition width for bubbly and droplet flow blending factors.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">ncells_fs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Parameter for determining interfacial width.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">enable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enable flow regime modeling framework including phase state and morphology.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">hybrid_models</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">service</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Enter the menu to select hybrid models.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.hybrid_models.ddpm" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.hybrid_models.ddpm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ddpm</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enable the dense discrete phase model.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.hybrid_models.multi_fluid_vof" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.hybrid_models.multi_fluid_vof"><code class="xref py py-obj docutils literal notranslate"><span class="pre">multi_fluid_vof</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enable the multi-fluid VOF model.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">ddpm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enable the dense discrete phase model.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">multi_fluid_vof</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enable the multi-fluid VOF model.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">interface_modeling_options</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Specifies interface modeling options.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">mixture_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Specifies mixture parameters.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Specifies multiphase model.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">number_of_phases</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Specifies the number of phases.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">population_balance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">service</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Enters the population balance models menu.</p>
+<p><strong>Classes:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.population_balance.expert" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.population_balance.expert"><code class="xref py py-obj docutils literal notranslate"><span class="pre">expert</span></code></a>(service, version, mode, path)</p></td>
+<td><p>Enter the expert menu for quadrature-based population balance method.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.population_balance.phenomena" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.population_balance.phenomena"><code class="xref py py-obj docutils literal notranslate"><span class="pre">phenomena</span></code></a>(service, version, mode, path)</p></td>
+<td><p>Enters the phenomena menu for population balance.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.population_balance.include_expansion" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.population_balance.include_expansion"><code class="xref py py-obj docutils literal notranslate"><span class="pre">include_expansion</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Set expansion.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.population_balance.model" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.population_balance.model"><code class="xref py py-obj docutils literal notranslate"><span class="pre">model</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Allows you to select the population balance model and set its parameters.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.population_balance.size_calculator" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.population_balance.size_calculator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">size_calculator</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Gives you recommendations for appropriate bubble sizes and/or droplet size limits.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">expert</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">service</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Enter the expert menu for quadrature-based population balance method.</p>
+<p><strong>Classes:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.population_balance.expert.qbmm" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.population_balance.expert.qbmm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">qbmm</span></code></a>(service, version, mode, path)</p></td>
+<td><p><p>.</p>
+</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.population_balance.expert.qmom" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.population_balance.expert.qmom"><code class="xref py py-obj docutils literal notranslate"><span class="pre">qmom</span></code></a>(service, version, mode, path)</p></td>
+<td><p><p>.</p>
+</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">qbmm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">service</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.population_balance.expert.qbmm.advection_cfl" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.population_balance.expert.qbmm.advection_cfl"><code class="xref py py-obj docutils literal notranslate"><span class="pre">advection_cfl</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Select the QBMM advection Courant number.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.population_balance.expert.qbmm.advection_int_scheme" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.population_balance.expert.qbmm.advection_int_scheme"><code class="xref py py-obj docutils literal notranslate"><span class="pre">advection_int_scheme</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Select QBMM advection time integration scheme.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.population_balance.expert.qbmm.exit_on_non_real" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.population_balance.expert.qbmm.exit_on_non_real"><code class="xref py py-obj docutils literal notranslate"><span class="pre">exit_on_non_real</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Exit on non-realizable moments detection.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.population_balance.expert.qbmm.solve_advection" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.population_balance.expert.qbmm.solve_advection"><code class="xref py py-obj docutils literal notranslate"><span class="pre">solve_advection</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Solve the advection part of the QBMM equation?.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.population_balance.expert.qbmm.sort_abscissas" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.population_balance.expert.qbmm.sort_abscissas"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sort_abscissas</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Sort quadrature points based on abscissas.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.population_balance.expert.qbmm.source_int_scheme" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.population_balance.expert.qbmm.source_int_scheme"><code class="xref py py-obj docutils literal notranslate"><span class="pre">source_int_scheme</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Select QBMM source time integration scheme.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.population_balance.expert.qbmm.source_min_dt" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.population_balance.expert.qbmm.source_min_dt"><code class="xref py py-obj docutils literal notranslate"><span class="pre">source_min_dt</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Select the minimum acceptable time step for source time integration.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.population_balance.expert.qbmm.source_ode_err_abs" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.population_balance.expert.qbmm.source_ode_err_abs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">source_ode_err_abs</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Select the source time integration absolute error.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.population_balance.expert.qbmm.source_ode_err_rel" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.population_balance.expert.qbmm.source_ode_err_rel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">source_ode_err_rel</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Select the source time integration relative error.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.population_balance.expert.qbmm.source_ode_factor" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.population_balance.expert.qbmm.source_ode_factor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">source_ode_factor</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Select the source time integration factor for error estimation.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.population_balance.expert.qbmm.source_ode_factor_max" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.population_balance.expert.qbmm.source_ode_factor_max"><code class="xref py py-obj docutils literal notranslate"><span class="pre">source_ode_factor_max</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Select the source time integration maximum factor for error estimation.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.population_balance.expert.qbmm.source_ode_factor_min" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.population_balance.expert.qbmm.source_ode_factor_min"><code class="xref py py-obj docutils literal notranslate"><span class="pre">source_ode_factor_min</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Select the source time integration minimum factor for error estimation.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.population_balance.expert.qbmm.verbosity_level" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.population_balance.expert.qbmm.verbosity_level"><code class="xref py py-obj docutils literal notranslate"><span class="pre">verbosity_level</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Select a verbosity level (0-4) for QBMM.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.population_balance.expert.qbmm.zero_moment_minus" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.population_balance.expert.qbmm.zero_moment_minus"><code class="xref py py-obj docutils literal notranslate"><span class="pre">zero_moment_minus</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Select a small negative value above which the moments are considered negligible.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.population_balance.expert.qbmm.zero_moment_plus" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.population_balance.expert.qbmm.zero_moment_plus"><code class="xref py py-obj docutils literal notranslate"><span class="pre">zero_moment_plus</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Select a small positive value bellow which the moments are considered negligible.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.population_balance.expert.qbmm.zero_zeta_minus" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.population_balance.expert.qbmm.zero_zeta_minus"><code class="xref py py-obj docutils literal notranslate"><span class="pre">zero_zeta_minus</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Select a small negative value above which the auxiliary quantities are considered negligible.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.population_balance.expert.qbmm.zero_zeta_plus" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.population_balance.expert.qbmm.zero_zeta_plus"><code class="xref py py-obj docutils literal notranslate"><span class="pre">zero_zeta_plus</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Select a small postitive value bellow which the auxiliary quantities are considered negligible.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">advection_cfl</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Select the QBMM advection Courant number.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">advection_int_scheme</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Select QBMM advection time integration scheme.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">exit_on_non_real</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Exit on non-realizable moments detection.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">solve_advection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Solve the advection part of the QBMM equation?.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">sort_abscissas</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Sort quadrature points based on abscissas.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">source_int_scheme</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Select QBMM source time integration scheme.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">source_min_dt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Select the minimum acceptable time step for source time integration.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">source_ode_err_abs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Select the source time integration absolute error.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">source_ode_err_rel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Select the source time integration relative error.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">source_ode_factor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Select the source time integration factor for error estimation.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">source_ode_factor_max</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Select the source time integration maximum factor for error estimation.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">source_ode_factor_min</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Select the source time integration minimum factor for error estimation.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">verbosity_level</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Select a verbosity level (0-4) for QBMM.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">zero_moment_minus</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Select a small negative value above which the moments are considered negligible.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">zero_moment_plus</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Select a small positive value bellow which the moments are considered negligible.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">zero_zeta_minus</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Select a small negative value above which the auxiliary quantities are considered negligible.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">zero_zeta_plus</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Select a small postitive value bellow which the auxiliary quantities are considered negligible.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">qmom</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">service</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.population_balance.expert.qmom.inversion_algorithm" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.population_balance.expert.qmom.inversion_algorithm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">inversion_algorithm</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Select the inversion algorithm for quadrature-based population balance method.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.population_balance.expert.qmom.print_realizable_moment_warning" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.population_balance.expert.qmom.print_realizable_moment_warning"><code class="xref py py-obj docutils literal notranslate"><span class="pre">print_realizable_moment_warning</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Print the information for realizable moments in the population balance model.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.population_balance.expert.qmom.realizable_moments" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.population_balance.expert.qmom.realizable_moments"><code class="xref py py-obj docutils literal notranslate"><span class="pre">realizable_moments</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Set the population balance model.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.population_balance.expert.qmom.retain_qmom_sources_for_low_vof" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.population_balance.expert.qmom.retain_qmom_sources_for_low_vof"><code class="xref py py-obj docutils literal notranslate"><span class="pre">retain_qmom_sources_for_low_vof</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Retain qmom source calculation for low secondary phase vof.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">inversion_algorithm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Select the inversion algorithm for quadrature-based population balance method.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">print_realizable_moment_warning</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Print the information for realizable moments in the population balance model.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">realizable_moments</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Set the population balance model.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">retain_qmom_sources_for_low_vof</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Retain qmom source calculation for low secondary phase vof.</p>
+</dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">include_expansion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Set expansion.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Allows you to select the population balance model and set its parameters.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">phenomena</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">service</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Enters the phenomena menu for population balance.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.population_balance.phenomena.aggregation" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.population_balance.phenomena.aggregation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">aggregation</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Sets the aggregation kernel.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.population_balance.phenomena.aggregation_factor" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.population_balance.phenomena.aggregation_factor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">aggregation_factor</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Specifies a factor that controls the intensity of the selected aggregation kernel.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.population_balance.phenomena.breakage" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.population_balance.phenomena.breakage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">breakage</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Set the breakage kernel.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.population_balance.phenomena.breakage_aggregation_vof_cutoff" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.population_balance.phenomena.breakage_aggregation_vof_cutoff"><code class="xref py py-obj docutils literal notranslate"><span class="pre">breakage_aggregation_vof_cutoff</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Specifies a cutoff limit for the volume fraction values for the breakage and aggregation kernels.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.population_balance.phenomena.breakage_factor" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.population_balance.phenomena.breakage_factor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">breakage_factor</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Specifies a factor that controls the intensity of the selected breakage kernel.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.population_balance.phenomena.growth" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.population_balance.phenomena.growth"><code class="xref py py-obj docutils literal notranslate"><span class="pre">growth</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Specifies the growth rate.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.population_balance.phenomena.nucleation" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.population_balance.phenomena.nucleation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nucleation</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Specifies the nucleation rate.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">aggregation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Sets the aggregation kernel.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">aggregation_factor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Specifies a factor that controls the intensity of the selected aggregation kernel.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">breakage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Set the breakage kernel.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">breakage_aggregation_vof_cutoff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Specifies a cutoff limit for the volume fraction values for the breakage and aggregation kernels.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">breakage_factor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Specifies a factor that controls the intensity of the selected breakage kernel.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">growth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Specifies the growth rate.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">nucleation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Specifies the nucleation rate.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">size_calculator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Gives you recommendations for appropriate bubble sizes and/or droplet size limits.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">regime_transition_modeling</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables the Algebraic Interfacial Area Density (AIAD)       model and sets the AIAD secondary continuous phase and  the secondary entrained phase. Entering 0 as a phase ID cancels any     previous phase selection. Note that you must define the         phases in your simulation using the define/phases/ text command         prior to using the regime-transition-modeling   text command. This option is available only with the    Eulerian multiphase model.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">sub_models</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">service</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Enter the menu to select sub-models.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.sub_models.boiling" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.sub_models.boiling"><code class="xref py py-obj docutils literal notranslate"><span class="pre">boiling</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Activate boiling model.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Classes:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.sub_models.boiling_options" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.sub_models.boiling_options"><code class="xref py py-obj docutils literal notranslate"><span class="pre">boiling_options</span></code></a>(service, version, mode, path)</p></td>
+<td><p>Set boiling options.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">boiling</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Activate boiling model.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">boiling_options</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">service</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Set boiling options.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.sub_models.boiling_options.nlbf_model" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.sub_models.boiling_options.nlbf_model"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nlbf_model</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Set the non-local boundary field correction.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.sub_models.boiling_options.options" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.sub_models.boiling_options.options"><code class="xref py py-obj docutils literal notranslate"><span class="pre">options</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Choose the type of boiling model.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">nlbf_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Set the non-local boundary field correction.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">options</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Choose the type of boiling model.</p>
+</dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">vof_sub_models</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables the Open Channel sub-model and/or the Open Channel Wave Boundary Condition  sub-model.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">volume_fraction_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Volume fraction parameters.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">wet_steam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">service</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Enters the wet steam model menu.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.wet_steam.compile_user_defined_wetsteam_functions" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.wet_steam.compile_user_defined_wetsteam_functions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compile_user_defined_wetsteam_functions</span></code></a>(...)</p></td>
+<td><p>Compiles user-defined wet steam library.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.wet_steam.enable" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.wet_steam.enable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">enable</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables the wet steam model.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.wet_steam.load_unload_user_defined_wetsteam_library" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.wet_steam.load_unload_user_defined_wetsteam_library"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_unload_user_defined_wetsteam_library</span></code></a>(...)</p></td>
+<td><p>Loads or unloads user-defined wet steam library.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Classes:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.wet_steam.set" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.wet_steam.set"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set</span></code></a>(service, version, mode, path)</p></td>
+<td><p>Enters the set menu for setting wet steam model options.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">compile_user_defined_wetsteam_functions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Compiles user-defined wet steam library.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">enable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables the wet steam model.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">load_unload_user_defined_wetsteam_library</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Loads or unloads user-defined wet steam library.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">service</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Enters the set menu for setting wet steam model options.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.wet_steam.set.droplet_growth_rate" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.wet_steam.set.droplet_growth_rate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">droplet_growth_rate</span></code></a>(*args, **kwargs)</p></td>
+<td><p>S formulation (default) or Hill.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.wet_steam.set.max_liquid_mass_fraction" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.wet_steam.set.max_liquid_mass_fraction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">max_liquid_mass_fraction</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Sets the maximum limit on the condensed liquid-phase mass-fraction to prevent divergence.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.wet_steam.set.rgp_tables" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.wet_steam.set.rgp_tables"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rgp_tables</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Sets the RGP (real gas property) table to be used with the Wet Steam model.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.wet_steam.set.stagnation_conditions" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.wet_steam.set.stagnation_conditions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stagnation_conditions</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Computes stagnation conditions using either gas phase only, or mixture.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.wet_steam.set.virial_equation" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.wet_steam.set.virial_equation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">virial_equation</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Sets the equation of state for steam to either Vukalovich formulation (default) or Young formulation.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.wet_steam.set.zonal_phase_change" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.multiphase.wet_steam.set.zonal_phase_change"><code class="xref py py-obj docutils literal notranslate"><span class="pre">zonal_phase_change</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Select cell zones where phase change process is active.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">droplet_growth_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>S formulation (default) or Hill.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">max_liquid_mass_fraction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Sets the maximum limit on the condensed liquid-phase mass-fraction to prevent divergence.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">rgp_tables</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Sets the RGP (real gas property) table to be used with the Wet Steam model.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">stagnation_conditions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Computes stagnation conditions using either gas phase only, or mixture. For details, see .</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">virial_equation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Sets the equation of state for steam to either Vukalovich formulation (default) or Young formulation.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">zonal_phase_change</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Select cell zones where phase change process is active.</p>
+</dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+<div class="toctree-wrapper compound">
+</div>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+<!-- If there is no fix edit button function, use the PyData edit-this-button-->
+</div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../../../../../../_sources/api/solver/tui/define/models/multiphase/index.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../../../../../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright (c) 2024 ANSYS, Inc. All rights reserved.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="theme-version">
+  Built with the
+  <a href="https://sphinxdocs.ansys.com/version/stable/index.html"
+    >Ansys Sphinx Theme</a
+  >
+  0.12.5. <br />Last updated on
+  <span id="date"></span>
+</p>
+<script>
+  var options = { day: "numeric", month: "long", year: "numeric" };
+  var lastModifiedDate = new Date(document.lastModified);
+  var date = lastModifiedDate.toLocaleDateString("en-US", options);
+  document.getElementById("date").innerHTML = date;
+</script></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

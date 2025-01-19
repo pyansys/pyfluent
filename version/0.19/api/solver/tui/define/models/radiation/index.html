@@ -1,0 +1,1314 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>radiation &#8212; PyFluent</title>
+
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../../../../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../../../../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../../../../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/sg_gallery.css?v=61a4c737" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/css/ansys_sphinx_theme.css?v=450015ff" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../../../../../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../../../../../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+ 
+<link href="../../../../../../_static/css/breadcrumbs.css" rel="stylesheet" />
+
+    <script src="../../../../../../_static/documentation_options.js?v=03f67e04"></script>
+    <script src="../../../../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../../../_static/thebelab-helper.js"></script>
+    <script src="../../../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../../../_static/copybutton.js?v=49e1bf35"></script>
+    <script src="../../../../../../_static/js/table.js?v=b64f5182"></script>
+    <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/solver/tui/define/models/radiation/index';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.14.4';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://fluent.docs.pyansys.com/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.19';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner = false;
+        </script>
+    <link rel="icon" href="../../../../../../_static/ansys-favicon.png"/>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+    <link rel="next" title="solar_parameters" href="solar_parameters/index.html" />
+    <link rel="prev" title="CHEMKIN_CFD_parameters" href="../species/CHEMKIN_CFD_parameters/index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <link rel="canonical" href="https://fluent.docs.pyansys.com/version/stable/api/solver/tui/define/models/radiation/index.html" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container"><!-- Debugging: html_theme_options =  -->
+
+<!-- If there is no MiliSearch enabled, use the PyData search -->
+<form class="bd-search d-flex align-items-center"
+      action="../../../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+   
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+
+<a class="navbar-brand logo" href="../../../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-light" alt="PyFluent - Home"/>
+    <script>document.write(`<img src="../../../../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-dark" alt="PyFluent - Home"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../../getting_started/index.html">
+                        Getting started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../../user_guide/index.html">
+                        User guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../../../../../index.html">
+                        API reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../../examples/index.html">
+                        Examples
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../../contributing.html">
+                        Contribute
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+<script>
+document.write(`
+  <div class="version-switcher__container dropdown">
+    <button id="pst-version-switcher-button-2"
+      type="button"
+      class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle"
+      data-bs-toggle="dropdown"
+      aria-haspopup="listbox"
+      aria-controls="pst-version-switcher-list-2"
+      aria-label="Version switcher list"
+    >
+      Choose version  <!-- this text may get changed later by javascript -->
+      <span class="caret"></span>
+    </button>
+    <div id="pst-version-switcher-list-2"
+      class="version-switcher__menu dropdown-menu list-group-flush py-0"
+      role="listbox" aria-labelledby="pst-version-switcher-button-2">
+      <!-- dropdown will be populated by javascript on page load -->
+    </div>
+  </div>
+`);
+</script></div>
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent/discussions" title="Support" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa fa-comment fa-fw fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Support</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </nav>
+    <div id="announcement_msg"></div>
+<script>
+  fetch("announcement.html")
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error: ${response.status}`);
+      }
+      return response.text();
+    })
+    .then(
+      (text) => (document.getElementById("announcement_msg").innerHTML = text),
+    )
+    .catch((error) => console.error(`Fetch problem: ${error.message}`));
+</script>  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item">
+<nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../../getting_started/index.html">
+                        Getting started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../../user_guide/index.html">
+                        User guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../../../../../index.html">
+                        API reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../../examples/index.html">
+                        Examples
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../../contributing.html">
+                        Contribute
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<script>
+document.write(`
+  <div class="version-switcher__container dropdown">
+    <button id="pst-version-switcher-button-3"
+      type="button"
+      class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle"
+      data-bs-toggle="dropdown"
+      aria-haspopup="listbox"
+      aria-controls="pst-version-switcher-list-3"
+      aria-label="Version switcher list"
+    >
+      Choose version  <!-- this text may get changed later by javascript -->
+      <span class="caret"></span>
+    </button>
+    <div id="pst-version-switcher-list-3"
+      class="version-switcher__menu dropdown-menu list-group-flush py-0"
+      role="listbox" aria-labelledby="pst-version-switcher-button-3">
+      <!-- dropdown will be populated by javascript on page load -->
+    </div>
+  </div>
+`);
+</script></div>
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent/discussions" title="Support" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa fa-comment fa-fw fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Support</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../../../general/index.html">General</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../meshing/index.html">Meshing</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../../../../index.html">Solver</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../../settings.html">Solver settings objects</a></li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="../../../../tuicommands.html">Solver TUI commands</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l3 current active has-children"><a class="reference internal" href="../../../index.html">solver.tui</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../../../turbo_workflow/index.html">turbo_workflow</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../turbo_post/index.html">turbo_post</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../views/index.html">views</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../server/index.html">server</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../display/index.html">display</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../parameters/index.html">parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../results/index.html">results</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../setup/index.html">setup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../adjoint/index.html">adjoint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../solution/index.html">solution</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../report/index.html">report</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../mesh/index.html">mesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../plot/index.html">plot</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../parametric_study/index.html">parametric_study</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../surface/index.html">surface</a></li>
+<li class="toctree-l4 current active has-children"><a class="reference internal" href="../../index.html">define</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l5"><a class="reference internal" href="../../mesh_interfaces/index.html">mesh_interfaces</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../user_defined/index.html">user_defined</a></li>
+<li class="toctree-l5 current active has-children"><a class="reference internal" href="../index.html">models</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l6"><a class="reference internal" href="../dpm/index.html">dpm</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../viscous/index.html">viscous</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../multiphase/index.html">multiphase</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../virtual_blade_model/index.html">virtual_blade_model</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../structure/index.html">structure</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../heat_exchanger/index.html">heat_exchanger</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../species/index.html">species</a></li>
+<li class="toctree-l6 current active has-children"><a class="current reference internal" href="#">radiation</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l7"><a class="reference internal" href="solar_parameters/index.html">solar_parameters</a></li>
+<li class="toctree-l7"><a class="reference internal" href="s2s_parameters/index.html">s2s_parameters</a></li>
+<li class="toctree-l7"><a class="reference internal" href="dtrm_parameters/index.html">dtrm_parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="../cht/index.html">cht</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../system_coupling_settings/index.html">system_coupling_settings</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../eulerian_wallfilm/index.html">eulerian_wallfilm</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../acoustics/index.html">acoustics</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../nox_parameters/index.html">nox_parameters</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../shell_conduction/index.html">shell_conduction</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../optics/index.html">optics</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../electrolysis_setup/index.html">electrolysis_setup</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../two_temperature/index.html">two_temperature</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../soot_parameters/index.html">soot_parameters</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../solver/index.html">solver</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../../reference_frames/index.html">reference_frames</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../mixing_planes/index.html">mixing_planes</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../solution_strategy/index.html">solution_strategy</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../custom_field_functions/index.html">custom_field_functions</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../dynamic_mesh/index.html">dynamic_mesh</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../materials/index.html">materials</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../phases/index.html">phases</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../operating_conditions/index.html">operating_conditions</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../spectral/index.html">spectral</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../parameters/index.html">parameters</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../overset_interfaces/index.html">overset_interfaces</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../profiles/index.html">profiles</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../periodic_conditions/index.html">periodic_conditions</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../named_expressions/index.html">named_expressions</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../curvilinear_coordinate_system/index.html">curvilinear_coordinate_system</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../gap_model/index.html">gap_model</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../turbo_model/index.html">turbo_model</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../virtual_boundary/index.html">virtual_boundary</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../motion_definitions/index.html">motion_definitions</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../../../parallel/index.html">parallel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../icing/index.html">icing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../file/index.html">file</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../preferences/index.html">preferences</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../solve/index.html">solve</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../datamodel/index.html">solver.datamodel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../schemeeval.html">Scheme code evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../events.html">EventsManager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../monitors.html">MonitorsManager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../reduction.html">Reduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../svar.html">SVAR data</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+      
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="https://docs.pyansys.com/" class="nav-link">PyAnsys</a>
+    </li>
+      
+    <li class="breadcrumb-item">
+      <a
+        href="../../../../../../index.html"
+        class="nav-link"
+        aria-label="Home"
+      >
+        <i class="fa-solid fa-home"></i
+      ></a>
+    </li> 
+    <li class="breadcrumb-item">
+      <a href="../../../../../index.html" class="nav-link">API reference</a>
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a href="../../../../index.html" class="nav-link">Solver</a>
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a href="../../../../tuicommands.html" class="nav-link">Solver TUI commands</a>
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a href="../../../index.html" class="nav-link">solver.tui</a>
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a href="../../index.html" class="nav-link">define</a>
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a href="../index.html" class="nav-link">models</a>
+    </li>
+      
+    <li class="breadcrumb-item active" aria-current="page">radiation</li>
+    
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="radiation">
+<span id="ref-solver-tui-define-models-radiation"></span><h1>radiation<a class="headerlink" href="#radiation" title="Link to this heading">#</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.fluent.core.solver.tui_241.main_menu.define.models.</span></span><span class="sig-name descname"><span class="pre">radiation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">service</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Enters the radiation models menu.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.apply_full_solar_irradiation" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.apply_full_solar_irradiation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">apply_full_solar_irradiation</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables the application of the complete solar load to the first wavelength         band only, reverting to the pre-2019 R1 behavior of the         Solar Load and Discrete Ordinates models.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.beta_radiation_features" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.beta_radiation_features"><code class="xref py py-obj docutils literal notranslate"><span class="pre">beta_radiation_features</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enable Radiation Models with Non-Iterative Time Advancement (NITA) as Beta features in FL12.0.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.blending_factor" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.blending_factor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">blending_factor</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Sets numeric option for Discrete Ordinate model.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.discrete_ordinates" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.discrete_ordinates"><code class="xref py py-obj docutils literal notranslate"><span class="pre">discrete_ordinates</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables discrete ordinates radiation model.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.discrete_transfer" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.discrete_transfer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">discrete_transfer</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables discrete transfer radiation model.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.do_acceleration" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.do_acceleration"><code class="xref py py-obj docutils literal notranslate"><span class="pre">do_acceleration</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables the acceleration of the discrete   ordinates (DO) radiation model calculations.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.do_coupling" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.do_coupling"><code class="xref py py-obj docutils literal notranslate"><span class="pre">do_coupling</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables DO/energy coupling.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.fast_second_order_discrete_ordinate" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.fast_second_order_discrete_ordinate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fast_second_order_discrete_ordinate</span></code></a>(*args, ...)</p></td>
+<td><p>Enables/disables the fast-second-order option for Discrete Ordinate Model.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.mc_model_parameters" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.mc_model_parameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mc_model_parameters</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Specifies Monte Carlo model parameters.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.mc_under_relaxation" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.mc_under_relaxation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mc_under_relaxation</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Sets the under-relaxation factor for Monte Carlo radiation sources used in the      energy equation.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.method_partially_specular_wall" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.method_partially_specular_wall"><code class="xref py py-obj docutils literal notranslate"><span class="pre">method_partially_specular_wall</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Sets the method for partially specular wall with discrete ordinate model.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.montecarlo" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.montecarlo"><code class="xref py py-obj docutils literal notranslate"><span class="pre">montecarlo</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables the Monte Carlo radiation model.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.non_gray_model_parameters" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.non_gray_model_parameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">non_gray_model_parameters</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Sets parameters for non-gray model.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.p1" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.p1"><code class="xref py py-obj docutils literal notranslate"><span class="pre">p1</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables P1 radiation model.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.radiation_iteration_parameters" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.radiation_iteration_parameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">radiation_iteration_parameters</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Sets iteration parameters for radiation models.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.radiation_model_parameters" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.radiation_model_parameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">radiation_model_parameters</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Set parameters for radiation models.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.rosseland" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.rosseland"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rosseland</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables Rosseland radiation model.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.s2s" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.s2s"><code class="xref py py-obj docutils literal notranslate"><span class="pre">s2s</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables S2S radiation model.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.solar" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.solar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">solar</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables solar model.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.solar_calculator" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.solar_calculator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">solar_calculator</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Calculates sun direction and intensity.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.solar_irradiation" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.solar_irradiation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">solar_irradiation</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables the solar irradiation model.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.solution_method_for_do_coupling" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.solution_method_for_do_coupling"><code class="xref py py-obj docutils literal notranslate"><span class="pre">solution_method_for_do_coupling</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables the solution method for DO/energy coupling.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.target_cells_per_volume_cluster" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.target_cells_per_volume_cluster"><code class="xref py py-obj docutils literal notranslate"><span class="pre">target_cells_per_volume_cluster</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Sets the amount of coarsening of the radiation mesh         for the Monte Carlo radiation model.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.wsggm_cell_based" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.wsggm_cell_based"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wsggm_cell_based</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables/disables WSGGM cell based method.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Classes:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.dtrm_parameters" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.dtrm_parameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dtrm_parameters</span></code></a>(service, version, mode, path)</p></td>
+<td><p>Enters the dtrm parameters menu.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.s2s_parameters" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.s2s_parameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">s2s_parameters</span></code></a>(service, version, mode, path)</p></td>
+<td><p>Enters the S2S parameters menu.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.solar_parameters" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.solar_parameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">solar_parameters</span></code></a>(service, version, mode, path)</p></td>
+<td><p>Enters the solar parameters menu.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">apply_full_solar_irradiation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables the application of the complete solar load to the first wavelength         band only, reverting to the pre-2019 R1 behavior of the         Solar Load and Discrete Ordinates models.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">beta_radiation_features</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enable Radiation Models with Non-Iterative Time Advancement (NITA) as Beta features in FL12.0.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">blending_factor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Sets numeric option for Discrete Ordinate model. Make sure thatSecond Order Upwind is selected for the Discrete Ordinates spatial   discretization for the blending-factor option to        appear in the text command list.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">discrete_ordinates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables discrete ordinates radiation model.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">discrete_transfer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables discrete transfer radiation model.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">do_acceleration</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables the acceleration of the discrete   ordinates (DO) radiation model calculations. Note that  this text command is only available when running on     Linux in parallel.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">do_coupling</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables DO/energy coupling.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dtrm_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">service</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Enters the dtrm parameters menu.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.dtrm_parameters.check_ray_file" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.dtrm_parameters.check_ray_file"><code class="xref py py-obj docutils literal notranslate"><span class="pre">check_ray_file</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Reads DTRM rays file.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.dtrm_parameters.controls" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.dtrm_parameters.controls"><code class="xref py py-obj docutils literal notranslate"><span class="pre">controls</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Sets dtrm solution controls.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.dtrm_parameters.make_globs" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.dtrm_parameters.make_globs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">make_globs</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Makes globs (coarser mesh) for radiation.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.dtrm_parameters.ray_trace" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.dtrm_parameters.ray_trace"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ray_trace</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Creates DTRM rays for radiation.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">check_ray_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Reads DTRM rays file.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">controls</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Sets dtrm solution controls.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">make_globs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Makes globs (coarser mesh) for radiation.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">ray_trace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Creates DTRM rays for radiation.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">fast_second_order_discrete_ordinate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables the fast-second-order option for Discrete Ordinate Model.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">mc_model_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Specifies Monte Carlo model parameters. This text command is available only when the        Monte Carlo model is enabled.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">mc_under_relaxation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Sets the under-relaxation factor for Monte Carlo radiation sources used in the      energy equation.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">method_partially_specular_wall</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Sets the method for partially specular wall with discrete ordinate model.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">montecarlo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables the Monte Carlo radiation model.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">non_gray_model_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Sets parameters for non-gray model.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">p1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables P1 radiation model.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">radiation_iteration_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Sets iteration parameters for radiation models.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">radiation_model_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Set parameters for radiation models.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">rosseland</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables Rosseland radiation model.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">s2s</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables S2S radiation model.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">s2s_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">service</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Enters the S2S parameters menu.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.s2s_parameters.compute_clusters_and_vf_accelerated" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.s2s_parameters.compute_clusters_and_vf_accelerated"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute_clusters_and_vf_accelerated</span></code></a>(*args, ...)</p></td>
+<td><p><p>.</p>
+</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.s2s_parameters.compute_fpsc_values" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.s2s_parameters.compute_fpsc_values"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute_fpsc_values</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Computes only fpsc values based on current settings.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.s2s_parameters.compute_vf_accelerated" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.s2s_parameters.compute_vf_accelerated"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute_vf_accelerated</span></code></a>(*args, **kwargs)</p></td>
+<td><p><p>.</p>
+</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.s2s_parameters.compute_vf_only" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.s2s_parameters.compute_vf_only"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute_vf_only</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Computes/writes view factors only.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.s2s_parameters.compute_write_vf" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.s2s_parameters.compute_write_vf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute_write_vf</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Computes/writes surface clusters and view factors for S2S radiation model.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.s2s_parameters.enable_mesh_interface_clustering" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.s2s_parameters.enable_mesh_interface_clustering"><code class="xref py py-obj docutils literal notranslate"><span class="pre">enable_mesh_interface_clustering</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Enables surface clusters on mesh interfaces.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.s2s_parameters.non_participating_boundary_zones_temperature" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.s2s_parameters.non_participating_boundary_zones_temperature"><code class="xref py py-obj docutils literal notranslate"><span class="pre">non_participating_boundary_zones_temperature</span></code></a>(...)</p></td>
+<td><p>Sets temperature for the non-participating boundary zones.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.s2s_parameters.print_thread_clusters" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.s2s_parameters.print_thread_clusters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">print_thread_clusters</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Prints the following for all boundary threads: thread-id, number of faces, faces per surface cluster, and the number of surface clusters.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.s2s_parameters.print_zonewise_radiation" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.s2s_parameters.print_zonewise_radiation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">print_zonewise_radiation</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Prints the zonewise incoming radiation, viewfactors, and average temperature.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.s2s_parameters.read_vf_file" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.s2s_parameters.read_vf_file"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read_vf_file</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Reads S2S file.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.s2s_parameters.set_global_faces_per_surface_cluster" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.s2s_parameters.set_global_faces_per_surface_cluster"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_global_faces_per_surface_cluster</span></code></a>(*args, ...)</p></td>
+<td><p>Sets global value of faces per surface cluster for all boundary zones.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.s2s_parameters.set_vf_parameters" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.s2s_parameters.set_vf_parameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_vf_parameters</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Sets the parameters needed for the viewfactor calculations.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.s2s_parameters.split_angle" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.s2s_parameters.split_angle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">split_angle</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Sets split angle for the clustering algorithm.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.s2s_parameters.use_new_cluster_algorithm" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.s2s_parameters.use_new_cluster_algorithm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">use_new_cluster_algorithm</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Uses the new surface clustering algorithm.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.s2s_parameters.use_old_cluster_algorithm" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.s2s_parameters.use_old_cluster_algorithm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">use_old_cluster_algorithm</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Uses the old surface clustering algorithm.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">compute_clusters_and_vf_accelerated</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">compute_fpsc_values</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Computes only fpsc values based on current settings.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">compute_vf_accelerated</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">compute_vf_only</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Computes/writes view factors only.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">compute_write_vf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Computes/writes surface clusters and view factors for S2S radiation model.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">enable_mesh_interface_clustering</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables surface clusters on mesh interfaces.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">non_participating_boundary_zones_temperature</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Sets temperature for the non-participating boundary zones.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">print_thread_clusters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Prints the following for all boundary threads: thread-id, number of faces, faces per surface cluster, and the number of surface clusters.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">print_zonewise_radiation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Prints the zonewise incoming radiation, viewfactors, and average temperature.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">read_vf_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Reads S2S file.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">set_global_faces_per_surface_cluster</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Sets global value of faces per surface cluster for all boundary zones.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">set_vf_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Sets the parameters needed for the viewfactor calculations.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">split_angle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Sets split angle for the clustering algorithm.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">use_new_cluster_algorithm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Uses the new surface clustering algorithm.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">use_old_cluster_algorithm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Uses the old surface clustering algorithm.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">solar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables solar model.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">solar_calculator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Calculates sun direction and intensity.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">solar_irradiation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables the solar irradiation model.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">solar_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">service</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TUIMenu</span></code></p>
+<p>Enters the solar parameters menu.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.solar_parameters.autoread_solar_data" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.solar_parameters.autoread_solar_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">autoread_solar_data</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Sets autoread solar data parameters.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.solar_parameters.autosave_solar_data" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.solar_parameters.autosave_solar_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">autosave_solar_data</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Sets autosave solar data parameters.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.solar_parameters.ground_reflectivity" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.solar_parameters.ground_reflectivity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ground_reflectivity</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Sets ground reflectivity parameters.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.solar_parameters.illumination_parameters" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.solar_parameters.illumination_parameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">illumination_parameters</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Sets illumination parameters.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.solar_parameters.iteration_parameters" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.solar_parameters.iteration_parameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">iteration_parameters</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Sets update parameters.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.solar_parameters.quad_tree_parameters" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.solar_parameters.quad_tree_parameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">quad_tree_parameters</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Sets quad-tree refinement parameters.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.solar_parameters.scattering_fraction" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.solar_parameters.scattering_fraction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scattering_fraction</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Sets scattering fraction parameters.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.solar_parameters.sol_adjacent_fluidcells" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.solar_parameters.sol_adjacent_fluidcells"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sol_adjacent_fluidcells</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Sets solar load on for adjacent fluid cells.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.solar_parameters.sol_camera_pos" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.solar_parameters.sol_camera_pos"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sol_camera_pos</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Sets camera position based on sun direction vector.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.solar_parameters.sol_on_demand" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.solar_parameters.sol_on_demand"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sol_on_demand</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Sets solar load on demand.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.solar_parameters.solar_thread_control" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.solar_parameters.solar_thread_control"><code class="xref py py-obj docutils literal notranslate"><span class="pre">solar_thread_control</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Sets the number of threads to run the solar flux calculation.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.solar_parameters.sun_direction_vector" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.solar_parameters.sun_direction_vector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sun_direction_vector</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Sets sun direction vector.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../index.html#ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.solar_parameters.use_direction_from_sol_calc" title="ansys.fluent.core.solver.tui_241.main_menu.define.models.radiation.solar_parameters.use_direction_from_sol_calc"><code class="xref py py-obj docutils literal notranslate"><span class="pre">use_direction_from_sol_calc</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Sets direction computed from solar calculator.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">autoread_solar_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Sets autoread solar data parameters.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">autosave_solar_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Sets autosave solar data parameters.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">ground_reflectivity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Sets ground reflectivity parameters.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">illumination_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Sets illumination parameters.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">iteration_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Sets update parameters.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">quad_tree_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Sets quad-tree refinement parameters.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">scattering_fraction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Sets scattering fraction parameters.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">sol_adjacent_fluidcells</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Sets solar load on for adjacent fluid cells.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">sol_camera_pos</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Sets camera position based on sun direction vector.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">sol_on_demand</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Sets solar load on demand.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">solar_thread_control</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Sets the number of threads to run the solar flux calculation. This item appears only when running in parallel with nodes located on a separate machine from the one running the host process andSolar Ray Tracing is enabled.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">sun_direction_vector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Sets sun direction vector.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">use_direction_from_sol_calc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Sets direction computed from solar calculator.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">solution_method_for_do_coupling</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables the solution method for DO/energy coupling.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">target_cells_per_volume_cluster</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Sets the amount of coarsening of the radiation mesh         for the Monte Carlo radiation model. A number greater   than one implies coarsening, whereas equal to one       implies no coarsening.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">wsggm_cell_based</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enables/disables WSGGM cell based method. Note that when enabled, the wsggm-cell-based option will  become available in theAbsorption Coefficient drop-down list in the Create/Edit Materials dialog        box.</p>
+</dd></dl>
+
+</dd></dl>
+
+<div class="toctree-wrapper compound">
+</div>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+<!-- If there is no fix edit button function, use the PyData edit-this-button-->
+</div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../../../../../../_sources/api/solver/tui/define/models/radiation/index.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../../../../../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright (c) 2024 ANSYS, Inc. All rights reserved.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="theme-version">
+  Built with the
+  <a href="https://sphinxdocs.ansys.com/version/stable/index.html"
+    >Ansys Sphinx Theme</a
+  >
+  0.12.5. <br />Last updated on
+  <span id="date"></span>
+</p>
+<script>
+  var options = { day: "numeric", month: "long", year: "numeric" };
+  var lastModifiedDate = new Date(document.lastModified);
+  var date = lastModifiedDate.toLocaleDateString("en-US", options);
+  document.getElementById("date").innerHTML = date;
+</script></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

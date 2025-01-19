@@ -1,0 +1,1080 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Parametric study workflow &#8212; PyFluent</title>
+
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=d2d258e8" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/ansys_sphinx_theme.css?v=d2ac875c" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://www.nerdfonts.com/assets/css/webfont.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+ 
+<link href="../../_static/css/breadcrumbs.css" rel="stylesheet" />
+
+    <script src="../../_static/documentation_options.js?v=c0aa8791"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/thebelab-helper.js"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=49e1bf35"></script>
+    <script src="../../_static/toggleprompt.js?v=cec9bd37"></script>
+    <script src="../../_static/js/table.js?v=b64f5182"></script>
+    <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'examples/00-fluent/parametric_static_mixer_1';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.15.4';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://fluent.docs.pyansys.com/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.25';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner = false;
+        </script>
+    <link rel="icon" href="../../_static/ansys-favicon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Modeling Radiation in a Headlamp Using the Monte Carlo Method" href="radiation_headlamp.html" />
+    <link rel="prev" title="Modeling Cavitation" href="modeling_cavitation.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <link rel="canonical" href="https://fluent.docs.pyansys.com/version/stable/examples/00-fluent/parametric_static_mixer_1.html" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container"><!-- Debugging: html_theme_options =  -->
+
+  <!-- If there is no MeiliSearch enabled, use the PyData search -->
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+   
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/pyansys_logo_transparent_black.png" class="logo__image only-light" alt="PyFluent - Home"/>
+    <script>document.write(`<img src="../../_static/pyansys_logo_transparent_white.png" class="logo__image only-dark" alt="PyFluent - Home"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../getting_started/index.html">
+    Getting started
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../user_guide/index.html">
+    User guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../api/index.html">
+    API reference
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../contributing.html">
+    Contributing to PyFluent
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+<script>
+document.write(`
+  <div class="version-switcher__container dropdown">
+    <button id="pst-version-switcher-button-2"
+      type="button"
+      class="version-switcher__button btn btn-sm dropdown-toggle"
+      data-bs-toggle="dropdown"
+      aria-haspopup="listbox"
+      aria-controls="pst-version-switcher-list-2"
+      aria-label="Version switcher list"
+    >
+      Choose version  <!-- this text may get changed later by javascript -->
+      <span class="caret"></span>
+    </button>
+    <div id="pst-version-switcher-list-2"
+      class="version-switcher__menu dropdown-menu list-group-flush py-0"
+      role="listbox" aria-labelledby="pst-version-switcher-button-2">
+      <!-- dropdown will be populated by javascript on page load -->
+    </div>
+  </div>
+`);
+</script></div>
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent/discussions" title="Support" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa fa-comment fa-fw fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Support</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+    <div id="announcement_msg"></div>
+<script>
+  fetch("announcement.html")
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error: ${response.status}`);
+      }
+      return response.text();
+    })
+    .then(
+      (text) => (document.getElementById("announcement_msg").innerHTML = text),
+    )
+    .catch((error) => console.error(`Fetch problem: ${error.message}`));
+</script>  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../getting_started/index.html">
+    Getting started
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../user_guide/index.html">
+    User guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../api/index.html">
+    API reference
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../contributing.html">
+    Contributing to PyFluent
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<script>
+document.write(`
+  <div class="version-switcher__container dropdown">
+    <button id="pst-version-switcher-button-3"
+      type="button"
+      class="version-switcher__button btn btn-sm dropdown-toggle"
+      data-bs-toggle="dropdown"
+      aria-haspopup="listbox"
+      aria-controls="pst-version-switcher-list-3"
+      aria-label="Version switcher list"
+    >
+      Choose version  <!-- this text may get changed later by javascript -->
+      <span class="caret"></span>
+    </button>
+    <div id="pst-version-switcher-list-3"
+      class="version-switcher__menu dropdown-menu list-group-flush py-0"
+      role="listbox" aria-labelledby="pst-version-switcher-button-3">
+      <!-- dropdown will be populated by javascript on page load -->
+    </div>
+  </div>
+`);
+</script></div>
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ansys/pyfluent/discussions" title="Support" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa fa-comment fa-fw fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Support</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Simulation Examples</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="DOE_ML.html">Design of Experiments and Machine Learning model building</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ahmed_body_workflow.html">Ahmed Body External Aerodynamics Simulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="brake.html">Automotive Brake Thermal Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exhaust_system_settings_api.html">Fault-tolerant meshing workflow using settings objects</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="external_compressible_flow.html">Modeling External Compressible Flow</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="mixing_elbow_settings_api.html">Fluent setup and solution using settings objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modeling_cavitation.html">Modeling Cavitation</a></li>
+
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Parametric study workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="radiation_headlamp.html">Modeling Radiation in a Headlamp Using the Monte Carlo Method</a></li>
+
+
+
+</ul>
+</details></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+         
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="https://docs.pyansys.com/" class="nav-link">PyAnsys</a>
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a
+        href="../../index.html"
+        class="nav-link"
+        aria-label="Home"
+      >
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a href="../index.html" class="nav-link">Examples</a>
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a href="index.html" class="nav-link">Simulation Examples</a>
+    </li>
+      
+    <li class="breadcrumb-item active" aria-current="page">Parametric study workflow</li>
+    
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="sphx-glr-download-link-note admonition note">
+<p class="admonition-title">Note</p>
+<p><a class="reference internal" href="#sphx-glr-download-examples-00-fluent-parametric-static-mixer-1-py"><span class="std std-ref">Go to the end</span></a>
+to download the full example code.</p>
+</div>
+<section class="sphx-glr-example-title" id="parametric-study-workflow">
+<span id="ref-parametric-static-mixer-1"></span><span id="sphx-glr-examples-00-fluent-parametric-static-mixer-1-py"></span><h1>Parametric study workflow<a class="headerlink" href="#parametric-study-workflow" title="Link to this heading">#</a></h1>
+<p>This example shows how you can use the parametric study workflow to analyze a
+static mixer.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <a href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="pathlib.Path" class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">Path</span></a>
+
+<span class="kn">import</span> <span class="nn">ansys.fluent.core</span> <span class="k">as</span> <span class="nn">pyfluent</span>
+<span class="kn">from</span> <span class="nn">ansys.fluent.core</span> <span class="kn">import</span> <span class="n">examples</span>
+</pre></div>
+</div>
+<section id="perform-required-imports">
+<h2>Perform required imports<a class="headerlink" href="#perform-required-imports" title="Link to this heading">#</a></h2>
+<p>Perform the required imports.</p>
+</section>
+<section id="launch-fluent">
+<h2>Launch Fluent<a class="headerlink" href="#launch-fluent" title="Link to this heading">#</a></h2>
+<p>Launch Fluent in 3D and double precision.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">solver_session</span> <span class="o">=</span> <span class="n">pyfluent</span><span class="o">.</span><span class="n">launch_fluent</span><span class="p">(</span>
+    <span class="n">precision</span><span class="o">=</span><span class="s2">&quot;double&quot;</span><span class="p">,</span> <span class="n">processor_count</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;solver&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="download-and-read-files">
+<h2>Download and read files<a class="headerlink" href="#download-and-read-files" title="Link to this heading">#</a></h2>
+<p>Download the files for this example and read the case for the static mixer.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">import_filename</span> <span class="o">=</span> <span class="n">examples</span><span class="o">.</span><span class="n">download_file</span><span class="p">(</span>
+    <span class="s2">&quot;Static_Mixer_main.cas.h5&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;pyfluent/static_mixer&quot;</span><span class="p">,</span>
+    <span class="n">return_without_path</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">solver_session</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">read_case</span><span class="p">(</span><span class="n">file_name</span><span class="o">=</span><span class="n">import_filename</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="set-iterations">
+<h2>Set iterations<a class="headerlink" href="#set-iterations" title="Link to this heading">#</a></h2>
+<p>Set the number of iterations to 100.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">solver_session</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">solution</span><span class="o">.</span><span class="n">run_calculation</span><span class="o">.</span><span class="n">iter_count</span> <span class="o">=</span> <span class="mi">100</span>
+</pre></div>
+</div>
+</section>
+<section id="create-input-parameters">
+<h2>Create input parameters<a class="headerlink" href="#create-input-parameters" title="Link to this heading">#</a></h2>
+<p>Enable parameter creation in the TUI and then create input parameters for
+the velocity and temperatures of inlets 1 and 2:
+Parameter values:
+Inlet1: velocity (inlet1_vel) 0.5 m/s and temperature (inlet1_temp) at 300 K
+Inlet2: velocity (inlet2_vel) 0.5 m/s and temperature (inlet2_temp) at 350 K</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">solver_session</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">enable_in_tui</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="n">solver_session</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">setup</span><span class="o">.</span><span class="n">named_expressions</span><span class="p">[</span><span class="s2">&quot;inlet1_vel&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;output_parameter&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="s2">&quot;input_parameter&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="s2">&quot;unit&quot;</span><span class="p">:</span> <span class="s2">&quot;velocity&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;parametername&quot;</span><span class="p">:</span> <span class="s2">&quot;inlet1_vel&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;parameterid&quot;</span><span class="p">:</span> <span class="s2">&quot;real-1&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;definition&quot;</span><span class="p">:</span> <span class="s2">&quot;1 [m/s]&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;inlet1_vel&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">solver_session</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">setup</span><span class="o">.</span><span class="n">boundary_conditions</span><span class="o">.</span><span class="n">velocity_inlet</span><span class="p">[</span><span class="s2">&quot;inlet1&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;momentum&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;velocity&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;inlet1_vel&quot;</span><span class="p">}}</span>
+<span class="p">}</span>
+
+<span class="n">solver_session</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">setup</span><span class="o">.</span><span class="n">named_expressions</span><span class="p">[</span><span class="s2">&quot;inlet1_temp&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;output_parameter&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="s2">&quot;input_parameter&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="s2">&quot;unit&quot;</span><span class="p">:</span> <span class="s2">&quot;temperature&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;parametername&quot;</span><span class="p">:</span> <span class="s2">&quot;inlet1_temp&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;parameterid&quot;</span><span class="p">:</span> <span class="s2">&quot;real-2&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;definition&quot;</span><span class="p">:</span> <span class="s2">&quot;300 [K]&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;inlet1_temp&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">solver_session</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">setup</span><span class="o">.</span><span class="n">boundary_conditions</span><span class="o">.</span><span class="n">velocity_inlet</span><span class="p">[</span><span class="s2">&quot;inlet1&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;thermal&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;temperature&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;inlet1_temp&quot;</span><span class="p">}}</span>
+<span class="p">}</span>
+
+<span class="n">solver_session</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">setup</span><span class="o">.</span><span class="n">named_expressions</span><span class="p">[</span><span class="s2">&quot;inlet2_vel&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;output_parameter&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="s2">&quot;input_parameter&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="s2">&quot;unit&quot;</span><span class="p">:</span> <span class="s2">&quot;velocity&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;parametername&quot;</span><span class="p">:</span> <span class="s2">&quot;inlet2_vel&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;parameterid&quot;</span><span class="p">:</span> <span class="s2">&quot;real-3&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;definition&quot;</span><span class="p">:</span> <span class="s2">&quot;1 [m/s]&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;inlet2_vel&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">solver_session</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">setup</span><span class="o">.</span><span class="n">boundary_conditions</span><span class="o">.</span><span class="n">velocity_inlet</span><span class="p">[</span><span class="s2">&quot;inlet2&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;momentum&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;velocity&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;inlet2_vel&quot;</span><span class="p">}}</span>
+<span class="p">}</span>
+
+<span class="n">solver_session</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">setup</span><span class="o">.</span><span class="n">named_expressions</span><span class="p">[</span><span class="s2">&quot;inlet2_temp&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;output_parameter&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="s2">&quot;input_parameter&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="s2">&quot;unit&quot;</span><span class="p">:</span> <span class="s2">&quot;temperature&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;parametername&quot;</span><span class="p">:</span> <span class="s2">&quot;inlet2_temp&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;parameterid&quot;</span><span class="p">:</span> <span class="s2">&quot;real-4&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;definition&quot;</span><span class="p">:</span> <span class="s2">&quot;350 [K]&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;inlet2_temp&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">solver_session</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">setup</span><span class="o">.</span><span class="n">boundary_conditions</span><span class="o">.</span><span class="n">velocity_inlet</span><span class="p">[</span><span class="s2">&quot;inlet2&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;thermal&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;temperature&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;inlet2_temp&quot;</span><span class="p">}}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="create-output-parameters">
+<h2>Create output parameters<a class="headerlink" href="#create-output-parameters" title="Link to this heading">#</a></h2>
+<p>Create output parameters named <code class="docutils literal notranslate"><span class="pre">outlet-temp-avg</span></code> and <code class="docutils literal notranslate"><span class="pre">outlet-vel-avg</span></code>
+using report definitions.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">solver_session</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">solution</span><span class="o">.</span><span class="n">report_definitions</span><span class="o">.</span><span class="n">surface</span><span class="p">[</span><span class="s2">&quot;outlet-temp-avg&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">solver_session</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">solution</span><span class="o">.</span><span class="n">report_definitions</span><span class="o">.</span><span class="n">surface</span><span class="p">[</span>
+    <span class="s2">&quot;outlet-temp-avg&quot;</span>
+<span class="p">]</span><span class="o">.</span><span class="n">report_type</span> <span class="o">=</span> <span class="s2">&quot;surface-areaavg&quot;</span>
+<span class="n">solver_session</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">solution</span><span class="o">.</span><span class="n">report_definitions</span><span class="o">.</span><span class="n">surface</span><span class="p">[</span><span class="s2">&quot;outlet-temp-avg&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">field</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="s2">&quot;temperature&quot;</span>
+<span class="p">)</span>
+<span class="n">solver_session</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">solution</span><span class="o">.</span><span class="n">report_definitions</span><span class="o">.</span><span class="n">surface</span><span class="p">[</span>
+    <span class="s2">&quot;outlet-temp-avg&quot;</span>
+<span class="p">]</span><span class="o">.</span><span class="n">surface_names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;outlet&quot;</span><span class="p">]</span>
+
+<span class="n">solver_session</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">solution</span><span class="o">.</span><span class="n">report_definitions</span><span class="o">.</span><span class="n">surface</span><span class="p">[</span><span class="s2">&quot;outlet-vel-avg&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">solver_session</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">solution</span><span class="o">.</span><span class="n">report_definitions</span><span class="o">.</span><span class="n">surface</span><span class="p">[</span>
+    <span class="s2">&quot;outlet-vel-avg&quot;</span>
+<span class="p">]</span><span class="o">.</span><span class="n">report_type</span> <span class="o">=</span> <span class="s2">&quot;surface-areaavg&quot;</span>
+<span class="n">solver_session</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">solution</span><span class="o">.</span><span class="n">report_definitions</span><span class="o">.</span><span class="n">surface</span><span class="p">[</span><span class="s2">&quot;outlet-vel-avg&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">field</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="s2">&quot;velocity-magnitude&quot;</span>
+<span class="p">)</span>
+<span class="n">solver_session</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">solution</span><span class="o">.</span><span class="n">report_definitions</span><span class="o">.</span><span class="n">surface</span><span class="p">[</span>
+    <span class="s2">&quot;outlet-vel-avg&quot;</span>
+<span class="p">]</span><span class="o">.</span><span class="n">surface_names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;outlet&quot;</span><span class="p">]</span>
+
+<span class="n">solver_session</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">output_parameters</span><span class="o">.</span><span class="n">report_definitions</span><span class="p">[</span>
+    <span class="s2">&quot;parameter-5&quot;</span>
+<span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">solver_session</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">output_parameters</span><span class="o">.</span><span class="n">report_definitions</span><span class="p">[</span>
+    <span class="s2">&quot;parameter-5&quot;</span>
+<span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;report_definition&quot;</span><span class="p">:</span> <span class="s2">&quot;outlet-temp-avg&quot;</span><span class="p">}</span>
+
+<span class="n">solver_session</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">output_parameters</span><span class="o">.</span><span class="n">report_definitions</span><span class="p">[</span>
+    <span class="s2">&quot;parameter-6&quot;</span>
+<span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">solver_session</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">output_parameters</span><span class="o">.</span><span class="n">report_definitions</span><span class="p">[</span>
+    <span class="s2">&quot;parameter-6&quot;</span>
+<span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;report_definition&quot;</span><span class="p">:</span> <span class="s2">&quot;outlet-vel-avg&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="enable-convergence-condition-check">
+<h2>Enable convergence condition check<a class="headerlink" href="#enable-convergence-condition-check" title="Link to this heading">#</a></h2>
+<p>Enable the convergence condition check.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">solver_session</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">solution</span><span class="o">.</span><span class="n">monitor</span><span class="o">.</span><span class="n">residual</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">criterion_type</span> <span class="o">=</span> <span class="s2">&quot;absolute&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="write-case">
+<h2>Write case<a class="headerlink" href="#write-case" title="Link to this heading">#</a></h2>
+<p>Write the case with all settings in place.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">case_path</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><a href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="pathlib.Path" class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">Path</span></a><span class="p">(</span><span class="n">pyfluent</span><span class="o">.</span><span class="n">EXAMPLES_PATH</span><span class="p">)</span> <span class="o">/</span> <span class="s2">&quot;Static_Mixer_Parameters.cas.h5&quot;</span><span class="p">)</span>
+<span class="n">solver_session</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">write_case</span><span class="p">(</span><span class="n">file_name</span><span class="o">=</span><span class="n">case_path</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="initialize-parametric-study">
+<h2>Initialize parametric study<a class="headerlink" href="#initialize-parametric-study" title="Link to this heading">#</a></h2>
+<p>Initialize a parametric design point study from a Fluent session.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">solver_session</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">parametric_studies</span><span class="o">.</span><span class="n">initialize</span><span class="p">(</span><span class="n">project_filename</span><span class="o">=</span><span class="s2">&quot;project_1&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/DP_table_011.png"><img alt="../../_images/DP_table_011.png" class="align-center" src="../../_images/DP_table_011.png" style="width: 500pt;" />
+</a>
+</section>
+<section id="access-and-modify-input-parameters">
+<h2>Access and modify input parameters<a class="headerlink" href="#access-and-modify-input-parameters" title="Link to this heading">#</a></h2>
+<p>Access and modify the input parameters of the base design point.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">solver_session</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">parametric_studies</span><span class="p">[</span><span class="s2">&quot;Static_Mixer_main-Solve&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">design_points</span><span class="p">[</span>
+    <span class="s2">&quot;Base DP&quot;</span>
+<span class="p">]</span><span class="o">.</span><span class="n">input_parameters</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;inlet1_temp&quot;</span><span class="p">:</span> <span class="mi">300</span><span class="p">,</span>
+    <span class="s2">&quot;inlet2_temp&quot;</span><span class="p">:</span> <span class="mi">350</span><span class="p">,</span>
+    <span class="s2">&quot;inlet2_vel&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s2">&quot;inlet1_vel&quot;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="update-current-design-point">
+<h2>Update current design point<a class="headerlink" href="#update-current-design-point" title="Link to this heading">#</a></h2>
+<p>Update the current design point.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">solver_session</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">parametric_studies</span><span class="p">[</span>
+    <span class="s2">&quot;Static_Mixer_main-Solve&quot;</span>
+<span class="p">]</span><span class="o">.</span><span class="n">design_points</span><span class="o">.</span><span class="n">update_current</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="add-design-point">
+<h2>Add design point<a class="headerlink" href="#add-design-point" title="Link to this heading">#</a></h2>
+<p>Add a design point.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">solver_session</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">parametric_studies</span><span class="p">[</span>
+    <span class="s2">&quot;Static_Mixer_main-Solve&quot;</span>
+<span class="p">]</span><span class="o">.</span><span class="n">design_points</span><span class="o">.</span><span class="n">create_1</span><span class="p">(</span><span class="n">write_data</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">capture_simulation_report_data</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">solver_session</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">parametric_studies</span><span class="p">[</span><span class="s2">&quot;Static_Mixer_main-Solve&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">design_points</span><span class="p">[</span>
+    <span class="s2">&quot;DP1&quot;</span>
+<span class="p">]</span><span class="o">.</span><span class="n">input_parameters</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;inlet1_vel&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s2">&quot;inlet2_vel&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s2">&quot;inlet1_temp&quot;</span><span class="p">:</span> <span class="mi">500</span><span class="p">,</span>
+    <span class="s2">&quot;inlet2_temp&quot;</span><span class="p">:</span> <span class="mi">350</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="duplicate-design-point">
+<h2>Duplicate design point<a class="headerlink" href="#duplicate-design-point" title="Link to this heading">#</a></h2>
+<p>Duplicate design point 1 to create design point 2.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">solver_session</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">parametric_studies</span><span class="p">[</span>
+    <span class="s2">&quot;Static_Mixer_main-Solve&quot;</span>
+<span class="p">]</span><span class="o">.</span><span class="n">design_points</span><span class="o">.</span><span class="n">duplicate</span><span class="p">(</span><span class="n">design_point</span><span class="o">=</span><span class="s2">&quot;DP1&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="update-all-design-points">
+<h2>Update all design points<a class="headerlink" href="#update-all-design-points" title="Link to this heading">#</a></h2>
+<p>Update all design points.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">solver_session</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">parametric_studies</span><span class="p">[</span>
+    <span class="s2">&quot;Static_Mixer_main-Solve&quot;</span>
+<span class="p">]</span><span class="o">.</span><span class="n">design_points</span><span class="o">.</span><span class="n">update_all</span><span class="p">()</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/DP_table_012.png"><img alt="../../_images/DP_table_012.png" class="align-center" src="../../_images/DP_table_012.png" style="width: 500pt;" />
+</a>
+</section>
+<section id="export-design-point-table">
+<h2>Export design point table<a class="headerlink" href="#export-design-point-table" title="Link to this heading">#</a></h2>
+<p>Export the design point table to a CSV file.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">design_point_table</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span>
+    <a href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="pathlib.Path" class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">Path</span></a><span class="p">(</span><span class="n">pyfluent</span><span class="o">.</span><span class="n">EXAMPLES_PATH</span><span class="p">)</span> <span class="o">/</span> <span class="s2">&quot;design_point_table_study_1.csv&quot;</span>
+<span class="p">)</span>
+
+<span class="n">solver_session</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">parametric_studies</span><span class="o">.</span><span class="n">export_design_table</span><span class="p">(</span>
+    <span class="n">filepath</span><span class="o">=</span><span class="n">design_point_table</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="delete-design-point">
+<h2>Delete design point<a class="headerlink" href="#delete-design-point" title="Link to this heading">#</a></h2>
+<p>Delete design point 1.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">solver_session</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">parametric_studies</span><span class="p">[</span>
+    <span class="s2">&quot;Static_Mixer_main-Solve&quot;</span>
+<span class="p">]</span><span class="o">.</span><span class="n">design_points</span><span class="o">.</span><span class="n">delete_design_points</span><span class="p">(</span><span class="n">design_points</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;DP1&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</section>
+<section id="create-parametric-study">
+<h2>Create parametric study<a class="headerlink" href="#create-parametric-study" title="Link to this heading">#</a></h2>
+<p>Create another parametric study by duplicating the current one.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">solver_session</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">parametric_studies</span><span class="o">.</span><span class="n">duplicate</span><span class="p">(</span><span class="n">copy_design_points</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="rename-new-parametric-study">
+<h2>Rename new parametric study<a class="headerlink" href="#rename-new-parametric-study" title="Link to this heading">#</a></h2>
+<p>Rename the newly created parametric study.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">solver_session</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">parametric_studies</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span>
+    <span class="n">new</span><span class="o">=</span><span class="s2">&quot;New Study&quot;</span><span class="p">,</span> <span class="n">old</span><span class="o">=</span><span class="s2">&quot;Static_Mixer_main-1-Solve&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="delete-old-parametric-study">
+<h2>Delete old parametric study<a class="headerlink" href="#delete-old-parametric-study" title="Link to this heading">#</a></h2>
+<p>Delete the old parametric study.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">solver_session</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">parametric_studies</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">name_list</span><span class="o">=</span><span class="s2">&quot;Static_Mixer_main-Solve&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="save-parametric-project-and-close-fluent">
+<h2>Save parametric project and close Fluent<a class="headerlink" href="#save-parametric-project-and-close-fluent" title="Link to this heading">#</a></h2>
+<p>Save the parametric project and close Fluent.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">project_filepath</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><a href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="pathlib.Path" class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">Path</span></a><span class="p">(</span><span class="n">pyfluent</span><span class="o">.</span><span class="n">EXAMPLES_PATH</span><span class="p">)</span> <span class="o">/</span> <span class="s2">&quot;static_mixer_study_save.flprj&quot;</span><span class="p">)</span>
+
+<span class="n">solver_session</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">parametric_project</span><span class="o">.</span><span class="n">save_as</span><span class="p">(</span>
+    <span class="n">project_filename</span><span class="o">=</span><span class="n">project_filepath</span>
+<span class="p">)</span>
+
+<span class="n">solver_session</span><span class="o">.</span><span class="n">exit</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="launch-fluent-and-read-saved-project">
+<h2>Launch Fluent and read saved project<a class="headerlink" href="#launch-fluent-and-read-saved-project" title="Link to this heading">#</a></h2>
+<p>Launch Fluent once again and read the previously saved project.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">solver_session</span> <span class="o">=</span> <span class="n">pyfluent</span><span class="o">.</span><span class="n">launch_fluent</span><span class="p">(</span>
+    <span class="n">precision</span><span class="o">=</span><span class="s2">&quot;double&quot;</span><span class="p">,</span> <span class="n">processor_count</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;solver&quot;</span>
+<span class="p">)</span>
+
+<span class="n">project_filepath_read</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><a href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="pathlib.Path" class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">Path</span></a><span class="p">(</span><span class="n">pyfluent</span><span class="o">.</span><span class="n">EXAMPLES_PATH</span><span class="p">)</span> <span class="o">/</span> <span class="s2">&quot;static_mixer_study.flprj&quot;</span><span class="p">)</span>
+
+<span class="n">solver_session</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">parametric_project</span><span class="o">.</span><span class="n">open</span><span class="p">(</span>
+    <span class="n">project_filename</span><span class="o">=</span><span class="n">project_filepath_read</span><span class="p">,</span> <span class="n">load_case</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="save-current-project">
+<h2>Save current project<a class="headerlink" href="#save-current-project" title="Link to this heading">#</a></h2>
+<p>Save the current project.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">solver_session</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">parametric_project</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="save-current-project-as-a-different-project">
+<h2>Save current project as a different project<a class="headerlink" href="#save-current-project-as-a-different-project" title="Link to this heading">#</a></h2>
+<p>Save the current project as a different project.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">project_filepath_save_as</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span>
+    <a href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="pathlib.Path" class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">Path</span></a><span class="p">(</span><span class="n">pyfluent</span><span class="o">.</span><span class="n">EXAMPLES_PATH</span><span class="p">)</span> <span class="o">/</span> <span class="s2">&quot;static_mixer_study_save_as.flprj&quot;</span>
+<span class="p">)</span>
+
+<span class="n">solver_session</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">parametric_project</span><span class="o">.</span><span class="n">save_as</span><span class="p">(</span>
+    <span class="n">project_filename</span><span class="o">=</span><span class="n">project_filepath_save_as</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="export-current-project">
+<h2>Export current project<a class="headerlink" href="#export-current-project" title="Link to this heading">#</a></h2>
+<p>Export the current project.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">project_filepath_export</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span>
+    <a href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="pathlib.Path" class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">Path</span></a><span class="p">(</span><span class="n">pyfluent</span><span class="o">.</span><span class="n">EXAMPLES_PATH</span><span class="p">)</span> <span class="o">/</span> <span class="s2">&quot;static_mixer_study_export.flprj&quot;</span>
+<span class="p">)</span>
+
+<span class="n">solver_session</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">parametric_project</span><span class="o">.</span><span class="n">save_as_copy</span><span class="p">(</span>
+    <span class="n">project_filename</span><span class="o">=</span><span class="n">project_filepath_export</span><span class="p">,</span> <span class="n">convert_to_managed</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="archive-current-project">
+<h2>Archive current project<a class="headerlink" href="#archive-current-project" title="Link to this heading">#</a></h2>
+<p>Archive the current project.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">project_filepath_archive</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span>
+    <a href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="pathlib.Path" class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">Path</span></a><span class="p">(</span><span class="n">pyfluent</span><span class="o">.</span><span class="n">EXAMPLES_PATH</span><span class="p">)</span> <span class="o">/</span> <span class="s2">&quot;static_mixer_study_archive.flprj&quot;</span>
+<span class="p">)</span>
+
+<span class="n">solver_session</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">parametric_project</span><span class="o">.</span><span class="n">archive</span><span class="p">(</span>
+    <span class="n">archive_name</span><span class="o">=</span><span class="n">project_filepath_archive</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="close-fluent">
+<h2>Close Fluent<a class="headerlink" href="#close-fluent" title="Link to this heading">#</a></h2>
+<p>Close Fluent.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">solver_session</span><span class="o">.</span><span class="n">exit</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-00-fluent-parametric-static-mixer-1-py">
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/29fc5347ebfc588bd1f406add83ddbe4/parametric_static_mixer_1.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">parametric_static_mixer_1.ipynb</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/a135ae674207ce2a41e7118a3471af48/parametric_static_mixer_1.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">parametric_static_mixer_1.py</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-zip docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/fd888e455eaa9560f4f6d3c31db1d4ed/parametric_static_mixer_1.zip"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">zipped:</span> <span class="pre">parametric_static_mixer_1.zip</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perform-required-imports">Perform required imports</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#launch-fluent">Launch Fluent</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#download-and-read-files">Download and read files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-iterations">Set iterations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-input-parameters">Create input parameters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-output-parameters">Create output parameters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#enable-convergence-condition-check">Enable convergence condition check</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#write-case">Write case</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initialize-parametric-study">Initialize parametric study</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#access-and-modify-input-parameters">Access and modify input parameters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#update-current-design-point">Update current design point</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-design-point">Add design point</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#duplicate-design-point">Duplicate design point</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#update-all-design-points">Update all design points</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#export-design-point-table">Export design point table</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#delete-design-point">Delete design point</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-parametric-study">Create parametric study</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rename-new-parametric-study">Rename new parametric study</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#delete-old-parametric-study">Delete old parametric study</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#save-parametric-project-and-close-fluent">Save parametric project and close Fluent</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#launch-fluent-and-read-saved-project">Launch Fluent and read saved project</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#save-current-project">Save current project</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#save-current-project-as-a-different-project">Save current project as a different project</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#export-current-project">Export current project</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#archive-current-project">Archive current project</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#close-fluent">Close Fluent</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+<!-- If there is no fix edit button function, use the PyData edit-this-button-->
+</div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../../_sources/examples/00-fluent/parametric_static_mixer_1.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright (c) 2024 ANSYS, Inc. All rights reserved.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.7.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="theme-version">
+  Built with the
+  <a href="https://sphinxdocs.ansys.com/version/stable/index.html"
+    >Ansys Sphinx Theme</a
+  >
+  1.0.7. <br />Last updated on
+  <span id="date"></span>
+</p>
+<script>
+  var options = { day: "numeric", month: "long", year: "numeric" };
+  var lastModifiedDate = new Date(document.lastModified);
+  var date = lastModifiedDate.toLocaleDateString("en-US", options);
+  document.getElementById("date").innerHTML = date;
+</script></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
